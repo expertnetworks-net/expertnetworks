@@ -90,6 +90,12 @@ const relatedSlugs = [...new Set(articles.flatMap(a => a.data.relatedNetworks))]
                   {relatedNames.map((name: string) => (
                     <span class="inline-block px-2 py-0.5 text-[10px] font-medium rounded-full bg-accent/10 text-accent">{name}</span>
                   ))}
+                  {article.data.sourceUrl && (
+                    <a href={article.data.sourceUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-[11px] font-medium text-accent hover:underline no-underline ml-auto">
+                      View Source
+                      <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

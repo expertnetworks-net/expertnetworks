@@ -1,26 +1,250 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import NetworkCard from '../../components/NetworkCard.astro';
 import { getCollection } from 'astro:content';
 
 const allNetworks = await getCollection('networks');
 const networks = allNetworks
   .filter(n => n.data.published)
   .sort((a, b) => a.data.priority - b.data.priority);
+
+// Derive filter options
+const allTypes = [...new Set(networks.map(n => n.data.type))].sort();
+const allPricing = [...new Set(networks.map(n => n.data.pricingModel).filter(Boolean))].sort();
+const allHqs = [...new Set(networks.map(n => {
+  const hq = n.data.headquarters || '';
+  // Normalize to country/region
+  if (hq.includes('UK') || hq.includes('London')) return 'United Kingdom';
+  if (hq.includes('Germany') || hq.includes('Munich') || hq.includes('Berlin') || hq.includes('Frankfurt')) return 'Germany';
+  if (hq.includes('France') || hq.includes('Paris')) return 'France';
+  if (hq.includes('Singapore')) return 'Singapore';
+  if (hq.includes('India') || hq.includes('Mumbai') || hq.includes('Bangalore')) return 'India';
+  if (hq.includes('Japan') || hq.includes('Tokyo')) return 'Japan';
+  if (hq.includes('Hong Kong')) return 'Hong Kong';
+  if (hq.includes('China') || hq.includes('Shanghai') || hq.includes('Beijing') || hq.includes('Shenzhen')) return 'China';
+  if (hq.includes('Switzerland') || hq.includes('Zurich')) return 'Switzerland';
+  if (hq) return 'United States';
+  return '';
+}).filter(Boolean))].sort();
 ---
 
 <BaseLayout title="All Networks — Expert Networks Hub">
-  <section class="pt-32 pb-24 px-6">
+  <!-- Header -->
+  <section class="pt-[72px] pb-4 px-6 border-b border-border/40">
     <div class="max-w-site mx-auto">
-      <div class="text-center mb-12">
-        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-primary">All Expert Networks</h1>
-        <p class="text-secondary mt-3 text-lg">Browse {networks.length} expert networks with comprehensive profiles.</p>
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+        <div>
+          <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight text-primary">Expert Networks Directory</h1>
+          <p class="text-secondary text-sm mt-1">{networks.length} providers with independent profiles, pricing, and compliance data.</p>
+        </div>
+        <div class="flex gap-2">
+          <a href="/compare" class="inline-flex items-center gap-1.5 px-4 py-2 bg-accent text-white text-sm font-semibold rounded-lg no-underline hover:bg-accent-hover transition-colors">Compare</a>
+          <a href="/" class="inline-flex items-center gap-1.5 px-4 py-2 bg-bg-secondary text-primary text-sm font-semibold rounded-lg no-underline hover:bg-border/50 transition-colors">&larr; Dashboard</a>
+        </div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {networks.map(network => (
-          <NetworkCard {...network.data} variant="profile" />
-        ))}
+    </div>
+  </section>
+
+  <!-- Filter bar -->
+  <section class="py-3 px-6 border-b border-border/40 bg-bg-secondary/50">
+    <div class="max-w-site mx-auto flex flex-wrap gap-3 items-center">
+      <span class="text-xs font-bold uppercase tracking-wide text-tertiary">Filter:</span>
+      <input id="searchInput" type="text" placeholder="Search by name..." class="text-[13px] text-primary bg-white border border-border rounded-lg px-3 py-1.5 w-48 focus:outline-none focus:ring-2 focus:ring-accent/30" />
+      <select id="filterType" class="text-[13px] font-medium text-primary bg-white border border-border rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
+        <option value="">All Types</option>
+        {allTypes.map(t => <option value={t}>{t}</option>)}
+      </select>
+      <select id="filterPricing" class="text-[13px] font-medium text-primary bg-white border border-border rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
+        <option value="">All Pricing</option>
+        {allPricing.map(p => <option value={p}>{p}</option>)}
+      </select>
+      <select id="filterRegion" class="text-[13px] font-medium text-primary bg-white border border-border rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
+        <option value="">All Regions</option>
+        {allHqs.map(h => <option value={h}>{h}</option>)}
+      </select>
+      <select id="sortBy" class="text-[13px] font-medium text-primary bg-white border border-border rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
+        <option value="rank">By Rank</option>
+        <option value="name">A-Z</option>
+        <option value="founded">Newest First</option>
+      </select>
+      <button id="clearAll" class="text-[13px] font-medium text-accent hover:underline cursor-pointer hidden">Clear</button>
+      <span id="resultCount" class="text-xs text-tertiary ml-auto">{networks.length} networks</span>
+    </div>
+  </section>
+
+  <!-- Stats bar -->
+  <section class="py-4 px-6 border-b border-border/20">
+    <div class="max-w-site mx-auto grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div class="text-center">
+        <div class="text-xl font-extrabold text-primary">{networks.length}</div>
+        <div class="text-[11px] text-tertiary uppercase tracking-wide">Networks Tracked</div>
+      </div>
+      <div class="text-center">
+        <div class="text-xl font-extrabold text-primary">{allHqs.length}+</div>
+        <div class="text-[11px] text-tertiary uppercase tracking-wide">Countries</div>
+      </div>
+      <div class="text-center">
+        <div class="text-xl font-extrabold text-primary">{networks.filter(n => n.data.comparison?.aiMatching).length}</div>
+        <div class="text-[11px] text-tertiary uppercase tracking-wide">With AI Matching</div>
+      </div>
+      <div class="text-center">
+        <div class="text-xl font-extrabold text-primary">{networks.filter(n => n.data.comparison?.complianceTools).length}</div>
+        <div class="text-[11px] text-tertiary uppercase tracking-wide">Compliance Tools</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Network list -->
+  <section class="py-6 px-6">
+    <div class="max-w-site mx-auto">
+      <div id="noResults" class="hidden text-center py-12 text-sm text-tertiary">No networks match your filters.</div>
+      <div class="space-y-2" id="networkList">
+        {networks.map((network, i) => {
+          const n = network.data;
+          const region = (() => {
+            const hq = n.headquarters || '';
+            if (hq.includes('UK') || hq.includes('London')) return 'United Kingdom';
+            if (hq.includes('Germany') || hq.includes('Munich') || hq.includes('Berlin') || hq.includes('Frankfurt')) return 'Germany';
+            if (hq.includes('France') || hq.includes('Paris')) return 'France';
+            if (hq.includes('Singapore')) return 'Singapore';
+            if (hq.includes('India') || hq.includes('Mumbai') || hq.includes('Bangalore')) return 'India';
+            if (hq.includes('Japan') || hq.includes('Tokyo')) return 'Japan';
+            if (hq.includes('Hong Kong')) return 'Hong Kong';
+            if (hq.includes('China') || hq.includes('Shanghai') || hq.includes('Beijing') || hq.includes('Shenzhen')) return 'China';
+            if (hq.includes('Switzerland') || hq.includes('Zurich')) return 'Switzerland';
+            if (hq) return 'United States';
+            return '';
+          })();
+          return (
+            <a
+              href={`/networks/${n.slug}`}
+              class="network-row flex items-center gap-4 px-5 py-4 bg-white rounded-xl shadow-[0_0_0_0.5px_rgba(0,0,0,0.04),0_1px_3px_rgba(0,0,0,0.06)] hover:shadow-card-hover hover:-translate-y-[1px] transition-all no-underline group"
+              data-name={n.name.toLowerCase()}
+              data-type={n.type}
+              data-pricing={n.pricingModel || ''}
+              data-region={region}
+              data-founded={n.founded || 0}
+              data-rank={i}
+            >
+              <!-- Rank -->
+              <div class="text-[12px] text-tertiary font-bold w-5 text-right flex-shrink-0">{i + 1}</div>
+
+              <!-- Logo -->
+              <div
+                class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
+                style={`background: linear-gradient(135deg, ${n.gradientFrom}, ${n.gradientTo})`}
+              >
+                {n.shortName}
+              </div>
+
+              <!-- Info -->
+              <div class="min-w-0 flex-1">
+                <div class="flex items-center gap-2">
+                  <span class="text-[14px] font-semibold text-primary group-hover:text-accent transition-colors truncate">{n.name.split(' (')[0]}</span>
+                  {n.featured && <span class="px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider bg-accent/10 text-accent rounded">Featured</span>}
+                </div>
+                <div class="text-[12px] text-secondary truncate mt-0.5">{n.description.slice(0, 100)}{n.description.length > 100 ? '...' : ''}</div>
+              </div>
+
+              <!-- Key metrics -->
+              <div class="hidden md:flex items-center gap-6 flex-shrink-0">
+                {n.expertCount && (
+                  <div class="text-center w-20">
+                    <div class="text-[13px] font-bold text-primary">{n.expertCount}</div>
+                    <div class="text-[10px] text-tertiary">Experts</div>
+                  </div>
+                )}
+                {n.pricingModel && (
+                  <div class="text-center w-20">
+                    <div class="text-[13px] font-bold text-primary">{n.pricingModel}</div>
+                    <div class="text-[10px] text-tertiary">Pricing</div>
+                  </div>
+                )}
+                <div class="text-center w-20">
+                  <div class="text-[13px] font-bold text-primary">{n.founded || '—'}</div>
+                  <div class="text-[10px] text-tertiary">Founded</div>
+                </div>
+              </div>
+
+              <!-- Services chips (hidden on small) -->
+              <div class="hidden lg:flex flex-wrap gap-1 w-40 flex-shrink-0">
+                {n.services.slice(0, 3).map((s: string) => (
+                  <span class="px-2 py-0.5 text-[10px] font-medium rounded-full bg-bg-secondary text-secondary">{s}</span>
+                ))}
+                {n.services.length > 3 && <span class="px-2 py-0.5 text-[10px] font-medium rounded-full bg-bg-secondary text-tertiary">+{n.services.length - 3}</span>}
+              </div>
+
+              <!-- Arrow -->
+              <svg class="w-4 h-4 text-tertiary group-hover:text-accent transition-colors flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          );
+        })}
       </div>
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  const searchInput = document.getElementById('searchInput') as HTMLInputElement;
+  const filterType = document.getElementById('filterType') as HTMLSelectElement;
+  const filterPricing = document.getElementById('filterPricing') as HTMLSelectElement;
+  const filterRegion = document.getElementById('filterRegion') as HTMLSelectElement;
+  const sortBy = document.getElementById('sortBy') as HTMLSelectElement;
+  const clearAll = document.getElementById('clearAll') as HTMLElement;
+  const resultCount = document.getElementById('resultCount') as HTMLElement;
+  const noResults = document.getElementById('noResults') as HTMLElement;
+  const networkList = document.getElementById('networkList') as HTMLElement;
+  const rows = Array.from(document.querySelectorAll('.network-row')) as HTMLElement[];
+
+  function applyFilters() {
+    const search = searchInput?.value.toLowerCase() || '';
+    const type = filterType?.value || '';
+    const pricing = filterPricing?.value || '';
+    const region = filterRegion?.value || '';
+    const sort = sortBy?.value || 'rank';
+
+    let visible = 0;
+
+    rows.forEach(row => {
+      const name = row.getAttribute('data-name') || '';
+      const rType = row.getAttribute('data-type') || '';
+      const rPricing = row.getAttribute('data-pricing') || '';
+      const rRegion = row.getAttribute('data-region') || '';
+
+      const match = (!search || name.includes(search))
+        && (!type || rType === type)
+        && (!pricing || rPricing === pricing)
+        && (!region || rRegion === region);
+
+      row.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+
+    // Sort visible rows
+    const visibleRows = rows.filter(r => r.style.display !== 'none');
+    visibleRows.sort((a, b) => {
+      if (sort === 'name') return (a.getAttribute('data-name') || '').localeCompare(b.getAttribute('data-name') || '');
+      if (sort === 'founded') return parseInt(b.getAttribute('data-founded') || '0') - parseInt(a.getAttribute('data-founded') || '0');
+      return parseInt(a.getAttribute('data-rank') || '0') - parseInt(b.getAttribute('data-rank') || '0');
+    });
+    visibleRows.forEach(row => networkList?.appendChild(row));
+    rows.filter(r => r.style.display === 'none').forEach(r => networkList?.appendChild(r));
+
+    resultCount.textContent = `${visible} network${visible !== 1 ? 's' : ''}`;
+    noResults?.classList.toggle('hidden', visible > 0);
+    clearAll?.classList.toggle('hidden', !search && !type && !pricing && !region);
+  }
+
+  searchInput?.addEventListener('input', applyFilters);
+  filterType?.addEventListener('change', applyFilters);
+  filterPricing?.addEventListener('change', applyFilters);
+  filterRegion?.addEventListener('change', applyFilters);
+  sortBy?.addEventListener('change', applyFilters);
+  clearAll?.addEventListener('click', () => {
+    searchInput.value = '';
+    filterType.value = '';
+    filterPricing.value = '';
+    filterRegion.value = '';
+    sortBy.value = 'rank';
+    applyFilters();
+  });
+</script>
