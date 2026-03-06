@@ -1,0 +1,23 @@
+{
+  "name": "Astute Connect",
+  "shortName": "AC",
+  "slug": "astute-connect",
+  "website": "https://astuteconnect.com",
+  "gradientFrom": "#065f46",
+  "gradientTo": "#34d399",
+  "type": "Expert Network",
+  "founded": 2019,
+  "headquarters": "Mumbai, India",
+  "employeeCount": "200+",
+  "expertCount": "75K+",
+  "description": "Emerging expert network focused on Asian and emerging markets, providing expert consultations with strong coverage in India and Southeast Asia.",
+  "services": ["Expert Calls", "Surveys", "Market Research"],
+  "aiCapabilities": ["Technology-enhanced matching"],
+  "industries": ["Financial Services", "Healthcare", "Technology", "Consumer"],
+  "pricingModel": "Per-call",
+  "keyDifferentiators": ["Strong India/Asia coverage", "Competitive pricing", "Emerging markets focus"],
+  "featured": false,
+  "priority": 13,
+  "published": true,
+  "lastUpdated": "2026-03-06"
+}

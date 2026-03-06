@@ -1,0 +1,59 @@
+---
+import { getCollection } from 'astro:content';
+import fs from 'node:fs';
+
+const compareConfig = JSON.parse(fs.readFileSync('./src/content/compare.json', 'utf-8'));
+const allNetworks = await getCollection('networks');
+const selectedNetworks = compareConfig.networks
+  .map((slug: string) => allNetworks.find(n => n.data.slug === slug))
+  .filter(Boolean);
+---
+
+<section class="py-24 px-6 bg-bg-secondary" id="compare">
+  <div class="max-w-site mx-auto">
+    <div class="text-center mb-12">
+      <div class="text-accent text-sm font-semibold tracking-wide uppercase mb-2 fade-in">Compare</div>
+      <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-primary fade-in">Side by Side</h2>
+      <p class="text-secondary mt-3 fade-in">Compare expert networks across key dimensions.</p>
+    </div>
+    <div class="overflow-x-auto fade-in">
+      <table class="w-full border-collapse bg-white rounded-card overflow-hidden shadow-card">
+        <thead>
+          <tr>
+            <th class="text-left text-[13px] font-bold uppercase tracking-wide text-secondary bg-bg-secondary px-5 py-4 border-b border-bg-secondary">Feature</th>
+            {selectedNetworks.map((n: any) => (
+              <th class="text-left text-[13px] font-bold uppercase tracking-wide text-secondary bg-bg-secondary px-5 py-4 border-b border-bg-secondary">{n.data.name.split(' (')[0].split(' / ')[0]}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {compareConfig.features.map((feature: any) => (
+            <tr>
+              <td class="px-5 py-4 text-sm font-semibold text-primary border-b border-bg-secondary">{feature.name}</td>
+              {selectedNetworks.map((n: any) => {
+                let value: any;
+                if (feature.key === 'expertCount') {
+                  value = n.data.expertCount || '—';
+                } else if (feature.key === 'pricingModel') {
+                  value = n.data.pricingModel || '—';
+                } else {
+                  value = n.data.comparison?.[feature.key];
+                }
+                const isTrue = value === true;
+                const isFalse = value === false || value === undefined;
+                const isString = typeof value === 'string';
+                return (
+                  <td class="px-5 py-4 text-sm border-b border-bg-secondary">
+                    {isTrue ? <span class="text-accent-green font-bold">&#10003;</span> :
+                     isFalse ? <span class="text-tertiary">&#x2013;</span> :
+                     <span class={isString && value !== '—' ? 'text-accent-green font-bold' : 'text-primary'}>{value}</span>}
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

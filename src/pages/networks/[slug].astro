@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allNetworks = await getCollection('networks');
+const { slug } = Astro.params;
+const network = allNetworks.find(n => n.data.slug === slug);
+
+if (!network) {
+  return Astro.redirect('/networks');
+}
+
+const d = network.data;
+---
+
+<BaseLayout title={`${d.name} — Expert Networks Hub`}>
+  <section class="pt-32 pb-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <!-- Back link -->
+      <a href="/networks" class="inline-flex items-center gap-1 text-accent text-sm font-medium no-underline mb-8 hover:underline">
+        &larr; All Networks
+      </a>
+
+      <!-- Header -->
+      <div class="flex items-center gap-4 mb-8">
+        <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-white font-bold text-2xl flex-shrink-0" style={`background: linear-gradient(135deg, ${d.gradientFrom}, ${d.gradientTo})`}>
+          {d.logo ? <img src={d.logo} alt={d.name} class="w-10 h-10 object-contain" /> : d.shortName}
+        </div>
+        <div>
+          <h1 class="text-3xl font-extrabold text-primary">{d.name}</h1>
+          <div class="text-secondary text-sm mt-0.5">
+            {d.type}{d.founded && ` \u00B7 Founded ${d.founded}`}{d.headquarters && ` \u00B7 ${d.headquarters}`}
+          </div>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <p class="text-lg text-secondary leading-relaxed mb-8">{d.description}</p>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-3 gap-4 mb-8">
+        {d.expertCount && (
+          <div class="bg-bg-secondary rounded-card p-5 text-center">
+            <div class="text-2xl font-bold text-primary">{d.expertCount}</div>
+            <div class="text-xs text-tertiary mt-1">Experts</div>
+          </div>
+        )}
+        {d.employeeCount && (
+          <div class="bg-bg-secondary rounded-card p-5 text-center">
+            <div class="text-2xl font-bold text-primary">{d.employeeCount}</div>
+            <div class="text-xs text-tertiary mt-1">Employees</div>
+          </div>
+        )}
+        {d.pricingModel && (
+          <div class="bg-bg-secondary rounded-card p-5 text-center">
+            <div class="text-2xl font-bold text-primary">{d.pricingModel}</div>
+            <div class="text-xs text-tertiary mt-1">Pricing</div>
+          </div>
+        )}
+      </div>
+
+      <!-- Services -->
+      <div class="mb-8">
+        <h2 class="text-lg font-bold text-primary mb-3">Services</h2>
+        <div class="flex flex-wrap gap-2">
+          {d.services.map((service: string) => (
+            <span class="inline-block px-3 py-1 text-sm rounded-full font-medium bg-accent/10 text-accent">{service}</span>
+          ))}
+        </div>
+      </div>
+
+      <!-- AI Capabilities -->
+      {d.aiCapabilities.length > 0 && (
+        <div class="mb-8">
+          <h2 class="text-lg font-bold text-primary mb-3">AI Capabilities</h2>
+          <ul class="space-y-2">
+            {d.aiCapabilities.map((cap: string) => (
+              <li class="flex items-start gap-2 text-sm text-secondary">
+                <span class="text-accent-green mt-0.5">&#10003;</span>
+                {cap}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <!-- Industries -->
+      {d.industries.length > 0 && (
+        <div class="mb-8">
+          <h2 class="text-lg font-bold text-primary mb-3">Industries Served</h2>
+          <div class="flex flex-wrap gap-2">
+            {d.industries.map((industry: string) => (
+              <span class="inline-block px-3 py-1 text-sm rounded-full font-medium bg-bg-secondary text-secondary">{industry}</span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Key Differentiators -->
+      {d.keyDifferentiators.length > 0 && (
+        <div class="mb-8">
+          <h2 class="text-lg font-bold text-primary mb-3">Key Differentiators</h2>
+          <ul class="space-y-2">
+            {d.keyDifferentiators.map((diff: string) => (
+              <li class="flex items-start gap-2 text-sm text-secondary">
+                <span class="text-accent mt-0.5">&#9679;</span>
+                {diff}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <!-- Website link -->
+      {d.website && (
+        <div class="mt-8 pt-6 border-t border-bg-secondary">
+          <a href={d.website} target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-accent font-semibold text-sm no-underline hover:underline">
+            Visit {d.name.split(' (')[0]} &rarr;
+          </a>
+        </div>
+      )}
+
+      <div class="mt-4 text-xs text-tertiary">Last updated: {d.lastUpdated}</div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,23 @@
+{
+  "name": "Prosapient",
+  "shortName": "P",
+  "slug": "prosapient",
+  "website": "https://prosapient.com",
+  "gradientFrom": "#831843",
+  "gradientTo": "#db2777",
+  "type": "Expert Network",
+  "founded": 2019,
+  "headquarters": "London, UK",
+  "employeeCount": "200+",
+  "expertCount": "50K+",
+  "description": "Technology-first expert network offering a self-serve platform for expert consultations, with a focus on efficiency and transparency.",
+  "services": ["Expert Calls", "Self-serve Platform", "Compliance Tools"],
+  "aiCapabilities": ["Self-serve matching platform", "Automated scheduling"],
+  "industries": ["Consulting", "Private Equity", "Venture Capital", "Corporate Strategy"],
+  "pricingModel": "Per-call",
+  "keyDifferentiators": ["Self-serve platform", "Transparent pricing", "Fast setup"],
+  "featured": false,
+  "priority": 7,
+  "published": true,
+  "lastUpdated": "2026-03-06"
+}

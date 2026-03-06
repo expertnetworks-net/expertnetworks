@@ -1,0 +1,23 @@
+{
+  "name": "Techspert",
+  "shortName": "T",
+  "slug": "techspert",
+  "website": "https://techspert.com",
+  "gradientFrom": "#0e7490",
+  "gradientTo": "#22d3ee",
+  "type": "AI-Powered Network",
+  "founded": 2016,
+  "headquarters": "Cambridge, UK",
+  "employeeCount": "100+",
+  "expertCount": "50K+",
+  "description": "AI-first expert network using natural language processing and machine learning to identify and connect clients with niche technical experts globally.",
+  "services": ["Expert Calls", "AI Matching", "Technical Research"],
+  "aiCapabilities": ["NLP-based expert discovery", "ML matching algorithms", "Automated expertise verification"],
+  "industries": ["Life Sciences", "Technology", "Healthcare", "Energy"],
+  "pricingModel": "Per-call",
+  "keyDifferentiators": ["AI-native approach", "Deep technical/scientific focus", "NLP expert discovery"],
+  "featured": false,
+  "priority": 11,
+  "published": true,
+  "lastUpdated": "2026-03-06"
+}

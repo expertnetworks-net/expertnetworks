@@ -1,0 +1,30 @@
+{
+  "name": "GLG (Gerson Lehrman Group)",
+  "shortName": "G",
+  "slug": "glg",
+  "website": "https://glg.it",
+  "gradientFrom": "#1a365d",
+  "gradientTo": "#2563eb",
+  "type": "Expert Network",
+  "founded": 1998,
+  "headquarters": "New York, NY",
+  "employeeCount": "2,500+",
+  "expertCount": "~1M",
+  "description": "The world's largest expert network, connecting clients with approximately 1 million experts across virtually every industry and geography.",
+  "services": ["Expert Calls", "Surveys", "AI Matching", "GLG Content"],
+  "aiCapabilities": ["AI-powered expert matching", "Automated compliance screening", "Smart project brief analysis"],
+  "industries": ["Financial Services", "Healthcare", "Technology", "Energy", "Consumer", "Industrials"],
+  "pricingModel": "Per-call",
+  "keyDifferentiators": ["Largest expert network globally", "Proprietary AI matching engine", "Comprehensive compliance framework"],
+  "featured": true,
+  "priority": 1,
+  "published": true,
+  "comparison": {
+    "expertCalls": true,
+    "contentLibrary": true,
+    "aiMatching": true,
+    "surveys": true,
+    "complianceTools": true
+  },
+  "lastUpdated": "2026-03-06"
+}

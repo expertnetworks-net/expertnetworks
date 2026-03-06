@@ -1,0 +1,31 @@
+{
+  "name": "AlphaSense / Tegus",
+  "shortName": "AS",
+  "slug": "alphasense-tegus",
+  "website": "https://alphasense.com",
+  "gradientFrom": "#0c4a6e",
+  "gradientTo": "#0284c7",
+  "type": "Expert + Data Platform",
+  "founded": 2011,
+  "headquarters": "New York, NY",
+  "employeeCount": "2,000+",
+  "expertCount": "300K+",
+  "description": "Market intelligence platform combining AI-powered search, expert transcript libraries (via Tegus acquisition), and expert call capabilities.",
+  "services": ["Expert Calls", "Transcript Library", "AI Search", "Market Intelligence"],
+  "aiCapabilities": ["AI-powered document search", "Smart Synonyms", "Automated sentiment analysis"],
+  "industries": ["Financial Services", "Healthcare", "Technology", "Energy"],
+  "pricingModel": "Subscription",
+  "keyDifferentiators": ["AI-first platform", "Tegus transcript integration ($930M acquisition)", "Unified market intelligence"],
+  "parentCompany": "AlphaSense Inc.",
+  "featured": false,
+  "priority": 5,
+  "published": true,
+  "comparison": {
+    "expertCalls": true,
+    "contentLibrary": "Tegus Transcripts",
+    "aiMatching": true,
+    "surveys": false,
+    "complianceTools": true
+  },
+  "lastUpdated": "2026-03-06"
+}

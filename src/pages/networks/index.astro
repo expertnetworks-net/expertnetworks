@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NetworkCard from '../../components/NetworkCard.astro';
+import { getCollection } from 'astro:content';
+
+const allNetworks = await getCollection('networks');
+const networks = allNetworks
+  .filter(n => n.data.published)
+  .sort((a, b) => a.data.priority - b.data.priority);
+---
+
+<BaseLayout title="All Networks — Expert Networks Hub">
+  <section class="pt-32 pb-24 px-6">
+    <div class="max-w-site mx-auto">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-primary">All Expert Networks</h1>
+        <p class="text-secondary mt-3 text-lg">Browse {networks.length} expert networks with comprehensive profiles.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {networks.map(network => (
+          <NetworkCard {...network.data} variant="profile" />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

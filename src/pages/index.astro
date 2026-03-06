@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import NetworkCard from '../components/NetworkCard.astro';
+import NewsCard from '../components/NewsCard.astro';
+import CompareTable from '../components/CompareTable.astro';
+import { getCollection } from 'astro:content';
+import fs from 'node:fs';
+
+const siteConfig = JSON.parse(fs.readFileSync('./src/content/site.json', 'utf-8'));
+const allNetworks = await getCollection('networks');
+const allNews = await getCollection('news');
+
+const publishedNetworks = allNetworks
+  .filter(n => n.data.published)
+  .sort((a, b) => a.data.priority - b.data.priority);
+
+const featuredNetworks = publishedNetworks.filter(n => n.data.featured);
+
+const publishedNews = allNews
+  .filter(n => n.data.published)
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 3);
+---
+
+<BaseLayout>
+  <Hero />
+
+  <!-- Logo Grid -->
+  <section class="py-24 px-6" id="networks">
+    <div class="max-w-site mx-auto">
+      <div class="text-center mb-12">
+        <div class="text-accent text-sm font-semibold tracking-wide uppercase mb-2 fade-in">Directory</div>
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-primary fade-in">All Networks at a Glance</h2>
+        <p class="text-secondary mt-3 fade-in">Click any network to see its full profile, capabilities, and latest news.</p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        {publishedNetworks.map((network, i) => (
+          <NetworkCard
+            {...network.data}
+            variant="logo"
+            stagger={(i % 8) + 1}
+          />
+        ))}
+        <a href="/networks" class="block bg-bg-secondary rounded-card p-5 text-center no-underline border-2 border-dashed border-border hover:border-accent transition-all fade-in">
+          <div class="w-12 h-12 rounded-xl mx-auto mb-3 flex items-center justify-center text-white font-bold text-lg bg-tertiary">+</div>
+          <div class="font-semibold text-sm text-primary">View All {publishedNetworks.length}+</div>
+          <div class="text-xs text-tertiary mt-0.5">Full Directory</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Network Profiles (Deep Dives) -->
+  <section class="py-24 px-6 bg-white">
+    <div class="max-w-site mx-auto">
+      <div class="text-center mb-12">
+        <div class="text-accent text-sm font-semibold tracking-wide uppercase mb-2 fade-in">Profiles</div>
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-primary fade-in">Deep Dives</h2>
+        <p class="text-secondary mt-3 fade-in">Comprehensive, neutral profiles with 15+ data points per network.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {featuredNetworks.map(network => (
+          <NetworkCard {...network.data} variant="profile" />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Dark Section - Why This Exists -->
+  <section class="py-24 px-6 bg-bg-dark text-white text-center" id="about">
+    <div class="max-w-site mx-auto">
+      <div class="text-accent text-sm font-semibold tracking-wide uppercase mb-2 fade-in">{siteConfig.about.label}</div>
+      <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight fade-in">{siteConfig.about.title.replace('<br>', ' ')}</h2>
+      <p class="text-white/60 mt-4 max-w-xl mx-auto fade-in">{siteConfig.about.subtitle}</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+        {siteConfig.about.features.map((feature: any) => (
+          <div class="bg-white/5 border border-white/10 rounded-card p-8 text-left hover:bg-white/10 transition-all fade-in">
+            <div class="text-3xl mb-4">
+              {feature.icon === 'shield' ? '\u2625' : feature.icon === 'zap' ? '\u26A1' : '\uD83D\uDD13'}
+            </div>
+            <h3 class="text-lg font-bold mb-2">{feature.title}</h3>
+            <p class="text-sm text-white/60 leading-relaxed">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- News Section -->
+  <section class="py-24 px-6 bg-white" id="news">
+    <div class="max-w-site mx-auto">
+      <div class="text-center mb-12">
+        <div class="text-accent text-sm font-semibold tracking-wide uppercase mb-2 fade-in">Latest</div>
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-primary fade-in">Industry News</h2>
+        <p class="text-secondary mt-3 fade-in">Curated weekly from third-party sources. No self-reported press releases.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {publishedNews.map(article => (
+          <NewsCard {...article.data} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CompareTable />
+</BaseLayout>

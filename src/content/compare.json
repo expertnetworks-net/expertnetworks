@@ -1,0 +1,12 @@
+{
+  "networks": ["glg", "alphasights", "third-bridge", "guidepoint"],
+  "features": [
+    { "name": "Expert Calls", "key": "expertCalls" },
+    { "name": "Content Library", "key": "contentLibrary" },
+    { "name": "AI Matching", "key": "aiMatching" },
+    { "name": "Surveys", "key": "surveys" },
+    { "name": "Expert Count", "key": "expertCount" },
+    { "name": "Pricing Model", "key": "pricingModel" },
+    { "name": "Compliance Tools", "key": "complianceTools" }
+  ]
+}

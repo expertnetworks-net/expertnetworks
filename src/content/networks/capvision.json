@@ -1,0 +1,23 @@
+{
+  "name": "Capvision",
+  "shortName": "CV",
+  "slug": "capvision",
+  "website": "https://capvision.com",
+  "gradientFrom": "#9a3412",
+  "gradientTo": "#f97316",
+  "type": "Expert Network",
+  "founded": 2006,
+  "headquarters": "Shanghai, China",
+  "employeeCount": "500+",
+  "expertCount": "400K+",
+  "description": "Asia-focused expert network with global reach, providing expert consultations, industry reports, and primary research across major markets.",
+  "services": ["Expert Calls", "Industry Reports", "Primary Research", "Events"],
+  "aiCapabilities": ["AI-assisted matching", "Automated compliance checks"],
+  "industries": ["Financial Services", "Healthcare", "Technology", "Consumer", "Industrials"],
+  "pricingModel": "Per-call",
+  "keyDifferentiators": ["Strongest Asia-Pacific coverage", "Multilingual capabilities", "Local market expertise"],
+  "featured": false,
+  "priority": 9,
+  "published": true,
+  "lastUpdated": "2026-03-06"
+}

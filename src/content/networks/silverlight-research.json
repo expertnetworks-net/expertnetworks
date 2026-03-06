@@ -1,0 +1,23 @@
+{
+  "name": "Silverlight Research",
+  "shortName": "SR",
+  "slug": "silverlight-research",
+  "website": "https://silverlightresearch.com",
+  "gradientFrom": "#374151",
+  "gradientTo": "#9ca3af",
+  "type": "Expert Network",
+  "founded": 2020,
+  "headquarters": "London, UK",
+  "employeeCount": "50+",
+  "expertCount": "25K+",
+  "description": "Boutique expert network specializing in high-touch, curated expert interactions for private equity and hedge fund clients.",
+  "services": ["Expert Calls", "Curated Research", "Bespoke Projects"],
+  "aiCapabilities": ["Manual curation with technology support"],
+  "industries": ["Private Equity", "Hedge Funds", "Asset Management"],
+  "pricingModel": "Per-call",
+  "keyDifferentiators": ["Boutique, high-touch service", "PE/HF specialization", "Senior expert focus"],
+  "featured": false,
+  "priority": 15,
+  "published": true,
+  "lastUpdated": "2026-03-06"
+}

@@ -1,0 +1,119 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import { getCollection } from 'astro:content';
+import fs from 'node:fs';
+
+const compareConfig = JSON.parse(fs.readFileSync('./src/content/compare.json', 'utf-8'));
+const allNetworks = await getCollection('networks');
+const networkSlugs = allNetworks.map(n => n.data.slug).sort();
+---
+
+<AdminLayout title="Comparison Table Editor" activePage="compare">
+  <div class="admin-card max-w-4xl">
+    <h2 class="text-lg font-bold text-primary mb-6">Edit Comparison Table</h2>
+
+    <form id="compareForm" class="space-y-6">
+      <!-- Network Selection -->
+      <div>
+        <label class="admin-label">Networks to Compare (select which appear as columns)</label>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 mt-2">
+          {networkSlugs.map(slug => {
+            const network = allNetworks.find(n => n.data.slug === slug);
+            const isSelected = compareConfig.networks.includes(slug);
+            return (
+              <label class="flex items-center gap-2 p-2 rounded-lg border border-border hover:bg-bg-primary cursor-pointer transition-colors">
+                <input type="checkbox" name="networks" value={slug} checked={isSelected} class="w-4 h-4 accent-accent" />
+                <span class="text-sm">{network?.data.name.split(' (')[0].split(' / ')[0] || slug}</span>
+              </label>
+            );
+          })}
+        </div>
+      </div>
+
+      <!-- Feature Rows -->
+      <div>
+        <div class="flex items-center justify-between mb-2">
+          <label class="admin-label mb-0">Comparison Features (rows)</label>
+          <button type="button" id="addFeature" class="admin-btn admin-btn-secondary text-xs">+ Add Feature</button>
+        </div>
+        <div id="featureList" class="space-y-2">
+          {compareConfig.features.map((f: any, i: number) => (
+            <div class="flex items-center gap-2 feature-row" data-index={i}>
+              <input type="text" name={`feature_name_${i}`} value={f.name} class="admin-input flex-1" placeholder="Feature name" />
+              <input type="text" name={`feature_key_${i}`} value={f.key} class="admin-input w-40" placeholder="key" />
+              <button type="button" class="remove-feature text-red-500 hover:text-red-700 text-lg bg-transparent border-none cursor-pointer px-2">&times;</button>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="flex gap-3 pt-4">
+        <button type="submit" class="admin-btn admin-btn-primary">Save Comparison Table</button>
+        <a href="/admin" class="admin-btn admin-btn-secondary">Cancel</a>
+      </div>
+    </form>
+  </div>
+
+  <!-- Preview -->
+  <div class="admin-card mt-6 max-w-4xl">
+    <h3 class="text-sm font-bold text-primary mb-4">Current Table Preview</h3>
+    <div class="overflow-x-auto">
+      <iframe src="/compare" class="w-full h-96 border border-border rounded-lg"></iframe>
+    </div>
+  </div>
+
+  <script define:vars={{ featureCount: compareConfig.features.length }}>
+    let nextIndex = featureCount;
+
+    document.getElementById('addFeature')?.addEventListener('click', () => {
+      const list = document.getElementById('featureList');
+      if (!list) return;
+      const div = document.createElement('div');
+      div.className = 'flex items-center gap-2 feature-row';
+      div.dataset.index = String(nextIndex);
+      div.innerHTML = `
+        <input type="text" name="feature_name_${nextIndex}" class="admin-input flex-1" placeholder="Feature name" />
+        <input type="text" name="feature_key_${nextIndex}" class="admin-input w-40" placeholder="key" />
+        <button type="button" class="remove-feature text-red-500 hover:text-red-700 text-lg bg-transparent border-none cursor-pointer px-2">&times;</button>
+      `;
+      list.appendChild(div);
+      nextIndex++;
+    });
+
+    document.getElementById('featureList')?.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (target.classList.contains('remove-feature')) {
+        target.closest('.feature-row')?.remove();
+      }
+    });
+
+    document.getElementById('compareForm')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target as HTMLFormElement;
+      const fd = new FormData(form);
+
+      const networks = fd.getAll('networks') as string[];
+      const features: any[] = [];
+      const rows = document.querySelectorAll('.feature-row');
+      rows.forEach(row => {
+        const idx = (row as HTMLElement).dataset.index;
+        const name = fd.get(`feature_name_${idx}`) as string;
+        const key = fd.get(`feature_key_${idx}`) as string;
+        if (name && key) features.push({ name, key });
+      });
+
+      const res = await fetch('/api/compare', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ networks, features }),
+      });
+
+      if (res.ok) {
+        alert('Comparison table saved!');
+        window.location.reload();
+      } else {
+        alert('Error: ' + (await res.text()));
+      }
+    });
+  </script>
+</AdminLayout>

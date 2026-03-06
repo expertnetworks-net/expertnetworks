@@ -1,0 +1,152 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import fs from 'node:fs';
+
+const siteConfig = JSON.parse(fs.readFileSync('./src/content/site.json', 'utf-8'));
+---
+
+<AdminLayout title="Site Settings" activePage="settings">
+  <div class="admin-card max-w-3xl">
+    <h2 class="text-lg font-bold text-primary mb-6">Edit Site Content</h2>
+    <form id="settingsForm" class="space-y-8">
+
+      <!-- Hero Section -->
+      <div>
+        <h3 class="text-base font-bold text-primary mb-4 pb-2 border-b border-bg-secondary">Hero Section</h3>
+        <div class="space-y-4">
+          <div>
+            <label class="admin-label">Badge Text</label>
+            <input type="text" name="hero_badge" class="admin-input" value={siteConfig.hero.badge} />
+          </div>
+          <div>
+            <label class="admin-label">Title</label>
+            <input type="text" name="hero_title" class="admin-input" value={siteConfig.hero.title} />
+          </div>
+          <div>
+            <label class="admin-label">Subtitle</label>
+            <textarea name="hero_subtitle" class="admin-textarea" rows="2">{siteConfig.hero.subtitle}</textarea>
+          </div>
+          <div>
+            <label class="admin-label">CTA Button Text</label>
+            <input type="text" name="hero_cta" class="admin-input" value={siteConfig.hero.cta} />
+          </div>
+        </div>
+      </div>
+
+      <!-- About Section -->
+      <div>
+        <h3 class="text-base font-bold text-primary mb-4 pb-2 border-b border-bg-secondary">"Why This Exists" Section</h3>
+        <div class="space-y-4">
+          <div>
+            <label class="admin-label">Section Label</label>
+            <input type="text" name="about_label" class="admin-input" value={siteConfig.about.label} />
+          </div>
+          <div>
+            <label class="admin-label">Section Title</label>
+            <input type="text" name="about_title" class="admin-input" value={siteConfig.about.title} />
+          </div>
+          <div>
+            <label class="admin-label">Section Subtitle</label>
+            <textarea name="about_subtitle" class="admin-textarea" rows="2">{siteConfig.about.subtitle}</textarea>
+          </div>
+          {siteConfig.about.features.map((f: any, i: number) => (
+            <div class="bg-bg-secondary rounded-lg p-4">
+              <div class="text-sm font-bold text-primary mb-3">Feature Card {i + 1}</div>
+              <div class="space-y-3">
+                <div>
+                  <label class="admin-label text-xs">Icon (shield, zap, unlock)</label>
+                  <input type="text" name={`about_feature_icon_${i}`} class="admin-input" value={f.icon} />
+                </div>
+                <div>
+                  <label class="admin-label text-xs">Title</label>
+                  <input type="text" name={`about_feature_title_${i}`} class="admin-input" value={f.title} />
+                </div>
+                <div>
+                  <label class="admin-label text-xs">Description</label>
+                  <textarea name={`about_feature_desc_${i}`} class="admin-textarea text-sm" rows="2">{f.description}</textarea>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Footer Section -->
+      <div>
+        <h3 class="text-base font-bold text-primary mb-4 pb-2 border-b border-bg-secondary">Footer</h3>
+        <div class="space-y-4">
+          <div>
+            <label class="admin-label">Brand Name</label>
+            <input type="text" name="footer_brand" class="admin-input" value={siteConfig.footer.brand} />
+          </div>
+          <div>
+            <label class="admin-label">Description</label>
+            <textarea name="footer_description" class="admin-textarea" rows="2">{siteConfig.footer.description}</textarea>
+          </div>
+          <div>
+            <label class="admin-label">Copyright Text</label>
+            <input type="text" name="footer_copyright" class="admin-input" value={siteConfig.footer.copyright} />
+          </div>
+          <div>
+            <label class="admin-label">Disclaimer</label>
+            <input type="text" name="footer_disclaimer" class="admin-input" value={siteConfig.footer.disclaimer} />
+          </div>
+        </div>
+      </div>
+
+      <div class="flex gap-3 pt-4">
+        <button type="submit" class="admin-btn admin-btn-primary">Save Settings</button>
+        <a href="/admin" class="admin-btn admin-btn-secondary">Cancel</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('settingsForm')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const fd = new FormData(e.target as HTMLFormElement);
+
+      const features = [];
+      for (let i = 0; i < 3; i++) {
+        features.push({
+          icon: fd.get(`about_feature_icon_${i}`),
+          title: fd.get(`about_feature_title_${i}`),
+          description: fd.get(`about_feature_desc_${i}`),
+        });
+      }
+
+      const data = {
+        hero: {
+          badge: fd.get('hero_badge'),
+          title: fd.get('hero_title'),
+          subtitle: fd.get('hero_subtitle'),
+          cta: fd.get('hero_cta'),
+        },
+        about: {
+          label: fd.get('about_label'),
+          title: fd.get('about_title'),
+          subtitle: fd.get('about_subtitle'),
+          features,
+        },
+        footer: {
+          brand: fd.get('footer_brand'),
+          description: fd.get('footer_description'),
+          copyright: fd.get('footer_copyright'),
+          disclaimer: fd.get('footer_disclaimer'),
+        },
+      };
+
+      const res = await fetch('/api/settings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        alert('Site settings saved!');
+      } else {
+        alert('Error: ' + (await res.text()));
+      }
+    });
+  </script>
+</AdminLayout>

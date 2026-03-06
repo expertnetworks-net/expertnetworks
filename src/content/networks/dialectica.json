@@ -1,0 +1,23 @@
+{
+  "name": "Dialectica",
+  "shortName": "D",
+  "slug": "dialectica",
+  "website": "https://dialecticanet.com",
+  "gradientFrom": "#064e3b",
+  "gradientTo": "#059669",
+  "type": "Expert Network",
+  "founded": 2015,
+  "headquarters": "Montreal, Canada",
+  "employeeCount": "700+",
+  "expertCount": "100K+",
+  "description": "Fast-growing expert network known for high-quality, curated expert interactions with a technology-enabled approach to matching and compliance.",
+  "services": ["Expert Calls", "Surveys", "Content Library", "Custom Research"],
+  "aiCapabilities": ["AI-assisted expert matching", "Automated compliance monitoring"],
+  "industries": ["Private Equity", "Consulting", "Healthcare", "Technology"],
+  "pricingModel": "Per-call",
+  "keyDifferentiators": ["High curation quality", "Strong European presence", "Fast turnaround times"],
+  "featured": false,
+  "priority": 6,
+  "published": true,
+  "lastUpdated": "2026-03-06"
+}

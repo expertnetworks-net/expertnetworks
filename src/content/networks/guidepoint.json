@@ -1,0 +1,30 @@
+{
+  "name": "Guidepoint",
+  "shortName": "GP",
+  "slug": "guidepoint",
+  "website": "https://guidepoint.com",
+  "gradientFrom": "#581c87",
+  "gradientTo": "#a855f7",
+  "type": "Expert Network",
+  "founded": 2003,
+  "headquarters": "New York, NY",
+  "employeeCount": "1,200+",
+  "expertCount": "500K+",
+  "description": "Full-service expert network offering expert consultations, surveys, and data analytics with a strong focus on compliance and client service.",
+  "services": ["Expert Calls", "Surveys", "Data Analytics", "Compliance Monitoring"],
+  "aiCapabilities": ["Limited AI integration"],
+  "industries": ["Financial Services", "Healthcare", "Technology", "Consulting"],
+  "pricingModel": "Per-call",
+  "keyDifferentiators": ["Strong compliance focus", "Dedicated project managers", "Fast expert turnaround"],
+  "featured": false,
+  "priority": 4,
+  "published": true,
+  "comparison": {
+    "expertCalls": true,
+    "contentLibrary": false,
+    "aiMatching": "Limited",
+    "surveys": true,
+    "complianceTools": true
+  },
+  "lastUpdated": "2026-03-06"
+}

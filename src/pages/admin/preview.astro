@@ -1,0 +1,25 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+---
+
+<AdminLayout title="Site Preview" activePage="preview">
+  <div class="admin-card">
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-lg font-bold text-primary">Live Preview</h2>
+      <div class="flex gap-2">
+        <button id="refreshBtn" class="admin-btn admin-btn-secondary">Refresh</button>
+        <a href="/" target="_blank" class="admin-btn admin-btn-primary">Open in New Tab &rarr;</a>
+      </div>
+    </div>
+    <div class="bg-bg-secondary rounded-lg p-1">
+      <iframe id="previewFrame" src="/" class="w-full rounded-lg border border-border bg-white" style="height: calc(100vh - 220px);"></iframe>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('refreshBtn')?.addEventListener('click', () => {
+      const frame = document.getElementById('previewFrame') as HTMLIFrameElement;
+      if (frame) frame.src = frame.src;
+    });
+  </script>
+</AdminLayout>

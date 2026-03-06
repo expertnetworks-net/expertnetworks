@@ -1,0 +1,23 @@
+{
+  "name": "Atheneum",
+  "shortName": "AT",
+  "slug": "atheneum",
+  "website": "https://atheneum.ai",
+  "gradientFrom": "#4338ca",
+  "gradientTo": "#818cf8",
+  "type": "Expert Network",
+  "founded": 2010,
+  "headquarters": "Berlin, Germany",
+  "employeeCount": "400+",
+  "expertCount": "900K+",
+  "description": "Global expert network leveraging AI technology to connect clients with industry experts for consultations, surveys, and data-driven insights.",
+  "services": ["Expert Calls", "Surveys", "AI Platform", "Custom Research"],
+  "aiCapabilities": ["AI-powered Atheneum Platform", "Automated expert matching", "Real-time availability tracking"],
+  "industries": ["Consulting", "Private Equity", "Hedge Funds", "Corporate Strategy"],
+  "pricingModel": "Per-call",
+  "keyDifferentiators": ["AI-first platform approach", "Strong European presence", "Large expert pool"],
+  "featured": false,
+  "priority": 10,
+  "published": true,
+  "lastUpdated": "2026-03-06"
+}

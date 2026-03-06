@@ -1,0 +1,30 @@
+{
+  "name": "Third Bridge",
+  "shortName": "TB",
+  "slug": "third-bridge",
+  "website": "https://thirdbridge.com",
+  "gradientFrom": "#7c2d12",
+  "gradientTo": "#ea580c",
+  "type": "Expert Network",
+  "founded": 2007,
+  "headquarters": "London, UK",
+  "employeeCount": "1,300+",
+  "expertCount": "450K+",
+  "description": "Provides investment research through expert consultations, Forum (interview transcripts), and bespoke research projects for PE, hedge funds, and corporates.",
+  "services": ["Expert Calls", "Forum Transcripts", "AI Insights", "Bespoke Research"],
+  "aiCapabilities": ["AI-powered insights from Forum transcripts", "Smart expert matching"],
+  "industries": ["Private Equity", "Hedge Funds", "Asset Management", "Corporate Strategy"],
+  "pricingModel": "Subscription",
+  "keyDifferentiators": ["Forum transcript library", "Subscription-based model", "Bespoke research projects"],
+  "featured": true,
+  "priority": 3,
+  "published": true,
+  "comparison": {
+    "expertCalls": true,
+    "contentLibrary": "Forum",
+    "aiMatching": true,
+    "surveys": false,
+    "complianceTools": true
+  },
+  "lastUpdated": "2026-03-06"
+}

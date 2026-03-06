@@ -1,0 +1,36 @@
+{
+  "hero": {
+    "badge": "Updated weekly",
+    "title": "The Independent Expert Network Source",
+    "subtitle": "The first neutral, comprehensive hub for the expert network industry. Free. Open. No sign-ups. No bias.",
+    "cta": "Explore Networks"
+  },
+  "about": {
+    "label": "Why This Exists",
+    "title": "The Industry's First Independent Source",
+    "subtitle": "No news outlet covers expert networks. Every source online is self-promotional. We're changing that.",
+    "features": [
+      {
+        "icon": "shield",
+        "title": "Neutral & Independent",
+        "description": "No affiliations, no marketplace, no commercial ties to any expert network. Pure, unbiased information."
+      },
+      {
+        "icon": "zap",
+        "title": "AI-Curated Weekly News",
+        "description": "Our pipeline searches for each network individually, filters out self-reported sources, and delivers real third-party coverage."
+      },
+      {
+        "icon": "unlock",
+        "title": "Fully Free & Open",
+        "description": "No accounts, no sign-ups, no paywalls. Enterprise-grade information available to everyone, forever."
+      }
+    ]
+  },
+  "footer": {
+    "brand": "ExpertHub",
+    "description": "The independent, neutral source for the expert network industry. Not affiliated with any expert network.",
+    "copyright": "2026 ExpertHub. Independent information resource.",
+    "disclaimer": "All information sourced from publicly available materials."
+  }
+}

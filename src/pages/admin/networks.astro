@@ -1,0 +1,386 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allNetworks = await getCollection('networks');
+const networks = allNetworks.sort((a, b) => a.data.priority - b.data.priority);
+const action = Astro.url.searchParams.get('action');
+const editSlug = Astro.url.searchParams.get('edit');
+const editNetwork = editSlug ? networks.find(n => n.data.slug === editSlug) : null;
+const showForm = action === 'new' || editNetwork;
+---
+
+<AdminLayout title="Network Manager" activePage="networks">
+  {!showForm ? (
+    <!-- List View -->
+    <div class="admin-card">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-lg font-bold text-primary">All Networks ({networks.length})</h2>
+        <a href="/admin/networks?action=new" class="admin-btn admin-btn-primary">+ Add Network</a>
+      </div>
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Network</th>
+            <th>Type</th>
+            <th>Experts</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {networks.map(n => (
+            <tr>
+              <td>
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-lg flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}>
+                    {n.data.shortName}
+                  </div>
+                  <span class="font-medium">{n.data.name.split(' (')[0]}</span>
+                </div>
+              </td>
+              <td>{n.data.type}</td>
+              <td>{n.data.expertCount || '—'}</td>
+              <td>{n.data.priority}</td>
+              <td>
+                {n.data.featured ? (
+                  <span class="admin-badge admin-badge-blue">Featured</span>
+                ) : n.data.published ? (
+                  <span class="admin-badge admin-badge-green">Published</span>
+                ) : (
+                  <span class="admin-badge admin-badge-yellow">Draft</span>
+                )}
+              </td>
+              <td>
+                <div class="flex gap-2">
+                  <a href={`/admin/networks?edit=${n.data.slug}`} class="text-accent text-sm no-underline hover:underline">Edit</a>
+                  <button onclick={`deleteNetwork('${n.data.slug}')`} class="text-red-500 text-sm bg-transparent border-none cursor-pointer hover:underline">Delete</button>
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  ) : (
+    <!-- Add/Edit Form -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-2">
+        <div class="admin-card">
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="text-lg font-bold text-primary">{editNetwork ? `Edit: ${editNetwork.data.name}` : 'Add New Network'}</h2>
+            <a href="/admin/networks" class="text-sm text-accent no-underline hover:underline">&larr; Back to list</a>
+          </div>
+          <form id="networkForm" class="space-y-5">
+            <input type="hidden" name="originalSlug" value={editNetwork?.data.slug || ''} />
+
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="admin-label">Full Name *</label>
+                <input type="text" name="name" required class="admin-input" value={editNetwork?.data.name || ''} placeholder="e.g. GLG (Gerson Lehrman Group)" />
+              </div>
+              <div>
+                <label class="admin-label">Short Name (Logo) *</label>
+                <input type="text" name="shortName" required class="admin-input" value={editNetwork?.data.shortName || ''} placeholder="e.g. G, TB, AS" maxlength="3" />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="admin-label">Slug *</label>
+                <input type="text" name="slug" required class="admin-input" value={editNetwork?.data.slug || ''} placeholder="auto-generated-from-name" />
+              </div>
+              <div>
+                <label class="admin-label">Type *</label>
+                <select name="type" required class="admin-select">
+                  <option value="Expert Network" selected={editNetwork?.data.type === 'Expert Network'}>Expert Network</option>
+                  <option value="AI-Powered Network" selected={editNetwork?.data.type === 'AI-Powered Network'}>AI-Powered Network</option>
+                  <option value="B2B Research" selected={editNetwork?.data.type === 'B2B Research'}>B2B Research</option>
+                  <option value="Expert + Data Platform" selected={editNetwork?.data.type === 'Expert + Data Platform'}>Expert + Data Platform</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="admin-label">Founded Year</label>
+                <input type="number" name="founded" class="admin-input" value={editNetwork?.data.founded || ''} placeholder="e.g. 2008" />
+              </div>
+              <div>
+                <label class="admin-label">Headquarters</label>
+                <input type="text" name="headquarters" class="admin-input" value={editNetwork?.data.headquarters || ''} placeholder="e.g. London, UK" />
+              </div>
+            </div>
+
+            <div>
+              <label class="admin-label">Website URL</label>
+              <input type="url" name="website" class="admin-input" value={editNetwork?.data.website || ''} placeholder="https://example.com" />
+            </div>
+
+            <div>
+              <label class="admin-label">Description *</label>
+              <textarea name="description" required class="admin-textarea" rows="3" placeholder="Comprehensive description of the network...">{editNetwork?.data.description || ''}</textarea>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="admin-label">Gradient From (Color)</label>
+                <div class="flex gap-2 items-center">
+                  <input type="color" name="gradientFrom" value={editNetwork?.data.gradientFrom || '#1a365d'} class="w-10 h-10 rounded border border-border cursor-pointer" />
+                  <input type="text" name="gradientFromText" class="admin-input flex-1" value={editNetwork?.data.gradientFrom || '#1a365d'} />
+                </div>
+              </div>
+              <div>
+                <label class="admin-label">Gradient To (Color)</label>
+                <div class="flex gap-2 items-center">
+                  <input type="color" name="gradientTo" value={editNetwork?.data.gradientTo || '#2563eb'} class="w-10 h-10 rounded border border-border cursor-pointer" />
+                  <input type="text" name="gradientToText" class="admin-input flex-1" value={editNetwork?.data.gradientTo || '#2563eb'} />
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-4">
+              <div>
+                <label class="admin-label">Expert Count</label>
+                <input type="text" name="expertCount" class="admin-input" value={editNetwork?.data.expertCount || ''} placeholder="e.g. ~1M" />
+              </div>
+              <div>
+                <label class="admin-label">Employee Count</label>
+                <input type="text" name="employeeCount" class="admin-input" value={editNetwork?.data.employeeCount || ''} placeholder="e.g. 2,500+" />
+              </div>
+              <div>
+                <label class="admin-label">Pricing Model</label>
+                <select name="pricingModel" class="admin-select">
+                  <option value="">Select...</option>
+                  <option value="Per-call" selected={editNetwork?.data.pricingModel === 'Per-call'}>Per-call</option>
+                  <option value="Subscription" selected={editNetwork?.data.pricingModel === 'Subscription'}>Subscription</option>
+                  <option value="Per-project" selected={editNetwork?.data.pricingModel === 'Per-project'}>Per-project</option>
+                  <option value="Hybrid" selected={editNetwork?.data.pricingModel === 'Hybrid'}>Hybrid</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="admin-label">Services (comma-separated)</label>
+              <input type="text" name="services" class="admin-input" value={editNetwork?.data.services?.join(', ') || ''} placeholder="Expert Calls, Surveys, AI Matching, Content Library" />
+            </div>
+
+            <div>
+              <label class="admin-label">AI Capabilities (comma-separated)</label>
+              <input type="text" name="aiCapabilities" class="admin-input" value={editNetwork?.data.aiCapabilities?.join(', ') || ''} placeholder="AI-powered matching, Automated compliance" />
+            </div>
+
+            <div>
+              <label class="admin-label">Industries (comma-separated)</label>
+              <input type="text" name="industries" class="admin-input" value={editNetwork?.data.industries?.join(', ') || ''} placeholder="Financial Services, Healthcare, Technology" />
+            </div>
+
+            <div>
+              <label class="admin-label">Key Differentiators (comma-separated)</label>
+              <input type="text" name="keyDifferentiators" class="admin-input" value={editNetwork?.data.keyDifferentiators?.join(', ') || ''} placeholder="Largest expert network, AI matching engine" />
+            </div>
+
+            <div>
+              <label class="admin-label">Parent Company (optional)</label>
+              <input type="text" name="parentCompany" class="admin-input" value={editNetwork?.data.parentCompany || ''} placeholder="e.g. Bain & Company" />
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="admin-label">Priority (lower = higher rank)</label>
+                <input type="number" name="priority" class="admin-input" value={editNetwork?.data.priority || 50} min="1" />
+              </div>
+              <div class="flex items-end gap-6 pb-2">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" name="featured" checked={editNetwork?.data.featured} class="w-4 h-4 accent-accent" />
+                  <span class="text-sm font-medium text-primary">Featured (Deep Dive)</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" name="published" checked={editNetwork?.data.published !== false} class="w-4 h-4 accent-accent" />
+                  <span class="text-sm font-medium text-primary">Published</span>
+                </label>
+              </div>
+            </div>
+
+            <h3 class="text-base font-bold text-primary pt-4 border-t border-bg-secondary">Comparison Features</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" name="comp_expertCalls" checked={editNetwork?.data.comparison?.expertCalls} class="w-4 h-4 accent-accent" />
+                <span class="text-sm">Expert Calls</span>
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" name="comp_surveys" checked={editNetwork?.data.comparison?.surveys} class="w-4 h-4 accent-accent" />
+                <span class="text-sm">Surveys</span>
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" name="comp_complianceTools" checked={editNetwork?.data.comparison?.complianceTools} class="w-4 h-4 accent-accent" />
+                <span class="text-sm">Compliance Tools</span>
+              </label>
+              <div>
+                <label class="admin-label text-xs">Content Library</label>
+                <input type="text" name="comp_contentLibrary" class="admin-input" value={editNetwork?.data.comparison?.contentLibrary === true ? 'true' : editNetwork?.data.comparison?.contentLibrary || ''} placeholder="true / name / empty" />
+              </div>
+              <div>
+                <label class="admin-label text-xs">AI Matching</label>
+                <input type="text" name="comp_aiMatching" class="admin-input" value={editNetwork?.data.comparison?.aiMatching === true ? 'true' : editNetwork?.data.comparison?.aiMatching || ''} placeholder="true / Limited / empty" />
+              </div>
+            </div>
+
+            <div class="flex gap-3 pt-4">
+              <button type="submit" class="admin-btn admin-btn-primary">
+                {editNetwork ? 'Save Changes' : 'Create Network'}
+              </button>
+              <a href="/admin/networks" class="admin-btn admin-btn-secondary">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Live Preview -->
+      <div>
+        <div class="admin-card sticky top-20">
+          <h3 class="text-sm font-bold text-primary mb-4">Live Preview</h3>
+          <div id="livePreview" class="bg-bg-secondary rounded-lg p-4">
+            <div class="bg-white rounded-card p-5 shadow-card">
+              <div class="flex items-center gap-3 mb-3">
+                <div id="previewIcon" class="w-11 h-11 rounded-xl flex items-center justify-center text-white font-bold text-base flex-shrink-0" style={`background: linear-gradient(135deg, ${editNetwork?.data.gradientFrom || '#1a365d'}, ${editNetwork?.data.gradientTo || '#2563eb'})`}>
+                  {editNetwork?.data.shortName || '?'}
+                </div>
+                <div>
+                  <div id="previewName" class="font-bold text-base text-primary leading-tight">{editNetwork?.data.name || 'Network Name'}</div>
+                  <div id="previewMeta" class="text-xs text-tertiary">{editNetwork ? `Founded ${editNetwork.data.founded} · ${editNetwork.data.headquarters}` : 'Founded · Location'}</div>
+                </div>
+              </div>
+              <p id="previewDesc" class="text-sm text-secondary leading-relaxed mb-3 line-clamp-2">{editNetwork?.data.description || 'Network description will appear here...'}</p>
+              <div id="previewTags" class="flex flex-wrap gap-1.5 mb-3">
+                {(editNetwork?.data.services || []).slice(0, 4).map((s: string) => (
+                  <span class="inline-block px-2 py-0.5 text-xs rounded-full font-medium bg-accent/10 text-accent">{s}</span>
+                ))}
+              </div>
+              <div id="previewStats" class="flex gap-6 pt-3 border-t border-bg-secondary text-center">
+                <div>
+                  <span class="block text-sm font-bold text-primary">{editNetwork?.data.expertCount || '—'}</span>
+                  <span class="text-xs text-tertiary">Experts</span>
+                </div>
+                <div>
+                  <span class="block text-sm font-bold text-primary">{editNetwork?.data.employeeCount || '—'}</span>
+                  <span class="text-xs text-tertiary">Employees</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )}
+
+  <script>
+    // Auto-generate slug from name
+    const nameInput = document.querySelector('input[name="name"]') as HTMLInputElement;
+    const slugInput = document.querySelector('input[name="slug"]') as HTMLInputElement;
+    if (nameInput && slugInput && !slugInput.value) {
+      nameInput.addEventListener('input', () => {
+        slugInput.value = nameInput.value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+      });
+    }
+
+    // Sync color pickers with text inputs
+    document.querySelectorAll('input[type="color"]').forEach(picker => {
+      const textInput = picker.nextElementSibling as HTMLInputElement;
+      if (textInput) {
+        picker.addEventListener('input', () => { textInput.value = (picker as HTMLInputElement).value; updatePreview(); });
+        textInput.addEventListener('input', () => { (picker as HTMLInputElement).value = textInput.value; updatePreview(); });
+      }
+    });
+
+    // Live preview updates
+    function updatePreview() {
+      const form = document.getElementById('networkForm') as HTMLFormElement;
+      if (!form) return;
+      const fd = new FormData(form);
+      const icon = document.getElementById('previewIcon');
+      const name = document.getElementById('previewName');
+      const meta = document.getElementById('previewMeta');
+      const desc = document.getElementById('previewDesc');
+      if (icon) {
+        icon.textContent = (fd.get('shortName') as string) || '?';
+        icon.style.background = `linear-gradient(135deg, ${fd.get('gradientFromText') || '#1a365d'}, ${fd.get('gradientToText') || '#2563eb'})`;
+      }
+      if (name) name.textContent = (fd.get('name') as string) || 'Network Name';
+      if (meta) meta.textContent = `${fd.get('founded') ? 'Founded ' + fd.get('founded') : ''}${fd.get('founded') && fd.get('headquarters') ? ' · ' : ''}${fd.get('headquarters') || ''}`;
+      if (desc) desc.textContent = (fd.get('description') as string) || 'Network description...';
+    }
+
+    document.getElementById('networkForm')?.addEventListener('input', updatePreview);
+
+    // Form submission
+    document.getElementById('networkForm')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target as HTMLFormElement;
+      const fd = new FormData(form);
+
+      const parseList = (val: string) => val ? val.split(',').map(s => s.trim()).filter(Boolean) : [];
+      const parseComparison = (val: string) => {
+        if (!val) return false;
+        if (val === 'true') return true;
+        if (val === 'false') return false;
+        return val;
+      };
+
+      const data = {
+        name: fd.get('name'),
+        shortName: fd.get('shortName'),
+        slug: fd.get('slug'),
+        website: fd.get('website') || undefined,
+        gradientFrom: fd.get('gradientFromText') || fd.get('gradientFrom'),
+        gradientTo: fd.get('gradientToText') || fd.get('gradientTo'),
+        type: fd.get('type'),
+        founded: fd.get('founded') ? Number(fd.get('founded')) : undefined,
+        headquarters: fd.get('headquarters') || undefined,
+        employeeCount: fd.get('employeeCount') || undefined,
+        expertCount: fd.get('expertCount') || undefined,
+        description: fd.get('description'),
+        services: parseList(fd.get('services') as string),
+        aiCapabilities: parseList(fd.get('aiCapabilities') as string),
+        industries: parseList(fd.get('industries') as string),
+        pricingModel: fd.get('pricingModel') || undefined,
+        keyDifferentiators: parseList(fd.get('keyDifferentiators') as string),
+        parentCompany: fd.get('parentCompany') || undefined,
+        featured: fd.has('featured'),
+        published: fd.has('published'),
+        priority: Number(fd.get('priority')) || 50,
+        comparison: {
+          expertCalls: fd.has('comp_expertCalls'),
+          contentLibrary: parseComparison(fd.get('comp_contentLibrary') as string),
+          aiMatching: parseComparison(fd.get('comp_aiMatching') as string),
+          surveys: fd.has('comp_surveys'),
+          complianceTools: fd.has('comp_complianceTools'),
+        },
+        lastUpdated: new Date().toISOString().split('T')[0],
+        originalSlug: fd.get('originalSlug') || undefined,
+      };
+
+      const res = await fetch('/api/networks', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        window.location.href = '/admin/networks';
+      } else {
+        alert('Error saving network: ' + (await res.text()));
+      }
+    });
+
+    // Delete network
+    async function deleteNetwork(slug: string) {
+      if (!confirm(`Delete "${slug}"? This cannot be undone.`)) return;
+      const res = await fetch(`/api/networks?slug=${slug}`, { method: 'DELETE' });
+      if (res.ok) window.location.reload();
+      else alert('Error deleting: ' + (await res.text()));
+    }
+    (window as any).deleteNetwork = deleteNetwork;
+  </script>
+</AdminLayout>

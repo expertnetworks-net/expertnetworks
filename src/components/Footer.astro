@@ -1,0 +1,41 @@
+---
+import fs from 'node:fs';
+const siteConfig = JSON.parse(fs.readFileSync('./src/content/site.json', 'utf-8'));
+const { footer } = siteConfig;
+---
+<footer class="bg-bg-dark text-white/50 pt-16 pb-10 px-6">
+  <div class="max-w-site mx-auto flex flex-col md:flex-row justify-between items-start gap-8">
+    <div>
+      <div class="text-base font-bold text-white mb-2">
+        Expert<span class="text-accent">Hub</span>
+      </div>
+      <p class="text-[13px] max-w-[300px] leading-relaxed">{footer.description}</p>
+    </div>
+    <div class="flex gap-12 md:gap-12">
+      <div>
+        <h4 class="text-white text-[13px] font-bold uppercase tracking-wide mb-4">Navigate</h4>
+        <a href="/" class="block text-white/50 no-underline text-[13px] mb-2 hover:text-white transition-colors">All Networks</a>
+        <a href="/#news" class="block text-white/50 no-underline text-[13px] mb-2 hover:text-white transition-colors">Latest News</a>
+        <a href="/compare" class="block text-white/50 no-underline text-[13px] mb-2 hover:text-white transition-colors">Compare</a>
+        <a href="/#about" class="block text-white/50 no-underline text-[13px] mb-2 hover:text-white transition-colors">About</a>
+      </div>
+      <div>
+        <h4 class="text-white text-[13px] font-bold uppercase tracking-wide mb-4">Top Networks</h4>
+        <a href="/networks/glg" class="block text-white/50 no-underline text-[13px] mb-2 hover:text-white transition-colors">GLG</a>
+        <a href="/networks/alphasights" class="block text-white/50 no-underline text-[13px] mb-2 hover:text-white transition-colors">AlphaSights</a>
+        <a href="/networks/third-bridge" class="block text-white/50 no-underline text-[13px] mb-2 hover:text-white transition-colors">Third Bridge</a>
+        <a href="/networks/guidepoint" class="block text-white/50 no-underline text-[13px] mb-2 hover:text-white transition-colors">Guidepoint</a>
+      </div>
+      <div>
+        <h4 class="text-white text-[13px] font-bold uppercase tracking-wide mb-4">Legal</h4>
+        <a href="#" class="block text-white/50 no-underline text-[13px] mb-2 hover:text-white transition-colors">Disclaimer</a>
+        <a href="#" class="block text-white/50 no-underline text-[13px] mb-2 hover:text-white transition-colors">Privacy</a>
+        <a href="#" class="block text-white/50 no-underline text-[13px] mb-2 hover:text-white transition-colors">Sources</a>
+      </div>
+    </div>
+  </div>
+  <div class="max-w-site mx-auto mt-10 pt-5 border-t border-white/10 text-xs flex flex-col md:flex-row justify-between gap-2">
+    <span>&copy; {footer.copyright}</span>
+    <span>{footer.disclaimer}</span>
+  </div>
+</footer>

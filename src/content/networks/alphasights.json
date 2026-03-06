@@ -1,0 +1,30 @@
+{
+  "name": "AlphaSights",
+  "shortName": "A",
+  "slug": "alphasights",
+  "website": "https://alphasights.com",
+  "gradientFrom": "#0f766e",
+  "gradientTo": "#14b8a6",
+  "type": "Expert Network",
+  "founded": 2008,
+  "headquarters": "London, UK",
+  "employeeCount": "1,500+",
+  "expertCount": "250K+",
+  "description": "Global knowledge-on-demand service connecting top professionals with the world's leading companies, offering expert calls, surveys, and their AlphaView content library.",
+  "services": ["Expert Calls", "Surveys", "AlphaView", "Tech-enabled"],
+  "aiCapabilities": ["Technology-enhanced matching", "AlphaView content platform"],
+  "industries": ["Private Equity", "Hedge Funds", "Consulting", "Corporate Strategy"],
+  "pricingModel": "Per-call",
+  "keyDifferentiators": ["Strong PE/hedge fund client base", "AlphaView content library", "Rapid expert sourcing"],
+  "featured": true,
+  "priority": 2,
+  "published": true,
+  "comparison": {
+    "expertCalls": true,
+    "contentLibrary": "AlphaView",
+    "aiMatching": true,
+    "surveys": true,
+    "complianceTools": true
+  },
+  "lastUpdated": "2026-03-06"
+}
