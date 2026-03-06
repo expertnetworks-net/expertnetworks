@@ -4,6 +4,10 @@ import path from 'node:path';
 
 const NETWORKS_DIR = path.resolve('./src/content/networks');
 
+function isValidSlug(slug: string): boolean {
+  return /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug);
+}
+
 export const POST: APIRoute = async ({ request }) => {
   try {
     const data = await request.json();
@@ -12,6 +16,10 @@ export const POST: APIRoute = async ({ request }) => {
 
     if (!slug || !networkData.name) {
       return new Response(JSON.stringify({ error: 'Slug and name are required' }), { status: 400 });
+    }
+
+    if (!isValidSlug(slug) || (originalSlug && !isValidSlug(originalSlug))) {
+      return new Response(JSON.stringify({ error: 'Invalid slug format' }), { status: 400 });
     }
 
     // If slug changed, delete old file
@@ -44,6 +52,9 @@ export const DELETE: APIRoute = async ({ url }) => {
     const slug = url.searchParams.get('slug');
     if (!slug) {
       return new Response(JSON.stringify({ error: 'Slug is required' }), { status: 400 });
+    }
+    if (!isValidSlug(slug)) {
+      return new Response(JSON.stringify({ error: 'Invalid slug format' }), { status: 400 });
     }
 
     const filePath = path.join(NETWORKS_DIR, `${slug}.json`);

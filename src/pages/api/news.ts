@@ -4,6 +4,10 @@ import path from 'node:path';
 
 const NEWS_DIR = path.resolve('./src/content/news');
 
+function isValidSlug(slug: string): boolean {
+  return /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug);
+}
+
 export const POST: APIRoute = async ({ request }) => {
   try {
     const data = await request.json();
@@ -12,6 +16,10 @@ export const POST: APIRoute = async ({ request }) => {
 
     if (!slug || !newsData.title) {
       return new Response(JSON.stringify({ error: 'Slug and title are required' }), { status: 400 });
+    }
+
+    if (!isValidSlug(slug) || (originalSlug && !isValidSlug(originalSlug))) {
+      return new Response(JSON.stringify({ error: 'Invalid slug format' }), { status: 400 });
     }
 
     if (originalSlug && originalSlug !== slug) {
@@ -42,6 +50,9 @@ export const DELETE: APIRoute = async ({ url }) => {
     const slug = url.searchParams.get('slug');
     if (!slug) {
       return new Response(JSON.stringify({ error: 'Slug is required' }), { status: 400 });
+    }
+    if (!isValidSlug(slug)) {
+      return new Response(JSON.stringify({ error: 'Invalid slug format' }), { status: 400 });
     }
 
     const filePath = path.join(NEWS_DIR, `${slug}.json`);

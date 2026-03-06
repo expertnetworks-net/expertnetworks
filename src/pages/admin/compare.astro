@@ -1,9 +1,7 @@
 ---
 import AdminLayout from '../../layouts/AdminLayout.astro';
 import { getCollection } from 'astro:content';
-import fs from 'node:fs';
-
-const compareConfig = JSON.parse(fs.readFileSync('./src/content/compare.json', 'utf-8'));
+import compareConfig from '../../content/compare.json';
 const allNetworks = await getCollection('networks');
 const networkSlugs = allNetworks.map(n => n.data.slug).sort();
 ---

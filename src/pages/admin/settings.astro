@@ -1,8 +1,6 @@
 ---
 import AdminLayout from '../../layouts/AdminLayout.astro';
-import fs from 'node:fs';
-
-const siteConfig = JSON.parse(fs.readFileSync('./src/content/site.json', 'utf-8'));
+import siteConfig from '../../content/site.json';
 ---
 
 <AdminLayout title="Site Settings" activePage="settings">

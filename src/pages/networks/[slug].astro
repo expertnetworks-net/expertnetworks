@@ -392,12 +392,9 @@ const others = published.filter(n => !n.data.featured);
           const list = document.getElementById(listId);
           if (!list) return;
           const items = list.querySelectorAll('.sidebar-item') as NodeListOf<HTMLElement>;
-          let visibleCount = 0;
           items.forEach(item => {
             const name = item.getAttribute('data-name') || '';
-            const match = !q || name.includes(q);
-            item.style.display = match ? '' : 'none';
-            if (match) visibleCount++;
+            item.style.display = (!q || name.includes(q)) ? '' : 'none';
           });
         });
       });

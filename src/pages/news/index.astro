@@ -175,6 +175,7 @@ const relatedSlugs = [...new Set(articles.flatMap(a => a.data.relatedNetworks))]
   clearBtn?.addEventListener('click', () => {
     filterCategory.value = '';
     filterNetwork.value = '';
+    filterSort.value = 'newest';
     applyFilters();
   });
 </script>

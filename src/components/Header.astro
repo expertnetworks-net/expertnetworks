@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 
 const allNetworks = await getCollection('networks');
 const publishedNetworks = allNetworks.filter(n => n.data.published);
-const top10 = publishedNetworks
+const top10 = [...publishedNetworks]
   .sort((a, b) => a.data.priority - b.data.priority)
   .slice(0, 10);
 ---
