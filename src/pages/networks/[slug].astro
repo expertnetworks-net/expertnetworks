@@ -2,14 +2,15 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-const allNetworks = await getCollection('networks');
-const { slug } = Astro.params;
-const network = allNetworks.find(n => n.data.slug === slug);
-
-if (!network) {
-  return Astro.redirect('/networks');
+export async function getStaticPaths() {
+  const allNetworks = await getCollection('networks');
+  return allNetworks.map(n => ({
+    params: { slug: n.data.slug },
+    props: { network: n },
+  }));
 }
 
+const { network } = Astro.props;
 const d = network.data;
 ---
 
