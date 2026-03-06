@@ -1,5 +1,5 @@
 {
-  "title": "Capvision Files for Hong Kong Stock Exchange Listing (Ticker: 810221)",
+  "title": "Capvision Partners HKEX IPO (Ticker: 810221) Remains Pending After Multi-Year Filing Process",
   "slug": "capvision-hkex-listing",
   "date": "2025-12-20",
   "source": "Inex One / HKEX Filings",
@@ -7,7 +7,7 @@
   "categoryColor": "#FF9500",
   "gradientFrom": "#92400e",
   "gradientTo": "#f59e0b",
-  "summary": "Shanghai-based Capvision Partners filed for Hong Kong Stock Exchange listing (ticker: 810221). Secondary-market pages reference the instrument, but clean official HKEX confirmation and active trading data have not been independently verified.",
+  "summary": "Shanghai-based Capvision Partners has ticker 810221 reserved on the HKEX after multiple filing attempts since 2021, aiming to raise $300M at a $1.5-3B valuation. The IPO has not yet completed, with the process delayed following a 2022-2023 regulatory crackdown in China. The company remains privately held.",
   "sourceUrl": "https://inex.one/expert-network-directory/capvision",
   "relatedNetworks": ["capvision"],
   "published": true
