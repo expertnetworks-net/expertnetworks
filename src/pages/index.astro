@@ -3,9 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import NetworkCard from '../components/NetworkCard.astro';
 import CompareTable from '../components/CompareTable.astro';
 import { getCollection } from 'astro:content';
-import fs from 'node:fs';
 
-const siteConfig = JSON.parse(fs.readFileSync('./src/content/site.json', 'utf-8'));
 const allNetworks = await getCollection('networks');
 const allNews = await getCollection('news');
 

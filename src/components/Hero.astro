@@ -1,6 +1,5 @@
 ---
-import fs from 'node:fs';
-const siteConfig = JSON.parse(fs.readFileSync('./src/content/site.json', 'utf-8'));
+import siteConfig from '../content/site.json';
 const { hero } = siteConfig;
 ---
 <section class="min-h-screen flex items-center justify-center text-center px-6 bg-gradient-to-b from-bg-primary to-bg-secondary pt-[52px]" id="hero">

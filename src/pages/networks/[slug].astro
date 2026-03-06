@@ -4,16 +4,17 @@ import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
   const allNetworks = await getCollection('networks');
-  return allNetworks.map(n => ({
-    params: { slug: n.data.slug },
-    props: { network: n },
-  }));
+  return allNetworks
+    .filter(n => n.data.published)
+    .map(n => ({
+      params: { slug: n.data.slug },
+      props: { network: n, allNetworks },
+    }));
 }
 
-const { network } = Astro.props;
+const { network, allNetworks } = Astro.props;
 const d = network.data;
 
-const allNetworks = await getCollection('networks');
 const published = allNetworks
   .filter(n => n.data.published)
   .sort((a, b) => a.data.priority - b.data.priority);

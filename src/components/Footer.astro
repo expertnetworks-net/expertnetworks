@@ -1,6 +1,5 @@
 ---
-import fs from 'node:fs';
-const siteConfig = JSON.parse(fs.readFileSync('./src/content/site.json', 'utf-8'));
+import siteConfig from '../content/site.json';
 const { footer } = siteConfig;
 ---
 <footer class="bg-bg-dark text-white/50 pt-16 pb-10 px-6">
@@ -14,7 +13,7 @@ const { footer } = siteConfig;
     <div class="flex gap-12 md:gap-12">
       <div>
         <h4 class="text-white text-[13px] font-bold uppercase tracking-wide mb-4">Navigate</h4>
-        <a href="/" class="block text-white/50 no-underline text-[13px] mb-2 hover:text-white transition-colors">All Networks</a>
+        <a href="/networks" class="block text-white/50 no-underline text-[13px] mb-2 hover:text-white transition-colors">All Networks</a>
         <a href="/#news" class="block text-white/50 no-underline text-[13px] mb-2 hover:text-white transition-colors">Latest News</a>
         <a href="/compare" class="block text-white/50 no-underline text-[13px] mb-2 hover:text-white transition-colors">Compare</a>
         <a href="/about" class="block text-white/50 no-underline text-[13px] mb-2 hover:text-white transition-colors">About</a>

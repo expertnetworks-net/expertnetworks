@@ -1,5 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allNetworks = await getCollection('networks');
+const publishedCount = allNetworks.filter(n => n.data.published).length;
 ---
 
 <BaseLayout title="About — ExpertNetworks.net">
@@ -21,7 +25,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <ul class="list-disc pl-5 space-y-1 text-sm">
           <li>A free, open information resource — no accounts, no paywalls</li>
           <li>An independent project with no commercial ties to any expert network</li>
-          <li>A growing directory — we currently cover {'{'}30+{'}'} networks and are expanding toward broader industry coverage</li>
+          <li>A growing directory — we currently cover {publishedCount}+ networks and are expanding toward broader industry coverage</li>
         </ul>
 
         <h2 class="text-lg font-bold text-primary">What We Are Not</h2>

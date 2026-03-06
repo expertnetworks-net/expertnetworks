@@ -2,8 +2,8 @@
 import { getCollection } from 'astro:content';
 
 const allNetworks = await getCollection('networks');
-const top10 = allNetworks
-  .filter(n => n.data.published)
+const publishedNetworks = allNetworks.filter(n => n.data.published);
+const top10 = publishedNetworks
   .sort((a, b) => a.data.priority - b.data.priority)
   .slice(0, 10);
 ---
@@ -60,7 +60,7 @@ const top10 = allNetworks
       <a href="/networks" class="flex items-center gap-3 px-4 py-[11px] no-underline text-primary hover:bg-black/[0.04] transition-colors border-t border-black/[0.06]">
         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
         <span class="text-[13px] font-medium">All Networks</span>
-        <span class="ml-auto text-[11px] text-tertiary">{top10.length * 3}+</span>
+        <span class="ml-auto text-[11px] text-tertiary">{publishedNetworks.length}</span>
       </a>
       <a href="/news" class="flex items-center gap-3 px-4 py-[11px] no-underline text-primary hover:bg-black/[0.04] transition-colors border-t border-black/[0.06]">
         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0a2 2 0 01-2-2v-9c0-1.1.9-2 2-2h2"/></svg>

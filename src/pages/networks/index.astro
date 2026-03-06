@@ -7,12 +7,9 @@ const networks = allNetworks
   .filter(n => n.data.published)
   .sort((a, b) => a.data.priority - b.data.priority);
 
-// Derive filter options
-const allTypes = [...new Set(networks.map(n => n.data.type))].sort();
-const allPricing = [...new Set(networks.map(n => n.data.pricingModel).filter(Boolean))].sort();
-const allHqs = [...new Set(networks.map(n => {
-  const hq = n.data.headquarters || '';
-  // Normalize to country/region
+// Normalize headquarters to country/region
+function getRegion(hq: string): string {
+  if (!hq) return '';
   if (hq.includes('UK') || hq.includes('London')) return 'United Kingdom';
   if (hq.includes('Germany') || hq.includes('Munich') || hq.includes('Berlin') || hq.includes('Frankfurt')) return 'Germany';
   if (hq.includes('France') || hq.includes('Paris')) return 'France';
@@ -22,9 +19,13 @@ const allHqs = [...new Set(networks.map(n => {
   if (hq.includes('Hong Kong')) return 'Hong Kong';
   if (hq.includes('China') || hq.includes('Shanghai') || hq.includes('Beijing') || hq.includes('Shenzhen')) return 'China';
   if (hq.includes('Switzerland') || hq.includes('Zurich')) return 'Switzerland';
-  if (hq) return 'United States';
-  return '';
-}).filter(Boolean))].sort();
+  return 'United States';
+}
+
+// Derive filter options
+const allTypes = [...new Set(networks.map(n => n.data.type))].sort();
+const allPricing = [...new Set(networks.map(n => n.data.pricingModel).filter(Boolean))].sort();
+const allHqs = [...new Set(networks.map(n => getRegion(n.data.headquarters || '')).filter(Boolean))].sort();
 ---
 
 <BaseLayout title="All Networks — Expert Networks Hub">
@@ -100,20 +101,7 @@ const allHqs = [...new Set(networks.map(n => {
       <div class="space-y-2" id="networkList">
         {networks.map((network, i) => {
           const n = network.data;
-          const region = (() => {
-            const hq = n.headquarters || '';
-            if (hq.includes('UK') || hq.includes('London')) return 'United Kingdom';
-            if (hq.includes('Germany') || hq.includes('Munich') || hq.includes('Berlin') || hq.includes('Frankfurt')) return 'Germany';
-            if (hq.includes('France') || hq.includes('Paris')) return 'France';
-            if (hq.includes('Singapore')) return 'Singapore';
-            if (hq.includes('India') || hq.includes('Mumbai') || hq.includes('Bangalore')) return 'India';
-            if (hq.includes('Japan') || hq.includes('Tokyo')) return 'Japan';
-            if (hq.includes('Hong Kong')) return 'Hong Kong';
-            if (hq.includes('China') || hq.includes('Shanghai') || hq.includes('Beijing') || hq.includes('Shenzhen')) return 'China';
-            if (hq.includes('Switzerland') || hq.includes('Zurich')) return 'Switzerland';
-            if (hq) return 'United States';
-            return '';
-          })();
+          const region = getRegion(n.headquarters || '');
           return (
             <a
               href={`/networks/${n.slug}`}
