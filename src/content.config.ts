@@ -15,12 +15,15 @@ const networks = defineCollection({
     founded: z.number().optional(),
     headquarters: z.string().optional(),
     employeeCount: z.string().optional(),
+    employeeCountSource: z.string().optional(),
     expertCount: z.string().optional(),
+    expertCountLabel: z.string().optional(),
     description: z.string(),
     services: z.array(z.string()).default([]),
     aiCapabilities: z.array(z.string()).default([]),
     industries: z.array(z.string()).default([]),
     pricingModel: z.string().optional(),
+    pricingDetail: z.string().optional(),
     keyDifferentiators: z.array(z.string()).default([]),
     parentCompany: z.string().optional(),
     bestFor: z.array(z.string()).default([]),
@@ -42,6 +45,64 @@ const networks = defineCollection({
       complianceTools: z.boolean().default(false),
     }).optional(),
     lastUpdated: z.string(),
+
+    // === Extended fields for rich profile pages (Phase 1) ===
+
+    // Overview submenu
+    overview: z.string().optional(),
+
+    // History submenu
+    history: z.object({
+      narrative: z.string(),
+      timeline: z.array(z.object({
+        year: z.string(),
+        event: z.string(),
+      })).default([]),
+    }).optional(),
+
+    // Detailed services (accordion content)
+    servicesDetailed: z.array(z.object({
+      name: z.string(),
+      description: z.string(),
+    })).default([]),
+
+    // AI & Platform submenu
+    aiPlatform: z.object({
+      narrative: z.string().optional(),
+      features: z.array(z.string()).default([]),
+    }).optional(),
+
+    // Compliance extended
+    complianceExtended: z.object({
+      narrative: z.string().optional(),
+      highlights: z.array(z.string()).default([]),
+      regulatoryContext: z.string().optional(),
+    }).optional(),
+
+    // Client fit submenu
+    clientFit: z.object({
+      narrative: z.string().optional(),
+      segments: z.array(z.string()).default([]),
+    }).optional(),
+
+    // Strengths (replaces keyDifferentiators for rich pages)
+    strengths: z.array(z.string()).default([]),
+
+    // Caveats / limitations
+    caveats: z.array(z.string()).default([]),
+
+    // Notable facts
+    notableFacts: z.array(z.string()).default([]),
+
+    // Source notes / methodology
+    sourceNotes: z.array(z.string()).default([]),
+
+    // Confidence badges per field
+    confidence: z.record(z.enum(['verified', 'positioning', 'inference'])).optional(),
+
+    // Why choose / when not ideal chips
+    whyChoose: z.array(z.string()).default([]),
+    whenNotIdeal: z.array(z.string()).default([]),
   }),
 });
 

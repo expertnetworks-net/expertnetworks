@@ -6,24 +6,27 @@
   "website": "https://glginsights.com",
   "gradientFrom": "#1a365d",
   "gradientTo": "#2563eb",
-  "type": "Expert Network",
+  "type": "Insight Network / Expert Network",
   "founded": 1998,
   "headquarters": "New York, NY",
-  "employeeCount": "2,500+",
+  "employeeCount": "1,001–5,000",
+  "employeeCountSource": "Employees (LinkedIn band)",
   "expertCount": "~1.2M",
-  "description": "The world's largest expert network, connecting clients with approximately 1.2 million experts across virtually every industry and geography. Offers GLG Library for transcripts, GLG Surveys for B2B research, and integrated insights.",
-  "services": ["Expert Calls", "GLG Surveys", "GLG Library", "GLG Integrated Insights"],
-  "aiCapabilities": ["AI-powered expert matching", "Automated compliance screening", "Smart project brief analysis"],
-  "industries": ["Financial Services", "Healthcare", "Technology", "Energy", "Consumer", "Industrials"],
-  "pricingModel": "Per-call",
-  "keyDifferentiators": ["Largest expert network globally", "Proprietary AI matching engine", "Comprehensive compliance framework"],
-  "bestFor": ["Hedge Funds", "Consulting Firms", "Large Enterprises"],
+  "expertCountLabel": "Professionals / Network Members",
+  "description": "GLG positions itself as the pioneer of the expert network category and one of the largest global platforms for first-hand professional insight. The firm says it works with approximately 1.2 million professionals across industries, roles, and geographies, serving investors, consulting firms, corporates, law firms, and other institutions through a broader stack that includes Calls, Surveys, Events, Library, Placements, Qualitative work, and Integrated Insights. Recent product evolution has pushed GLG further into AI-assisted workflow and research synthesis through myGLG and interactive transcript tooling.",
+  "services": ["GLG Calls", "GLG Surveys", "GLG Events", "GLG Library", "GLG Integrated Insights", "GLG Qualitative", "GLG Placements", "GLG Institute"],
+  "aiCapabilities": ["Ask AI in myGLG", "Cross-transcript synthesis", "External-file merge for research synthesis", "Interactive transcript views", "Expert-side app with AI-suggested responses"],
+  "industries": ["Financial Services", "Private Equity / Private Credit", "Healthcare / Life Sciences", "Technology / TMT", "Consumer", "Industrials", "Energy", "Legal / Regulatory"],
+  "pricingModel": "Mixed",
+  "pricingDetail": "Per-call / project / subscription",
+  "keyDifferentiators": ["Category pioneer with 25+ years in expert-network workflows", "Very large global network and broad functional coverage", "Strong compliance infrastructure and auditable process design", "Broader multi-format research stack than pure call-only competitors", "Increasing AI-assisted workflow depth via myGLG and transcript tooling"],
+  "bestFor": ["Hedge funds & asset managers", "Private equity / private credit", "Consulting & market-research firms", "Law firms", "Large enterprises needing primary research or diligence", "Teams needing bespoke calls and reusable content workflows"],
   "compliance": {
-    "mnpiPolicy": "Comprehensive MNPI policies with mandatory pre-call compliance training for all experts",
-    "expertVetting": "Multi-step vetting including employment verification, conflict checks, and MNPI screening",
-    "coolingOffPeriod": "Enforced cooling-off periods for recently departed employees of public companies",
+    "mnpiPolicy": "Strong compliance positioning with structured, auditable, and transparent interaction model",
+    "expertVetting": "Conflict-management and confidential-information controls with annual expert compliance training",
+    "coolingOffPeriod": "Controls designed to reduce conflict and confidential-information risk (specific public-company cooling-off rules not publicly documented in detail)",
     "auditTrail": true,
-    "regulatoryHistory": "No major regulatory actions. Industry-leading compliance framework developed post-2013 SEC enforcement wave"
+    "regulatoryHistory": "No major public regulatory action against GLG's expert-network business was identified. The broader expert-network sector was heavily scrutinized during the insider-trading enforcement wave of the early 2010s, and GLG's compliance posture appears to have been a significant reason it was often viewed as a safer incumbent."
   },
   "featured": true,
   "priority": 1,
@@ -35,5 +38,144 @@
     "surveys": true,
     "complianceTools": true
   },
-  "lastUpdated": "2026-03-06"
+  "lastUpdated": "2026-03-06",
+
+  "overview": "GLG is one of the foundational companies in the expert-network / insight-network category. It connects clients with professionals who provide first-hand industry knowledge through calls, surveys, events, qualitative sessions, transcript content, and broader managed research formats. GLG's current positioning is no longer just 'find an expert for a call' — it is closer to a broader insight workflow spanning sourcing, live interaction, content reuse, and AI-assisted synthesis.",
+
+  "history": {
+    "narrative": "GLG was founded in 1998 by Mark Gerson and Thomas Lehrman. According to GLG's official history, it began as a publishing company focused on sector-specific reports for investors and evolved into a business model centered on access to professionals with direct domain experience. GLG expanded internationally early, opening its first office outside the U.S. in London, and later built additional practice areas and increasingly sophisticated compliance systems as the expert-network industry matured. GLG's own language and former IPO filings both support the claim that it pioneered the category.",
+    "timeline": [
+      { "year": "1998", "event": "Founded in New York as Gerson Lehrman Group" },
+      { "year": "Early 2000s", "event": "Expands from report publishing into direct expert access workflows" },
+      { "year": "2004", "event": "Opens London office and broadens practice areas internationally" },
+      { "year": "Mid-2000s", "event": "Builds major compliance systems as the category professionalizes" },
+      { "year": "2010s", "event": "Survives industry scrutiny during insider-trading enforcement wave; compliance posture strengthens brand" },
+      { "year": "2023", "event": "GLG Library reaches 20,000+ transcripts and content items, with ~500 new pieces per month" },
+      { "year": "2025", "event": "Launches redesigned myGLG with AI-assisted features and GLG for Experts mobile app" },
+      { "year": "2025", "event": "Expands NYC HQ to 96K SF across two floors at One Grand Central Place; opens expanded Dubai DIFC office" }
+    ]
+  },
+
+  "servicesDetailed": [
+    {
+      "name": "GLG Calls",
+      "description": "The core format: one-on-one, translated, or multiparty conversations with professionals selected for a specific business question. GLG matches experts from its network to client needs with structured compliance workflows."
+    },
+    {
+      "name": "GLG Surveys",
+      "description": "B2B research delivered through first-hand expertise and broader respondent sourcing workflows. Surveys can be paired with calls for deeper follow-up or used standalone for quantitative market sizing and sentiment analysis."
+    },
+    {
+      "name": "GLG Events",
+      "description": "Roundtables, teleconferences, webcasts, and interactive sessions tied to industry themes and breaking developments. Events bring together multiple experts and client participants for broader perspective gathering."
+    },
+    {
+      "name": "GLG Library",
+      "description": "One of GLG's most important differentiators. In 2023, GLG said the Library included 20,000+ transcripts and content assets, with nearly 500 new items per month. GLG also made Library content available through FactSet. Library provides reusable, searchable content that reduces repeat engagement costs."
+    },
+    {
+      "name": "GLG Integrated Insights",
+      "description": "Combines multiple offerings into broader managed projects — due diligence, market assessments, competitive landscape work, and multi-method research programs that span calls, surveys, events, and content."
+    },
+    {
+      "name": "GLG Qualitative",
+      "description": "Focus groups, workshops, discussion panels, moderated calls, and other live insight-gathering formats. Designed for clients needing richer, more interactive engagement beyond standard one-on-one calls."
+    },
+    {
+      "name": "GLG Placements",
+      "description": "Supports expert witness matching and board / advisor / nonexecutive director-style matching. GLG explicitly markets board placement and executive advisory use cases."
+    },
+    {
+      "name": "GLG Institute",
+      "description": "Educational programming and practitioner-led sessions designed for professional development and sector deep-dives. Supplements GLG's core research services with structured learning."
+    }
+  ],
+
+  "aiPlatform": {
+    "narrative": "GLG's public AI/workflow story is strongest around myGLG and transcript tooling. The company publicly markets a redesigned myGLG portal that lets users search the network directly, launch projects, synthesize across transcripts, and manage projects more efficiently. It also markets 'Ask AI,' external-file upload for synthesis, and transcript interactions that let users extract insights, switch views, and surface sentiment or Q&A structure. On the expert side, GLG launched the GLG for Experts app in 2025, with AI-suggested responses and task-management features.",
+    "features": [
+      "Ask AI in myGLG for research synthesis",
+      "Cross-transcript synthesis and comparison",
+      "Upload and merge external files with GLG research for combined analysis",
+      "Interactive transcript views with Q&A, insight extraction, and sentiment surfacing",
+      "Advanced matching systems for expert identification",
+      "GLG for Experts mobile app with AI-suggested responses and push notifications"
+    ]
+  },
+
+  "complianceExtended": {
+    "narrative": "GLG publicly emphasizes that it has helped establish compliance norms for the expert-network category and describes its model as structured, auditable, and transparent. Its public materials refer to proprietary compliance systems and technologies, annual expert training, and controls designed to reduce conflict and confidential-information risk.",
+    "highlights": [
+      "Strong compliance reputation and industry-leading positioning",
+      "Structured, auditable, and transparent interaction framework",
+      "Annual expert compliance training",
+      "Conflict-management controls",
+      "Confidential-information safeguards",
+      "Proprietary compliance systems and technologies"
+    ],
+    "regulatoryContext": "No major public regulatory action against GLG's expert-network business was identified in this review. However, the broader expert-network sector was heavily scrutinized during the insider-trading enforcement wave of the early 2010s, and GLG's compliance posture appears to have been a significant reason it was often viewed as a safer incumbent in that period."
+  },
+
+  "clientFit": {
+    "narrative": "GLG is especially well suited for users who need both custom primary research and reusable content infrastructure. Its multi-format product stack and large network make it a strong choice across buy-side, consulting, legal, and enterprise use cases.",
+    "segments": [
+      "Hedge funds and asset managers doing thematic or company diligence",
+      "Private equity and private credit teams across origination, diligence, and portfolio work",
+      "Consulting firms under time pressure on niche projects",
+      "Legal teams needing sector specialists or expert witness pathways",
+      "Enterprise strategy, product, and market-intelligence teams",
+      "Teams that value reusable transcript libraries alongside bespoke calls"
+    ]
+  },
+
+  "strengths": [
+    "Category pioneer with 25+ years of operating history",
+    "Very large network scale (~1.2M professionals)",
+    "Strong compliance positioning and auditable infrastructure",
+    "Multi-format product stack well beyond basic expert calls",
+    "Increasingly capable AI-assisted research workflow via myGLG",
+    "Growing reusable content library (20,000+ items, ~500/month)"
+  ],
+
+  "caveats": [
+    "Public pricing is not transparent — no listed rates",
+    "'Largest' and 'best-in-class' are partly market-positioning claims, not independently benchmarked",
+    "Some workflow sophistication is evident, but the public site leaves important operational details abstract",
+    "Employee count is not pinned down precisely in official public materials",
+    "May be overbuilt for very small one-off research needs"
+  ],
+
+  "notableFacts": [
+    "Founded in 1998 — one of the oldest expert networks in operation",
+    "Approximately 1.2 million professionals in the network",
+    "LinkedIn company size band: 1,001–5,000 employees",
+    "GLG Library had 20,000+ transcripts/content items in 2023, adding ~500 per month",
+    "Library content made available through FactSet partnership",
+    "Redesigned myGLG launched in 2025 with AI-assisted features",
+    "GLG for Experts mobile app launched in 2025 — first of its kind in expert networks",
+    "Expanded NYC HQ to 96K SF at One Grand Central Place (2025)",
+    "Opened expanded Dubai DIFC office in January 2025"
+  ],
+
+  "sourceNotes": [
+    "Official GLG website (glginsights.com) used as primary source for product, history, and compliance claims",
+    "LinkedIn used for company-size band and headquarters confirmation",
+    "External legal and industry sources used for sector-context language on compliance and regulatory history",
+    "Unsupported operational specifics removed or softened from previous version",
+    "FactSet partnership and Library stats sourced from GLG press releases and public announcements",
+    "Employee count changed from '2,500+' to LinkedIn band '1,001–5,000' due to insufficient primary-source documentation for the previous figure"
+  ],
+
+  "whyChoose": ["Network breadth", "Compliance strength", "Content library depth", "Multi-format research"],
+  "whenNotIdeal": ["Not the cheapest option", "Overbuilt for small one-off needs", "No transparent public pricing"],
+
+  "confidence": {
+    "founded": "verified",
+    "headquarters": "verified",
+    "expertCount": "positioning",
+    "employeeCount": "verified",
+    "pricingModel": "inference",
+    "services": "verified",
+    "compliance": "positioning"
+  }
 }
