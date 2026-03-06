@@ -77,12 +77,17 @@ const showForm = action === 'new' || editArticle;
           <div>
             <label class="admin-label">Category *</label>
             <select name="category" required class="admin-select">
-              <option value="M&A" selected={editArticle?.data.category === 'M&A'}>M&A</option>
               <option value="AI" selected={editArticle?.data.category === 'AI'}>AI</option>
-              <option value="Industry" selected={editArticle?.data.category === 'Industry'}>Industry</option>
+              <option value="Compliance" selected={editArticle?.data.category === 'Compliance'}>Compliance</option>
+              <option value="Expansion" selected={editArticle?.data.category === 'Expansion'}>Expansion</option>
               <option value="Funding" selected={editArticle?.data.category === 'Funding'}>Funding</option>
+              <option value="Industry" selected={editArticle?.data.category === 'Industry'}>Industry</option>
+              <option value="IPO" selected={editArticle?.data.category === 'IPO'}>IPO</option>
+              <option value="M&A" selected={editArticle?.data.category === 'M&A'}>M&A</option>
+              <option value="Milestone" selected={editArticle?.data.category === 'Milestone'}>Milestone</option>
+              <option value="Partnerships" selected={editArticle?.data.category === 'Partnerships'}>Partnerships</option>
               <option value="Product" selected={editArticle?.data.category === 'Product'}>Product</option>
-              <option value="Regulation" selected={editArticle?.data.category === 'Regulation'}>Regulation</option>
+              <option value="Research" selected={editArticle?.data.category === 'Research'}>Research</option>
             </select>
           </div>
         </div>
