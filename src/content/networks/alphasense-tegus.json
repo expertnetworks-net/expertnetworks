@@ -2,6 +2,7 @@
   "name": "AlphaSense / Tegus",
   "shortName": "AS",
   "slug": "alphasense-tegus",
+  "logo": "/images/networks/alphasense-tegus.svg",
   "website": "https://alphasense.com",
   "gradientFrom": "#0c4a6e",
   "gradientTo": "#0284c7",

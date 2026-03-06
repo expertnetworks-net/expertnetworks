@@ -2,6 +2,7 @@
   "name": "Third Bridge",
   "shortName": "TB",
   "slug": "third-bridge",
+  "logo": "/images/networks/third-bridge.svg",
   "website": "https://thirdbridge.com",
   "gradientFrom": "#7c2d12",
   "gradientTo": "#ea580c",

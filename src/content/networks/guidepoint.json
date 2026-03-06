@@ -2,6 +2,7 @@
   "name": "Guidepoint",
   "shortName": "GP",
   "slug": "guidepoint",
+  "logo": "/images/networks/guidepoint.svg",
   "website": "https://guidepoint.com",
   "gradientFrom": "#581c87",
   "gradientTo": "#a855f7",

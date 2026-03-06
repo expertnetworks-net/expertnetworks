@@ -19,6 +19,10 @@ const featuredNetworks = publishedNetworks.filter(n => n.data.featured);
 const publishedNews = allNews
   .filter(n => n.data.published)
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+const networkLogoMap: Record<string, string> = Object.fromEntries(
+  allNetworks.filter(n => n.data.published && n.data.logo).map(n => [n.data.slug, n.data.logo])
+);
 ---
 
 <BaseLayout>
@@ -55,9 +59,17 @@ const publishedNews = allNews
           <div class="space-y-0.5">
             {publishedNews.map(article => {
               const formattedDate = new Date(article.data.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+              const primarySlug = article.data.relatedNetworks[0];
+              const logoSrc = primarySlug ? networkLogoMap[primarySlug] : null;
               return (
                 <a href={article.data.sourceUrl || '#'} target={article.data.sourceUrl ? '_blank' : '_self'} rel="noopener noreferrer" class="flex items-start gap-3 px-4 py-3 rounded-xl hover:bg-bg-secondary transition-colors group no-underline cursor-pointer">
-                  <div class="w-2 h-2 rounded-full mt-2 flex-shrink-0" style={`background: ${article.data.categoryColor || '#0071E3'}`}></div>
+                  {logoSrc ? (
+                    <img src={logoSrc} alt="" class="w-8 h-8 rounded-md flex-shrink-0 mt-0.5 object-cover" />
+                  ) : (
+                    <div class="w-8 h-8 rounded-md flex-shrink-0 mt-0.5 flex items-center justify-center" style={`background: ${article.data.gradientFrom || '#1a365d'}`}>
+                      <div class="w-2 h-2 rounded-full" style={`background: ${article.data.categoryColor || '#0071E3'}`}></div>
+                    </div>
+                  )}
                   <div class="min-w-0 flex-1">
                     <div class="text-[13px] font-semibold text-primary leading-snug group-hover:text-accent transition-colors">{article.data.title}</div>
                     <div class="flex flex-wrap items-center gap-2 mt-1">

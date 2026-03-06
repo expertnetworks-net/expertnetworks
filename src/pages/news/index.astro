@@ -11,6 +11,9 @@ const allNetworks = await getCollection('networks');
 const networkMap = Object.fromEntries(
   allNetworks.filter(n => n.data.published).map(n => [n.data.slug, n.data.name.split(' (')[0]])
 );
+const networkLogoMap: Record<string, string> = Object.fromEntries(
+  allNetworks.filter(n => n.data.published && n.data.logo).map(n => [n.data.slug, n.data.logo])
+);
 
 // Get unique categories and related networks
 const categories = [...new Set(articles.map(a => a.data.category))].sort();
@@ -69,6 +72,8 @@ const relatedSlugs = [...new Set(articles.flatMap(a => a.data.relatedNetworks))]
         {articles.map(article => {
           const formattedDate = new Date(article.data.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
           const relatedNames = article.data.relatedNetworks.map((s: string) => networkMap[s]).filter(Boolean);
+          const primarySlug = article.data.relatedNetworks[0];
+          const logoSrc = primarySlug ? networkLogoMap[primarySlug] : null;
           return (
             <div
               class="news-item flex items-start gap-3 px-4 py-4 rounded-xl hover:bg-bg-secondary transition-colors group border-b border-bg-secondary last:border-0"
@@ -76,7 +81,13 @@ const relatedSlugs = [...new Set(articles.flatMap(a => a.data.relatedNetworks))]
               data-networks={article.data.relatedNetworks.join(',')}
               data-date={article.data.date}
             >
-              <div class="w-2.5 h-2.5 rounded-full mt-1.5 flex-shrink-0" style={`background: ${article.data.categoryColor || '#0071E3'}`}></div>
+              {logoSrc ? (
+                <img src={logoSrc} alt={networkMap[primarySlug] || ''} class="w-10 h-10 rounded-lg flex-shrink-0 mt-0.5 object-cover" />
+              ) : (
+                <div class="w-10 h-10 rounded-lg flex-shrink-0 mt-0.5 flex items-center justify-center" style={`background: ${article.data.gradientFrom || '#1a365d'}`}>
+                  <div class="w-2.5 h-2.5 rounded-full" style={`background: ${article.data.categoryColor || '#0071E3'}`}></div>
+                </div>
+              )}
               <div class="min-w-0 flex-1">
                 <div class="text-[14px] font-semibold text-primary leading-snug mb-1">{article.data.title}</div>
                 <p class="text-[13px] text-secondary leading-relaxed mb-2">{article.data.summary}</p>

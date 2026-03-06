@@ -2,6 +2,7 @@
   "name": "NewtonX",
   "shortName": "NX",
   "slug": "newtonx",
+  "logo": "/images/networks/newtonx.svg",
   "website": "https://newtonx.com",
   "gradientFrom": "#1e3a5f",
   "gradientTo": "#3b82f6",
