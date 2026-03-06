@@ -9,14 +9,14 @@
   "type": "Expert Network",
   "founded": 2008,
   "headquarters": "London, UK",
-  "employeeCount": "1,500+",
+  "employeeCount": "2,000+",
   "expertCount": "500K+",
-  "description": "Global knowledge-on-demand service connecting top professionals with the world's leading companies, offering expert calls, surveys, and their AlphaView content library.",
-  "services": ["Expert Calls", "Surveys", "AlphaView", "Tech-enabled"],
-  "aiCapabilities": ["Technology-enhanced matching", "AlphaView content platform"],
+  "description": "Global knowledge-on-demand service connecting top professionals with the world's leading companies, offering expert calls, surveys, and their AlphaNow content library with weekly expert insights.",
+  "services": ["Expert Calls", "Surveys", "AlphaNow", "AlphaGPT"],
+  "aiCapabilities": ["AlphaGraph ML-powered expert matching", "AlphaGPT conversational AI", "AlphaNow content platform", "AI Project Summary"],
   "industries": ["Private Equity", "Hedge Funds", "Consulting", "Corporate Strategy"],
   "pricingModel": "Per-call",
-  "keyDifferentiators": ["Strong PE/hedge fund client base", "AlphaView content library", "Rapid expert sourcing"],
+  "keyDifferentiators": ["Strong PE/hedge fund client base", "AlphaNow content library", "AlphaGraph ML matching", "Rapid expert sourcing"],
   "bestFor": ["Private Equity", "Hedge Funds", "Corporate Strategy"],
   "compliance": {
     "mnpiPolicy": "Robust MNPI screening with automated checks before and after expert interactions",
@@ -30,7 +30,7 @@
   "published": true,
   "comparison": {
     "expertCalls": true,
-    "contentLibrary": "AlphaView",
+    "contentLibrary": "AlphaNow",
     "aiMatching": true,
     "surveys": true,
     "complianceTools": true

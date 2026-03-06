@@ -9,14 +9,14 @@
   "type": "Expert Network",
   "founded": 2007,
   "headquarters": "London, UK",
-  "employeeCount": "1,300+",
-  "expertCount": "1M+",
-  "description": "Provides investment research through expert consultations, Forum (interview transcripts), and bespoke research projects for PE, hedge funds, and corporates.",
-  "services": ["Expert Calls", "Forum Transcripts", "AI Insights", "Bespoke Research"],
-  "aiCapabilities": ["AI-powered insights from Forum transcripts", "Smart expert matching"],
+  "employeeCount": "1,500+",
+  "expertCount": "1.5M+",
+  "description": "Provides investment research through expert consultations, Library (formerly Forum) interview transcripts covering 65,000+ companies, and bespoke research projects for PE, hedge funds, and corporates.",
+  "services": ["Expert Calls", "Library (Transcripts)", "AI Insights", "Bespoke Research"],
+  "aiCapabilities": ["AI-powered insights from Library transcripts", "Smart expert matching", "AI-generated call summaries"],
   "industries": ["Private Equity", "Hedge Funds", "Asset Management", "Corporate Strategy"],
-  "pricingModel": "Subscription",
-  "keyDifferentiators": ["Forum transcript library", "Subscription-based model", "Bespoke research projects"],
+  "pricingModel": "Hybrid",
+  "keyDifferentiators": ["Library transcript archive (65K+ companies)", "Credit + subscription hybrid model", "Bespoke research projects"],
   "bestFor": ["Private Equity", "Hedge Funds", "Asset Managers"],
   "compliance": {
     "mnpiPolicy": "Rigorous MNPI framework with pre-engagement compliance checks on all Forum content and live calls",
@@ -30,9 +30,9 @@
   "published": true,
   "comparison": {
     "expertCalls": true,
-    "contentLibrary": "Forum",
+    "contentLibrary": "Library",
     "aiMatching": true,
-    "surveys": false,
+    "surveys": "Limited",
     "complianceTools": true
   },
   "lastUpdated": "2026-03-06"

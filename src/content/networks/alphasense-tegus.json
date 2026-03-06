@@ -11,9 +11,9 @@
   "headquarters": "New York, NY",
   "employeeCount": "2,000+",
   "expertCount": "300K+",
-  "description": "Market intelligence platform combining AI-powered search, expert transcript libraries (via Tegus acquisition), and expert call capabilities.",
-  "services": ["Expert Calls", "Transcript Library", "AI Search", "Market Intelligence"],
-  "aiCapabilities": ["AI-powered document search", "Smart Synonyms", "Automated sentiment analysis"],
+  "description": "Market intelligence platform combining AI-powered search with 240K+ proprietary expert transcripts (via $930M Tegus acquisition), expert calls, AI Interviewer-led Channel Checks, and 500M+ premium business documents. $500M ARR with 6,500+ customers.",
+  "services": ["Expert Calls", "Expert Insights (ETL)", "AI Search", "Channel Checks", "Market Intelligence"],
+  "aiCapabilities": ["AI-powered document search", "AI Agent Interviewer", "Generative Search (Deep Research)", "Smart Synonyms", "Automated sentiment analysis"],
   "industries": ["Financial Services", "Healthcare", "Technology", "Energy"],
   "pricingModel": "Subscription",
   "keyDifferentiators": ["AI-first platform", "Tegus transcript integration ($930M acquisition)", "Unified market intelligence"],
@@ -31,9 +31,9 @@
   "published": true,
   "comparison": {
     "expertCalls": true,
-    "contentLibrary": "Tegus Transcripts",
+    "contentLibrary": "Expert Insights (ETL)",
     "aiMatching": true,
-    "surveys": false,
+    "surveys": "Channel Checks",
     "complianceTools": true
   },
   "lastUpdated": "2026-03-06"
