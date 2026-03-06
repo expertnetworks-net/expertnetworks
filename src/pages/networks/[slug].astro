@@ -12,169 +12,420 @@ export async function getStaticPaths() {
 
 const { network } = Astro.props;
 const d = network.data;
+
+const allNetworks = await getCollection('networks');
+const published = allNetworks
+  .filter(n => n.data.published)
+  .sort((a, b) => a.data.priority - b.data.priority);
+
+const featured = published.filter(n => n.data.featured);
+const others = published.filter(n => !n.data.featured);
 ---
 
 <BaseLayout title={`${d.name} — Expert Networks Hub`}>
-  <section class="pt-32 pb-24 px-6">
-    <div class="max-w-3xl mx-auto">
-      <!-- Back link -->
-      <a href="/networks" class="inline-flex items-center gap-1 text-accent text-sm font-medium no-underline mb-8 hover:underline">
-        &larr; All Networks
-      </a>
+  <div class="pt-[52px] flex min-h-screen">
 
-      <!-- Header -->
-      <div class="flex items-center gap-4 mb-8">
-        <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-white font-bold text-2xl flex-shrink-0" style={`background: linear-gradient(135deg, ${d.gradientFrom}, ${d.gradientTo})`}>
-          {d.logo ? <img src={d.logo} alt={d.name} class="w-10 h-10 object-contain" /> : d.shortName}
-        </div>
-        <div>
-          <h1 class="text-3xl font-extrabold text-primary">{d.name}</h1>
-          <div class="text-secondary text-sm mt-0.5">
-            {d.type}{d.founded && ` \u00B7 Founded ${d.founded}`}{d.headquarters && ` \u00B7 ${d.headquarters}`}
-          </div>
+    <!-- iOS-style Sidebar -->
+    <aside id="sidebar" class="sidebar-panel hidden lg:flex flex-col w-[300px] min-w-[300px] border-r border-border/40 bg-bg-secondary/60 h-[calc(100vh-52px)] sticky top-[52px] overflow-y-auto overflow-x-hidden">
+
+      <!-- Search -->
+      <div class="px-3 pt-4 pb-2">
+        <div class="sidebar-search flex items-center gap-2 px-3 py-[7px] bg-black/[0.04] rounded-[10px] text-tertiary text-[13px]">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" placeholder="Search networks" id="sidebarSearch" class="bg-transparent border-none outline-none text-primary text-[13px] w-full placeholder:text-tertiary" />
         </div>
       </div>
 
-      <!-- Description -->
-      <p class="text-lg text-secondary leading-relaxed mb-8">{d.description}</p>
-
-      <!-- Stats -->
-      <div class="grid grid-cols-3 gap-4 mb-8">
-        {d.expertCount && (
-          <div class="bg-bg-secondary rounded-card p-5 text-center">
-            <div class="text-2xl font-bold text-primary">{d.expertCount}</div>
-            <div class="text-xs text-tertiary mt-1">Experts</div>
-          </div>
-        )}
-        {d.employeeCount && (
-          <div class="bg-bg-secondary rounded-card p-5 text-center">
-            <div class="text-2xl font-bold text-primary">{d.employeeCount}</div>
-            <div class="text-xs text-tertiary mt-1">Employees</div>
-          </div>
-        )}
-        {d.pricingModel && (
-          <div class="bg-bg-secondary rounded-card p-5 text-center">
-            <div class="text-2xl font-bold text-primary">{d.pricingModel}</div>
-            <div class="text-xs text-tertiary mt-1">Pricing</div>
-          </div>
-        )}
-      </div>
-
-      <!-- Services -->
-      <div class="mb-8">
-        <h2 class="text-lg font-bold text-primary mb-3">Services</h2>
-        <div class="flex flex-wrap gap-2">
-          {d.services.map((service: string) => (
-            <span class="inline-block px-3 py-1 text-sm rounded-full font-medium bg-accent/10 text-accent">{service}</span>
+      <!-- Featured Section -->
+      <div class="px-3 pt-3 pb-1">
+        <div class="text-[11px] font-semibold uppercase tracking-wider text-tertiary px-3 mb-1">Featured</div>
+        <div class="bg-white rounded-[10px] shadow-[0_0_0_0.5px_rgba(0,0,0,0.04),0_1px_3px_rgba(0,0,0,0.06)] overflow-hidden" id="featuredList">
+          {featured.map((n, i) => (
+            <a
+              href={`/networks/${n.data.slug}`}
+              class:list={[
+                'sidebar-item flex items-center gap-3 px-3 py-[10px] no-underline transition-colors duration-150',
+                n.data.slug === d.slug ? 'bg-accent text-white' : 'text-primary hover:bg-black/[0.04]',
+                i > 0 ? 'border-t border-black/[0.06]' : '',
+              ]}
+              data-name={n.data.name.toLowerCase()}
+            >
+              <div
+                class:list={[
+                  'w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0',
+                  n.data.slug === d.slug ? 'ring-2 ring-white/30' : '',
+                ]}
+                style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}
+              >
+                {n.data.shortName}
+              </div>
+              <div class="min-w-0">
+                <div class:list={['text-[13px] font-medium truncate', n.data.slug === d.slug ? 'text-white' : 'text-primary']}>{n.data.name.split(' (')[0]}</div>
+                <div class:list={['text-[11px] truncate', n.data.slug === d.slug ? 'text-white/70' : 'text-tertiary']}>{n.data.expertCount} experts</div>
+              </div>
+              {n.data.slug === d.slug && (
+                <svg class="w-4 h-4 ml-auto flex-shrink-0 text-white/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              )}
+            </a>
           ))}
         </div>
       </div>
 
-      <!-- AI Capabilities -->
-      {d.aiCapabilities.length > 0 && (
-        <div class="mb-8">
-          <h2 class="text-lg font-bold text-primary mb-3">AI Capabilities</h2>
-          <ul class="space-y-2">
-            {d.aiCapabilities.map((cap: string) => (
-              <li class="flex items-start gap-2 text-sm text-secondary">
-                <span class="text-accent-green mt-0.5">&#10003;</span>
-                {cap}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      <!-- Industries -->
-      {d.industries.length > 0 && (
-        <div class="mb-8">
-          <h2 class="text-lg font-bold text-primary mb-3">Industries Served</h2>
-          <div class="flex flex-wrap gap-2">
-            {d.industries.map((industry: string) => (
-              <span class="inline-block px-3 py-1 text-sm rounded-full font-medium bg-bg-secondary text-secondary">{industry}</span>
-            ))}
-          </div>
-        </div>
-      )}
-
-      <!-- Key Differentiators -->
-      {d.keyDifferentiators.length > 0 && (
-        <div class="mb-8">
-          <h2 class="text-lg font-bold text-primary mb-3">Key Differentiators</h2>
-          <ul class="space-y-2">
-            {d.keyDifferentiators.map((diff: string) => (
-              <li class="flex items-start gap-2 text-sm text-secondary">
-                <span class="text-accent mt-0.5">&#9679;</span>
-                {diff}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      <!-- Best For -->
-      {d.bestFor && d.bestFor.length > 0 && (
-        <div class="mb-8">
-          <h2 class="text-lg font-bold text-primary mb-3">Best For</h2>
-          <div class="flex flex-wrap gap-2">
-            {d.bestFor.map((buyer: string) => (
-              <span class="inline-block px-3 py-1 text-sm rounded-full font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">{buyer}</span>
-            ))}
-          </div>
-        </div>
-      )}
-
-      <!-- Compliance -->
-      {d.compliance && (
-        <div class="mb-8">
-          <h2 class="text-lg font-bold text-primary mb-3">Compliance & MNPI</h2>
-          <div class="bg-bg-secondary rounded-card p-6 space-y-4">
-            {d.compliance.mnpiPolicy && (
-              <div>
-                <div class="text-xs font-bold uppercase tracking-wide text-tertiary mb-1">MNPI Policy</div>
-                <p class="text-sm text-secondary">{d.compliance.mnpiPolicy}</p>
+      <!-- All Networks Section -->
+      <div class="px-3 pt-4 pb-1">
+        <div class="text-[11px] font-semibold uppercase tracking-wider text-tertiary px-3 mb-1">All Networks</div>
+        <div class="bg-white rounded-[10px] shadow-[0_0_0_0.5px_rgba(0,0,0,0.04),0_1px_3px_rgba(0,0,0,0.06)] overflow-hidden" id="allList">
+          {others.map((n, i) => (
+            <a
+              href={`/networks/${n.data.slug}`}
+              class:list={[
+                'sidebar-item flex items-center gap-3 px-3 py-[10px] no-underline transition-colors duration-150',
+                n.data.slug === d.slug ? 'bg-accent text-white' : 'text-primary hover:bg-black/[0.04]',
+                i > 0 ? 'border-t border-black/[0.06]' : '',
+              ]}
+              data-name={n.data.name.toLowerCase()}
+            >
+              <div
+                class:list={[
+                  'w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0',
+                  n.data.slug === d.slug ? 'ring-2 ring-white/30' : '',
+                ]}
+                style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}
+              >
+                {n.data.shortName}
               </div>
-            )}
-            {d.compliance.expertVetting && (
-              <div>
-                <div class="text-xs font-bold uppercase tracking-wide text-tertiary mb-1">Expert Vetting</div>
-                <p class="text-sm text-secondary">{d.compliance.expertVetting}</p>
+              <div class="min-w-0">
+                <div class:list={['text-[13px] font-medium truncate', n.data.slug === d.slug ? 'text-white' : 'text-primary']}>{n.data.name.split(' (')[0]}</div>
+                <div class:list={['text-[11px] truncate', n.data.slug === d.slug ? 'text-white/70' : 'text-tertiary']}>{n.data.type}</div>
               </div>
-            )}
-            {d.compliance.coolingOffPeriod && (
-              <div>
-                <div class="text-xs font-bold uppercase tracking-wide text-tertiary mb-1">Cooling-Off Period</div>
-                <p class="text-sm text-secondary">{d.compliance.coolingOffPeriod}</p>
+              {n.data.slug === d.slug && (
+                <svg class="w-4 h-4 ml-auto flex-shrink-0 text-white/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              )}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div class="h-6 flex-shrink-0"></div>
+    </aside>
+
+    <!-- Mobile sidebar toggle -->
+    <button
+      id="sidebarToggle"
+      class="lg:hidden fixed bottom-6 left-6 z-50 w-12 h-12 bg-accent text-white rounded-full shadow-lg flex items-center justify-center hover:bg-accent-hover transition-all active:scale-95"
+      aria-label="Browse networks"
+    >
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+
+    <!-- Mobile backdrop -->
+    <div id="sidebarBackdrop" class="lg:hidden fixed inset-0 bg-black/30 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-300"></div>
+
+    <!-- Mobile slide-out sidebar -->
+    <aside id="mobileSidebar" class="lg:hidden fixed top-0 left-0 z-50 w-[320px] max-w-[85vw] h-full bg-bg-secondary pt-[52px] -translate-x-full transition-transform duration-300 ease-out overflow-y-auto shadow-2xl">
+      <!-- Mobile Search -->
+      <div class="px-3 pt-4 pb-2">
+        <div class="flex items-center justify-between mb-3 px-1">
+          <span class="text-[15px] font-bold text-primary">Networks</span>
+          <button id="closeSidebar" class="w-8 h-8 rounded-full bg-black/[0.06] flex items-center justify-center text-tertiary">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <div class="flex items-center gap-2 px-3 py-[7px] bg-black/[0.04] rounded-[10px] text-tertiary text-[13px]">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" placeholder="Search networks" id="mobileSearch" class="bg-transparent border-none outline-none text-primary text-[13px] w-full placeholder:text-tertiary" />
+        </div>
+      </div>
+
+      <!-- Mobile Featured -->
+      <div class="px-3 pt-3 pb-1">
+        <div class="text-[11px] font-semibold uppercase tracking-wider text-tertiary px-3 mb-1">Featured</div>
+        <div class="bg-white rounded-[10px] shadow-[0_0_0_0.5px_rgba(0,0,0,0.04),0_1px_3px_rgba(0,0,0,0.06)] overflow-hidden" id="mobileFeaturedList">
+          {featured.map((n, i) => (
+            <a
+              href={`/networks/${n.data.slug}`}
+              class:list={[
+                'sidebar-item flex items-center gap-3 px-3 py-[10px] no-underline transition-colors duration-150',
+                n.data.slug === d.slug ? 'bg-accent text-white' : 'text-primary hover:bg-black/[0.04]',
+                i > 0 ? 'border-t border-black/[0.06]' : '',
+              ]}
+              data-name={n.data.name.toLowerCase()}
+            >
+              <div
+                class:list={[
+                  'w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0',
+                  n.data.slug === d.slug ? 'ring-2 ring-white/30' : '',
+                ]}
+                style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}
+              >
+                {n.data.shortName}
               </div>
-            )}
-            <div class="flex gap-6">
-              <div>
-                <div class="text-xs font-bold uppercase tracking-wide text-tertiary mb-1">Audit Trail</div>
-                <span class={`text-sm font-semibold ${d.compliance.auditTrail ? 'text-accent-green' : 'text-tertiary'}`}>
-                  {d.compliance.auditTrail ? '✓ Yes' : '– No'}
-                </span>
+              <div class="min-w-0">
+                <div class:list={['text-[13px] font-medium truncate', n.data.slug === d.slug ? 'text-white' : 'text-primary']}>{n.data.name.split(' (')[0]}</div>
+                <div class:list={['text-[11px] truncate', n.data.slug === d.slug ? 'text-white/70' : 'text-tertiary']}>{n.data.expertCount} experts</div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Mobile All -->
+      <div class="px-3 pt-4 pb-6">
+        <div class="text-[11px] font-semibold uppercase tracking-wider text-tertiary px-3 mb-1">All Networks</div>
+        <div class="bg-white rounded-[10px] shadow-[0_0_0_0.5px_rgba(0,0,0,0.04),0_1px_3px_rgba(0,0,0,0.06)] overflow-hidden" id="mobileAllList">
+          {others.map((n, i) => (
+            <a
+              href={`/networks/${n.data.slug}`}
+              class:list={[
+                'sidebar-item flex items-center gap-3 px-3 py-[10px] no-underline transition-colors duration-150',
+                n.data.slug === d.slug ? 'bg-accent text-white' : 'text-primary hover:bg-black/[0.04]',
+                i > 0 ? 'border-t border-black/[0.06]' : '',
+              ]}
+              data-name={n.data.name.toLowerCase()}
+            >
+              <div
+                class:list={[
+                  'w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0',
+                  n.data.slug === d.slug ? 'ring-2 ring-white/30' : '',
+                ]}
+                style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}
+              >
+                {n.data.shortName}
+              </div>
+              <div class="min-w-0">
+                <div class:list={['text-[13px] font-medium truncate', n.data.slug === d.slug ? 'text-white' : 'text-primary']}>{n.data.name.split(' (')[0]}</div>
+                <div class:list={['text-[11px] truncate', n.data.slug === d.slug ? 'text-white/70' : 'text-tertiary']}>{n.data.type}</div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="flex-1 min-w-0">
+      <section class="py-12 lg:py-16 px-6">
+        <div class="max-w-3xl mx-auto">
+          <!-- Back link (mobile only, sidebar handles desktop) -->
+          <a href="/networks" class="lg:hidden inline-flex items-center gap-1 text-accent text-sm font-medium no-underline mb-8 hover:underline">
+            &larr; All Networks
+          </a>
+
+          <!-- Header -->
+          <div class="flex items-center gap-4 mb-8">
+            <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-white font-bold text-2xl flex-shrink-0" style={`background: linear-gradient(135deg, ${d.gradientFrom}, ${d.gradientTo})`}>
+              {d.logo ? <img src={d.logo} alt={d.name} class="w-10 h-10 object-contain" /> : d.shortName}
+            </div>
+            <div>
+              <h1 class="text-3xl font-extrabold text-primary">{d.name}</h1>
+              <div class="text-secondary text-sm mt-0.5">
+                {d.type}{d.founded && ` \u00B7 Founded ${d.founded}`}{d.headquarters && ` \u00B7 ${d.headquarters}`}
               </div>
             </div>
-            {d.compliance.regulatoryHistory && (
-              <div>
-                <div class="text-xs font-bold uppercase tracking-wide text-tertiary mb-1">Regulatory History</div>
-                <p class="text-sm text-secondary">{d.compliance.regulatoryHistory}</p>
+          </div>
+
+          <!-- Description -->
+          <p class="text-lg text-secondary leading-relaxed mb-8">{d.description}</p>
+
+          <!-- Stats -->
+          <div class="grid grid-cols-3 gap-4 mb-8">
+            {d.expertCount && (
+              <div class="bg-bg-secondary rounded-card p-5 text-center">
+                <div class="text-2xl font-bold text-primary">{d.expertCount}</div>
+                <div class="text-xs text-tertiary mt-1">Experts</div>
+              </div>
+            )}
+            {d.employeeCount && (
+              <div class="bg-bg-secondary rounded-card p-5 text-center">
+                <div class="text-2xl font-bold text-primary">{d.employeeCount}</div>
+                <div class="text-xs text-tertiary mt-1">Employees</div>
+              </div>
+            )}
+            {d.pricingModel && (
+              <div class="bg-bg-secondary rounded-card p-5 text-center">
+                <div class="text-2xl font-bold text-primary">{d.pricingModel}</div>
+                <div class="text-xs text-tertiary mt-1">Pricing</div>
               </div>
             )}
           </div>
-        </div>
-      )}
 
-      <!-- Website link -->
-      {d.website && (
-        <div class="mt-8 pt-6 border-t border-bg-secondary">
-          <a href={d.website} target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-accent font-semibold text-sm no-underline hover:underline">
-            Visit {d.name.split(' (')[0]} &rarr;
-          </a>
-        </div>
-      )}
+          <!-- Services -->
+          <div class="mb-8">
+            <h2 class="text-lg font-bold text-primary mb-3">Services</h2>
+            <div class="flex flex-wrap gap-2">
+              {d.services.map((service: string) => (
+                <span class="inline-block px-3 py-1 text-sm rounded-full font-medium bg-accent/10 text-accent">{service}</span>
+              ))}
+            </div>
+          </div>
 
-      <div class="mt-4 text-xs text-tertiary">Last updated: {d.lastUpdated}</div>
-    </div>
-  </section>
+          <!-- AI Capabilities -->
+          {d.aiCapabilities.length > 0 && (
+            <div class="mb-8">
+              <h2 class="text-lg font-bold text-primary mb-3">AI Capabilities</h2>
+              <ul class="space-y-2">
+                {d.aiCapabilities.map((cap: string) => (
+                  <li class="flex items-start gap-2 text-sm text-secondary">
+                    <span class="text-accent-green mt-0.5">&#10003;</span>
+                    {cap}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <!-- Industries -->
+          {d.industries.length > 0 && (
+            <div class="mb-8">
+              <h2 class="text-lg font-bold text-primary mb-3">Industries Served</h2>
+              <div class="flex flex-wrap gap-2">
+                {d.industries.map((industry: string) => (
+                  <span class="inline-block px-3 py-1 text-sm rounded-full font-medium bg-bg-secondary text-secondary">{industry}</span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <!-- Key Differentiators -->
+          {d.keyDifferentiators.length > 0 && (
+            <div class="mb-8">
+              <h2 class="text-lg font-bold text-primary mb-3">Key Differentiators</h2>
+              <ul class="space-y-2">
+                {d.keyDifferentiators.map((diff: string) => (
+                  <li class="flex items-start gap-2 text-sm text-secondary">
+                    <span class="text-accent mt-0.5">&#9679;</span>
+                    {diff}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <!-- Best For -->
+          {d.bestFor && d.bestFor.length > 0 && (
+            <div class="mb-8">
+              <h2 class="text-lg font-bold text-primary mb-3">Best For</h2>
+              <div class="flex flex-wrap gap-2">
+                {d.bestFor.map((buyer: string) => (
+                  <span class="inline-block px-3 py-1 text-sm rounded-full font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">{buyer}</span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <!-- Compliance -->
+          {d.compliance && (
+            <div class="mb-8">
+              <h2 class="text-lg font-bold text-primary mb-3">Compliance & MNPI</h2>
+              <div class="bg-bg-secondary rounded-card p-6 space-y-4">
+                {d.compliance.mnpiPolicy && (
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wide text-tertiary mb-1">MNPI Policy</div>
+                    <p class="text-sm text-secondary">{d.compliance.mnpiPolicy}</p>
+                  </div>
+                )}
+                {d.compliance.expertVetting && (
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wide text-tertiary mb-1">Expert Vetting</div>
+                    <p class="text-sm text-secondary">{d.compliance.expertVetting}</p>
+                  </div>
+                )}
+                {d.compliance.coolingOffPeriod && (
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wide text-tertiary mb-1">Cooling-Off Period</div>
+                    <p class="text-sm text-secondary">{d.compliance.coolingOffPeriod}</p>
+                  </div>
+                )}
+                <div class="flex gap-6">
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wide text-tertiary mb-1">Audit Trail</div>
+                    <span class={`text-sm font-semibold ${d.compliance.auditTrail ? 'text-accent-green' : 'text-tertiary'}`}>
+                      {d.compliance.auditTrail ? '✓ Yes' : '– No'}
+                    </span>
+                  </div>
+                </div>
+                {d.compliance.regulatoryHistory && (
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wide text-tertiary mb-1">Regulatory History</div>
+                    <p class="text-sm text-secondary">{d.compliance.regulatoryHistory}</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          <!-- Website link -->
+          {d.website && (
+            <div class="mt-8 pt-6 border-t border-bg-secondary">
+              <a href={d.website} target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-accent font-semibold text-sm no-underline hover:underline">
+                Visit {d.name.split(' (')[0]} &rarr;
+              </a>
+            </div>
+          )}
+
+          <div class="mt-4 text-xs text-tertiary">Last updated: {d.lastUpdated}</div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Sidebar search filtering
+    function setupSearch(inputId: string, listIds: string[]) {
+      const input = document.getElementById(inputId) as HTMLInputElement;
+      if (!input) return;
+      input.addEventListener('input', () => {
+        const q = input.value.toLowerCase().trim();
+        listIds.forEach(listId => {
+          const list = document.getElementById(listId);
+          if (!list) return;
+          const items = list.querySelectorAll('.sidebar-item') as NodeListOf<HTMLElement>;
+          let visibleCount = 0;
+          items.forEach(item => {
+            const name = item.getAttribute('data-name') || '';
+            const match = !q || name.includes(q);
+            item.style.display = match ? '' : 'none';
+            if (match) visibleCount++;
+          });
+        });
+      });
+    }
+
+    setupSearch('sidebarSearch', ['featuredList', 'allList']);
+    setupSearch('mobileSearch', ['mobileFeaturedList', 'mobileAllList']);
+
+    // Mobile sidebar toggle
+    const toggle = document.getElementById('sidebarToggle');
+    const backdrop = document.getElementById('sidebarBackdrop');
+    const mobileSidebar = document.getElementById('mobileSidebar');
+    const closeBtn = document.getElementById('closeSidebar');
+
+    function openMobile() {
+      backdrop?.classList.remove('hidden');
+      requestAnimationFrame(() => {
+        backdrop?.classList.add('opacity-100');
+        backdrop?.classList.remove('opacity-0');
+        mobileSidebar?.classList.remove('-translate-x-full');
+      });
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobile() {
+      backdrop?.classList.remove('opacity-100');
+      backdrop?.classList.add('opacity-0');
+      mobileSidebar?.classList.add('-translate-x-full');
+      setTimeout(() => backdrop?.classList.add('hidden'), 300);
+      document.body.style.overflow = '';
+    }
+
+    toggle?.addEventListener('click', openMobile);
+    backdrop?.addEventListener('click', closeMobile);
+    closeBtn?.addEventListener('click', closeMobile);
+
+    // Scroll active sidebar item into view on desktop
+    const activeSidebarItem = document.querySelector('#sidebar .bg-accent');
+    if (activeSidebarItem) {
+      activeSidebarItem.scrollIntoView({ block: 'center', behavior: 'instant' });
+    }
+  </script>
 </BaseLayout>

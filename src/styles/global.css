@@ -31,4 +31,28 @@
   .stagger-6 { transition-delay: 0.3s; }
   .stagger-7 { transition-delay: 0.35s; }
   .stagger-8 { transition-delay: 0.4s; }
+
+  /* iOS-style sidebar scrollbar */
+  .sidebar-panel {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .sidebar-panel::-webkit-scrollbar {
+    display: none;
+  }
+  .sidebar-panel:hover {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0,0,0,0.15) transparent;
+  }
+  .sidebar-panel:hover::-webkit-scrollbar {
+    display: block;
+    width: 6px;
+  }
+  .sidebar-panel:hover::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .sidebar-panel:hover::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.15);
+    border-radius: 3px;
+  }
 }
