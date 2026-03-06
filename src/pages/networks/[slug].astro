@@ -58,15 +58,19 @@ const others = published.filter(n => !n.data.featured);
               ]}
               data-name={n.data.name.toLowerCase()}
             >
-              <div
-                class:list={[
-                  'w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0 overflow-hidden',
-                  n.data.slug === d.slug ? 'ring-2 ring-white/30' : '',
-                ]}
-                style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}
-              >
-                {n.data.logo ? <img src={n.data.logo} alt={n.data.name} class="w-8 h-8 object-cover" /> : n.data.shortName}
-              </div>
+              {n.data.logo ? (
+                <img src={n.data.logo} alt={n.data.name} class:list={['w-8 h-8 rounded-lg object-contain flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']} />
+              ) : (
+                <div
+                  class:list={[
+                    'w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0',
+                    n.data.slug === d.slug ? 'ring-2 ring-white/30' : '',
+                  ]}
+                  style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}
+                >
+                  {n.data.shortName}
+                </div>
+              )}
               <div class="min-w-0">
                 <div class:list={['text-[13px] font-medium truncate', n.data.slug === d.slug ? 'text-white' : 'text-primary']}>{n.data.name.split(' (')[0]}</div>
                 <div class:list={['text-[11px] truncate', n.data.slug === d.slug ? 'text-white/70' : 'text-tertiary']}>{n.data.expertCount} experts</div>
@@ -93,15 +97,19 @@ const others = published.filter(n => !n.data.featured);
               ]}
               data-name={n.data.name.toLowerCase()}
             >
-              <div
-                class:list={[
-                  'w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0 overflow-hidden',
-                  n.data.slug === d.slug ? 'ring-2 ring-white/30' : '',
-                ]}
-                style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}
-              >
-                {n.data.logo ? <img src={n.data.logo} alt={n.data.name} class="w-8 h-8 object-cover" /> : n.data.shortName}
-              </div>
+              {n.data.logo ? (
+                <img src={n.data.logo} alt={n.data.name} class:list={['w-8 h-8 rounded-lg object-contain flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']} />
+              ) : (
+                <div
+                  class:list={[
+                    'w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0',
+                    n.data.slug === d.slug ? 'ring-2 ring-white/30' : '',
+                  ]}
+                  style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}
+                >
+                  {n.data.shortName}
+                </div>
+              )}
               <div class="min-w-0">
                 <div class:list={['text-[13px] font-medium truncate', n.data.slug === d.slug ? 'text-white' : 'text-primary']}>{n.data.name.split(' (')[0]}</div>
                 <div class:list={['text-[11px] truncate', n.data.slug === d.slug ? 'text-white/70' : 'text-tertiary']}>{n.data.type}</div>
@@ -163,15 +171,19 @@ const others = published.filter(n => !n.data.featured);
               ]}
               data-name={n.data.name.toLowerCase()}
             >
-              <div
-                class:list={[
-                  'w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0 overflow-hidden',
-                  n.data.slug === d.slug ? 'ring-2 ring-white/30' : '',
-                ]}
-                style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}
-              >
-                {n.data.logo ? <img src={n.data.logo} alt={n.data.name} class="w-8 h-8 object-cover" /> : n.data.shortName}
-              </div>
+              {n.data.logo ? (
+                <img src={n.data.logo} alt={n.data.name} class:list={['w-8 h-8 rounded-lg object-contain flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']} />
+              ) : (
+                <div
+                  class:list={[
+                    'w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0',
+                    n.data.slug === d.slug ? 'ring-2 ring-white/30' : '',
+                  ]}
+                  style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}
+                >
+                  {n.data.shortName}
+                </div>
+              )}
               <div class="min-w-0">
                 <div class:list={['text-[13px] font-medium truncate', n.data.slug === d.slug ? 'text-white' : 'text-primary']}>{n.data.name.split(' (')[0]}</div>
                 <div class:list={['text-[11px] truncate', n.data.slug === d.slug ? 'text-white/70' : 'text-tertiary']}>{n.data.expertCount} experts</div>
@@ -195,15 +207,19 @@ const others = published.filter(n => !n.data.featured);
               ]}
               data-name={n.data.name.toLowerCase()}
             >
-              <div
-                class:list={[
-                  'w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0 overflow-hidden',
-                  n.data.slug === d.slug ? 'ring-2 ring-white/30' : '',
-                ]}
-                style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}
-              >
-                {n.data.logo ? <img src={n.data.logo} alt={n.data.name} class="w-8 h-8 object-cover" /> : n.data.shortName}
-              </div>
+              {n.data.logo ? (
+                <img src={n.data.logo} alt={n.data.name} class:list={['w-8 h-8 rounded-lg object-contain flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']} />
+              ) : (
+                <div
+                  class:list={[
+                    'w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0',
+                    n.data.slug === d.slug ? 'ring-2 ring-white/30' : '',
+                  ]}
+                  style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}
+                >
+                  {n.data.shortName}
+                </div>
+              )}
               <div class="min-w-0">
                 <div class:list={['text-[13px] font-medium truncate', n.data.slug === d.slug ? 'text-white' : 'text-primary']}>{n.data.name.split(' (')[0]}</div>
                 <div class:list={['text-[11px] truncate', n.data.slug === d.slug ? 'text-white/70' : 'text-tertiary']}>{n.data.type}</div>
@@ -225,9 +241,13 @@ const others = published.filter(n => !n.data.featured);
 
           <!-- Header -->
           <div class="flex items-center gap-4 mb-8">
-            <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-white font-bold text-2xl flex-shrink-0" style={`background: linear-gradient(135deg, ${d.gradientFrom}, ${d.gradientTo})`}>
-              {d.logo ? <img src={d.logo} alt={d.name} class="w-10 h-10 object-contain" /> : d.shortName}
-            </div>
+            {d.logo ? (
+              <img src={d.logo} alt={d.name} class="w-16 h-16 rounded-2xl object-contain flex-shrink-0" />
+            ) : (
+              <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-white font-bold text-2xl flex-shrink-0" style={`background: linear-gradient(135deg, ${d.gradientFrom}, ${d.gradientTo})`}>
+                {d.shortName}
+              </div>
+            )}
             <div>
               <h1 class="text-3xl font-extrabold text-primary">{d.name}</h1>
               <div class="text-secondary text-sm mt-0.5">
