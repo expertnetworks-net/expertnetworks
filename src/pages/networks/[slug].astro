@@ -23,10 +23,17 @@ const others = published.filter(n => !n.data.featured);
 ---
 
 <BaseLayout title={`${d.name} — Expert Networks Hub`}>
-  <div class="pt-[52px] flex min-h-screen">
+  <div class="flex min-h-screen">
 
-    <!-- iOS-style Sidebar -->
-    <aside id="sidebar" class="sidebar-panel hidden lg:flex flex-col w-[300px] min-w-[300px] border-r border-border/40 bg-bg-secondary/60 h-[calc(100vh-52px)] sticky top-[52px] overflow-y-auto overflow-x-hidden">
+    <!-- iOS-style Sidebar — sits above header -->
+    <aside id="sidebar" class="sidebar-panel hidden lg:flex flex-col w-[300px] min-w-[300px] border-r border-border/40 bg-bg-secondary/80 backdrop-blur-xl h-screen sticky top-0 z-[60] overflow-y-auto overflow-x-hidden">
+
+      <!-- Brand header inside sidebar -->
+      <div class="h-[52px] min-h-[52px] flex items-center px-5 border-b border-border/40">
+        <a href="/" class="font-bold text-[15px] tracking-tight text-primary no-underline">
+          Expert<span class="text-accent">Networks</span>
+        </a>
+      </div>
 
       <!-- Search -->
       <div class="px-3 pt-4 pb-2">
@@ -112,25 +119,29 @@ const others = published.filter(n => !n.data.featured);
     <!-- Mobile sidebar toggle -->
     <button
       id="sidebarToggle"
-      class="lg:hidden fixed bottom-6 left-6 z-50 w-12 h-12 bg-accent text-white rounded-full shadow-lg flex items-center justify-center hover:bg-accent-hover transition-all active:scale-95"
+      class="lg:hidden fixed bottom-6 left-6 z-[70] w-12 h-12 bg-accent text-white rounded-full shadow-lg flex items-center justify-center hover:bg-accent-hover transition-all active:scale-95"
       aria-label="Browse networks"
     >
       <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
 
     <!-- Mobile backdrop -->
-    <div id="sidebarBackdrop" class="lg:hidden fixed inset-0 bg-black/30 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-300"></div>
+    <div id="sidebarBackdrop" class="lg:hidden fixed inset-0 bg-black/30 backdrop-blur-sm z-[70] hidden opacity-0 transition-opacity duration-300"></div>
 
-    <!-- Mobile slide-out sidebar -->
-    <aside id="mobileSidebar" class="lg:hidden fixed top-0 left-0 z-50 w-[320px] max-w-[85vw] h-full bg-bg-secondary pt-[52px] -translate-x-full transition-transform duration-300 ease-out overflow-y-auto shadow-2xl">
+    <!-- Mobile slide-out sidebar — above header -->
+    <aside id="mobileSidebar" class="lg:hidden fixed top-0 left-0 z-[80] w-[320px] max-w-[85vw] h-full bg-bg-secondary/95 backdrop-blur-xl -translate-x-full transition-transform duration-300 ease-out overflow-y-auto shadow-2xl">
+      <!-- Mobile brand + close -->
+      <div class="h-[52px] min-h-[52px] flex items-center justify-between px-4 border-b border-border/40">
+        <a href="/" class="font-bold text-[15px] tracking-tight text-primary no-underline">
+          Expert<span class="text-accent">Networks</span>
+        </a>
+        <button id="closeSidebar" class="w-8 h-8 rounded-full bg-black/[0.06] flex items-center justify-center text-tertiary">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
       <!-- Mobile Search -->
       <div class="px-3 pt-4 pb-2">
-        <div class="flex items-center justify-between mb-3 px-1">
-          <span class="text-[15px] font-bold text-primary">Networks</span>
-          <button id="closeSidebar" class="w-8 h-8 rounded-full bg-black/[0.06] flex items-center justify-center text-tertiary">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-          </button>
-        </div>
         <div class="flex items-center gap-2 px-3 py-[7px] bg-black/[0.04] rounded-[10px] text-tertiary text-[13px]">
           <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           <input type="text" placeholder="Search networks" id="mobileSearch" class="bg-transparent border-none outline-none text-primary text-[13px] w-full placeholder:text-tertiary" />
@@ -203,7 +214,7 @@ const others = published.filter(n => !n.data.featured);
     </aside>
 
     <!-- Main content -->
-    <main class="flex-1 min-w-0">
+    <main class="flex-1 min-w-0 pt-[52px]">
       <section class="py-12 lg:py-16 px-6">
         <div class="max-w-3xl mx-auto">
           <!-- Back link (mobile only, sidebar handles desktop) -->
