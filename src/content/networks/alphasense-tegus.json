@@ -33,7 +33,7 @@
     "expertCalls": true,
     "contentLibrary": "Expert Insights (ETL)",
     "aiMatching": true,
-    "surveys": "Channel Checks",
+    "surveys": true,
     "complianceTools": true
   },
   "lastUpdated": "2026-03-06"
