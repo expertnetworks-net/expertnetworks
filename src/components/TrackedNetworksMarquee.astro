@@ -1,0 +1,70 @@
+---
+import { getCollection } from 'astro:content';
+
+const allNetworks = await getCollection('networks');
+const tracked = allNetworks
+  .filter(n => n.data.published && n.data.logo)
+  .sort((a, b) => (a.data.priority ?? 99) - (b.data.priority ?? 99))
+  .slice(0, 12);
+---
+
+<section class="py-5 px-6 border-b border-border/40 overflow-hidden">
+  <div class="max-w-site mx-auto">
+    <div class="text-[11px] font-bold uppercase tracking-widest text-tertiary mb-3">Networks Covered</div>
+    <div class="marquee-wrap relative" aria-label="Expert networks covered">
+      <div class="marquee-track flex gap-6 items-center w-max">
+        {[...tracked, ...tracked].map((n) => (
+          <a
+            href={`/networks/${n.data.slug}`}
+            class="flex-shrink-0 flex items-center gap-2 px-3 py-2 rounded-lg border border-border/50 bg-white hover:border-accent/40 hover:shadow-sm transition-all group no-underline"
+            title={n.data.name.split(' (')[0]}
+          >
+            <img
+              src={n.data.logo}
+              alt={n.data.name.split(' (')[0]}
+              class="w-6 h-6 rounded object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all"
+              loading="lazy"
+            />
+            <span class="text-[12px] font-medium text-tertiary group-hover:text-primary transition-colors whitespace-nowrap">
+              {n.data.name.split(' (')[0].split(' / ')[0]}
+            </span>
+          </a>
+        ))}
+      </div>
+      <div class="marquee-fade-left"></div>
+      <div class="marquee-fade-right"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .marquee-wrap {
+    mask-image: linear-gradient(to right, transparent, black 48px, black calc(100% - 48px), transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 48px, black calc(100% - 48px), transparent);
+  }
+
+  .marquee-track {
+    animation: marquee-scroll 40s linear infinite;
+  }
+
+  .marquee-wrap:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+      flex-wrap: wrap;
+      width: auto;
+    }
+    .marquee-wrap {
+      mask-image: none;
+      -webkit-mask-image: none;
+    }
+  }
+</style>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import TrackedNetworksMarquee from '../../components/TrackedNetworksMarquee.astro';
 import { getCollection } from 'astro:content';
 
 const allNews = await getCollection('news');
@@ -32,6 +33,9 @@ const relatedSlugs = [...new Set(articles.flatMap(a => a.data.relatedNetworks))]
       </div>
     </div>
   </section>
+
+  <!-- Networks covered marquee -->
+  <TrackedNetworksMarquee />
 
   <!-- Filters -->
   <section class="py-4 px-6 border-b border-border/40 bg-bg-secondary/50">
