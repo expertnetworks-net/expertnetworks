@@ -25,10 +25,10 @@ const top10 = [...publishedNetworks]
       <li><a href="/compare" class="text-secondary no-underline text-sm font-medium hover:text-primary transition-colors">Compare</a></li>
       <li><a href="/about" class="text-secondary no-underline text-sm font-medium hover:text-primary transition-colors">About</a></li>
     </ul>
-    <button id="searchTrigger" class="hidden md:flex items-center gap-2 px-3 py-1.5 bg-bg-secondary rounded-lg text-tertiary text-sm cursor-pointer hover:bg-border/50 transition-colors border-none">
+    <button id="searchTrigger" class="flex items-center gap-2 px-3 py-1.5 bg-bg-secondary rounded-lg text-tertiary text-sm cursor-pointer hover:bg-border/50 transition-colors border-none">
       <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      Search networks...
-      <kbd class="bg-white px-1.5 py-0.5 rounded text-xs text-tertiary border border-border ml-2">/</kbd>
+      <span class="hidden sm:inline">Search networks...</span>
+      <kbd class="hidden sm:inline bg-white px-1.5 py-0.5 rounded text-xs text-tertiary border border-border ml-2">/</kbd>
     </button>
   </div>
 </nav>
@@ -285,7 +285,7 @@ const top10 = [...publishedNetworks]
       closeSearch();
       closeMenu();
     }
-    if (e.key === '/' && !searchOverlay?.classList.contains('hidden') === false) {
+    if (e.key === '/' && searchOverlay?.classList.contains('hidden')) {
       const tag = document.activeElement?.tagName;
       if (tag !== 'INPUT' && tag !== 'TEXTAREA' && tag !== 'SELECT') {
         e.preventDefault();
