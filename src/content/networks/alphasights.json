@@ -2,6 +2,7 @@
   "name": "AlphaSights",
   "shortName": "A",
   "slug": "alphasights",
+  "logo": "/images/networks/alphasights.png",
   "website": "https://alphasights.com",
   "gradientFrom": "#0f766e",
   "gradientTo": "#14b8a6",

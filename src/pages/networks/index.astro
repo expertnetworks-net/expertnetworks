@@ -118,10 +118,10 @@ const allHqs = [...new Set(networks.map(n => getRegion(n.data.headquarters || ''
 
               <!-- Logo -->
               <div
-                class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
+                class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-sm flex-shrink-0 overflow-hidden"
                 style={`background: linear-gradient(135deg, ${n.gradientFrom}, ${n.gradientTo})`}
               >
-                {n.shortName}
+                {n.logo ? <img src={n.logo} alt={n.name} class="w-10 h-10 object-cover" /> : n.shortName}
               </div>
 
               <!-- Info -->

@@ -60,12 +60,12 @@ const others = published.filter(n => !n.data.featured);
             >
               <div
                 class:list={[
-                  'w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0',
+                  'w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0 overflow-hidden',
                   n.data.slug === d.slug ? 'ring-2 ring-white/30' : '',
                 ]}
                 style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}
               >
-                {n.data.shortName}
+                {n.data.logo ? <img src={n.data.logo} alt={n.data.name} class="w-8 h-8 object-cover" /> : n.data.shortName}
               </div>
               <div class="min-w-0">
                 <div class:list={['text-[13px] font-medium truncate', n.data.slug === d.slug ? 'text-white' : 'text-primary']}>{n.data.name.split(' (')[0]}</div>
@@ -95,12 +95,12 @@ const others = published.filter(n => !n.data.featured);
             >
               <div
                 class:list={[
-                  'w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0',
+                  'w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0 overflow-hidden',
                   n.data.slug === d.slug ? 'ring-2 ring-white/30' : '',
                 ]}
                 style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}
               >
-                {n.data.shortName}
+                {n.data.logo ? <img src={n.data.logo} alt={n.data.name} class="w-8 h-8 object-cover" /> : n.data.shortName}
               </div>
               <div class="min-w-0">
                 <div class:list={['text-[13px] font-medium truncate', n.data.slug === d.slug ? 'text-white' : 'text-primary']}>{n.data.name.split(' (')[0]}</div>
@@ -165,12 +165,12 @@ const others = published.filter(n => !n.data.featured);
             >
               <div
                 class:list={[
-                  'w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0',
+                  'w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0 overflow-hidden',
                   n.data.slug === d.slug ? 'ring-2 ring-white/30' : '',
                 ]}
                 style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}
               >
-                {n.data.shortName}
+                {n.data.logo ? <img src={n.data.logo} alt={n.data.name} class="w-8 h-8 object-cover" /> : n.data.shortName}
               </div>
               <div class="min-w-0">
                 <div class:list={['text-[13px] font-medium truncate', n.data.slug === d.slug ? 'text-white' : 'text-primary']}>{n.data.name.split(' (')[0]}</div>
@@ -197,12 +197,12 @@ const others = published.filter(n => !n.data.featured);
             >
               <div
                 class:list={[
-                  'w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0',
+                  'w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0 overflow-hidden',
                   n.data.slug === d.slug ? 'ring-2 ring-white/30' : '',
                 ]}
                 style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}
               >
-                {n.data.shortName}
+                {n.data.logo ? <img src={n.data.logo} alt={n.data.name} class="w-8 h-8 object-cover" /> : n.data.shortName}
               </div>
               <div class="min-w-0">
                 <div class:list={['text-[13px] font-medium truncate', n.data.slug === d.slug ? 'text-white' : 'text-primary']}>{n.data.name.split(' (')[0]}</div>

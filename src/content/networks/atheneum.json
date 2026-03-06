@@ -2,6 +2,7 @@
   "name": "Atheneum",
   "shortName": "AT",
   "slug": "atheneum",
+  "logo": "/images/networks/atheneum.png",
   "website": "https://atheneum.ai",
   "gradientFrom": "#4338ca",
   "gradientTo": "#818cf8",

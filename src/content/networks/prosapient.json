@@ -2,6 +2,7 @@
   "name": "Prosapient",
   "shortName": "P",
   "slug": "prosapient",
+  "logo": "/images/networks/prosapient.png",
   "website": "https://prosapient.com",
   "gradientFrom": "#831843",
   "gradientTo": "#db2777",

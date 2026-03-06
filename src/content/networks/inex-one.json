@@ -2,7 +2,6 @@
   "name": "INEX ONE",
   "shortName": "IX",
   "slug": "inex-one",
-  "logo": "/images/networks/inex-one.svg",
   "website": "https://inex.one",
   "gradientFrom": "#0d9488",
   "gradientTo": "#5eead4",
