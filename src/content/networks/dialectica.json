@@ -6,34 +6,175 @@
   "website": "https://dialectica.io",
   "gradientFrom": "#064e3b",
   "gradientTo": "#059669",
-  "type": "Expert Network",
+  "type": "Expert Network / B2B Information Services",
   "founded": 2015,
-  "headquarters": "Montreal, Canada",
-  "employeeCount": "900+",
-  "expertCount": "750K+",
-  "description": "Fast-growing expert network combining human intelligence with GenAI, powered by 750K+ experts and 1M+ knowledge connectors. Known for high-quality curated interactions, B2B surveys, and a 1,000+ strong operations team.",
-  "services": ["Expert Calls", "B2B Surveys", "Content Library", "Custom Research"],
-  "aiCapabilities": ["Proprietary AI agents", "50+ GenAI tools", "AI-assisted expert matching", "Automated compliance monitoring"],
-  "industries": ["Private Equity", "Consulting", "Healthcare", "Technology"],
-  "pricingModel": "Per-call",
-  "keyDifferentiators": ["High curation quality", "Strong European presence", "Fast turnaround times"],
-  "bestFor": ["Private Equity", "Consulting", "European Markets"],
+  "headquarters": "London, UK (28 Margaret Street); operational hub in Athens, Greece",
+  "employeeCount": "1,400+",
+  "employeeCountSource": "Employees (company claim; some estimates to ~2,200)",
+  "expertCount": "Not publicly disclosed",
+  "expertCountLabel": "Custom-sourced experts (no static database count published)",
+  "description": "Dialectica is a fast-growing B2B information services firm founded in 2015 by George Tsarouchas and Frederick Corkett. The company started in Athens with a small London sales office and has grown to 1,400+ employees across six offices on three continents, crossing $100 million in annual revenue. Dialectica differentiates through its Athens-based operational model (delivering high-quality service at lower cost than London/NYC-based competitors), aggressive AI investment (50+ GenAI tools, proprietary AI agents, Dialectica IQ knowledge graph), and its Origin deal-sourcing platform for private equity. Named to the FT 1000 (Europe's fastest-growing companies) for five consecutive years.",
+  "services": ["Expert Calls", "B2B Surveys", "Insights (Content Library)", "Origin (Deal Sourcing Platform)", "Custom Research"],
+  "aiCapabilities": ["Dialectica IQ knowledge graph", "50+ advanced GenAI tools", "Proprietary AI agents", "AI-assisted expert matching", "120+ technology and data professionals", "Automated compliance monitoring"],
+  "industries": ["Private Equity", "Management Consulting", "Corporate Strategy", "Healthcare / Life Sciences", "Technology", "Financial Services", "Investment Banking"],
+  "pricingModel": "Credit-based",
+  "pricingDetail": "Credit system (~$700–$1,100/call client-side; multiple credits may apply per call)",
+  "keyDifferentiators": ["Athens-based operations model — high quality at lower cost than London/NYC peers", "Aggressive AI investment (50+ GenAI tools, Dialectica IQ knowledge graph)", "Origin deal-sourcing platform for PE (unique in expert network space)", "70% compound annual growth rate since founding", "Strong European and emerging market presence", "Hired former Tegus Chief Compliance Officer (2025)"],
+  "bestFor": ["Private equity deal teams (especially via Origin platform)", "Consulting firms needing high-quality curated interactions", "European and emerging market research", "Teams seeking AI-augmented research workflows", "Budget-conscious clients wanting premium-quality service"],
   "compliance": {
     "mnpiPolicy": "Structured MNPI policies with compliance screening integrated into platform workflow",
-    "expertVetting": "Technology-assisted vetting with human compliance review",
+    "expertVetting": "Technology-assisted vetting with human compliance review; proprietary AI-powered compliance monitoring",
     "coolingOffPeriod": "Standard cooling-off periods enforced",
     "auditTrail": true,
-    "regulatoryHistory": "Clean regulatory record"
+    "regulatoryHistory": "No known regulatory enforcement actions against Dialectica. In 2025, the firm hired the former Chief Compliance Officer at Tegus to lead its legal and regulatory program, signaling significant investment in compliance infrastructure as it scales into larger institutional accounts."
   },
   "featured": true,
   "priority": 6,
   "published": true,
   "comparison": {
     "expertCalls": true,
-    "contentLibrary": true,
+    "contentLibrary": "Insights",
     "aiMatching": true,
     "surveys": true,
     "complianceTools": true
   },
-  "lastUpdated": "2026-03-06"
+  "lastUpdated": "2026-03-06",
+
+  "overview": "Dialectica is a B2B information services firm that has grown from a small Athens-based startup in 2015 to one of the fastest-growing expert networks globally. The company's model is built on a key insight: replicate the high-touch, high-quality service model of premium competitors like AlphaSights, but run operations from Athens rather than London or New York — achieving comparable quality at significantly lower cost. This has fueled a 70% compound annual growth rate and revenue crossing $100 million. Dialectica is now pushing aggressively into AI with its Dialectica IQ knowledge graph, 50+ GenAI tools, and Origin deal-sourcing platform, while expanding its compliance infrastructure by hiring the former Tegus Chief Compliance Officer. The firm was upgraded to 'Global Leader' status by Inex One in 2024.",
+
+  "history": {
+    "narrative": "Dialectica was co-founded in 2015 by George Tsarouchas (CEO) and Frederick Corkett. Both founders had backgrounds in management consulting and the expert network industry — Tsarouchas at Goldman Sachs and the buy-side, Corkett at AMR International as a strategy consultant and previously at AlphaSights. They started the company in Athens, Greece with a small sales office in London, deliberately choosing Athens for its talent pool and cost advantages. The firm grew rapidly, earning a place on the FT 1000 (Europe's fastest-growing companies) for five consecutive years and crossing $100 million in revenue by 2025.",
+    "timeline": [
+      { "year": "2015", "event": "Founded in Athens by George Tsarouchas and Frederick Corkett; small sales office in London" },
+      { "year": "2017–2021", "event": "Rapid growth — named to FT 1000 (Europe's fastest-growing companies) for five consecutive years" },
+      { "year": "2021", "event": "Named fastest-growing expert network in Europe by Financial Times and Statista (ranked 301st in FT 1000)" },
+      { "year": "2023", "event": "Opens Montreal office as Americas hub; expands to Bogotá and Ho Chi Minh City" },
+      { "year": "2024", "event": "Revenue reaches ~$121M (Sacra estimate); upgraded to 'Global Leader' by Inex One; launches Origin deal-sourcing platform" },
+      { "year": "2025", "event": "Hires former Tegus Chief Compliance Officer; celebrates 10th anniversary crossing $100M revenue; launches Dialectica IQ knowledge graph" },
+      { "year": "2025", "event": "Opens New York office; team grows to 1,400+ employees across 6 offices on 3 continents" }
+    ]
+  },
+
+  "servicesDetailed": [
+    {
+      "name": "Expert Calls",
+      "description": "Dialectica's core offering: one-on-one and multi-party consultations with custom-sourced experts. The firm emphasizes high curation quality — a 1,000+ strong operations team based primarily in Athens manages expert sourcing, scheduling, and compliance. Dialectica's operational model delivers comparable quality to premium peers at competitive pricing through its Athens cost base."
+    },
+    {
+      "name": "B2B Surveys",
+      "description": "Scalable B2B surveys sourced through Dialectica's expert network and broader respondent panels. Surveys are designed for market sizing, competitive benchmarking, customer sentiment, and pricing studies. Can be paired with follow-up expert calls for deeper exploration."
+    },
+    {
+      "name": "Insights (Content Library)",
+      "description": "Dialectica's content library of expert-sourced transcripts, analysis pieces, and research deliverables. The Insights platform provides reusable research content that clients can access on demand, increasingly enriched by AI-powered synthesis and the Dialectica IQ knowledge graph."
+    },
+    {
+      "name": "Origin (Deal Sourcing Platform)",
+      "description": "A self-service deal-sourcing and market intelligence platform built for private equity, venture capital, and corporate strategy teams. Origin provides expert-vetted company snapshots, qualitative deal intelligence, and CRM integration. It targets workflow budgets currently allocated to deal-sourcing databases by offering the 'critical context that data tables miss.' Origin represents Dialectica's push beyond traditional expert calls into structured data products."
+    },
+    {
+      "name": "Custom Research",
+      "description": "Multi-method research engagements combining expert calls, surveys, content, and custom analysis into structured deliverables. Designed for due diligence, market landscape assessments, and complex strategic questions requiring multiple expert perspectives and dedicated project management."
+    }
+  ],
+
+  "aiPlatform": {
+    "narrative": "Dialectica has made AI a central part of its identity and growth strategy. The firm positions itself as 'redefining how knowledge is discovered, indexed, and synthesized' through its Dialectica IQ knowledge graph — a dynamic, continuously evolving system that structures the world's business knowledge. The firm operates with 50+ advanced GenAI tools, proprietary AI agents, and a team of 120+ technology and data professionals. Datasets are enriched by a 1,000+ strong operations team, combining human intelligence with AI at scale. The AI platform minimizes the time from query to actionable insight.",
+    "features": [
+      "Dialectica IQ: Dynamic knowledge graph structuring the world's business knowledge",
+      "50+ advanced GenAI tools for research synthesis and insight extraction",
+      "Proprietary AI agents for automated research workflows",
+      "120+ technology and data professionals",
+      "1,000+ operations team enriching AI datasets with human intelligence",
+      "AI-powered compliance monitoring and expert matching",
+      "Origin platform with expert-vetted company intelligence for deal sourcing"
+    ]
+  },
+
+  "complianceExtended": {
+    "narrative": "Dialectica has significantly invested in compliance infrastructure as it scales into larger institutional accounts. In 2025, the firm hired the former Chief Compliance Officer at Tegus to lead its legal and regulatory program — a notable signal of investment in this area. The firm uses technology-assisted vetting combined with human compliance review, and its proprietary AI tools include automated compliance monitoring capabilities. As a newer entrant (founded 2015), Dialectica's compliance infrastructure is less battle-tested than incumbents like GLG or Guidepoint, but the Tegus CCO hire suggests the firm is actively closing this gap.",
+    "highlights": [
+      "Hired former Tegus Chief Compliance Officer in 2025 to lead legal and regulatory program",
+      "Technology-assisted expert vetting with human compliance review",
+      "Proprietary AI-powered compliance monitoring",
+      "Structured MNPI policies integrated into platform workflow",
+      "Standard cooling-off periods enforced",
+      "Full audit trail of all expert interactions"
+    ],
+    "regulatoryContext": "No known regulatory enforcement actions against Dialectica were identified in this review. As a company founded in 2015, Dialectica is a newer entrant than the Big Five incumbents and has a shorter compliance track record. The 2025 hire of Tegus' former CCO signals the firm's recognition that scaling into large institutional investor accounts requires a more mature compliance infrastructure."
+  },
+
+  "clientFit": {
+    "narrative": "Dialectica is especially well suited for clients who want premium-quality expert interactions at competitive pricing. The firm's Athens-based operational model delivers high curation quality while maintaining cost advantages over London and New York-based competitors. Origin makes it particularly strong for PE deal teams. The firm's European roots give it a natural advantage in European and emerging market research.",
+    "segments": [
+      "Private equity deal teams (especially via Origin deal-sourcing platform)",
+      "Management consulting firms needing high-quality curated interactions",
+      "Corporate strategy teams at large enterprises",
+      "Investment banks requiring sector-specific expert access",
+      "Healthcare and life sciences investors",
+      "Teams focused on European and emerging market research"
+    ]
+  },
+
+  "strengths": [
+    "Exceptional growth trajectory — 70% CAGR, crossed $100M revenue, FT 1000 five consecutive years",
+    "Athens-based operations model: premium quality at lower cost than London/NYC peers",
+    "Aggressive AI investment: 50+ GenAI tools, Dialectica IQ knowledge graph, 120+ tech team",
+    "Origin platform — unique self-service deal-sourcing product for PE (not just expert calls)",
+    "Upgraded to 'Global Leader' by Inex One in 2024",
+    "1,000+ strong operations team enriching AI datasets with human intelligence",
+    "Founder-led with both co-founders (Tsarouchas, Corkett) still active",
+    "Strong European presence and emerging market coverage (Athens, Bogotá, Ho Chi Minh City)"
+  ],
+
+  "caveats": [
+    "Younger company (founded 2015) — less established track record than Big Five incumbents",
+    "Does not publicly disclose expert network size — harder to compare scale with competitors",
+    "Credit-based pricing can be opaque — multiple credits per call may make effective price higher than expected",
+    "Compliance infrastructure is maturing (Tegus CCO hire in 2025 signals this is still being built out)",
+    "Smaller than GLG, AlphaSights, Third Bridge, or Guidepoint by most measures",
+    "Employee count discrepancy: company says 1,400+; some third-party estimates suggest ~2,200"
+  ],
+
+  "notableFacts": [
+    "Founded in 2015 in Athens by George Tsarouchas and Frederick Corkett",
+    "Tsarouchas background: Goldman Sachs, buy-side; Corkett: AMR International, AlphaSights",
+    "Started in Athens with a small London sales office — Athens operations model is a core differentiator",
+    "Revenue crossed $100 million; Sacra estimates $121M in 2024 (39% YoY growth)",
+    "70% compound annual growth rate since founding",
+    "Named to FT 1000 (Europe's fastest-growing companies) for five consecutive years",
+    "Upgraded to 'Global Leader' by Inex One in 2024",
+    "Hired former Tegus Chief Compliance Officer in 2025",
+    "Origin deal-sourcing platform targets PE/VC workflow budgets",
+    "Dialectica IQ knowledge graph structures business knowledge for AI-powered insights",
+    "120+ technology and data professionals; 1,000+ operations team",
+    "Appears to be bootstrapped/founder-led — no major PE/VC backing publicly disclosed",
+    "Great Place to Work certified in Vietnam and Greece",
+    "Growth Awards 2025: received top honor"
+  ],
+
+  "sourceNotes": [
+    "Dialectica official website (dialectica.io) used as primary source for product descriptions and company positioning",
+    "Founding story sourced from Inex One, CBInsights, ListAlpha interview with Fred Corkett, and Sacra",
+    "Revenue data: Sacra estimates $121M (2024, 39% YoY); company confirmed crossing $100M in August 2025 10th anniversary announcement (Yahoo Finance / BusinessWire)",
+    "Employee count: company says '1,400+ employees' (website); some third-party estimates (LeadIQ) range to ~2,200",
+    "Expert network size not publicly disclosed — Dialectica does not publish a specific advisor count like GLG (1.2M) or Guidepoint (1.75M)",
+    "FT 1000 rankings confirmed via BusinessWire press releases and Dialectica blog posts",
+    "Former Tegus CCO hire reported by Inex One in 2025",
+    "Origin platform details from dialectica.io/origin and dialectica.io/solutions/origin",
+    "Pricing information from Inex One comparison page and expert review sites (competitive bias noted)"
+  ],
+
+  "whyChoose": ["Premium quality, competitive cost", "AI-forward platform", "Origin for PE deals", "European strength"],
+  "whenNotIdeal": ["Needs largest network scale", "Wants long compliance track record", "US-centric research only", "Credit pricing opacity"],
+
+  "confidence": {
+    "founded": "verified",
+    "headquarters": "verified",
+    "expertCount": "inference",
+    "employeeCount": "verified",
+    "pricingModel": "inference",
+    "services": "verified",
+    "compliance": "positioning"
+  }
 }
