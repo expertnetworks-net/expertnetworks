@@ -26,7 +26,7 @@
     "expertVetting": "Multi-layer advisor vetting including compliance tutorials, conflict-of-interest checks, and ongoing monitoring; client dashboard for compliance personnel to audit interactions",
     "coolingOffPeriod": "Standard cooling-off periods enforced for public-company employees",
     "auditTrail": true,
-    "regulatoryHistory": "No major public regulatory enforcement actions identified against Guidepoint. The firm positions compliance as a core brand differentiator and maintains a dedicated global compliance function."
+    "regulatoryHistory": "Guidepoint has never been charged with wrongdoing. However, its name appeared in several insider trading cases (Dr. Yves Benhamou, Winifred Jiau) where individual consultants were charged — in each case, the individuals deliberately circumvented Guidepoint's compliance controls. Per Integrity Research: 'Guidepoint's compliance procedures protected it from accusations of wrongdoing.' General Counsel Catherine Smith is a former SEC Division of Enforcement Senior Counsel."
   },
   "featured": true,
   "priority": 4,
@@ -43,15 +43,19 @@
   "overview": "Guidepoint is one of the largest expert networks globally, connecting more than 5,000 client organizations with 1.75 million+ advisors across 150+ industries and 500+ subsectors. The firm operates as a research enablement platform — providing not just expert access but also healthcare data intelligence (Qsight), content libraries (Guidepoint Insights with 65,000+ transcripts), live events (1,500+ per month), and since October 2025, the Guidepoint360 AI platform with its AskGP conversational research assistant. Guidepoint is privately held and founder-led by Albert Sebag, who serves as CEO. The company has grown from ~800 employees in 2020 to 1,600+ today across 19 global offices.",
 
   "history": {
-    "narrative": "Guidepoint was founded in 2003 by Albert Sebag, an organic chemist turned patent attorney. Sebag earned his Ph.D. in Organic Chemistry from Northeastern University (with research at MIT) and his J.D. from Boston College Law School. He founded the company as Clinical Advisors, originally matching cancer patients with appropriate clinical trials. As the model expanded into broader healthcare and other industries, the company rebranded to Guidepoint Global in 2007. Through organic growth and acquisitions (Innosquared in 2015, Vista Research), Guidepoint has become one of the 'Big Five' expert networks alongside GLG, AlphaSights, Third Bridge, and AlphaSense-Tegus.",
+    "narrative": "Guidepoint was founded in 2003 by Albert Sebag, an organic chemist turned patent attorney. Sebag earned his Ph.D. in Organic Chemistry from Northeastern University (with research at MIT) and his J.D. from Boston College Law School. He began as a patent litigator at Kenyon & Kenyon advising generic pharma companies, then founded Clinical Advisors to match cancer patients with clinical trials. As the model expanded into broader healthcare and other industries, the company rebranded to Guidepoint Global in 2007. Through organic growth and three acquisitions — Vista Research (2009, from Standard & Poor's, giving Guidepoint Asia presence), Innosquared (2015, European expert network), and Quanton Data Analytics (2016, alternative data, foundation for Qsight) — Guidepoint has become one of the 'Big Five' expert networks.",
     "timeline": [
       { "year": "2003", "event": "Founded as Clinical Advisors by Albert Sebag in New York to match cancer patients with clinical trials" },
-      { "year": "2007", "event": "Rebranded to Guidepoint Global as the firm expanded beyond healthcare into other industries" },
-      { "year": "2015", "event": "Acquires Innosquared, a European expert network firm, to strengthen European operations" },
+      { "year": "2007", "event": "Rebranded to Guidepoint Global; launched Tracker product (recurring physician surveys)" },
+      { "year": "2009", "event": "Acquires Vista Research from Standard & Poor's — gains Asia presence and tech/telecom expertise; opens London office; becomes second-largest expert network after GLG" },
+      { "year": "2012", "event": "Expands into mainland China with Shanghai office" },
+      { "year": "2015", "event": "Acquires Innosquared, a Germany-based expert network, expanding European presence to 50,000+ EMEA experts" },
+      { "year": "2016", "event": "Acquires Quanton Data Analytics (alternative data provider), laying the foundation for Qsight" },
+      { "year": "2018", "event": "Launches Guidepoint Insights — moderated teleconferences with transcripts" },
       { "year": "2020", "event": "Approximately 800 employees, 14 offices, 650,000+ experts" },
-      { "year": "2022", "event": "Network surpasses 1 million experts (announced via PRNewswire)" },
+      { "year": "2021", "event": "Network surpasses 1 million advisors (announced via PRNewswire)" },
+      { "year": "2022", "event": "Opens Mumbai office; reaches 1,000+ daily interactions" },
       { "year": "2024", "event": "Grows to 1,300+ employees, 17 offices, 1.5M+ experts, 4,500+ clients; launches Guidepoint Qsight healthcare data platform" },
-      { "year": "2024", "event": "Acquires Vista Research to strengthen equity research capabilities" },
       { "year": "Oct 2025", "event": "Launches Guidepoint360 AI platform with AskGP conversational research assistant and AI Moderation" },
       { "year": "2025–2026", "event": "Expands to 1,600+ employees, 19 offices, 1.75M+ advisors, 5,000+ clients; launches Guidepoint360 mobile app" }
     ]
@@ -76,7 +80,7 @@
     },
     {
       "name": "AI Moderation",
-      "description": "An AI-powered moderation capability for expert calls at enterprise scale. AI Moderation automates portions of the expert interaction workflow, enabling faster and more consistent research delivery. Announced in 2025 as part of Guidepoint's broader AI investment."
+      "description": "An AI-powered capability that conducts expert interviews autonomously — without a live client present. AI runs structured interviews with consistent prompts and can run dozens simultaneously, 24/7. This produces 'AI-Guided' transcripts for the Insights library. Guidepoint claims 'thousands of interviews' facilitated for early-adopter clients. A major differentiator: no other Big Five network publicly offers fully autonomous AI-conducted expert interviews at scale."
     },
     {
       "name": "Guidepoint360 / AskGP",
@@ -101,17 +105,18 @@
   },
 
   "complianceExtended": {
-    "narrative": "Guidepoint positions compliance as a core brand differentiator. The firm maintains a dedicated global compliance function with compliance officers assigned to each engagement. Advisors undergo multi-layer vetting including compliance tutorials, conflict-of-interest screening, and ongoing monitoring. Guidepoint's client dashboard provides compliance personnel with tools to download interaction records, audit engagement history, and manage restricted lists. The firm describes its compliance approach in three phases: pre-engagement screening, during-engagement monitoring, and post-engagement auditing.",
+    "narrative": "Guidepoint positions compliance as a core brand differentiator and structures its framework in three stages: Advisor Eligibility (third-party background checks, Employer Opt-Out Registry), Project Compliance (proprietary IT platform enforcing screens before workflow proceeds, advisor re-affirmation of T&Cs before each consultation), and Project Review (custom client controls, real-time dashboards). Advisors must complete a mandatory Compliance Tutorial upon joining and re-certify annually. Advisors are instructed to terminate any consultation where they believe they are being solicited for confidential or MNPI information — and are still paid for the full consultation. General Counsel Catherine Smith is a former Senior Counsel of the SEC Division of Enforcement.",
     "highlights": [
-      "Dedicated compliance officers assigned per engagement",
-      "Multi-layer advisor vetting with compliance tutorials and conflict-of-interest checks",
-      "Client compliance dashboard for downloading interaction records and auditing history",
-      "Three-phase compliance approach: pre-engagement, during-engagement, post-engagement",
-      "MNPI screening and monitoring throughout the interaction lifecycle",
-      "Standard cooling-off periods for public-company employees",
-      "Full audit trail of all advisor interactions"
+      "Three-stage compliance framework: Advisor Eligibility, Project Compliance, Project Review",
+      "Third-party background checks on all new advisors; periodic re-checks on existing advisors",
+      "Employer Opt-Out Registry — automated system preventing employees of opted-out companies from participating",
+      "Mandatory Compliance Tutorial with annual re-certification for all advisors",
+      "Advisors instructed to terminate consultations if solicited for MNPI (still paid in full)",
+      "Client compliance dashboard with downloadable interaction records and real-time auditing",
+      "General Counsel Catherine Smith is former SEC Division of Enforcement Senior Counsel",
+      "Zero AI model training on customer data — compliance-oriented AI positioning"
     ],
-    "regulatoryContext": "No major public regulatory enforcement actions were identified against Guidepoint in this review. The firm has operated since 2003 without significant public compliance incidents. As with all expert networks, Guidepoint operates in an environment shaped by the SEC's 2022 Risk Alert on expert networks, which was industry-wide and not directed at Guidepoint specifically."
+    "regulatoryContext": "Guidepoint has never been charged with wrongdoing. However, its name appeared in several insider trading cases where individual consultants (Dr. Yves Benhamou, Winifred Jiau) were charged — in each case, the individuals deliberately circumvented Guidepoint's compliance controls rather than exploiting gaps in them. Massachusetts Secretary of State William Galvin also filed a complaint against Risk Reward Capital Management for using Guidepoint to obtain inside information, but Guidepoint itself was not charged. Per Integrity Research: 'Guidepoint's compliance procedures protected it from accusations of wrongdoing.' The SEC's 2022 Risk Alert on expert networks was industry-wide and not directed at Guidepoint specifically."
   },
 
   "clientFit": {
@@ -155,13 +160,17 @@
     "Network has grown from 650K+ (2020) to 1.75M+ advisors (2025) — adding 20,000+ experts per month",
     "Serves 5,000+ client organizations including 9 of the top 10 consulting firms",
     "500+ hedge fund clients",
-    "Acquired Innosquared (European expert network, 2015) and Vista Research (equity research)",
+    "Three acquisitions: Vista Research (2009, from S&P, gave Asia presence), Innosquared (2015, European), Quanton Data Analytics (2016, alt data → Qsight)",
     "Launched Guidepoint Qsight healthcare data platform in 2024",
     "Launched Guidepoint360 + AskGP AI platform in October 2025",
     "Hosts 1,500+ live events per month",
     "Content library: 65,000+ searchable transcripts and audio recordings",
-    "Revenue estimated at ~$460M (Getlatka; unverified — company is privately held)",
-    "Ranked as second-largest expert network by Integrity Research"
+    "Revenue estimated at $200–350M range (third-party estimates vary widely; company is privately held)",
+    "Ranked as second-largest expert network by Integrity Research",
+    "General Counsel Catherine Smith is former SEC Division of Enforcement Senior Counsel",
+    "Chief Technology and AI Officer: Kaushik Deka",
+    "Pune, India technology center for platform development",
+    "AI Moderation can conduct autonomous expert interviews 24/7 without live client — unique among Big Five"
   ],
 
   "sourceNotes": [
@@ -169,7 +178,9 @@
     "Wikipedia entry used for founding story (Clinical Advisors origin), rebranding history, and acquisition timeline",
     "Employee count: company says '1,600+ employees' — Getlatka estimates ~4,500; discrepancy may reflect contractor inclusion or different counting methodology",
     "Advisor count of '1.75M+' is from company website (updated from earlier 1.5M+ figure); adds 20,000+ per month per company claims",
-    "Revenue estimate (~$460M) from Getlatka and is unverified — Guidepoint is privately held with no public financial filings identified",
+    "Revenue estimates vary widely ($200M–$460M depending on source) — Guidepoint is privately held with no public financial filings identified; Inex One estimated 'north of $200M' in 2021",
+    "Acquisition timeline corrected: Vista Research was acquired in 2009 (from Standard & Poor's), not 2024; Quanton Data Analytics acquired 2016",
+    "Regulatory context: Guidepoint's name appeared in insider trading cases (Benhamou, Jiau, Risk Reward Capital) but firm was never charged — sourced from Wikipedia, Integrity Research",
     "Guidepoint360 and AskGP details sourced from October 2025 PRNewswire press release and Yahoo Finance coverage",
     "Qsight details from dedicated Qsight website (qsight.guidepoint.com) and company press releases",
     "Client count (5,000+ organizations) and consulting firm stat (9 of top 10) from company website — not independently verified",
