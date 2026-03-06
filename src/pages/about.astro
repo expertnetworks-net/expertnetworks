@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About — ExpertNetworks.net">
+  <section class="pt-32 pb-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <a href="/" class="inline-flex items-center gap-1 text-accent text-sm font-medium no-underline mb-8 hover:underline">
+        &larr; Home
+      </a>
+
+      <h1 class="text-3xl font-extrabold text-primary mb-4">About ExpertNetworks.net</h1>
+      <p class="text-lg text-secondary leading-relaxed mb-10">An independent information resource for the expert network industry.</p>
+
+      <div class="prose prose-sm text-secondary leading-relaxed space-y-6">
+        <h2 class="text-lg font-bold text-primary">Why This Exists</h2>
+        <p>The expert network industry generates billions in annual revenue and serves the world's largest investors, consultancies, and corporations — yet there is no independent, non-commercial source of information about it. Every existing resource is either a marketplace (INEX ONE, Dialectica, GLG's own site) or self-promotional content.</p>
+        <p>ExpertNetworks.net was created to fill that gap: a neutral directory and intelligence hub where buyers, researchers, and industry professionals can find accurate, comparable information about expert networks without signing up for anything or dealing with sales pitches.</p>
+
+        <h2 class="text-lg font-bold text-primary">What We Are</h2>
+        <ul class="list-disc pl-5 space-y-1 text-sm">
+          <li>A free, open information resource — no accounts, no paywalls</li>
+          <li>An independent project with no commercial ties to any expert network</li>
+          <li>A growing directory — we currently cover {'{'}30+{'}'} networks and are expanding toward broader industry coverage</li>
+        </ul>
+
+        <h2 class="text-lg font-bold text-primary">What We Are Not</h2>
+        <ul class="list-disc pl-5 space-y-1 text-sm">
+          <li>Not a marketplace — we don't broker expert calls or take referral fees</li>
+          <li>Not affiliated with any expert network company</li>
+          <li>Not an exhaustive directory (yet) — there are 100+ active networks globally, and we're working toward more complete coverage</li>
+        </ul>
+
+        <h2 class="text-lg font-bold text-primary">Our Approach</h2>
+        <p>We compile profiles from publicly available information and label our sources. We distinguish between independent journalism and company-originated press releases. We track compliance approaches because that's what serious buyers care about most. See our <a href="/sources" class="text-accent hover:underline">Sources & Methodology</a> page for details.</p>
+
+        <h2 class="text-lg font-bold text-primary">Contact</h2>
+        <p>If you represent an expert network and want to correct information about your company, or if you're a researcher with feedback, reach out. Accuracy matters more than speed.</p>
+
+        <p class="text-xs text-tertiary mt-8">Last updated: March 2026</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

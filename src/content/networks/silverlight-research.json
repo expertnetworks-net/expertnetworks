@@ -16,6 +16,13 @@
   "industries": ["Private Equity", "Hedge Funds", "Asset Management"],
   "pricingModel": "Per-call",
   "keyDifferentiators": ["Boutique, high-touch service", "PE/HF specialization", "Senior expert focus"],
+  "bestFor": ["Boutique PE Firms", "Hedge Funds", "Senior Expert Access"],
+  "compliance": {
+    "mnpiPolicy": "Standard MNPI policies",
+    "expertVetting": "High-touch manual vetting given boutique scale",
+    "auditTrail": true,
+    "regulatoryHistory": "Clean regulatory record"
+  },
   "featured": false,
   "priority": 15,
   "published": true,

@@ -1,0 +1,30 @@
+{
+  "name": "Epsilon Research",
+  "shortName": "ER",
+  "slug": "epsilon-research",
+  "website": "https://epsilonresearch.com",
+  "gradientFrom": "#166534",
+  "gradientTo": "#4ade80",
+  "type": "Expert Network",
+  "founded": 2017,
+  "headquarters": "Boston, MA",
+  "employeeCount": "80+",
+  "expertCount": "35K+",
+  "description": "Healthcare specialist expert network providing deep clinical and life sciences expertise to investors, pharmaceutical companies, and consultancies conducting due diligence and primary research.",
+  "services": ["Expert Calls", "Healthcare Research", "KOL Identification"],
+  "aiCapabilities": ["AI-powered KOL mapping", "Clinical trial analytics", "Therapeutic area matching"],
+  "industries": ["Healthcare", "Life Sciences", "Pharmaceuticals", "Medical Devices", "Biotechnology"],
+  "pricingModel": "Per-call",
+  "keyDifferentiators": ["Deep healthcare specialization", "KOL identification capabilities", "Clinical and regulatory expertise"],
+  "bestFor": ["Healthcare", "Life Sciences", "Pharma DD"],
+  "compliance": {
+    "mnpiPolicy": "Strict healthcare-specific MNPI policies with clinical trial information safeguards",
+    "expertVetting": "Rigorous credential verification for medical and scientific professionals",
+    "auditTrail": true,
+    "regulatoryHistory": "Clean regulatory record"
+  },
+  "featured": false,
+  "priority": 26,
+  "published": true,
+  "lastUpdated": "2026-03-06"
+}

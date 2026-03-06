@@ -16,6 +16,13 @@
   "industries": ["Life Sciences", "Technology", "Healthcare", "Energy"],
   "pricingModel": "Per-call",
   "keyDifferentiators": ["AI-native approach", "Deep technical/scientific focus", "NLP expert discovery"],
+  "bestFor": ["Life Sciences", "Deep Tech Research", "Scientific Due Diligence"],
+  "compliance": {
+    "mnpiPolicy": "Standard compliance protocols for technical consultations",
+    "expertVetting": "AI-assisted credential verification with domain expertise checks",
+    "auditTrail": true,
+    "regulatoryHistory": "Clean regulatory record"
+  },
   "featured": false,
   "priority": 11,
   "published": true,

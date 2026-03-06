@@ -1,0 +1,30 @@
+{
+  "name": "Lynk",
+  "shortName": "LK",
+  "slug": "lynk",
+  "website": "https://lynk.global",
+  "gradientFrom": "#0891b2",
+  "gradientTo": "#67e8f9",
+  "type": "Expert Network",
+  "founded": 2015,
+  "headquarters": "Hong Kong",
+  "employeeCount": "150+",
+  "expertCount": "800K+",
+  "description": "Asia-Pacific focused expert network connecting global investors and consultancies with regional specialists across Greater China, Southeast Asia, and other emerging markets.",
+  "services": ["Expert Calls", "Surveys", "Compliance Tools", "Asia Research"],
+  "aiCapabilities": ["AI-driven expert matching", "Cross-border compliance automation", "Multilingual NLP search"],
+  "industries": ["Financial Services", "Technology", "Consumer", "Industrials", "Healthcare"],
+  "pricingModel": "Per-call",
+  "keyDifferentiators": ["Unmatched Asia-Pacific coverage", "800K+ expert network scale", "Built-in compliance tools for cross-border research"],
+  "bestFor": ["Asia-Pacific", "Cross-Border", "Financial Institutions"],
+  "compliance": {
+    "mnpiPolicy": "Multi-jurisdictional MNPI policies covering APAC regulatory frameworks",
+    "expertVetting": "Regional compliance checks with local regulatory alignment across Asian markets",
+    "auditTrail": true,
+    "regulatoryHistory": "Clean regulatory record across all operating jurisdictions"
+  },
+  "featured": false,
+  "priority": 28,
+  "published": true,
+  "lastUpdated": "2026-03-06"
+}

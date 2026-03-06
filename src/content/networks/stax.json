@@ -1,0 +1,38 @@
+{
+  "name": "Stax Inc.",
+  "shortName": "SX",
+  "slug": "stax",
+  "website": "https://stax.com",
+  "gradientFrom": "#1e40af",
+  "gradientTo": "#60a5fa",
+  "type": "Expert Network",
+  "founded": 2016,
+  "headquarters": "Boston, MA",
+  "employeeCount": "200+",
+  "expertCount": "100K+",
+  "description": "Private equity-focused expert network and research firm combining expert calls with commercial due diligence and market studies to support investment decision-making.",
+  "services": ["Expert Calls", "Commercial Due Diligence", "Market Studies"],
+  "aiCapabilities": ["AI-enhanced due diligence workflows", "Automated expert matching for PE deal teams", "Data-driven market sizing models"],
+  "industries": ["Private Equity", "Healthcare", "Business Services", "Technology", "Consumer", "Industrials"],
+  "pricingModel": "Per-project",
+  "keyDifferentiators": ["Integrated expert network and commercial due diligence under one roof", "Purpose-built for private equity deal timelines and workflows", "Research-grade deliverables combining expert insights with proprietary data analysis"],
+  "bestFor": ["Private Equity", "Due Diligence", "Commercial Research"],
+  "compliance": {
+    "mnpiPolicy": "Strict MNPI policies designed for PE deal environments with information barrier protocols",
+    "expertVetting": "Comprehensive vetting including employment verification, NDA enforcement, and deal-specific conflict screening",
+    "coolingOffPeriod": "Enforced cooling-off periods with deal-specific restrictions",
+    "auditTrail": true,
+    "regulatoryHistory": "Clean regulatory record"
+  },
+  "featured": false,
+  "priority": 20,
+  "published": true,
+  "comparison": {
+    "expertCalls": true,
+    "contentLibrary": false,
+    "aiMatching": true,
+    "surveys": false,
+    "complianceTools": true
+  },
+  "lastUpdated": "2026-03-06"
+}

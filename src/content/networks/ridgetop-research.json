@@ -1,0 +1,30 @@
+{
+  "name": "Ridgetop Research",
+  "shortName": "RR",
+  "slug": "ridgetop-research",
+  "website": "https://ridgetopresearch.com",
+  "gradientFrom": "#1a2e05",
+  "gradientTo": "#65a30d",
+  "type": "Expert Network",
+  "founded": 2018,
+  "headquarters": "San Francisco, CA",
+  "employeeCount": "60+",
+  "expertCount": "25K+",
+  "description": "Technology sector specialist expert network focused on SaaS, cloud infrastructure, and growth equity due diligence, serving PE firms and growth investors with deep tech expertise.",
+  "services": ["Expert Calls", "Tech DD", "SaaS Benchmarking"],
+  "aiCapabilities": ["SaaS metrics benchmarking engine", "AI-powered tech expert matching", "Competitive landscape analysis tools"],
+  "industries": ["Technology", "SaaS", "Cloud Infrastructure", "Cybersecurity"],
+  "pricingModel": "Per-call",
+  "keyDifferentiators": ["Technology sector specialization", "SaaS benchmarking capabilities", "Growth equity due diligence focus"],
+  "bestFor": ["Technology Sector", "SaaS Research", "Growth Equity"],
+  "compliance": {
+    "mnpiPolicy": "Tech sector-specific MNPI protocols with pre-IPO and venture-backed company safeguards",
+    "expertVetting": "Technical credential verification with non-compete and NDA conflict screening",
+    "auditTrail": true,
+    "regulatoryHistory": "Clean regulatory record"
+  },
+  "featured": false,
+  "priority": 31,
+  "published": true,
+  "lastUpdated": "2026-03-06"
+}

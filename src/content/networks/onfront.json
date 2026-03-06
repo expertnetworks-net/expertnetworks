@@ -1,0 +1,38 @@
+{
+  "name": "OnFrontiers",
+  "shortName": "OF",
+  "slug": "onfront",
+  "website": "https://onfrontiers.com",
+  "gradientFrom": "#78350f",
+  "gradientTo": "#fbbf24",
+  "type": "Expert Network",
+  "founded": 2013,
+  "headquarters": "Washington, DC",
+  "employeeCount": "50+",
+  "expertCount": "30K+",
+  "description": "Expert network specializing in frontier and emerging markets, connecting development organizations, government agencies, and NGOs with on-the-ground experts in hard-to-reach geographies.",
+  "services": ["Expert Calls", "Emerging Markets Research", "Development Consulting"],
+  "aiCapabilities": ["AI-assisted expert discovery in emerging markets", "Automated language and geography matching", "Smart project routing"],
+  "industries": ["International Development", "Government", "Agriculture", "Energy", "Healthcare", "Infrastructure"],
+  "pricingModel": "Per-call",
+  "keyDifferentiators": ["Unmatched coverage of frontier and emerging market experts", "Deep relationships with development organizations and multilateral institutions", "On-the-ground expertise in geographies underserved by traditional expert networks"],
+  "bestFor": ["Development Organizations", "Frontier Markets", "Government/NGO"],
+  "compliance": {
+    "mnpiPolicy": "Compliance policies tailored to development sector and government engagement requirements",
+    "expertVetting": "Thorough vetting with emphasis on local knowledge verification and conflict-of-interest screening",
+    "coolingOffPeriod": "Standard cooling-off periods enforced where applicable",
+    "auditTrail": true,
+    "regulatoryHistory": "Clean regulatory record"
+  },
+  "featured": false,
+  "priority": 19,
+  "published": true,
+  "comparison": {
+    "expertCalls": true,
+    "contentLibrary": false,
+    "aiMatching": true,
+    "surveys": false,
+    "complianceTools": true
+  },
+  "lastUpdated": "2026-03-06"
+}

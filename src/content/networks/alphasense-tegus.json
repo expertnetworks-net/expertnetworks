@@ -17,6 +17,14 @@
   "pricingModel": "Subscription",
   "keyDifferentiators": ["AI-first platform", "Tegus transcript integration ($930M acquisition)", "Unified market intelligence"],
   "parentCompany": "AlphaSense Inc.",
+  "bestFor": ["Hedge Funds", "Asset Managers", "Equity Research"],
+  "compliance": {
+    "mnpiPolicy": "Compliance protocols inherited from Tegus and AlphaSense frameworks",
+    "expertVetting": "Automated and manual compliance checks",
+    "coolingOffPeriod": "Standard cooling-off periods enforced",
+    "auditTrail": true,
+    "regulatoryHistory": "Clean record. Acquired Tegus for $930M in 2024"
+  },
   "featured": false,
   "priority": 5,
   "published": true,

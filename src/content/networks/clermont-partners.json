@@ -1,0 +1,38 @@
+{
+  "name": "Clermont Partners",
+  "shortName": "CP",
+  "slug": "clermont-partners",
+  "website": "https://clermontpartners.com",
+  "gradientFrom": "#1e3a5f",
+  "gradientTo": "#93c5fd",
+  "type": "Expert Network",
+  "founded": 2014,
+  "headquarters": "London, UK",
+  "employeeCount": "80+",
+  "expertCount": "40K+",
+  "description": "European specialist expert network serving UK and Continental European investors with curated expert access, bespoke research projects, and deep regional market knowledge.",
+  "services": ["Expert Calls", "European Research", "Bespoke Projects"],
+  "aiCapabilities": ["AI-assisted expert matching for European markets", "Automated compliance screening for UK/EU regulations", "Smart project scoping tools"],
+  "industries": ["Financial Services", "Healthcare", "Technology", "Consumer", "Industrials", "Energy"],
+  "pricingModel": "Per-call",
+  "keyDifferentiators": ["Deep specialization in European markets with native-language coverage", "Bespoke research capabilities tailored to UK and European investor needs", "Strong relationships with senior executives across Continental Europe"],
+  "bestFor": ["European Markets", "UK Investors", "European PE"],
+  "compliance": {
+    "mnpiPolicy": "MNPI policies aligned with FCA and EU MAR regulatory frameworks",
+    "expertVetting": "Thorough vetting with emphasis on European regulatory compliance and cross-border conflict screening",
+    "coolingOffPeriod": "Enforced cooling-off periods in compliance with UK and EU regulations",
+    "auditTrail": true,
+    "regulatoryHistory": "Clean regulatory record"
+  },
+  "featured": false,
+  "priority": 22,
+  "published": true,
+  "comparison": {
+    "expertCalls": true,
+    "contentLibrary": false,
+    "aiMatching": true,
+    "surveys": false,
+    "complianceTools": true
+  },
+  "lastUpdated": "2026-03-06"
+}

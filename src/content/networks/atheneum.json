@@ -16,6 +16,13 @@
   "industries": ["Consulting", "Private Equity", "Hedge Funds", "Corporate Strategy"],
   "pricingModel": "Per-call",
   "keyDifferentiators": ["AI-first platform approach", "Strong European presence", "Large expert pool"],
+  "bestFor": ["Consulting", "European PE", "Corporate Strategy"],
+  "compliance": {
+    "mnpiPolicy": "Standard MNPI screening integrated into platform",
+    "expertVetting": "Automated and manual compliance vetting",
+    "auditTrail": true,
+    "regulatoryHistory": "Clean regulatory record"
+  },
   "featured": false,
   "priority": 10,
   "published": true,

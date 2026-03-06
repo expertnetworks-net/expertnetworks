@@ -1,0 +1,38 @@
+{
+  "name": "Prosynth",
+  "shortName": "PS",
+  "slug": "prosynth",
+  "website": "https://prosynth.ai",
+  "gradientFrom": "#312e81",
+  "gradientTo": "#a78bfa",
+  "type": "Expert Network",
+  "founded": 2020,
+  "headquarters": "New York, NY",
+  "employeeCount": "50+",
+  "expertCount": "40K+",
+  "description": "AI-native expert network leveraging machine learning and automation to deliver rapid expert matching, accelerated turnaround times, and technology-driven research workflows.",
+  "services": ["Expert Calls", "AI Matching", "Automated Research"],
+  "aiCapabilities": ["LLM-powered expert discovery and matching", "Automated research synthesis", "Real-time expert availability prediction", "AI-generated project scoping"],
+  "industries": ["Technology", "Healthcare", "Financial Services", "Consumer", "SaaS"],
+  "pricingModel": "Per-call",
+  "keyDifferentiators": ["AI-native architecture enabling sub-hour expert matching", "Automated research synthesis combining expert insights with data", "Technology-first approach delivering industry-leading turnaround times"],
+  "bestFor": ["AI-First Buyers", "Technology Research", "Rapid Turnaround"],
+  "compliance": {
+    "mnpiPolicy": "Automated MNPI screening powered by AI with real-time conflict detection",
+    "expertVetting": "AI-assisted vetting with automated employment verification and continuous compliance monitoring",
+    "coolingOffPeriod": "System-enforced cooling-off periods with automated tracking",
+    "auditTrail": true,
+    "regulatoryHistory": "Clean regulatory record"
+  },
+  "featured": false,
+  "priority": 24,
+  "published": true,
+  "comparison": {
+    "expertCalls": true,
+    "contentLibrary": false,
+    "aiMatching": true,
+    "surveys": false,
+    "complianceTools": true
+  },
+  "lastUpdated": "2026-03-06"
+}

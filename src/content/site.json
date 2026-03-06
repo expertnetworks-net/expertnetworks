@@ -2,7 +2,7 @@
   "hero": {
     "badge": "Updated weekly",
     "title": "The Independent Expert Network Source",
-    "subtitle": "The first neutral, comprehensive hub for the expert network industry. Free. Open. No sign-ups. No bias.",
+    "subtitle": "A neutral, independent hub for the expert network industry. Free. Open. No sign-ups. No bias.",
     "cta": "Explore Networks"
   },
   "about": {
@@ -18,7 +18,7 @@
       {
         "icon": "zap",
         "title": "AI-Curated Weekly News",
-        "description": "Our pipeline searches for each network individually, filters out self-reported sources, and delivers real third-party coverage."
+        "description": "Our pipeline searches for each network individually and curates third-party coverage. Company announcements are labeled as such."
       },
       {
         "icon": "unlock",

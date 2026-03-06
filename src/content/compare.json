@@ -1,5 +1,5 @@
 {
-  "networks": ["glg", "alphasights", "third-bridge", "guidepoint"],
+  "networks": ["glg", "alphasights", "third-bridge", "dialectica", "guidepoint", "alphasense-tegus"],
   "features": [
     { "name": "Expert Calls", "key": "expertCalls" },
     { "name": "Content Library", "key": "contentLibrary" },

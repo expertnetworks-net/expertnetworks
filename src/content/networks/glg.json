@@ -16,6 +16,14 @@
   "industries": ["Financial Services", "Healthcare", "Technology", "Energy", "Consumer", "Industrials"],
   "pricingModel": "Per-call",
   "keyDifferentiators": ["Largest expert network globally", "Proprietary AI matching engine", "Comprehensive compliance framework"],
+  "bestFor": ["Hedge Funds", "Consulting Firms", "Large Enterprises"],
+  "compliance": {
+    "mnpiPolicy": "Comprehensive MNPI policies with mandatory pre-call compliance training for all experts",
+    "expertVetting": "Multi-step vetting including employment verification, conflict checks, and MNPI screening",
+    "coolingOffPeriod": "Enforced cooling-off periods for recently departed employees of public companies",
+    "auditTrail": true,
+    "regulatoryHistory": "No major regulatory actions. Industry-leading compliance framework developed post-2013 SEC enforcement wave"
+  },
   "featured": true,
   "priority": 1,
   "published": true,

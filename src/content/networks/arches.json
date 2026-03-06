@@ -17,6 +17,13 @@
   "pricingModel": "Subscription",
   "keyDifferentiators": ["Bain & Company backing", "Consulting-native approach", "AI-first architecture"],
   "parentCompany": "Bain & Company",
+  "bestFor": ["Consulting Firms", "Bain Ecosystem", "PE Due Diligence"],
+  "compliance": {
+    "mnpiPolicy": "Compliance framework built on Bain's institutional standards",
+    "expertVetting": "Leverages Bain's existing compliance infrastructure",
+    "auditTrail": true,
+    "regulatoryHistory": "Clean regulatory record. Benefits from Bain's institutional compliance experience"
+  },
   "featured": false,
   "priority": 12,
   "published": true,

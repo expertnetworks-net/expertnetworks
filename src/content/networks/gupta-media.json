@@ -1,0 +1,30 @@
+{
+  "name": "Gupta Media Expert Network",
+  "shortName": "GM",
+  "slug": "gupta-media",
+  "website": "https://guptamedia.com",
+  "gradientFrom": "#854d0e",
+  "gradientTo": "#facc15",
+  "type": "Expert Network",
+  "founded": 2004,
+  "headquarters": "Boston, MA",
+  "employeeCount": "50+",
+  "expertCount": "20K+",
+  "description": "Media and entertainment-focused expert network providing specialized insights into digital marketing, brand strategy, and media industry trends for investors and corporate clients.",
+  "services": ["Expert Calls", "Media Research", "Brand Analytics"],
+  "aiCapabilities": ["Media sentiment analysis", "Audience analytics modeling", "Brand performance tracking"],
+  "industries": ["Media", "Entertainment", "Digital Marketing", "Advertising", "Consumer Brands"],
+  "pricingModel": "Per-project",
+  "keyDifferentiators": ["Deep media and entertainment focus", "Brand analytics capabilities", "Two decades of industry expertise"],
+  "bestFor": ["Media", "Entertainment", "Digital Marketing"],
+  "compliance": {
+    "mnpiPolicy": "Standard MNPI protocols with entertainment industry-specific safeguards",
+    "expertVetting": "Industry credential verification with media sector specialization",
+    "auditTrail": true,
+    "regulatoryHistory": "Clean regulatory record"
+  },
+  "featured": false,
+  "priority": 27,
+  "published": true,
+  "lastUpdated": "2026-03-06"
+}

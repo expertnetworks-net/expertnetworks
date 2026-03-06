@@ -1,0 +1,38 @@
+{
+  "name": "AlphaExpert",
+  "shortName": "AE",
+  "slug": "alphaexpert",
+  "website": "https://alphaexpert.com",
+  "gradientFrom": "#7e22ce",
+  "gradientTo": "#c084fc",
+  "type": "Expert Network",
+  "founded": 2018,
+  "headquarters": "Singapore",
+  "employeeCount": "100+",
+  "expertCount": "50K+",
+  "description": "Southeast Asia specialist expert network providing deep regional expertise across ASEAN markets, with particular strength in healthcare, technology, and consumer sectors.",
+  "services": ["Expert Calls", "Surveys", "Asia Healthcare Research"],
+  "aiCapabilities": ["AI-powered expert matching for ASEAN markets", "Multilingual expert profiling", "Automated survey distribution across SE Asian geographies"],
+  "industries": ["Healthcare", "Technology", "Consumer", "Financial Services", "Manufacturing", "Real Estate"],
+  "pricingModel": "Per-call",
+  "keyDifferentiators": ["Deep specialization in Southeast Asian markets with local teams across ASEAN", "Leading healthcare expert network in the Asia-Pacific region", "Multilingual capabilities spanning major SE Asian languages"],
+  "bestFor": ["Southeast Asia", "Emerging Markets", "Healthcare Asia"],
+  "compliance": {
+    "mnpiPolicy": "MNPI policies aligned with Singapore MAS guidelines and regional regulatory frameworks",
+    "expertVetting": "Rigorous vetting with local language capabilities and regional employment verification",
+    "coolingOffPeriod": "Standard cooling-off periods enforced in line with regional regulations",
+    "auditTrail": true,
+    "regulatoryHistory": "Clean regulatory record"
+  },
+  "featured": false,
+  "priority": 21,
+  "published": true,
+  "comparison": {
+    "expertCalls": true,
+    "contentLibrary": false,
+    "aiMatching": true,
+    "surveys": true,
+    "complianceTools": true
+  },
+  "lastUpdated": "2026-03-06"
+}

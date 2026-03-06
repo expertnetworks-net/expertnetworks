@@ -1,0 +1,38 @@
+{
+  "name": "Catalight (formerly CG Consulting)",
+  "shortName": "CL",
+  "slug": "cg-consulting",
+  "website": "https://catalight.co",
+  "gradientFrom": "#be123c",
+  "gradientTo": "#fb7185",
+  "type": "Expert Network",
+  "founded": 2010,
+  "headquarters": "Hong Kong",
+  "employeeCount": "150+",
+  "expertCount": "80K+",
+  "description": "Greater China-focused expert network providing Hong Kong and mainland China market expertise, cross-border research capabilities, and industry events for Asia-focused investors.",
+  "services": ["Expert Calls", "China Market Research", "Industry Events"],
+  "aiCapabilities": ["AI-powered expert matching for Greater China", "Bilingual compliance screening (English/Mandarin)", "Automated cross-border conflict detection"],
+  "industries": ["Financial Services", "Technology", "Healthcare", "Consumer", "Real Estate", "Manufacturing"],
+  "pricingModel": "Per-call",
+  "keyDifferentiators": ["Deepest expert coverage across Greater China including mainland, Hong Kong, and Taiwan", "Bilingual operations enabling seamless cross-border research", "Industry events connecting investors with senior Chinese executives"],
+  "bestFor": ["Greater China", "Hong Kong Investors", "Cross-Border Asia"],
+  "compliance": {
+    "mnpiPolicy": "MNPI policies aligned with Hong Kong SFC and mainland CSRC regulatory standards",
+    "expertVetting": "Comprehensive vetting with Mandarin-language verification and Greater China employment screening",
+    "coolingOffPeriod": "Enforced cooling-off periods compliant with Hong Kong and mainland China regulations",
+    "auditTrail": true,
+    "regulatoryHistory": "Clean regulatory record with long operating history in Hong Kong"
+  },
+  "featured": false,
+  "priority": 23,
+  "published": true,
+  "comparison": {
+    "expertCalls": true,
+    "contentLibrary": false,
+    "aiMatching": true,
+    "surveys": false,
+    "complianceTools": true
+  },
+  "lastUpdated": "2026-03-06"
+}

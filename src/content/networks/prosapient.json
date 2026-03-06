@@ -16,6 +16,13 @@
   "industries": ["Consulting", "Private Equity", "Venture Capital", "Corporate Strategy"],
   "pricingModel": "Per-call",
   "keyDifferentiators": ["Self-serve platform", "Transparent pricing", "Fast setup"],
+  "bestFor": ["Consulting", "Venture Capital", "Mid-Market PE"],
+  "compliance": {
+    "mnpiPolicy": "Platform-integrated compliance checks",
+    "expertVetting": "Automated vetting with manual review for flagged cases",
+    "auditTrail": true,
+    "regulatoryHistory": "Clean regulatory record"
+  },
   "featured": false,
   "priority": 7,
   "published": true,

@@ -1,0 +1,38 @@
+{
+  "name": "Maven",
+  "shortName": "MV",
+  "slug": "maven",
+  "website": "https://maven.co",
+  "gradientFrom": "#2d3748",
+  "gradientTo": "#667eea",
+  "type": "Expert Network",
+  "founded": 2020,
+  "headquarters": "New York, NY",
+  "employeeCount": "150+",
+  "expertCount": "65K+",
+  "description": "AI-powered expert network platform connecting investors and operators with domain experts through intelligent matching and streamlined engagement workflows.",
+  "services": ["Expert Calls", "AI Matching", "Startup Research"],
+  "aiCapabilities": ["AI-powered expert matching", "Natural language project briefs", "Automated expert sourcing", "Smart scheduling"],
+  "industries": ["Technology", "Venture Capital", "Startups", "SaaS", "Consumer Tech"],
+  "pricingModel": "Per-call",
+  "keyDifferentiators": ["AI-native platform built from the ground up", "Deep venture capital and startup expertise", "Rapid expert matching with high relevance scores"],
+  "bestFor": ["Venture Capital", "Technology", "Startups"],
+  "compliance": {
+    "mnpiPolicy": "Automated MNPI screening integrated into AI matching workflow with real-time conflict detection",
+    "expertVetting": "AI-assisted vetting combined with manual review for employment verification and conflict screening",
+    "coolingOffPeriod": "Standard cooling-off periods enforced",
+    "auditTrail": true,
+    "regulatoryHistory": "Clean regulatory record"
+  },
+  "featured": false,
+  "priority": 16,
+  "published": true,
+  "comparison": {
+    "expertCalls": true,
+    "contentLibrary": false,
+    "aiMatching": true,
+    "surveys": false,
+    "complianceTools": true
+  },
+  "lastUpdated": "2026-03-06"
+}

@@ -1,0 +1,38 @@
+{
+  "name": "INEX ONE",
+  "shortName": "IX",
+  "slug": "inex-one",
+  "website": "https://inex.one",
+  "gradientFrom": "#0d9488",
+  "gradientTo": "#5eead4",
+  "type": "Expert Network Marketplace",
+  "founded": 2017,
+  "headquarters": "Stockholm, Sweden",
+  "employeeCount": "100+",
+  "expertCount": "Meta-platform (170+ networks)",
+  "description": "The leading expert network marketplace and aggregator, enabling clients to access 170+ expert networks through a single platform with centralized compliance, spend analytics, and workflow management.",
+  "services": ["Network Aggregation", "Compliance Dashboard", "Spend Analytics"],
+  "aiCapabilities": ["Intelligent network routing", "Cross-network expert matching", "Automated spend optimization analytics", "Compliance monitoring across networks"],
+  "industries": ["Private Equity", "Consulting", "Hedge Funds", "Investment Banking", "Corporate Strategy"],
+  "pricingModel": "Subscription",
+  "keyDifferentiators": ["Single platform aggregating 170+ expert networks for unified access", "Centralized compliance dashboard across all network interactions", "Spend analytics and optimization tools reducing total cost of expert access"],
+  "bestFor": ["Multi-Network Buyers", "PE Firms", "Cost Optimization"],
+  "compliance": {
+    "mnpiPolicy": "Centralized compliance layer monitoring interactions across all connected expert networks",
+    "expertVetting": "Aggregates and surfaces vetting standards from underlying networks with additional compliance overlay",
+    "coolingOffPeriod": "Enforces cooling-off policies consistently across all connected networks",
+    "auditTrail": true,
+    "regulatoryHistory": "Clean regulatory record. Designed as a compliance-first aggregation platform"
+  },
+  "featured": false,
+  "priority": 18,
+  "published": true,
+  "comparison": {
+    "expertCalls": true,
+    "contentLibrary": false,
+    "aiMatching": true,
+    "surveys": false,
+    "complianceTools": true
+  },
+  "lastUpdated": "2026-03-06"
+}

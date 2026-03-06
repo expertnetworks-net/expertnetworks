@@ -1,0 +1,38 @@
+{
+  "name": "Emerton Data",
+  "shortName": "ED",
+  "slug": "emerton",
+  "website": "https://emertondata.com",
+  "gradientFrom": "#0f172a",
+  "gradientTo": "#475569",
+  "type": "Expert Network",
+  "founded": 2015,
+  "headquarters": "Paris, France",
+  "employeeCount": "100+",
+  "expertCount": "60K+",
+  "description": "European data and expert network combining traditional expert calls with data analytics capabilities, serving private equity firms and consultancies across the European market.",
+  "services": ["Expert Calls", "Data Analytics", "European Research"],
+  "aiCapabilities": ["AI-enhanced data analytics", "Machine learning-driven expert matching", "Automated European market data aggregation", "Predictive industry trend analysis"],
+  "industries": ["Private Equity", "Consulting", "Healthcare", "Technology", "Consumer", "Industrials"],
+  "pricingModel": "Per-call",
+  "keyDifferentiators": ["Unique combination of expert network and data analytics capabilities", "Deep coverage of French and Continental European markets", "Data-driven research methodology enhancing traditional expert insights"],
+  "bestFor": ["European PE", "French Market", "Data-Driven Research"],
+  "compliance": {
+    "mnpiPolicy": "MNPI policies aligned with AMF and EU MAR regulatory frameworks",
+    "expertVetting": "Comprehensive vetting with multilingual European employment verification and conflict screening",
+    "coolingOffPeriod": "Enforced cooling-off periods in compliance with French and EU regulations",
+    "auditTrail": true,
+    "regulatoryHistory": "Clean regulatory record"
+  },
+  "featured": false,
+  "priority": 25,
+  "published": true,
+  "comparison": {
+    "expertCalls": true,
+    "contentLibrary": false,
+    "aiMatching": true,
+    "surveys": false,
+    "complianceTools": true
+  },
+  "lastUpdated": "2026-03-06"
+}

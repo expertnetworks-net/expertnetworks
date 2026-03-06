@@ -1,0 +1,30 @@
+{
+  "name": "Raven Expert Consulting",
+  "shortName": "RC",
+  "slug": "raven-consulting",
+  "website": "https://ravenexpertconsulting.com",
+  "gradientFrom": "#1c1917",
+  "gradientTo": "#78716c",
+  "type": "Expert Network",
+  "founded": 2019,
+  "headquarters": "London, UK",
+  "employeeCount": "30+",
+  "expertCount": "15K+",
+  "description": "Boutique expert network specializing in private equity due diligence across European mid-market transactions, offering bespoke research and curated expert access.",
+  "services": ["Expert Calls", "Due Diligence Support", "Bespoke Research"],
+  "aiCapabilities": ["AI-assisted expert curation", "Deal-specific matching algorithms", "Automated compliance screening"],
+  "industries": ["Private Equity", "Industrials", "Business Services", "Healthcare"],
+  "pricingModel": "Per-call",
+  "keyDifferentiators": ["Boutique PE specialization", "European mid-market expertise", "White-glove bespoke research service"],
+  "bestFor": ["Boutique PE", "Mid-Market", "European DD"],
+  "compliance": {
+    "mnpiPolicy": "PE-specific MNPI protocols aligned with FCA and European regulatory standards",
+    "expertVetting": "Thorough vetting with conflict-of-interest screening for deal-related consultations",
+    "auditTrail": true,
+    "regulatoryHistory": "Clean regulatory record"
+  },
+  "featured": false,
+  "priority": 29,
+  "published": true,
+  "lastUpdated": "2026-03-06"
+}

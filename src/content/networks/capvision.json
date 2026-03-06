@@ -16,6 +16,13 @@
   "industries": ["Financial Services", "Healthcare", "Technology", "Consumer", "Industrials"],
   "pricingModel": "Per-call",
   "keyDifferentiators": ["Strongest Asia-Pacific coverage", "Multilingual capabilities", "Local market expertise"],
+  "bestFor": ["Asia-Pacific Investors", "Cross-Border Research", "Emerging Markets"],
+  "compliance": {
+    "mnpiPolicy": "Compliance framework adapted to both Western and Asian regulatory environments",
+    "expertVetting": "Regional compliance teams with local regulatory knowledge",
+    "auditTrail": true,
+    "regulatoryHistory": "Subject to SEC investigation in 2023 regarding potential MNPI violations. Enhanced compliance protocols subsequently implemented"
+  },
   "featured": false,
   "priority": 9,
   "published": true,

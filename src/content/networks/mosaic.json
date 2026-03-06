@@ -1,0 +1,30 @@
+{
+  "name": "Mosaic Research",
+  "shortName": "MO",
+  "slug": "mosaic",
+  "website": "https://mosaicresearch.com",
+  "gradientFrom": "#701a75",
+  "gradientTo": "#e879f9",
+  "type": "Expert Network",
+  "founded": 2021,
+  "headquarters": "New York, NY",
+  "employeeCount": "40+",
+  "expertCount": "20K+",
+  "description": "Next-generation expert network leveraging AI-powered matching to connect venture capital and growth equity investors with startup founders, operators, and technology specialists.",
+  "services": ["Expert Calls", "AI Matching", "Startup Research"],
+  "aiCapabilities": ["AI-powered expert-investor matching", "Startup ecosystem mapping", "Real-time expertise scoring"],
+  "industries": ["Venture Capital", "Technology", "Startups", "Growth Equity"],
+  "pricingModel": "Per-call",
+  "keyDifferentiators": ["AI-native matching technology", "Startup and VC ecosystem focus", "Next-gen platform built for modern investors"],
+  "bestFor": ["Growth Equity", "Venture Capital", "Tech Investors"],
+  "compliance": {
+    "mnpiPolicy": "Modern compliance framework with automated MNPI screening for pre-IPO companies",
+    "expertVetting": "AI-assisted vetting with startup affiliation and conflict-of-interest checks",
+    "auditTrail": true,
+    "regulatoryHistory": "Clean regulatory record"
+  },
+  "featured": false,
+  "priority": 33,
+  "published": true,
+  "lastUpdated": "2026-03-06"
+}

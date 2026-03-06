@@ -16,6 +16,13 @@
   "industries": ["Technology", "Financial Services", "Healthcare", "Professional Services"],
   "pricingModel": "Per-project",
   "keyDifferentiators": ["AI verification of expertise", "B2B research focus", "Academic-grade methodology"],
+  "bestFor": ["Corporate Strategy", "Market Research Teams", "Technology Companies"],
+  "compliance": {
+    "mnpiPolicy": "Standard compliance protocols for B2B research engagements",
+    "expertVetting": "AI-powered verification of professional credentials and expertise claims",
+    "auditTrail": true,
+    "regulatoryHistory": "Clean regulatory record"
+  },
   "featured": false,
   "priority": 8,
   "published": true,

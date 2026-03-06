@@ -1,0 +1,30 @@
+{
+  "name": "Mainstreet Research",
+  "shortName": "MR",
+  "slug": "mainstreet-research",
+  "website": "https://mainstreetresearch.com",
+  "gradientFrom": "#4a044e",
+  "gradientTo": "#d946ef",
+  "type": "Expert Network",
+  "founded": 2016,
+  "headquarters": "New York, NY",
+  "employeeCount": "100+",
+  "expertCount": "50K+",
+  "description": "Primary research-focused expert network serving hedge funds, asset managers, and sell-side analysts with channel checks, expert consultations, and proprietary research insights.",
+  "services": ["Expert Calls", "Primary Research", "Channel Checks"],
+  "aiCapabilities": ["AI-driven channel check aggregation", "Predictive trend modeling", "Automated research synthesis"],
+  "industries": ["Financial Services", "Consumer", "Technology", "Retail", "Industrials"],
+  "pricingModel": "Per-call",
+  "keyDifferentiators": ["Primary research specialization for investors", "Channel check expertise", "Deep hedge fund and sell-side relationships"],
+  "bestFor": ["Equity Research", "Hedge Funds", "Sell-Side Research"],
+  "compliance": {
+    "mnpiPolicy": "Strict MNPI policies with Reg FD compliance monitoring for public company research",
+    "expertVetting": "Comprehensive screening with public company affiliation checks and cooling-off periods",
+    "auditTrail": true,
+    "regulatoryHistory": "Clean regulatory record"
+  },
+  "featured": false,
+  "priority": 30,
+  "published": true,
+  "lastUpdated": "2026-03-06"
+}

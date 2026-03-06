@@ -1,0 +1,30 @@
+{
+  "name": "Zintro",
+  "shortName": "ZI",
+  "slug": "zintro",
+  "website": "https://zintro.com",
+  "gradientFrom": "#0c4a6e",
+  "gradientTo": "#38bdf8",
+  "type": "Expert Network",
+  "founded": 2007,
+  "headquarters": "Boston, MA",
+  "employeeCount": "30+",
+  "expertCount": "50K+",
+  "description": "Self-service expert network platform enabling small and mid-size firms to directly search, connect with, and engage experts without intermediary involvement, offering a cost-effective alternative to traditional networks.",
+  "services": ["Self-serve Platform", "Expert Calls", "Project Matching"],
+  "aiCapabilities": ["Automated expert-project matching", "Self-service search algorithms", "AI-powered relevance scoring"],
+  "industries": ["Management Consulting", "Technology", "Healthcare", "Financial Services"],
+  "pricingModel": "Platform fee",
+  "keyDifferentiators": ["Self-service model for direct expert access", "Cost-effective for smaller firms", "Nearly two decades of platform development"],
+  "bestFor": ["Small/Mid-size Firms", "Self-Service Buyers", "Budget-Conscious"],
+  "compliance": {
+    "mnpiPolicy": "Standard MNPI guidelines with user-managed compliance workflows",
+    "expertVetting": "Platform-verified profiles with credential validation",
+    "auditTrail": true,
+    "regulatoryHistory": "Clean regulatory record"
+  },
+  "featured": false,
+  "priority": 32,
+  "published": true,
+  "lastUpdated": "2026-03-06"
+}

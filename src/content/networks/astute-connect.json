@@ -16,6 +16,13 @@
   "industries": ["Financial Services", "Healthcare", "Technology", "Consumer"],
   "pricingModel": "Per-call",
   "keyDifferentiators": ["Strong India/Asia coverage", "Competitive pricing", "Emerging markets focus"],
+  "bestFor": ["Emerging Markets Research", "India/Southeast Asia Focus", "Cost-Sensitive Buyers"],
+  "compliance": {
+    "mnpiPolicy": "Standard compliance protocols",
+    "expertVetting": "Manual vetting with regional compliance awareness",
+    "auditTrail": false,
+    "regulatoryHistory": "Clean regulatory record"
+  },
   "featured": false,
   "priority": 13,
   "published": true,

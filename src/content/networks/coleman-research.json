@@ -16,6 +16,14 @@
   "industries": ["Financial Services", "Healthcare", "Technology", "Industrials"],
   "pricingModel": "Per-call",
   "keyDifferentiators": ["White-glove service model", "Strong compliance culture", "Long-standing industry presence"],
+  "bestFor": ["Financial Services", "Healthcare Research", "Compliance-Sensitive Clients"],
+  "compliance": {
+    "mnpiPolicy": "Robust MNPI policies with dedicated compliance team",
+    "expertVetting": "Thorough manual vetting process",
+    "coolingOffPeriod": "Standard cooling-off periods enforced",
+    "auditTrail": true,
+    "regulatoryHistory": "Clean regulatory record. Known for compliance-first culture"
+  },
   "featured": false,
   "priority": 14,
   "published": true,

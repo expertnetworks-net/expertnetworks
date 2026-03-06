@@ -16,6 +16,14 @@
   "industries": ["Financial Services", "Healthcare", "Technology", "Consulting"],
   "pricingModel": "Per-call",
   "keyDifferentiators": ["Strong compliance focus", "Dedicated project managers", "Fast expert turnaround"],
+  "bestFor": ["Financial Services", "Healthcare Investors", "Consulting"],
+  "compliance": {
+    "mnpiPolicy": "Industry-recognized compliance program with MNPI screening and monitoring",
+    "expertVetting": "Multi-layer vetting with dedicated compliance officers per engagement",
+    "coolingOffPeriod": "Standard cooling-off periods enforced",
+    "auditTrail": true,
+    "regulatoryHistory": "Clean regulatory record. Compliance is a core brand differentiator"
+  },
   "featured": false,
   "priority": 4,
   "published": true,

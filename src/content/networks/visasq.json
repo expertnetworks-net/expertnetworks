@@ -1,0 +1,38 @@
+{
+  "name": "VisasQ",
+  "shortName": "VQ",
+  "slug": "visasq",
+  "website": "https://visasq.co.jp",
+  "gradientFrom": "#b91c1c",
+  "gradientTo": "#f87171",
+  "type": "Expert Network",
+  "founded": 2012,
+  "headquarters": "Tokyo, Japan",
+  "employeeCount": "300+",
+  "expertCount": "500K+",
+  "description": "Asia's largest expert network, providing access to over 500,000 experts with deep specialization in Japanese and Asia-Pacific markets for cross-border research and consulting.",
+  "services": ["Expert Calls", "Surveys", "Asia Research", "Events"],
+  "aiCapabilities": ["AI-driven expert search", "Automated matching for Asia-Pacific projects", "Multilingual compliance screening"],
+  "industries": ["Financial Services", "Technology", "Healthcare", "Consumer", "Industrials", "Manufacturing"],
+  "pricingModel": "Per-call",
+  "keyDifferentiators": ["Largest expert network in Asia with unmatched Japanese market coverage", "Publicly listed company (Tokyo Stock Exchange) ensuring transparency", "Bilingual platform supporting cross-border research in English and Japanese"],
+  "bestFor": ["Japanese Market", "Asia-Pacific", "Cross-Border Research"],
+  "compliance": {
+    "mnpiPolicy": "Comprehensive MNPI policies aligned with Japanese FSA and global regulatory standards",
+    "expertVetting": "Rigorous vetting process with employment verification and conflict-of-interest screening tailored to Asian regulatory environments",
+    "coolingOffPeriod": "Enforced cooling-off periods in line with local regulations",
+    "auditTrail": true,
+    "regulatoryHistory": "Clean regulatory record. Publicly listed and audited on the Tokyo Stock Exchange"
+  },
+  "featured": false,
+  "priority": 17,
+  "published": true,
+  "comparison": {
+    "expertCalls": true,
+    "contentLibrary": false,
+    "aiMatching": true,
+    "surveys": true,
+    "complianceTools": true
+  },
+  "lastUpdated": "2026-03-06"
+}
