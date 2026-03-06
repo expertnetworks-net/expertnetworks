@@ -1,8 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
 import NetworkCard from '../components/NetworkCard.astro';
-import NewsCard from '../components/NewsCard.astro';
 import CompareTable from '../components/CompareTable.astro';
 import { getCollection } from 'astro:content';
 import fs from 'node:fs';
@@ -15,89 +13,111 @@ const publishedNetworks = allNetworks
   .filter(n => n.data.published)
   .sort((a, b) => a.data.priority - b.data.priority);
 
+const top10 = publishedNetworks.slice(0, 10);
 const featuredNetworks = publishedNetworks.filter(n => n.data.featured);
 
 const publishedNews = allNews
   .filter(n => n.data.published)
-  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
-  .slice(0, 3);
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 ---
 
 <BaseLayout>
-  <Hero />
-
-  <!-- Logo Grid -->
-  <section class="py-24 px-6" id="networks">
+  <!-- Dashboard header — compact, no cheesy hero -->
+  <section class="pt-[72px] pb-6 px-6 border-b border-border/40" id="top">
     <div class="max-w-site mx-auto">
-      <div class="text-center mb-12">
-        <div class="text-accent text-sm font-semibold tracking-wide uppercase mb-2 fade-in">Directory</div>
-        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-primary fade-in">All Networks at a Glance</h2>
-        <p class="text-secondary mt-3 fade-in">Click any network to see its full profile, capabilities, and latest news.</p>
-      </div>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-        {publishedNetworks.map((network, i) => (
-          <NetworkCard
-            {...network.data}
-            variant="logo"
-            stagger={(i % 8) + 1}
-          />
-        ))}
-        <a href="/networks" class="block bg-bg-secondary rounded-card p-5 text-center no-underline border-2 border-dashed border-border hover:border-accent transition-all fade-in">
-          <div class="w-12 h-12 rounded-xl mx-auto mb-3 flex items-center justify-center text-white font-bold text-lg bg-tertiary">+</div>
-          <div class="font-semibold text-sm text-primary">View All {publishedNetworks.length}+</div>
-          <div class="text-xs text-tertiary mt-0.5">Full Directory</div>
-        </a>
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+        <div>
+          <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight text-primary">Expert Network Intelligence</h1>
+          <p class="text-secondary text-sm mt-1">Independent research on {publishedNetworks.length} expert networks. Updated weekly.</p>
+        </div>
+        <div class="flex gap-2">
+          <a href="/networks" class="inline-flex items-center gap-1.5 px-4 py-2 bg-accent text-white text-sm font-semibold rounded-lg no-underline hover:bg-accent-hover transition-colors">
+            Browse All
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/compare" class="inline-flex items-center gap-1.5 px-4 py-2 bg-bg-secondary text-primary text-sm font-semibold rounded-lg no-underline hover:bg-border/50 transition-colors">Compare</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Featured Network Profiles (Deep Dives) -->
-  <section class="py-24 px-6 bg-white">
-    <div class="max-w-site mx-auto">
-      <div class="text-center mb-12">
-        <div class="text-accent text-sm font-semibold tracking-wide uppercase mb-2 fade-in">Profiles</div>
-        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-primary fade-in">Deep Dives</h2>
-        <p class="text-secondary mt-3 fade-in">Neutral profiles with 15+ data points per network — compliance, pricing, AI capabilities, and more.</p>
+  <!-- Two-column dashboard: News feed + Top 10 sidebar -->
+  <section class="py-8 px-6" id="dashboard">
+    <div class="max-w-site mx-auto flex flex-col lg:flex-row gap-8">
+
+      <!-- Left: News feed -->
+      <div class="flex-1 min-w-0" id="news">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-lg font-bold text-primary">Latest News</h2>
+          <a href="/news" class="text-accent text-sm font-medium no-underline hover:underline">View all &rarr;</a>
+        </div>
+        <div class="space-y-1">
+          {publishedNews.map(article => {
+            const formattedDate = new Date(article.data.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+            return (
+              <div class="flex items-start gap-3 px-4 py-3 rounded-xl hover:bg-bg-secondary transition-colors group">
+                <div class="w-2 h-2 rounded-full mt-2 flex-shrink-0" style={`background: ${article.data.categoryColor || '#0071E3'}`}></div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-[13px] font-semibold text-primary leading-snug group-hover:text-accent transition-colors">{article.data.title}</div>
+                  <div class="flex items-center gap-2 mt-1">
+                    <span class="text-[11px] font-medium uppercase tracking-wide" style={`color: ${article.data.categoryColor || '#0071E3'}`}>{article.data.category}</span>
+                    <span class="text-[11px] text-tertiary">{formattedDate}</span>
+                    <span class="text-[11px] text-tertiary">&middot; {article.data.source}</span>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        {publishedNews.length === 0 && (
+          <p class="text-sm text-tertiary py-8 text-center">No news articles yet.</p>
+        )}
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Right: Top 10 quick access -->
+      <div class="w-full lg:w-[340px] lg:min-w-[340px]" id="networks">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-lg font-bold text-primary">Top 10 Networks</h2>
+          <a href="/networks" class="text-accent text-sm font-medium no-underline hover:underline">All {publishedNetworks.length} &rarr;</a>
+        </div>
+        <div class="bg-white rounded-[12px] shadow-card overflow-hidden">
+          {top10.map((network, i) => (
+            <a
+              href={`/networks/${network.data.slug}`}
+              class:list={[
+                'flex items-center gap-3 px-4 py-[11px] no-underline text-primary hover:bg-bg-secondary transition-colors',
+                i > 0 ? 'border-t border-bg-secondary' : '',
+              ]}
+            >
+              <div class="text-[11px] text-tertiary font-bold w-4 text-right flex-shrink-0">{i + 1}</div>
+              <div
+                class="w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0"
+                style={`background: linear-gradient(135deg, ${network.data.gradientFrom}, ${network.data.gradientTo})`}
+              >
+                {network.data.shortName}
+              </div>
+              <div class="min-w-0 flex-1">
+                <div class="text-[13px] font-medium truncate">{network.data.name.split(' (')[0]}</div>
+                <div class="text-[11px] text-tertiary truncate">{network.data.expertCount} experts &middot; {network.data.pricingModel}</div>
+              </div>
+              <svg class="w-3.5 h-3.5 flex-shrink-0 text-tertiary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Profiles -->
+  <section class="py-10 px-6 bg-bg-secondary">
+    <div class="max-w-site mx-auto">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-lg font-bold text-primary">Featured Profiles</h2>
+        <a href="/networks" class="text-accent text-sm font-medium no-underline hover:underline">View all &rarr;</a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {featuredNetworks.map(network => (
           <NetworkCard {...network.data} variant="profile" />
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Dark Section - Why This Exists -->
-  <section class="py-24 px-6 bg-bg-dark text-white text-center" id="about">
-    <div class="max-w-site mx-auto">
-      <div class="text-accent text-sm font-semibold tracking-wide uppercase mb-2 fade-in">{siteConfig.about.label}</div>
-      <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight fade-in">{siteConfig.about.title.replace('<br>', ' ')}</h2>
-      <p class="text-white/60 mt-4 max-w-xl mx-auto fade-in">{siteConfig.about.subtitle}</p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-        {siteConfig.about.features.map((feature: any) => (
-          <div class="bg-white/5 border border-white/10 rounded-card p-8 text-left hover:bg-white/10 transition-all fade-in">
-            <div class="text-3xl mb-4">
-              {feature.icon === 'shield' ? '\u2625' : feature.icon === 'zap' ? '\u26A1' : '\uD83D\uDD13'}
-            </div>
-            <h3 class="text-lg font-bold mb-2">{feature.title}</h3>
-            <p class="text-sm text-white/60 leading-relaxed">{feature.description}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- News Section -->
-  <section class="py-24 px-6 bg-white" id="news">
-    <div class="max-w-site mx-auto">
-      <div class="text-center mb-12">
-        <div class="text-accent text-sm font-semibold tracking-wide uppercase mb-2 fade-in">Latest</div>
-        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-primary fade-in">Industry News</h2>
-        <p class="text-secondary mt-3 fade-in">Curated from third-party sources. Company announcements labeled as such.</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {publishedNews.map(article => (
-          <NewsCard {...article.data} />
         ))}
       </div>
     </div>

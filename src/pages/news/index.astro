@@ -1,26 +1,163 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import NewsCard from '../../components/NewsCard.astro';
 import { getCollection } from 'astro:content';
 
 const allNews = await getCollection('news');
 const articles = allNews
   .filter(n => n.data.published)
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+const allNetworks = await getCollection('networks');
+const networkMap = Object.fromEntries(
+  allNetworks.filter(n => n.data.published).map(n => [n.data.slug, n.data.name.split(' (')[0]])
+);
+
+// Get unique categories and related networks
+const categories = [...new Set(articles.map(a => a.data.category))].sort();
+const relatedSlugs = [...new Set(articles.flatMap(a => a.data.relatedNetworks))].filter(s => networkMap[s]).sort();
 ---
 
 <BaseLayout title="Industry News — Expert Networks Hub">
-  <section class="pt-32 pb-24 px-6">
+  <section class="pt-[72px] pb-6 px-6 border-b border-border/40">
     <div class="max-w-site mx-auto">
-      <div class="text-center mb-12">
-        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-primary">Industry News</h1>
-        <p class="text-secondary mt-3 text-lg">Curated weekly from third-party sources. No self-reported press releases.</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {articles.map(article => (
-          <NewsCard {...article.data} />
-        ))}
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+        <div>
+          <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight text-primary">Industry News</h1>
+          <p class="text-secondary text-sm mt-1">Curated from third-party sources. Company announcements labeled as such.</p>
+        </div>
+        <a href="/" class="text-accent text-sm font-medium no-underline hover:underline">&larr; Dashboard</a>
       </div>
     </div>
   </section>
+
+  <!-- Filters -->
+  <section class="py-4 px-6 border-b border-border/40 bg-bg-secondary/50">
+    <div class="max-w-site mx-auto flex flex-wrap gap-3 items-center">
+      <span class="text-xs font-bold uppercase tracking-wide text-tertiary">Filter:</span>
+
+      <!-- Category filter -->
+      <select id="filterCategory" class="text-[13px] font-medium text-primary bg-white border border-border rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
+        <option value="">All Categories</option>
+        {categories.map(cat => (
+          <option value={cat}>{cat}</option>
+        ))}
+      </select>
+
+      <!-- Network filter -->
+      <select id="filterNetwork" class="text-[13px] font-medium text-primary bg-white border border-border rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
+        <option value="">All Networks</option>
+        {relatedSlugs.map(slug => (
+          <option value={slug}>{networkMap[slug]}</option>
+        ))}
+      </select>
+
+      <!-- Date sort -->
+      <select id="filterSort" class="text-[13px] font-medium text-primary bg-white border border-border rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
+        <option value="newest">Newest First</option>
+        <option value="oldest">Oldest First</option>
+      </select>
+
+      <button id="clearFilters" class="text-[13px] font-medium text-accent hover:underline cursor-pointer hidden">Clear</button>
+    </div>
+  </section>
+
+  <!-- Article list -->
+  <section class="py-6 px-6">
+    <div class="max-w-site mx-auto">
+      <div id="articleCount" class="text-xs text-tertiary mb-4">{articles.length} articles</div>
+      <div class="space-y-1" id="articleList">
+        {articles.map(article => {
+          const formattedDate = new Date(article.data.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+          const relatedNames = article.data.relatedNetworks.map((s: string) => networkMap[s]).filter(Boolean);
+          return (
+            <div
+              class="news-item flex items-start gap-3 px-4 py-4 rounded-xl hover:bg-bg-secondary transition-colors group border-b border-bg-secondary last:border-0"
+              data-category={article.data.category}
+              data-networks={article.data.relatedNetworks.join(',')}
+              data-date={article.data.date}
+            >
+              <div class="w-2.5 h-2.5 rounded-full mt-1.5 flex-shrink-0" style={`background: ${article.data.categoryColor || '#0071E3'}`}></div>
+              <div class="min-w-0 flex-1">
+                <div class="text-[14px] font-semibold text-primary leading-snug mb-1">{article.data.title}</div>
+                <p class="text-[13px] text-secondary leading-relaxed mb-2">{article.data.summary}</p>
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="text-[11px] font-bold uppercase tracking-wide" style={`color: ${article.data.categoryColor || '#0071E3'}`}>{article.data.category}</span>
+                  <span class="text-[11px] text-tertiary">{formattedDate}</span>
+                  <span class="text-[11px] text-tertiary">&middot; {article.data.source}</span>
+                  {relatedNames.length > 0 && (
+                    <span class="text-[11px] text-tertiary">&middot;</span>
+                  )}
+                  {relatedNames.map((name: string) => (
+                    <span class="inline-block px-2 py-0.5 text-[10px] font-medium rounded-full bg-accent/10 text-accent">{name}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <div id="noResults" class="hidden text-center py-12 text-sm text-tertiary">No articles match your filters.</div>
+    </div>
+  </section>
 </BaseLayout>
+
+<script>
+  const filterCategory = document.getElementById('filterCategory') as HTMLSelectElement;
+  const filterNetwork = document.getElementById('filterNetwork') as HTMLSelectElement;
+  const filterSort = document.getElementById('filterSort') as HTMLSelectElement;
+  const clearBtn = document.getElementById('clearFilters') as HTMLElement;
+  const items = document.querySelectorAll('.news-item') as NodeListOf<HTMLElement>;
+  const articleCount = document.getElementById('articleCount') as HTMLElement;
+  const noResults = document.getElementById('noResults') as HTMLElement;
+  const articleList = document.getElementById('articleList') as HTMLElement;
+
+  function applyFilters() {
+    const cat = filterCategory?.value || '';
+    const net = filterNetwork?.value || '';
+    const sort = filterSort?.value || 'newest';
+
+    let visible = 0;
+    const itemsArr = Array.from(items);
+
+    itemsArr.forEach(item => {
+      const itemCat = item.getAttribute('data-category') || '';
+      const itemNets = item.getAttribute('data-networks') || '';
+
+      const matchCat = !cat || itemCat === cat;
+      const matchNet = !net || itemNets.split(',').includes(net);
+
+      if (matchCat && matchNet) {
+        item.style.display = '';
+        visible++;
+      } else {
+        item.style.display = 'none';
+      }
+    });
+
+    // Sort
+    const sortedItems = itemsArr
+      .filter(i => i.style.display !== 'none')
+      .sort((a, b) => {
+        const da = new Date(a.getAttribute('data-date') || '').getTime();
+        const db = new Date(b.getAttribute('data-date') || '').getTime();
+        return sort === 'newest' ? db - da : da - db;
+      });
+
+    sortedItems.forEach(item => articleList?.appendChild(item));
+    // Re-append hidden ones too
+    itemsArr.filter(i => i.style.display === 'none').forEach(i => articleList?.appendChild(i));
+
+    articleCount.textContent = `${visible} article${visible !== 1 ? 's' : ''}`;
+    noResults.classList.toggle('hidden', visible > 0);
+    clearBtn?.classList.toggle('hidden', !cat && !net);
+  }
+
+  filterCategory?.addEventListener('change', applyFilters);
+  filterNetwork?.addEventListener('change', applyFilters);
+  filterSort?.addEventListener('change', applyFilters);
+  clearBtn?.addEventListener('click', () => {
+    filterCategory.value = '';
+    filterNetwork.value = '';
+    applyFilters();
+  });
+</script>
