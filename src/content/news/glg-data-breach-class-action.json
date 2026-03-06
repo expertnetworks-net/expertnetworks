@@ -1,0 +1,14 @@
+{
+  "title": "GLG Faces Class Action Lawsuit Over Data Breach Affecting 152,000 Individuals",
+  "slug": "glg-data-breach-class-action",
+  "date": "2024-03-12",
+  "source": "ClassAction.org",
+  "category": "Compliance",
+  "categoryColor": "#FF3B30",
+  "gradientFrom": "#7f1d1d",
+  "gradientTo": "#ef4444",
+  "summary": "GLG disclosed a November 2023 ransomware attack that compromised names and Social Security numbers of 152,621 individuals. A class action lawsuit alleges negligent failure to protect personal data and inadequate response measures. GLG offered 12 months of credit monitoring.",
+  "sourceUrl": "https://www.classaction.org/news/gerson-lehrman-group-hit-with-class-action-over-cyberattack-affecting-152k-people",
+  "relatedNetworks": ["glg"],
+  "published": true
+}
