@@ -8,11 +8,13 @@ const tracked = allNetworks
   .slice(0, 12);
 ---
 
-<section class="py-5 px-6 border-b border-border/40 overflow-hidden">
+<section class="py-4 sm:py-5 px-4 sm:px-6 border-b border-border/40 overflow-hidden">
   <div class="max-w-site mx-auto">
-    <div class="text-[11px] font-bold uppercase tracking-widest text-tertiary mb-3">Networks Covered</div>
-    <div class="marquee-wrap relative" aria-label="Expert networks covered">
-      <div class="marquee-track flex gap-6 items-center w-max">
+    <div class="text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-tertiary mb-2.5 sm:mb-3">Networks Covered</div>
+
+    <!-- Desktop: infinite scrolling marquee -->
+    <div class="marquee-wrap relative hidden sm:block" aria-label="Expert networks covered">
+      <div class="marquee-track flex gap-5 items-center w-max">
         {[...tracked, ...tracked].map((n) => (
           <a
             href={`/networks/${n.data.slug}`}
@@ -31,13 +33,34 @@ const tracked = allNetworks
           </a>
         ))}
       </div>
-      <div class="marquee-fade-left"></div>
-      <div class="marquee-fade-right"></div>
+    </div>
+
+    <!-- Mobile: horizontally scrollable row -->
+    <div class="sm:hidden -mx-4 px-4 overflow-x-auto scrollbar-hide" aria-label="Expert networks covered">
+      <div class="flex gap-2.5 items-center w-max pb-1">
+        {tracked.map((n) => (
+          <a
+            href={`/networks/${n.data.slug}`}
+            class="flex-shrink-0 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-border/50 bg-white active:bg-bg-secondary transition-colors no-underline"
+          >
+            <img
+              src={n.data.logo}
+              alt={n.data.name.split(' (')[0]}
+              class="w-5 h-5 rounded object-cover"
+              loading="lazy"
+            />
+            <span class="text-[11px] font-medium text-secondary whitespace-nowrap">
+              {n.data.name.split(' (')[0].split(' / ')[0]}
+            </span>
+          </a>
+        ))}
+      </div>
     </div>
   </div>
 </section>
 
 <style>
+  /* Desktop marquee */
   .marquee-wrap {
     mask-image: linear-gradient(to right, transparent, black 48px, black calc(100% - 48px), transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 48px, black calc(100% - 48px), transparent);
@@ -66,5 +89,14 @@ const tracked = allNetworks
       mask-image: none;
       -webkit-mask-image: none;
     }
+  }
+
+  /* Hide scrollbar on mobile swipe row */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 </style>
