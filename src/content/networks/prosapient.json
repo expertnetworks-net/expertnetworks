@@ -13,7 +13,7 @@
   "expertCount": "50K+",
   "description": "Technology-first expert network offering an AI-powered self-serve platform for expert consultations, surveys, and transcripts, with a focus on efficiency, speed, and transparency.",
   "services": ["Expert Calls", "Surveys", "Transcripts", "Executive Placement", "Self-serve Platform"],
-  "aiCapabilities": ["AI-powered expert matching", "Semantic search", "Speech-to-text transcription", "Automated scheduling", "AI-assisted survey programming"],
+  "aiCapabilities": ["AI-powered expert matching", "Semantic search", "Speech-to-text transcription", "Automated scheduling", "AI-assisted survey programming", "AI transcript summaries", "AI translations (48 languages)"],
   "industries": ["Consulting", "Private Equity", "Venture Capital", "Corporate Strategy", "Financial Services"],
   "pricingModel": "Per-call",
   "pricingDetail": "Per-call / subscription",
@@ -37,7 +37,7 @@
   },
   "lastUpdated": "2026-03-07",
 
-  "overview": "proSapient is a London-based, technology-first expert network that was purpose-built around AI and machine learning from its founding in 2017. The company positions itself as the first expert network powered by machine learning AI technology, using semantic search and intelligent matching to connect clients with industry experts faster than traditional relationship-driven models.\n\nThe platform serves institutional investors, management consultants, and corporate professionals through expert consultations, surveys, transcripts, and executive placement services. proSapient has experienced rapid growth, reaching $55.8M in revenue and 100+ clients by 2024, and has been recognized among the Financial Times FT1000 fastest-growing businesses in Europe. With offices in London, Raleigh, and Lisbon, and a technical development team in Kyiv, proSapient represents the newer wave of technology-led expert networks challenging established incumbents.",
+  "overview": "proSapient is a London-based, technology-first expert network that was purpose-built around AI and machine learning from its founding in 2017. The company positions itself as the first expert network powered by machine learning AI technology, using semantic search and intelligent matching to connect clients with industry experts faster than traditional relationship-driven models.\n\nThe platform serves institutional investors, management consultants, and corporate professionals through expert consultations, surveys, transcripts, and executive placement services. proSapient has experienced rapid growth, reaching $55.8M in revenue and 100+ clients by 2024, and has been recognized among the Financial Times FT1000 fastest-growing businesses in Europe. With offices in London, Toronto, Raleigh, and Lisbon, and a technical development team in Kyiv, proSapient represents the newer wave of technology-led expert networks challenging established incumbents. Under CEO Aneil Rakity, with co-founder Margo Polishchuk serving as President, the company continues to expand its platform capabilities including AI-generated transcript summaries and translations in 48 languages.",
 
   "history": {
     "narrative": "proSapient was co-founded in 2017 by Margo Polishchuk and Jordan Shlosberg. Polishchuk came from an expert networking background and Shlosberg was a client — together they saw an opportunity to rebuild the expert network model from the ground up using AI and machine learning technology. The company raised seed funding and a $10M Series A led by Smedvig Capital, achieving rapid revenue growth and recognition as one of Europe's fastest-growing businesses.",
@@ -45,7 +45,7 @@
       { "year": "2017", "event": "Founded in London by Margo Polishchuk and Jordan Shlosberg as an AI-first expert network" },
       { "year": "2020", "event": "Raises seed funding from 24 Haymarket" },
       { "year": "2020", "event": "Closes $10M Series A led by Smedvig Capital, with participation from Guy Hands and 24 Haymarket" },
-      { "year": "2021", "event": "Expands operations and client base across Europe and North America" },
+      { "year": "2021", "event": "Doubles workforce, opens Toronto office, and surpasses 100 clients across Europe and North America" },
       { "year": "2022", "event": "Raises additional funding; valued at $84.4M" },
       { "year": "2023", "event": "Named among Financial Times FT1000 fastest-growing businesses in Europe" },
       { "year": "2023", "event": "Recognized as a Future Fifty company by Tech Nation" },
@@ -64,7 +64,7 @@
     },
     {
       "name": "Transcripts",
-      "description": "AI-powered speech-to-text transcription delivering 99% accuracy through a blend of cutting-edge AI and human review. Transcripts are searchable and form a reusable content library for clients."
+      "description": "AI-powered speech-to-text transcription delivering 99% accuracy within 4 hours of call completion. Transcripts include AI-generated summaries and are available with AI translations in 48 languages. Compliance officers perform manual MNPI checks before approving each transcript. The searchable transcript library makes insights accessible and shareable for project collaboration."
     },
     {
       "name": "Executive Placement",
@@ -85,8 +85,10 @@
     "features": [
       "AI-powered semantic search and expert matching using machine learning",
       "Dynamic expert database with automatic profile updates",
-      "Speech-to-text AI transcription with 99% accuracy (AI + human review)",
-      "Auto-scheduling with calendar integration",
+      "Speech-to-text AI transcription with 99% accuracy delivered within 4 hours",
+      "AI-generated call summaries synthesizing key consultation insights",
+      "AI translations of transcripts in 48 languages",
+      "Auto-scheduling with work calendar integration",
       "AI-assisted survey programming and design tools",
       "Dashboard analytics for network performance and budget monitoring",
       "Expert sourcing that extends beyond existing database to identify first-time consultants"
@@ -96,13 +98,16 @@
   "complianceExtended": {
     "narrative": "proSapient integrates compliance directly into its platform workflow rather than treating it as a separate manual process. Automated screening and vetting are built into the expert onboarding and matching pipeline, with manual review triggered for flagged cases. The platform maintains full audit trails of all interactions.",
     "highlights": [
+      "ISO 27001 certified for information security management",
       "Compliance checks integrated directly into platform workflow",
+      "Mandatory compliance training modules for all experts before first engagement",
+      "Manual MNPI screening on every transcript before client delivery",
       "Automated expert vetting with manual escalation for flagged cases",
       "Full audit trail of all client-expert interactions",
-      "Platform-enforced compliance protocols during onboarding and matching",
+      "GDPR-compliant data protection for expert personal information",
       "Clean regulatory record with no public enforcement actions"
     ],
-    "regulatoryContext": "proSapient has maintained a clean regulatory record since its founding in 2017. As a newer entrant to the expert network space, the company has had the advantage of building compliance into its technology platform from the ground up rather than retrofitting legacy processes. The firm's compliance approach is primarily designed around Western regulatory standards for MNPI protection."
+    "regulatoryContext": "proSapient operates under UK and EU regulatory frameworks with GDPR compliance for data protection and ISO 27001 certification for information security. The company has maintained a clean regulatory record since its founding in 2017. As a newer entrant, it has had the advantage of building compliance into its technology platform from the ground up rather than retrofitting legacy processes."
   },
 
   "clientFit": {
@@ -143,7 +148,8 @@
     "Reached $55.8M revenue and 100+ clients by 2024",
     "Named among Financial Times FT1000 fastest-growing businesses in Europe",
     "Recognized as a Future Fifty company by Tech Nation",
-    "Offices in London, Raleigh, and Lisbon with technical development in Kyiv",
+    "ISO 27001 certified for information security management",
+    "Offices in London, Toronto, Raleigh, and Lisbon with technical development in Kyiv",
     "AI transcription claims 99% accuracy through combined AI and human review"
   ],
 
