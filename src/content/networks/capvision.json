@@ -9,23 +9,159 @@
   "type": "Expert Network",
   "founded": 2006,
   "headquarters": "Shanghai, China",
-  "employeeCount": "500+",
+  "employeeCount": "600+",
   "expertCount": "400K+",
   "description": "Asia-focused expert network with global reach, providing expert consultations, industry reports, and primary research across major markets.",
-  "services": ["Expert Calls", "Industry Reports", "Primary Research", "Events"],
-  "aiCapabilities": ["AI-assisted matching", "Automated compliance checks"],
-  "industries": ["Financial Services", "Healthcare", "Technology", "Consumer", "Industrials"],
+  "services": ["Expert Calls", "Industry Reports", "Surveys", "Primary Research", "Events", "Corporate Access"],
+  "aiCapabilities": ["AI-assisted matching", "Automated compliance checks", "Natural language search"],
+  "industries": ["Financial Services", "Healthcare", "Technology", "Consumer", "Industrials", "Energy", "Real Estate"],
   "pricingModel": "Per-call",
-  "keyDifferentiators": ["Strongest Asia-Pacific coverage", "Multilingual capabilities", "Local market expertise"],
-  "bestFor": ["Asia-Pacific Investors", "Cross-Border Research", "Emerging Markets"],
+  "pricingDetail": "Per-call / project-based",
+  "keyDifferentiators": ["Strongest Asia-Pacific coverage among expert networks", "Multilingual capabilities across Asian and Western markets", "Local market expertise with on-the-ground teams in major Asian cities", "Dual-market positioning spanning China and global institutional clients"],
+  "bestFor": ["Asia-Pacific Investors", "Cross-Border Research", "Emerging Markets", "China-focused Due Diligence"],
   "compliance": {
-    "mnpiPolicy": "Compliance framework adapted to both Western and Asian regulatory environments",
-    "expertVetting": "Regional compliance teams with local regulatory knowledge",
+    "mnpiPolicy": "Compliance framework adapted to both Western and Asian regulatory environments with enhanced protocols post-2023 rectification",
+    "expertVetting": "Regional compliance teams with local regulatory knowledge; expert screening adapted to Chinese and international standards",
     "auditTrail": true,
-    "regulatoryHistory": "Subject to SEC investigation in 2023 regarding potential MNPI violations. Enhanced compliance protocols subsequently implemented"
+    "regulatoryHistory": "In May 2023, Chinese state security authorities raided Capvision offices as part of a broader crackdown on consulting firms. Capvision subsequently completed a government-supervised rectification process and implemented comprehensive compliance reforms. Separately, the firm has faced scrutiny from Western regulators regarding cross-border information flows."
   },
   "featured": false,
   "priority": 7,
   "published": true,
-  "lastUpdated": "2026-03-06"
+  "comparison": {
+    "expertCalls": true,
+    "contentLibrary": false,
+    "aiMatching": true,
+    "surveys": true,
+    "complianceTools": true
+  },
+  "lastUpdated": "2026-03-07",
+
+  "overview": "Capvision is one of the largest expert networks headquartered in Asia and the largest expert network based in China, where it is domestically known as Kaisheng Rongying. Founded in 2006 by former Bain & Company consultants and Morgan Stanley investment bankers, the firm has built deep expertise in connecting global institutional clients with industry professionals across the Asia-Pacific region and beyond. Capvision partners with over 2,000 clients including institutional investors, consulting firms, and Fortune 500 companies.\n\nThe company offers a broad suite of primary research services including expert consultations, surveys, corporate access events, customized research projects, and industry reports. With offices in Shanghai, New York, Munich, Hong Kong, Osaka, and Beijing, Capvision straddles both Asian and Western markets — a positioning that is both its key differentiator and, following the 2023 Chinese government crackdown on consulting firms, a source of ongoing regulatory complexity.",
+
+  "history": {
+    "narrative": "Capvision was founded in 2006 in Shanghai by Roger Xu and Kai Hong, both of whom came from backgrounds in management consulting and investment banking. The firm originally focused on sourcing expert advisors within China for global institutional clients, and gradually expanded its network and geographic footprint. By the early 2020s Capvision had grown to 600+ employees and was positioning for a Hong Kong IPO. However, the company's trajectory was significantly disrupted in 2023 when Chinese state security authorities raided its offices as part of a broader crackdown on consulting and due diligence firms operating in China.",
+    "timeline": [
+      { "year": "2006", "event": "Founded in Shanghai by Roger Xu and Kai Hong" },
+      { "year": "Late 2000s", "event": "Establishes core Asia-Pacific expert sourcing capabilities" },
+      { "year": "2010s", "event": "Expands globally with offices in New York, Hong Kong, Munich, Osaka, and Beijing" },
+      { "year": "2020", "event": "Series of equity transfers value company at ~RMB 2.3 billion (~$320M)" },
+      { "year": "2022", "event": "Files for Hong Kong IPO after 45% revenue growth; aims to raise $300M" },
+      { "year": "2023", "event": "Chinese state security authorities raid offices; IPO plans suspended" },
+      { "year": "2023", "event": "Completes government-supervised rectification and implements comprehensive compliance reforms" },
+      { "year": "2024–2025", "event": "Continues operations with enhanced compliance framework across both Chinese and international jurisdictions" }
+    ]
+  },
+
+  "servicesDetailed": [
+    {
+      "name": "Expert Consultations",
+      "description": "One-on-one or group phone consultations connecting clients with industry professionals who have direct operational experience in specific sectors, companies, or markets. Capvision's strongest differentiator is sourcing experts across Greater China and the broader Asia-Pacific region."
+    },
+    {
+      "name": "Surveys",
+      "description": "Quantitative and qualitative survey research leveraging Capvision's expert network to provide structured data on market conditions, competitive dynamics, and industry trends. Surveys can be paired with follow-up consultations for deeper investigation."
+    },
+    {
+      "name": "Industry Reports",
+      "description": "Capvision produces and distributes industry-focused research reports drawing on its expert network and primary research capabilities, covering sectors across Asia and global markets."
+    },
+    {
+      "name": "Corporate Access / Events",
+      "description": "Conferences, roundtables, and corporate access events that bring together industry experts, company management teams, and institutional investors. These events are particularly focused on Asian markets and cross-border investment themes."
+    },
+    {
+      "name": "Customized Research",
+      "description": "Bespoke research projects combining expert consultations, surveys, and desk research into comprehensive deliverables tailored to specific client questions — often used for due diligence, market entry analysis, and competitive intelligence."
+    },
+    {
+      "name": "HR & Talent Services",
+      "description": "Executive search and talent advisory services that leverage Capvision's expert network for recruitment and organizational consulting."
+    }
+  ],
+
+  "aiPlatform": {
+    "narrative": "Capvision has invested in technology to support expert matching and compliance workflows, though its AI capabilities are less prominently marketed compared to newer, technology-first competitors. The platform uses automated matching algorithms to connect client requests with relevant experts, and has integrated compliance automation tools to support screening and monitoring across multiple regulatory jurisdictions.",
+    "features": [
+      "AI-assisted expert matching and recommendation",
+      "Automated compliance screening across Chinese and international regulatory frameworks",
+      "Natural language search for expert identification",
+      "Project management and scheduling automation",
+      "Multi-language support in platform interfaces"
+    ]
+  },
+
+  "complianceExtended": {
+    "narrative": "Capvision's compliance story is uniquely complex due to its position straddling Chinese and international regulatory environments. Following the May 2023 raid by Chinese state security authorities, the firm underwent a government-supervised rectification process and announced comprehensive compliance reforms. The company now operates under enhanced scrutiny in China while also maintaining compliance frameworks aligned with Western regulatory expectations around MNPI and expert vetting.",
+    "highlights": [
+      "Dual compliance framework covering Chinese national security regulations and Western MNPI standards",
+      "Completed government-supervised rectification process in 2023",
+      "Regional compliance teams with local regulatory knowledge in each major office",
+      "Expert screening adapted to both Chinese and international standards",
+      "Audit trail capabilities for client interactions"
+    ],
+    "regulatoryContext": "Capvision has faced regulatory challenges on multiple fronts. In May 2023, Chinese state security authorities raided the firm's offices as part of a broader crackdown on consulting and due diligence firms, citing national security concerns about cross-border information flows. Capvision completed a government-supervised rectification and implemented new compliance protocols. The firm has also faced scrutiny from Western regulators. These experiences have made Capvision's regulatory positioning more complex than most peers, and potential clients should evaluate the firm's current compliance posture in the context of their own regulatory requirements."
+  },
+
+  "clientFit": {
+    "narrative": "Capvision is best suited for clients who need deep Asia-Pacific expertise, particularly those with investment or business interests in China and broader Asian markets. The firm's dual-market positioning makes it especially valuable for cross-border research where understanding both Asian and Western perspectives is important.",
+    "segments": [
+      "Institutional investors with Asia-Pacific portfolio exposure or investment mandates",
+      "Private equity firms conducting due diligence on Asian targets or portfolio companies",
+      "Consulting firms needing rapid access to industry experts in China, Japan, and Southeast Asia",
+      "Multinational corporations evaluating market entry or competitive dynamics in Asian markets",
+      "Research teams needing multilingual expert access across Asian languages"
+    ]
+  },
+
+  "strengths": [
+    "Deepest expert network coverage in China and Asia-Pacific among major expert networks",
+    "Multilingual capabilities spanning Mandarin, Cantonese, Japanese, Korean, and other Asian languages",
+    "On-the-ground presence in major Asian business centers",
+    "Broad service offering beyond calls — surveys, events, research, corporate access",
+    "Large network scale (400K+ experts) with strong Asia weighting",
+    "Dual-market positioning serving both Asian and Western institutional clients"
+  ],
+
+  "caveats": [
+    "2023 Chinese government raid and rectification process creates ongoing reputational and regulatory uncertainty",
+    "Cross-border compliance complexity — clients must evaluate whether Capvision's dual-jurisdiction positioning aligns with their own compliance requirements",
+    "Hong Kong IPO plans suspended following 2023 events; financial trajectory less certain",
+    "AI and technology platform less mature than newer technology-first competitors",
+    "Western market coverage less deep than dedicated Western-focused expert networks",
+    "Less transparent public information about current operational scale and financial health"
+  ],
+
+  "notableFacts": [
+    "Founded in 2006 — one of the oldest expert networks in Asia",
+    "Largest expert network headquartered in China (domestically known as Kaisheng Rongying)",
+    "Founded by former Bain & Company consultants and Morgan Stanley investment bankers",
+    "Valued at approximately RMB 2.3 billion (~$320M) in 2020 equity transfers",
+    "Filed for Hong Kong IPO in 2022 aiming to raise $300M after 45% revenue growth",
+    "Offices in Shanghai, New York, Munich, Hong Kong, Osaka, and Beijing",
+    "Partners with over 2,000 clients including institutional investors and Fortune 500 companies",
+    "Subject to Chinese state security raid in May 2023; completed government-supervised rectification"
+  ],
+
+  "sourceNotes": [
+    "Capvision official website (capvision.com) used for service descriptions and company positioning",
+    "CNN, The China Project, and Consultancy.asia used for 2023 raid and rectification reporting",
+    "PitchBook and Crunchbase used for funding and valuation data",
+    "Inex One and ExpertNetworkCalls.com used for independent third-party profile information",
+    "LinkedIn used for employee count and office location verification",
+    "IPO filing information sourced from financial news reporting (2022)"
+  ],
+
+  "whyChoose": ["Unmatched Asia-Pacific coverage", "Multilingual expert access", "Cross-border research strength", "Broad service suite beyond calls"],
+  "whenNotIdeal": ["Regulatory risk concerns from 2023 events", "Weaker Western-only coverage", "Less tech-forward than newer competitors", "Compliance complexity for risk-sensitive clients"],
+
+  "confidence": {
+    "founded": "verified",
+    "headquarters": "verified",
+    "expertCount": "positioning",
+    "employeeCount": "partially-unverifiable",
+    "pricingModel": "inference",
+    "services": "verified",
+    "compliance": "verified"
+  }
 }
