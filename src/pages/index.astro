@@ -39,24 +39,434 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
     }
   }}
 >
-  <!-- Dashboard header — compact, with brief explainer -->
-  <section class="pt-[72px] pb-6 px-6 border-b border-border/40" id="top">
-    <div class="max-w-site mx-auto">
-      <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-        <div class="max-w-2xl">
-          <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight text-primary">Expert Network Intelligence</h1>
-          <p class="text-secondary text-[13px] mt-2 leading-relaxed">Expert networks connect investors, consultants, and corporations with industry specialists for on-demand knowledge. This hub independently tracks {publishedNetworks.length} providers — comparing pricing, compliance, expert pools, and AI capabilities — so you can make informed decisions without relying on vendor marketing.</p>
-        </div>
-        <div class="flex gap-2 flex-shrink-0">
-          <a href="/networks" class="inline-flex items-center gap-1.5 px-4 py-2 bg-accent text-white text-sm font-semibold rounded-lg no-underline hover:bg-accent-hover transition-colors">
-            Browse All
-            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </a>
-          <a href="/compare" class="inline-flex items-center gap-1.5 px-4 py-2 bg-bg-secondary text-primary text-sm font-semibold rounded-lg no-underline hover:bg-border/50 transition-colors">Compare</a>
+  <!-- Hero — dark interactive intelligence surface -->
+  <section class="relative overflow-hidden bg-[#0d0d0f]" id="top" style="min-height: 260px;">
+    <!-- Layer 1–3: Canvas (particles + reveal) -->
+    <canvas id="heroCanvas" class="absolute inset-0 w-full h-full" style="pointer-events: none;"></canvas>
+    <!-- Layer 4: Readability vignette -->
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 50% 40%, transparent 30%, rgba(13,13,15,0.55) 100%);"></div>
+    <!-- Layer 5: Content -->
+    <div class="relative z-10 pt-[72px] pb-8 px-6" id="heroContent" style="pointer-events: none;">
+      <div class="max-w-site mx-auto">
+        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+          <div class="max-w-2xl">
+            <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight text-white">Expert Network Intelligence</h1>
+            <p class="text-[#a1a1a6] text-[13px] mt-2 leading-relaxed">Expert networks connect investors, consultants, and corporations with industry specialists for on-demand knowledge. This hub independently tracks {publishedNetworks.length} providers — comparing pricing, compliance, expert pools, and AI capabilities — so you can make informed decisions without relying on vendor marketing.</p>
+          </div>
+          <div class="flex gap-2 flex-shrink-0" style="pointer-events: auto;">
+            <a href="/networks" class="inline-flex items-center gap-1.5 px-4 py-2 bg-accent text-white text-sm font-semibold rounded-lg no-underline hover:bg-accent-hover transition-colors">
+              Browse All
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a href="/compare" class="inline-flex items-center gap-1.5 px-4 py-2 bg-[rgba(255,255,255,0.08)] text-[#e5e5ea] text-sm font-semibold rounded-lg no-underline hover:bg-[rgba(255,255,255,0.14)] transition-colors border border-[rgba(255,255,255,0.08)]">Compare</a>
+          </div>
         </div>
       </div>
     </div>
+    <!-- Interaction surface — captures pointer events over the whole hero -->
+    <div id="heroInteraction" class="absolute inset-0 z-[5]" style="cursor: default;"></div>
   </section>
+
+  <script>
+  (function() {
+    // ─── Tuning constants ───
+    const PARTICLE_COUNT_DESKTOP = 64;
+    const PARTICLE_COUNT_TABLET = 40;
+    const PARTICLE_COUNT_MOBILE = 22;
+    const MAX_CONNECTION_DIST = 130;
+    const LINE_OPACITY = 0.07;
+    const BASE_PARTICLE_OPACITY = 0.35;
+    const IDLE_DRIFT_STRENGTH = 0.15;
+    const POINTER_INFLUENCE_RADIUS = 140;
+    const POINTER_REPULSION_STRENGTH = 60;
+    const REVEAL_RADIUS = 160;
+    const REVEAL_OPACITY_BOOST = 0.45;
+    const RECOVERY_SPEED = 0.025;
+    const INTERPOLATION_FACTOR = 0.08;
+    const CLICK_PULSE_STRENGTH = 120;
+    const CLICK_PULSE_DURATION = 400;
+    const DPR_CAP = 2;
+
+    // ─── Reveal layer constants ───
+    const REVEAL_PARTICLE_COUNT_DESKTOP = 90;
+    const REVEAL_PARTICLE_COUNT_TABLET = 55;
+    const REVEAL_PARTICLE_COUNT_MOBILE = 30;
+    const REVEAL_MAX_CONNECTION_DIST = 100;
+    const REVEAL_LINE_OPACITY = 0.18;
+    const REVEAL_PARTICLE_OPACITY = 0.55;
+
+    const canvas = document.getElementById('heroCanvas');
+    const hero = document.getElementById('top');
+    const interactionLayer = document.getElementById('heroInteraction');
+    if (!canvas || !hero || !interactionLayer) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // ─── Responsive tier ───
+    function getTier() {
+      const w = window.innerWidth;
+      if (w >= 1024) return 'desktop';
+      if (w >= 640) return 'tablet';
+      return 'mobile';
+    }
+
+    function getParticleCount(tier) {
+      if (tier === 'desktop') return PARTICLE_COUNT_DESKTOP;
+      if (tier === 'tablet') return PARTICLE_COUNT_TABLET;
+      return PARTICLE_COUNT_MOBILE;
+    }
+
+    function getRevealCount(tier) {
+      if (tier === 'desktop') return REVEAL_PARTICLE_COUNT_DESKTOP;
+      if (tier === 'tablet') return REVEAL_PARTICLE_COUNT_TABLET;
+      return REVEAL_PARTICLE_COUNT_MOBILE;
+    }
+
+    // ─── State ───
+    let pointer = { x: -9999, y: -9999 };
+    let smoothPointer = { x: -9999, y: -9999 };
+    let isPointerInside = false;
+    let clickPulse = { active: false, x: 0, y: 0, startTime: 0 };
+    let particles = [];
+    let revealParticles = [];
+    let animationId = null;
+    let isVisible = true;
+    let currentTier = getTier();
+
+    // ─── Particle factory ───
+    function createParticle(w, h) {
+      return {
+        x: Math.random() * w,
+        y: Math.random() * h,
+        homeX: 0, homeY: 0,
+        vx: (Math.random() - 0.5) * IDLE_DRIFT_STRENGTH,
+        vy: (Math.random() - 0.5) * IDLE_DRIFT_STRENGTH,
+        size: 1 + Math.random() * 1.2,
+        opacity: BASE_PARTICLE_OPACITY * (0.4 + Math.random() * 0.6),
+      };
+    }
+
+    function createRevealParticle(w, h) {
+      return {
+        x: Math.random() * w,
+        y: Math.random() * h,
+        size: 0.8 + Math.random() * 0.8,
+        opacity: REVEAL_PARTICLE_OPACITY * (0.5 + Math.random() * 0.5),
+      };
+    }
+
+    // ─── Resize ───
+    function resize() {
+      const rect = hero.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, DPR_CAP);
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      canvas.style.width = rect.width + 'px';
+      canvas.style.height = rect.height + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const newTier = getTier();
+      const needsRebuild = (newTier !== currentTier) || particles.length === 0;
+      currentTier = newTier;
+
+      if (needsRebuild) {
+        const count = getParticleCount(currentTier);
+        const revCount = getRevealCount(currentTier);
+        particles = [];
+        revealParticles = [];
+        for (let i = 0; i < count; i++) {
+          const p = createParticle(rect.width, rect.height);
+          p.homeX = p.x;
+          p.homeY = p.y;
+          particles.push(p);
+        }
+        for (let i = 0; i < revCount; i++) {
+          revealParticles.push(createRevealParticle(rect.width, rect.height));
+        }
+      } else {
+        // Re-home particles within new bounds
+        for (const p of particles) {
+          p.homeX = Math.min(p.homeX, rect.width);
+          p.homeY = Math.min(p.homeY, rect.height);
+          p.x = Math.min(p.x, rect.width);
+          p.y = Math.min(p.y, rect.height);
+        }
+      }
+    }
+
+    // ─── Pointer events ───
+    function onPointerMove(e) {
+      const rect = hero.getBoundingClientRect();
+      pointer.x = e.clientX - rect.left;
+      pointer.y = e.clientY - rect.top;
+      isPointerInside = true;
+    }
+    function onPointerLeave() {
+      isPointerInside = false;
+    }
+    function onClick(e) {
+      const rect = hero.getBoundingClientRect();
+      clickPulse = {
+        active: true,
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+        startTime: performance.now(),
+      };
+    }
+    function onTouchMove(e) {
+      if (e.touches.length > 0) {
+        const rect = hero.getBoundingClientRect();
+        pointer.x = e.touches[0].clientX - rect.left;
+        pointer.y = e.touches[0].clientY - rect.top;
+        isPointerInside = true;
+      }
+    }
+    function onTouchEnd() {
+      isPointerInside = false;
+    }
+
+    interactionLayer.addEventListener('mousemove', onPointerMove, { passive: true });
+    interactionLayer.addEventListener('mouseleave', onPointerLeave, { passive: true });
+    interactionLayer.addEventListener('click', onClick);
+    interactionLayer.addEventListener('touchmove', onTouchMove, { passive: true });
+    interactionLayer.addEventListener('touchend', onTouchEnd, { passive: true });
+    interactionLayer.addEventListener('touchcancel', onTouchEnd, { passive: true });
+
+    // ─── Intersection Observer ───
+    const observer = new IntersectionObserver(function(entries) {
+      isVisible = entries[0].isIntersecting;
+    }, { threshold: 0.05 });
+    observer.observe(hero);
+
+    // ─── Draw ───
+    function draw(now) {
+      animationId = requestAnimationFrame(draw);
+      if (!isVisible) return;
+
+      const rect = hero.getBoundingClientRect();
+      const w = rect.width;
+      const h = rect.height;
+      ctx.clearRect(0, 0, w, h);
+
+      // Smooth pointer interpolation
+      if (isPointerInside) {
+        smoothPointer.x += (pointer.x - smoothPointer.x) * INTERPOLATION_FACTOR;
+        smoothPointer.y += (pointer.y - smoothPointer.y) * INTERPOLATION_FACTOR;
+      } else {
+        smoothPointer.x += (-9999 - smoothPointer.x) * 0.02;
+        smoothPointer.y += (-9999 - smoothPointer.y) * 0.02;
+      }
+
+      // Click pulse calculation
+      let pulseStrength = 0;
+      let pulseRadius = 0;
+      if (clickPulse.active) {
+        const elapsed = now - clickPulse.startTime;
+        if (elapsed > CLICK_PULSE_DURATION) {
+          clickPulse.active = false;
+        } else {
+          const t = elapsed / CLICK_PULSE_DURATION;
+          pulseStrength = CLICK_PULSE_STRENGTH * (1 - t);
+          pulseRadius = POINTER_INFLUENCE_RADIUS * (1 + t * 1.5);
+        }
+      }
+
+      // ─── Layer 3: Reveal particles (hidden intelligence mesh) ───
+      const spx = smoothPointer.x;
+      const spy = smoothPointer.y;
+      const revealActive = spx > -1000 && spy > -1000;
+
+      if (revealActive) {
+        // Draw reveal connections first
+        ctx.lineWidth = 0.5;
+        for (let i = 0; i < revealParticles.length; i++) {
+          const a = revealParticles[i];
+          const dxA = a.x - spx;
+          const dyA = a.y - spy;
+          const distA = Math.sqrt(dxA * dxA + dyA * dyA);
+          if (distA > REVEAL_RADIUS) continue;
+          const alphaA = 1 - (distA / REVEAL_RADIUS);
+
+          for (let j = i + 1; j < revealParticles.length; j++) {
+            const b = revealParticles[j];
+            const dxB = b.x - spx;
+            const dyB = b.y - spy;
+            const distB = Math.sqrt(dxB * dxB + dyB * dyB);
+            if (distB > REVEAL_RADIUS) continue;
+
+            const dxAB = a.x - b.x;
+            const dyAB = a.y - b.y;
+            const distAB = Math.sqrt(dxAB * dxAB + dyAB * dyAB);
+            if (distAB > REVEAL_MAX_CONNECTION_DIST) continue;
+
+            const alphaB = 1 - (distB / REVEAL_RADIUS);
+            const lineFade = 1 - (distAB / REVEAL_MAX_CONNECTION_DIST);
+            const alpha = REVEAL_LINE_OPACITY * alphaA * alphaB * lineFade;
+            ctx.strokeStyle = 'rgba(120,140,170,' + alpha.toFixed(3) + ')';
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+
+        // Draw reveal particles
+        for (let i = 0; i < revealParticles.length; i++) {
+          const p = revealParticles[i];
+          const dx = p.x - spx;
+          const dy = p.y - spy;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist > REVEAL_RADIUS) continue;
+          const proximity = 1 - (dist / REVEAL_RADIUS);
+          const alpha = p.opacity * proximity * REVEAL_OPACITY_BOOST;
+          ctx.fillStyle = 'rgba(140,160,190,' + alpha.toFixed(3) + ')';
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      // ─── Layer 2: Primary particles ───
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        // Ambient drift
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Pointer repulsion
+        const dx = p.x - spx;
+        const dy = p.y - spy;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < POINTER_INFLUENCE_RADIUS && dist > 0) {
+          const force = (1 - dist / POINTER_INFLUENCE_RADIUS) * POINTER_REPULSION_STRENGTH;
+          p.x += (dx / dist) * force * 0.02;
+          p.y += (dy / dist) * force * 0.02;
+        }
+
+        // Click pulse repulsion
+        if (clickPulse.active && pulseStrength > 0) {
+          const cdx = p.x - clickPulse.x;
+          const cdy = p.y - clickPulse.y;
+          const cdist = Math.sqrt(cdx * cdx + cdy * cdy);
+          if (cdist < pulseRadius && cdist > 0) {
+            const pForce = (1 - cdist / pulseRadius) * pulseStrength;
+            p.x += (cdx / cdist) * pForce * 0.03;
+            p.y += (cdy / cdist) * pForce * 0.03;
+          }
+        }
+
+        // Recovery toward home
+        p.x += (p.homeX - p.x) * RECOVERY_SPEED;
+        p.y += (p.homeY - p.y) * RECOVERY_SPEED;
+
+        // Bounds wrap
+        if (p.x < -10) p.x = w + 10;
+        if (p.x > w + 10) p.x = -10;
+        if (p.y < -10) p.y = h + 10;
+        if (p.y > h + 10) p.y = -10;
+
+        // Draw particle
+        ctx.fillStyle = 'rgba(180,180,190,' + p.opacity.toFixed(3) + ')';
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // ─── Connections between primary particles ───
+      ctx.lineWidth = 0.5;
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const a = particles[i];
+          const b = particles[j];
+          const dxAB = a.x - b.x;
+          const dyAB = a.y - b.y;
+          const distAB = Math.sqrt(dxAB * dxAB + dyAB * dyAB);
+          if (distAB > MAX_CONNECTION_DIST) continue;
+          const lineFade = 1 - (distAB / MAX_CONNECTION_DIST);
+
+          // Lines near cursor become stressed (fade/break)
+          let stress = 1;
+          const midX = (a.x + b.x) / 2;
+          const midY = (a.y + b.y) / 2;
+          const midDx = midX - spx;
+          const midDy = midY - spy;
+          const midDist = Math.sqrt(midDx * midDx + midDy * midDy);
+          if (midDist < POINTER_INFLUENCE_RADIUS) {
+            stress = midDist / POINTER_INFLUENCE_RADIUS;
+            stress = stress * stress; // Quadratic falloff — sharper break
+          }
+
+          const alpha = LINE_OPACITY * lineFade * stress;
+          ctx.strokeStyle = 'rgba(180,180,190,' + alpha.toFixed(4) + ')';
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+
+      // ─── Click pulse ring ───
+      if (clickPulse.active) {
+        const elapsed = now - clickPulse.startTime;
+        const t = elapsed / CLICK_PULSE_DURATION;
+        const ringRadius = 20 + t * POINTER_INFLUENCE_RADIUS * 1.2;
+        const ringAlpha = 0.15 * (1 - t);
+        ctx.strokeStyle = 'rgba(120,150,200,' + ringAlpha.toFixed(3) + ')';
+        ctx.lineWidth = 1.5 * (1 - t);
+        ctx.beginPath();
+        ctx.arc(clickPulse.x, clickPulse.y, ringRadius, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+    }
+
+    // ─── Init ───
+    if (prefersReducedMotion) {
+      // Static fallback: draw once with no animation
+      resize();
+      const rect = hero.getBoundingClientRect();
+      const w = rect.width;
+      const h = rect.height;
+      ctx.clearRect(0, 0, w, h);
+      // Draw static particles
+      for (const p of particles) {
+        ctx.fillStyle = 'rgba(180,180,190,' + (p.opacity * 0.7).toFixed(3) + ')';
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      // Draw static connections
+      ctx.lineWidth = 0.5;
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const a = particles[i];
+          const b = particles[j];
+          const dxAB = a.x - b.x;
+          const dyAB = a.y - b.y;
+          const distAB = Math.sqrt(dxAB * dxAB + dyAB * dyAB);
+          if (distAB > MAX_CONNECTION_DIST) continue;
+          const lineFade = 1 - (distAB / MAX_CONNECTION_DIST);
+          const alpha = LINE_OPACITY * lineFade * 0.7;
+          ctx.strokeStyle = 'rgba(180,180,190,' + alpha.toFixed(4) + ')';
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+    } else {
+      resize();
+      animationId = requestAnimationFrame(draw);
+    }
+
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(resize, 150);
+    }, { passive: true });
+  })();
+  </script>
 
   <!-- Networks covered marquee -->
   <TrackedNetworksMarquee />
