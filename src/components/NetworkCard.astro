@@ -24,7 +24,7 @@ const { name, shortName, slug, gradientFrom, gradientTo, type, founded, headquar
 {variant === 'logo' ? (
   <a href={`/networks/${slug}`} class={`block bg-white rounded-card p-5 text-center no-underline shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all fade-in stagger-${stagger}`}>
     {logo ? (
-      <img src={logo} alt={name} class="w-12 h-12 rounded-xl mx-auto mb-3 object-contain" />
+      <img src={logo} alt={name} class="w-12 h-12 rounded-xl mx-auto mb-3 object-contain" loading="lazy" />
     ) : (
       <div class="w-12 h-12 rounded-xl mx-auto mb-3 flex items-center justify-center text-white font-bold text-lg" style={`background: linear-gradient(135deg, ${gradientFrom}, ${gradientTo})`}>
         {shortName}
@@ -37,7 +37,7 @@ const { name, shortName, slug, gradientFrom, gradientTo, type, founded, headquar
   <a href={`/networks/${slug}`} class="block bg-white rounded-card p-6 no-underline shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all fade-in">
     <div class="flex items-center gap-3 mb-4">
       {logo ? (
-        <img src={logo} alt={name} class="w-11 h-11 rounded-xl object-contain flex-shrink-0" />
+        <img src={logo} alt={name} class="w-11 h-11 rounded-xl object-contain flex-shrink-0" loading="lazy" />
       ) : (
         <div class="w-11 h-11 rounded-xl flex items-center justify-center text-white font-bold text-base flex-shrink-0" style={`background: linear-gradient(135deg, ${gradientFrom}, ${gradientTo})`}>
           {shortName}

@@ -6,7 +6,10 @@ const allNetworks = await getCollection('networks');
 const publishedCount = allNetworks.filter(n => n.data.published).length;
 ---
 
-<BaseLayout title="About — ExpertNetworks.net">
+<BaseLayout
+  title="About — ExpertNetworks.net"
+  description={`About ExpertNetworks.net: an independent, free information resource covering ${publishedCount}+ expert networks. No affiliations, no paywalls, no sign-ups.`}
+>
   <section class="pt-32 pb-24 px-6">
     <div class="max-w-3xl mx-auto">
       <a href="/" class="inline-flex items-center gap-1 text-accent text-sm font-medium no-underline mb-8 hover:underline">

@@ -21,7 +21,18 @@ const categories = [...new Set(articles.map(a => a.data.category))].sort();
 const relatedSlugs = [...new Set(articles.flatMap(a => a.data.relatedNetworks))].filter(s => networkMap[s]).sort();
 ---
 
-<BaseLayout title="Industry News — Expert Networks Hub">
+<BaseLayout
+  title="Industry News — Expert Networks Hub"
+  description="Curated expert network industry news from independent sources. Track funding rounds, acquisitions, product launches, and regulatory developments across GLG, AlphaSights, Third Bridge, and more."
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Expert Network Industry News",
+    "description": "Curated expert network industry news from independent sources.",
+    "url": "https://expertnetworks.net/news",
+    "isPartOf": { "@type": "WebSite", "name": "ExpertNetworks.net", "url": "https://expertnetworks.net" }
+  }}
+>
   <section class="pt-[72px] pb-6 px-6 border-b border-border/40">
     <div class="max-w-site mx-auto">
       <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">

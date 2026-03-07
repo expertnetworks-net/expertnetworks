@@ -43,7 +43,22 @@ function badgeFor(field: string) {
 }
 ---
 
-<BaseLayout title={`${d.name} — Expert Networks Hub`}>
+<BaseLayout
+  title={`${d.name} — Expert Networks Hub`}
+  description={`${d.name} expert network profile: ${d.expertCount ? d.expertCount + ' experts, ' : ''}${d.pricingModel ? d.pricingModel + ' pricing, ' : ''}founded ${d.founded || 'N/A'}. ${d.description.slice(0, 120)}${d.description.length > 120 ? '...' : ''}`}
+  ogType="article"
+  canonicalPath={`/networks/${d.slug}`}
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": d.name,
+    "url": d.website || `https://expertnetworks.net/networks/${d.slug}`,
+    "description": d.description,
+    "foundingDate": d.founded ? String(d.founded) : undefined,
+    "address": d.headquarters ? { "@type": "PostalAddress", "addressLocality": d.headquarters } : undefined,
+    "numberOfEmployees": d.employeeCount ? { "@type": "QuantitativeValue", "value": d.employeeCount } : undefined,
+  }}
+>
   <div class="flex min-h-screen">
 
     <!-- iOS-style Sidebar — sits above header -->

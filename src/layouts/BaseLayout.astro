@@ -6,9 +6,24 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title?: string;
   description?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  canonicalPath?: string;
+  jsonLd?: Record<string, any>;
 }
 
-const { title = 'ExpertNetworks.net — The Independent Expert Network Source', description = 'A neutral, independent hub for the expert network industry. Free. Open. No sign-ups. No bias.' } = Astro.props;
+const {
+  title = 'ExpertNetworks.net — The Independent Expert Network Source',
+  description = 'A neutral, independent hub for the expert network industry. Free. Open. No sign-ups. No bias.',
+  ogImage = '/og-default.png',
+  ogType = 'website',
+  canonicalPath,
+  jsonLd,
+} = Astro.props;
+
+const siteUrl = 'https://expertnetworks.net';
+const canonicalUrl = canonicalPath ? `${siteUrl}${canonicalPath}` : new URL(Astro.url.pathname, siteUrl).href;
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 ---
 
 <!DOCTYPE html>
@@ -18,15 +33,43 @@ const { title = 'ExpertNetworks.net — The Independent Expert Network Source', 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
   <title>{title}</title>
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href={canonicalUrl} />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content={ogType} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:image" content={ogImageUrl} />
+  <meta property="og:site_name" content="ExpertNetworks.net" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImageUrl} />
+
+  <!-- Fonts (optimized loading) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- JSON-LD Structured Data -->
+  {jsonLd && (
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  )}
 </head>
 <body>
   <Header />
   <slot />
   <Footer />
   <script>
+    // Intersection observer for fade-in animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -37,6 +80,7 @@ const { title = 'ExpertNetworks.net — The Independent Expert Network Source', 
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+    // Nav background on scroll (only on pages with hero)
     const scrollHint = document.getElementById('scrollHint');
     const hero = document.getElementById('hero');
     if (scrollHint && hero) {
@@ -47,8 +91,12 @@ const { title = 'ExpertNetworks.net — The Independent Expert Network Source', 
         if (nav) {
           (nav as HTMLElement).style.background = window.scrollY > 50 ? 'rgba(251, 251, 253, 0.92)' : 'rgba(251, 251, 253, 0.72)';
         }
-      });
+      }, { passive: true });
     }
+
+    // FIX: Reset body overflow on page load to prevent "stuck loading" after
+    // navigating away while an overlay (search, menu, sidebar) was open.
+    document.body.style.overflow = '';
   </script>
 </body>
 </html>

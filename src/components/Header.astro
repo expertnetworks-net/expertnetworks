@@ -182,6 +182,12 @@ const top10 = [...publishedNetworks]
     document.body.style.overflow = '';
   }
 
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
   function renderResults(query) {
     if (!query) {
       searchList?.classList.add('hidden');
@@ -203,14 +209,19 @@ const top10 = [...publishedNetworks]
     searchList?.classList.remove('hidden');
     if (searchList) {
       searchList.innerHTML = matches.map(n => {
+        const safeName = escapeHtml(n.name);
+        const safeShort = escapeHtml(n.shortName);
+        const safeSlug = encodeURIComponent(n.slug);
+        const safeExperts = escapeHtml(n.expertCount || '');
+        const safePricing = escapeHtml(n.pricingModel || '');
         const avatar = n.logo
-          ? `<img src="${n.logo}" alt="" class="w-8 h-8 rounded-lg object-cover flex-shrink-0" />`
-          : `<div class="w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-[10px] flex-shrink-0" style="background:linear-gradient(135deg,${n.gradientFrom},${n.gradientTo})">${n.shortName}</div>`;
-        return `<a href="/networks/${n.slug}" class="flex items-center gap-3 px-4 py-3 hover:bg-bg-secondary transition-colors no-underline text-primary border-b border-bg-secondary last:border-0">
+          ? `<img src="${escapeHtml(n.logo)}" alt="" class="w-8 h-8 rounded-lg object-cover flex-shrink-0" loading="lazy" />`
+          : `<div class="w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-[10px] flex-shrink-0" style="background:linear-gradient(135deg,${escapeHtml(n.gradientFrom)},${escapeHtml(n.gradientTo)})">${safeShort}</div>`;
+        return `<a href="/networks/${safeSlug}" class="flex items-center gap-3 px-4 py-3 hover:bg-bg-secondary transition-colors no-underline text-primary border-b border-bg-secondary last:border-0">
           ${avatar}
           <div class="min-w-0 flex-1">
-            <div class="text-[13px] font-semibold">${n.name}</div>
-            <div class="text-[11px] text-tertiary">${n.expertCount} experts · ${n.pricingModel}</div>
+            <div class="text-[13px] font-semibold">${safeName}</div>
+            <div class="text-[11px] text-tertiary">${safeExperts} experts · ${safePricing}</div>
           </div>
           <svg class="w-3.5 h-3.5 flex-shrink-0 text-tertiary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>`;
@@ -220,7 +231,17 @@ const top10 = [...publishedNetworks]
 
   searchTrigger?.addEventListener('click', openSearch);
   searchBackdrop?.addEventListener('click', closeSearch);
-  searchInput?.addEventListener('input', (e) => renderResults(e.target.value));
+  searchInput?.addEventListener('input', (e) => {
+    const input = e.target;
+    if (input instanceof HTMLInputElement) renderResults(input.value);
+  });
+
+  // Close search overlay when clicking a result link (prevents stuck overflow:hidden)
+  searchList?.addEventListener('click', (e) => {
+    if (e.target instanceof HTMLAnchorElement || e.target.closest('a')) {
+      closeSearch();
+    }
+  });
 
   const menuBtn = document.getElementById('menuBtn');
   const menuBackdrop = document.getElementById('menuBackdrop');
@@ -248,6 +269,14 @@ const top10 = [...publishedNetworks]
   menuBtn?.addEventListener('click', openMenu);
   menuBackdrop?.addEventListener('click', closeMenu);
   menuClose?.addEventListener('click', closeMenu);
+
+  // Close menu when clicking any navigation link inside the drawer
+  menuDrawer?.addEventListener('click', (e) => {
+    const link = e.target instanceof HTMLAnchorElement ? e.target : e.target?.closest?.('a');
+    if (link && link.href) {
+      closeMenu();
+    }
+  });
 
   // Expandable submenu toggles
   function setupToggle(btnId, listId, chevronId) {

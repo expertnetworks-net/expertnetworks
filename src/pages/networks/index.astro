@@ -28,7 +28,18 @@ const allPricing = [...new Set(networks.map(n => n.data.pricingModel).filter(Boo
 const allHqs = [...new Set(networks.map(n => getRegion(n.data.headquarters || '')).filter(Boolean))].sort();
 ---
 
-<BaseLayout title="All Networks — Expert Networks Hub">
+<BaseLayout
+  title="All Networks — Expert Networks Hub"
+  description={`Browse ${networks.length} expert network providers with independent profiles, pricing models, compliance data, and expert pool sizes. Filter by type, region, and pricing.`}
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Expert Networks Directory",
+    "description": `Browse ${networks.length} expert network providers with independent profiles.`,
+    "url": "https://expertnetworks.net/networks",
+    "isPartOf": { "@type": "WebSite", "name": "ExpertNetworks.net", "url": "https://expertnetworks.net" }
+  }}
+>
   <!-- Header -->
   <section class="pt-[72px] pb-4 px-6 border-b border-border/40">
     <div class="max-w-site mx-auto">

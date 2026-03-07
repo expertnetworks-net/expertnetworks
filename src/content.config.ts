@@ -98,7 +98,7 @@ const networks = defineCollection({
     sourceNotes: z.array(z.string()).default([]),
 
     // Confidence badges per field
-    confidence: z.record(z.enum(['verified', 'positioning', 'inference'])).optional(),
+    confidence: z.record(z.enum(['verified', 'positioning', 'inference', 'partially-unverifiable'])).optional(),
 
     // Why choose / when not ideal chips
     whyChoose: z.array(z.string()).default([]),

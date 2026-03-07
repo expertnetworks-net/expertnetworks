@@ -24,7 +24,21 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
 );
 ---
 
-<BaseLayout>
+<BaseLayout
+  description={`Independent expert network intelligence hub tracking ${publishedNetworks.length} providers — compare pricing, compliance, expert pools, and AI capabilities across GLG, AlphaSights, Third Bridge, and more.`}
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "ExpertNetworks.net",
+    "url": "https://expertnetworks.net",
+    "description": `Independent expert network intelligence hub tracking ${publishedNetworks.length} providers.`,
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://expertnetworks.net/networks?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }}
+>
   <!-- Dashboard header — compact, with brief explainer -->
   <section class="pt-[72px] pb-6 px-6 border-b border-border/40" id="top">
     <div class="max-w-site mx-auto">
