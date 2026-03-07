@@ -80,7 +80,7 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
               return (
                 <a href={article.data.sourceUrl || '#'} target={article.data.sourceUrl ? '_blank' : '_self'} rel="noopener noreferrer" class="flex items-start gap-3 px-4 py-3 rounded-xl hover:bg-bg-secondary transition-colors group no-underline cursor-pointer">
                   {logoSrc ? (
-                    <img src={logoSrc} alt="" class="w-8 h-8 rounded-md flex-shrink-0 mt-0.5 object-cover" loading="lazy" />
+                    <img src={logoSrc} alt="" width="32" height="32" class="w-8 h-8 rounded-md flex-shrink-0 mt-0.5 object-cover" loading="lazy" />
                   ) : (
                     <div class="w-8 h-8 rounded-md flex-shrink-0 mt-0.5 flex items-center justify-center" style={`background: ${article.data.gradientFrom || '#1a365d'}`}>
                       <div class="w-2 h-2 rounded-full" style={`background: ${article.data.categoryColor || '#0071E3'}`}></div>
@@ -124,7 +124,7 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
             >
               <div class="text-[11px] text-tertiary font-bold w-4 text-right flex-shrink-0">{i + 1}</div>
               {network.data.logo ? (
-                <img src={network.data.logo} alt={network.data.name} class="w-8 h-8 rounded-lg object-contain flex-shrink-0" loading="lazy" />
+                <img src={network.data.logo} alt={network.data.name} width="32" height="32" class="w-8 h-8 rounded-lg object-contain flex-shrink-0" loading="lazy" />
               ) : (
                 <div
                   class="w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0"

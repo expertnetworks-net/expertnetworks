@@ -217,7 +217,7 @@ const top10 = [...publishedNetworks]
         const safeExperts = escapeHtml(n.expertCount || '');
         const safePricing = escapeHtml(n.pricingModel || '');
         const avatar = n.logo
-          ? `<img src="${escapeHtml(n.logo)}" alt="" class="w-8 h-8 rounded-lg object-cover flex-shrink-0" loading="lazy" />`
+          ? `<img src="${escapeHtml(n.logo)}" alt="" width="32" height="32" class="w-8 h-8 rounded-lg object-cover flex-shrink-0" loading="lazy" />`
           : `<div class="w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-[10px] flex-shrink-0" style="background:linear-gradient(135deg,${escapeHtml(n.gradientFrom)},${escapeHtml(n.gradientTo)})">${safeShort}</div>`;
         return `<a href="/networks/${safeSlug}" class="flex items-center gap-3 px-4 py-3 hover:bg-bg-secondary transition-colors no-underline text-primary border-b border-bg-secondary last:border-0">
           ${avatar}

@@ -23,7 +23,7 @@ const selectedNetworks = compareConfig.networks
               <th class="text-left text-[13px] font-bold uppercase tracking-wide text-secondary bg-bg-secondary px-5 py-4 border-b border-bg-secondary">
                 <div class="flex items-center gap-2">
                   {n.data.logo ? (
-                    <img src={n.data.logo} alt={n.data.name} class="w-6 h-6 rounded object-cover flex-shrink-0" loading="lazy" />
+                    <img src={n.data.logo} alt={n.data.name} width="24" height="24" class="w-6 h-6 rounded object-cover flex-shrink-0" loading="lazy" />
                   ) : (
                     <div class="w-6 h-6 rounded flex items-center justify-center text-white text-[9px] font-bold flex-shrink-0" style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}>{n.data.shortName}</div>
                   )}

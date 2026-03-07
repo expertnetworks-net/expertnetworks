@@ -94,7 +94,7 @@ function badgeFor(field: string) {
               data-name={n.data.name.toLowerCase()}
             >
               {n.data.logo ? (
-                <img src={n.data.logo} alt={n.data.name} class:list={['w-8 h-8 rounded-lg object-contain flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']} loading="lazy" />
+                <img src={n.data.logo} alt={n.data.name} width="32" height="32" class:list={['w-8 h-8 rounded-lg object-contain flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']} loading="lazy" />
               ) : (
                 <div
                   class:list={[
@@ -133,7 +133,7 @@ function badgeFor(field: string) {
               data-name={n.data.name.toLowerCase()}
             >
               {n.data.logo ? (
-                <img src={n.data.logo} alt={n.data.name} class:list={['w-8 h-8 rounded-lg object-contain flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']} loading="lazy" />
+                <img src={n.data.logo} alt={n.data.name} width="32" height="32" class:list={['w-8 h-8 rounded-lg object-contain flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']} loading="lazy" />
               ) : (
                 <div
                   class:list={[
@@ -196,7 +196,7 @@ function badgeFor(field: string) {
               class:list={['sidebar-item flex items-center gap-3 px-3 py-[10px] no-underline transition-colors duration-150', n.data.slug === d.slug ? 'bg-accent text-white' : 'text-primary hover:bg-black/[0.04]', i > 0 ? 'border-t border-black/[0.06]' : '']}
               data-name={n.data.name.toLowerCase()}>
               {n.data.logo ? (
-                <img src={n.data.logo} alt={n.data.name} class:list={['w-8 h-8 rounded-lg object-contain flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']} loading="lazy" />
+                <img src={n.data.logo} alt={n.data.name} width="32" height="32" class:list={['w-8 h-8 rounded-lg object-contain flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']} loading="lazy" />
               ) : (
                 <div class:list={['w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']}
                   style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}>{n.data.shortName}</div>
@@ -217,7 +217,7 @@ function badgeFor(field: string) {
               class:list={['sidebar-item flex items-center gap-3 px-3 py-[10px] no-underline transition-colors duration-150', n.data.slug === d.slug ? 'bg-accent text-white' : 'text-primary hover:bg-black/[0.04]', i > 0 ? 'border-t border-black/[0.06]' : '']}
               data-name={n.data.name.toLowerCase()}>
               {n.data.logo ? (
-                <img src={n.data.logo} alt={n.data.name} class:list={['w-8 h-8 rounded-lg object-contain flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']} loading="lazy" />
+                <img src={n.data.logo} alt={n.data.name} width="32" height="32" class:list={['w-8 h-8 rounded-lg object-contain flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']} loading="lazy" />
               ) : (
                 <div class:list={['w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']}
                   style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}>{n.data.shortName}</div>
@@ -251,7 +251,7 @@ function badgeFor(field: string) {
           <!-- Header -->
           <div class="flex items-start gap-4 mb-6">
             {d.logo ? (
-              <img src={d.logo} alt={d.name} class="w-16 h-16 rounded-2xl object-contain flex-shrink-0" loading="lazy" />
+              <img src={d.logo} alt={d.name} width="64" height="64" class="w-16 h-16 rounded-2xl object-contain flex-shrink-0" loading="lazy" />
             ) : (
               <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-white font-bold text-2xl flex-shrink-0" style={`background: linear-gradient(135deg, ${d.gradientFrom}, ${d.gradientTo})`}>
                 {d.shortName}

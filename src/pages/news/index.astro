@@ -97,7 +97,7 @@ const relatedSlugs = [...new Set(articles.flatMap(a => a.data.relatedNetworks))]
               data-date={article.data.date}
             >
               {logoSrc ? (
-                <img src={logoSrc} alt={networkMap[primarySlug] || ''} class="w-10 h-10 rounded-lg flex-shrink-0 mt-0.5 object-cover" loading="lazy" />
+                <img src={logoSrc} alt={networkMap[primarySlug] || ''} width="40" height="40" class="w-10 h-10 rounded-lg flex-shrink-0 mt-0.5 object-cover" loading="lazy" />
               ) : (
                 <div class="w-10 h-10 rounded-lg flex-shrink-0 mt-0.5 flex items-center justify-center" style={`background: ${article.data.gradientFrom || '#1a365d'}`}>
                   <div class="w-2.5 h-2.5 rounded-full" style={`background: ${article.data.categoryColor || '#0071E3'}`}></div>
