@@ -48,9 +48,9 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
     <!-- Layer 5: Content -->
     <div class="relative z-10 pt-[88px] pb-12 md:pt-[100px] md:pb-14 px-6" id="heroContent" style="pointer-events: none;">
       <div class="max-w-site mx-auto text-center">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white">The Expert Network Hub</h1>
-        <p class="text-[#a1a1a6] text-sm md:text-base mt-4 leading-relaxed max-w-2xl mx-auto">Your open guide to the expert network industry. Compare {publishedNetworks.length} providers — pricing, compliance, expert pools, and AI tools — all in one place. No sign-ups, no bias. Explore freely.</p>
-        <div class="flex gap-3 justify-center mt-6" style="pointer-events: auto;">
+        <h1 id="heroTitle" class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white" aria-label="The Expert Network Hub"><span id="heroTitleText"></span><span id="heroTitleCursor" class="inline-block w-[3px] h-[0.85em] bg-white/70 align-middle ml-0.5 animate-[heroBlink_0.7s_steps(2)_infinite]"></span></h1>
+        <p id="heroSubtext" class="text-[#a1a1a6] text-sm md:text-base mt-4 leading-relaxed max-w-2xl mx-auto opacity-0 transition-opacity duration-700">Your open guide to the expert network industry. Compare {publishedNetworks.length} providers — pricing, compliance, expert pools, and AI tools — all in one place. No sign-ups, no bias. Explore freely.</p>
+        <div id="heroCtas" class="flex gap-3 justify-center mt-6 opacity-0 transition-opacity duration-700" style="pointer-events: auto;">
           <a href="/networks" class="inline-flex items-center gap-1.5 px-5 py-2.5 bg-accent text-white text-sm font-semibold rounded-lg no-underline hover:bg-accent-hover transition-colors">
             Browse All
             <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
@@ -62,6 +62,57 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
     <!-- Interaction surface — captures pointer events over the whole hero -->
     <div id="heroInteraction" class="absolute inset-0 z-[5]" style="cursor: default;"></div>
   </section>
+
+  <style>
+    @keyframes heroBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+  </style>
+
+  <script>
+  // ─── Typewriter effect for hero title ───
+  (function() {
+    const TITLE_TEXT = 'The Expert Network Hub';
+    const TYPE_DELAY = 55;       // ms per character
+    const START_DELAY = 400;     // ms before typing starts
+    const CURSOR_LINGER = 600;   // ms cursor stays after typing finishes
+
+    const textEl = document.getElementById('heroTitleText');
+    const cursorEl = document.getElementById('heroTitleCursor');
+    const subtext = document.getElementById('heroSubtext');
+    const ctas = document.getElementById('heroCtas');
+    if (!textEl || !cursorEl) return;
+
+    // Respect reduced motion — show instantly
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      textEl.textContent = TITLE_TEXT;
+      cursorEl.style.display = 'none';
+      if (subtext) subtext.style.opacity = '1';
+      if (ctas) ctas.style.opacity = '1';
+      return;
+    }
+
+    let i = 0;
+    function typeNext() {
+      if (i < TITLE_TEXT.length) {
+        textEl.textContent += TITLE_TEXT[i];
+        i++;
+        setTimeout(typeNext, TYPE_DELAY);
+      } else {
+        // Typing done — fade in subtext and CTAs, then hide cursor
+        if (subtext) subtext.style.opacity = '1';
+        if (ctas) ctas.style.opacity = '1';
+        setTimeout(function() {
+          cursorEl.style.transition = 'opacity 0.4s';
+          cursorEl.style.opacity = '0';
+        }, CURSOR_LINGER);
+      }
+    }
+
+    setTimeout(typeNext, START_DELAY);
+  })();
+  </script>
 
   <script>
   (function() {
