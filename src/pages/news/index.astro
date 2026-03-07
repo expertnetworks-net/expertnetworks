@@ -75,7 +75,7 @@ const relatedSlugs = [...new Set(articles.flatMap(a => a.data.relatedNetworks))]
         <option value="oldest">Oldest First</option>
       </select>
 
-      <button id="clearFilters" class="text-[13px] font-medium text-accent hover:underline cursor-pointer hidden border-none bg-transparent">Clear</button>
+      <button id="clearFilters" aria-label="Clear filters" class="text-[13px] font-medium text-accent hover:underline cursor-pointer hidden border-none bg-transparent">Clear</button>
     </div>
   </section>
 

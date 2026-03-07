@@ -60,7 +60,7 @@ function badgeFor(field: string) {
   description={`${d.name} expert network profile: ${d.expertCount ? d.expertCount + ' experts, ' : ''}${d.pricingModel ? d.pricingModel + ' pricing, ' : ''}founded ${d.founded || 'N/A'}. ${d.description.slice(0, 120)}${d.description.length > 120 ? '...' : ''}`}
   ogType="article"
   canonicalPath={`/networks/${d.slug}`}
-  jsonLd={{
+  jsonLd={Object.fromEntries(Object.entries({
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": d.name,
@@ -69,7 +69,7 @@ function badgeFor(field: string) {
     "foundingDate": d.founded ? String(d.founded) : undefined,
     "address": d.headquarters ? { "@type": "PostalAddress", "addressLocality": d.headquarters } : undefined,
     "numberOfEmployees": d.employeeCount ? { "@type": "QuantitativeValue", "value": d.employeeCount } : undefined,
-  }}
+  }).filter(([_, v]) => v !== undefined))}
 >
   <div class="flex min-h-screen">
 
@@ -183,7 +183,7 @@ function badgeFor(field: string) {
         <a href="/" class="font-bold text-[15px] tracking-tight text-primary no-underline">
           Expert<span class="text-accent">Networks</span>
         </a>
-        <button id="closeSidebar" class="w-8 h-8 rounded-full bg-black/[0.06] flex items-center justify-center text-tertiary">
+        <button id="closeSidebar" aria-label="Close sidebar" class="w-8 h-8 rounded-full bg-black/[0.06] flex items-center justify-center text-tertiary">
           <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
       </div>
