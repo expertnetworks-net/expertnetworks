@@ -46,20 +46,16 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
     <!-- Layer 4: Readability vignette -->
     <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 50% 40%, transparent 30%, rgba(13,13,15,0.55) 100%);"></div>
     <!-- Layer 5: Content -->
-    <div class="relative z-10 pt-[72px] pb-8 px-6" id="heroContent" style="pointer-events: none;">
-      <div class="max-w-site mx-auto">
-        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-          <div class="max-w-2xl">
-            <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight text-white">Expert Network Hub</h1>
-            <p class="text-[#a1a1a6] text-[13px] mt-2 leading-relaxed">Your open guide to the expert network industry. Compare {publishedNetworks.length} providers — pricing, compliance, expert pools, and AI tools — all in one place. No sign-ups, no bias. Explore freely.</p>
-          </div>
-          <div class="flex gap-2 flex-shrink-0" style="pointer-events: auto;">
-            <a href="/networks" class="inline-flex items-center gap-1.5 px-4 py-2 bg-accent text-white text-sm font-semibold rounded-lg no-underline hover:bg-accent-hover transition-colors">
-              Browse All
-              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-            </a>
-            <a href="/compare" class="inline-flex items-center gap-1.5 px-4 py-2 bg-[rgba(255,255,255,0.08)] text-[#e5e5ea] text-sm font-semibold rounded-lg no-underline hover:bg-[rgba(255,255,255,0.14)] transition-colors border border-[rgba(255,255,255,0.08)]">Compare</a>
-          </div>
+    <div class="relative z-10 pt-[88px] pb-12 md:pt-[100px] md:pb-14 px-6" id="heroContent" style="pointer-events: none;">
+      <div class="max-w-site mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white">The Expert Network Hub</h1>
+        <p class="text-[#a1a1a6] text-sm md:text-base mt-4 leading-relaxed max-w-2xl mx-auto">Your open guide to the expert network industry. Compare {publishedNetworks.length} providers — pricing, compliance, expert pools, and AI tools — all in one place. No sign-ups, no bias. Explore freely.</p>
+        <div class="flex gap-3 justify-center mt-6" style="pointer-events: auto;">
+          <a href="/networks" class="inline-flex items-center gap-1.5 px-5 py-2.5 bg-accent text-white text-sm font-semibold rounded-lg no-underline hover:bg-accent-hover transition-colors">
+            Browse All
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/compare" class="inline-flex items-center gap-1.5 px-5 py-2.5 bg-[rgba(255,255,255,0.08)] text-[#e5e5ea] text-sm font-semibold rounded-lg no-underline hover:bg-[rgba(255,255,255,0.14)] transition-colors border border-[rgba(255,255,255,0.08)]">Compare</a>
         </div>
       </div>
     </div>
