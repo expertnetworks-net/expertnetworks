@@ -78,7 +78,7 @@ const allHqs = [...new Set(networks.map(n => getRegion(n.data.headquarters || ''
         <option value="name">A-Z</option>
         <option value="founded">Newest First</option>
       </select>
-      <button id="clearAll" class="text-[13px] font-medium text-accent hover:underline cursor-pointer hidden">Clear</button>
+      <button id="clearAll" class="text-[13px] font-medium text-accent hover:underline cursor-pointer hidden border-none bg-transparent">Clear</button>
       <span id="resultCount" class="text-xs text-tertiary ml-auto">{networks.length} networks</span>
     </div>
   </section>
