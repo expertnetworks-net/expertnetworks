@@ -48,7 +48,7 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
     <!-- Layer 5: Content -->
     <div class="relative z-10 pt-[88px] pb-12 md:pt-[100px] md:pb-14 px-6" id="heroContent" style="pointer-events: none;">
       <div class="max-w-site mx-auto text-center">
-        <h1 id="heroTitle" class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white" aria-label="The Expert Network Hub"><span id="heroTitleText"></span><span id="heroTitleCursor" class="inline-block w-[3px] h-[0.85em] bg-white/70 align-middle ml-0.5 animate-[heroBlink_0.7s_steps(2)_infinite]"></span></h1>
+        <h1 id="heroTitle" class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white" aria-label="The Expert Network Hub"><span id="heroTitleText"></span><span id="heroTitleCursor" class="inline-block w-[3px] h-[0.85em] bg-white/70 align-middle ml-0.5 animate-[heroBlink_0.53s_steps(2)_infinite]"></span></h1>
         <p id="heroSubtext" class="text-[#a1a1a6] text-sm md:text-base mt-4 leading-relaxed max-w-2xl mx-auto opacity-0 transition-opacity duration-700">Your open guide to the expert network industry. Compare {publishedNetworks.length} providers — pricing, compliance, expert pools, and AI tools — all in one place. No sign-ups, no bias. Explore freely.</p>
         <div id="heroCtas" class="flex gap-3 justify-center mt-6 opacity-0 transition-opacity duration-700" style="pointer-events: auto;">
           <a href="/networks" class="inline-flex items-center gap-1.5 px-5 py-2.5 bg-accent text-white text-sm font-semibold rounded-lg no-underline hover:bg-accent-hover transition-colors">
@@ -74,9 +74,9 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
   // ─── Typewriter effect for hero title ───
   (function() {
     const TITLE_TEXT = 'The Expert Network Hub';
-    const TYPE_DELAY = 55;       // ms per character
-    const START_DELAY = 400;     // ms before typing starts
-    const CURSOR_LINGER = 600;   // ms cursor stays after typing finishes
+    const TYPE_DELAY = 32;       // ms per character — fast, like real typing
+    const START_DELAY = 300;     // ms before typing starts
+    const CURSOR_LINGER = 500;   // ms cursor stays after typing finishes
 
     const textEl = document.getElementById('heroTitleText');
     const cursorEl = document.getElementById('heroTitleCursor');
