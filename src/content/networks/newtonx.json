@@ -9,23 +9,181 @@
   "type": "B2B Research",
   "founded": 2016,
   "headquarters": "New York, NY",
-  "employeeCount": "150+",
-  "expertCount": "75K+",
-  "description": "AI-powered B2B research platform that uses machine learning to find verified professionals for surveys, interviews, and custom research projects.",
-  "services": ["Expert Calls", "B2B Surveys", "Custom Research", "AI Verification"],
-  "aiCapabilities": ["AI-powered expert verification", "ML-based matching", "Automated quality scoring"],
-  "industries": ["Technology", "Financial Services", "Healthcare", "Professional Services"],
+  "employeeCount": "200+",
+  "expertCount": "1.1B+ searchable",
+  "description": "AI-powered B2B research platform using a proprietary Knowledge Graph to find and verify professionals across 1.1 billion candidates for surveys, interviews, and custom research projects.",
+  "services": ["Expert Calls", "B2B Surveys", "AI-Moderated Research", "Custom Research", "Investment Research"],
+  "aiCapabilities": ["Knowledge Graph (1.1B professionals)", "AI-powered expert verification", "ML-based matching", "AI-moderated interviews", "Synthetic data (NXAD)"],
+  "industries": ["Technology", "Financial Services", "Healthcare", "Professional Services", "Consumer"],
   "pricingModel": "Per-project",
-  "keyDifferentiators": ["AI verification of expertise", "B2B research focus", "Academic-grade methodology"],
-  "bestFor": ["Corporate Strategy", "Market Research Teams", "Technology Companies"],
+  "pricingDetail": "Per-project / custom engagement pricing",
+  "keyDifferentiators": ["Knowledge Graph scanning 1.1B professionals", "100% expert verification guarantee", "AI-moderated research at scale", "Hybrid quant + qual methodology"],
+  "bestFor": ["Corporate Strategy", "Market Research Teams", "Management Consulting", "Investment Research"],
   "compliance": {
-    "mnpiPolicy": "Standard compliance protocols for B2B research engagements",
-    "expertVetting": "AI-powered verification of professional credentials and expertise claims",
+    "mnpiPolicy": "AI-powered compliance monitoring scans expert interactions for restricted information; SOC 2 certified",
+    "expertVetting": "Two-step identity and subject matter verification on 100% of respondents",
     "auditTrail": true,
-    "regulatoryHistory": "Clean regulatory record"
+    "regulatoryHistory": "Clean regulatory record. SOC 2, ESOMAR, Insights Association, MRS, and BBB Data Privacy Framework certified."
   },
   "featured": false,
   "priority": 9,
   "published": true,
-  "lastUpdated": "2026-03-06"
+  "comparison": {
+    "expertCalls": true,
+    "contentLibrary": true,
+    "aiMatching": true,
+    "surveys": true,
+    "complianceTools": true
+  },
+  "lastUpdated": "2026-03-07",
+
+  "overview": "NewtonX is an AI-driven B2B research company founded in 2016 by former McKinsey consultants Germain Chastel and Sascha Eder, along with CTO Anuja Ketan. Headquartered in New York City, NewtonX differentiates itself from traditional expert networks by combining AI-powered expert sourcing with rigorous verification, enabling clients to access insights from a pool of over 1.1 billion professionals across 140 industries. The company's proprietary Knowledge Graph — a machine-learning-powered multi-query search engine — dynamically identifies and engages hard-to-reach niche experts, while a two-step verification process ensures 100% of respondents are qualified.\n\nNewtonX occupies a unique position at the intersection of expert networks, market research, and AI-driven analytics. Unlike traditional expert networks that rely on fixed databases, NewtonX custom-recruits experts for each project, supporting methodologies ranging from 10-person virtual panels to 10,000-person quantitative surveys, as well as qualitative interviews and AI-moderated research. The company serves Fortune 500 enterprises, top management consulting firms, and financial institutions, with named clients including Microsoft, Salesforce, Pinterest, TikTok, and The Wall Street Journal.\n\nNewtonX has raised $47 million in venture funding through its Series B round and generated approximately $38.5 million in revenue as of 2023. The company has expanded its capabilities with synthetic data (NXAD), AI-moderated interviews, and the NewtonX Hub platform. Its designation as the official B2B research partner for the 2024 GRIT Business & Innovation Report underscores its growing industry credibility.",
+
+  "history": {
+    "narrative": "NewtonX was founded in 2016 by Germain Chastel (CEO) and Sascha Eder (COO), both former McKinsey consultants, alongside CTO Anuja Ketan. Chastel, a Harvard Business School graduate and former McKinsey partner, envisioned leveraging AI to create the best on-demand B2B knowledge access platform. The company raised a $3M seed round in 2018 followed by a $12M Series A in 2019 led by Two Sigma Ventures. Tragically, co-founder Germain Chastel passed away unexpectedly in April 2021 at age 36. Sascha Eder assumed leadership, and the company closed a $32M Series B later that year. Under Eder's continued leadership, NewtonX has expanded into AI-moderated research, synthetic data, and the NewtonX Hub platform.",
+    "timeline": [
+      { "year": "2016", "event": "Founded by Germain Chastel, Sascha Eder, and Anuja Ketan in New York City" },
+      { "year": "2018", "event": "Raised $3M seed round from Third Prime Capital and Xfund" },
+      { "year": "2019", "event": "Raised $12M Series A led by Two Sigma Ventures; acquired Merlin Guides" },
+      { "year": "2021 (March)", "event": "Launched the Knowledge Graph, scanning 1.1 billion professionals across 140 industries" },
+      { "year": "2021 (April)", "event": "Co-founder and CEO Germain Chastel passed away unexpectedly at age 36; Sascha Eder assumed leadership" },
+      { "year": "2021 (November)", "event": "Closed $32M Series B led by Marbruck Investments, bringing total funding to $47M" },
+      { "year": "2023", "event": "Revenue reached approximately $38.5M with 200+ employees" },
+      { "year": "2024", "event": "Named official B2B research partner for the GRIT Business & Innovation Report; launched AI-moderated research and synthetic data (NXAD)" },
+      { "year": "2025", "event": "Launched NewtonX Hub platform for centralized research management" }
+    ]
+  },
+
+  "servicesDetailed": [
+    {
+      "name": "Quantitative B2B Surveys",
+      "description": "Large-scale survey research targeting precise B2B audiences. NewtonX custom-recruits respondents via the Knowledge Graph rather than relying on standing panels, ensuring 100% verified participants. Supports market sizing, competitive intelligence, pricing research, and brand perception studies."
+    },
+    {
+      "name": "Expert Interviews",
+      "description": "Qualitative one-on-one interviews with verified subject matter experts. NewtonX handles end-to-end logistics including research design, expert recruitment, recording, transcription, and translation. Experts are sourced on-demand for each project."
+    },
+    {
+      "name": "AI-Moderated Research",
+      "description": "Automated expert interviews that deliver qualitative insights at survey-like scale. AI moderation reduces costs and accelerates speed-to-insight, gathering rich open-ended data from hundreds of respondents in days rather than weeks."
+    },
+    {
+      "name": "NewtonX Augmented Data (NXAD)",
+      "description": "AI-driven synthetic data that uses verified B2B responses to generate augmented samples, boosting the size and feasibility of research for hard-to-reach niche segments while maintaining data integrity."
+    },
+    {
+      "name": "NewtonX Prime (Investment Research)",
+      "description": "Expert intelligence solution providing investors and analysts with access to NewtonX's database of expert surveys and transcripts across sectors including tech and healthcare, replacing time-consuming expert calls with on-demand intelligence at scale."
+    },
+    {
+      "name": "Custom Research & Consulting",
+      "description": "End-to-end research engagements including design, data collection, analysis, and reporting. Deliverables range from raw data exports and executive summaries to expert analysis. Supports long-term arrangements and multi-wave studies."
+    }
+  ],
+
+  "aiPlatform": {
+    "narrative": "NewtonX's technology stack is anchored by its proprietary Knowledge Graph, an AI/ML-powered multi-query search engine launched in 2021 that can identify professionals from a pool of over 1.1 billion across 140 industries. Unlike traditional expert networks that maintain fixed databases, the Knowledge Graph dynamically searches structured and unstructured data sources to locate exact experts for any question, then engages them through AI-generated personalized outreach. Every professional undergoes a two-step verification covering identity and subject matter expertise. Beyond sourcing, NewtonX uses AI across its workflow: AI-moderated interviews automate qualitative collection at quantitative scale, the NXAD engine extends sample feasibility for niche segments, and the Hub platform centralizes recruitment, fieldwork, and analysis.",
+    "features": [
+      "Knowledge Graph: ML search engine scanning 1.1B professionals across 140 industries",
+      "Two-step expert verification (identity + subject matter) for 100% of respondents",
+      "AI-generated personalized outreach to engage hard-to-reach experts",
+      "AI-moderated interviews delivering qualitative insights at survey-like scale",
+      "NXAD synthetic data generation grounded in verified B2B responses",
+      "NewtonX Hub: centralized platform for recruitment, fieldwork, analysis, and visualization",
+      "Hub Researcher: AI tool for accelerating data-to-insight workflows",
+      "AI-powered compliance scanning of expert calls, emails, and surveys"
+    ]
+  },
+
+  "complianceExtended": {
+    "narrative": "NewtonX maintains one of the most robust compliance frameworks in the B2B research industry. The company is SOC 2 certified with annual third-party security audits, GDPR compliant, and participates in the BBB Data Privacy Framework. On the research ethics side, NewtonX is a member of ESOMAR, the Insights Association, and the Market Research Society (MRS). AI-powered compliance monitoring proactively scans expert interactions for restricted or non-public information. The Trust Center provides transparency into security controls including penetration testing, incident response planning, and cybersecurity insurance.",
+    "highlights": [
+      "SOC 2 certified with annual third-party security audits",
+      "GDPR compliant with comprehensive data protection policies",
+      "ESOMAR, Insights Association, and MRS member",
+      "BBB Data Privacy Framework participant",
+      "AI-powered compliance monitoring scans expert interactions for restricted information",
+      "100% expert identity and background verification on every engagement",
+      "Annual third-party penetration testing",
+      "Formal incident response plan and cybersecurity insurance",
+      "Public Trust Center with transparent security documentation"
+    ],
+    "regulatoryContext": "NewtonX operates in the B2B research and expert network space, requiring careful handling of potentially material non-public information (MNPI), particularly for investment research clients using NewtonX Prime. AI-powered compliance monitoring and 100% verification mitigate MNPI risks. SOC 2 certification, GDPR compliance, and BBB DPF participation address data security and privacy across jurisdictions. Clean regulatory record with no reported enforcement actions."
+  },
+
+  "clientFit": {
+    "narrative": "NewtonX is best suited for organizations needing high-quality, verified B2B insights at scale — particularly those conducting quantitative surveys targeting hard-to-reach professional audiences. The AI-driven custom recruitment model makes it especially valuable for clients who have struggled with traditional panel quality or need to reach niche decision-makers. Pricing and methodology are optimized for survey-driven and mixed-method research rather than ad-hoc one-off expert calls.",
+    "segments": [
+      "Management consulting firms needing fast, verified expert insights across industries",
+      "Fortune 500 enterprises conducting market research, competitive intelligence, and strategic planning",
+      "Market research companies needing high-quality B2B sample for hard-to-reach professional audiences",
+      "Financial institutions and investors using NewtonX Prime for on-demand expert intelligence",
+      "Technology companies conducting product research, market assessments, and competitive benchmarking"
+    ]
+  },
+
+  "strengths": [
+    "Knowledge Graph scans 1.1 billion professionals — roughly 1,000x larger than traditional expert network databases",
+    "100% expert verification with two-step identity and subject matter checks eliminates respondent fraud",
+    "Unique hybrid positioning spanning expert networks, market research, and AI analytics",
+    "AI-moderated research delivers qualitative depth at quantitative scale and speed",
+    "Custom recruitment for each project avoids stale panel fatigue",
+    "Strong compliance framework: SOC 2, ESOMAR, Insights Association, MRS, BBB DPF",
+    "NewtonX Prime provides investors scalable on-demand expert intelligence without scheduling calls",
+    "NXAD synthetic data extends research feasibility for hard-to-reach niche segments"
+  ],
+
+  "caveats": [
+    "Primarily optimized for survey-driven B2B research; less suited for traditional ad-hoc expert calls compared to GLG or AlphaSights",
+    "AI-driven sourcing trades some bespoke fit compared to human-first, relationship-based expert matching",
+    "Smaller company (~200 employees) compared to established players, which may limit capacity for very large concurrent engagements",
+    "Relatively young company (founded 2016) with less track record than established incumbents",
+    "Synthetic data (NXAD) may face adoption hesitancy from clients requiring purely primary research",
+    "Per-project pricing can be higher for large-scale projects compared to subscription-based models"
+  ],
+
+  "notableFacts": [
+    "Co-founder and CEO Germain Chastel, a Harvard Business School graduate and former McKinsey partner, passed away unexpectedly in April 2021 at age 36; the company successfully executed its succession plan",
+    "The Knowledge Graph can identify experts from a pool of 1.1 billion professionals — roughly 1,000x larger than traditional expert network databases",
+    "Named official B2B research partner for the 2024 GRIT Business & Innovation Report",
+    "Acquired Merlin Guides, a training software company, in September 2019",
+    "Series B led by Marbruck Investments with support from UBS O'Connor-backed Level One Fund, Gaingels, and Heliad Partners",
+    "Revenue reached approximately $38.5 million in 2023 with 200+ employees",
+    "Claims to be the only expert network guaranteeing 100% identity and expertise verification of every respondent",
+    "Named clients include Microsoft, Salesforce, Pinterest, TikTok, The Wall Street Journal, and Coinbase",
+    "All three co-founders had consulting or tech backgrounds: Chastel and Eder from McKinsey, Ketan from healthcare tech"
+  ],
+
+  "sourceNotes": [
+    "NewtonX official website (newtonx.com) — company overview, services, team, certifications, and press releases",
+    "PRNewswire (March 2021) — Knowledge Graph launch announcement",
+    "Tracxn and Crunchbase — funding round details and company financials",
+    "Built In NYC — Series A funding announcement ($12M, Two Sigma Ventures)",
+    "GetLatka — 2023 revenue ($38.5M) and team size data",
+    "NewtonX Trust Center (trust.newtonx.com) — SOC 2, GDPR, and security controls",
+    "ESOMAR Directory — membership verification",
+    "Greenbook — GRIT report partnership and AI research coverage"
+  ],
+
+  "whyChoose": ["AI-verified expert insights", "1.1 billion professional reach", "Survey-driven B2B research", "100% respondent verification"],
+  "whenNotIdeal": ["Need ad-hoc expert calls", "Prefer relationship-based sourcing", "Want subscription access model", "Require consumer research focus"],
+
+  "confidence": {
+    "founded": "verified",
+    "headquarters": "verified",
+    "expertCount": "positioning",
+    "employeeCount": "partially-unverifiable",
+    "pricingModel": "verified",
+    "services": "verified",
+    "compliance": "verified",
+    "overview": "verified",
+    "history": "verified",
+    "servicesDetailed": "verified",
+    "aiPlatform": "positioning",
+    "complianceExtended": "verified",
+    "clientFit": "inference",
+    "strengths": "positioning",
+    "caveats": "inference",
+    "notableFacts": "verified"
+  }
 }

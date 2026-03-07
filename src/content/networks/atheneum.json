@@ -10,22 +10,179 @@
   "founded": 2010,
   "headquarters": "Berlin, Germany",
   "employeeCount": "400+",
-  "expertCount": "900K+",
-  "description": "Global expert network leveraging AI technology to connect clients with industry experts for consultations, surveys, and data-driven insights.",
-  "services": ["Expert Calls", "Surveys", "AI Platform", "Custom Research"],
-  "aiCapabilities": ["AI-powered Atheneum Platform", "Automated expert matching", "Real-time availability tracking"],
-  "industries": ["Consulting", "Private Equity", "Hedge Funds", "Corporate Strategy"],
+  "expertCount": "1M+",
+  "description": "Global Research-as-a-Service platform connecting investment funds, consulting firms, and corporations with over one million industry experts through AI-powered matching and multilingual support across 40+ languages.",
+  "services": ["Expert Calls", "Surveys", "Custom Research", "In-Person Meetings", "Long-Term Placements"],
+  "aiCapabilities": ["Athena One cloud platform", "ATLAS AI matching", "Real-time availability tracking", "Hub mobile app"],
+  "industries": ["Consulting", "Private Equity", "Hedge Funds", "Corporate Strategy", "Life Sciences", "Technology"],
   "pricingModel": "Per-call",
-  "keyDifferentiators": ["AI-first platform approach", "Strong European presence", "Large expert pool"],
-  "bestFor": ["Consulting", "European PE", "Corporate Strategy"],
+  "pricingDetail": "Per-call / project-based pricing",
+  "keyDifferentiators": ["European GDPR-native compliance", "AI-first platform (Athena One + ATLAS)", "NIKKEI SEEKS Japan partnership", "Research-as-a-Service model"],
+  "bestFor": ["Consulting Firms", "European PE", "Corporate Strategy", "Japan Market Research"],
   "compliance": {
-    "mnpiPolicy": "Standard MNPI screening integrated into platform",
-    "expertVetting": "Automated and manual compliance vetting",
+    "mnpiPolicy": "GDPR-native compliance framework with designated Data Protection Officer; automated screening integrated into platform",
+    "expertVetting": "Automated and manual compliance vetting through Athena One platform; strict expert data confidentiality controls",
     "auditTrail": true,
-    "regulatoryHistory": "Clean regulatory record"
+    "regulatoryHistory": "Clean regulatory record. EU GDPR compliant as German-headquartered data controller. Also compliant with China's PIPL."
   },
   "featured": false,
   "priority": 10,
   "published": true,
-  "lastUpdated": "2026-03-06"
+  "comparison": {
+    "expertCalls": true,
+    "contentLibrary": false,
+    "aiMatching": true,
+    "surveys": true,
+    "complianceTools": true
+  },
+  "lastUpdated": "2026-03-07",
+
+  "overview": "Atheneum is a global insights platform founded in 2010 in Berlin, Germany, by former management consultants Ammad Ahmad, Mathias Wengeler, and serial entrepreneur Michael Brehm. The company operates as a Research-as-a-Service (RaaS) provider, connecting leading investment funds, strategy consulting firms, and corporations with a curated network of over one million industry experts worldwide. With European roots and a strong initial presence in Germany, Atheneum has expanded to 11+ offices across the Americas, Europe, the Middle East, and Asia-Pacific, with U.S. headquarters in New York.\n\nAtheneum differentiates itself through its proprietary technology stack, including the machine-learning-powered Athena One cloud platform and the newer AI-powered ATLAS platform, which automate expert matching, enable real-time availability tracking, and streamline the entire research lifecycle. Through a strategic partnership with Nikkei Inc., Atheneum co-launched NIKKEI SEEKS, providing access to 500,000+ Japan-based experts for cross-border research.\n\nIn 2021, Atheneum secured $150 million in growth equity funding led by Guidepost Growth Equity, valuing the company at approximately $300 million. The company reports revenue of approximately $95 million and serves around 500 large enterprise clients. In 2024, Jim Owens was appointed CEO succeeding co-founder Mathias Wengeler, and Mark Gerson was named CTO to lead AI platform development.",
+
+  "history": {
+    "narrative": "Atheneum was born from a gap identified by co-founders Ammad Ahmad and Mathias Wengeler, both former management consultants who recognized that the professional services industry needed a faster, more technology-enabled way to access expert insights. Michael Brehm, a serial entrepreneur and founder of Redstone VC, joined as co-founder and investor. The company launched in Berlin in 2010 and built a strong regional presence in Germany and Central Europe before expanding globally. The 2021 $150M growth equity round from Guidepost Growth Equity was transformational, enabling heavy investment in technology, geographic expansion, and talent. Co-founder Wengeler served as CEO until 2024, when Jim Owens took over leadership.",
+    "timeline": [
+      { "year": "2010", "event": "Founded in Berlin by Ammad Ahmad, Mathias Wengeler, and Michael Brehm" },
+      { "year": "2012", "event": "Raised approximately €1.5M seed funding from angel investors, Redstone VC, and Vogel Communications Group" },
+      { "year": "2015", "event": "Raised €10M at a €50M valuation, led by Vogel Business Media" },
+      { "year": "2019", "event": "Expanded Asia-Pacific presence with offices in Tokyo and Seoul" },
+      { "year": "2020", "event": "Launched NIKKEI SEEKS collaboration with Nikkei Inc. for Japanese expert access; grew 45% despite COVID-19" },
+      { "year": "2021", "event": "Raised $150M in growth equity from Guidepost Growth Equity at ~$300M valuation; grew nearly 80% year-over-year" },
+      { "year": "2024", "event": "Appointed Jim Owens as CEO; Mark Gerson as CTO; opened offices in Ho Chi Minh City and Tianjin" },
+      { "year": "2025", "event": "Expert network surpassed 1 million advisors; promoted 129 team members in January promotion class" }
+    ]
+  },
+
+  "servicesDetailed": [
+    {
+      "name": "Expert Calls",
+      "description": "One-on-one or group consultations connecting clients with pre-screened industry experts. Atheneum delivers preliminary expert shortlists within 30–60 minutes of request, with full screening and vetting. Available in 40+ languages with simultaneous translation support."
+    },
+    {
+      "name": "Expert Surveys",
+      "description": "Quantitative research through custom-recruited expert panels. Surveys can be deployed within 24 hours, gathering thousands of data points with stringent validation. Designed for private equity due diligence, market sizing, and trend analysis."
+    },
+    {
+      "name": "Expert-Backed Research",
+      "description": "Full-service custom research leveraging Atheneum's in-house team to moderate interviews, produce transcripts, recordings, and white-label reports. Includes voice-of-customer studies, model assessments, and target screenings delivered in multiple languages."
+    },
+    {
+      "name": "In-Person Meetings & Workshops",
+      "description": "Facilitated face-to-face engagements connecting clients directly with subject matter experts for deeper qualitative research and strategic insight sessions."
+    },
+    {
+      "name": "Long-Term Expert Placements",
+      "description": "Custom recruitment of experts for extended consulting engagements, providing clients with ongoing access to specialized industry knowledge beyond one-off calls."
+    },
+    {
+      "name": "NIKKEI SEEKS (Japan Insights)",
+      "description": "Co-branded global insights hub developed in partnership with Nikkei Inc., providing access to 500,000+ Japan-based experts for cross-border research, combining Atheneum's RaaS model with Nikkei's domestic expert platform."
+    }
+  ],
+
+  "aiPlatform": {
+    "narrative": "Atheneum has invested heavily in proprietary technology to differentiate from traditional expert networks. Its cloud-based Athena One platform uses machine learning to automate expert matching, project management, and insight delivery. In 2024, newly appointed CTO Mark Gerson — previously co-founder of Chime Advisors, a machine-driven expert network — began leading development of the next-generation ATLAS platform, further integrating AI into expert recruitment and matching. The Atheneum Hub mobile app enables experts to manage opportunities, schedules, and payments, with 33% faster onboarding than web registration.",
+    "features": [
+      "Athena One cloud-based insights platform for project management and data access",
+      "ATLAS AI platform for advanced expert recruitment and matching",
+      "AI-powered expert matching using machine learning algorithms",
+      "Atheneum Hub mobile app for expert onboarding, scheduling, and payments",
+      "Real-time expert availability tracking",
+      "Automated compliance screening integrated into matching workflow",
+      "Multi-language support for consultations in 40+ languages",
+      "Client-facing dashboard for engagement monitoring and progress tracking"
+    ]
+  },
+
+  "complianceExtended": {
+    "narrative": "As a German-headquartered company, Atheneum operates under the strict data protection requirements of the EU's General Data Protection Regulation (GDPR) and has built its compliance infrastructure accordingly. The company maintains a formal Data Protection Officer reporting directly to the COO, as well as a dedicated Privacy Chief. Atheneum acts as a data controller under GDPR and adheres to data minimization and storage limitation principles. Client access to expert information is strictly controlled — during selection, clients only receive overviews of professional experience, with no personal data shared without explicit consent. The company also complies with China's PIPL, reflecting its growing Asia-Pacific presence.",
+    "highlights": [
+      "Designated Data Protection Officer reporting to COO",
+      "Dedicated Privacy Chief in the compliance department",
+      "Full GDPR compliance as EU-headquartered data controller",
+      "Strict expert data confidentiality — limited client visibility without consent",
+      "Formal data breach notification procedures per GDPR Article 33/34",
+      "Compliance with China's Personal Information Protection Law (PIPL)",
+      "International data transfer safeguards per GDPR Chapter V",
+      "Contractual obligations requiring clients to maintain expert confidentiality"
+    ],
+    "regulatoryContext": "Atheneum's German headquarters places it directly under EU GDPR jurisdiction, one of the world's strictest data protection regimes. No publicly reported regulatory enforcement actions or compliance scandals. Dual compliance with both GDPR and China's PIPL reflects operational maturity across different regulatory environments."
+  },
+
+  "clientFit": {
+    "narrative": "Atheneum serves approximately 500 large enterprises across four primary segments. Its European roots and strong GDPR compliance make it particularly attractive to European-headquartered organizations, while its global expansion gives broad geographic reach. The Research-as-a-Service model and survey capabilities are especially valuable for private equity due diligence and consulting firms seeking rapid expert access.",
+    "segments": [
+      "Private equity and investment funds requiring due diligence support and quantitative survey data",
+      "Strategy consulting firms needing rapid expert access with turnaround within hours",
+      "Corporate strategy and innovation teams seeking market intelligence across diverse industries",
+      "Life sciences and healthcare companies requiring KOL access and regulatory landscape insights",
+      "Organizations needing Japan and Asia-Pacific market intelligence through NIKKEI SEEKS"
+    ]
+  },
+
+  "strengths": [
+    "Strong European heritage with deep GDPR compliance, appealing to privacy-conscious clients",
+    "Proprietary AI platforms (Athena One, ATLAS) enabling faster expert matching than traditional networks",
+    "Rapid response — preliminary expert shortlists within 30–60 minutes of request",
+    "Unique NIKKEI SEEKS partnership providing exclusive access to 500,000+ Japan-based experts",
+    "Comprehensive Research-as-a-Service model combining calls, surveys, and custom research",
+    "Multilingual support with consultations and reports in 40+ languages",
+    "Large expert network of 1 million+ advisors across diverse industries",
+    "Strong financial backing: $150M growth equity round, ~$95M estimated revenue"
+  ],
+
+  "caveats": [
+    "Some independent reports of delayed payments to expert consultants, though Trustpilot score is 4.7/5.0 from 10,000+ expert reviews",
+    "Still building brand recognition in North America compared to established US competitors like GLG and AlphaSights",
+    "Per-call pricing with markup model may result in higher total costs than subscription-based competitors",
+    "Less established content library compared to competitors like Third Bridge (Forum) or GLG",
+    "Recent CEO transition (2024) introduces leadership change during a period of global expansion",
+    "Expert screening process has been noted by some reviewers as requiring improvement for busy professionals"
+  ],
+
+  "notableFacts": [
+    "Co-founded by former L.E.K. and Kaiser Associates consultants who saw inefficiency in how firms accessed expert knowledge",
+    "Co-founder Michael Brehm is a serial entrepreneur who also founded Redstone VC",
+    "Grew 45% in 2020 during COVID-19 and nearly 80% in 2021 — one of the fastest-growing expert networks in that period",
+    "The 2021 $150M funding round dwarfed all prior raises combined; founders retained majority ownership",
+    "Partnered with Seton Hall University's Stillman School of Business for an annual Future of Leadership Survey",
+    "Hub mobile app enables 33% faster expert onboarding than web registration",
+    "CEO Jim Owens is a US Navy veteran who served as a Nuclear Submarine Officer before his corporate career",
+    "CTO Mark Gerson previously co-founded Chime Advisors, a machine-driven expert network",
+    "Promoted 129 team members in January 2025, indicating substantial organizational scale",
+    "Enterprise value estimated at $600–900M as of recent reporting periods"
+  ],
+
+  "sourceNotes": [
+    "Atheneum official website (atheneum.ai) — company overview, services, digital products, and leadership pages",
+    "TechCrunch (August 2021) — coverage of $150M funding round with valuation and revenue details",
+    "Inex One expert network directory — market positioning and competitive analysis",
+    "Crunchbase and Tracxn — funding history, founder details, and company financials",
+    "Expert Opportunities (expertopportunities.com) — independent review with strengths and criticisms",
+    "Trustpilot — expert satisfaction ratings (4.7/5.0 from 10,000+ reviews)",
+    "Atheneum privacy policy — GDPR compliance, DPO role, and data handling practices",
+    "Atheneum press releases — Jim Owens CEO appointment and NIKKEI SEEKS launch"
+  ],
+
+  "whyChoose": ["European GDPR-native compliance", "AI-powered rapid matching", "Unique Japan market access", "Full research-as-a-service"],
+  "whenNotIdeal": ["Need established US brand", "Want pre-built content library", "Prefer subscription pricing", "Require only North American experts"],
+
+  "confidence": {
+    "founded": "verified",
+    "headquarters": "verified",
+    "expertCount": "partially-unverifiable",
+    "employeeCount": "partially-unverifiable",
+    "pricingModel": "verified",
+    "services": "verified",
+    "compliance": "verified",
+    "overview": "verified",
+    "history": "verified",
+    "servicesDetailed": "verified",
+    "aiPlatform": "partially-unverifiable",
+    "complianceExtended": "verified",
+    "clientFit": "inference",
+    "strengths": "positioning",
+    "caveats": "inference",
+    "notableFacts": "verified"
+  }
 }
