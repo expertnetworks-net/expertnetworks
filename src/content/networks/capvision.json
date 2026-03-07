@@ -37,26 +37,28 @@
   },
   "lastUpdated": "2026-03-07",
 
-  "overview": "Capvision is one of the largest expert networks headquartered in Asia and the largest expert network based in China, where it is domestically known as Kaisheng Rongying. Founded in 2006 by former Bain & Company consultants and Morgan Stanley investment bankers, the firm has built deep expertise in connecting global institutional clients with industry professionals across the Asia-Pacific region and beyond. Capvision partners with over 2,000 clients including institutional investors, consulting firms, and Fortune 500 companies.\n\nThe company offers a broad suite of primary research services including expert consultations, surveys, corporate access events, customized research projects, and industry reports. With offices in Shanghai, New York, Munich, Hong Kong, Osaka, and Beijing, Capvision straddles both Asian and Western markets — a positioning that is both its key differentiator and, following the 2023 Chinese government crackdown on consulting firms, a source of ongoing regulatory complexity.",
+  "overview": "Capvision is one of the largest expert networks headquartered in Asia and the largest expert network based in China, where it is domestically known as Kaisheng Rongying (凯盛融英). Founded in 2006 by former Bain & Company consultants and Morgan Stanley investment bankers, the firm has built deep expertise in connecting global institutional clients with industry professionals across the Asia-Pacific region and beyond. Capvision partners with over 2,000 clients including institutional investors, consulting firms, and Fortune 500 companies, and facilitated approximately 150,000 consulting calls annually as of 2021–2022.\n\nThe company offers a broad suite of primary research services including expert consultations, surveys, corporate access events, customized research projects, and industry reports. With offices in Shanghai, New York, Munich, Hong Kong, Osaka, and Beijing, Capvision straddles both Asian and Western markets — a positioning that is both its key differentiator and, following the 2023 Chinese government crackdown on consulting firms, a source of ongoing regulatory complexity. The company raised $56.6M in total funding and filed for a Hong Kong IPO in 2022 targeting a $1.5–3 billion valuation, though those plans were effectively shelved after the 2023 state security investigation.",
 
   "history": {
     "narrative": "Capvision was founded in 2006 in Shanghai by Roger Xu and Kai Hong, both of whom came from backgrounds in management consulting and investment banking. The firm originally focused on sourcing expert advisors within China for global institutional clients, and gradually expanded its network and geographic footprint. By the early 2020s Capvision had grown to 600+ employees and was positioning for a Hong Kong IPO. However, the company's trajectory was significantly disrupted in 2023 when Chinese state security authorities raided its offices as part of a broader crackdown on consulting and due diligence firms operating in China.",
     "timeline": [
       { "year": "2006", "event": "Founded in Shanghai by Roger Xu and Kai Hong" },
-      { "year": "Late 2000s", "event": "Establishes core Asia-Pacific expert sourcing capabilities" },
-      { "year": "2010s", "event": "Expands globally with offices in New York, Hong Kong, Munich, Osaka, and Beijing" },
+      { "year": "2006–2015", "event": "Establishes as China's first and largest domestic expert network with deep Asia-Pacific coverage" },
+      { "year": "2010s", "event": "Expands internationally with offices in Hong Kong, Munich, Osaka, and Beijing" },
+      { "year": "2019", "event": "Opens New York office, marking formal entry into the U.S. expert network market" },
       { "year": "2020", "event": "Series of equity transfers value company at ~RMB 2.3 billion (~$320M)" },
-      { "year": "2022", "event": "Files for Hong Kong IPO after 45% revenue growth; aims to raise $300M" },
-      { "year": "2023", "event": "Chinese state security authorities raid offices; IPO plans suspended" },
-      { "year": "2023", "event": "Completes government-supervised rectification and implements comprehensive compliance reforms" },
-      { "year": "2024–2025", "event": "Continues operations with enhanced compliance framework across both Chinese and international jurisdictions" }
+      { "year": "2021", "event": "Files for Hong Kong IPO; facilitates 134,000 consulting calls in first nine months" },
+      { "year": "2022", "event": "Refiles for Hong Kong IPO after 45% revenue growth; aims to raise $300M at $1.5–3B valuation" },
+      { "year": "2023 (May)", "event": "Chinese state security authorities raid offices in Shanghai, Beijing, Shenzhen, and Suzhou; featured in 15-minute CCTV broadcast" },
+      { "year": "2023 (October)", "event": "Completes government-supervised rectification and implements comprehensive compliance overhaul" },
+      { "year": "2024", "event": "Forms strategic partnership with CEPRES to integrate expert insights with private market analytics" }
     ]
   },
 
   "servicesDetailed": [
     {
       "name": "Expert Consultations",
-      "description": "One-on-one or group phone consultations connecting clients with industry professionals who have direct operational experience in specific sectors, companies, or markets. Capvision's strongest differentiator is sourcing experts across Greater China and the broader Asia-Pacific region."
+      "description": "One-on-one or group consultations connecting clients with industry professionals who have direct operational experience in specific sectors, companies, or markets. Capvision offers optional live language translation, making it particularly effective for cross-border research involving Asian markets. The firm facilitated approximately 150,000 consulting calls annually as of 2021–2022, with experts earning an average of $230 per hour."
     },
     {
       "name": "Surveys",
@@ -81,12 +83,15 @@
   ],
 
   "aiPlatform": {
-    "narrative": "Capvision has invested in technology to support expert matching and compliance workflows, though its AI capabilities are less prominently marketed compared to newer, technology-first competitors. The platform uses automated matching algorithms to connect client requests with relevant experts, and has integrated compliance automation tools to support screening and monitoring across multiple regulatory jurisdictions.",
+    "narrative": "Capvision's technology infrastructure centers on a proprietary CRM system that manages expert matching, client relationships, and project workflows. The platform integrates third-party tools including Confirmit, Qualtrics, and ZoomInfo for survey delivery, data enrichment, and expert sourcing. While Capvision markets AI-assisted matching and automated compliance checks, detailed public documentation of specific AI capabilities is limited compared to some Western competitors. The platform also includes a mobile knowledge app for on-demand expert content delivery.",
     "features": [
-      "AI-assisted expert matching and recommendation",
+      "Proprietary CRM system for expert matching and project management",
+      "AI-assisted expert matching to client research needs",
       "Automated compliance screening across Chinese and international regulatory frameworks",
-      "Natural language search for expert identification",
-      "Project management and scheduling automation",
+      "Integration with Confirmit and Qualtrics for survey delivery",
+      "ZoomInfo integration for expert sourcing and data enrichment",
+      "Live language translation for cross-border consultations",
+      "Mobile knowledge platform for on-demand expert content",
       "Multi-language support in platform interfaces"
     ]
   },
@@ -94,13 +99,15 @@
   "complianceExtended": {
     "narrative": "Capvision's compliance story is uniquely complex due to its position straddling Chinese and international regulatory environments. Following the May 2023 raid by Chinese state security authorities, the firm underwent a government-supervised rectification process and announced comprehensive compliance reforms. The company now operates under enhanced scrutiny in China while also maintaining compliance frameworks aligned with Western regulatory expectations around MNPI and expert vetting.",
     "highlights": [
+      "Dedicated compliance committee established in May 2023, chaired by CEO Roger Xu",
+      "Completed government-supervised rectification in October 2023",
+      "Comprehensive compliance system overhaul addressing identified gaps",
       "Dual compliance framework covering Chinese national security regulations and Western MNPI standards",
-      "Completed government-supervised rectification process in 2023",
       "Regional compliance teams with local regulatory knowledge in each major office",
       "Expert screening adapted to both Chinese and international standards",
       "Audit trail capabilities for client interactions"
     ],
-    "regulatoryContext": "Capvision has faced regulatory challenges on multiple fronts. In May 2023, Chinese state security authorities raided the firm's offices as part of a broader crackdown on consulting and due diligence firms, citing national security concerns about cross-border information flows. Capvision completed a government-supervised rectification and implemented new compliance protocols. The firm has also faced scrutiny from Western regulators. These experiences have made Capvision's regulatory positioning more complex than most peers, and potential clients should evaluate the firm's current compliance posture in the context of their own regulatory requirements."
+    "regulatoryContext": "In May 2023, Chinese state security authorities raided Capvision offices in Shanghai, Beijing, Shenzhen, and Suzhou and featured the investigation in a 15-minute CCTV broadcast, accusing the firm of facilitating the transfer of sensitive information to foreign entities. The probe alleged that between 2017–2020, Capvision received over 2,000 remittances from over 100 overseas companies totaling more than $70 million. Capvision completed a government-supervised rectification in October 2023. This was part of a broader crackdown that also affected Bain & Company, Mintz Group, and the Big Four accounting firms in China. Note: This was a Chinese national security investigation, not a U.S. SEC action as sometimes incorrectly reported."
   },
 
   "clientFit": {
@@ -120,6 +127,7 @@
     "On-the-ground presence in major Asian business centers",
     "Broad service offering beyond calls — surveys, events, research, corporate access",
     "Large network scale (400K+ experts) with strong Asia weighting",
+    "Competitive pricing relative to major Western expert networks",
     "Dual-market positioning serving both Asian and Western institutional clients"
   ],
 
@@ -137,19 +145,25 @@
     "Largest expert network headquartered in China (domestically known as Kaisheng Rongying)",
     "Founded by former Bain & Company consultants and Morgan Stanley investment bankers",
     "Valued at approximately RMB 2.3 billion (~$320M) in 2020 equity transfers",
-    "Filed for Hong Kong IPO in 2022 aiming to raise $300M after 45% revenue growth",
+    "Filed for Hong Kong IPO twice (2021 and 2022) targeting $300M raise at $1.5–3B valuation",
+    "Raised $56.6M in total funding from investors including Huizhi Capital and Zhejiang Silk Road Fund",
+    "Facilitated 134,000 consulting calls in first nine months of 2021 alone",
+    "Average expert compensation of $230/hour, with rates ranging from $79 to $10,000/hour",
     "Offices in Shanghai, New York, Munich, Hong Kong, Osaka, and Beijing",
     "Partners with over 2,000 clients including institutional investors and Fortune 500 companies",
-    "Subject to Chinese state security raid in May 2023; completed government-supervised rectification"
+    "Subject of a 15-minute CCTV broadcast during 2023 Chinese national security crackdown",
+    "Completed government-supervised rectification in October 2023",
+    "Formed strategic partnership with CEPRES in 2024 for private market analytics"
   ],
 
   "sourceNotes": [
-    "Capvision official website (capvision.com) used for service descriptions and company positioning",
-    "CNN, The China Project, and Consultancy.asia used for 2023 raid and rectification reporting",
-    "PitchBook and Crunchbase used for funding and valuation data",
+    "Capvision official website (capvision.com) used for service descriptions and positioning claims",
+    "Expert Opportunities (expertopportunities.com) review provided financial data, expert compensation details, and call volume statistics from Capvision's Hong Kong IPO filings",
+    "CNN, CNBC, and South China Morning Post reporting used for 2023 investigation details",
+    "Consultancy.asia used for rectification completion details",
     "Inex One and ExpertNetworkCalls.com used for independent third-party profile information",
-    "LinkedIn used for employee count and office location verification",
-    "IPO filing information sourced from financial news reporting (2022)"
+    "PitchBook and Tracxn used for funding and valuation data",
+    "Important correction: Previous profile incorrectly stated 'SEC investigation' — the 2023 probe was conducted by Chinese state security authorities, not the U.S. SEC"
   ],
 
   "whyChoose": ["Unmatched Asia-Pacific coverage", "Multilingual expert access", "Cross-border research strength", "Broad service suite beyond calls"],
