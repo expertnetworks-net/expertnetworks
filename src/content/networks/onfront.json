@@ -6,23 +6,24 @@
   "gradientFrom": "#78350f",
   "gradientTo": "#fbbf24",
   "type": "Expert Network",
-  "founded": 2013,
-  "headquarters": "Washington, DC",
-  "employeeCount": "50+",
-  "expertCount": "30K+",
-  "description": "Expert network specializing in frontier and emerging markets, connecting development organizations, government agencies, and NGOs with on-the-ground experts in hard-to-reach geographies.",
-  "services": ["Expert Calls", "Emerging Markets Research", "Development Consulting"],
-  "aiCapabilities": ["AI-assisted expert discovery in emerging markets", "Automated language and geography matching", "Smart project routing"],
-  "industries": ["International Development", "Government", "Agriculture", "Energy", "Healthcare", "Infrastructure"],
+  "founded": 2014,
+  "headquarters": "New York, NY",
+  "employeeCount": "170+",
+  "expertCount": "17K+ federal + 5K+ emerging markets",
+  "description": "Expert network specializing in two niche markets: frontier/emerging markets (100+ countries across Latin America, Africa, MENA, and Asia) and U.S. federal government contracting (17,000+ vetted federal SMEs). Official Expert Platform Partner of GPCA/EMPEA.",
+  "services": ["Expert Calls", "Emerging Markets Research", "Federal Government Expertise", "Enterprise Knowledge Networks", "Harness Intelligence Platform"],
+  "aiCapabilities": ["AI-assisted expert discovery in emerging markets", "Enterprise Knowledge Network platform", "Harness expertise intelligence tool", "Automated language and geography matching"],
+  "industries": ["International Development", "Government", "Agriculture", "Energy", "Healthcare", "Infrastructure", "Defense"],
   "pricingModel": "Per-call",
-  "keyDifferentiators": ["Unmatched coverage of frontier and emerging market experts", "Deep relationships with development organizations and multilateral institutions", "On-the-ground expertise in geographies underserved by traditional expert networks"],
-  "bestFor": ["Development Organizations", "Frontier Markets", "Government/NGO"],
+  "pricingDetail": "Per-call pricing with enterprise SaaS subscriptions for knowledge network platform",
+  "keyDifferentiators": ["Dual focus on emerging markets and U.S. federal government contracting — unique positioning", "Official Expert Platform Partner of GPCA (formerly EMPEA)", "Enterprise Knowledge Network platform for building proprietary expert networks"],
+  "bestFor": ["Development Organizations", "Frontier Markets", "Government/NGO", "Federal Contractors"],
   "compliance": {
     "mnpiPolicy": "Compliance policies tailored to development sector and government engagement requirements",
     "expertVetting": "Thorough vetting with emphasis on local knowledge verification and conflict-of-interest screening",
     "coolingOffPeriod": "Standard cooling-off periods enforced where applicable",
     "auditTrail": true,
-    "regulatoryHistory": "Clean regulatory record"
+    "regulatoryHistory": "Clean regulatory record. Operates within federal contracting compliance frameworks"
   },
   "featured": false,
   "priority": 19,
@@ -34,5 +35,140 @@
     "surveys": false,
     "complianceTools": true
   },
-  "lastUpdated": "2026-03-06"
+  "lastUpdated": "2026-03-07",
+
+  "overview": "OnFrontiers occupies a unique position in the expert network industry with a dual focus on two underserved markets: frontier/emerging markets and U.S. federal government contracting. Founded in 2014 by Brian Caouette, Anne Kroijer, and Kyle Teague, the company started as a peer-to-peer knowledge marketplace focused on emerging markets before expanding into federal expertise.\n\nThe emerging markets practice covers 100+ countries across six regions: Latin America, Sub-Saharan Africa, MENA, CEE & CIS, South Asia, and Southeast Asia. OnFrontiers is the official Expert Platform Partner of GPCA (Global Private Capital Association, formerly EMPEA), offering favorable rates to GPCA members investing in emerging markets.\n\nThe federal government practice maintains 17,000+ vetted subject matter experts and has partnered with Chemonics International (the largest USAID for-profit contractor, with $1.5B+ in contracts). In 2025, OnFrontiers launched a partnership with GovTribe (a GovExec platform), integrating its expert profiles directly into federal contractor tools.\n\nThe company has raised approximately $7.6 million from 12 investors including Techstars, ChemCapital (Chemonics' investment arm), Right Side Capital Management, and Black & Veatch IgniteX.",
+
+  "history": {
+    "narrative": "Brian Caouette (CEO) co-founded OnFrontiers in 2014 with Anne Kroijer (CSO) and Kyle Teague (CTO). Caouette holds an MPA from Harvard Kennedy School in International Development and Economics, and had previously founded Farmbuilders as an Echoing Green Fellow. Kroijer co-designed the platform's knowledge marketplace approach, while Teague brought technical expertise from Georgia Tech.\n\nOnFrontiers joined the Techstars NYC Summer 2016 accelerator, gaining early-stage investment and mentorship. The company built its emerging markets expert network through partnerships with organizations like GPCA/EMPEA. A strategic inflection came when Chemonics International, the largest USAID for-profit contractor, made a strategic investment through its subsidiary ChemCapital, expanding OnFrontiers into the federal government contracting space with a Kenya office.",
+    "timeline": [
+      { "year": "2014", "event": "Founded in New York City by Brian Caouette, Anne Kroijer, and Kyle Teague as a peer-to-peer knowledge marketplace" },
+      { "year": "2016", "event": "Joined Techstars NYC Summer 2016 accelerator" },
+      { "year": "2016-2020", "event": "Built emerging markets expert network; became GPCA/EMPEA's official Expert Platform Partner" },
+      { "year": "2021", "event": "Expanded partnership with Chemonics International; ChemCapital made strategic investment" },
+      { "year": "2022-2023", "event": "Launched Harness expertise intelligence platform; expanded to Kenya through Chemonics partnership" },
+      { "year": "2025", "event": "Launched GovTribe partnership, integrating 17,000+ expert profiles into federal contractor tools" }
+    ]
+  },
+
+  "servicesDetailed": [
+    {
+      "name": "Expert Consultations (Emerging Markets)",
+      "description": "30-60 minute phone/video consultations with vetted subject matter experts covering 100+ countries across Latin America, Sub-Saharan Africa, MENA, CEE & CIS, South Asia, and Southeast Asia. Experts matched on recency, relevancy, and depth of knowledge, typically available within 24-48 hours."
+    },
+    {
+      "name": "Federal Government Expert Access",
+      "description": "17,000+ vetted federal subject matter experts supporting government contractors, agencies, and policy organizations. Includes key personnel sourcing, proposal support, and advisory services tailored to federal acquisition processes."
+    },
+    {
+      "name": "Enterprise Knowledge Networks",
+      "description": "SaaS platform enabling organizations to build proprietary networks of internal and external experts. Makes human knowledge visible, interpretable, and accessible within an organization while connecting to OnFrontiers' broader marketplace."
+    },
+    {
+      "name": "Harness Expertise Intelligence",
+      "description": "Intelligence platform providing structured access to expertise data, enabling organizations to identify knowledge gaps, track expert engagement patterns, and optimize their use of human expertise."
+    },
+    {
+      "name": "Long-term Consulting Engagements",
+      "description": "Multi-month advisory relationships, document review, and consulting projects that go beyond single consultations for clients needing sustained expert input."
+    }
+  ],
+
+  "aiPlatform": {
+    "narrative": "OnFrontiers has evolved from a simple marketplace to an 'Enterprise Knowledge Network' platform — a SaaS tool that makes human knowledge visible and accessible within organizations. The Harness product adds expertise intelligence capabilities, helping organizations understand and optimize their use of expert knowledge. AI assists with expert discovery, matching, and the structuring of knowledge across the platform.",
+    "features": [
+      "Enterprise Knowledge Network SaaS platform",
+      "Harness expertise intelligence and analytics",
+      "AI-assisted expert discovery across emerging markets and federal domains",
+      "Automated matching based on geography, language, and subject matter",
+      "Integration with GovTribe for federal contractor tools",
+      "Knowledge graph connecting internal and external expertise"
+    ]
+  },
+
+  "complianceExtended": {
+    "narrative": "OnFrontiers operates across two highly regulated environments: international development (requiring sensitivity to local regulations, conflict of interest, and political considerations) and U.S. federal government contracting (requiring adherence to federal acquisition regulations and security clearance protocols). The company's compliance framework is adapted for these unique requirements rather than the financial services focus typical of most expert networks.",
+    "highlights": [
+      "Federal government compliance aligned with FAR (Federal Acquisition Regulation) requirements",
+      "Development sector compliance with attention to local regulations and political sensitivity",
+      "Expert vetting with emphasis on local knowledge verification",
+      "Conflict-of-interest screening for government and development engagements",
+      "ChemCapital/Chemonics partnership validates compliance for USAID-related work",
+      "Audit trail for all expert interactions"
+    ],
+    "regulatoryContext": "OnFrontiers' dual focus on emerging markets and federal contracting places it in a distinct compliance environment. Federal work requires adherence to FAR regulations, while development work involves USAID, World Bank, and multilateral institution standards. This differs significantly from the MNPI/securities-focused compliance typical of finance-oriented expert networks."
+  },
+
+  "clientFit": {
+    "narrative": "OnFrontiers is uniquely positioned for organizations working in emerging/frontier markets or the U.S. federal government space. These are niche markets where traditional expert networks have limited coverage. Clients focused on developed market finance or corporate strategy will find more comprehensive options elsewhere.",
+    "segments": [
+      "Development organizations (USAID, World Bank, multilateral institutions) needing emerging market expertise",
+      "Federal government contractors seeking subject matter experts for proposals and projects",
+      "PE/VC firms investing in frontier and emerging markets (GPCA/EMPEA members)",
+      "NGOs and international organizations conducting field research in hard-to-reach geographies",
+      "Government agencies and policy organizations requiring specialized advisory"
+    ]
+  },
+
+  "strengths": [
+    "Unique dual positioning in emerging markets and federal government — no direct competitor serves both",
+    "Official Expert Platform Partner of GPCA (formerly EMPEA) validates emerging market credibility",
+    "ChemCapital strategic investment connects OnFrontiers to the largest USAID for-profit contractor",
+    "GovTribe integration provides direct distribution channel to federal contracting community",
+    "CEO Brian Caouette's Harvard Kennedy School background gives authentic development sector expertise",
+    "Expertise in 100+ countries including geographies underserved by all other expert networks",
+    "Enterprise Knowledge Network platform enables organizations to build proprietary expert networks"
+  ],
+
+  "caveats": [
+    "Niche positioning means limited relevance for mainstream financial services or corporate research",
+    "Smaller expert database (17K federal + 5K emerging markets) compared to generalist networks with 500K+",
+    "Limited brand recognition outside the development and federal contracting communities",
+    "Revenue estimated at $1.5-3.8M suggests relatively small scale",
+    "Employee count contracted ~17% in one recent year, suggesting growth challenges",
+    "Technology platform is less mature than established expert network portals"
+  ],
+
+  "notableFacts": [
+    "CEO Brian Caouette holds an MPA from Harvard Kennedy School and was an Echoing Green Fellow",
+    "Official Expert Platform Partner of GPCA (Global Private Capital Association, formerly EMPEA)",
+    "ChemCapital (investment arm of Chemonics International, largest USAID for-profit contractor) is a strategic investor",
+    "17,000+ vetted federal subject matter experts — among the largest federal expert databases",
+    "Experts have shared insights on 100+ countries across six emerging market regions",
+    "GovTribe partnership integrates expert profiles directly into federal contractor tools",
+    "Joined Techstars NYC Summer 2016 accelerator",
+    "Total funding of approximately $7.6M from 12 investors"
+  ],
+
+  "sourceNotes": [
+    "OnFrontiers official website (onfrontiers.com) — company overview, services, and platform description",
+    "Tracxn — funding details ($7.58M total), employee count, and revenue estimates",
+    "Crunchbase — company profile, founders, and investor list",
+    "Techstars — NYC Summer 2016 cohort listing",
+    "GPCA (Global Private Capital Association) — Expert Platform Partner announcement",
+    "Chemonics International — ChemCapital strategic investment details",
+    "GovTribe partnership announcement (2025) — federal expert integration"
+  ],
+
+  "whyChoose": ["Emerging markets expertise", "Federal government access", "GPCA/EMPEA partner", "100+ country coverage"],
+  "whenNotIdeal": ["Developed market focus", "Financial services research", "Need large expert pools", "Want self-service platform"],
+
+  "confidence": {
+    "founded": "verified",
+    "headquarters": "verified",
+    "expertCount": "verified",
+    "employeeCount": "partially-unverifiable",
+    "pricingModel": "verified",
+    "services": "verified",
+    "compliance": "positioning",
+    "overview": "verified",
+    "history": "verified",
+    "servicesDetailed": "verified",
+    "aiPlatform": "positioning",
+    "complianceExtended": "positioning",
+    "clientFit": "inference",
+    "strengths": "verified",
+    "caveats": "inference",
+    "notableFacts": "verified"
+  }
 }

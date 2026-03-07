@@ -8,15 +8,16 @@
   "type": "Expert Network",
   "founded": 2007,
   "headquarters": "Boston, MA",
-  "employeeCount": "30+",
-  "expertCount": "50K+",
-  "description": "Self-service expert network platform enabling small and mid-size firms to directly search, connect with, and engage experts without intermediary involvement, offering a cost-effective alternative to traditional networks.",
-  "services": ["Self-serve Platform", "Expert Calls", "Project Matching"],
-  "aiCapabilities": ["Automated expert-project matching", "Self-service search algorithms", "AI-powered relevance scoring"],
-  "industries": ["Management Consulting", "Technology", "Healthcare", "Financial Services"],
+  "employeeCount": "50+",
+  "expertCount": "1M+",
+  "description": "Pioneer of the self-service expert network model, offering both DIY marketplace access and full-service support at 30-75% lower cost than traditional networks. Founded by serial entrepreneur Stuart Lewtan with 1M+ expert profiles.",
+  "services": ["Self-serve Platform", "Expert Calls", "Full-Service Research", "Surveys", "AI-Moderated Interviews", "Recruiting"],
+  "aiCapabilities": ["Semantic matching algorithm", "AI-moderated interviews", "Anonymous expert-client matching", "Alpha-generating discovery engine"],
+  "industries": ["Management Consulting", "Technology", "Healthcare", "Financial Services", "Private Equity"],
   "pricingModel": "Platform fee",
-  "keyDifferentiators": ["Self-service model for direct expert access", "Cost-effective for smaller firms", "Nearly two decades of platform development"],
-  "bestFor": ["Small/Mid-size Firms", "Self-Service Buyers", "Budget-Conscious"],
+  "pricingDetail": "Transparent pricing: expert fees (~$200/hr) + Zintro margin ($300-$400/call) vs. ~$1,000 industry standard",
+  "keyDifferentiators": ["Self-service + full-service dual model at 30-75% lower cost", "Complete price transparency — itemized expert fees and Zintro margins", "Nearly two decades of platform development with 1M+ expert profiles"],
+  "bestFor": ["Small/Mid-size Firms", "Self-Service Buyers", "Budget-Conscious", "PE/VC Due Diligence"],
   "compliance": {
     "mnpiPolicy": "Standard MNPI guidelines with user-managed compliance workflows",
     "expertVetting": "Platform-verified profiles with credential validation",
@@ -26,5 +27,142 @@
   "featured": false,
   "priority": 32,
   "published": true,
-  "lastUpdated": "2026-03-06"
+  "lastUpdated": "2026-03-07",
+
+  "overview": "Zintro is a pioneer of the self-service expert network model, founded in 2007 by serial entrepreneur Stuart Lewtan in Boston. Lewtan conceived Zintro while serving as an executive-in-residence at a prominent Boston VC/PE firm, where he found existing expert networks overpriced and cumbersome. His solution: a marketplace where clients could post project briefs, receive expert responses within hours, and engage directly — with complete price transparency.\n\nZintro's core innovation is its dual service model. Clients can use the platform on a fully self-service basis (posting projects, reviewing expert responses, scheduling calls independently) or opt for full-service support comparable to GLG or AlphaSights, but at 30-75% lower cost. The company achieves this by maintaining remote operations teams in the Philippines and India alongside its Boston headquarters.\n\nWith 1M+ expert profiles and 500+ active clients ranging from startups to Global 1000 enterprises, Zintro has carved out a sustainable niche as the cost-effective, transparent alternative to premium expert networks. The company generates an estimated ~$7.1M in annual revenue and has operated profitably without major venture capital dependency.",
+
+  "history": {
+    "narrative": "Stuart Lewtan is a serial entrepreneur with a track record of successful technology ventures. Before Zintro, he founded Lewtan Technologies, a 100+ person company serving 400+ institutional clients in the asset-backed securities industry, which was acquired by DMG Information in 2004 (later sold to Moody's in 2015). He also co-founded MicroE Systems (precision motion control, acquired by GSI Group) and Axsun Technologies (MEMS-based optical engines for telecom and medical imaging).\n\nLewtan conceived Zintro around 2007 while serving as an executive-in-residence at a prominent Boston VC/PE firm, where he experienced firsthand the high costs and friction of traditional expert networks. He built Zintro as a fully self-service platform with no human intermediation. Over time, client demand led to the addition of full-service capabilities, creating the dual model that defines Zintro today.",
+    "timeline": [
+      { "year": "2007", "event": "Founded by serial entrepreneur Stuart Lewtan in Boston, conceived during EIR stint at Boston VC/PE firm" },
+      { "year": "2007-2015", "event": "Built self-service marketplace; raised approximately $3-9M in early funding" },
+      { "year": "2015-2020", "event": "Evolved to add full-service capability alongside self-service model; built remote ops teams in Philippines and India" },
+      { "year": "2020-2025", "event": "Grew to 1M+ expert profiles, 500+ active clients, and estimated ~$7.1M annual revenue" }
+    ]
+  },
+
+  "servicesDetailed": [
+    {
+      "name": "Self-Service Marketplace",
+      "description": "Clients post project briefs to the platform; Zintro's algorithm anonymously matches them to relevant experts. Typically 5-12 experts respond within hours to a few days. Clients review profiles, select experts, and schedule calls independently. Complete price transparency with itemized expert fees and Zintro margins."
+    },
+    {
+      "name": "Full-Service Expert Calls",
+      "description": "Traditional expert network service where Zintro's fulfillment team handles recruiting, screening, compliance, scheduling, transcription, and expert payment — comparable to GLG or AlphaSights but at 30-75% lower cost."
+    },
+    {
+      "name": "Surveys & Quantitative Research",
+      "description": "Participant recruitment from the 1M+ expert database for quantitative studies and structured survey research."
+    },
+    {
+      "name": "AI-Moderated Interviews",
+      "description": "Supporting clients using AI-driven interview moderation. Zintro reports that 82% of surveyed participants preferred AI-moderated over live interviews."
+    },
+    {
+      "name": "Custom Expert Recruiting",
+      "description": "Tracking down niche experts outside the existing network for specialized requirements that the 1M+ database cannot fulfill."
+    },
+    {
+      "name": "Recruiting & Talent Placement",
+      "description": "Facilitating full-time and part-time placements through the expert network, charging a 15% fee on first-year compensation."
+    }
+  ],
+
+  "aiPlatform": {
+    "narrative": "Zintro's proprietary matching algorithm understands semantic relationships between keywords — for example, a search for 'securitization specialists' automatically surfaces experts with 'MBS' or 'structured finance' in their profiles. Results are distilled into a single relevance coefficient for force-ranking experts. The algorithm can identify non-obvious expert matches that human recruiters might miss due to search habit bias, a capability Zintro calls 'alpha-generating discovery.' All initial client-expert interactions are anonymous until both parties agree to engage.",
+    "features": [
+      "Semantic matching algorithm understanding keyword relationships and synonyms",
+      "Single-coefficient force-ranking of expert relevance",
+      "Alpha-generating discovery surfacing non-obvious expert matches",
+      "Anonymous client-expert communication until mutual agreement to engage",
+      "AI-moderated interview support (82% participant preference over live interviews)",
+      "Self-service project posting with automated expert notification"
+    ]
+  },
+
+  "complianceExtended": {
+    "narrative": "Zintro provides standard compliance capabilities appropriate for its diverse client base spanning PE/VC, consulting, and corporate research. The self-service model places more compliance responsibility on the client, while the full-service option includes screening, NDA management, and conflict checks handled by Zintro's team.",
+    "highlights": [
+      "Standard MNPI guidelines with user-managed compliance for self-service",
+      "Full compliance support (screening, NDAs, conflict checks) in full-service mode",
+      "Platform-verified expert profiles with credential validation",
+      "Anonymous interactions protect client identity until mutual engagement agreement",
+      "Audit trail for all platform interactions",
+      "NDA management and expert payment processing"
+    ],
+    "regulatoryContext": "Zintro's dual service model creates different compliance dynamics: self-service clients manage their own compliance workflows, while full-service clients receive traditional expert network compliance support. Clean regulatory record over 18+ years of operation."
+  },
+
+  "clientFit": {
+    "narrative": "Zintro is ideal for cost-conscious organizations that value price transparency and want control over their expert engagement process. The self-service model appeals to teams comfortable managing their own research, while the full-service option serves those who want traditional expert network support at lower cost. Premium institutional clients requiring the deepest compliance infrastructure may prefer established players.",
+    "segments": [
+      "Small and mid-size PE/VC firms conducting due diligence on a budget",
+      "Management consulting firms needing cost-effective expert access",
+      "Corporate strategy teams wanting self-service expert engagement",
+      "Market research firms recruiting survey participants and expert respondents",
+      "Startups and growth companies needing expert validation without premium pricing"
+    ]
+  },
+
+  "strengths": [
+    "Complete price transparency — clients see exactly what experts earn and what Zintro charges",
+    "30-75% lower cost than traditional expert networks while offering comparable service quality",
+    "Dual model: self-service marketplace + full-service support gives clients maximum flexibility",
+    "1M+ expert profiles — among the largest databases in the industry",
+    "18+ year track record provides proven reliability and operational maturity",
+    "Founder Stuart Lewtan's serial entrepreneur background (3 successful exits) brings business acumen",
+    "Semantic matching algorithm surfaces non-obvious experts that human recruiters miss",
+    "Remote ops teams in Philippines/India enable cost efficiency passed to clients"
+  ],
+
+  "caveats": [
+    "Lower pricing may signal less premium positioning to some institutional buyers",
+    "Self-service model places more compliance burden on the client",
+    "Smaller team (~50 employees) may limit capacity for very high-volume engagements",
+    "Less brand recognition than category leaders among Fortune 500 buyers",
+    "Expert database size (1M+) includes profiles that may not be as actively maintained as smaller, curated networks",
+    "Limited office presence outside Boston compared to networks with global offices"
+  ],
+
+  "notableFacts": [
+    "Founder Stuart Lewtan previously founded Lewtan Technologies (acquired by DMG Information/Moody's), MicroE Systems (acquired by GSI Group), and Axsun Technologies",
+    "Complete price transparency: expert fees average ~$200/hr, Zintro charges $300-$400/call, vs. ~$1,000 industry standard",
+    "82% of surveyed participants preferred AI-moderated interviews over live moderation",
+    "1M+ expert profiles — one of the largest databases in the expert network industry",
+    "500+ active clients ranging from startups to Global 1000 enterprises",
+    "Estimated annual revenue of approximately $7.1M",
+    "Self-service model was conceived when founder was EIR at a Boston VC/PE firm and found existing networks overpriced",
+    "Remote operations teams in Philippines and India keep costs low while maintaining service quality"
+  ],
+
+  "sourceNotes": [
+    "Zintro official website (zintro.com) — company overview, services, and pricing transparency",
+    "Expert Network Calls directory — Zintro profile and service description",
+    "Tracxn — funding details, revenue estimates (~$7.1M), and company profile",
+    "INEX ONE Expert Network Directory — Zintro profile",
+    "Crunchbase — company profile, founding date, and founder (Stuart Lewtan)",
+    "LinkedIn — company page and founder profile"
+  ],
+
+  "whyChoose": ["30-75% cost savings", "Price transparency", "Self-service + full-service", "1M+ expert profiles"],
+  "whenNotIdeal": ["Need premium brand cachet", "Want institutional-grade compliance", "Require global office presence", "Expect white-glove only service"],
+
+  "confidence": {
+    "founded": "verified",
+    "headquarters": "verified",
+    "expertCount": "positioning",
+    "employeeCount": "partially-unverifiable",
+    "pricingModel": "verified",
+    "services": "verified",
+    "compliance": "positioning",
+    "overview": "verified",
+    "history": "verified",
+    "servicesDetailed": "verified",
+    "aiPlatform": "positioning",
+    "complianceExtended": "positioning",
+    "clientFit": "inference",
+    "strengths": "positioning",
+    "caveats": "inference",
+    "notableFacts": "partially-unverifiable"
+  }
 }

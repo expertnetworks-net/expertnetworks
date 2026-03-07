@@ -5,24 +5,25 @@
   "website": "https://stax.com",
   "gradientFrom": "#1e40af",
   "gradientTo": "#60a5fa",
-  "type": "Expert Network",
-  "founded": 2016,
+  "type": "Strategy Consulting + Expert Network",
+  "founded": 1994,
   "headquarters": "Boston, MA",
-  "employeeCount": "200+",
+  "employeeCount": "300+",
   "expertCount": "100K+",
-  "description": "Private equity-focused expert network and research firm combining expert calls with commercial due diligence and market studies to support investment decision-making.",
-  "services": ["Expert Calls", "Commercial Due Diligence", "Market Studies"],
-  "aiCapabilities": ["AI-enhanced due diligence workflows", "Automated expert matching for PE deal teams", "Data-driven market sizing models"],
-  "industries": ["Private Equity", "Healthcare", "Business Services", "Technology", "Consumer", "Industrials"],
+  "description": "Private equity-focused strategy consulting firm combining expert calls with commercial due diligence and market studies. Founded in 1994 and now operating as Grant Thornton Stax after acquisition by Grant Thornton Advisors in September 2025.",
+  "services": ["Commercial Due Diligence", "Expert Calls", "Market Studies", "Value Creation", "Exit Planning", "Data Analytics"],
+  "aiCapabilities": ["AI-enhanced due diligence workflows", "Machine learning-driven market sizing models", "Predictive modeling and location analytics", "Data science-driven research synthesis"],
+  "industries": ["Private Equity", "Healthcare", "Business Services", "Technology", "Consumer", "Industrials", "Software"],
   "pricingModel": "Per-project",
-  "keyDifferentiators": ["Integrated expert network and commercial due diligence under one roof", "Purpose-built for private equity deal timelines and workflows", "Research-grade deliverables combining expert insights with proprietary data analysis"],
+  "pricingDetail": "Per-project pricing for due diligence and consulting engagements",
+  "keyDifferentiators": ["Integrated expert network and commercial due diligence under one roof", "30+ year track record purpose-built for PE deal timelines", "Data science team combining primary research with predictive analytics"],
   "bestFor": ["Private Equity", "Due Diligence", "Commercial Research"],
   "compliance": {
     "mnpiPolicy": "Strict MNPI policies designed for PE deal environments with information barrier protocols",
     "expertVetting": "Comprehensive vetting including employment verification, NDA enforcement, and deal-specific conflict screening",
     "coolingOffPeriod": "Enforced cooling-off periods with deal-specific restrictions",
     "auditTrail": true,
-    "regulatoryHistory": "Clean regulatory record"
+    "regulatoryHistory": "Clean regulatory record. Now operating under Grant Thornton's institutional compliance framework"
   },
   "featured": false,
   "priority": 20,
@@ -34,5 +35,139 @@
     "surveys": false,
     "complianceTools": true
   },
-  "lastUpdated": "2026-03-06"
+  "lastUpdated": "2026-03-07",
+
+  "overview": "Stax is a strategy consulting firm with an integrated expert network, purpose-built for private equity. Founded in 1994 by Rafi Musher in Boston, the firm has spent 30+ years specializing in commercial due diligence (CDD), value creation, and exit planning for PE investors. Unlike pure expert networks that provide expert calls as their primary service, Stax combines expert interviews with proprietary data analytics, field surveys, and consulting-grade deliverables to produce research-grade due diligence reports.\n\nIn September 2025, Stax was acquired by Grant Thornton Advisors, now operating as 'Grant Thornton Stax.' Prior to that, Blue Point Capital Partners (managing $1.5B+ in committed capital) had made a platform investment in Stax in October 2021. The combined Grant Thornton Stax practice services almost 70% of the U.S.-based Private Equity International 300.\n\nStax differentiates through speed and analytical depth. The firm's data science team builds machine learning models, conducts location analytics, and creates predictive frameworks — overlaying these on primary research from expert interviews and field surveys. In one notable engagement, the team collected direct feedback from 1,200+ dentists, surgeons, and competitors for a dental implants due diligence.",
+
+  "history": {
+    "narrative": "Rafi Musher founded Stax in 1994, recognizing that PE firms needed strategy consulting with both significant analytical content and an action-oriented approach. The founding team came from large consulting firms and improved the generalist case-team model by adding specialist teams. Mark Bremer joined as President shortly after founding, instilling a focus on analytics and data-driven insights. The PE practice launched in 1996.\n\nStax grew steadily for over two decades before institutional capital accelerated its expansion. In October 2021, Blue Point Capital Partners made a platform investment when Stax had 200+ employees. In November 2022, Stax acquired AMR International, a London-based boutique strategy consultancy founded in 1991 with 30+ consultants and 500+ PE engagements, establishing Stax's European presence. In August 2025, Grant Thornton Advisors announced the acquisition of Stax from Blue Point, with the deal closing in September 2025.",
+    "timeline": [
+      { "year": "1994", "event": "Founded by Rafi Musher in Boston, MA" },
+      { "year": "1996", "event": "Launched dedicated PE practice" },
+      { "year": "2021 (October)", "event": "Blue Point Capital Partners ($1.5B+ AUM) made platform investment; 200+ employees" },
+      { "year": "2022 (October)", "event": "Jayson Traxler promoted from COO to President; Musher transitioned to Chairman" },
+      { "year": "2022 (November)", "event": "Acquired AMR International (London, 30+ consultants, 500+ PE engagements) for European expansion" },
+      { "year": "2025 (September)", "event": "Acquired by Grant Thornton Advisors; now operating as Grant Thornton Stax with 300+ team members" }
+    ]
+  },
+
+  "servicesDetailed": [
+    {
+      "name": "Commercial Due Diligence",
+      "description": "Stax's core offering. Comprehensive market analysis covering market dynamics, customer decision journeys, and competitive dynamics. Assesses target's right-to-win, defensibility of market position, and forward-looking growth opportunities. Supports both buy-side and sell-side due diligence with research-grade deliverables."
+    },
+    {
+      "name": "Expert Calls & Primary Research",
+      "description": "Extensive interview programs with C-suite executives, industry experts, and customers. Includes field surveys (web-based) with customers, non-customers, and industry experts. Cold-call survey programs optimized for rapid PE deal timelines."
+    },
+    {
+      "name": "Value Creation & Growth Strategy",
+      "description": "Post-deal performance enhancement identifying new markets, pricing opportunities, and operational efficiencies for PE-backed portfolio companies."
+    },
+    {
+      "name": "Exit Planning & Sell-Side Positioning",
+      "description": "Data-backed growth narratives and strategic positioning to maximize valuation at exit."
+    },
+    {
+      "name": "Data Analytics & Data Science",
+      "description": "Dedicated data science team building machine learning models, predictive analytics, location analytics for site selection, and hyper-custom analytical models. Integrates with primary research for data-augmented due diligence."
+    }
+  ],
+
+  "aiPlatform": {
+    "narrative": "Stax positions itself as 'tech-enabled' rather than offering a standalone technology platform. The firm's data science team deploys analytics tools, machine learning models, and predictive frameworks internally to enhance consulting engagements. Capabilities include data extraction, ingestion, cleaning, location analytics, predictive modeling, and market sizing models. Unlike pure expert networks, Stax's technology serves its consulting practice rather than being a client-facing product.",
+    "features": [
+      "Dedicated data science team building custom ML models per engagement",
+      "Location analytics for site selection and market expansion analysis",
+      "Predictive modeling and hyper-custom analytical frameworks",
+      "Data extraction, ingestion, and cleaning pipelines",
+      "Web-based field survey deployment and analysis",
+      "Market sizing models combining primary research with data science"
+    ]
+  },
+
+  "complianceExtended": {
+    "narrative": "As a wholly-owned subsidiary of Grant Thornton Advisors, Stax operates under Grant Thornton's institutional compliance framework — one of the largest professional services organizations globally. The firm maintains strict information barriers for PE deal environments, with deal-specific conflict screening and NDA enforcement for all expert engagements.",
+    "highlights": [
+      "Grant Thornton institutional compliance framework",
+      "Strict information barriers for PE deal environments",
+      "Deal-specific conflict screening and NDA enforcement",
+      "Employment verification for all expert engagements",
+      "Cooling-off period enforcement with deal-specific restrictions",
+      "Complete audit trail for all interactions"
+    ],
+    "regulatoryContext": "Stax operates within the regulated PE due diligence environment, where information handling, expert conflicts, and deal confidentiality are paramount. The Grant Thornton acquisition provides enhanced compliance infrastructure and institutional oversight. Clean regulatory record over 30+ years of operation."
+  },
+
+  "clientFit": {
+    "narrative": "Stax is purpose-built for private equity firms and investors who need more than expert calls — they need consulting-grade commercial due diligence with expert interviews integrated into the analytical framework. The firm is less suited for organizations seeking standalone expert call access or self-service platforms.",
+    "segments": [
+      "PE firms needing commercial due diligence for acquisition targets",
+      "PE-backed portfolio companies seeking value creation and growth strategy",
+      "Investment banks requiring M&A advisory research support",
+      "Hedge funds evaluating market potential for investment decisions",
+      "Large corporations seeking strategy consulting with integrated primary research"
+    ]
+  },
+
+  "strengths": [
+    "30+ year track record purpose-built for PE, with deep understanding of deal timelines and deliverable requirements",
+    "Integrated model combines expert interviews, field surveys, data science, and consulting deliverables",
+    "Grant Thornton backing provides institutional scale — combined practice services ~70% of PEI 300",
+    "Dedicated data science team creates differentiated, data-augmented due diligence",
+    "European expansion through AMR International acquisition adds London presence and 500+ PE engagements",
+    "Research-grade deliverables go beyond raw expert call transcripts to actionable strategic insights"
+  ],
+
+  "caveats": [
+    "Not a pure expert network — cannot use Stax for standalone expert calls without consulting engagement",
+    "Per-project pricing for full CDD engagements is significantly higher than per-call expert network pricing",
+    "No self-service platform for direct expert access",
+    "Multiple ownership transitions (founder → Blue Point → Grant Thornton) may affect culture and service continuity",
+    "Technology is internally deployed, not client-facing — less suitable for clients wanting platform access",
+    "Primarily PE-focused; less relevant for clients outside the investment and M&A ecosystem"
+  ],
+
+  "notableFacts": [
+    "Founded in 1994 by Rafi Musher — one of the earliest PE-focused strategy consulting firms",
+    "Acquired by Grant Thornton Advisors in September 2025; now operates as Grant Thornton Stax",
+    "Combined practice services almost 70% of the U.S.-based Private Equity International 300",
+    "Previously backed by Blue Point Capital Partners (managing $1.5B+ in committed capital)",
+    "Acquired AMR International (London, founded 1991, 2,000+ completed projects across 40+ countries)",
+    "President Jayson Traxler previously held senior roles at AlixPartners and K2 Integrity; Kellogg MBA",
+    "In one engagement, collected direct feedback from 1,200+ dentists, surgeons, and competitors",
+    "Offices in Boston, Chicago, New York, London, and Colombo (Sri Lanka)"
+  ],
+
+  "sourceNotes": [
+    "Stax official website (stax.com) — company overview, services, team, and case studies",
+    "Grant Thornton press release (August 2025) — acquisition announcement",
+    "Blue Point Capital Partners — platform investment announcement (October 2021)",
+    "PR Newswire — AMR International acquisition (November 2022)",
+    "Tracxn — company profile, employee count, and funding history",
+    "INEX ONE Expert Network Directory — Stax profile",
+    "LinkedIn — company page and leadership profiles"
+  ],
+
+  "whyChoose": ["PE due diligence expertise", "30+ year track record", "Data science + expert calls", "Grant Thornton scale"],
+  "whenNotIdeal": ["Need standalone expert calls", "Want self-service platform", "Budget-constrained", "Non-PE use case"],
+
+  "confidence": {
+    "founded": "verified",
+    "headquarters": "verified",
+    "expertCount": "positioning",
+    "employeeCount": "verified",
+    "pricingModel": "verified",
+    "services": "verified",
+    "compliance": "positioning",
+    "overview": "verified",
+    "history": "verified",
+    "servicesDetailed": "verified",
+    "aiPlatform": "positioning",
+    "complianceExtended": "positioning",
+    "clientFit": "inference",
+    "strengths": "verified",
+    "caveats": "inference",
+    "notableFacts": "verified"
+  }
 }
