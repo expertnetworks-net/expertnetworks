@@ -7,25 +7,159 @@
   "gradientTo": "#60a5fa",
   "type": "Expert Network",
   "founded": 2003,
-  "headquarters": "Durham, NC",
-  "employeeCount": "300+",
-  "expertCount": "200K+",
-  "description": "Established expert network providing expert consultations, custom research, and survey services with a focus on client relationships and compliance.",
+  "headquarters": "New York, NY",
+  "employeeCount": "600+ (combined with VisasQ)",
+  "expertCount": "650K+ (combined with VisasQ)",
+  "description": "One of the original expert network pioneers, founded in 2003 and now operating as VISASQ/COLEMAN after its $102M acquisition by Japan's VisasQ in 2021. Provides expert consultations, custom research, and survey services with a global footprint spanning 7 offices.",
   "services": ["Expert Calls", "Custom Research", "Surveys", "Compliance Tools"],
-  "aiCapabilities": ["Technology-enhanced matching"],
-  "industries": ["Financial Services", "Healthcare", "Technology", "Industrials"],
+  "aiCapabilities": ["Technology-enhanced matching", "Integrated VisasQ platform capabilities", "Multilingual expert search"],
+  "industries": ["Financial Services", "Healthcare", "Technology", "Industrials", "Consumer"],
   "pricingModel": "Per-call",
-  "keyDifferentiators": ["White-glove service model", "Strong compliance culture", "Long-standing industry presence"],
+  "pricingDetail": "Per-call pricing with custom engagement options",
+  "keyDifferentiators": ["Two-decade track record as an expert network pioneer", "Global platform combining US depth with Japanese/Asian reach via VisasQ", "Strong compliance culture built over 20+ years"],
   "bestFor": ["Financial Services", "Healthcare Research", "Compliance-Sensitive Clients"],
   "compliance": {
-    "mnpiPolicy": "Robust MNPI policies with dedicated compliance team",
-    "expertVetting": "Thorough manual vetting process",
+    "mnpiPolicy": "Robust MNPI policies with dedicated compliance team refined over 20+ years of operation",
+    "expertVetting": "Thorough manual vetting process with employment verification and conflict screening",
     "coolingOffPeriod": "Standard cooling-off periods enforced",
     "auditTrail": true,
-    "regulatoryHistory": "Clean regulatory record. Known for compliance-first culture"
+    "regulatoryHistory": "Clean regulatory record. Known for compliance-first culture since founding in 2003"
   },
   "featured": false,
   "priority": 14,
   "published": true,
-  "lastUpdated": "2026-03-06"
+  "lastUpdated": "2026-03-07",
+
+  "overview": "Coleman Research is one of the expert network industry's true pioneers, founded in 2003 by Kevin Coleman — just a few years after GLG helped create the category. For nearly two decades, Coleman built a reputation for white-glove service, strong compliance, and deep relationships across financial services and healthcare.\n\nIn August 2021, Tokyo-based VisasQ shocked the industry by acquiring Coleman for $102 million — remarkable because Coleman had more than twice VisasQ's revenue at the time, with a transaction volume exceeding $43 million. The combined entity now operates as VISASQ/COLEMAN, with 650,000+ experts globally, 600+ employees, and 7 offices spanning New York, Raleigh, Boston, San Francisco, Los Angeles, London, and Hong Kong.\n\nThe merger created a unique cross-border platform: Coleman's deep US and European client relationships combined with VisasQ's dominant position in Japan (175,000+ experts) and Asia. The combined entity serves 1,000+ clients and is positioned as a bridge between Western and Asian expert networks — a significant advantage as global investment flows increasingly involve Asia-Pacific markets.",
+
+  "history": {
+    "narrative": "Kevin Coleman founded Coleman Research in 2003, drawing on his experience at Multex, a financial information service that launched during the dot-com era. Coleman recognized that investors needed more direct access to industry experts than traditional research channels provided. The company grew steadily from its base in New York, building offices across the US and expanding internationally.\n\nThe transformative moment came in August 2021 when Japan's VisasQ announced it would acquire Coleman for $102 million (JPY 11.2 billion). The deal was striking: Coleman had revenues of $43.8 million — more than double VisasQ's own revenue. VisasQ valued Coleman at roughly 2.3x revenue. Kevin Coleman remained as CEO and joined the VisasQ board.\n\nPost-acquisition, however, macroeconomic headwinds hit hard. A prolonged slowdown in the US M&A market caused Coleman's revenue to fall short of expectations, leading VisasQ to record a JPY 14.6 billion goodwill write-off in April 2024. Despite this, the combined entity continued integrating operations, rebranding as VISASQ/COLEMAN in January 2023 and expanding to 650,000+ experts globally.",
+    "timeline": [
+      { "year": "2003", "event": "Founded by Kevin Coleman in New York, one of the earliest expert network companies" },
+      { "year": "2003-2020", "event": "Grew to 260,000+ registered experts with offices in New York, Boston, San Francisco, Raleigh, London, and Hong Kong" },
+      { "year": "2021 (August)", "event": "VisasQ announced acquisition of Coleman for $102 million; Kevin Coleman remained CEO and joined VisasQ board" },
+      { "year": "2021 (November)", "event": "Acquisition completed; combined entity reached 400,000+ experts across 7 global offices" },
+      { "year": "2023 (January)", "event": "Rebranded to VISASQ/COLEMAN with new co-branded visual identity" },
+      { "year": "2024 (April)", "event": "VisasQ recorded JPY 14.6B goodwill write-off on Coleman due to US M&A slowdown" },
+      { "year": "2024 (November)", "event": "Combined entity reached 650,000+ experts globally with 600+ employees" }
+    ]
+  },
+
+  "servicesDetailed": [
+    {
+      "name": "Expert Consultations",
+      "description": "One-on-one phone consultations connecting clients with vetted industry experts. Coleman's core service for over 20 years, with dedicated project managers handling expert sourcing, scheduling, and compliance. Deep coverage across financial services, healthcare, technology, and industrials."
+    },
+    {
+      "name": "Custom Research Projects",
+      "description": "End-to-end research engagements combining expert interviews with analysis and reporting. Supports due diligence, competitive intelligence, and market entry studies with deliverables ranging from raw transcripts to executive-ready reports."
+    },
+    {
+      "name": "Survey Services",
+      "description": "Quantitative survey research leveraging Coleman's 650,000+ expert network for targeted B2B sampling. Supports market sizing, pricing research, and competitive benchmarking across industries."
+    },
+    {
+      "name": "Cross-Border Asia-US Research",
+      "description": "Unique capability combining Coleman's US/European depth with VisasQ's 175,000+ Japanese experts and Asian network. Enables seamless cross-border research for investors and companies evaluating opportunities across Western and Asian markets."
+    }
+  ],
+
+  "aiPlatform": {
+    "narrative": "Coleman Research has historically been a service-led rather than technology-led expert network, differentiating through human relationships and white-glove project management. Following the VisasQ acquisition, the combined entity has been integrating VisasQ's technology platform — including its spot consulting marketplace and AI-powered expert matching — with Coleman's established service model. The VISASQ/COLEMAN platform provides clients with access to 650,000+ experts across a unified system supporting multilingual search and cross-border compliance.",
+    "features": [
+      "Integrated VISASQ/COLEMAN platform for global expert access",
+      "Multilingual expert search spanning English, Japanese, and other languages",
+      "Technology-enhanced expert matching with manual curation overlay",
+      "Cross-border compliance management across US, European, and Asian jurisdictions",
+      "Centralized project management across 7 global offices",
+      "VisasQ spot consulting marketplace integration"
+    ]
+  },
+
+  "complianceExtended": {
+    "narrative": "Coleman Research has built one of the industry's strongest compliance cultures over its 20+ year history. The company maintains a dedicated compliance team with robust MNPI policies, thorough expert vetting, and enforced cooling-off periods. As a subsidiary of publicly listed VisasQ (Tokyo Stock Exchange), Coleman operates under enhanced transparency and audit requirements. The company's compliance framework has been refined through two decades of serving hedge funds, asset managers, and other regulated financial institutions.",
+    "highlights": [
+      "20+ year track record of compliance-first culture",
+      "Dedicated compliance team with robust MNPI monitoring",
+      "Thorough expert vetting with employment verification and conflict screening",
+      "Enforced cooling-off periods across all client engagements",
+      "Complete audit trail for all expert interactions",
+      "Publicly listed parent company (VisasQ on Tokyo Stock Exchange) ensures enhanced transparency",
+      "Cross-border compliance management spanning US, European, and Asian regulatory frameworks"
+    ],
+    "regulatoryContext": "Coleman Research operates under the dual oversight of US regulatory frameworks and Japanese public company requirements (as a subsidiary of TSE-listed VisasQ). The company's compliance infrastructure has been built to serve the most regulated clients in financial services, including hedge funds, asset managers, and private equity firms. Clean regulatory record over 20+ years of operation."
+  },
+
+  "clientFit": {
+    "narrative": "Coleman Research is best suited for clients who value long-standing relationships, consistent service quality, and a compliance-first approach. The VISASQ/COLEMAN combination is particularly compelling for organizations needing cross-border research spanning the US, Europe, and Asia — especially Japan. Clients seeking a pure technology platform may prefer AI-native networks, as Coleman's strength lies in its human-led service model.",
+    "segments": [
+      "Financial institutions requiring compliance-first expert access with deep industry coverage",
+      "Asset managers and hedge funds conducting investment due diligence across sectors",
+      "Companies evaluating cross-border opportunities between Western and Asian markets",
+      "Consulting firms needing reliable expert sourcing with consistent service quality",
+      "Healthcare and life sciences organizations requiring specialized clinical expertise"
+    ]
+  },
+
+  "strengths": [
+    "One of the longest-operating expert networks (founded 2003) with unmatched institutional experience",
+    "VISASQ/COLEMAN combination creates unique US-Japan-Asia bridge with 650,000+ experts",
+    "Strong compliance culture refined over 20+ years of serving regulated financial institutions",
+    "Kevin Coleman remains as CEO, providing continuity and deep industry relationships",
+    "White-glove service model with dedicated project managers for each engagement",
+    "Publicly listed parent (VisasQ/TSE) ensures financial transparency and governance",
+    "7 global offices providing local presence across major financial centers"
+  ],
+
+  "caveats": [
+    "VisasQ recorded JPY 14.6B goodwill write-off on Coleman in April 2024 due to US revenue shortfall",
+    "Integration of two different company cultures (Japanese tech platform + US service firm) remains ongoing",
+    "Less technology-forward than AI-native competitors like Techspert or NewtonX",
+    "Stock decline (VisasQ shares down 84% from 2021 peak) may create uncertainty about long-term investment",
+    "Service-led model may have higher costs compared to self-service or AI-driven platforms",
+    "Brand transition from Coleman to VISASQ/COLEMAN may cause confusion among established clients"
+  ],
+
+  "notableFacts": [
+    "Founded in 2003 by Kevin Coleman, making it one of the original expert network pioneers alongside GLG",
+    "Acquired by Japan's VisasQ for $102 million in 2021 — Coleman had more than twice VisasQ's revenue at the time",
+    "Coleman's pre-acquisition transaction volume exceeded $43 million annually",
+    "Combined entity operates as VISASQ/COLEMAN with 650,000+ experts across 7 offices globally",
+    "Kevin Coleman's background at Multex (dot-com era financial information service) inspired the expert network model",
+    "VisasQ recorded a JPY 14.6 billion goodwill write-off on Coleman in April 2024",
+    "Combined entity has 600+ employees and serves 1,000+ clients worldwide",
+    "175,000 of the combined network's experts are based in Japan — the deepest Japanese coverage in the industry"
+  ],
+
+  "sourceNotes": [
+    "VISASQ/COLEMAN official website (colemanrg.com) — company overview, services, and about page",
+    "Bloomberg (August 2021) — acquisition announcement ($102M purchase price)",
+    "VisasQ corporate IR (corp.visasq.co.jp) — acquisition details, goodwill write-off, financial disclosures",
+    "PR Newswire (November 2021) — acquisition completion announcement",
+    "Canaccord Genuity — financial advisor to Coleman on the sale ($103M+)",
+    "INEX ONE Expert Network Directory — Coleman Research profile and industry context",
+    "Integrity Research (December 2021) — expert network M&A frenzy coverage"
+  ],
+
+  "whyChoose": ["20+ year track record", "US-Japan-Asia bridge", "Compliance-first culture", "White-glove service"],
+  "whenNotIdeal": ["Want AI-native platform", "Need self-service access", "Budget-constrained", "Prefer pure-tech approach"],
+
+  "confidence": {
+    "founded": "verified",
+    "headquarters": "verified",
+    "expertCount": "verified",
+    "employeeCount": "verified",
+    "pricingModel": "verified",
+    "services": "verified",
+    "compliance": "verified",
+    "overview": "verified",
+    "history": "verified",
+    "servicesDetailed": "verified",
+    "aiPlatform": "positioning",
+    "complianceExtended": "verified",
+    "clientFit": "inference",
+    "strengths": "verified",
+    "caveats": "verified",
+    "notableFacts": "verified"
+  }
 }

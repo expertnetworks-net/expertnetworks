@@ -9,16 +9,17 @@
   "founded": 2016,
   "headquarters": "Cambridge, UK",
   "employeeCount": "100+",
-  "expertCount": "50K+",
-  "description": "AI-first expert network using natural language processing and machine learning to identify and connect clients with niche technical experts globally.",
-  "services": ["Expert Calls", "AI Matching", "Technical Research"],
-  "aiCapabilities": ["NLP-based expert discovery", "ML matching algorithms", "Automated expertise verification"],
-  "industries": ["Life Sciences", "Technology", "Healthcare", "Energy"],
+  "expertCount": "150M+ searchable",
+  "description": "The world's first AI-driven expert network, using NLP and machine learning to autonomously crawl 150 million professional profiles in real time to find niche technical and scientific experts. Specializes in healthcare and life sciences.",
+  "services": ["Expert Calls", "AI Matching", "Technical Research", "KOL Identification"],
+  "aiCapabilities": ["NLP-based expert discovery across 150M+ profiles", "Real-time web crawling and profile analysis", "ML matching algorithms", "Automated expertise verification", "Semantic search across academic and clinical data"],
+  "industries": ["Life Sciences", "Technology", "Healthcare", "Pharmaceuticals", "Energy"],
   "pricingModel": "Per-call",
-  "keyDifferentiators": ["AI-native approach", "Deep technical/scientific focus", "NLP expert discovery"],
+  "pricingDetail": "Per-call pricing for expert consultations",
+  "keyDifferentiators": ["AI-native approach scanning 150M+ profiles in minutes", "Deep healthcare and life sciences specialization", "NLP expert discovery across academic journals, medical registries, and biographical data"],
   "bestFor": ["Life Sciences", "Deep Tech Research", "Scientific Due Diligence"],
   "compliance": {
-    "mnpiPolicy": "Standard compliance protocols for technical consultations",
+    "mnpiPolicy": "Standard compliance protocols for technical and scientific consultations",
     "expertVetting": "AI-assisted credential verification with domain expertise checks",
     "auditTrail": true,
     "regulatoryHistory": "Clean regulatory record"
@@ -26,5 +27,136 @@
   "featured": false,
   "priority": 11,
   "published": true,
-  "lastUpdated": "2026-03-06"
+  "lastUpdated": "2026-03-07",
+
+  "overview": "Techspert is the world's first AI-driven expert network, founded in 2016 by Graham Mills and David Holden-White in Cambridge, UK. The company's core innovation is its deep search technology — machine learning algorithms that autonomously crawl online content in real time to identify the most qualified expert for any topic, no matter how niche. The platform can review profiles of 150 million potential experts from academic journals, medical registries, patent databases, and biographical data in minutes.\n\nTechspert has carved out a strong position in healthcare and life sciences, where finding experts in highly specialized therapeutic areas, rare diseases, and cutting-edge research requires searching beyond traditional expert databases. The company positions itself as a global leader in healthcare and life sciences expert connections, complementing its AI-driven sourcing with a growing international team in Cambridge and Houston.\n\nThe company has raised approximately £13.5 million across three funding rounds, backed by investors including BGF, Nauta Capital, Cambridge Angels, and Angel CoFund. Techspert has delivered projects in 100+ geographies, demonstrating the global reach of its AI-powered expert discovery engine.",
+
+  "history": {
+    "narrative": "Graham Mills and David Holden-White founded Techspert (originally as techspert.io) in 2016 in Cambridge, UK. Both founders had previously co-founded a biotech startup focused on reducing nicotine addiction, which gave them firsthand experience with the difficulty of finding niche scientific experts. David holds a Master's in Biochemistry from Oxford and a Master's in Bioscience Enterprise from Cambridge.\n\nThe company raised £1 million in its first funding round in December 2018 from angel investors including Simon Thorpe, Angel CoFund, John Spearman, and GW Asia Capital. In February 2020, Techspert closed a £3.75 million Series A led by pan-European VC Nauta Capital. The company's biggest round came in October 2021: £8.8 million ($12M) from BGF and Nauta Capital, which funded international expansion including the opening of a Houston, Texas office.",
+    "timeline": [
+      { "year": "2016", "event": "Founded by Graham Mills and David Holden-White in Cambridge, UK" },
+      { "year": "2018 (December)", "event": "Raised £1M angel round from Simon Thorpe, Angel CoFund, GW Asia Capital, and others" },
+      { "year": "2020 (February)", "event": "Raised £3.75M Series A led by Nauta Capital with Cambridge Angels and existing investors" },
+      { "year": "2021 (October)", "event": "Raised £8.8M ($12M) from BGF and Nauta Capital; opened Houston, Texas office" },
+      { "year": "2022-2025", "event": "Expanded to 100+ project geographies; deepened healthcare and life sciences specialization" }
+    ]
+  },
+
+  "servicesDetailed": [
+    {
+      "name": "AI-Powered Expert Search",
+      "description": "Techspert's core differentiator — NLP and machine learning algorithms crawl 150 million+ professional profiles in real time across academic publications, medical registries, patent databases, conference proceedings, and public biographical data. The system identifies qualified experts for any topic, including ultra-niche areas where traditional expert databases have no coverage."
+    },
+    {
+      "name": "Expert Consultations",
+      "description": "One-on-one phone consultations with AI-identified experts. Particularly strong in healthcare and life sciences, where Techspert can locate KOLs, clinical trial investigators, regulatory specialists, and rare disease experts who are not registered on any expert network database."
+    },
+    {
+      "name": "KOL Identification & Mapping",
+      "description": "AI-driven identification of Key Opinion Leaders across therapeutic areas, leveraging publication analysis, clinical trial participation, conference presentations, and citation networks to map influence in specific medical fields."
+    },
+    {
+      "name": "Technical & Scientific Research",
+      "description": "Deep technical research combining AI-sourced expert consultations with domain analysis. Supports pharmaceutical due diligence, technology assessment, competitive intelligence, and scientific advisory work across life sciences and deep tech."
+    }
+  ],
+
+  "aiPlatform": {
+    "narrative": "Techspert's technology is its core competitive advantage. Co-founder Graham Mills describes the platform: 'Our platform scrapes the entirety of public information accessible via semantic web searching' — including academic journals, medical registries, and biographical data. The NLP engine processes this unstructured data to build dynamic expert profiles, then uses ML matching algorithms to rank candidates by relevance to a given brief. Unlike traditional expert networks that rely on opt-in databases of registered experts, Techspert can find professionals who have never signed up for any expert network, dramatically expanding the searchable universe to 150 million+ individuals.",
+    "features": [
+      "NLP engine autonomously crawling 150M+ professional profiles in real time",
+      "Semantic search across academic publications, patents, medical registries, and clinical trials",
+      "ML-based matching ranking experts by relevance, availability, and expertise depth",
+      "Dynamic expert profiling from unstructured web data (no registration required)",
+      "KOL mapping through citation network analysis and publication scoring",
+      "Automated credential verification against public professional databases",
+      "Multi-source data fusion combining academic, clinical, corporate, and biographical signals"
+    ]
+  },
+
+  "complianceExtended": {
+    "narrative": "Techspert maintains standard compliance protocols appropriate for its focus on technical and scientific consultations. The company's AI-assisted credential verification cross-references expert qualifications against public databases, adding a layer of automated validation on top of manual review. As a UK-based company, Techspert operates under GDPR requirements for data handling of the professional profiles it processes.",
+    "highlights": [
+      "AI-assisted credential verification against public professional databases",
+      "GDPR compliant as a UK-based company processing European professional data",
+      "Standard MNPI protocols for consultations involving publicly traded companies",
+      "Audit trail for all expert interactions",
+      "Conflict-of-interest screening integrated into expert matching workflow"
+    ],
+    "regulatoryContext": "Techspert's primary focus on healthcare and life sciences consultations — rather than investment research — means it operates with somewhat different compliance requirements than finance-focused expert networks. The company's processing of 150M+ professional profiles requires careful GDPR compliance for data collection and retention. Clean regulatory record."
+  },
+
+  "clientFit": {
+    "narrative": "Techspert is purpose-built for clients who need to find niche technical and scientific experts that traditional expert networks cannot source. The platform excels when the required expertise is highly specialized — rare diseases, emerging technologies, regulatory science — and the experts are not registered on any database. Clients seeking general business expertise or high-volume, routine expert calls may find traditional networks more efficient.",
+    "segments": [
+      "Pharmaceutical and biotech companies conducting clinical due diligence or KOL identification",
+      "Life sciences investors evaluating drug pipelines, therapeutic areas, or acquisition targets",
+      "Technology companies seeking deep technical expertise in emerging fields",
+      "Consulting firms needing niche scientific experts for client engagements",
+      "Energy and industrial companies researching specialized technical topics"
+    ]
+  },
+
+  "strengths": [
+    "AI-driven search across 150M+ profiles finds experts no other network can — including those not registered on any database",
+    "Deep healthcare and life sciences specialization with KOL identification capabilities",
+    "Real-time web crawling means the expert universe is always current, not limited to stale databases",
+    "Cambridge, UK location provides access to world-class AI/ML and biotech talent",
+    "Strong backing from BGF and Nauta Capital with £13.5M+ total funding",
+    "Projects delivered in 100+ geographies demonstrates global reach despite small team",
+    "Founders' biotech background gives authentic domain expertise in life sciences"
+  ],
+
+  "caveats": [
+    "Smaller company (~100 employees) with less capacity for very high-volume engagements",
+    "AI-first approach may sacrifice some of the relationship depth that human-led networks provide",
+    "Healthcare/life sciences focus means less depth in other sectors compared to generalist networks",
+    "Expert profiles are built from public data rather than direct relationships, which may affect engagement rates",
+    "Less established compliance infrastructure compared to finance-focused networks like GLG or AlphaSights",
+    "Limited US presence (Houston office only) compared to networks with multiple US offices"
+  ],
+
+  "notableFacts": [
+    "Described as the world's first AI-driven solution for knowledge exchange",
+    "Co-founders Graham Mills and David Holden-White previously co-founded a biotech startup focused on nicotine addiction",
+    "AI can review profiles of 150 million potential experts in minutes — roughly 100x larger than most expert network databases",
+    "Co-founder David Holden-White holds degrees from Oxford (Biochemistry) and Cambridge (Bioscience Enterprise)",
+    "Total funding of approximately £13.5M from BGF, Nauta Capital, Cambridge Angels, and angel investors",
+    "Platform processes data from academic journals, medical registries, patent databases, and conference proceedings",
+    "Delivers projects in 100+ unique geographies worldwide",
+    "Headquarters in Cambridge, UK with US office in Houston, Texas"
+  ],
+
+  "sourceNotes": [
+    "Techspert official website (techspert.com) — company overview, about page, and blog",
+    "TechCrunch — Series A funding coverage",
+    "Tech.eu — initial angel funding coverage (£1M, December 2018)",
+    "Business Weekly Cambridge — startup funding and company profile",
+    "Integrity Research — AI-powered expert network funding coverage",
+    "EU-Startups — €1.1M angel funding announcement",
+    "INEX ONE Expert Network Directory — Techspert profile",
+    "Crunchbase — company profile, funding rounds, and founder information"
+  ],
+
+  "whyChoose": ["AI finds unfindable experts", "Healthcare & life sciences depth", "150M+ searchable profiles", "Niche scientific expertise"],
+  "whenNotIdeal": ["Need general business experts", "Want relationship-based sourcing", "Require finance-grade compliance", "High-volume routine calls"],
+
+  "confidence": {
+    "founded": "verified",
+    "headquarters": "verified",
+    "expertCount": "positioning",
+    "employeeCount": "partially-unverifiable",
+    "pricingModel": "verified",
+    "services": "verified",
+    "compliance": "positioning",
+    "overview": "verified",
+    "history": "verified",
+    "servicesDetailed": "verified",
+    "aiPlatform": "verified",
+    "complianceExtended": "positioning",
+    "clientFit": "inference",
+    "strengths": "positioning",
+    "caveats": "inference",
+    "notableFacts": "verified"
+  }
 }

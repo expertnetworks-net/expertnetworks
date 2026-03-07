@@ -8,21 +8,22 @@
   "type": "Expert Network",
   "founded": 2012,
   "headquarters": "Tokyo, Japan",
-  "employeeCount": "300+",
-  "expertCount": "500K+",
-  "description": "Asia's largest expert network, providing access to over 500,000 experts with deep specialization in Japanese and Asia-Pacific markets for cross-border research and consulting.",
-  "services": ["Expert Calls", "Surveys", "Asia Research", "Events"],
-  "aiCapabilities": ["AI-driven expert search", "Automated matching for Asia-Pacific projects", "Multilingual compliance screening"],
+  "employeeCount": "600+",
+  "expertCount": "650K+",
+  "description": "Asia's largest expert network and the only publicly listed pure-play expert network company (Tokyo Stock Exchange). Founded in 2012, VisasQ pioneered spot consulting in Japan and went global through its $102M acquisition of Coleman Research in 2021.",
+  "services": ["Expert Calls", "Spot Consulting", "Surveys", "Asia Research", "Events"],
+  "aiCapabilities": ["AI-driven expert search", "Spot consulting marketplace platform", "Automated matching for Asia-Pacific projects", "Multilingual compliance screening"],
   "industries": ["Financial Services", "Technology", "Healthcare", "Consumer", "Industrials", "Manufacturing"],
   "pricingModel": "Per-call",
-  "keyDifferentiators": ["Largest expert network in Asia with unmatched Japanese market coverage", "Publicly listed company (Tokyo Stock Exchange) ensuring transparency", "Bilingual platform supporting cross-border research in English and Japanese"],
+  "pricingDetail": "Per-call pricing with spot consulting marketplace model in Japan",
+  "keyDifferentiators": ["Only publicly listed pure-play expert network company globally (TSE)", "Largest expert network in Asia with unmatched Japanese market coverage (175K+ experts)", "Combined VISASQ/COLEMAN platform bridging Asian and Western markets"],
   "bestFor": ["Japanese Market", "Asia-Pacific", "Cross-Border Research"],
   "compliance": {
     "mnpiPolicy": "Comprehensive MNPI policies aligned with Japanese FSA and global regulatory standards",
     "expertVetting": "Rigorous vetting process with employment verification and conflict-of-interest screening tailored to Asian regulatory environments",
     "coolingOffPeriod": "Enforced cooling-off periods in line with local regulations",
     "auditTrail": true,
-    "regulatoryHistory": "Clean regulatory record. Publicly listed and audited on the Tokyo Stock Exchange"
+    "regulatoryHistory": "Clean regulatory record. Publicly listed and audited on the Tokyo Stock Exchange since 2020"
   },
   "featured": false,
   "priority": 17,
@@ -34,5 +35,148 @@
     "surveys": true,
     "complianceTools": true
   },
-  "lastUpdated": "2026-03-06"
+  "lastUpdated": "2026-03-07",
+
+  "overview": "VisasQ is the only publicly listed pure-play expert network company in the world, trading on the Tokyo Stock Exchange since March 2020. Founded in 2012 by Eiko Hashiba — a Goldman Sachs, L'Oréal, and Unison Capital alumna with an MIT Sloan MBA — VisasQ pioneered the concept of 'spot consulting' in Japan, creating a marketplace where professionals could share their expertise in short, focused consultations.\n\nThe company's defining moment came in August 2021 when it acquired US-based Coleman Research for $102 million — a bold move given that Coleman had more than twice VisasQ's revenue at the time. The combined entity, operating as VISASQ/COLEMAN, now has 650,000+ experts globally (175,000+ in Japan alone), 600+ employees, and 7 offices spanning Tokyo, New York, Raleigh, Boston, San Francisco, Singapore, Hong Kong, and London.\n\nVisasQ's trailing twelve-month revenue stands at approximately $64.6 million, though the company has faced challenges. A prolonged US M&A slowdown caused Coleman's revenue to underperform, leading to a JPY 14.6 billion goodwill write-off in April 2024 and a decline in VisasQ's stock price of over 84% from its September 2021 peak. Despite these headwinds, VisasQ maintains a strong cash position and continues to invest in platform integration and global expansion.",
+
+  "history": {
+    "narrative": "Eiko Hashiba founded VisasQ (originally as Walkntalk Inc.) in 2012 after a career spanning Goldman Sachs, L'Oréal Japan, and private equity firm Unison Capital. Hashiba, a University of Tokyo economics graduate who later attended MIT Sloan, was inspired by Steve Jobs' 'connecting the dots' philosophy. She recognized that Japan had no equivalent to the expert network services common in Western finance, and set out to build one.\n\nThe early years were challenging — Hashiba personally attended business events and made cold calls to recruit experts. But by acting first in an unserved market, VisasQ achieved dominance in Japanese spot consulting. The company rebranded from Walkntalk to VisasQ in 2015 and continued growing.\n\nVisasQ went public on the Tokyo Stock Exchange's Mothers market on March 10, 2020. Just 18 months later, in August 2021, the company made its boldest move: acquiring US-based Coleman Research for $102 million. Coleman had $43.8 million in revenue — more than double VisasQ's — and brought 260,000+ experts and 300+ clients. Kevin Coleman remained as CEO. The deal was funded partly through new share issuance.\n\nHowever, post-acquisition integration faced headwinds. A US M&A slowdown dragged Coleman's revenues below expectations, forcing VisasQ to write off JPY 14.6 billion in goodwill in April 2024. VisasQ's net worth dropped to JPY 302 million, though a strong cash position maintained creditor confidence.",
+    "timeline": [
+      { "year": "2012", "event": "Founded as Walkntalk Inc. by Eiko Hashiba in Tokyo" },
+      { "year": "2015", "event": "Rebranded from Walkntalk to VisasQ" },
+      { "year": "2020 (March 10)", "event": "IPO on Tokyo Stock Exchange Mothers market at JPY 1,300 per share" },
+      { "year": "2021 (August)", "event": "Announced acquisition of US-based Coleman Research for $102 million" },
+      { "year": "2021 (November)", "event": "Coleman acquisition completed; combined entity reached 400,000+ experts" },
+      { "year": "2023 (January)", "event": "Co-branded as VISASQ/COLEMAN with new unified visual identity" },
+      { "year": "2024 (April)", "event": "Recorded JPY 14.6B goodwill write-off on Coleman due to US market slowdown" },
+      { "year": "2024 (November)", "event": "Combined entity reached 650,000+ experts with 600+ employees across 7 offices" }
+    ]
+  },
+
+  "servicesDetailed": [
+    {
+      "name": "Spot Consulting (Japan)",
+      "description": "VisasQ's original and flagship service in Japan — a marketplace platform enabling companies to book short, focused consultations with industry experts. The self-service model allows clients to browse expert profiles, request consultations, and schedule calls directly through the platform."
+    },
+    {
+      "name": "Expert Consultations (Global)",
+      "description": "Traditional expert network service provided through the Coleman platform, connecting clients with vetted industry experts for one-on-one calls. Supported by dedicated project managers in 7 global offices with deep coverage across financial services, healthcare, technology, and industrials."
+    },
+    {
+      "name": "Cross-Border Asia Research",
+      "description": "The combined entity's unique capability — bridging 175,000+ Japanese experts with Coleman's US/European network for seamless cross-border research. Particularly valuable for investors evaluating Japan market entry, M&A targets, or Asia-Pacific competitive dynamics."
+    },
+    {
+      "name": "Survey Services",
+      "description": "Quantitative survey research leveraging the 650,000+ combined expert network for targeted B2B sampling across Japanese, Asian, US, and European markets."
+    },
+    {
+      "name": "Industry Events & Roundtables",
+      "description": "Curated events connecting clients with senior industry experts for group discussions and networking, leveraging VisasQ's deep relationships in the Japanese business community."
+    }
+  ],
+
+  "aiPlatform": {
+    "narrative": "VisasQ operates a dual-platform architecture: the original VisasQ spot consulting marketplace (optimized for the Japanese market with self-service expert search and booking) and the Coleman platform (a service-led model with project manager support for global clients). The company is progressively integrating these platforms, with AI-driven expert search spanning the combined 650,000+ expert database. Multilingual capabilities support Japanese, English, and other languages for cross-border research.",
+    "features": [
+      "Self-service spot consulting marketplace with direct expert booking (Japan)",
+      "AI-driven expert search across 650,000+ professionals in 190 countries",
+      "Multilingual platform supporting Japanese, English, and other languages",
+      "Integrated cross-border research tools spanning Asian and Western markets",
+      "Compliance screening automation across multiple regulatory jurisdictions",
+      "Centralized project management across 7 global offices"
+    ]
+  },
+
+  "complianceExtended": {
+    "narrative": "As the only publicly listed pure-play expert network company, VisasQ operates under the enhanced governance and transparency requirements of the Tokyo Stock Exchange. The combined VISASQ/COLEMAN entity maintains compliance frameworks aligned with Japanese FSA regulations, US SEC requirements, and European/Asian regulatory standards. Coleman's 20+ year compliance culture provides a strong foundation for the combined entity's global operations. Quarterly financial reporting and audited disclosures provide clients and investors with unprecedented transparency into the company's operations.",
+    "highlights": [
+      "Publicly listed on Tokyo Stock Exchange — highest governance standards in the expert network industry",
+      "Japanese FSA-aligned compliance policies for domestic operations",
+      "Coleman's 20+ year compliance culture for US and European operations",
+      "Multi-jurisdictional compliance spanning Japan, US, UK, Hong Kong, and Singapore",
+      "MNPI monitoring across all expert interactions globally",
+      "Enforced cooling-off periods with regulatory-specific adaptations",
+      "Quarterly audited financial reporting as a public company",
+      "Complete audit trail across all platforms"
+    ],
+    "regulatoryContext": "VisasQ's status as a publicly listed company on the Tokyo Stock Exchange provides a level of governance and transparency unmatched by any other expert network. The company reports under three segments: Japan Corporate Business, Japan ENS Business, and Ex-Japan ENS Business. While the JPY 14.6B goodwill write-off in 2024 impacted net worth, the company maintains financial stability with a strong cash position. Clean regulatory record across all operating jurisdictions."
+  },
+
+  "clientFit": {
+    "narrative": "VisasQ's combined platform is uniquely positioned for clients needing cross-border research spanning Japan/Asia and Western markets. The spot consulting marketplace is ideal for Japanese companies seeking quick expert access, while the Coleman service model serves global institutional clients. The platform is less differentiated for clients focused exclusively on US or European markets with no Asian research needs.",
+    "segments": [
+      "Investors evaluating Japanese and Asian market opportunities or M&A targets",
+      "Consulting firms conducting cross-border research spanning Asian and Western markets",
+      "Japanese corporations seeking domestic spot consulting and industry expertise",
+      "Financial institutions needing compliance-first expert access across multiple jurisdictions",
+      "Companies entering or expanding in the Japan/Asia-Pacific market"
+    ]
+  },
+
+  "strengths": [
+    "Only publicly listed pure-play expert network company globally — unmatched transparency and governance",
+    "Dominant position in Japan with 175,000+ experts — no competitor comes close in Japanese market coverage",
+    "Combined VISASQ/COLEMAN creates unique East-West bridge with 650,000+ experts in 190 countries",
+    "Self-service spot consulting marketplace in Japan enables rapid, low-friction expert access",
+    "Founder-led: CEO Eiko Hashiba's vision and leadership since 2012 provides strategic continuity",
+    "7 global offices ensure local presence in major financial centers across Asia, US, and Europe",
+    "600+ employees and 1,000+ clients demonstrate institutional scale"
+  ],
+
+  "caveats": [
+    "JPY 14.6B goodwill write-off in April 2024 signals challenges in Coleman integration",
+    "Stock price down 84%+ from September 2021 peak, trading below IPO price",
+    "Current market cap (~$42.7M) is less than half the $102M paid for Coleman alone",
+    "US revenue underperformance due to M&A market slowdown pressured overall growth",
+    "Dual-platform architecture (VisasQ marketplace + Coleman service model) creates integration complexity",
+    "Net worth dropped to JPY 302M after goodwill write-off, though cash position remains strong",
+    "Brand recognition outside Japan is primarily through the Coleman name, not VisasQ"
+  ],
+
+  "notableFacts": [
+    "Only publicly listed pure-play expert network company in the world (Tokyo Stock Exchange, since March 2020)",
+    "Founder Eiko Hashiba's career spans Goldman Sachs, L'Oréal Japan, Unison Capital, and MIT Sloan",
+    "Acquired Coleman Research for $102M in 2021 — Coleman had more than twice VisasQ's revenue at the time",
+    "Combined entity has 650,000+ experts globally, with 175,000+ in Japan alone",
+    "Trailing twelve-month revenue of approximately $64.6 million across three business segments",
+    "JPY 14.6 billion goodwill write-off in April 2024 — one of the largest write-offs in expert network history",
+    "Originally founded as Walkntalk Inc. in 2012; rebranded to VisasQ in 2015",
+    "Hashiba cites Steve Jobs' 'connecting the dots' Stanford speech as her founding inspiration",
+    "IPO price was JPY 1,300; stock peaked in September 2021 before declining over 84%"
+  ],
+
+  "sourceNotes": [
+    "VisasQ corporate website (corp.visasq.co.jp) — company overview, management team, IR disclosures",
+    "Bloomberg (August 2021) — Coleman acquisition announcement ($102M)",
+    "Sustainable Japan by The Japan Times — Eiko Hashiba profile and founding story",
+    "Eightfold Investor (Substack) — detailed financial analysis including goodwill write-off and stock performance",
+    "PitchBook — revenue ($64.6M TTM), market cap ($42.7M), and stock performance data",
+    "PR Newswire (November 2021) — acquisition completion and combined entity details",
+    "Canaccord Genuity — financial advisor disclosures for the Coleman sale",
+    "LinkedIn — management team profiles and company information",
+    "Crunchbase — Eiko Hashiba founder profile and career background"
+  ],
+
+  "whyChoose": ["Japan market leadership", "Only listed expert network", "East-West bridge", "650K+ global experts"],
+  "whenNotIdeal": ["No Asia research needs", "Want pure-tech AI platform", "Concerned about financial stability", "US-only focus"],
+
+  "confidence": {
+    "founded": "verified",
+    "headquarters": "verified",
+    "expertCount": "verified",
+    "employeeCount": "verified",
+    "pricingModel": "verified",
+    "services": "verified",
+    "compliance": "verified",
+    "overview": "verified",
+    "history": "verified",
+    "servicesDetailed": "verified",
+    "aiPlatform": "positioning",
+    "complianceExtended": "verified",
+    "clientFit": "inference",
+    "strengths": "verified",
+    "caveats": "verified",
+    "notableFacts": "verified"
+  }
 }

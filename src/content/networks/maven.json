@@ -6,20 +6,21 @@
   "gradientFrom": "#2d3748",
   "gradientTo": "#667eea",
   "type": "Expert Network",
-  "founded": 2020,
-  "headquarters": "New York, NY",
-  "employeeCount": "150+",
+  "founded": 2010,
+  "headquarters": "San Mateo, CA",
+  "employeeCount": "50+",
   "expertCount": "65K+",
-  "description": "AI-powered expert network platform connecting investors and operators with domain experts through intelligent matching and streamlined engagement workflows.",
-  "services": ["Expert Calls", "AI Matching", "Startup Research"],
+  "description": "Veteran expert network platform founded in 2010, offering expert consultations, online surveys, virtual roundtables, and consulting projects. One of the earliest technology-forward expert networks with a diverse service portfolio.",
+  "services": ["Expert Calls", "Online Surveys", "Virtual Roundtables", "Consulting Projects", "Talent Solutions"],
   "aiCapabilities": ["AI-powered expert matching", "Natural language project briefs", "Automated expert sourcing", "Smart scheduling"],
-  "industries": ["Technology", "Venture Capital", "Startups", "SaaS", "Consumer Tech"],
+  "industries": ["Technology", "Healthcare", "Financial Services", "Consumer", "Industrials"],
   "pricingModel": "Per-call",
-  "keyDifferentiators": ["AI-native platform built from the ground up", "Deep venture capital and startup expertise", "Rapid expert matching with high relevance scores"],
-  "bestFor": ["Venture Capital", "Technology", "Startups"],
+  "pricingDetail": "Per-call and per-project pricing",
+  "keyDifferentiators": ["Broad service portfolio spanning calls, surveys, roundtables, and consulting", "15+ year track record as an expert network pioneer", "Flexible engagement models from single calls to long-term consulting"],
+  "bestFor": ["Diverse Research Needs", "Technology Sector", "Multi-Format Engagements"],
   "compliance": {
-    "mnpiPolicy": "Automated MNPI screening integrated into AI matching workflow with real-time conflict detection",
-    "expertVetting": "AI-assisted vetting combined with manual review for employment verification and conflict screening",
+    "mnpiPolicy": "Standard MNPI screening with conflict detection",
+    "expertVetting": "Vetting combining platform verification with manual review for employment and conflict screening",
     "coolingOffPeriod": "Standard cooling-off periods enforced",
     "auditTrail": true,
     "regulatoryHistory": "Clean regulatory record"
@@ -34,5 +35,137 @@
     "surveys": false,
     "complianceTools": true
   },
-  "lastUpdated": "2026-03-06"
+  "lastUpdated": "2026-03-07",
+
+  "overview": "Maven is a veteran expert network platform founded in 2010 by Wyatt Nordstrom and Mark Platosh in San Mateo, California. One of the early technology-forward entrants in the expert network space, Maven built a platform that goes beyond traditional one-on-one expert calls to include online surveys, virtual roundtables, consulting projects, talent management solutions, and client discovery programs.\n\nMaven has raised approximately $7.8 million in venture funding across four rounds, with investors including Accel and SuRo Capital. The company reached its Series A in January 2017. While smaller than industry giants like GLG or AlphaSights, Maven has carved out a niche through its diverse service portfolio and flexible engagement models that accommodate everything from single expert calls to ongoing consulting relationships.\n\nThe platform serves a range of clients including corporate strategy teams, investors, and consulting firms, with particular strength in technology and healthcare sectors. Maven's 65,000+ expert network is smaller than the largest players but is actively curated for relevance across its core verticals.",
+
+  "history": {
+    "narrative": "Wyatt Nordstrom and Mark Platosh founded Maven in 2010, entering the expert network market during a period of significant growth and increasing institutional adoption. The company was among the first to take a technology-forward approach to expert networking, building a platform that could support multiple engagement formats beyond traditional phone consultations.\n\nMaven raised its first funding — $1M from business angels and Accel — in 2010. A $2M round from SuRo Capital followed in 2012. The company completed its Series A in January 2017, bringing total funding to approximately $7.8M. Since then, Maven has continued to grow organically, focusing on diversifying its service offerings and deepening its expert network across technology, healthcare, and financial services.",
+    "timeline": [
+      { "year": "2010", "event": "Founded by Wyatt Nordstrom and Mark Platosh in San Mateo, California" },
+      { "year": "2010", "event": "Raised $1M initial funding from Accel and angel investors" },
+      { "year": "2012", "event": "Raised $2M from SuRo Capital" },
+      { "year": "2017 (January)", "event": "Completed Series A funding round, bringing total to ~$7.8M" },
+      { "year": "2017-2025", "event": "Expanded service portfolio to include surveys, roundtables, consulting projects, and talent solutions" }
+    ]
+  },
+
+  "servicesDetailed": [
+    {
+      "name": "Expert Consultations",
+      "description": "One-on-one phone consultations connecting clients with vetted industry experts across technology, healthcare, financial services, and other sectors. Maven handles sourcing, scheduling, and compliance for each engagement."
+    },
+    {
+      "name": "Online Surveys",
+      "description": "Quantitative survey research distributed through Maven's expert network, enabling clients to gather structured insights from targeted professional audiences across industries."
+    },
+    {
+      "name": "Virtual Roundtables",
+      "description": "Group discussions bringing together multiple experts for moderated conversations on specific topics, providing clients with diverse perspectives in a single session."
+    },
+    {
+      "name": "Consulting Projects",
+      "description": "Extended engagement format where experts provide ongoing advisory support for projects requiring deeper, sustained involvement beyond a single consultation."
+    },
+    {
+      "name": "Talent Management Solutions",
+      "description": "Leveraging Maven's expert network for talent-related services including executive search support, industry hiring insights, and workforce advisory."
+    },
+    {
+      "name": "Client Discovery Programs",
+      "description": "Programs connecting product and marketing teams with industry experts for customer discovery, market validation, and go-to-market research."
+    }
+  ],
+
+  "aiPlatform": {
+    "narrative": "Maven was one of the early expert networks to adopt a technology-forward approach, building its platform to support natural language project briefs and automated expert matching. The platform uses AI to parse client requests, identify relevant experts from the 65,000+ database, and rank matches by relevance and availability. Smart scheduling automates the logistics of expert engagement, reducing the friction typical of manual expert network operations.",
+    "features": [
+      "AI-powered expert matching from natural language project briefs",
+      "Automated expert sourcing and relevance scoring",
+      "Smart scheduling and engagement logistics automation",
+      "Multi-format project support (calls, surveys, roundtables, consulting)",
+      "Expert profile management and credential tracking",
+      "Client dashboard for project management and engagement history"
+    ]
+  },
+
+  "complianceExtended": {
+    "narrative": "Maven maintains standard compliance protocols including MNPI screening, employment verification, conflict-of-interest checks, and cooling-off period enforcement. The platform's audit trail tracks all expert interactions for regulatory documentation.",
+    "highlights": [
+      "MNPI screening with automated conflict detection",
+      "Employment verification and conflict-of-interest screening",
+      "Standard cooling-off period enforcement",
+      "Complete audit trail for all expert interactions",
+      "NDA management for expert engagements"
+    ],
+    "regulatoryContext": "Maven serves a mix of corporate, consulting, and investment clients with standard expert network compliance requirements. Clean regulatory record over 15+ years of operation."
+  },
+
+  "clientFit": {
+    "narrative": "Maven is best suited for clients who need diverse research formats — not just expert calls, but surveys, roundtables, and consulting projects. The platform's flexibility makes it appealing for corporate strategy teams, product managers, and investors who need multiple engagement types. Clients requiring the deepest expert pools or the most institutional-grade compliance may prefer larger networks.",
+    "segments": [
+      "Corporate strategy teams needing diverse research formats beyond expert calls",
+      "Technology companies conducting customer discovery, market validation, and competitive intelligence",
+      "Investors seeking flexible engagement models from single calls to ongoing advisory",
+      "Product managers and marketers needing expert validation and market insights",
+      "Consulting firms looking for a cost-effective complement to larger network relationships"
+    ]
+  },
+
+  "strengths": [
+    "15+ year track record provides institutional credibility and operational maturity",
+    "Diverse service portfolio (calls, surveys, roundtables, consulting, talent) offers flexibility unmatched by call-only networks",
+    "Technology-forward platform from founding, with AI-powered matching and smart scheduling",
+    "Flexible engagement models accommodate everything from single calls to ongoing consulting",
+    "Venture-backed with institutional investors (Accel, SuRo Capital)",
+    "Client discovery programs offer unique value for product and go-to-market teams"
+  ],
+
+  "caveats": [
+    "Smaller expert database (65K+) compared to industry leaders with 500K-1M+ experts",
+    "No significant new funding since 2017 Series A may limit growth investments",
+    "Less brand recognition than category leaders (GLG, AlphaSights, Guidepoint)",
+    "Smaller team (~50 employees) limits capacity for very large concurrent engagements",
+    "Less specialized compliance infrastructure compared to finance-focused networks",
+    "Limited geographic office presence compared to networks with multiple global offices"
+  ],
+
+  "notableFacts": [
+    "Founded in 2010 by Wyatt Nordstrom and Mark Platosh — one of the earlier technology-forward expert networks",
+    "Raised approximately $7.8M total from investors including Accel and SuRo Capital",
+    "Service portfolio spans six distinct formats: calls, surveys, roundtables, consulting, talent solutions, and discovery programs",
+    "One of the few expert networks offering talent management solutions alongside traditional research services",
+    "Headquartered in San Mateo, California — in the heart of Silicon Valley",
+    "65,000+ expert network curated across technology, healthcare, financial services, and other verticals"
+  ],
+
+  "sourceNotes": [
+    "Maven official website (maven.co) — company overview, services, and platform description",
+    "Tracxn — funding details ($7.77M total, 4 rounds), founding date, and team information",
+    "INEX ONE Expert Network Directory — Maven Research profile",
+    "Expert Network Calls — Maven Research profile and service overview",
+    "Crunchbase — company profile, founders (Wyatt Nordstrom, Mark Platosh), and funding rounds"
+  ],
+
+  "whyChoose": ["Diverse research formats", "15+ year track record", "Flexible engagement models", "Technology-forward platform"],
+  "whenNotIdeal": ["Need largest expert pools", "Want institutional-grade compliance", "Require deep international coverage", "High-volume call programs"],
+
+  "confidence": {
+    "founded": "verified",
+    "headquarters": "verified",
+    "expertCount": "positioning",
+    "employeeCount": "partially-unverifiable",
+    "pricingModel": "verified",
+    "services": "verified",
+    "compliance": "positioning",
+    "overview": "verified",
+    "history": "verified",
+    "servicesDetailed": "verified",
+    "aiPlatform": "positioning",
+    "complianceExtended": "positioning",
+    "clientFit": "inference",
+    "strengths": "positioning",
+    "caveats": "inference",
+    "notableFacts": "verified"
+  }
 }
