@@ -8,7 +8,7 @@
   "type": "Expert Network",
   "founded": 2007,
   "headquarters": "Boston, MA",
-  "employeeCount": "50+",
+  "employeeCount": "~400 (including offshore teams)",
   "expertCount": "1M+",
   "description": "Pioneer of the self-service expert network model, offering both DIY marketplace access and full-service support at 30-75% lower cost than traditional networks. Founded by serial entrepreneur Stuart Lewtan with 1M+ expert profiles.",
   "services": ["Self-serve Platform", "Expert Calls", "Full-Service Research", "Surveys", "AI-Moderated Interviews", "Recruiting"],
@@ -112,13 +112,15 @@
     "18+ year track record provides proven reliability and operational maturity",
     "Founder Stuart Lewtan's serial entrepreneur background (3 successful exits) brings business acumen",
     "Semantic matching algorithm surfaces non-obvious experts that human recruiters miss",
-    "Remote ops teams in Philippines/India enable cost efficiency passed to clients"
+    "Remote ops teams in Philippines/India enable cost efficiency passed to clients",
+    "Strong B2B expertise — noted as particularly effective for hard-to-recruit B2B audiences",
+    "High satisfaction ratings: 5 stars on Trustpilot (170 reviews), 4.7/5 on Glassdoor"
   ],
 
   "caveats": [
     "Lower pricing may signal less premium positioning to some institutional buyers",
     "Self-service model places more compliance burden on the client",
-    "Smaller team (~50 employees) may limit capacity for very high-volume engagements",
+    "~400 employees (largely offshore) — smaller Boston HQ team may limit strategic capacity",
     "Less brand recognition than category leaders among Fortune 500 buyers",
     "Expert database size (1M+) includes profiles that may not be as actively maintained as smaller, curated networks",
     "Limited office presence outside Boston compared to networks with global offices"
@@ -132,7 +134,10 @@
     "500+ active clients ranging from startups to Global 1000 enterprises",
     "Estimated annual revenue of approximately $7.1M",
     "Self-service model was conceived when founder was EIR at a Boston VC/PE firm and found existing networks overpriced",
-    "Remote operations teams in Philippines and India keep costs low while maintaining service quality"
+    "Remote operations teams in Philippines and India keep costs low while maintaining service quality",
+    "20,000+ clients have processed inquiries through the platform historically",
+    "5 stars on Trustpilot (170 reviews) and 4.7/5 on Glassdoor (18 reviews)",
+    "Particularly strong in B2B audience recruitment for hard-to-reach professional segments"
   ],
 
   "sourceNotes": [
@@ -141,7 +146,13 @@
     "Tracxn — funding details, revenue estimates (~$7.1M), and company profile",
     "INEX ONE Expert Network Directory — Zintro profile",
     "Crunchbase — company profile, founding date, and founder (Stuart Lewtan)",
-    "LinkedIn — company page and founder profile"
+    "LinkedIn — company page and founder profile",
+    "Trustpilot — Zintro reviews (5 stars, 170 reviews)",
+    "Glassdoor — Zintro employee reviews (4.7/5, 18 reviews)",
+    "G2 — Zintro user reviews and platform ratings",
+    "Insight Platforms — Zintro platform profile",
+    "Integrity Research — expert network commoditization analysis featuring Zintro",
+    "Zintro AI-Moderated Interviews case study — 82% participant preference data"
   ],
 
   "whyChoose": ["30-75% cost savings", "Price transparency", "Self-service + full-service", "1M+ expert profiles"],
