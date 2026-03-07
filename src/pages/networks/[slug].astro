@@ -251,7 +251,7 @@ function badgeFor(field: string) {
           <!-- Header -->
           <div class="flex items-start gap-4 mb-6">
             {d.logo ? (
-              <img src={d.logo} alt={d.name} class="w-16 h-16 rounded-2xl object-contain flex-shrink-0" />
+              <img src={d.logo} alt={d.name} class="w-16 h-16 rounded-2xl object-contain flex-shrink-0" loading="lazy" />
             ) : (
               <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-white font-bold text-2xl flex-shrink-0" style={`background: linear-gradient(135deg, ${d.gradientFrom}, ${d.gradientTo})`}>
                 {d.shortName}
@@ -682,7 +682,7 @@ function badgeFor(field: string) {
               <h2 class="text-sm font-bold text-primary uppercase tracking-wide mb-3">Recent News</h2>
               <div class="space-y-3">
                 {relatedNews.map((article) => (
-                  <a href={article.data.sourceUrl || '#'} target="_blank" rel="noopener" class="block bg-bg-secondary rounded-xl p-4 no-underline hover:bg-black/[0.04] transition-colors group">
+                  <a href={article.data.sourceUrl || '#'} target="_blank" rel="noopener noreferrer" class="block bg-bg-secondary rounded-xl p-4 no-underline hover:bg-black/[0.04] transition-colors group">
                     <div class="flex items-start justify-between gap-3">
                       <div class="min-w-0">
                         <div class="text-sm font-semibold text-primary group-hover:text-accent transition-colors leading-snug">{article.data.title}</div>
@@ -699,7 +699,7 @@ function badgeFor(field: string) {
           <!-- Website link -->
           {d.website && (
             <div class="pt-6 border-t border-border/40">
-              <a href={d.website} target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-accent font-semibold text-sm no-underline hover:underline">
+              <a href={d.website} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-accent font-semibold text-sm no-underline hover:underline">
                 Visit {d.name.split(' (')[0]} &rarr;
               </a>
             </div>

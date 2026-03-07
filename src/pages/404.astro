@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Page Not Found — ExpertNetworks.net"
+  description="The page you're looking for doesn't exist or has been moved."
+>
+  <div class="pt-[52px]">
+    <div class="max-w-site mx-auto px-6 py-24 text-center">
+      <div class="text-8xl font-extrabold text-border mb-4">404</div>
+      <h1 class="text-2xl font-bold text-primary mb-3">Page not found</h1>
+      <p class="text-secondary text-[15px] mb-8 max-w-md mx-auto">
+        The page you're looking for doesn't exist or has been moved. Try browsing our network directory or searching for what you need.
+      </p>
+      <div class="flex items-center justify-center gap-3">
+        <a href="/" class="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-white rounded-full text-sm font-semibold no-underline hover:bg-accent/90 transition-colors">
+          Go Home
+        </a>
+        <a href="/networks" class="inline-flex items-center gap-2 px-5 py-2.5 bg-bg-secondary text-primary rounded-full text-sm font-semibold no-underline hover:bg-border/50 transition-colors">
+          Browse Networks
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
