@@ -50,8 +50,8 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
       <div class="max-w-site mx-auto">
         <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
           <div class="max-w-2xl">
-            <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight text-white">Expert Network Intelligence</h1>
-            <p class="text-[#a1a1a6] text-[13px] mt-2 leading-relaxed">Expert networks connect investors, consultants, and corporations with industry specialists for on-demand knowledge. This hub independently tracks {publishedNetworks.length} providers — comparing pricing, compliance, expert pools, and AI capabilities — so you can make informed decisions without relying on vendor marketing.</p>
+            <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight text-white">Expert Network Hub</h1>
+            <p class="text-[#a1a1a6] text-[13px] mt-2 leading-relaxed">Your open guide to the expert network industry. Compare {publishedNetworks.length} providers — pricing, compliance, expert pools, and AI tools — all in one place. No sign-ups, no bias. Explore freely.</p>
           </div>
           <div class="flex gap-2 flex-shrink-0" style="pointer-events: auto;">
             <a href="/networks" class="inline-flex items-center gap-1.5 px-4 py-2 bg-accent text-white text-sm font-semibold rounded-lg no-underline hover:bg-accent-hover transition-colors">
@@ -70,30 +70,30 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
   <script>
   (function() {
     // ─── Tuning constants ───
-    const PARTICLE_COUNT_DESKTOP = 64;
-    const PARTICLE_COUNT_TABLET = 40;
-    const PARTICLE_COUNT_MOBILE = 22;
-    const MAX_CONNECTION_DIST = 130;
-    const LINE_OPACITY = 0.07;
-    const BASE_PARTICLE_OPACITY = 0.35;
-    const IDLE_DRIFT_STRENGTH = 0.15;
-    const POINTER_INFLUENCE_RADIUS = 140;
-    const POINTER_REPULSION_STRENGTH = 60;
-    const REVEAL_RADIUS = 160;
-    const REVEAL_OPACITY_BOOST = 0.45;
-    const RECOVERY_SPEED = 0.025;
-    const INTERPOLATION_FACTOR = 0.08;
-    const CLICK_PULSE_STRENGTH = 120;
-    const CLICK_PULSE_DURATION = 400;
+    const PARTICLE_COUNT_DESKTOP = 110;
+    const PARTICLE_COUNT_TABLET = 65;
+    const PARTICLE_COUNT_MOBILE = 35;
+    const MAX_CONNECTION_DIST = 140;
+    const LINE_OPACITY = 0.09;
+    const BASE_PARTICLE_OPACITY = 0.4;
+    const IDLE_DRIFT_STRENGTH = 0.18;
+    const POINTER_INFLUENCE_RADIUS = 180;
+    const POINTER_REPULSION_STRENGTH = 130;
+    const REVEAL_RADIUS = 200;
+    const REVEAL_OPACITY_BOOST = 0.5;
+    const RECOVERY_SPEED = 0.018;
+    const INTERPOLATION_FACTOR = 0.12;
+    const CLICK_PULSE_STRENGTH = 200;
+    const CLICK_PULSE_DURATION = 500;
     const DPR_CAP = 2;
 
     // ─── Reveal layer constants ───
-    const REVEAL_PARTICLE_COUNT_DESKTOP = 90;
-    const REVEAL_PARTICLE_COUNT_TABLET = 55;
-    const REVEAL_PARTICLE_COUNT_MOBILE = 30;
-    const REVEAL_MAX_CONNECTION_DIST = 100;
-    const REVEAL_LINE_OPACITY = 0.18;
-    const REVEAL_PARTICLE_OPACITY = 0.55;
+    const REVEAL_PARTICLE_COUNT_DESKTOP = 140;
+    const REVEAL_PARTICLE_COUNT_TABLET = 80;
+    const REVEAL_PARTICLE_COUNT_MOBILE = 45;
+    const REVEAL_MAX_CONNECTION_DIST = 110;
+    const REVEAL_LINE_OPACITY = 0.22;
+    const REVEAL_PARTICLE_OPACITY = 0.6;
 
     const canvas = document.getElementById('heroCanvas');
     const hero = document.getElementById('top');
@@ -335,14 +335,15 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
         p.x += p.vx;
         p.y += p.vy;
 
-        // Pointer repulsion
+        // Pointer repulsion — aggressive scatter
         const dx = p.x - spx;
         const dy = p.y - spy;
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < POINTER_INFLUENCE_RADIUS && dist > 0) {
-          const force = (1 - dist / POINTER_INFLUENCE_RADIUS) * POINTER_REPULSION_STRENGTH;
-          p.x += (dx / dist) * force * 0.02;
-          p.y += (dy / dist) * force * 0.02;
+          const proximity = 1 - dist / POINTER_INFLUENCE_RADIUS;
+          const force = proximity * proximity * POINTER_REPULSION_STRENGTH;
+          p.x += (dx / dist) * force * 0.04;
+          p.y += (dy / dist) * force * 0.04;
         }
 
         // Click pulse repulsion
@@ -351,9 +352,10 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
           const cdy = p.y - clickPulse.y;
           const cdist = Math.sqrt(cdx * cdx + cdy * cdy);
           if (cdist < pulseRadius && cdist > 0) {
-            const pForce = (1 - cdist / pulseRadius) * pulseStrength;
-            p.x += (cdx / cdist) * pForce * 0.03;
-            p.y += (cdy / cdist) * pForce * 0.03;
+            const pProx = 1 - cdist / pulseRadius;
+            const pForce = pProx * pProx * pulseStrength;
+            p.x += (cdx / cdist) * pForce * 0.06;
+            p.y += (cdy / cdist) * pForce * 0.06;
           }
         }
 
@@ -465,6 +467,61 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(resize, 150);
     }, { passive: true });
+  })();
+  </script>
+
+  <script>
+  // ─── Homepage nav dark mode ───
+  // Make the nav white-on-dark while over the hero, revert when scrolled past
+  (function() {
+    const nav = document.querySelector('nav');
+    const heroSection = document.getElementById('top');
+    if (!nav || !heroSection) return;
+
+    const brandLink = nav.querySelector('a[href="/"]');
+    const menuBtn = nav.querySelector('#menuBtn');
+    const navLinks = nav.querySelectorAll('ul a');
+    const searchBtn = nav.querySelector('#searchTrigger');
+    const linkedinLink = nav.querySelector('a[aria-label="LinkedIn"]');
+
+    let isDark = false;
+
+    function setDarkNav() {
+      if (isDark) return;
+      isDark = true;
+      nav.style.background = 'rgba(13,13,15,0.82)';
+      nav.style.borderBottomColor = 'rgba(255,255,255,0.06)';
+      if (brandLink) { brandLink.style.color = '#fff'; }
+      if (menuBtn) { menuBtn.style.color = '#a1a1a6'; }
+      navLinks.forEach(function(l) { l.style.color = '#a1a1a6'; });
+      if (searchBtn) { searchBtn.style.background = 'rgba(255,255,255,0.08)'; searchBtn.style.color = '#a1a1a6'; }
+      if (linkedinLink) { linkedinLink.style.color = '#a1a1a6'; }
+    }
+
+    function setLightNav() {
+      if (!isDark) return;
+      isDark = false;
+      nav.style.background = '';
+      nav.style.borderBottomColor = '';
+      if (brandLink) { brandLink.style.color = ''; }
+      if (menuBtn) { menuBtn.style.color = ''; }
+      navLinks.forEach(function(l) { l.style.color = ''; });
+      if (searchBtn) { searchBtn.style.background = ''; searchBtn.style.color = ''; }
+      if (linkedinLink) { linkedinLink.style.color = ''; }
+    }
+
+    function check() {
+      const heroBottom = heroSection.getBoundingClientRect().bottom;
+      if (heroBottom > 52) {
+        setDarkNav();
+      } else {
+        setLightNav();
+      }
+    }
+
+    check();
+    window.addEventListener('scroll', check, { passive: true });
+    window.addEventListener('resize', check, { passive: true });
   })();
   </script>
 
