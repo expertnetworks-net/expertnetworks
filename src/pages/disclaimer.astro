@@ -5,6 +5,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <BaseLayout
   title="Disclaimer — ExpertNetworks.net"
   description="Legal disclaimer for ExpertNetworks.net. This site provides general information about expert networks and does not constitute professional advice or endorsement."
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': 'https://expertnetworks.net/' },
+      { '@type': 'ListItem', 'position': 2, 'name': 'Disclaimer' }
+    ]
+  }}
 >
   <section class="pt-32 pb-24 px-6">
     <div class="max-w-3xl mx-auto">

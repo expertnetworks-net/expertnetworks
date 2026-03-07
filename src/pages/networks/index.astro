@@ -60,20 +60,20 @@ const allHqs = [...new Set(networks.map(n => getRegion(n.data.headquarters || ''
   <section class="py-3 px-6 border-b border-border/40 bg-bg-secondary/50">
     <div class="max-w-site mx-auto flex flex-wrap gap-3 items-center">
       <span class="text-xs font-bold uppercase tracking-wide text-tertiary">Filter:</span>
-      <input id="searchInput" type="text" placeholder="Search by name..." class="text-[13px] text-primary bg-white border border-border rounded-lg px-3 py-1.5 w-48 focus:outline-none focus:ring-2 focus:ring-accent/30" />
-      <select id="filterType" class="text-[13px] font-medium text-primary bg-white border border-border rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
+      <input id="searchInput" type="text" placeholder="Search by name..." aria-label="Search networks by name" class="text-[13px] text-primary bg-white border border-border rounded-lg px-3 py-1.5 w-48 focus:outline-none focus:ring-2 focus:ring-accent/30" />
+      <select id="filterType" aria-label="Filter by type" class="text-[13px] font-medium text-primary bg-white border border-border rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
         <option value="">All Types</option>
         {allTypes.map(t => <option value={t}>{t}</option>)}
       </select>
-      <select id="filterPricing" class="text-[13px] font-medium text-primary bg-white border border-border rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
+      <select id="filterPricing" aria-label="Filter by pricing" class="text-[13px] font-medium text-primary bg-white border border-border rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
         <option value="">All Pricing</option>
         {allPricing.map(p => <option value={p}>{p}</option>)}
       </select>
-      <select id="filterRegion" class="text-[13px] font-medium text-primary bg-white border border-border rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
+      <select id="filterRegion" aria-label="Filter by region" class="text-[13px] font-medium text-primary bg-white border border-border rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
         <option value="">All Regions</option>
         {allHqs.map(h => <option value={h}>{h}</option>)}
       </select>
-      <select id="sortBy" class="text-[13px] font-medium text-primary bg-white border border-border rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
+      <select id="sortBy" aria-label="Sort networks" class="text-[13px] font-medium text-primary bg-white border border-border rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
         <option value="rank">By Rank</option>
         <option value="name">A-Z</option>
         <option value="founded">Newest First</option>

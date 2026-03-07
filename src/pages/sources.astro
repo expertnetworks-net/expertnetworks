@@ -5,6 +5,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <BaseLayout
   title="Sources & Methodology — ExpertNetworks.net"
   description="How ExpertNetworks.net gathers and verifies data about expert networks. Learn about our sources, inclusion criteria, and methodology for tracking the expert network industry."
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': 'https://expertnetworks.net/' },
+      { '@type': 'ListItem', 'position': 2, 'name': 'Sources & Methodology' }
+    ]
+  }}
 >
   <section class="pt-32 pb-24 px-6">
     <div class="max-w-3xl mx-auto">

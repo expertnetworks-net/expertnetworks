@@ -21,7 +21,7 @@ const top10 = [...publishedNetworks]
       </a>
     </div>
     <ul class="hidden md:flex gap-8 list-none">
-      <li><a href="/#networks" class="text-secondary no-underline text-sm font-medium hover:text-primary transition-colors">Networks</a></li>
+      <li><a href="/networks" class="text-secondary no-underline text-sm font-medium hover:text-primary transition-colors">Networks</a></li>
       <li><a href="/news" class="text-secondary no-underline text-sm font-medium hover:text-primary transition-colors">News</a></li>
       <li><a href="/compare" class="text-secondary no-underline text-sm font-medium hover:text-primary transition-colors">Compare</a></li>
       <li><a href="/about" class="text-secondary no-underline text-sm font-medium hover:text-primary transition-colors">About</a></li>
@@ -144,6 +144,7 @@ const top10 = [...publishedNetworks]
           id="headerSearchInput"
           type="text"
           placeholder="Search networks by name..."
+          aria-label="Search networks by name"
           class="flex-1 bg-transparent border-none outline-none text-[15px] text-primary placeholder:text-tertiary"
           autocomplete="off"
         />
