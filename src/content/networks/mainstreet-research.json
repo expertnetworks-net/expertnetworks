@@ -11,11 +11,11 @@
   "employeeCount": "100+",
   "expertCount": "50K+",
   "description": "Primary research-focused expert network serving hedge funds, asset managers, and sell-side analysts with channel checks, expert consultations, and proprietary research insights.",
-  "services": ["Expert Calls", "Primary Research", "Channel Checks"],
+  "services": ["Expert Calls", "Primary Research", "Channel Checks", "Proprietary Research"],
   "aiCapabilities": ["AI-driven channel check aggregation", "Predictive trend modeling", "Automated research synthesis"],
   "industries": ["Financial Services", "Consumer", "Technology", "Retail", "Industrials"],
   "pricingModel": "Per-call",
-  "keyDifferentiators": ["Primary research specialization for investors", "Channel check expertise", "Deep hedge fund and sell-side relationships"],
+  "keyDifferentiators": ["Primary research specialization for investors", "Channel check expertise with proprietary methodology", "Deep hedge fund and sell-side relationships"],
   "bestFor": ["Equity Research", "Hedge Funds", "Sell-Side Research"],
   "compliance": {
     "mnpiPolicy": "Strict MNPI policies with Reg FD compliance monitoring for public company research",
@@ -26,5 +26,53 @@
   "featured": false,
   "priority": 30,
   "published": true,
-  "lastUpdated": "2026-03-06"
+  "lastUpdated": "2026-03-07",
+
+  "overview": "Mainstreet Research is a New York-based expert network focused on primary research for the investment community. Founded in 2016, the company serves hedge funds, asset managers, and sell-side analysts with expert consultations, channel checks, and proprietary research insights.\n\nThe company differentiates through its channel check expertise — systematic programs that collect data points from industry participants to identify trends in company performance, market dynamics, and competitive positioning. This primary research approach appeals to investors who need actionable, investable insights rather than general industry education.",
+
+  "history": {
+    "narrative": "Mainstreet Research was founded in 2016 in New York City to serve the investment community's need for primary research with a compliance-first approach.",
+    "timeline": [
+      { "year": "2016", "event": "Founded in New York City with primary research focus for investors" },
+      { "year": "2017-2021", "event": "Built channel check methodology and hedge fund client base" },
+      { "year": "2022-2025", "event": "Expanded to 50K+ experts; deepened consumer, tech, and retail coverage" }
+    ]
+  },
+
+  "servicesDetailed": [
+    { "name": "Expert Consultations", "description": "One-on-one consultations with industry experts designed to inform investment decisions, with strict Reg FD and MNPI compliance." },
+    { "name": "Channel Checks", "description": "Systematic data collection from industry participants — distributors, retailers, suppliers — to identify trends in company performance and competitive dynamics." },
+    { "name": "Proprietary Research", "description": "Synthesized research output combining expert insights with data analysis for actionable investment intelligence." }
+  ],
+
+  "aiPlatform": {
+    "narrative": "Mainstreet uses AI for channel check data aggregation, trend identification, and research synthesis across expert interactions.",
+    "features": ["AI-driven channel check aggregation", "Predictive trend modeling from primary data", "Automated research synthesis", "Reg FD compliance monitoring"]
+  },
+
+  "complianceExtended": {
+    "narrative": "Mainstreet maintains strict compliance protocols designed for the buy-side investment community, including Reg FD monitoring and comprehensive public company affiliation screening.",
+    "highlights": ["Strict MNPI policies for investment research", "Reg FD compliance monitoring", "Public company affiliation screening", "Cooling-off period enforcement", "Complete audit trail"],
+    "regulatoryContext": "Primary research for investors operates in one of the most regulated corners of the expert network industry. Clean regulatory record."
+  },
+
+  "clientFit": {
+    "narrative": "Purpose-built for the investment community — hedge funds, asset managers, and sell-side analysts who need primary research to inform trading and investment decisions.",
+    "segments": ["Hedge funds conducting primary research on public equities", "Sell-side analysts seeking proprietary data points", "Asset managers needing channel check intelligence", "Long-only funds conducting deep industry research"]
+  },
+
+  "strengths": ["Channel check expertise with systematic data collection methodology", "Investment community focus with strict Reg FD compliance", "Primary research delivers actionable, investable insights", "Deep relationships with hedge funds and sell-side analysts"],
+  "caveats": ["Narrow focus on investment research limits broader applicability", "Less suitable for consulting or corporate strategy research", "Limited public information about funding and scale", "Smaller expert database than generalist networks"],
+  "notableFacts": ["Primary research specialist for the investment community", "Channel check methodology systematically collects industry data points", "Reg FD compliance monitoring for public company research"],
+  "sourceNotes": ["Mainstreet Research website", "Expert network industry directories"],
+  "whyChoose": ["Channel check expertise", "Investment research focus", "Reg FD compliance", "Hedge fund relationships"],
+  "whenNotIdeal": ["Non-investment research", "Need broad consulting support", "Want self-service platform", "Need Asia/Europe coverage"],
+
+  "confidence": {
+    "founded": "partially-unverifiable", "headquarters": "verified", "expertCount": "positioning",
+    "employeeCount": "partially-unverifiable", "pricingModel": "verified", "services": "positioning",
+    "compliance": "positioning", "overview": "positioning", "history": "inference",
+    "servicesDetailed": "positioning", "aiPlatform": "positioning", "complianceExtended": "positioning",
+    "clientFit": "inference", "strengths": "positioning", "caveats": "inference", "notableFacts": "positioning"
+  }
 }

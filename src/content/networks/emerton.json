@@ -5,21 +5,22 @@
   "website": "https://emertondata.com",
   "gradientFrom": "#0f172a",
   "gradientTo": "#475569",
-  "type": "Expert Network",
+  "type": "Data & AI Consulting + Expert Network",
   "founded": 2015,
   "headquarters": "Paris, France",
   "employeeCount": "100+",
   "expertCount": "60K+",
-  "description": "European data and expert network combining traditional expert calls with data analytics capabilities, serving private equity firms and consultancies across the European market.",
-  "services": ["Expert Calls", "Data Analytics", "European Research"],
-  "aiCapabilities": ["AI-enhanced data analytics", "Machine learning-driven expert matching", "Automated European market data aggregation", "Predictive industry trend analysis"],
-  "industries": ["Private Equity", "Consulting", "Healthcare", "Technology", "Consumer", "Industrials"],
-  "pricingModel": "Per-call",
-  "keyDifferentiators": ["Unique combination of expert network and data analytics capabilities", "Deep coverage of French and Continental European markets", "Data-driven research methodology enhancing traditional expert insights"],
-  "bestFor": ["European PE", "French Market", "Data-Driven Research"],
+  "description": "The AI and data consulting unit of Emerton Group, combining traditional expert calls with advanced data analytics, technology due diligence, and AI consulting. Founded by former BCG, Bain, and McKinsey directors, with offices in Paris, London, Munich, New York, and Hong Kong.",
+  "services": ["Expert Calls", "Data Analytics", "Technology Due Diligence", "AI Consulting", "European Research"],
+  "aiCapabilities": ["AI-enhanced data analytics", "Machine learning-driven expert matching", "Technology due diligence for PE", "Predictive industry analysis"],
+  "industries": ["Private Equity", "Consulting", "Healthcare", "Technology", "Consumer", "Industrials", "Energy"],
+  "pricingModel": "Per-project",
+  "pricingDetail": "Per-project pricing for consulting and research engagements",
+  "keyDifferentiators": ["Unique combination of expert network and data/AI consulting capabilities", "Technology due diligence for PE funds evaluating tech acquisitions", "Founded by former BCG, Bain, and McKinsey directors"],
+  "bestFor": ["European PE", "French Market", "Data-Driven Research", "Tech Due Diligence"],
   "compliance": {
     "mnpiPolicy": "MNPI policies aligned with AMF and EU MAR regulatory frameworks",
-    "expertVetting": "Comprehensive vetting with multilingual European employment verification and conflict screening",
+    "expertVetting": "Comprehensive vetting with multilingual European employment verification",
     "coolingOffPeriod": "Enforced cooling-off periods in compliance with French and EU regulations",
     "auditTrail": true,
     "regulatoryHistory": "Clean regulatory record"
@@ -34,5 +35,126 @@
     "surveys": false,
     "complianceTools": true
   },
-  "lastUpdated": "2026-03-06"
+  "lastUpdated": "2026-03-07",
+
+  "overview": "Emerton Data is the digital, data, and AI consulting unit of Emerton Group, a strategy consulting firm founded by former BCG, Bain & Company, McKinsey, and OC&C directors. Headquartered in Paris with offices in London, Munich, New York, and Hong Kong, Emerton Data merges data science, business consulting, and software engineering to deliver bespoke solutions for private equity and corporate clients.\n\nWhat sets Emerton Data apart from traditional expert networks is its integration of expert consultations with advanced data analytics and AI capabilities. The company executes technology due diligences for PE funds evaluating tech acquisitions, combining expert insights with data science to assess technology platforms, data architectures, and AI capabilities of target companies.\n\nThe Emerton Group generated approximately $20.2 million in annual revenue in 2025. The group operates as an independent partnership (self-funded rather than venture-backed), led by co-founders Aimé Lachapelle (Ph.D., 15+ years in Digital/Data/AI), Pascal (22 years consulting/industry experience), and Sébastien (18 years strategy consulting at Mars & Co, Bain, and Emerton).",
+
+  "history": {
+    "narrative": "Emerton Group was founded by directors from BCG, Bain & Company, McKinsey, and OC&C Strategy Consultants, with founding sector practices in energy transition, tech & digital, and industry. Emerton Data was created by three co-founders — Aimé, Pascal, and Sébastien — as the group's AI and data consulting unit, building on the group's established strategy consulting practice with advanced technology capabilities.",
+    "timeline": [
+      { "year": "2015", "event": "Emerton Group established by former BCG, Bain, McKinsey, and OC&C directors" },
+      { "year": "2017-2020", "event": "Emerton Data unit created, combining data science with strategy consulting" },
+      { "year": "2021-2024", "event": "Expanded to Paris, London, Munich, New York, and Hong Kong offices" },
+      { "year": "2025", "event": "Emerton Group reached approximately $20.2M annual revenue" }
+    ]
+  },
+
+  "servicesDetailed": [
+    {
+      "name": "Expert Consultations",
+      "description": "Traditional expert calls connecting clients with industry practitioners across European and global markets, with particular depth in French and Continental European coverage."
+    },
+    {
+      "name": "Technology Due Diligence",
+      "description": "Specialized service for PE funds evaluating technology acquisitions. Data scientists and engineers assess target companies' technology platforms, data architectures, AI capabilities, and technical teams."
+    },
+    {
+      "name": "Data & AI Consulting",
+      "description": "End-to-end data transformation consulting helping Fortune 500 companies accelerate their digital and data journeys. Combines data science, business consulting, and software engineering."
+    },
+    {
+      "name": "Market Analytics",
+      "description": "Data-driven market analysis combining expert insights with advanced analytics, machine learning models, and predictive frameworks for investment and strategy decisions."
+    }
+  ],
+
+  "aiPlatform": {
+    "narrative": "Emerton Data's technology capabilities are its differentiator. The unit employs data scientists and software engineers who build custom ML models, predictive analytics, and data pipelines for each engagement. The technology serves consulting deliverables rather than being a standalone product — clients receive expert insights augmented by data-driven analysis.",
+    "features": [
+      "Custom ML model development for each engagement",
+      "Technology due diligence assessment frameworks",
+      "Data extraction, ingestion, and analytics pipelines",
+      "Predictive industry trend analysis",
+      "Technology-agnostic approach using best-fit tools per project"
+    ]
+  },
+
+  "complianceExtended": {
+    "narrative": "Emerton Data operates under French AMF and EU MAR regulatory frameworks for its European operations, with additional compliance infrastructure for US and Asian markets through its global offices.",
+    "highlights": [
+      "AMF and EU MAR aligned compliance policies",
+      "Multilingual European employment verification",
+      "Cooling-off period enforcement per French/EU regulations",
+      "Audit trail for all expert interactions",
+      "Cross-border compliance across 5 office jurisdictions"
+    ],
+    "regulatoryContext": "As a consulting firm operating across France, UK, Germany, US, and Hong Kong, Emerton Data navigates multiple regulatory environments. The firm's partnership model and established client relationships provide institutional credibility. Clean regulatory record."
+  },
+
+  "clientFit": {
+    "narrative": "Emerton Data is ideal for PE firms and corporations needing technology-augmented strategy consulting with integrated expert access — particularly for technology due diligence and data-driven market analysis across European markets.",
+    "segments": [
+      "PE funds conducting technology due diligence on acquisition targets",
+      "Fortune 500 companies seeking data transformation consulting",
+      "European corporations needing strategy consulting with expert network access",
+      "Investors evaluating technology companies across European markets"
+    ]
+  },
+
+  "strengths": [
+    "Unique combination of expert network, data science, and technology due diligence",
+    "Founded by former BCG, Bain, McKinsey, and OC&C directors — deep consulting pedigree",
+    "Strong European coverage with offices in Paris, London, Munich, New York, and Hong Kong",
+    "Technology-agnostic data science team can assess any tech stack",
+    "Independent partnership model ensures client-first orientation",
+    "$20.2M annual revenue demonstrates sustainable business model"
+  ],
+
+  "caveats": [
+    "Not a pure expert network — expert calls are part of broader consulting engagements",
+    "Per-project pricing is higher than per-call expert network rates",
+    "Less suitable for standalone expert call access without consulting context",
+    "Smaller expert database compared to dedicated expert networks",
+    "Limited brand recognition outside European PE and consulting circles"
+  ],
+
+  "notableFacts": [
+    "Part of Emerton Group, founded by former BCG, Bain & Company, McKinsey, and OC&C directors",
+    "Co-founded by Aimé Lachapelle (Ph.D., 15+ years Digital/Data/AI), Pascal, and Sébastien",
+    "Emerton Group annual revenue approximately $20.2M (2025)",
+    "Offices in Paris, London, Munich, New York, and Hong Kong",
+    "Recognized among France's leading strategy consulting firms for private equity",
+    "Technology due diligence capability is unique among expert networks"
+  ],
+
+  "sourceNotes": [
+    "Emerton Data official website (emerton-data.com) — company overview, team, and services",
+    "Emerton Group website (emerton.co) — parent company overview and founding story",
+    "RocketReach — company profile and revenue data",
+    "Consultancy Europe — Emerton Group profile",
+    "Crunchbase — company profile",
+    "Datanyze — company profile and employee data"
+  ],
+
+  "whyChoose": ["Tech due diligence expertise", "Data science + expert calls", "European PE depth", "MBB consulting pedigree"],
+  "whenNotIdeal": ["Need standalone expert calls", "Want self-service platform", "Budget-constrained", "Non-European focus"],
+
+  "confidence": {
+    "founded": "verified",
+    "headquarters": "verified",
+    "expertCount": "positioning",
+    "employeeCount": "partially-unverifiable",
+    "pricingModel": "verified",
+    "services": "verified",
+    "compliance": "positioning",
+    "overview": "verified",
+    "history": "partially-unverifiable",
+    "servicesDetailed": "verified",
+    "aiPlatform": "positioning",
+    "complianceExtended": "positioning",
+    "clientFit": "inference",
+    "strengths": "positioning",
+    "caveats": "inference",
+    "notableFacts": "verified"
+  }
 }

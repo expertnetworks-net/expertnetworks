@@ -26,5 +26,53 @@
   "featured": false,
   "priority": 27,
   "published": true,
-  "lastUpdated": "2026-03-06"
+  "lastUpdated": "2026-03-07",
+
+  "overview": "Gupta Media Expert Network is a Boston-based specialist network focused exclusively on media, entertainment, and digital marketing. Founded in 2004, the company combines expert consultations with brand analytics capabilities, serving investors and corporate clients who need deep understanding of media industry dynamics, advertising effectiveness, and consumer brand performance.\n\nWith over 20 years of media industry expertise, Gupta Media has built a curated network of 20,000+ professionals across traditional media, digital platforms, advertising agencies, and consumer brands.",
+
+  "history": {
+    "narrative": "Gupta Media was founded in 2004 in Boston, establishing itself as one of the earliest media-focused expert networks.",
+    "timeline": [
+      { "year": "2004", "event": "Founded in Boston with focus on media and entertainment expertise" },
+      { "year": "2005-2015", "event": "Built media-focused expert network and brand analytics capabilities" },
+      { "year": "2016-2025", "event": "Expanded digital marketing and streaming media coverage" }
+    ]
+  },
+
+  "servicesDetailed": [
+    { "name": "Media Expert Consultations", "description": "Expert calls with media executives, entertainment industry leaders, advertising specialists, and digital marketing professionals." },
+    { "name": "Brand Analytics", "description": "Data-driven brand performance tracking, audience analytics, and media sentiment analysis." },
+    { "name": "Media Industry Research", "description": "Specialized research into media trends, streaming economics, advertising effectiveness, and consumer brand dynamics." }
+  ],
+
+  "aiPlatform": {
+    "narrative": "Gupta Media combines expert consultations with brand analytics tools for media sentiment analysis, audience modeling, and brand performance tracking.",
+    "features": ["Media sentiment analysis", "Audience analytics modeling", "Brand performance tracking", "Expert matching for media sector"]
+  },
+
+  "complianceExtended": {
+    "narrative": "Standard compliance with entertainment industry considerations for content and IP sensitivity.",
+    "highlights": ["Standard MNPI protocols", "Entertainment industry IP safeguards", "Media sector credential verification"],
+    "regulatoryContext": "Media consultations involve different sensitivity patterns than financial services. Clean regulatory record."
+  },
+
+  "clientFit": {
+    "narrative": "Ideal for media, entertainment, and advertising industry stakeholders.",
+    "segments": ["Media/entertainment investors", "Consumer brands seeking marketing expertise", "Advertising agencies needing trend intelligence", "PE firms in media sector due diligence"]
+  },
+
+  "strengths": ["20+ year track record in media and entertainment", "Brand analytics differentiates from pure call networks", "Sector depth underserved by generalist networks"],
+  "caveats": ["Very narrow sector focus", "Smaller expert database", "Limited public information about scale"],
+  "notableFacts": ["One of the oldest media-focused expert networks (2004)", "Combines expert calls with brand analytics", "20+ years of media specialization"],
+  "sourceNotes": ["Gupta Media website", "Expert network industry directories"],
+  "whyChoose": ["Media industry depth", "Brand analytics", "20+ year track record", "Digital marketing expertise"],
+  "whenNotIdeal": ["Non-media research", "Need broad coverage", "Want large expert pools", "Require institutional compliance"],
+
+  "confidence": {
+    "founded": "partially-unverifiable", "headquarters": "verified", "expertCount": "positioning",
+    "employeeCount": "partially-unverifiable", "pricingModel": "verified", "services": "positioning",
+    "compliance": "positioning", "overview": "positioning", "history": "inference",
+    "servicesDetailed": "positioning", "aiPlatform": "positioning", "complianceExtended": "positioning",
+    "clientFit": "inference", "strengths": "positioning", "caveats": "inference", "notableFacts": "positioning"
+  }
 }

@@ -34,5 +34,66 @@
     "surveys": false,
     "complianceTools": true
   },
-  "lastUpdated": "2026-03-06"
+  "lastUpdated": "2026-03-07",
+
+  "overview": "Clermont Partners is a London-based expert network specializing in European markets. Founded in 2014, the company serves UK and Continental European investors — including PE firms, hedge funds, and corporate strategy teams — with curated expert access and bespoke research projects.\n\nThe company differentiates through deep European coverage with native-language capabilities across major Continental European markets. Clermont's bespoke research approach goes beyond standard expert calls to deliver tailored research projects that combine expert insights with market analysis.",
+
+  "history": {
+    "narrative": "Clermont Partners was founded in 2014 in London to serve the growing demand for European-focused expert network services tailored to institutional investors.",
+    "timeline": [
+      { "year": "2014", "event": "Founded in London with focus on European markets" },
+      { "year": "2015-2020", "event": "Built expert network to 40K+ across UK and Continental Europe" },
+      { "year": "2021-2025", "event": "Expanded bespoke research capabilities; deepened Continental European coverage" }
+    ]
+  },
+
+  "servicesDetailed": [
+    {
+      "name": "Expert Consultations",
+      "description": "One-on-one phone consultations with vetted European industry experts, with native-language capabilities across major Continental European markets."
+    },
+    {
+      "name": "Bespoke Research Projects",
+      "description": "Tailored research engagements combining expert interviews with market analysis for European-focused due diligence and strategic research."
+    },
+    {
+      "name": "European Market Intelligence",
+      "description": "Deep market intelligence across UK, France, Germany, Nordics, and other European markets, leveraging local expert relationships."
+    }
+  ],
+
+  "aiPlatform": {
+    "narrative": "Clermont uses AI-assisted matching for European markets with automated compliance screening for UK FCA and EU MAR requirements.",
+    "features": ["AI-assisted expert matching for European markets", "Automated UK FCA and EU MAR compliance screening", "Smart project scoping tools", "Cross-border conflict detection across European jurisdictions"]
+  },
+
+  "complianceExtended": {
+    "narrative": "Clermont operates under UK FCA and EU MAR regulatory frameworks with compliance processes designed for institutional European investors.",
+    "highlights": ["UK FCA-aligned compliance policies", "EU MAR regulatory compliance", "Cross-border European conflict screening", "Cooling-off periods per UK/EU regulations", "Audit trail for all interactions"],
+    "regulatoryContext": "Post-Brexit, Clermont navigates both UK FCA and EU regulatory requirements for cross-border expert engagements. Clean regulatory record."
+  },
+
+  "clientFit": {
+    "narrative": "Ideal for investors and firms focused on European markets who need native-language expert access and bespoke research.",
+    "segments": ["UK and European PE firms conducting European due diligence", "Hedge funds researching European equities and sectors", "Consulting firms needing Continental European specialists", "Corporations evaluating European market opportunities"]
+  },
+
+  "strengths": ["Deep European specialization with native-language capabilities", "Bespoke research goes beyond standard expert calls", "London headquarters provides proximity to Europe's largest financial center", "FCA and EU MAR-compliant operations"],
+
+  "caveats": ["Limited coverage outside Europe", "Smaller expert database than global networks", "Less brand recognition among US institutional buyers", "Limited public information about funding and scale"],
+
+  "notableFacts": ["London-headquartered with deep Continental European coverage", "Native-language expert access across major European markets", "Bespoke research model tailored for European institutional investors"],
+
+  "sourceNotes": ["Clermont Partners website — company overview", "INEX ONE Expert Network Directory — profile listing", "Expert network industry directories"],
+
+  "whyChoose": ["European market depth", "Native-language access", "Bespoke research", "FCA/EU MAR compliant"],
+  "whenNotIdeal": ["Non-European focus", "Need global scale", "Want self-service", "Need Asia/US depth"],
+
+  "confidence": {
+    "founded": "partially-unverifiable", "headquarters": "verified", "expertCount": "positioning",
+    "employeeCount": "partially-unverifiable", "pricingModel": "verified", "services": "positioning",
+    "compliance": "positioning", "overview": "positioning", "history": "inference",
+    "servicesDetailed": "positioning", "aiPlatform": "positioning", "complianceExtended": "positioning",
+    "clientFit": "inference", "strengths": "positioning", "caveats": "inference", "notableFacts": "positioning"
+  }
 }

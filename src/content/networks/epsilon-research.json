@@ -10,12 +10,12 @@
   "headquarters": "Boston, MA",
   "employeeCount": "80+",
   "expertCount": "35K+",
-  "description": "Healthcare specialist expert network providing deep clinical and life sciences expertise to investors, pharmaceutical companies, and consultancies conducting due diligence and primary research.",
-  "services": ["Expert Calls", "Healthcare Research", "KOL Identification"],
+  "description": "Healthcare specialist expert network providing deep clinical and life sciences expertise to investors, pharmaceutical companies, and consultancies for due diligence and primary research.",
+  "services": ["Expert Calls", "Healthcare Research", "KOL Identification", "Clinical Due Diligence"],
   "aiCapabilities": ["AI-powered KOL mapping", "Clinical trial analytics", "Therapeutic area matching"],
   "industries": ["Healthcare", "Life Sciences", "Pharmaceuticals", "Medical Devices", "Biotechnology"],
   "pricingModel": "Per-call",
-  "keyDifferentiators": ["Deep healthcare specialization", "KOL identification capabilities", "Clinical and regulatory expertise"],
+  "keyDifferentiators": ["Deep healthcare specialization with clinical expertise", "KOL identification and mapping capabilities", "Clinical and regulatory expertise for pharma due diligence"],
   "bestFor": ["Healthcare", "Life Sciences", "Pharma DD"],
   "compliance": {
     "mnpiPolicy": "Strict healthcare-specific MNPI policies with clinical trial information safeguards",
@@ -26,5 +26,66 @@
   "featured": false,
   "priority": 26,
   "published": true,
-  "lastUpdated": "2026-03-06"
+  "lastUpdated": "2026-03-07",
+
+  "overview": "Epsilon Research is a Boston-based expert network that specializes exclusively in healthcare and life sciences. Founded in 2017, the company connects investors, pharmaceutical companies, and consulting firms with clinical experts, Key Opinion Leaders (KOLs), and scientific specialists for due diligence, primary research, and strategic advisory.\n\nThe company's healthcare-only focus enables deeper expertise in therapeutic areas, clinical trial dynamics, regulatory pathways, and market access — areas where generalist expert networks often lack depth. Epsilon's KOL identification and mapping capabilities help pharmaceutical companies identify influential physicians and researchers in specific disease areas.",
+
+  "history": {
+    "narrative": "Epsilon Research was founded in 2017 in Boston, choosing to specialize exclusively in healthcare and life sciences rather than competing as a generalist. The company built its expert network through relationships with clinical researchers, physicians, regulatory specialists, and healthcare executives.",
+    "timeline": [
+      { "year": "2017", "event": "Founded in Boston with exclusive healthcare and life sciences focus" },
+      { "year": "2018-2022", "event": "Built healthcare expert network to 35K+; developed KOL mapping capabilities" },
+      { "year": "2023-2025", "event": "Expanded clinical due diligence and therapeutic area coverage" }
+    ]
+  },
+
+  "servicesDetailed": [
+    {
+      "name": "Healthcare Expert Consultations",
+      "description": "One-on-one consultations with physicians, clinical researchers, regulatory specialists, and healthcare executives across therapeutic areas."
+    },
+    {
+      "name": "KOL Identification & Mapping",
+      "description": "AI-powered identification and mapping of Key Opinion Leaders across therapeutic areas, analyzing publication records, clinical trial involvement, and conference activity."
+    },
+    {
+      "name": "Clinical Due Diligence",
+      "description": "Expert-supported due diligence for healthcare investments, evaluating drug pipelines, clinical trial designs, regulatory risks, and market access strategies."
+    }
+  ],
+
+  "aiPlatform": {
+    "narrative": "Epsilon uses AI for KOL mapping and therapeutic area matching, analyzing clinical trial databases, publication records, and conference participation to identify healthcare experts.",
+    "features": ["AI-powered KOL mapping and identification", "Clinical trial database analysis", "Therapeutic area matching algorithms", "Publication and citation analysis for expert credentialing"]
+  },
+
+  "complianceExtended": {
+    "narrative": "Epsilon maintains healthcare-specific compliance protocols with strict safeguards for clinical trial information and pharma consulting conflicts.",
+    "highlights": ["Healthcare-specific MNPI policies", "Clinical trial information safeguards", "Rigorous credential verification for medical professionals", "Pharma consulting conflict screening", "Audit trail for all expert interactions"],
+    "regulatoryContext": "Healthcare expert consultations require careful handling of clinical trial data, FDA regulatory information, and pharma-specific conflicts. Clean regulatory record."
+  },
+
+  "clientFit": {
+    "narrative": "Ideal for organizations that need deep healthcare expertise. Not suitable for non-healthcare research.",
+    "segments": ["Life sciences investors evaluating drug pipelines and biotech targets", "Pharmaceutical companies seeking KOL identification and advisory", "Healthcare-focused PE/VC firms conducting clinical due diligence", "Medical device companies seeking regulatory and clinical expertise"]
+  },
+
+  "strengths": ["Healthcare-only focus enables deeper therapeutic area expertise than generalist networks", "KOL identification capabilities for pharma and biotech", "Boston location provides access to world-class healthcare/biotech ecosystem", "Clinical and regulatory expertise for investment due diligence"],
+
+  "caveats": ["No coverage outside healthcare and life sciences", "Smaller expert database than generalist networks", "Limited public information about funding and scale", "Less suitable for broad market research spanning multiple sectors"],
+
+  "notableFacts": ["Healthcare-only expert network — rare pure specialization in the industry", "KOL mapping combines publication analysis, clinical trial data, and conference activity", "Boston headquarters in the heart of the US biotech/pharma corridor"],
+
+  "sourceNotes": ["Epsilon Research website — company overview and services", "Expert network industry directories", "INEX ONE Expert Network Directory"],
+
+  "whyChoose": ["Healthcare-only depth", "KOL identification", "Clinical due diligence", "Boston biotech hub"],
+  "whenNotIdeal": ["Non-healthcare research", "Need sector diversity", "Want large generalist database", "Need self-service platform"],
+
+  "confidence": {
+    "founded": "partially-unverifiable", "headquarters": "verified", "expertCount": "positioning",
+    "employeeCount": "partially-unverifiable", "pricingModel": "verified", "services": "positioning",
+    "compliance": "positioning", "overview": "positioning", "history": "inference",
+    "servicesDetailed": "positioning", "aiPlatform": "positioning", "complianceExtended": "positioning",
+    "clientFit": "inference", "strengths": "positioning", "caveats": "inference", "notableFacts": "positioning"
+  }
 }

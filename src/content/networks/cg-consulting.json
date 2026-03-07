@@ -11,7 +11,7 @@
   "employeeCount": "150+",
   "expertCount": "80K+",
   "description": "Greater China-focused expert network providing Hong Kong and mainland China market expertise, cross-border research capabilities, and industry events for Asia-focused investors.",
-  "services": ["Expert Calls", "China Market Research", "Industry Events"],
+  "services": ["Expert Calls", "China Market Research", "Industry Events", "Cross-Border Research"],
   "aiCapabilities": ["AI-powered expert matching for Greater China", "Bilingual compliance screening (English/Mandarin)", "Automated cross-border conflict detection"],
   "industries": ["Financial Services", "Technology", "Healthcare", "Consumer", "Real Estate", "Manufacturing"],
   "pricingModel": "Per-call",
@@ -34,5 +34,112 @@
     "surveys": false,
     "complianceTools": true
   },
-  "lastUpdated": "2026-03-06"
+  "lastUpdated": "2026-03-07",
+
+  "overview": "Catalight, formerly known as CG Consulting, is a Greater China-focused expert network headquartered in Hong Kong. Founded in 2010, the company has built deep coverage across mainland China, Hong Kong, and Taiwan, connecting global investors and consultancies with Chinese industry experts through bilingual (English/Mandarin) operations.\n\nThe company differentiates through its combination of expert consultations and industry events that connect investors with senior Chinese executives — a format particularly valued in the relationship-driven Chinese business culture. With 80,000+ experts focused primarily on Greater China markets, Catalight serves as a specialist complement to global networks for clients needing deep Chinese market intelligence.",
+
+  "history": {
+    "narrative": "Founded in 2010 as CG Consulting in Hong Kong, the company built its expert network business with deep relationships across mainland China, Hong Kong, and Taiwan. The company later rebranded to Catalight.",
+    "timeline": [
+      { "year": "2010", "event": "Founded as CG Consulting in Hong Kong" },
+      { "year": "2010-2020", "event": "Built expert network to 80K+ across Greater China; expanded industry events program" },
+      { "year": "2020-2025", "event": "Rebranded to Catalight; enhanced bilingual AI-powered matching capabilities" }
+    ]
+  },
+
+  "servicesDetailed": [
+    {
+      "name": "Expert Consultations",
+      "description": "One-on-one consultations with vetted experts across Greater China. Bilingual English/Mandarin operations enable access to Chinese executives not reachable through English-only networks."
+    },
+    {
+      "name": "Industry Events",
+      "description": "Curated events connecting global investors with senior Chinese executives for group discussions and networking."
+    },
+    {
+      "name": "Cross-Border Research",
+      "description": "Research spanning mainland China, Hong Kong, and Taiwan, with bilingual compliance screening for cross-border engagements."
+    }
+  ],
+
+  "aiPlatform": {
+    "narrative": "Catalight uses AI-powered matching optimized for Greater China, with bilingual compliance screening in English and Mandarin.",
+    "features": [
+      "AI-powered expert matching for Greater China markets",
+      "Bilingual compliance screening (English/Mandarin)",
+      "Automated cross-border conflict detection",
+      "Expert management across mainland/HK/Taiwan jurisdictions"
+    ]
+  },
+
+  "complianceExtended": {
+    "narrative": "Catalight navigates the regulatory landscape spanning Hong Kong SFC and mainland China CSRC frameworks with bilingual compliance processes.",
+    "highlights": [
+      "Hong Kong SFC-aligned compliance policies",
+      "Mainland China CSRC regulatory compliance",
+      "Bilingual vetting in English and Mandarin",
+      "Cross-border conflict detection across Greater China",
+      "15+ year compliance track record in Hong Kong"
+    ],
+    "regulatoryContext": "Operating across Greater China requires specialized compliance expertise spanning HK SFC, mainland CSRC, and Taiwan FSC. Clean regulatory record."
+  },
+
+  "clientFit": {
+    "narrative": "Purpose-built for clients needing deep Greater China expertise.",
+    "segments": [
+      "Global investors researching Chinese market opportunities",
+      "PE/VC firms conducting due diligence on Chinese targets",
+      "Consulting firms needing Greater China industry specialists",
+      "Corporations evaluating Chinese market entry"
+    ]
+  },
+
+  "strengths": [
+    "Deepest Greater China coverage among specialist expert networks",
+    "Bilingual English/Mandarin operations for cross-border research",
+    "Industry events format valued in Chinese business culture",
+    "15+ year Hong Kong operating history"
+  ],
+
+  "caveats": [
+    "Coverage limited primarily to Greater China",
+    "Limited public information about funding and financials",
+    "Smaller than global networks outside China",
+    "Chinese regulatory constraints can limit expert engagement"
+  ],
+
+  "notableFacts": [
+    "Formerly known as CG Consulting; rebranded to Catalight",
+    "15+ year operating history in Hong Kong",
+    "Industry events connect investors with senior Chinese executives",
+    "Bilingual operations spanning English and Mandarin"
+  ],
+
+  "sourceNotes": [
+    "Catalight website — company overview and services",
+    "INEX ONE Expert Network Directory — profile listing",
+    "Expert network industry directories"
+  ],
+
+  "whyChoose": ["Greater China depth", "Bilingual operations", "Industry events", "15+ year HK track record"],
+  "whenNotIdeal": ["No China needs", "Need global coverage", "Want self-service", "Budget-constrained"],
+
+  "confidence": {
+    "founded": "partially-unverifiable",
+    "headquarters": "verified",
+    "expertCount": "positioning",
+    "employeeCount": "partially-unverifiable",
+    "pricingModel": "verified",
+    "services": "positioning",
+    "compliance": "positioning",
+    "overview": "positioning",
+    "history": "partially-unverifiable",
+    "servicesDetailed": "positioning",
+    "aiPlatform": "positioning",
+    "complianceExtended": "positioning",
+    "clientFit": "inference",
+    "strengths": "positioning",
+    "caveats": "inference",
+    "notableFacts": "partially-unverifiable"
+  }
 }
