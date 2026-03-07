@@ -39,8 +39,8 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
     }
   }}
 >
-  <!-- Dashboard header -->
-  <section class="pt-[72px] pb-6 px-6 border-b border-border/40" id="overview">
+  <!-- Dashboard header — compact, with brief explainer -->
+  <section class="pt-[72px] pb-6 px-6 border-b border-border/40" id="top">
     <div class="max-w-site mx-auto">
       <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
         <div class="max-w-2xl">
@@ -61,414 +61,104 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
   <!-- Networks covered marquee -->
   <TrackedNetworksMarquee />
 
-  <!-- Main content + Utility Rail -->
-  <div class="max-w-[1440px] mx-auto flex">
+  <!-- Two-column dashboard: News feed + Top 10 sidebar -->
+  <section class="py-8 px-6" id="dashboard">
+    <div class="max-w-site mx-auto flex flex-col lg:flex-row gap-8">
 
-    <!-- Main content (unchanged layout) -->
-    <div class="flex-1 min-w-0">
-
-      <!-- Two-column dashboard: News feed + Top 10 sidebar -->
-      <section class="py-8 px-6" id="news">
-        <div class="max-w-site mx-auto flex flex-col lg:flex-row gap-8">
-
-          <!-- Left: News feed -->
-          <div class="flex-1 min-w-0">
-            <div class="flex items-center justify-between mb-4">
-              <h2 class="text-lg font-bold text-primary">Latest News</h2>
-              <a href="/news" class="text-accent text-sm font-medium no-underline hover:underline">View all &rarr;</a>
-            </div>
-            <div class="max-h-[520px] overflow-y-auto overscroll-contain pr-1 news-scroll">
-              <div class="space-y-0.5">
-                {publishedNews.map(article => {
-                  const formattedDate = new Date(article.data.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-                  const primarySlug = article.data.relatedNetworks[0];
-                  const logoSrc = primarySlug ? networkLogoMap[primarySlug] : null;
-                  return (
-                    <a href={article.data.sourceUrl || '#'} target={article.data.sourceUrl ? '_blank' : '_self'} rel="noopener noreferrer" class="flex items-start gap-3 px-4 py-3 rounded-xl hover:bg-bg-secondary transition-colors group no-underline cursor-pointer">
-                      {logoSrc ? (
-                        <img src={logoSrc} alt="" width="32" height="32" class="w-8 h-8 rounded-md flex-shrink-0 mt-0.5 object-cover" loading="lazy" />
-                      ) : (
-                        <div class="w-8 h-8 rounded-md flex-shrink-0 mt-0.5 flex items-center justify-center" style={`background: ${article.data.gradientFrom || '#1a365d'}`}>
-                          <div class="w-2 h-2 rounded-full" style={`background: ${article.data.categoryColor || '#0071E3'}`}></div>
-                        </div>
-                      )}
-                      <div class="min-w-0 flex-1">
-                        <div class="text-[13px] font-semibold text-primary leading-snug group-hover:text-accent transition-colors">{article.data.title}</div>
-                        <div class="flex flex-wrap items-center gap-2 mt-1">
-                          <span class="text-[11px] font-medium uppercase tracking-wide" style={`color: ${article.data.categoryColor || '#0071E3'}`}>{article.data.category}</span>
-                          <span class="text-[11px] text-tertiary">{formattedDate}</span>
-                          <span class="text-[11px] text-tertiary">&middot; {article.data.source}</span>
-                          {article.data.sourceUrl && (
-                            <svg class="w-3 h-3 text-tertiary group-hover:text-accent transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                          )}
-                        </div>
-                      </div>
-                    </a>
-                  );
-                })}
-              </div>
-            </div>
-            {publishedNews.length === 0 && (
-              <p class="text-sm text-tertiary py-8 text-center">No news articles yet.</p>
-            )}
-          </div>
-
-          <!-- Right: Top 10 quick access -->
-          <div class="w-full lg:w-[340px] lg:min-w-[340px]" id="top-networks">
-            <div class="flex items-center justify-between mb-4">
-              <h2 class="text-lg font-bold text-primary">Top 10 Networks</h2>
-              <a href="/networks" class="text-accent text-sm font-medium no-underline hover:underline">All {publishedNetworks.length} &rarr;</a>
-            </div>
-            <div class="bg-white rounded-[12px] shadow-card overflow-hidden">
-              {top10.map((network, i) => (
-                <a
-                  href={`/networks/${network.data.slug}`}
-                  class:list={[
-                    'flex items-center gap-3 px-4 py-[11px] no-underline text-primary hover:bg-bg-secondary transition-colors',
-                    i > 0 ? 'border-t border-bg-secondary' : '',
-                  ]}
-                >
-                  <div class="text-[11px] text-tertiary font-bold w-4 text-right flex-shrink-0">{i + 1}</div>
-                  {network.data.logo ? (
-                    <img src={network.data.logo} alt={network.data.name} width="32" height="32" class="w-8 h-8 rounded-lg object-contain flex-shrink-0" loading="lazy" />
+      <!-- Left: News feed -->
+      <div class="flex-1 min-w-0" id="news">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-lg font-bold text-primary">Latest News</h2>
+          <a href="/news" class="text-accent text-sm font-medium no-underline hover:underline">View all &rarr;</a>
+        </div>
+        <div class="max-h-[520px] overflow-y-auto overscroll-contain pr-1 news-scroll">
+          <div class="space-y-0.5">
+            {publishedNews.map(article => {
+              const formattedDate = new Date(article.data.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+              const primarySlug = article.data.relatedNetworks[0];
+              const logoSrc = primarySlug ? networkLogoMap[primarySlug] : null;
+              return (
+                <a href={article.data.sourceUrl || '#'} target={article.data.sourceUrl ? '_blank' : '_self'} rel="noopener noreferrer" class="flex items-start gap-3 px-4 py-3 rounded-xl hover:bg-bg-secondary transition-colors group no-underline cursor-pointer">
+                  {logoSrc ? (
+                    <img src={logoSrc} alt="" width="32" height="32" class="w-8 h-8 rounded-md flex-shrink-0 mt-0.5 object-cover" loading="lazy" />
                   ) : (
-                    <div
-                      class="w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0"
-                      style={`background: linear-gradient(135deg, ${network.data.gradientFrom}, ${network.data.gradientTo})`}
-                    >
-                      {network.data.shortName}
+                    <div class="w-8 h-8 rounded-md flex-shrink-0 mt-0.5 flex items-center justify-center" style={`background: ${article.data.gradientFrom || '#1a365d'}`}>
+                      <div class="w-2 h-2 rounded-full" style={`background: ${article.data.categoryColor || '#0071E3'}`}></div>
                     </div>
                   )}
                   <div class="min-w-0 flex-1">
-                    <div class="text-[13px] font-medium truncate">{network.data.name.split(' (')[0]}</div>
-                    <div class="text-[11px] text-tertiary truncate">{network.data.expertCount} experts &middot; {network.data.pricingModel}</div>
+                    <div class="text-[13px] font-semibold text-primary leading-snug group-hover:text-accent transition-colors">{article.data.title}</div>
+                    <div class="flex flex-wrap items-center gap-2 mt-1">
+                      <span class="text-[11px] font-medium uppercase tracking-wide" style={`color: ${article.data.categoryColor || '#0071E3'}`}>{article.data.category}</span>
+                      <span class="text-[11px] text-tertiary">{formattedDate}</span>
+                      <span class="text-[11px] text-tertiary">&middot; {article.data.source}</span>
+                      {article.data.sourceUrl && (
+                        <svg class="w-3 h-3 text-tertiary group-hover:text-accent transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                      )}
+                    </div>
                   </div>
-                  <svg class="w-3.5 h-3.5 flex-shrink-0 text-tertiary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
                 </a>
-              ))}
-            </div>
+              );
+            })}
           </div>
         </div>
-      </section>
-
-      <!-- Featured Profiles -->
-      <section class="py-10 px-6 bg-bg-secondary" id="featured">
-        <div class="max-w-site mx-auto">
-          <div class="flex items-center justify-between mb-6">
-            <h2 class="text-lg font-bold text-primary">Featured Profiles</h2>
-            <a href="/networks" class="text-accent text-sm font-medium no-underline hover:underline">View all &rarr;</a>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {featuredNetworks.map(network => (
-              <NetworkCard {...network.data} variant="profile" />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <CompareTable />
-    </div>
-
-    <!-- ================================================= -->
-    <!-- Homepage Utility Rail (xl+ only, sticky)           -->
-    <!-- ================================================= -->
-    <aside id="utilityRail" class="hidden xl:block w-[220px] min-w-[220px] flex-shrink-0 pr-5 pl-1 pt-6">
-      <div class="sticky top-[68px] space-y-5 max-h-[calc(100vh-84px)] overflow-y-auto sidebar-panel pb-6">
-
-        <!-- Block 1: On this page -->
-        <div>
-          <div class="text-[10px] font-bold uppercase tracking-widest text-tertiary/70 mb-2 px-1">On this page</div>
-          <nav id="railNav" class="space-y-0.5">
-            <a href="#overview" data-section="overview" class="rail-link flex items-center gap-2 px-2 py-[5px] rounded-md text-[11.5px] text-tertiary hover:text-primary hover:bg-black/[0.03] transition-all no-underline">
-              <span class="rail-dot w-[5px] h-[5px] rounded-full bg-border flex-shrink-0 transition-all"></span>
-              Overview
-            </a>
-            <a href="#news" data-section="news" class="rail-link flex items-center gap-2 px-2 py-[5px] rounded-md text-[11.5px] text-tertiary hover:text-primary hover:bg-black/[0.03] transition-all no-underline">
-              <span class="rail-dot w-[5px] h-[5px] rounded-full bg-border flex-shrink-0 transition-all"></span>
-              Latest News
-            </a>
-            <a href="#top-networks" data-section="top-networks" class="rail-link flex items-center gap-2 px-2 py-[5px] rounded-md text-[11.5px] text-tertiary hover:text-primary hover:bg-black/[0.03] transition-all no-underline">
-              <span class="rail-dot w-[5px] h-[5px] rounded-full bg-border flex-shrink-0 transition-all"></span>
-              Top Networks
-            </a>
-            <a href="#featured" data-section="featured" class="rail-link flex items-center gap-2 px-2 py-[5px] rounded-md text-[11.5px] text-tertiary hover:text-primary hover:bg-black/[0.03] transition-all no-underline">
-              <span class="rail-dot w-[5px] h-[5px] rounded-full bg-border flex-shrink-0 transition-all"></span>
-              Featured Profiles
-            </a>
-            <a href="#compare" data-section="compare" class="rail-link flex items-center gap-2 px-2 py-[5px] rounded-md text-[11.5px] text-tertiary hover:text-primary hover:bg-black/[0.03] transition-all no-underline">
-              <span class="rail-dot w-[5px] h-[5px] rounded-full bg-border flex-shrink-0 transition-all"></span>
-              Compare
-            </a>
-          </nav>
-        </div>
-
-        <div class="h-px bg-border/20 mx-1"></div>
-
-        <!-- Block 2: Quick actions -->
-        <div>
-          <div class="text-[10px] font-bold uppercase tracking-widest text-tertiary/70 mb-2 px-1">Quick actions</div>
-          <div class="space-y-0.5">
-            <button id="railSearchBtn" class="w-full flex items-center gap-2 px-2 py-[5px] rounded-md text-[11.5px] text-tertiary hover:text-primary hover:bg-black/[0.03] transition-all cursor-pointer border-none bg-transparent text-left font-sans">
-              <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              Search networks
-            </button>
-            <a href="/compare" class="flex items-center gap-2 px-2 py-[5px] rounded-md text-[11.5px] text-tertiary hover:text-primary hover:bg-black/[0.03] transition-all no-underline">
-              <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-              Compare providers
-            </a>
-            <a href="/networks" class="flex items-center gap-2 px-2 py-[5px] rounded-md text-[11.5px] text-tertiary hover:text-primary hover:bg-black/[0.03] transition-all no-underline">
-              <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-              Browse all profiles
-            </a>
-            <a href="/news" class="flex items-center gap-2 px-2 py-[5px] rounded-md text-[11.5px] text-tertiary hover:text-primary hover:bg-black/[0.03] transition-all no-underline">
-              <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0a2 2 0 01-2-2v-9c0-1.1.9-2 2-2h2"/></svg>
-              View all news
-            </a>
-          </div>
-        </div>
-
-        <div class="h-px bg-border/20 mx-1"></div>
-
-        <!-- Block 3: For your role -->
-        <div>
-          <div class="text-[10px] font-bold uppercase tracking-widest text-tertiary/70 mb-2 px-1">For your role</div>
-          <div class="flex flex-wrap gap-1 px-0.5">
-            <a href="/networks?role=pe" class="inline-flex px-2 py-[3px] rounded-full text-[10.5px] font-medium bg-black/[0.03] text-tertiary hover:bg-accent/10 hover:text-accent transition-all no-underline">Private Equity</a>
-            <a href="/networks?role=consulting" class="inline-flex px-2 py-[3px] rounded-full text-[10.5px] font-medium bg-black/[0.03] text-tertiary hover:bg-accent/10 hover:text-accent transition-all no-underline">Consulting</a>
-            <a href="/networks?role=compliance" class="inline-flex px-2 py-[3px] rounded-full text-[10.5px] font-medium bg-black/[0.03] text-tertiary hover:bg-accent/10 hover:text-accent transition-all no-underline">Compliance</a>
-            <a href="/networks?role=strategy" class="inline-flex px-2 py-[3px] rounded-full text-[10.5px] font-medium bg-black/[0.03] text-tertiary hover:bg-accent/10 hover:text-accent transition-all no-underline">Strategy</a>
-            <a href="/networks?role=corpdev" class="inline-flex px-2 py-[3px] rounded-full text-[10.5px] font-medium bg-black/[0.03] text-tertiary hover:bg-accent/10 hover:text-accent transition-all no-underline">Corp Dev</a>
-          </div>
-        </div>
-
-        <div class="h-px bg-border/20 mx-1"></div>
-
-        <!-- Block 4: Why trust this -->
-        <div>
-          <div class="text-[10px] font-bold uppercase tracking-widest text-tertiary/70 mb-2 px-1">Why trust this</div>
-          <div class="space-y-1.5 px-1">
-            <div class="flex items-center gap-1.5">
-              <span class="w-[5px] h-[5px] rounded-full bg-accent-green flex-shrink-0"></span>
-              <span class="text-[10.5px] text-tertiary">{publishedNetworks.length}+ profiles tracked</span>
-            </div>
-            <div class="flex items-center gap-1.5">
-              <span class="w-[5px] h-[5px] rounded-full bg-accent-green flex-shrink-0"></span>
-              <span class="text-[10.5px] text-tertiary">Third-party news only</span>
-            </div>
-            <div class="flex items-center gap-1.5">
-              <span class="w-[5px] h-[5px] rounded-full bg-accent-green flex-shrink-0"></span>
-              <span class="text-[10.5px] text-tertiary">No paywalls or sign-ups</span>
-            </div>
-            <div class="flex items-center gap-1.5">
-              <span class="w-[5px] h-[5px] rounded-full bg-accent-green flex-shrink-0"></span>
-              <span class="text-[10.5px] text-tertiary">No vendor affiliations</span>
-            </div>
-            <div class="flex items-center gap-1.5">
-              <span class="w-[5px] h-[5px] rounded-full bg-accent flex-shrink-0"></span>
-              <span class="text-[10.5px] text-tertiary">Claim labels on every profile</span>
-            </div>
-            <a href="/sources" class="inline-flex items-center gap-1 text-[10.5px] text-accent hover:underline no-underline mt-0.5">
-              See methodology
-              <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </aside>
-  </div>
-
-  <!-- ================================================= -->
-  <!-- Mobile utility bar (shows after scrolling)         -->
-  <!-- ================================================= -->
-  <div id="mobileUtilBar" class="xl:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-xl border-t border-border/30 px-4 py-2 translate-y-full transition-transform duration-300 ease-out">
-    <div class="flex items-center justify-between max-w-site mx-auto">
-      <button id="mobileRailToggle" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[12px] font-medium text-secondary hover:text-primary transition-all cursor-pointer border-none bg-transparent">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
-        Explore
-      </button>
-      <div class="flex items-center gap-1.5">
-        <a href="#overview" class="mobile-dot w-[6px] h-[6px] rounded-full bg-border transition-colors no-underline" data-section="overview" aria-label="Overview"></a>
-        <a href="#news" class="mobile-dot w-[6px] h-[6px] rounded-full bg-border transition-colors no-underline" data-section="news" aria-label="News"></a>
-        <a href="#featured" class="mobile-dot w-[6px] h-[6px] rounded-full bg-border transition-colors no-underline" data-section="featured" aria-label="Featured"></a>
-        <a href="#compare" class="mobile-dot w-[6px] h-[6px] rounded-full bg-border transition-colors no-underline" data-section="compare" aria-label="Compare"></a>
-      </div>
-      <a href="/compare" class="px-3 py-1.5 bg-accent text-white text-[11px] font-semibold rounded-lg no-underline hover:bg-accent-hover transition-colors">Compare</a>
-    </div>
-  </div>
-
-  <!-- Mobile rail sheet -->
-  <div id="mobileRailBackdrop" class="xl:hidden fixed inset-0 bg-black/30 backdrop-blur-sm z-[85] hidden opacity-0 transition-opacity duration-300"></div>
-  <div id="mobileRailSheet" class="xl:hidden fixed bottom-0 left-0 right-0 z-[86] bg-white rounded-t-2xl shadow-2xl translate-y-full transition-transform duration-300 ease-out max-h-[70vh] overflow-y-auto sidebar-panel">
-    <div class="px-5 pt-3 pb-6">
-      <div class="w-10 h-1 rounded-full bg-border/60 mx-auto mb-4"></div>
-      <div class="text-[13px] font-bold text-primary mb-4">Explore this page</div>
-
-      <!-- On this page -->
-      <div class="mb-5">
-        <div class="text-[10px] font-bold uppercase tracking-widest text-tertiary mb-2">On this page</div>
-        <div class="space-y-0.5">
-          <a href="#overview" class="mobile-rail-link block px-3 py-2 rounded-lg text-[13px] text-secondary hover:text-primary hover:bg-bg-secondary transition-all no-underline">Overview</a>
-          <a href="#news" class="mobile-rail-link block px-3 py-2 rounded-lg text-[13px] text-secondary hover:text-primary hover:bg-bg-secondary transition-all no-underline">Latest News &amp; Top Networks</a>
-          <a href="#featured" class="mobile-rail-link block px-3 py-2 rounded-lg text-[13px] text-secondary hover:text-primary hover:bg-bg-secondary transition-all no-underline">Featured Profiles</a>
-          <a href="#compare" class="mobile-rail-link block px-3 py-2 rounded-lg text-[13px] text-secondary hover:text-primary hover:bg-bg-secondary transition-all no-underline">Compare</a>
-        </div>
+        {publishedNews.length === 0 && (
+          <p class="text-sm text-tertiary py-8 text-center">No news articles yet.</p>
+        )}
       </div>
 
-      <!-- Quick actions -->
-      <div class="mb-5">
-        <div class="text-[10px] font-bold uppercase tracking-widest text-tertiary mb-2">Quick actions</div>
-        <div class="grid grid-cols-2 gap-2">
-          <a href="/networks" class="flex items-center gap-2 px-3 py-2.5 rounded-lg bg-bg-secondary text-[12px] font-medium text-primary no-underline hover:bg-border/50 transition-colors">
-            <svg class="w-4 h-4 text-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-            All profiles
-          </a>
-          <a href="/compare" class="flex items-center gap-2 px-3 py-2.5 rounded-lg bg-bg-secondary text-[12px] font-medium text-primary no-underline hover:bg-border/50 transition-colors">
-            <svg class="w-4 h-4 text-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-            Compare
-          </a>
-          <a href="/news" class="flex items-center gap-2 px-3 py-2.5 rounded-lg bg-bg-secondary text-[12px] font-medium text-primary no-underline hover:bg-border/50 transition-colors">
-            <svg class="w-4 h-4 text-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0a2 2 0 01-2-2v-9c0-1.1.9-2 2-2h2"/></svg>
-            All news
-          </a>
-          <a href="/sources" class="flex items-center gap-2 px-3 py-2.5 rounded-lg bg-bg-secondary text-[12px] font-medium text-primary no-underline hover:bg-border/50 transition-colors">
-            <svg class="w-4 h-4 text-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            Methodology
-          </a>
+      <!-- Right: Top 10 quick access -->
+      <div class="w-full lg:w-[340px] lg:min-w-[340px]" id="networks">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-lg font-bold text-primary">Top 10 Networks</h2>
+          <a href="/networks" class="text-accent text-sm font-medium no-underline hover:underline">All {publishedNetworks.length} &rarr;</a>
         </div>
-      </div>
-
-      <!-- For your role -->
-      <div class="mb-5">
-        <div class="text-[10px] font-bold uppercase tracking-widest text-tertiary mb-2">For your role</div>
-        <div class="flex flex-wrap gap-2">
-          <a href="/networks?role=pe" class="inline-flex px-3 py-1.5 rounded-full text-[12px] font-medium bg-bg-secondary text-secondary hover:bg-accent/10 hover:text-accent transition-all no-underline">Private Equity</a>
-          <a href="/networks?role=consulting" class="inline-flex px-3 py-1.5 rounded-full text-[12px] font-medium bg-bg-secondary text-secondary hover:bg-accent/10 hover:text-accent transition-all no-underline">Consulting</a>
-          <a href="/networks?role=compliance" class="inline-flex px-3 py-1.5 rounded-full text-[12px] font-medium bg-bg-secondary text-secondary hover:bg-accent/10 hover:text-accent transition-all no-underline">Compliance</a>
-          <a href="/networks?role=strategy" class="inline-flex px-3 py-1.5 rounded-full text-[12px] font-medium bg-bg-secondary text-secondary hover:bg-accent/10 hover:text-accent transition-all no-underline">Strategy</a>
-          <a href="/networks?role=corpdev" class="inline-flex px-3 py-1.5 rounded-full text-[12px] font-medium bg-bg-secondary text-secondary hover:bg-accent/10 hover:text-accent transition-all no-underline">Corp Dev</a>
-        </div>
-      </div>
-
-      <!-- Trust signals -->
-      <div>
-        <div class="text-[10px] font-bold uppercase tracking-widest text-tertiary mb-2">Why trust this</div>
-        <div class="flex flex-wrap gap-x-4 gap-y-1.5 text-[11px] text-secondary">
-          <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-accent-green"></span>{publishedNetworks.length}+ profiles</span>
-          <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-accent-green"></span>No paywalls</span>
-          <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-accent-green"></span>No affiliations</span>
-          <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Claim labels</span>
+        <div class="bg-white rounded-[12px] shadow-card overflow-hidden">
+          {top10.map((network, i) => (
+            <a
+              href={`/networks/${network.data.slug}`}
+              class:list={[
+                'flex items-center gap-3 px-4 py-[11px] no-underline text-primary hover:bg-bg-secondary transition-colors',
+                i > 0 ? 'border-t border-bg-secondary' : '',
+              ]}
+            >
+              <div class="text-[11px] text-tertiary font-bold w-4 text-right flex-shrink-0">{i + 1}</div>
+              {network.data.logo ? (
+                <img src={network.data.logo} alt={network.data.name} width="32" height="32" class="w-8 h-8 rounded-lg object-contain flex-shrink-0" loading="lazy" />
+              ) : (
+                <div
+                  class="w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0"
+                  style={`background: linear-gradient(135deg, ${network.data.gradientFrom}, ${network.data.gradientTo})`}
+                >
+                  {network.data.shortName}
+                </div>
+              )}
+              <div class="min-w-0 flex-1">
+                <div class="text-[13px] font-medium truncate">{network.data.name.split(' (')[0]}</div>
+                <div class="text-[11px] text-tertiary truncate">{network.data.expertCount} experts &middot; {network.data.pricingModel}</div>
+              </div>
+              <svg class="w-3.5 h-3.5 flex-shrink-0 text-tertiary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          ))}
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- ================================================= -->
-  <!-- Utility Rail JS: section tracking + mobile sheet   -->
-  <!-- ================================================= -->
-  <script is:inline>
-  (function() {
-    var sections = ['overview', 'news', 'top-networks', 'featured', 'compare'];
-    var activeSection = '';
+  <!-- Featured Profiles -->
+  <section class="py-10 px-6 bg-bg-secondary">
+    <div class="max-w-site mx-auto">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-lg font-bold text-primary">Featured Profiles</h2>
+        <a href="/networks" class="text-accent text-sm font-medium no-underline hover:underline">View all &rarr;</a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {featuredNetworks.map(network => (
+          <NetworkCard {...network.data} variant="profile" />
+        ))}
+      </div>
+    </div>
+  </section>
 
-    function setActive(id) {
-      if (activeSection === id) return;
-      activeSection = id;
-
-      // Desktop rail
-      document.querySelectorAll('.rail-link').forEach(function(link) {
-        var s = link.getAttribute('data-section');
-        var dot = link.querySelector('.rail-dot');
-        if (s === id) {
-          link.classList.add('text-primary');
-          link.classList.remove('text-tertiary');
-          if (dot) { dot.classList.add('bg-accent'); dot.classList.remove('bg-border'); }
-        } else {
-          link.classList.remove('text-primary');
-          link.classList.add('text-tertiary');
-          if (dot) { dot.classList.remove('bg-accent'); dot.classList.add('bg-border'); }
-        }
-      });
-
-      // Mobile dots
-      document.querySelectorAll('.mobile-dot').forEach(function(d) {
-        if (d.getAttribute('data-section') === id) {
-          d.classList.add('bg-accent'); d.classList.remove('bg-border');
-        } else {
-          d.classList.remove('bg-accent'); d.classList.add('bg-border');
-        }
-      });
-    }
-
-    // IntersectionObserver for active section
-    var obs = new IntersectionObserver(function(entries) {
-      var best = null;
-      entries.forEach(function(e) {
-        if (e.isIntersecting && (!best || Math.abs(e.boundingClientRect.top) < Math.abs(best.boundingClientRect.top))) {
-          best = e;
-        }
-      });
-      if (best) setActive(best.target.id);
-    }, { threshold: [0, 0.15, 0.4], rootMargin: '-64px 0px -35% 0px' });
-
-    sections.forEach(function(id) {
-      var el = document.getElementById(id);
-      if (el) obs.observe(el);
-    });
-
-    setActive('overview');
-
-    // Mobile bar: show after scroll
-    var mobileBar = document.getElementById('mobileUtilBar');
-    var barVisible = false;
-    window.addEventListener('scroll', function() {
-      if (!mobileBar) return;
-      if (window.scrollY > 250 && !barVisible) {
-        mobileBar.classList.remove('translate-y-full');
-        barVisible = true;
-      } else if (window.scrollY <= 250 && barVisible) {
-        mobileBar.classList.add('translate-y-full');
-        barVisible = false;
-      }
-    }, { passive: true });
-
-    // Mobile sheet open/close
-    var toggle = document.getElementById('mobileRailToggle');
-    var backdrop = document.getElementById('mobileRailBackdrop');
-    var sheet = document.getElementById('mobileRailSheet');
-
-    function openSheet() {
-      if (!backdrop || !sheet) return;
-      backdrop.classList.remove('hidden');
-      requestAnimationFrame(function() {
-        backdrop.classList.add('opacity-100');
-        backdrop.classList.remove('opacity-0');
-        sheet.classList.remove('translate-y-full');
-      });
-      document.body.style.overflow = 'hidden';
-    }
-    function closeSheet() {
-      if (!backdrop || !sheet) return;
-      backdrop.classList.remove('opacity-100');
-      backdrop.classList.add('opacity-0');
-      sheet.classList.add('translate-y-full');
-      setTimeout(function() { backdrop.classList.add('hidden'); }, 300);
-      document.body.style.overflow = '';
-    }
-
-    if (toggle) toggle.addEventListener('click', openSheet);
-    if (backdrop) backdrop.addEventListener('click', closeSheet);
-    if (sheet) sheet.addEventListener('click', function(e) {
-      if (e.target instanceof HTMLAnchorElement || (e.target instanceof Element && e.target.closest('a'))) closeSheet();
-    });
-    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSheet(); });
-
-    // Rail search button triggers header search
-    var railSearch = document.getElementById('railSearchBtn');
-    if (railSearch) railSearch.addEventListener('click', function() {
-      var s = document.getElementById('searchTrigger');
-      if (s) s.click();
-    });
-  })();
-  </script>
+  <CompareTable />
 </BaseLayout>
