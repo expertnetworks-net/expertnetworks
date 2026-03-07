@@ -94,7 +94,7 @@ function badgeFor(field: string) {
               data-name={n.data.name.toLowerCase()}
             >
               {n.data.logo ? (
-                <img src={n.data.logo} alt={n.data.name} class:list={['w-8 h-8 rounded-lg object-contain flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']} />
+                <img src={n.data.logo} alt={n.data.name} class:list={['w-8 h-8 rounded-lg object-contain flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']} loading="lazy" />
               ) : (
                 <div
                   class:list={[
@@ -133,7 +133,7 @@ function badgeFor(field: string) {
               data-name={n.data.name.toLowerCase()}
             >
               {n.data.logo ? (
-                <img src={n.data.logo} alt={n.data.name} class:list={['w-8 h-8 rounded-lg object-contain flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']} />
+                <img src={n.data.logo} alt={n.data.name} class:list={['w-8 h-8 rounded-lg object-contain flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']} loading="lazy" />
               ) : (
                 <div
                   class:list={[
@@ -196,7 +196,7 @@ function badgeFor(field: string) {
               class:list={['sidebar-item flex items-center gap-3 px-3 py-[10px] no-underline transition-colors duration-150', n.data.slug === d.slug ? 'bg-accent text-white' : 'text-primary hover:bg-black/[0.04]', i > 0 ? 'border-t border-black/[0.06]' : '']}
               data-name={n.data.name.toLowerCase()}>
               {n.data.logo ? (
-                <img src={n.data.logo} alt={n.data.name} class:list={['w-8 h-8 rounded-lg object-contain flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']} />
+                <img src={n.data.logo} alt={n.data.name} class:list={['w-8 h-8 rounded-lg object-contain flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']} loading="lazy" />
               ) : (
                 <div class:list={['w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']}
                   style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}>{n.data.shortName}</div>
@@ -217,7 +217,7 @@ function badgeFor(field: string) {
               class:list={['sidebar-item flex items-center gap-3 px-3 py-[10px] no-underline transition-colors duration-150', n.data.slug === d.slug ? 'bg-accent text-white' : 'text-primary hover:bg-black/[0.04]', i > 0 ? 'border-t border-black/[0.06]' : '']}
               data-name={n.data.name.toLowerCase()}>
               {n.data.logo ? (
-                <img src={n.data.logo} alt={n.data.name} class:list={['w-8 h-8 rounded-lg object-contain flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']} />
+                <img src={n.data.logo} alt={n.data.name} class:list={['w-8 h-8 rounded-lg object-contain flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']} loading="lazy" />
               ) : (
                 <div class:list={['w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']}
                   style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}>{n.data.shortName}</div>
@@ -761,10 +761,19 @@ function badgeFor(field: string) {
     backdrop?.addEventListener('click', closeMobile);
     closeBtn?.addEventListener('click', closeMobile);
 
+    // Close mobile sidebar when clicking a network link inside it
+    mobileSidebar?.addEventListener('click', (e) => {
+      const target = e.target;
+      if (target instanceof Element) {
+        const link = target.closest('a');
+        if (link?.href) closeMobile();
+      }
+    });
+
     // Scroll active sidebar item into view on desktop
     const activeSidebarItem = document.querySelector('#sidebar .bg-accent');
     if (activeSidebarItem) {
-      activeSidebarItem.scrollIntoView({ block: 'center', behavior: 'instant' });
+      activeSidebarItem.scrollIntoView({ block: 'center', behavior: 'auto' });
     }
   </script>
 </BaseLayout>

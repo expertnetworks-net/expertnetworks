@@ -97,7 +97,7 @@ const relatedSlugs = [...new Set(articles.flatMap(a => a.data.relatedNetworks))]
               data-date={article.data.date}
             >
               {logoSrc ? (
-                <img src={logoSrc} alt={networkMap[primarySlug] || ''} class="w-10 h-10 rounded-lg flex-shrink-0 mt-0.5 object-cover" />
+                <img src={logoSrc} alt={networkMap[primarySlug] || ''} class="w-10 h-10 rounded-lg flex-shrink-0 mt-0.5 object-cover" loading="lazy" />
               ) : (
                 <div class="w-10 h-10 rounded-lg flex-shrink-0 mt-0.5 flex items-center justify-center" style={`background: ${article.data.gradientFrom || '#1a365d'}`}>
                   <div class="w-2.5 h-2.5 rounded-full" style={`background: ${article.data.categoryColor || '#0071E3'}`}></div>
@@ -179,8 +179,8 @@ const relatedSlugs = [...new Set(articles.flatMap(a => a.data.relatedNetworks))]
     // Re-append hidden ones too
     itemsArr.filter(i => i.style.display === 'none').forEach(i => articleList?.appendChild(i));
 
-    articleCount.textContent = `${visible} article${visible !== 1 ? 's' : ''}`;
-    noResults.classList.toggle('hidden', visible > 0);
+    if (articleCount) articleCount.textContent = `${visible} article${visible !== 1 ? 's' : ''}`;
+    noResults?.classList.toggle('hidden', visible > 0);
     clearBtn?.classList.toggle('hidden', !cat && !net);
   }
 

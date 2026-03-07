@@ -238,7 +238,8 @@ const top10 = [...publishedNetworks]
 
   // Close search overlay when clicking a result link (prevents stuck overflow:hidden)
   searchList?.addEventListener('click', (e) => {
-    if (e.target instanceof HTMLAnchorElement || e.target.closest('a')) {
+    const target = e.target;
+    if (target instanceof Element && (target instanceof HTMLAnchorElement || target.closest('a'))) {
       closeSearch();
     }
   });

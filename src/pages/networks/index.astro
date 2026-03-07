@@ -129,7 +129,7 @@ const allHqs = [...new Set(networks.map(n => getRegion(n.data.headquarters || ''
 
               <!-- Logo -->
               {n.logo ? (
-                <img src={n.logo} alt={n.name} class="w-10 h-10 rounded-xl object-contain flex-shrink-0" />
+                <img src={n.logo} alt={n.name} class="w-10 h-10 rounded-xl object-contain flex-shrink-0" loading="lazy" />
               ) : (
                 <div
                   class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
@@ -232,7 +232,7 @@ const allHqs = [...new Set(networks.map(n => getRegion(n.data.headquarters || ''
     visibleRows.forEach(row => networkList?.appendChild(row));
     rows.filter(r => r.style.display === 'none').forEach(r => networkList?.appendChild(r));
 
-    resultCount.textContent = `${visible} network${visible !== 1 ? 's' : ''}`;
+    if (resultCount) resultCount.textContent = `${visible} network${visible !== 1 ? 's' : ''}`;
     noResults?.classList.toggle('hidden', visible > 0);
     clearAll?.classList.toggle('hidden', !search && !type && !pricing && !region);
   }
