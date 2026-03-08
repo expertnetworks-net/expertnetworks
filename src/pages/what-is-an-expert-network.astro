@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ParticleHero from '../components/ParticleHero.astro';
 import { getCollection } from 'astro:content';
 
 const allNetworks = await getCollection('networks');
@@ -67,42 +68,40 @@ const topProviders = published.slice(0, 6);
   }}
 >
 
-  <!-- Hero -->
-  <section class="pt-32 pb-12 px-6 bg-gradient-to-b from-bg-secondary to-bg-primary">
+  <!-- Hero + Quick Cards with Particle Effect -->
+  <ParticleHero minHeight="520px">
     <div class="max-w-4xl mx-auto">
-      <h1 class="text-4xl md:text-5xl font-extrabold text-primary mb-5 leading-tight">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-5 leading-tight">
         What Is an Expert Network?
       </h1>
-      <p class="text-lg text-secondary max-w-3xl leading-relaxed mb-4">
+      <p class="text-lg text-white/70 max-w-3xl leading-relaxed mb-4">
         An expert network is a firm that connects investors, consultants, and corporate teams with industry experts for paid calls, surveys, and research. This guide explains how expert networks work, what they cost, how compliance works, and how to choose the right provider.
       </p>
-      <div class="bg-white border border-border/40 rounded-lg px-5 py-3 inline-block">
-        <p class="text-sm text-secondary"><strong class="text-primary">In one sentence:</strong> an expert network helps you speak with people who have direct, real-world experience in a market, company, product, or function.</p>
+      <div class="bg-white/10 border border-white/20 rounded-lg px-5 py-3 inline-block backdrop-blur-sm">
+        <p class="text-sm text-white/80"><strong class="text-white">In one sentence:</strong> an expert network helps you speak with people who have direct, real-world experience in a market, company, product, or function.</p>
       </div>
-    </div>
-  </section>
 
-  <!-- Quick answer cards -->
-  <section class="py-8 px-6 border-b border-border/40">
-    <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="bg-bg-secondary rounded-card p-4">
-        <div class="text-[11px] font-semibold uppercase tracking-wider text-tertiary mb-1.5">What they do</div>
-        <p class="text-sm text-primary font-medium leading-snug">Connect clients with industry experts for paid consultations and research.</p>
-      </div>
-      <div class="bg-bg-secondary rounded-card p-4">
-        <div class="text-[11px] font-semibold uppercase tracking-wider text-tertiary mb-1.5">Who uses them</div>
-        <p class="text-sm text-primary font-medium leading-snug">Private equity, hedge funds, consultancies, corporates, banks, and law firms.</p>
-      </div>
-      <div class="bg-bg-secondary rounded-card p-4">
-        <div class="text-[11px] font-semibold uppercase tracking-wider text-tertiary mb-1.5">Main formats</div>
-        <p class="text-sm text-primary font-medium leading-snug">Calls, surveys, transcript libraries, workshops, and AI research tools.</p>
-      </div>
-      <div class="bg-bg-secondary rounded-card p-4">
-        <div class="text-[11px] font-semibold uppercase tracking-wider text-tertiary mb-1.5">Main risk area</div>
-        <p class="text-sm text-primary font-medium leading-snug">Compliance: experts cannot share material non-public information.</p>
+      <!-- Quick answer cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
+        <div class="bg-white/[0.08] backdrop-blur-sm rounded-card p-4 border border-white/10">
+          <div class="text-[11px] font-semibold uppercase tracking-wider text-white/50 mb-1.5">What they do</div>
+          <p class="text-sm text-white font-medium leading-snug">Connect clients with industry experts for paid consultations and research.</p>
+        </div>
+        <div class="bg-white/[0.08] backdrop-blur-sm rounded-card p-4 border border-white/10">
+          <div class="text-[11px] font-semibold uppercase tracking-wider text-white/50 mb-1.5">Who uses them</div>
+          <p class="text-sm text-white font-medium leading-snug">Private equity, hedge funds, consultancies, corporates, banks, and law firms.</p>
+        </div>
+        <div class="bg-white/[0.08] backdrop-blur-sm rounded-card p-4 border border-white/10">
+          <div class="text-[11px] font-semibold uppercase tracking-wider text-white/50 mb-1.5">Main formats</div>
+          <p class="text-sm text-white font-medium leading-snug">Calls, surveys, transcript libraries, workshops, and AI research tools.</p>
+        </div>
+        <div class="bg-white/[0.08] backdrop-blur-sm rounded-card p-4 border border-white/10">
+          <div class="text-[11px] font-semibold uppercase tracking-wider text-white/50 mb-1.5">Main risk area</div>
+          <p class="text-sm text-white font-medium leading-snug">Compliance: experts cannot share material non-public information.</p>
+        </div>
       </div>
     </div>
-  </section>
+  </ParticleHero>
 
   <!-- Sticky sub-nav -->
   <nav class="sticky top-[52px] z-40 bg-bg-primary/90 backdrop-blur-lg border-b border-border/40">
