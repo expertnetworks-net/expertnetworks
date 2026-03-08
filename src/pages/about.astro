@@ -28,43 +28,14 @@ const publishedCount = allNetworks.filter(n => n.data.published).length;
     <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 60% 40%, rgba(0,113,227,0.06) 0%, transparent 60%);"></div>
     <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 30% 70%, rgba(100,80,160,0.04) 0%, transparent 50%);"></div>
 
-    <!-- Asset 1: Hero SVG network visualization -->
+    <!-- Asset 1: Hero artwork -->
     <div class="absolute right-0 top-0 w-full h-full pointer-events-none overflow-hidden" aria-hidden="true">
-      <svg class="about-hero-svg absolute right-[-5%] top-[10%] w-[55%] h-[80%] opacity-[0.12] md:opacity-[0.16]" viewBox="0 0 600 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Connection lines -->
-        <line x1="300" y1="250" x2="150" y2="120" stroke="rgba(0,113,227,0.4)" stroke-width="0.8"/>
-        <line x1="300" y1="250" x2="460" y2="140" stroke="rgba(0,113,227,0.3)" stroke-width="0.8"/>
-        <line x1="300" y1="250" x2="120" y2="350" stroke="rgba(0,113,227,0.35)" stroke-width="0.8"/>
-        <line x1="300" y1="250" x2="480" y2="340" stroke="rgba(0,113,227,0.3)" stroke-width="0.8"/>
-        <line x1="300" y1="250" x2="200" y2="420" stroke="rgba(0,113,227,0.25)" stroke-width="0.8"/>
-        <line x1="300" y1="250" x2="420" y2="430" stroke="rgba(0,113,227,0.25)" stroke-width="0.8"/>
-        <line x1="150" y1="120" x2="260" y2="80" stroke="rgba(120,140,170,0.2)" stroke-width="0.5"/>
-        <line x1="460" y1="140" x2="520" y2="220" stroke="rgba(120,140,170,0.2)" stroke-width="0.5"/>
-        <line x1="120" y1="350" x2="80" y2="280" stroke="rgba(120,140,170,0.2)" stroke-width="0.5"/>
-        <line x1="480" y1="340" x2="540" y2="280" stroke="rgba(120,140,170,0.2)" stroke-width="0.5"/>
-        <line x1="150" y1="120" x2="120" y2="350" stroke="rgba(120,140,170,0.12)" stroke-width="0.5"/>
-        <line x1="460" y1="140" x2="480" y2="340" stroke="rgba(120,140,170,0.12)" stroke-width="0.5"/>
-        <line x1="200" y1="420" x2="420" y2="430" stroke="rgba(120,140,170,0.1)" stroke-width="0.5"/>
-        <line x1="260" y1="80" x2="460" y2="140" stroke="rgba(120,140,170,0.15)" stroke-width="0.5"/>
-        <!-- Outer nodes -->
-        <circle cx="150" cy="120" r="4" fill="rgba(0,113,227,0.5)"/>
-        <circle cx="460" cy="140" r="3.5" fill="rgba(0,113,227,0.4)"/>
-        <circle cx="120" cy="350" r="3.5" fill="rgba(0,113,227,0.4)"/>
-        <circle cx="480" cy="340" r="3" fill="rgba(0,113,227,0.35)"/>
-        <circle cx="200" cy="420" r="2.5" fill="rgba(100,120,160,0.35)"/>
-        <circle cx="420" cy="430" r="2.5" fill="rgba(100,120,160,0.35)"/>
-        <circle cx="260" cy="80" r="2" fill="rgba(100,120,160,0.3)"/>
-        <circle cx="520" cy="220" r="2" fill="rgba(100,120,160,0.25)"/>
-        <circle cx="80" cy="280" r="2" fill="rgba(100,120,160,0.25)"/>
-        <circle cx="540" cy="280" r="2" fill="rgba(100,120,160,0.25)"/>
-        <!-- Center node — glow -->
-        <circle cx="300" cy="250" r="20" fill="rgba(0,113,227,0.06)"/>
-        <circle cx="300" cy="250" r="12" fill="rgba(0,113,227,0.1)"/>
-        <circle cx="300" cy="250" r="5" fill="rgba(0,113,227,0.6)"/>
-        <!-- Pulse rings (animated via CSS) -->
-        <circle cx="300" cy="250" r="30" stroke="rgba(0,113,227,0.15)" stroke-width="0.5" fill="none" class="about-pulse-ring about-pulse-1"/>
-        <circle cx="300" cy="250" r="50" stroke="rgba(0,113,227,0.08)" stroke-width="0.5" fill="none" class="about-pulse-ring about-pulse-2"/>
-      </svg>
+      <img
+        src="/images/about/hero-artwork.svg"
+        alt=""
+        class="about-hero-img absolute right-[-8%] md:right-[-2%] top-[50%] -translate-y-1/2 w-[75%] md:w-[58%] lg:w-[52%] max-w-none opacity-40 md:opacity-60 lg:opacity-70 object-contain"
+        loading="eager"
+      />
     </div>
 
     <div class="relative z-10 pt-[100px] pb-16 md:pt-[120px] md:pb-20 lg:pt-[140px] lg:pb-24 px-6">
@@ -125,81 +96,17 @@ const publishedCount = allNetworks.filter(n => n.data.published).length;
         </div>
 
         <!-- Right: Asset 2 — Fragmented-to-structured visual -->
-        <div class="fade-in stagger-2" aria-hidden="true">
-          <div class="relative">
-            <!-- Fragmented state (top) -->
-            <div class="relative mb-4">
-              <div class="text-[10px] font-semibold tracking-[0.15em] uppercase text-[#4a4a52] mb-3">Before: Scattered information</div>
-              <div class="relative h-[120px] md:h-[140px] rounded-xl border border-[rgba(255,255,255,0.04)] bg-[rgba(255,255,255,0.015)] overflow-hidden">
-                <!-- Scattered fragments -->
-                <div class="absolute top-3 left-4 w-16 h-5 rounded bg-[rgba(255,100,100,0.08)] border border-[rgba(255,100,100,0.1)]"></div>
-                <div class="absolute top-8 left-28 w-20 h-4 rounded bg-[rgba(255,180,60,0.08)] border border-[rgba(255,180,60,0.1)]"></div>
-                <div class="absolute top-5 right-8 w-14 h-6 rounded bg-[rgba(100,140,255,0.08)] border border-[rgba(100,140,255,0.1)]"></div>
-                <div class="absolute bottom-8 left-8 w-12 h-4 rounded bg-[rgba(200,100,255,0.08)] border border-[rgba(200,100,255,0.1)]"></div>
-                <div class="absolute bottom-5 left-32 w-18 h-5 rounded bg-[rgba(255,100,100,0.06)] border border-[rgba(255,100,100,0.08)]"></div>
-                <div class="absolute bottom-10 right-12 w-16 h-4 rounded bg-[rgba(255,180,60,0.06)] border border-[rgba(255,180,60,0.08)]"></div>
-                <div class="absolute top-16 left-16 w-10 h-3 rounded bg-[rgba(100,200,100,0.06)] border border-[rgba(100,200,100,0.08)]"></div>
-                <div class="absolute top-14 right-20 w-22 h-4 rounded bg-[rgba(180,180,180,0.05)] border border-[rgba(180,180,180,0.08)]"></div>
-                <!-- Disconnection lines -->
-                <svg class="absolute inset-0 w-full h-full" viewBox="0 0 400 140">
-                  <line x1="60" y1="30" x2="120" y2="55" stroke="rgba(255,255,255,0.03)" stroke-width="0.5" stroke-dasharray="3,4"/>
-                  <line x1="200" y1="40" x2="300" y2="70" stroke="rgba(255,255,255,0.03)" stroke-width="0.5" stroke-dasharray="3,4"/>
-                  <line x1="80" y1="100" x2="180" y2="80" stroke="rgba(255,255,255,0.03)" stroke-width="0.5" stroke-dasharray="3,4"/>
-                </svg>
-              </div>
-            </div>
-
-            <!-- Transition arrow -->
-            <div class="flex items-center justify-center my-3">
-              <svg class="w-5 h-5 text-[#3a6a9e]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-            </div>
-
-            <!-- Structured state (bottom) -->
-            <div>
-              <div class="text-[10px] font-semibold tracking-[0.15em] uppercase text-[#5a7a9e] mb-3">After: Structured clarity</div>
-              <div class="relative h-[120px] md:h-[140px] rounded-xl border border-[rgba(0,113,227,0.12)] bg-[rgba(0,113,227,0.03)] overflow-hidden">
-                <!-- Structured grid -->
-                <div class="absolute inset-3 grid grid-cols-4 gap-2">
-                  <div class="rounded-md bg-[rgba(0,113,227,0.08)] border border-[rgba(0,113,227,0.12)] flex items-center justify-center">
-                    <div class="w-3 h-3 rounded-full bg-[rgba(0,113,227,0.25)]"></div>
-                  </div>
-                  <div class="rounded-md bg-[rgba(0,113,227,0.06)] border border-[rgba(0,113,227,0.1)] flex items-center justify-center">
-                    <div class="w-3 h-3 rounded-full bg-[rgba(0,113,227,0.2)]"></div>
-                  </div>
-                  <div class="rounded-md bg-[rgba(0,113,227,0.08)] border border-[rgba(0,113,227,0.12)] flex items-center justify-center">
-                    <div class="w-3 h-3 rounded-full bg-[rgba(0,113,227,0.25)]"></div>
-                  </div>
-                  <div class="rounded-md bg-[rgba(0,113,227,0.06)] border border-[rgba(0,113,227,0.1)] flex items-center justify-center">
-                    <div class="w-3 h-3 rounded-full bg-[rgba(0,113,227,0.2)]"></div>
-                  </div>
-                  <div class="rounded-md bg-[rgba(0,113,227,0.06)] border border-[rgba(0,113,227,0.1)] flex items-center justify-center">
-                    <div class="w-3 h-3 rounded-full bg-[rgba(0,113,227,0.2)]"></div>
-                  </div>
-                  <div class="rounded-md bg-[rgba(0,113,227,0.08)] border border-[rgba(0,113,227,0.12)] flex items-center justify-center">
-                    <div class="w-3 h-3 rounded-full bg-[rgba(0,113,227,0.25)]"></div>
-                  </div>
-                  <div class="rounded-md bg-[rgba(0,113,227,0.06)] border border-[rgba(0,113,227,0.1)] flex items-center justify-center">
-                    <div class="w-3 h-3 rounded-full bg-[rgba(0,113,227,0.2)]"></div>
-                  </div>
-                  <div class="rounded-md bg-[rgba(0,113,227,0.08)] border border-[rgba(0,113,227,0.12)] flex items-center justify-center">
-                    <div class="w-3 h-3 rounded-full bg-[rgba(0,113,227,0.25)]"></div>
-                  </div>
-                </div>
-                <!-- Connection lines (structured) -->
-                <svg class="absolute inset-0 w-full h-full opacity-40" viewBox="0 0 400 140">
-                  <line x1="50" y1="35" x2="150" y2="35" stroke="rgba(0,113,227,0.2)" stroke-width="0.5"/>
-                  <line x1="150" y1="35" x2="250" y2="35" stroke="rgba(0,113,227,0.2)" stroke-width="0.5"/>
-                  <line x1="250" y1="35" x2="350" y2="35" stroke="rgba(0,113,227,0.2)" stroke-width="0.5"/>
-                  <line x1="50" y1="105" x2="150" y2="105" stroke="rgba(0,113,227,0.2)" stroke-width="0.5"/>
-                  <line x1="150" y1="105" x2="250" y2="105" stroke="rgba(0,113,227,0.2)" stroke-width="0.5"/>
-                  <line x1="250" y1="105" x2="350" y2="105" stroke="rgba(0,113,227,0.2)" stroke-width="0.5"/>
-                  <line x1="50" y1="35" x2="50" y2="105" stroke="rgba(0,113,227,0.15)" stroke-width="0.5"/>
-                  <line x1="150" y1="35" x2="150" y2="105" stroke="rgba(0,113,227,0.15)" stroke-width="0.5"/>
-                  <line x1="250" y1="35" x2="250" y2="105" stroke="rgba(0,113,227,0.15)" stroke-width="0.5"/>
-                  <line x1="350" y1="35" x2="350" y2="105" stroke="rgba(0,113,227,0.15)" stroke-width="0.5"/>
-                </svg>
-              </div>
-            </div>
+        <div class="fade-in stagger-2">
+          <div class="relative rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.06)]">
+            <img
+              src="/images/about/problem-clarity.png"
+              alt="Scattered documents and fragmented information flowing into a structured, interconnected network — representing the transformation from industry opacity to organized clarity."
+              class="w-full h-auto object-cover"
+              loading="lazy"
+              onerror="this.src='/images/about/hero-artwork.svg'"
+            />
+            <!-- Subtle overlay to blend with dark background -->
+            <div class="absolute inset-0 pointer-events-none bg-gradient-to-t from-[#0d0d10] via-transparent to-transparent opacity-30"></div>
           </div>
         </div>
       </div>
@@ -601,30 +508,14 @@ const publishedCount = allNetworks.filter(n => n.data.published).length;
   .about-delay-3 { transition-delay: 0.45s; }
   .about-delay-4 { transition-delay: 0.65s; }
 
-  /* ─── Pulse rings on hero SVG ─── */
-  .about-pulse-ring {
-    transform-origin: center;
+  /* ─── Subtle slow drift for hero image ─── */
+  .about-hero-img {
+    animation: aboutImgDrift 25s ease-in-out infinite;
   }
-  .about-pulse-1 {
-    animation: aboutPulse 4s ease-in-out infinite;
-  }
-  .about-pulse-2 {
-    animation: aboutPulse 4s ease-in-out 2s infinite;
-  }
-  @keyframes aboutPulse {
-    0%, 100% { opacity: 0.15; transform: scale(1); }
-    50% { opacity: 0.05; transform: scale(1.3); }
-  }
-
-  /* ─── Slow float for hero SVG ─── */
-  .about-hero-svg {
-    animation: aboutFloat 20s ease-in-out infinite;
-  }
-  @keyframes aboutFloat {
-    0%, 100% { transform: translate(0, 0); }
-    25% { transform: translate(-8px, 6px); }
-    50% { transform: translate(4px, -8px); }
-    75% { transform: translate(-4px, 4px); }
+  @keyframes aboutImgDrift {
+    0%, 100% { transform: translateY(-50%) translate(0, 0); }
+    33% { transform: translateY(-50%) translate(-6px, 4px); }
+    66% { transform: translateY(-50%) translate(4px, -4px); }
   }
 
   /* ─── Reduced motion ─── */
@@ -634,9 +525,9 @@ const publishedCount = allNetworks.filter(n => n.data.published).length;
       transform: none;
       transition: none;
     }
-    .about-pulse-ring,
-    .about-hero-svg {
+    .about-hero-img {
       animation: none;
+      transform: translateY(-50%);
     }
   }
 </style>
