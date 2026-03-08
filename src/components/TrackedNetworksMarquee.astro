@@ -27,12 +27,12 @@ const descriptors: Record<string, string> = {
 };
 ---
 
-<section class="py-4 sm:py-5 px-4 sm:px-6 border-b border-border/40 overflow-hidden" id="marqueeSection">
+<section class="py-4 sm:py-5 px-4 sm:px-6 border-b border-border/40" id="marqueeSection">
   <div class="max-w-site mx-auto">
     <div class="text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-tertiary mb-2.5 sm:mb-3">Networks Covered</div>
 
     <!-- Desktop: JS-powered infinite marquee -->
-    <div class="marquee-wrap relative hidden sm:block" id="marqueeWrap" aria-label="Expert networks covered">
+    <div class="marquee-wrap relative hidden sm:block overflow-hidden" id="marqueeWrap" aria-label="Expert networks covered">
       <div class="marquee-track flex items-center" id="marqueeTrack" style="gap: 20px;">
         {tracked.map((n) => {
           const displayName = n.data.name.split(' (')[0].split(' / ')[0];
@@ -67,23 +67,6 @@ const descriptors: Record<string, string> = {
           );
         })}
       </div>
-
-      <!-- Hover card (positioned via JS) -->
-      <div id="marqueeHoverCard" class="marquee-hover-card" aria-hidden="true">
-        <div class="flex items-center gap-2.5 mb-2">
-          <img id="hcLogo" src="" alt="" width="28" height="28" class="w-7 h-7 rounded-lg object-cover flex-shrink-0" />
-          <div>
-            <div id="hcName" class="text-[13px] font-bold text-primary leading-tight"></div>
-            <div id="hcBadge" class="text-[10px] font-semibold uppercase tracking-wider text-accent mt-0.5"></div>
-          </div>
-        </div>
-        <p id="hcDesc" class="text-[11px] text-secondary leading-relaxed mb-1.5"></p>
-        <p id="hcBestFor" class="text-[11px] text-tertiary mb-3"><span class="font-medium text-secondary">Best for:</span> <span id="hcBestForText"></span></p>
-        <div class="flex gap-3 pt-2 border-t border-border/30">
-          <a id="hcProfile" href="#" class="text-[11px] font-semibold text-accent no-underline hover:underline">View profile</a>
-          <a id="hcCompare" href="#" class="text-[11px] font-semibold text-secondary no-underline hover:text-accent hover:underline">Add to compare</a>
-        </div>
-      </div>
     </div>
 
     <!-- Mobile: horizontally scrollable row -->
@@ -112,6 +95,23 @@ const descriptors: Record<string, string> = {
   </div>
 </section>
 
+<!-- Hover card: lives outside section to avoid overflow/mask clipping -->
+<div id="marqueeHoverCard" class="marquee-hover-card" aria-hidden="true">
+  <div class="flex items-center gap-2.5 mb-2">
+    <img id="hcLogo" src="" alt="" width="28" height="28" class="w-7 h-7 rounded-lg object-cover flex-shrink-0" />
+    <div>
+      <div id="hcName" class="text-[13px] font-bold text-primary leading-tight"></div>
+      <div id="hcBadge" class="text-[10px] font-semibold uppercase tracking-wider text-accent mt-0.5"></div>
+    </div>
+  </div>
+  <p id="hcDesc" class="text-[11px] text-secondary leading-relaxed mb-1.5"></p>
+  <p id="hcBestFor" class="text-[11px] text-tertiary mb-3"><span class="font-medium text-secondary">Best for:</span> <span id="hcBestForText"></span></p>
+  <div class="flex gap-3 pt-2 border-t border-border/30">
+    <a id="hcProfile" href="#" class="text-[11px] font-semibold text-accent no-underline hover:underline">View profile</a>
+    <a id="hcCompare" href="#" class="text-[11px] font-semibold text-secondary no-underline hover:text-accent hover:underline">Add to compare</a>
+  </div>
+</div>
+
 <style>
   .marquee-wrap {
     mask-image: linear-gradient(to right, transparent, black 48px, black calc(100% - 48px), transparent);
@@ -123,9 +123,7 @@ const descriptors: Record<string, string> = {
   }
 
   .marquee-hover-card {
-    position: absolute;
-    bottom: calc(100% + 10px);
-    left: 0;
+    position: fixed;
     width: 260px;
     background: white;
     border: 1px solid rgba(210, 210, 215, 0.5);
@@ -135,7 +133,9 @@ const descriptors: Record<string, string> = {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.15s ease;
-    z-index: 20;
+    z-index: 60;
+    top: 0;
+    left: 0;
   }
 
   .marquee-hover-card.is-visible {
@@ -212,7 +212,7 @@ const descriptors: Record<string, string> = {
   var setWidth = getSetWidth();
   var lastTime = 0;
 
-  // ── Hover card ──
+  // ── Hover card (fixed-position, lives outside section) ──
   var hoverCard = document.getElementById('marqueeHoverCard');
   var hcLogo = document.getElementById('hcLogo');
   var hcName = document.getElementById('hcName');
@@ -226,7 +226,7 @@ const descriptors: Record<string, string> = {
   var hoverTimeout = null;
 
   function showHoverCard(item) {
-    if (!hoverCard) return;
+    if (!hoverCard || !hcLogo || !hcName) return;
     var slug = item.getAttribute('data-slug');
     var name = item.getAttribute('data-name');
     var desc = item.getAttribute('data-desc');
@@ -237,25 +237,37 @@ const descriptors: Record<string, string> = {
     hcLogo.src = logo || '';
     hcLogo.alt = name || '';
     hcName.textContent = name || '';
-    hcBadge.textContent = badge || '';
-    hcBadge.style.display = badge ? '' : 'none';
-    hcDesc.textContent = desc || '';
-    if (bestFor) {
+    if (hcBadge) {
+      hcBadge.textContent = badge || '';
+      hcBadge.style.display = badge ? '' : 'none';
+    }
+    if (hcDesc) hcDesc.textContent = desc || '';
+    if (bestFor && hcBestFor && hcBestForText) {
       hcBestFor.style.display = '';
       hcBestForText.textContent = bestFor;
-    } else {
+    } else if (hcBestFor) {
       hcBestFor.style.display = 'none';
     }
-    hcProfile.href = '/networks/' + slug;
-    hcCompare.href = '/compare?add=' + slug;
+    if (hcProfile) hcProfile.href = '/networks/' + slug;
+    if (hcCompare) hcCompare.href = '/compare?add=' + slug;
 
-    // Position card above the item
+    // Position card above the item using viewport coords (fixed positioning)
     var itemRect = item.getBoundingClientRect();
-    var wrapRect = wrap.getBoundingClientRect();
-    var cardLeft = itemRect.left - wrapRect.left + (itemRect.width / 2) - 130;
-    // Clamp to wrap bounds
-    cardLeft = Math.max(8, Math.min(cardLeft, wrapRect.width - 268));
+    var cardWidth = 260;
+    var cardLeft = itemRect.left + (itemRect.width / 2) - (cardWidth / 2);
+
+    // Clamp to viewport
+    cardLeft = Math.max(8, Math.min(cardLeft, window.innerWidth - cardWidth - 8));
+
+    // Place above the item; if not enough room above, place below
+    var cardHeight = hoverCard.offsetHeight || 160;
+    var cardTop = itemRect.top - cardHeight - 8;
+    if (cardTop < 8) {
+      cardTop = itemRect.bottom + 8;
+    }
+
     hoverCard.style.left = cardLeft + 'px';
+    hoverCard.style.top = cardTop + 'px';
     hoverCard.classList.add('is-visible');
   }
 
@@ -267,27 +279,48 @@ const descriptors: Record<string, string> = {
   // Event delegation for hover on marquee items
   track.addEventListener('mouseover', function(e) {
     var item = e.target.closest('.marquee-item');
-    if (!item || item === hoveredItem) return;
+    if (!item) return;
+    if (item === hoveredItem) return;
     clearTimeout(hoverTimeout);
     hoveredItem = item;
     hoverTimeout = setTimeout(function() {
-      showHoverCard(item);
-    }, 200);
+      if (hoveredItem === item) {
+        showHoverCard(item);
+      }
+    }, 250);
   }, { passive: true });
 
   track.addEventListener('mouseout', function(e) {
     var related = e.relatedTarget;
-    if (related && (related.closest('.marquee-item') || related.closest('#marqueeHoverCard'))) return;
+    // Stay open if moving to another marquee item or to the hover card
+    if (related) {
+      if (related.closest && related.closest('.marquee-item')) return;
+      if (related.closest && related.closest('#marqueeHoverCard')) return;
+    }
     clearTimeout(hoverTimeout);
     hideHoverCard();
   }, { passive: true });
 
-  // Keep card visible when hovering the card itself
+  // Keep card visible when hovering the card itself, hide on leave
   if (hoverCard) {
-    hoverCard.addEventListener('mouseleave', function() {
+    hoverCard.addEventListener('mouseenter', function() {
+      // Card stays visible — do nothing, just prevent hide
+      clearTimeout(hoverTimeout);
+    }, { passive: true });
+
+    hoverCard.addEventListener('mouseleave', function(e) {
+      var related = e.relatedTarget;
+      if (related && related.closest && related.closest('.marquee-item')) return;
       hideHoverCard();
     }, { passive: true });
   }
+
+  // Hide card on scroll (position would be stale)
+  window.addEventListener('scroll', function() {
+    if (hoverCard && hoverCard.classList.contains('is-visible')) {
+      hideHoverCard();
+    }
+  }, { passive: true });
 
   // ── Hover: smooth deceleration/acceleration ──
   wrap.addEventListener('mouseenter', function() {
@@ -299,7 +332,12 @@ const descriptors: Record<string, string> = {
     isHovered = false;
     targetSpeed = SPEED;
     clearTimeout(hoverTimeout);
-    hideHoverCard();
+    // Small delay before hiding card on wrap leave, in case mouse moves to card
+    setTimeout(function() {
+      if (!hoverCard || !hoverCard.matches(':hover')) {
+        hideHoverCard();
+      }
+    }, 50);
   }, { passive: true });
 
   // ── Visibility: stop animation when off-screen ──
@@ -309,6 +347,8 @@ const descriptors: Record<string, string> = {
       lastTime = 0;
       animId = requestAnimationFrame(tick);
     }
+    // Hide hover card when marquee scrolls out of view
+    if (!isVisible) hideHoverCard();
   }, { threshold: 0.01 });
   observer.observe(wrap);
 
@@ -354,6 +394,7 @@ const descriptors: Record<string, string> = {
     resizeTimer = setTimeout(function() {
       ensureClones();
       setWidth = getSetWidth();
+      hideHoverCard();
     }, 200);
   }, { passive: true });
 
