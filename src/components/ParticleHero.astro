@@ -22,13 +22,11 @@ const { minHeight = '220px' } = Astro.props;
   <!-- Readability vignette -->
   <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 50% 40%, transparent 30%, rgba(13,13,15,0.55) 100%);"></div>
   <!-- Content slot -->
-  <div class="relative z-10 pt-[88px] pb-8 md:pt-[100px] md:pb-10 px-6" style="pointer-events: none;">
+  <div class="relative z-10 pt-[88px] pb-8 md:pt-[100px] md:pb-10 px-6">
     <div class="max-w-site mx-auto">
       <slot />
     </div>
   </div>
-  <!-- Interaction surface -->
-  <div id="phInteraction" class="absolute inset-0 z-[5]" style="cursor: default;" aria-hidden="true"></div>
 </section>
 
 <script>
@@ -65,8 +63,7 @@ const { minHeight = '220px' } = Astro.props;
 
   const canvas = document.getElementById('phCanvas');
   const hero = document.getElementById('particleHero');
-  const interactionLayer = document.getElementById('phInteraction');
-  if (!canvas || !hero || !interactionLayer) return;
+  if (!canvas || !hero) return;
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
 
@@ -208,13 +205,13 @@ const { minHeight = '220px' } = Astro.props;
     isPointerInside = false;
   }
 
-  interactionLayer.addEventListener('mousemove', onPointerMove, { passive: true });
-  interactionLayer.addEventListener('mouseleave', onPointerLeave, { passive: true });
-  interactionLayer.addEventListener('click', onClick);
-  interactionLayer.addEventListener('touchstart', onTouchStart, { passive: true });
-  interactionLayer.addEventListener('touchmove', onTouchMove, { passive: true });
-  interactionLayer.addEventListener('touchend', onTouchEnd, { passive: true });
-  interactionLayer.addEventListener('touchcancel', onTouchEnd, { passive: true });
+  hero.addEventListener('mousemove', onPointerMove, { passive: true });
+  hero.addEventListener('mouseleave', onPointerLeave, { passive: true });
+  hero.addEventListener('click', onClick);
+  hero.addEventListener('touchstart', onTouchStart, { passive: true });
+  hero.addEventListener('touchmove', onTouchMove, { passive: true });
+  hero.addEventListener('touchend', onTouchEnd, { passive: true });
+  hero.addEventListener('touchcancel', onTouchEnd, { passive: true });
 
   // ─── Intersection Observer ───
   var observer = new IntersectionObserver(function(entries) {
@@ -463,13 +460,13 @@ const { minHeight = '220px' } = Astro.props;
       animationId = null;
     }
     observer.disconnect();
-    interactionLayer.removeEventListener('mousemove', onPointerMove);
-    interactionLayer.removeEventListener('mouseleave', onPointerLeave);
-    interactionLayer.removeEventListener('click', onClick);
-    interactionLayer.removeEventListener('touchstart', onTouchStart);
-    interactionLayer.removeEventListener('touchmove', onTouchMove);
-    interactionLayer.removeEventListener('touchend', onTouchEnd);
-    interactionLayer.removeEventListener('touchcancel', onTouchEnd);
+    hero.removeEventListener('mousemove', onPointerMove);
+    hero.removeEventListener('mouseleave', onPointerLeave);
+    hero.removeEventListener('click', onClick);
+    hero.removeEventListener('touchstart', onTouchStart);
+    hero.removeEventListener('touchmove', onTouchMove);
+    hero.removeEventListener('touchend', onTouchEnd);
+    hero.removeEventListener('touchcancel', onTouchEnd);
     document.removeEventListener('visibilitychange', onVisibilityChange);
     window.removeEventListener('resize', debouncedResize);
     motionQuery.removeEventListener('change', onMotionChange);

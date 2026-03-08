@@ -46,11 +46,11 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
     <!-- Layer 4: Readability vignette -->
     <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 50% 40%, transparent 30%, rgba(13,13,15,0.55) 100%);"></div>
     <!-- Layer 5: Content -->
-    <div class="relative z-10 pt-[88px] pb-12 md:pt-[100px] md:pb-14 px-6" id="heroContent" style="pointer-events: none;">
+    <div class="relative z-10 pt-[88px] pb-12 md:pt-[100px] md:pb-14 px-6" id="heroContent">
       <div class="max-w-site mx-auto text-center">
         <h1 id="heroTitle" class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white" aria-label="The Expert Network Hub"><span id="heroTitleText"></span><span id="heroTitleCursor" class="inline-block w-[3px] h-[0.85em] bg-white/70 align-middle ml-0.5 animate-[heroBlink_0.53s_steps(2)_infinite]"></span></h1>
         <p id="heroSubtext" class="text-[#a1a1a6] text-sm md:text-base mt-4 leading-relaxed max-w-2xl mx-auto opacity-0 transition-opacity duration-700">Your open guide to the expert network industry. Compare {publishedNetworks.length} providers — pricing, compliance, expert pools, and AI tools — all in one place. No sign-ups, no bias. Explore freely.</p>
-        <div id="heroCtas" class="flex gap-3 justify-center mt-6 opacity-0 transition-opacity duration-700" style="pointer-events: auto;">
+        <div id="heroCtas" class="flex gap-3 justify-center mt-6 opacity-0 transition-opacity duration-700">
           <a href="/networks" class="inline-flex items-center gap-1.5 px-5 py-2.5 bg-accent text-white text-sm font-semibold rounded-lg no-underline hover:bg-accent-hover transition-colors">
             Browse All
             <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
@@ -59,8 +59,6 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
         </div>
       </div>
     </div>
-    <!-- Interaction surface — captures pointer events over the whole hero -->
-    <div id="heroInteraction" class="absolute inset-0 z-[5]" style="cursor: default;" aria-hidden="true"></div>
   </section>
 
   <style>
@@ -148,8 +146,7 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
 
     const canvas = document.getElementById('heroCanvas');
     const hero = document.getElementById('top');
-    const interactionLayer = document.getElementById('heroInteraction');
-    if (!canvas || !hero || !interactionLayer) return;
+    if (!canvas || !hero) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
@@ -290,13 +287,13 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
       isPointerInside = false;
     }
 
-    interactionLayer.addEventListener('mousemove', onPointerMove, { passive: true });
-    interactionLayer.addEventListener('mouseleave', onPointerLeave, { passive: true });
-    interactionLayer.addEventListener('click', onClick);
-    interactionLayer.addEventListener('touchstart', onTouchStart, { passive: true });
-    interactionLayer.addEventListener('touchmove', onTouchMove, { passive: true });
-    interactionLayer.addEventListener('touchend', onTouchEnd, { passive: true });
-    interactionLayer.addEventListener('touchcancel', onTouchEnd, { passive: true });
+    hero.addEventListener('mousemove', onPointerMove, { passive: true });
+    hero.addEventListener('mouseleave', onPointerLeave, { passive: true });
+    hero.addEventListener('click', onClick);
+    hero.addEventListener('touchstart', onTouchStart, { passive: true });
+    hero.addEventListener('touchmove', onTouchMove, { passive: true });
+    hero.addEventListener('touchend', onTouchEnd, { passive: true });
+    hero.addEventListener('touchcancel', onTouchEnd, { passive: true });
 
     // ─── Intersection Observer ───
     const observer = new IntersectionObserver(function(entries) {
@@ -558,13 +555,13 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
         animationId = null;
       }
       observer.disconnect();
-      interactionLayer.removeEventListener('mousemove', onPointerMove);
-      interactionLayer.removeEventListener('mouseleave', onPointerLeave);
-      interactionLayer.removeEventListener('click', onClick);
-      interactionLayer.removeEventListener('touchstart', onTouchStart);
-      interactionLayer.removeEventListener('touchmove', onTouchMove);
-      interactionLayer.removeEventListener('touchend', onTouchEnd);
-      interactionLayer.removeEventListener('touchcancel', onTouchEnd);
+      hero.removeEventListener('mousemove', onPointerMove);
+      hero.removeEventListener('mouseleave', onPointerLeave);
+      hero.removeEventListener('click', onClick);
+      hero.removeEventListener('touchstart', onTouchStart);
+      hero.removeEventListener('touchmove', onTouchMove);
+      hero.removeEventListener('touchend', onTouchEnd);
+      hero.removeEventListener('touchcancel', onTouchEnd);
       document.removeEventListener('visibilitychange', onVisibilityChange);
       window.removeEventListener('resize', debouncedResize);
       motionQuery.removeEventListener('change', onMotionChange);
