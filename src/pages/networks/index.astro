@@ -74,7 +74,7 @@ const badgeColors: Record<string, string> = {
           <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#86868b] pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           <input id="heroSearch" type="text" placeholder="Search networks..." class="text-[13px] text-white bg-white/[0.08] border border-white/[0.12] rounded-lg pl-8 pr-3 py-2 w-52 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/40 placeholder:text-[#86868b]" />
         </div>
-        <a href="/compare" class="inline-flex items-center gap-1.5 px-4 py-2 bg-accent text-white text-sm font-semibold rounded-lg no-underline hover:bg-accent/90 transition-colors">
+        <a id="heroCompareBtn" href="/compare" class="inline-flex items-center gap-1.5 px-4 py-2 bg-accent text-white text-sm font-semibold rounded-lg no-underline hover:bg-accent/90 transition-colors">
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
           Compare Selected
         </a>
@@ -649,6 +649,15 @@ const badgeColors: Record<string, string> = {
 
   // Compare functionality
   const selected = new Map<string, string>();
+  const heroCompareBtn = document.getElementById('heroCompareBtn') as HTMLAnchorElement;
+
+  function buildCompareUrl(): string {
+    const slugs = Array.from(selected.keys());
+    if (slugs.length > 0) {
+      return '/compare?networks=' + slugs.join(',');
+    }
+    return '/compare';
+  }
 
   function updateCompareTray() {
     const count = selected.size;
@@ -669,9 +678,38 @@ const badgeColors: Record<string, string> = {
         compareNames.appendChild(span);
       }
     }
+    // Update compare links with selected slugs
+    const url = buildCompareUrl();
+    if (compareLink) compareLink.href = url;
+    if (heroCompareBtn) heroCompareBtn.href = url;
+
     compareTray?.classList.toggle('translate-y-full', count === 0);
     compareTray?.classList.toggle('translate-y-0', count > 0);
   }
+
+  // Restore selections from URL (when coming back from compare page)
+  function restoreFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const sel = params.get('selected');
+    if (sel) {
+      sel.split(',').forEach(slug => {
+        const cb = document.querySelector(`.compare-check[data-slug="${slug}"]`) as HTMLInputElement;
+        if (cb) {
+          cb.checked = true;
+          selected.set(slug, cb.dataset.name || slug);
+          // Sync across views
+          document.querySelectorAll(`.compare-check[data-slug="${slug}"]`).forEach(other => {
+            (other as HTMLInputElement).checked = true;
+          });
+        }
+      });
+      updateCompareTray();
+      // Clean URL without reload
+      const cleanUrl = window.location.pathname;
+      window.history.replaceState({}, '', cleanUrl);
+    }
+  }
+  restoreFromUrl();
 
   document.querySelectorAll('.compare-check').forEach(cb => {
     (cb as HTMLInputElement).addEventListener('change', function() {

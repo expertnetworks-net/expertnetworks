@@ -106,7 +106,7 @@ published.forEach(n => {
           <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           Independent Research
         </span>
-        <a href="/networks" class="inline-flex items-center gap-1.5 px-3 py-2 bg-white/[0.06] text-[#a1a1a6] text-sm font-medium rounded-lg no-underline hover:bg-white/[0.1] transition-colors border border-white/[0.08]">&larr; Directory</a>
+        <a id="heroDirectoryBtn" href="/networks" class="inline-flex items-center gap-1.5 px-3 py-2 bg-white/[0.06] text-[#a1a1a6] text-sm font-medium rounded-lg no-underline hover:bg-white/[0.1] transition-colors border border-white/[0.08]">&larr; Directory</a>
       </div>
     </div>
   </ParticleHero>
@@ -367,7 +367,7 @@ published.forEach(n => {
       <h2 class="text-lg font-bold text-primary mb-1.5">Explore Further</h2>
       <p class="text-[13px] text-secondary mb-4">Dive into individual profiles or browse the full directory.</p>
       <div class="flex items-center justify-center gap-3 flex-wrap">
-        <a href="/networks" class="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-white text-sm font-semibold rounded-lg no-underline hover:bg-accent/90 transition-colors">
+        <a id="browseDirectoryBtn" href="/networks" class="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-white text-sm font-semibold rounded-lg no-underline hover:bg-accent/90 transition-colors">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
           Browse Directory
         </a>
@@ -431,9 +431,34 @@ published.forEach(n => {
 
 <script define:vars={{ networkDataMap, presets, sections, defaultSlugs, allNetworkList }}>
   // ── State ──
-  let activeSlugs = [...defaultSlugs];
+  // Read initial slugs from URL params if present
+  function getInitialSlugs() {
+    const params = new URLSearchParams(window.location.search);
+    const fromUrl = params.get('networks');
+    if (fromUrl) {
+      const slugs = fromUrl.split(',').filter(s => networkDataMap[s]);
+      if (slugs.length >= 2) return slugs.slice(0, 6);
+    }
+    return [...defaultSlugs];
+  }
+  let activeSlugs = getInitialSlugs();
   let activePreset = '';
   let diffMode = false;
+
+  // Sync URL with current state (without reload)
+  function syncUrl() {
+    const slugStr = activeSlugs.join(',');
+    const url = new URL(window.location.href);
+    url.searchParams.set('networks', slugStr);
+    window.history.replaceState({}, '', url.toString());
+
+    // Update back-navigation links to pass selections to directory
+    const directoryUrl = '/networks?selected=' + slugStr;
+    const heroDir = document.getElementById('heroDirectoryBtn');
+    const browseDir = document.getElementById('browseDirectoryBtn');
+    if (heroDir) heroDir.setAttribute('href', directoryUrl);
+    if (browseDir) browseDir.setAttribute('href', directoryUrl);
+  }
 
   // ── Elements ──
   const providerChips = document.getElementById('providerChips');
@@ -740,6 +765,7 @@ published.forEach(n => {
     renderMatrix();
     renderInsights();
     updateScrollNav();
+    syncUrl();
   }
 
   // ── Modal ──
@@ -844,6 +870,14 @@ published.forEach(n => {
     if (!slug) return;
     document.querySelectorAll(`.provider-col[data-slug="${slug}"]`).forEach(el => el.classList.remove('highlight'));
   });
+
+  // ── Initial rebuild if URL params differ from SSR defaults ──
+  const urlHasCustomSlugs = new URLSearchParams(window.location.search).has('networks');
+  if (urlHasCustomSlugs) {
+    rebuildComparison();
+  } else {
+    syncUrl();
+  }
 
   // ── Scroll progress nav ──
   function updateScrollNav() {
