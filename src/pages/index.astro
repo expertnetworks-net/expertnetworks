@@ -42,7 +42,7 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
   <!-- Hero — dark interactive intelligence surface -->
   <section class="relative overflow-hidden bg-[#0d0d0f]" id="top" style="min-height: 260px;">
     <!-- Layer 1–3: Canvas (particles + reveal) -->
-    <canvas id="heroCanvas" class="absolute inset-0 w-full h-full" style="pointer-events: none;"></canvas>
+    <canvas id="heroCanvas" class="absolute inset-0 w-full h-full" style="pointer-events: none;" role="presentation" aria-hidden="true"></canvas>
     <!-- Layer 4: Readability vignette -->
     <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 50% 40%, transparent 30%, rgba(13,13,15,0.55) 100%);"></div>
     <!-- Layer 5: Content -->
@@ -60,7 +60,7 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
       </div>
     </div>
     <!-- Interaction surface — captures pointer events over the whole hero -->
-    <div id="heroInteraction" class="absolute inset-0 z-[5]" style="cursor: default;"></div>
+    <div id="heroInteraction" class="absolute inset-0 z-[5]" style="cursor: default;" aria-hidden="true"></div>
   </section>
 
   <style>
@@ -121,12 +121,15 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
     const PARTICLE_COUNT_TABLET = 65;
     const PARTICLE_COUNT_MOBILE = 35;
     const MAX_CONNECTION_DIST = 140;
+    const MAX_CONNECTION_DIST_SQ = MAX_CONNECTION_DIST * MAX_CONNECTION_DIST;
     const LINE_OPACITY = 0.09;
     const BASE_PARTICLE_OPACITY = 0.4;
     const IDLE_DRIFT_STRENGTH = 0.18;
     const POINTER_INFLUENCE_RADIUS = 180;
+    const POINTER_INFLUENCE_RADIUS_SQ = POINTER_INFLUENCE_RADIUS * POINTER_INFLUENCE_RADIUS;
     const POINTER_REPULSION_STRENGTH = 130;
     const REVEAL_RADIUS = 200;
+    const REVEAL_RADIUS_SQ = REVEAL_RADIUS * REVEAL_RADIUS;
     const REVEAL_OPACITY_BOOST = 0.5;
     const RECOVERY_SPEED = 0.018;
     const INTERPOLATION_FACTOR = 0.12;
@@ -139,6 +142,7 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
     const REVEAL_PARTICLE_COUNT_TABLET = 80;
     const REVEAL_PARTICLE_COUNT_MOBILE = 45;
     const REVEAL_MAX_CONNECTION_DIST = 110;
+    const REVEAL_MAX_CONNECTION_DIST_SQ = REVEAL_MAX_CONNECTION_DIST * REVEAL_MAX_CONNECTION_DIST;
     const REVEAL_LINE_OPACITY = 0.22;
     const REVEAL_PARTICLE_OPACITY = 0.6;
 
@@ -149,7 +153,9 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // ─── Reduced motion — live query (responds to mid-session changes) ───
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let prefersReducedMotion = motionQuery.matches;
 
     // ─── Responsive tier ───
     function getTier() {
@@ -181,6 +187,9 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
     let animationId = null;
     let isVisible = true;
     let currentTier = getTier();
+    let cachedW = 0;
+    let cachedH = 0;
+    let lastTime = 0;
 
     // ─── Particle factory ───
     function createParticle(w, h) {
@@ -204,14 +213,16 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
       };
     }
 
-    // ─── Resize ───
+    // ─── Resize (caches dimensions to avoid per-frame layout thrashing) ───
     function resize() {
       const rect = hero.getBoundingClientRect();
       const dpr = Math.min(window.devicePixelRatio || 1, DPR_CAP);
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
-      canvas.style.width = rect.width + 'px';
-      canvas.style.height = rect.height + 'px';
+      cachedW = rect.width;
+      cachedH = rect.height;
+      canvas.width = cachedW * dpr;
+      canvas.height = cachedH * dpr;
+      canvas.style.width = cachedW + 'px';
+      canvas.style.height = cachedH + 'px';
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       const newTier = getTier();
@@ -224,21 +235,20 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
         particles = [];
         revealParticles = [];
         for (let i = 0; i < count; i++) {
-          const p = createParticle(rect.width, rect.height);
+          const p = createParticle(cachedW, cachedH);
           p.homeX = p.x;
           p.homeY = p.y;
           particles.push(p);
         }
         for (let i = 0; i < revCount; i++) {
-          revealParticles.push(createRevealParticle(rect.width, rect.height));
+          revealParticles.push(createRevealParticle(cachedW, cachedH));
         }
       } else {
-        // Re-home particles within new bounds
         for (const p of particles) {
-          p.homeX = Math.min(p.homeX, rect.width);
-          p.homeY = Math.min(p.homeY, rect.height);
-          p.x = Math.min(p.x, rect.width);
-          p.y = Math.min(p.y, rect.height);
+          p.homeX = Math.min(p.homeX, cachedW);
+          p.homeY = Math.min(p.homeY, cachedH);
+          p.x = Math.min(p.x, cachedW);
+          p.y = Math.min(p.y, cachedH);
         }
       }
     }
@@ -255,12 +265,18 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
     }
     function onClick(e) {
       const rect = hero.getBoundingClientRect();
-      clickPulse = {
-        active: true,
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
-        startTime: performance.now(),
-      };
+      clickPulse.active = true;
+      clickPulse.x = e.clientX - rect.left;
+      clickPulse.y = e.clientY - rect.top;
+      clickPulse.startTime = performance.now();
+    }
+    function onTouchStart(e) {
+      if (e.touches.length > 0) {
+        const rect = hero.getBoundingClientRect();
+        pointer.x = e.touches[0].clientX - rect.left;
+        pointer.y = e.touches[0].clientY - rect.top;
+        isPointerInside = true;
+      }
     }
     function onTouchMove(e) {
       if (e.touches.length > 0) {
@@ -277,6 +293,7 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
     interactionLayer.addEventListener('mousemove', onPointerMove, { passive: true });
     interactionLayer.addEventListener('mouseleave', onPointerLeave, { passive: true });
     interactionLayer.addEventListener('click', onClick);
+    interactionLayer.addEventListener('touchstart', onTouchStart, { passive: true });
     interactionLayer.addEventListener('touchmove', onTouchMove, { passive: true });
     interactionLayer.addEventListener('touchend', onTouchEnd, { passive: true });
     interactionLayer.addEventListener('touchcancel', onTouchEnd, { passive: true });
@@ -287,14 +304,31 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
     }, { threshold: 0.05 });
     observer.observe(hero);
 
-    // ─── Draw ───
+    // ─── Visibility change — pause when tab hidden to save CPU/battery ───
+    function onVisibilityChange() {
+      if (document.hidden) {
+        if (animationId) {
+          cancelAnimationFrame(animationId);
+          animationId = null;
+        }
+      } else if (!prefersReducedMotion && !animationId) {
+        lastTime = 0; // reset delta to avoid huge jump
+        animationId = requestAnimationFrame(draw);
+      }
+    }
+    document.addEventListener('visibilitychange', onVisibilityChange);
+
+    // ─── Draw (frame-rate independent via delta time) ───
     function draw(now) {
       animationId = requestAnimationFrame(draw);
       if (!isVisible) return;
 
-      const rect = hero.getBoundingClientRect();
-      const w = rect.width;
-      const h = rect.height;
+      // Delta time normalized to 60fps; capped at 3 frames to prevent jumps
+      var dt = lastTime ? Math.min((now - lastTime) / 16.667, 3) : 1;
+      lastTime = now;
+
+      var w = cachedW;
+      var h = cachedH;
       ctx.clearRect(0, 0, w, h);
 
       // Smooth pointer interpolation
@@ -307,51 +341,56 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
       }
 
       // Click pulse calculation
-      let pulseStrength = 0;
-      let pulseRadius = 0;
+      var pulseStrength = 0;
+      var pulseRadius = 0;
+      var pulseRadiusSq = 0;
       if (clickPulse.active) {
-        const elapsed = now - clickPulse.startTime;
+        var elapsed = now - clickPulse.startTime;
         if (elapsed > CLICK_PULSE_DURATION) {
           clickPulse.active = false;
         } else {
-          const t = elapsed / CLICK_PULSE_DURATION;
+          var t = elapsed / CLICK_PULSE_DURATION;
           pulseStrength = CLICK_PULSE_STRENGTH * (1 - t);
           pulseRadius = POINTER_INFLUENCE_RADIUS * (1 + t * 1.5);
+          pulseRadiusSq = pulseRadius * pulseRadius;
         }
       }
 
+      var spx = smoothPointer.x;
+      var spy = smoothPointer.y;
+      var revealActive = spx > -1000 && spy > -1000;
+
       // ─── Layer 3: Reveal particles (hidden intelligence mesh) ───
-      const spx = smoothPointer.x;
-      const spy = smoothPointer.y;
-      const revealActive = spx > -1000 && spy > -1000;
-
       if (revealActive) {
-        // Draw reveal connections first
+        // Draw reveal connections (use globalAlpha to avoid string alloc)
+        ctx.strokeStyle = 'rgb(120,140,170)';
         ctx.lineWidth = 0.5;
-        for (let i = 0; i < revealParticles.length; i++) {
-          const a = revealParticles[i];
-          const dxA = a.x - spx;
-          const dyA = a.y - spy;
-          const distA = Math.sqrt(dxA * dxA + dyA * dyA);
-          if (distA > REVEAL_RADIUS) continue;
-          const alphaA = 1 - (distA / REVEAL_RADIUS);
+        for (var i = 0; i < revealParticles.length; i++) {
+          var a = revealParticles[i];
+          var dxA = a.x - spx;
+          var dyA = a.y - spy;
+          var distSqA = dxA * dxA + dyA * dyA;
+          if (distSqA > REVEAL_RADIUS_SQ) continue;
+          var distA = Math.sqrt(distSqA);
+          var alphaA = 1 - (distA / REVEAL_RADIUS);
 
-          for (let j = i + 1; j < revealParticles.length; j++) {
-            const b = revealParticles[j];
-            const dxB = b.x - spx;
-            const dyB = b.y - spy;
-            const distB = Math.sqrt(dxB * dxB + dyB * dyB);
-            if (distB > REVEAL_RADIUS) continue;
+          for (var j = i + 1; j < revealParticles.length; j++) {
+            var b = revealParticles[j];
+            var dxB = b.x - spx;
+            var dyB = b.y - spy;
+            var distSqB = dxB * dxB + dyB * dyB;
+            if (distSqB > REVEAL_RADIUS_SQ) continue;
 
-            const dxAB = a.x - b.x;
-            const dyAB = a.y - b.y;
-            const distAB = Math.sqrt(dxAB * dxAB + dyAB * dyAB);
-            if (distAB > REVEAL_MAX_CONNECTION_DIST) continue;
+            var dxAB = a.x - b.x;
+            var dyAB = a.y - b.y;
+            var distSqAB = dxAB * dxAB + dyAB * dyAB;
+            if (distSqAB > REVEAL_MAX_CONNECTION_DIST_SQ) continue;
 
-            const alphaB = 1 - (distB / REVEAL_RADIUS);
-            const lineFade = 1 - (distAB / REVEAL_MAX_CONNECTION_DIST);
-            const alpha = REVEAL_LINE_OPACITY * alphaA * alphaB * lineFade;
-            ctx.strokeStyle = 'rgba(120,140,170,' + alpha.toFixed(3) + ')';
+            var distB = Math.sqrt(distSqB);
+            var distAB = Math.sqrt(distSqAB);
+            var alphaB = 1 - (distB / REVEAL_RADIUS);
+            var lineFade = 1 - (distAB / REVEAL_MAX_CONNECTION_DIST);
+            ctx.globalAlpha = REVEAL_LINE_OPACITY * alphaA * alphaB * lineFade;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
@@ -360,15 +399,15 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
         }
 
         // Draw reveal particles
-        for (let i = 0; i < revealParticles.length; i++) {
-          const p = revealParticles[i];
-          const dx = p.x - spx;
-          const dy = p.y - spy;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist > REVEAL_RADIUS) continue;
-          const proximity = 1 - (dist / REVEAL_RADIUS);
-          const alpha = p.opacity * proximity * REVEAL_OPACITY_BOOST;
-          ctx.fillStyle = 'rgba(140,160,190,' + alpha.toFixed(3) + ')';
+        ctx.fillStyle = 'rgb(140,160,190)';
+        for (var i = 0; i < revealParticles.length; i++) {
+          var p = revealParticles[i];
+          var dx = p.x - spx;
+          var dy = p.y - spy;
+          var distSq = dx * dx + dy * dy;
+          if (distSq > REVEAL_RADIUS_SQ) continue;
+          var proximity = 1 - (Math.sqrt(distSq) / REVEAL_RADIUS);
+          ctx.globalAlpha = p.opacity * proximity * REVEAL_OPACITY_BOOST;
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
           ctx.fill();
@@ -376,39 +415,43 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
       }
 
       // ─── Layer 2: Primary particles ───
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        // Ambient drift
-        p.x += p.vx;
-        p.y += p.vy;
+      ctx.fillStyle = 'rgb(180,180,190)';
+      for (var i = 0; i < particles.length; i++) {
+        var p = particles[i];
+        // Ambient drift (frame-rate independent)
+        p.x += p.vx * dt;
+        p.y += p.vy * dt;
 
-        // Pointer repulsion — aggressive scatter
-        const dx = p.x - spx;
-        const dy = p.y - spy;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < POINTER_INFLUENCE_RADIUS && dist > 0) {
-          const proximity = 1 - dist / POINTER_INFLUENCE_RADIUS;
-          const force = proximity * proximity * POINTER_REPULSION_STRENGTH;
-          p.x += (dx / dist) * force * 0.04;
-          p.y += (dy / dist) * force * 0.04;
+        // Pointer repulsion (squared distance for early rejection)
+        var dx = p.x - spx;
+        var dy = p.y - spy;
+        var distSq = dx * dx + dy * dy;
+        if (distSq < POINTER_INFLUENCE_RADIUS_SQ && distSq > 0) {
+          var dist = Math.sqrt(distSq);
+          var proximity = 1 - dist / POINTER_INFLUENCE_RADIUS;
+          var force = proximity * proximity * POINTER_REPULSION_STRENGTH;
+          p.x += (dx / dist) * force * 0.04 * dt;
+          p.y += (dy / dist) * force * 0.04 * dt;
         }
 
         // Click pulse repulsion
         if (clickPulse.active && pulseStrength > 0) {
-          const cdx = p.x - clickPulse.x;
-          const cdy = p.y - clickPulse.y;
-          const cdist = Math.sqrt(cdx * cdx + cdy * cdy);
-          if (cdist < pulseRadius && cdist > 0) {
-            const pProx = 1 - cdist / pulseRadius;
-            const pForce = pProx * pProx * pulseStrength;
-            p.x += (cdx / cdist) * pForce * 0.06;
-            p.y += (cdy / cdist) * pForce * 0.06;
+          var cdx = p.x - clickPulse.x;
+          var cdy = p.y - clickPulse.y;
+          var cdistSq = cdx * cdx + cdy * cdy;
+          if (cdistSq < pulseRadiusSq && cdistSq > 0) {
+            var cdist = Math.sqrt(cdistSq);
+            var pProx = 1 - cdist / pulseRadius;
+            var pForce = pProx * pProx * pulseStrength;
+            p.x += (cdx / cdist) * pForce * 0.06 * dt;
+            p.y += (cdy / cdist) * pForce * 0.06 * dt;
           }
         }
 
-        // Recovery toward home
-        p.x += (p.homeX - p.x) * RECOVERY_SPEED;
-        p.y += (p.homeY - p.y) * RECOVERY_SPEED;
+        // Recovery toward home (frame-rate independent exponential decay)
+        var recoveryFactor = 1 - Math.pow(1 - RECOVERY_SPEED, dt);
+        p.x += (p.homeX - p.x) * recoveryFactor;
+        p.y += (p.homeY - p.y) * recoveryFactor;
 
         // Bounds wrap
         if (p.x < -10) p.x = w + 10;
@@ -416,39 +459,40 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
         if (p.y < -10) p.y = h + 10;
         if (p.y > h + 10) p.y = -10;
 
-        // Draw particle
-        ctx.fillStyle = 'rgba(180,180,190,' + p.opacity.toFixed(3) + ')';
+        // Draw particle (globalAlpha avoids per-particle string allocation)
+        ctx.globalAlpha = p.opacity;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fill();
       }
 
       // ─── Connections between primary particles ───
+      ctx.strokeStyle = 'rgb(180,180,190)';
       ctx.lineWidth = 0.5;
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const a = particles[i];
-          const b = particles[j];
-          const dxAB = a.x - b.x;
-          const dyAB = a.y - b.y;
-          const distAB = Math.sqrt(dxAB * dxAB + dyAB * dyAB);
-          if (distAB > MAX_CONNECTION_DIST) continue;
-          const lineFade = 1 - (distAB / MAX_CONNECTION_DIST);
+      for (var i = 0; i < particles.length; i++) {
+        for (var j = i + 1; j < particles.length; j++) {
+          var a = particles[i];
+          var b = particles[j];
+          var dxAB = a.x - b.x;
+          var dyAB = a.y - b.y;
+          var distSqAB = dxAB * dxAB + dyAB * dyAB;
+          if (distSqAB > MAX_CONNECTION_DIST_SQ) continue;
+          var distAB = Math.sqrt(distSqAB);
+          var lineFade = 1 - (distAB / MAX_CONNECTION_DIST);
 
           // Lines near cursor become stressed (fade/break)
-          let stress = 1;
-          const midX = (a.x + b.x) / 2;
-          const midY = (a.y + b.y) / 2;
-          const midDx = midX - spx;
-          const midDy = midY - spy;
-          const midDist = Math.sqrt(midDx * midDx + midDy * midDy);
-          if (midDist < POINTER_INFLUENCE_RADIUS) {
-            stress = midDist / POINTER_INFLUENCE_RADIUS;
-            stress = stress * stress; // Quadratic falloff — sharper break
+          var stress = 1;
+          var midX = (a.x + b.x) * 0.5;
+          var midY = (a.y + b.y) * 0.5;
+          var midDx = midX - spx;
+          var midDy = midY - spy;
+          var midDistSq = midDx * midDx + midDy * midDy;
+          if (midDistSq < POINTER_INFLUENCE_RADIUS_SQ) {
+            stress = Math.sqrt(midDistSq) / POINTER_INFLUENCE_RADIUS;
+            stress = stress * stress;
           }
 
-          const alpha = LINE_OPACITY * lineFade * stress;
-          ctx.strokeStyle = 'rgba(180,180,190,' + alpha.toFixed(4) + ')';
+          ctx.globalAlpha = LINE_OPACITY * lineFade * stress;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
           ctx.lineTo(b.x, b.y);
@@ -458,62 +502,113 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
 
       // ─── Click pulse ring ───
       if (clickPulse.active) {
-        const elapsed = now - clickPulse.startTime;
-        const t = elapsed / CLICK_PULSE_DURATION;
-        const ringRadius = 20 + t * POINTER_INFLUENCE_RADIUS * 1.2;
-        const ringAlpha = 0.15 * (1 - t);
-        ctx.strokeStyle = 'rgba(120,150,200,' + ringAlpha.toFixed(3) + ')';
+        var elapsed = now - clickPulse.startTime;
+        var t = elapsed / CLICK_PULSE_DURATION;
+        var ringRadius = 20 + t * POINTER_INFLUENCE_RADIUS * 1.2;
+        ctx.strokeStyle = 'rgb(120,150,200)';
+        ctx.globalAlpha = 0.15 * (1 - t);
         ctx.lineWidth = 1.5 * (1 - t);
         ctx.beginPath();
         ctx.arc(clickPulse.x, clickPulse.y, ringRadius, 0, Math.PI * 2);
         ctx.stroke();
       }
+
+      // Reset globalAlpha to avoid bleeding into other canvas operations
+      ctx.globalAlpha = 1;
     }
 
-    // ─── Init ───
-    if (prefersReducedMotion) {
-      // Static fallback: draw once with no animation
+    // ─── Static fallback for reduced motion ───
+    function drawStatic() {
       resize();
-      const rect = hero.getBoundingClientRect();
-      const w = rect.width;
-      const h = rect.height;
-      ctx.clearRect(0, 0, w, h);
-      // Draw static particles
-      for (const p of particles) {
-        ctx.fillStyle = 'rgba(180,180,190,' + (p.opacity * 0.7).toFixed(3) + ')';
+      ctx.clearRect(0, 0, cachedW, cachedH);
+      ctx.fillStyle = 'rgb(180,180,190)';
+      for (var i = 0; i < particles.length; i++) {
+        var p = particles[i];
+        ctx.globalAlpha = p.opacity * 0.7;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fill();
       }
-      // Draw static connections
+      ctx.strokeStyle = 'rgb(180,180,190)';
       ctx.lineWidth = 0.5;
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const a = particles[i];
-          const b = particles[j];
-          const dxAB = a.x - b.x;
-          const dyAB = a.y - b.y;
-          const distAB = Math.sqrt(dxAB * dxAB + dyAB * dyAB);
-          if (distAB > MAX_CONNECTION_DIST) continue;
-          const lineFade = 1 - (distAB / MAX_CONNECTION_DIST);
-          const alpha = LINE_OPACITY * lineFade * 0.7;
-          ctx.strokeStyle = 'rgba(180,180,190,' + alpha.toFixed(4) + ')';
+      for (var i = 0; i < particles.length; i++) {
+        for (var j = i + 1; j < particles.length; j++) {
+          var a = particles[i];
+          var b = particles[j];
+          var dxAB = a.x - b.x;
+          var dyAB = a.y - b.y;
+          var distSqAB = dxAB * dxAB + dyAB * dyAB;
+          if (distSqAB > MAX_CONNECTION_DIST_SQ) continue;
+          var distAB = Math.sqrt(distSqAB);
+          var lineFade = 1 - (distAB / MAX_CONNECTION_DIST);
+          ctx.globalAlpha = LINE_OPACITY * lineFade * 0.7;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
           ctx.lineTo(b.x, b.y);
           ctx.stroke();
         }
       }
+      ctx.globalAlpha = 1;
+    }
+
+    // ─── Cleanup — removes all listeners, stops animation ───
+    function cleanup() {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+      }
+      observer.disconnect();
+      interactionLayer.removeEventListener('mousemove', onPointerMove);
+      interactionLayer.removeEventListener('mouseleave', onPointerLeave);
+      interactionLayer.removeEventListener('click', onClick);
+      interactionLayer.removeEventListener('touchstart', onTouchStart);
+      interactionLayer.removeEventListener('touchmove', onTouchMove);
+      interactionLayer.removeEventListener('touchend', onTouchEnd);
+      interactionLayer.removeEventListener('touchcancel', onTouchEnd);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+      window.removeEventListener('resize', debouncedResize);
+      motionQuery.removeEventListener('change', onMotionChange);
+    }
+
+    // ─── Respond to reduced motion preference changes mid-session ───
+    function onMotionChange(e) {
+      prefersReducedMotion = e.matches;
+      if (prefersReducedMotion) {
+        if (animationId) {
+          cancelAnimationFrame(animationId);
+          animationId = null;
+        }
+        drawStatic();
+      } else {
+        if (!animationId) {
+          lastTime = 0;
+          animationId = requestAnimationFrame(draw);
+        }
+      }
+    }
+    motionQuery.addEventListener('change', onMotionChange);
+
+    // ─── Init ───
+    if (prefersReducedMotion) {
+      drawStatic();
     } else {
       resize();
+      lastTime = 0;
       animationId = requestAnimationFrame(draw);
     }
 
-    let resizeTimeout;
-    window.addEventListener('resize', function() {
+    var resizeTimeout;
+    function debouncedResize() {
       clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(resize, 150);
-    }, { passive: true });
+      resizeTimeout = setTimeout(function() {
+        resize();
+        if (prefersReducedMotion) drawStatic();
+      }, 150);
+    }
+    window.addEventListener('resize', debouncedResize, { passive: true });
+
+    // Clean up if page is torn down (e.g. Astro view transitions)
+    window.addEventListener('beforeunload', cleanup);
   })();
   </script>
 
