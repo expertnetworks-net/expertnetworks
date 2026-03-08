@@ -313,6 +313,10 @@ const descriptors: Record<string, string> = {
 
     const observer = new IntersectionObserver(function(entries) {
       isVisible = entries[0].isIntersecting;
+      if (isVisible && !prefersReducedMotion && !animationId) {
+        lastTime = 0;
+        animationId = requestAnimationFrame(draw);
+      }
     }, { threshold: 0.05 });
     observer.observe(hero);
 
@@ -327,8 +331,11 @@ const descriptors: Record<string, string> = {
     document.addEventListener('visibilitychange', onVisibilityChange);
 
     function draw(now) {
+      if (!isVisible) {
+        animationId = null;
+        return;
+      }
       animationId = requestAnimationFrame(draw);
-      if (!isVisible) return;
 
       var dt = lastTime ? Math.min((now - lastTime) / 16.667, 3) : 1;
       lastTime = now;
@@ -765,7 +772,7 @@ const descriptors: Record<string, string> = {
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {top6.map(n => {
-          const desc = descriptors[n.data.slug] || n.data.description?.slice(0, 80) + '…';
+          const desc = descriptors[n.data.slug] || (n.data.description ? n.data.description.slice(0, 80) + '…' : n.data.type || '');
           return (
             <div class="bg-white rounded-card p-5 shadow-card border border-border/30 hover:shadow-card-hover transition-shadow">
               <div class="flex items-center gap-3 mb-3">
@@ -816,7 +823,7 @@ const descriptors: Record<string, string> = {
         <a href="/news" class="text-accent text-sm font-medium no-underline hover:underline">All signals &rarr;</a>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {curatedNews.slice(0, 4).map(article => {
+        {curatedNews.map(article => {
           const formattedDate = new Date(article.data.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
           return (
             <a href={article.data.sourceUrl || `/news`} target={article.data.sourceUrl ? '_blank' : '_self'} rel="noopener noreferrer" class="group bg-white rounded-card p-5 shadow-card hover:shadow-card-hover transition-all no-underline border border-border/30 hover:-translate-y-0.5 flex flex-col">
