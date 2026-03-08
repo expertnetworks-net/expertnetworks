@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ParticleHero from '../components/ParticleHero.astro';
 import { getCollection } from 'astro:content';
 import compareConfig from '../content/compare.json';
-import { buildCompareRender, formatDateLabel, projectCompareNetwork } from '../lib/compare-v2';
+import { buildCompareRender, formatDateLabel, projectCompareNetwork, compareGoals } from '../lib/compare-v2';
 
 const allNetworks = await getCollection('networks');
 const published = allNetworks.filter((n) => n.data.published).sort((a, b) => a.data.priority - b.data.priority);
@@ -13,7 +13,6 @@ const presets = compareConfig.presets as Record<string, string[]>;
 const sections = compareConfig.sections as any[];
 const enriched = (compareConfig as any).enriched as Record<string, any>;
 const substituteTypes = (compareConfig as any).substituteTypes as Record<string, string>;
-const pathwayGroups = (compareConfig as any).buyerPathwayGroups as any[];
 const explainableInsights = (compareConfig as any).explainableInsights as any[];
 const contextualDisclaimers = (compareConfig as any).contextualDisclaimers as Record<string, string>;
 const comparisonNote = (compareConfig as any).comparisonNote as string;
@@ -27,12 +26,6 @@ const allNetworkList = published.map((entry) => ({
   gradientFrom: entry.data.gradientFrom,
   gradientTo: entry.data.gradientTo,
 }));
-
-function shortDisplayName(slug: string): string {
-  const data = networkDataMap[slug];
-  if (!data) return slug;
-  return data.name.split(' (')[0].split(' / ')[0];
-}
 
 const defaultLatestReviewed = defaultSlugs
   .map((slug) => networkDataMap[slug]?.lastUpdated)
@@ -68,17 +61,17 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
     ],
   }}
 >
-  <ParticleHero minHeight="230px">
-    <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-      <div class="max-w-3xl">
-        <div class="flex flex-wrap gap-2 mb-4">
+  <!-- HERO -->
+  <ParticleHero minHeight="200px">
+    <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+      <div class="max-w-2xl">
+        <div class="flex flex-wrap gap-2 mb-3">
           <span class="compare-hero-badge">Independent research</span>
-          <span class="compare-hero-badge">Public-source methodology</span>
           <span class="compare-hero-badge" id="selectionReviewedBadge">Selection reviewed: {formatDateLabel(defaultLatestReviewed)}</span>
         </div>
         <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-white">Compare Expert Networks</h1>
-        <p class="text-[#b4b4bc] text-sm md:text-base mt-3 max-w-2xl leading-relaxed">
-          Compare expert networks and adjacent research platforms by workflow fit, AI maturity, compliance posture, commercial model, and geographic strength.
+        <p class="text-[#b4b4bc] text-sm mt-2 max-w-xl leading-relaxed">
+          Independent comparison by workflow fit, AI maturity, compliance posture, and commercial model.
         </p>
       </div>
       <div class="flex flex-wrap gap-3" style="pointer-events: auto;">
@@ -89,25 +82,10 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
     </div>
   </ParticleHero>
 
-  <section class="px-4 md:px-6 pt-5">
-    <div class="max-w-site mx-auto">
-      <div class="rounded-2xl border border-amber-200/70 bg-amber-50 px-4 py-4 md:px-5 md:py-4">
-        <div class="flex items-start gap-3">
-          <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-amber-100 text-amber-700">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
-          </div>
-          <div class="min-w-0">
-            <div class="text-[11px] font-bold uppercase tracking-[0.18em] text-amber-800">Comparison note</div>
-            <p class="mt-1 text-[13px] text-amber-900 leading-relaxed">{comparisonNote}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
+  <!-- CONTROL BAR -->
   <div id="controlBar" class="sticky top-[52px] z-40 bg-white/95 backdrop-blur border-b border-border/40 shadow-sm">
     <div class="max-w-site mx-auto px-4 md:px-6 py-3">
-      <div class="flex flex-col gap-3">
+      <div class="flex flex-col gap-2.5">
         <div class="flex items-center gap-2 overflow-x-auto scrollbar-none pb-1">
           <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-tertiary whitespace-nowrap mr-1">Comparing</span>
           <div id="providerChips" class="flex items-center gap-1.5" set:html={initialRender.chipsHtml}></div>
@@ -116,34 +94,21 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
             Add
           </button>
         </div>
-
-        <div class="flex flex-wrap items-center justify-between gap-3">
-          <div class="flex flex-wrap items-center gap-2 text-[11px] text-secondary">
-            <label class="inline-flex items-center gap-1.5 cursor-pointer rounded-full bg-[#f5f5f7] px-2.5 py-1.5 border border-border/40">
-              <input type="checkbox" id="diffToggle" class="rounded border-border/60 text-accent focus:ring-accent/30" />
-              Differences only
-            </label>
-            <label class="inline-flex items-center gap-1.5 cursor-pointer rounded-full bg-[#f5f5f7] px-2.5 py-1.5 border border-border/40">
-              <input type="checkbox" id="highConfidenceToggle" class="rounded border-border/60 text-accent focus:ring-accent/30" />
-              High-confidence rows
-            </label>
-            <label class="inline-flex items-center gap-1.5 cursor-pointer rounded-full bg-[#f5f5f7] px-2.5 py-1.5 border border-border/40">
-              <input type="checkbox" id="notesToggle" class="rounded border-border/60 text-accent focus:ring-accent/30" />
-              Evidence notes
-            </label>
-          </div>
-
-          <div class="flex items-center gap-2 overflow-x-auto scrollbar-none text-[10px] text-tertiary">
-            <span class="inline-flex items-center gap-1"><span class="ev-dot ev-verified"></span>Verified</span>
-            <span class="inline-flex items-center gap-1"><span class="ev-dot ev-stated"></span>Company-stated</span>
-            <span class="inline-flex items-center gap-1"><span class="ev-dot ev-inferred"></span>Inferred</span>
-            <span class="inline-flex items-center gap-1"><span class="ev-dot ev-estimated"></span>Estimated</span>
-          </div>
+        <div class="flex flex-wrap items-center gap-2 text-[11px] text-secondary">
+          <label class="inline-flex items-center gap-1.5 cursor-pointer rounded-full bg-[#f5f5f7] px-2.5 py-1.5 border border-border/40">
+            <input type="checkbox" id="diffToggle" class="rounded border-border/60 text-accent focus:ring-accent/30" />
+            Differences only
+          </label>
+          <label class="inline-flex items-center gap-1.5 cursor-pointer rounded-full bg-[#f5f5f7] px-2.5 py-1.5 border border-border/40">
+            <input type="checkbox" id="notesToggle" class="rounded border-border/60 text-accent focus:ring-accent/30" />
+            Evidence notes
+          </label>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- ADD NETWORK MODAL -->
   <div id="addNetworkModal" class="fixed inset-0 z-[200] hidden">
     <div class="absolute inset-0 bg-black/45 backdrop-blur-sm" id="modalBackdrop"></div>
     <div class="absolute top-1/2 left-1/2 w-full max-w-md -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-3xl bg-white shadow-2xl">
@@ -171,239 +136,176 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
     </div>
   </div>
 
-  <div id="sectionNav" class="hidden lg:block sticky top-[141px] z-30 bg-white/90 backdrop-blur border-b border-border/20">
+  <!-- SECTION NAV -->
+  <div id="sectionNav" class="hidden lg:block sticky top-[128px] z-30 bg-white/90 backdrop-blur border-b border-border/20">
     <div class="max-w-site mx-auto px-6 py-1.5 flex items-center gap-1 overflow-x-auto scrollbar-none">
-      <a href="#buyerPathways" class="section-anchor-link" data-section="buyerPathways">Pathways</a>
-      <a href="#recommendationSummarySection" class="section-anchor-link" data-section="recommendationSummarySection">Summary</a>
-      <a href="#providerSnapshot" class="section-anchor-link" data-section="providerSnapshot">Snapshot</a>
-      <a href="#criticalDifferences" class="section-anchor-link" data-section="criticalDifferences">Critical Differences</a>
-      <a href="#aiIntelligence" class="section-anchor-link" data-section="aiIntelligence">AI Intelligence</a>
-      <a href="#commercialCompliance" class="section-anchor-link" data-section="commercialCompliance">Commercial + Compliance</a>
-      <a href="#fullMatrix" class="section-anchor-link" data-section="fullMatrix">Full Matrix</a>
+      <a href="#startHere" class="section-anchor-link" data-section="startHere">Start Here</a>
+      <a href="#shortlistDecision" class="section-anchor-link" data-section="shortlistDecision">Shortlist</a>
+      <a href="#deepDive" class="section-anchor-link" data-section="deepDive">Deep Dive</a>
       <a href="#methodology" class="section-anchor-link" data-section="methodology">Methodology</a>
     </div>
   </div>
 
-  <section id="buyerPathways" class="py-8 px-4 md:px-6">
+  <!-- ============================================ -->
+  <!-- SECTION A: START HERE                        -->
+  <!-- ============================================ -->
+  <section id="startHere" class="py-8 px-4 md:px-6">
     <div class="max-w-site mx-auto">
       <div class="max-w-2xl">
-        <div class="section-eyebrow">Buyer Pathway</div>
-        <h2 class="section-title">What are you trying to optimize?</h2>
+        <div class="section-eyebrow">Start here</div>
+        <h2 class="section-title">What are you trying to find?</h2>
         <p class="section-copy">
-          Use a buyer pathway to load a shorter, more relevant compare set. These are editorial shortcuts, not hard rankings.
+          Editorial shortcuts &mdash; not objective rankings. Choosing a goal loads a curated provider set and frames the comparison.
         </p>
       </div>
 
-      <div class="mt-6 space-y-6">
-        {pathwayGroups.map((group) => (
-          <div>
-            <div class="mb-3 flex items-center justify-between gap-3">
-              <h3 class="text-[12px] font-bold uppercase tracking-[0.18em] text-tertiary">{group.label}</h3>
-              <span class="text-[11px] text-tertiary">{group.items.length} pathways</span>
-            </div>
-            <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-              {group.items.map((item: any) => (
-                <button
-                  class="pathway-card rounded-2xl border border-border/40 bg-white p-4 text-left shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
-                  data-pathway={item.id}
-                  data-preset={item.preset}
-                  type="button"
-                >
-                  <div class="flex items-start justify-between gap-3">
-                    <div>
-                      <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-tertiary">{group.label}</div>
-                      <h4 class="mt-1 text-[15px] font-semibold text-primary">{item.label}</h4>
-                    </div>
-                    <span class="confidence-chip" data-confidence={item.confidence}>{item.confidence}</span>
-                  </div>
-                  <p class="mt-3 text-[12px] leading-relaxed text-secondary">{item.reason}</p>
-                  <div class="mt-3 flex flex-wrap gap-1.5">
-                    {item.providers.map((slug: string) => (
-                      <span class="inline-flex items-center rounded-full bg-[#f5f5f7] px-2 py-1 text-[10px] font-medium text-primary">{shortDisplayName(slug)}</span>
-                    ))}
-                  </div>
-                  <p class="mt-3 text-[11px] leading-relaxed text-tertiary">{item.caveat}</p>
-                </button>
-              ))}
-            </div>
-          </div>
+      <div class="mt-5 flex flex-wrap gap-2" id="goalSelector">
+        {compareGoals.map((goal) => (
+          <button class="goal-pill" data-goal={goal.id} data-preset={goal.preset} type="button">{goal.label}</button>
         ))}
+      </div>
+
+      <div class="mt-5 rounded-xl border border-amber-200/60 bg-amber-50/60 px-4 py-3">
+        <p class="text-[12px] leading-relaxed text-amber-900">{comparisonNote}</p>
       </div>
     </div>
   </section>
 
-  <section id="recommendationSummarySection" class="border-t border-border/20 bg-[#fafafa] py-8 px-4 md:px-6">
+  <!-- ============================================ -->
+  <!-- SECTION B: SHORTLIST DECISION                -->
+  <!-- ============================================ -->
+  <section id="shortlistDecision" class="border-t border-border/20 bg-[#fafafa] py-8 px-4 md:px-6">
     <div class="max-w-site mx-auto">
+      <!-- Recommendation Summary -->
       <div class="max-w-2xl">
-        <div class="section-eyebrow">Recommendation Summary</div>
-        <h2 class="section-title">What should I choose?</h2>
+        <div class="section-eyebrow">Shortlist Decision</div>
+        <h2 class="section-title">What should I take away?</h2>
         <p class="section-copy">
-          The summary below updates with your current selection. It is designed to surface the most decision-relevant fit signals first.
+          If you only spend 30 seconds here, use these recommendations. Each includes evidence rationale and caveats.
         </p>
       </div>
       <noscript>
-        <p class="mt-4 rounded-2xl border border-border/40 bg-white p-4 text-[13px] text-secondary">JavaScript is required for the interactive recommendation summary and matrix filters on this page.</p>
+        <p class="mt-4 rounded-2xl border border-border/40 bg-white p-4 text-[13px] text-secondary">JavaScript is required for the interactive comparison on this page.</p>
       </noscript>
-      <div id="decisionSummaryCards" class="mt-6 grid gap-3 lg:grid-cols-4" set:html={initialRender.decisionSummaryHtml}></div>
-      <div id="decisionSummaryCaution" class="mt-4" set:html={initialRender.decisionSummaryCautionHtml}></div>
+      <div id="recommendationCards" class="mt-6 grid gap-3 md:grid-cols-2 xl:grid-cols-3" set:html={initialRender.recommendationHtml}></div>
+      <div id="cautionBanner" class="mt-4" set:html={initialRender.cautionHtml}></div>
     </div>
   </section>
 
-  <section id="explainableInsightsSection" class="border-t border-border/20 py-8 px-4 md:px-6">
+  <!-- Critical Differences -->
+  <section class="border-t border-border/20 py-8 px-4 md:px-6">
     <div class="max-w-site mx-auto">
       <div class="max-w-2xl">
-        <div class="section-eyebrow">Explainable Insights</div>
-        <h2 class="section-title">Editorial conclusions with criteria, evidence, and caveats</h2>
+        <div class="section-eyebrow">Critical Differences</div>
+        <h2 class="section-title">What materially changes the buying decision?</h2>
         <p class="section-copy">
-          Each insight calls out what drove the conclusion, how strong the public evidence is, and where comparability is only partial.
+          The six fields most likely to change a shortlist. Toggle "Differences only" above to surface where providers diverge.
         </p>
       </div>
-      <div id="explainableInsights" class="mt-6 grid gap-3 lg:grid-cols-2" set:html={initialRender.explainableInsightsHtml}></div>
-    </div>
-  </section>
-
-  <section id="providerSnapshot" class="border-t border-border/20 bg-[#fafafa] py-8 px-4 md:px-6">
-    <div class="max-w-site mx-auto">
-      <div class="max-w-2xl">
-        <div class="section-eyebrow">Compared Providers Snapshot</div>
-        <h2 class="section-title">Sharper positioning, caveats, and substitute context</h2>
-        <p class="section-copy">
-          These cards are intentionally decisive: best fit, not ideal for, closest alternatives, and confidence all sit above the deeper evidence table.
-        </p>
-      </div>
-
-      <div id="providerSnapshotCards" class="mt-6 grid gap-4 lg:grid-cols-2 xl:grid-cols-3" set:html={initialRender.providerCardsHtml}></div>
 
       <div class="mt-6 rounded-3xl border border-border/30 bg-white p-4 shadow-sm">
+        <div id="criticalPrimaryTable" set:html={initialRender.criticalPrimaryHtml}></div>
+      </div>
+
+      <div id="criticalExpandedWrapper" class="hidden mt-4 rounded-3xl border border-border/30 bg-white p-4 shadow-sm">
         <div class="mb-3 flex items-center justify-between gap-3">
-          <div>
-            <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-tertiary">Layer A</div>
-            <h3 class="text-[15px] font-semibold text-primary">Compact decision snapshot</h3>
-          </div>
-          <span class="text-[11px] text-tertiary">High-signal fields only</span>
+          <h3 class="text-[14px] font-semibold text-primary">Additional buying factors</h3>
+          <span class="summary-pill">8 rows</span>
         </div>
-        <div id="snapshotTable" set:html={initialRender.snapshotTableHtml}></div>
+        <div id="criticalExpandedTable" set:html={initialRender.criticalExpandedHtml}></div>
       </div>
+
+      <button id="showMoreBtn" type="button" class="mt-4 inline-flex items-center gap-1.5 text-[13px] font-medium text-accent cursor-pointer bg-transparent border-none px-0">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        Show more buying factors
+      </button>
     </div>
   </section>
 
-  <section id="criticalDifferences" class="border-t border-border/20 py-8 px-4 md:px-6">
+  <!-- Provider Fit Cards -->
+  <section class="border-t border-border/20 bg-[#fafafa] py-8 px-4 md:px-6">
     <div class="max-w-site mx-auto">
       <div class="max-w-2xl">
-        <div class="section-eyebrow">Layer B</div>
-        <h2 class="section-title">Critical differences for actual buying decisions</h2>
-        <p class="section-copy">
-          This layer prioritizes the rows most likely to change a shortlist: call strength, reusable content, AI posture, pricing structure, geography, and compliance.
-        </p>
+        <div class="section-eyebrow">Provider Fit</div>
+        <h2 class="section-title">When is each provider a strong or weak fit?</h2>
+      </div>
+      <div id="providerFitCards" class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3" set:html={initialRender.providerCardsHtml}></div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECTION C: DEEP DIVE                         -->
+  <!-- ============================================ -->
+  <section id="deepDive" class="border-t border-border/20 py-8 px-4 md:px-6">
+    <div class="max-w-site mx-auto">
+      <div class="max-w-2xl mb-6">
+        <div class="section-eyebrow">Deep Dive</div>
+        <h2 class="section-title">Inspect detail by category</h2>
+        <p class="section-copy">For serious buyers who need to inspect AI, commercial, compliance, or the full evidence matrix.</p>
       </div>
 
-      <div id="pinnedDifferences" class="mt-6 grid gap-3 lg:grid-cols-5" set:html={initialRender.pinnedDifferencesHtml}></div>
+      <!-- Tab Bar -->
+      <div class="flex gap-1 overflow-x-auto scrollbar-none mb-6 border-b border-border/20 pb-2" id="tabBar">
+        <button class="tab-btn is-active" data-tab="ai" type="button">AI & Workflow</button>
+        <button class="tab-btn" data-tab="commercial" type="button">Commercial</button>
+        <button class="tab-btn" data-tab="compliance" type="button">Compliance</button>
+        <button class="tab-btn" data-tab="matrix" type="button">Full Matrix</button>
+      </div>
 
-      <div class="mt-6 rounded-3xl border border-border/30 bg-white p-4 shadow-sm">
-        <div class="mb-3 flex items-center justify-between gap-3">
-          <div>
-            <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-tertiary">Decision table</div>
-            <h3 class="text-[15px] font-semibold text-primary">Importance-sorted deltas</h3>
-          </div>
-          <span class="text-[11px] text-tertiary">Major, moderate, and minor differences</span>
+      <!-- AI Tab -->
+      <div class="tab-panel" data-tab-panel="ai">
+        <div class="rounded-2xl border border-blue-200/60 bg-blue-50 px-4 py-3 text-[12px] text-blue-900 leading-relaxed mb-5">
+          <strong class="font-semibold">AI caveat:</strong> {contextualDisclaimers.ai}
         </div>
-        <div id="criticalDifferencesTable" set:html={initialRender.criticalDifferencesHtml}></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="aiIntelligence" class="border-t border-border/20 bg-[#fafafa] py-8 px-4 md:px-6">
-    <div class="max-w-site mx-auto">
-      <div class="max-w-2xl">
-        <div class="section-eyebrow">AI & Workflow Intelligence</div>
-        <h2 class="section-title">Stricter AI taxonomy, less hype, clearer caveats</h2>
-        <p class="section-copy">
-          AI comparisons here distinguish sourcing, content interrogation, workflow automation, compliance, and primary-research capture. Public visibility is not treated as proof of production maturity.
-        </p>
-      </div>
-
-      <div class="mt-5 rounded-2xl border border-blue-200/60 bg-blue-50 px-4 py-4 text-[12px] text-blue-900 leading-relaxed">
-        <strong class="font-semibold">AI caveat:</strong> {contextualDisclaimers.ai}
-      </div>
-
-      <div id="aiTaxonomyGrid" class="mt-6 grid gap-4 xl:grid-cols-2" set:html={initialRender.aiTaxonomyHtml}></div>
-    </div>
-  </section>
-
-  <section id="commercialCompliance" class="border-t border-border/20 py-8 px-4 md:px-6">
-    <div class="max-w-site mx-auto">
-      <div class="max-w-2xl">
-        <div class="section-eyebrow">Commercial + Compliance</div>
-        <h2 class="section-title">Contract reality, scale caveats, and governance posture</h2>
-        <p class="section-copy">
-          These sections stay concise by default because many claims in pricing, scale, and compliance are directionally useful rather than perfectly standardized.
-        </p>
-      </div>
-
-      <div class="mt-6 grid gap-4 xl:grid-cols-2">
         <div class="rounded-3xl border border-border/30 bg-white p-4 shadow-sm">
-          <div class="flex items-center justify-between gap-3">
-            <div>
-              <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-tertiary">Commercial model</div>
-              <h3 class="text-[15px] font-semibold text-primary">Pricing, geography, and scale</h3>
-            </div>
-            <span class="info-chip">Indicative only</span>
-          </div>
-          <div class="mt-3 space-y-3">
-            <p class="rounded-2xl border border-amber-200/60 bg-amber-50 px-3 py-3 text-[11px] leading-relaxed text-amber-900">{contextualDisclaimers.pricing}</p>
-            <p class="rounded-2xl border border-slate-200/60 bg-slate-50 px-3 py-3 text-[11px] leading-relaxed text-slate-700">{contextualDisclaimers.scale}</p>
-          </div>
-          <div id="commercialTable" class="mt-4" set:html={initialRender.commercialTableHtml}></div>
+          <div id="aiTabContent" set:html={initialRender.aiTabHtml}></div>
         </div>
+      </div>
 
+      <!-- Commercial Tab -->
+      <div class="tab-panel hidden" data-tab-panel="commercial">
+        <div class="space-y-2 mb-5">
+          <div class="rounded-2xl border border-amber-200/60 bg-amber-50 px-4 py-3 text-[12px] leading-relaxed text-amber-900">{contextualDisclaimers.pricing}</div>
+          <div class="rounded-2xl border border-slate-200/60 bg-slate-50 px-4 py-3 text-[12px] leading-relaxed text-slate-700">{contextualDisclaimers.scale}</div>
+        </div>
         <div class="rounded-3xl border border-border/30 bg-white p-4 shadow-sm">
-          <div class="flex items-center justify-between gap-3">
-            <div>
-              <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-tertiary">Compliance posture</div>
-              <h3 class="text-[15px] font-semibold text-primary">Governance and control signals</h3>
-            </div>
-            <span class="info-chip">Needs diligence</span>
-          </div>
-          <p class="mt-3 rounded-2xl border border-emerald-200/60 bg-emerald-50 px-3 py-3 text-[11px] leading-relaxed text-emerald-900">{contextualDisclaimers.compliance}</p>
-          <div id="complianceTable" class="mt-4" set:html={initialRender.complianceTableHtml}></div>
+          <div id="commercialTabContent" set:html={initialRender.commercialTabHtml}></div>
         </div>
+      </div>
+
+      <!-- Compliance Tab -->
+      <div class="tab-panel hidden" data-tab-panel="compliance">
+        <div class="rounded-2xl border border-emerald-200/60 bg-emerald-50 px-4 py-3 text-[12px] leading-relaxed text-emerald-900 mb-5">
+          {contextualDisclaimers.compliance}
+        </div>
+        <div class="rounded-3xl border border-border/30 bg-white p-4 shadow-sm">
+          <div id="complianceTabContent" set:html={initialRender.complianceTabHtml}></div>
+        </div>
+      </div>
+
+      <!-- Full Matrix Tab -->
+      <div class="tab-panel hidden" data-tab-panel="matrix">
+        <div id="matrixSummary" class="mb-4" set:html={initialRender.fullMatrixSummaryHtml}></div>
+        <div id="matrixContent" set:html={initialRender.fullMatrixContentHtml}></div>
       </div>
     </div>
   </section>
 
-  <section id="fullMatrix" class="border-t border-border/20 bg-[#fafafa] py-8 px-4 md:px-6">
-    <div class="max-w-site mx-auto">
-      <div class="max-w-2xl">
-        <div class="section-eyebrow">Layer C</div>
-        <h2 class="section-title">Full evidence matrix</h2>
-        <p class="section-copy">
-          The full table is still here for power users. It stays collapsed by default so the page behaves like a decision tool first and a raw evidence slab second.
-        </p>
-      </div>
-
-      <details id="fullMatrixDetails" class="mt-6 rounded-3xl border border-border/30 bg-white shadow-sm" open={false}>
-        <summary class="list-none cursor-pointer px-5 py-4 flex items-center justify-between gap-3">
-          <div>
-            <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-tertiary">Full comparison</div>
-            <div class="text-[15px] font-semibold text-primary">Show full matrix</div>
-          </div>
-          <span class="summary-pill">29 tracked fields</span>
-        </summary>
-        <div class="border-t border-border/20 px-4 pb-4 pt-4 md:px-5">
-          <div id="matrixHiddenSummary" class="mb-4" set:html={initialRender.fullMatrixSummaryHtml}></div>
-          <div id="fullMatrixContent" set:html={initialRender.fullMatrixContentHtml}></div>
-        </div>
-      </details>
-    </div>
-  </section>
-
+  <!-- ============================================ -->
+  <!-- SECTION D: METHODOLOGY                      -->
+  <!-- ============================================ -->
   <section id="methodology" class="border-t border-border/20 py-8 px-4 md:px-6">
     <div class="max-w-site mx-auto">
-      <div class="grid gap-4 xl:grid-cols-[1.3fr_1fr]">
-        <div class="rounded-3xl border border-border/30 bg-white p-5 shadow-sm">
-          <div class="section-eyebrow">Methodology</div>
-          <h2 class="text-[20px] font-semibold text-primary">What this page does and does not claim</h2>
-          <p class="mt-3 text-[13px] leading-relaxed text-secondary">
+      <details class="rounded-3xl border border-border/30 bg-white shadow-sm">
+        <summary class="list-none cursor-pointer px-5 py-4 flex items-center justify-between gap-3">
+          <div>
+            <div class="section-eyebrow">Methodology</div>
+            <div class="text-[17px] font-semibold text-primary mt-1">How are these judgments made?</div>
+          </div>
+          <svg class="w-5 h-5 text-tertiary meth-chevron transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <div class="border-t border-border/20 px-5 pb-5 pt-4">
+          <p class="text-[13px] leading-relaxed text-secondary">
             This project compares public-facing evidence, company materials, and editorial synthesis. It does not claim private product access, confidential pricing data, or perfect apples-to-apples comparability where the underlying services are structurally different.
           </p>
           <div class="mt-5 grid gap-3 md:grid-cols-2">
@@ -426,16 +328,7 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
               </div>
             </div>
           </div>
-          <div class="mt-5 flex flex-wrap gap-3">
-            <a href="/sources" class="compare-hero-primary">Read methodology</a>
-            <a href="/disclaimer" class="compare-hero-link compare-hero-link-light">Read disclaimer</a>
-          </div>
-        </div>
-
-        <div class="rounded-3xl border border-border/30 bg-white p-5 shadow-sm">
-          <div class="section-eyebrow">Contextual cautions</div>
-          <h2 class="text-[20px] font-semibold text-primary">Always keep these in view</h2>
-          <div class="mt-4 space-y-3">
+          <div class="mt-5 grid gap-3 md:grid-cols-2">
             <div class="rounded-2xl border border-amber-200/60 bg-amber-50 px-4 py-3">
               <div class="text-[11px] font-semibold text-amber-900">Pricing</div>
               <p class="mt-1 text-[11px] leading-relaxed text-amber-900">{contextualDisclaimers.pricing}</p>
@@ -453,11 +346,16 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
               <p class="mt-1 text-[11px] leading-relaxed text-emerald-900">{contextualDisclaimers.compliance}</p>
             </div>
           </div>
+          <div class="mt-5 flex flex-wrap gap-3">
+            <a href="/sources" class="compare-hero-primary">Read methodology</a>
+            <a href="/disclaimer" class="compare-hero-link compare-hero-link-light">Read disclaimer</a>
+          </div>
         </div>
-      </div>
+      </details>
     </div>
   </section>
 
+  <!-- FOOTER CTA -->
   <section class="border-t border-border/20 py-8 px-4 md:px-6">
     <div class="max-w-site mx-auto text-center">
       <h2 class="text-lg font-bold text-primary mb-1.5">Explore further</h2>
@@ -535,44 +433,66 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
     line-height: 1.7;
     color: #4a4a52;
   }
-  .pathway-card.is-active {
-    border-color: rgba(0, 113, 227, 0.45);
-    box-shadow: 0 18px 38px rgba(0, 113, 227, 0.12);
-    transform: translateY(-2px);
-  }
-  .confidence-chip,
-  .info-chip,
-  .summary-pill {
+
+  /* Goal selector */
+  .goal-pill {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
+    padding: 8px 14px;
     border-radius: 999px;
-    padding: 5px 10px;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    border: 1px solid rgba(210, 210, 215, 0.55);
+    background: white;
+    color: #1d1d1f;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
   }
-  .confidence-chip[data-confidence="High"],
-  .confidence-pill-high {
-    background: rgba(48, 209, 88, 0.12);
-    color: #1b7f37;
+  .goal-pill:hover {
+    border-color: rgba(0, 113, 227, 0.35);
+    background: rgba(0, 113, 227, 0.04);
   }
-  .confidence-chip[data-confidence="Medium"],
-  .confidence-pill-medium {
-    background: rgba(0, 113, 227, 0.1);
-    color: #0051a7;
+  .goal-pill.is-active {
+    border-color: rgba(0, 113, 227, 0.5);
+    background: rgba(0, 113, 227, 0.08);
+    color: #0071e3;
+    font-weight: 600;
   }
-  .confidence-chip[data-confidence="Low"],
-  .confidence-pill-low {
-    background: rgba(255, 159, 10, 0.14);
-    color: #a85c00;
+
+  /* Tabs */
+  .tab-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: none;
+    background: transparent;
+    color: #6e6e73;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
   }
-  .info-chip,
-  .summary-pill {
-    background: #f5f5f7;
-    color: #4a4a52;
+  .tab-btn:hover {
+    color: #1d1d1f;
+    background: rgba(245, 245, 247, 0.8);
   }
+  .tab-btn.is-active {
+    color: #0071e3;
+    background: rgba(0, 113, 227, 0.08);
+  }
+
+  /* Recommendation details expand */
+  .rec-expander summary { list-style: none; }
+  .rec-expander summary::-webkit-details-marker { display: none; }
+  .rec-expander[open] .rec-chevron { transform: rotate(90deg); }
+
+  /* Methodology expand */
+  details[open] .meth-chevron { transform: rotate(180deg); }
+  details > summary::-webkit-details-marker { display: none; }
+
+  /* Section nav */
   .section-anchor-link {
     display: inline-flex;
     align-items: center;
@@ -590,6 +510,38 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
     color: #0071e3;
     background: rgba(0, 113, 227, 0.08);
   }
+
+  /* Confidence chips */
+  .confidence-chip,
+  .summary-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    padding: 5px 10px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .confidence-pill-high {
+    background: rgba(48, 209, 88, 0.12);
+    color: #1b7f37;
+  }
+  .confidence-pill-medium {
+    background: rgba(0, 113, 227, 0.1);
+    color: #0051a7;
+  }
+  .confidence-pill-low {
+    background: rgba(255, 159, 10, 0.14);
+    color: #a85c00;
+  }
+  .summary-pill {
+    background: #f5f5f7;
+    color: #4a4a52;
+  }
+
+  /* Evidence dots */
   .ev-dot {
     display: inline-block;
     width: 7px;
@@ -601,6 +553,8 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
   .ev-stated { background: #0071e3; }
   .ev-inferred { background: #ff9f0a; }
   .ev-estimated { background: #bf5af2; }
+
+  /* Table styles */
   .table-shell {
     overflow-x: auto;
     border: 1px solid rgba(210, 210, 215, 0.55);
@@ -697,20 +651,6 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
     padding: 6px 10px;
     font-size: 11px;
     font-weight: 600;
-  }
-  .insight-detail {
-    border: 1px solid rgba(210, 210, 215, 0.45);
-    border-radius: 22px;
-    background: white;
-    overflow: hidden;
-  }
-  .insight-detail summary {
-    list-style: none;
-    cursor: pointer;
-  }
-  .insight-detail summary::-webkit-details-marker { display: none; }
-  .insight-detail[open] {
-    box-shadow: 0 16px 36px rgba(17, 17, 17, 0.06);
   }
   .empty-panel {
     border: 1px dashed rgba(210, 210, 215, 0.9);

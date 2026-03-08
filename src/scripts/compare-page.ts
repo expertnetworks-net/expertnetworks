@@ -6,6 +6,7 @@ function arraysEqual(left: string[], right: string[]): boolean {
 }
 
 export function bootComparePage(dataset: CompareDataset) {
+  /* ---------- DOM references ---------- */
   const providerChips = document.getElementById('providerChips');
   const addNetworkBtn = document.getElementById('addNetworkBtn');
   const addNetworkModal = document.getElementById('addNetworkModal');
@@ -14,23 +15,27 @@ export function bootComparePage(dataset: CompareDataset) {
   const networkSearch = document.getElementById('networkSearch') as HTMLInputElement | null;
   const networkPickerList = document.getElementById('networkPickerList');
   const diffToggle = document.getElementById('diffToggle') as HTMLInputElement | null;
-  const highConfidenceToggle = document.getElementById('highConfidenceToggle') as HTMLInputElement | null;
   const notesToggle = document.getElementById('notesToggle') as HTMLInputElement | null;
-  const decisionSummaryCards = document.getElementById('decisionSummaryCards');
-  const decisionSummaryCaution = document.getElementById('decisionSummaryCaution');
-  const explainableInsights = document.getElementById('explainableInsights');
-  const providerSnapshotCards = document.getElementById('providerSnapshotCards');
-  const snapshotTable = document.getElementById('snapshotTable');
-  const pinnedDifferences = document.getElementById('pinnedDifferences');
-  const criticalDifferencesTable = document.getElementById('criticalDifferencesTable');
-  const aiTaxonomyGrid = document.getElementById('aiTaxonomyGrid');
-  const commercialTable = document.getElementById('commercialTable');
-  const complianceTable = document.getElementById('complianceTable');
-  const matrixHiddenSummary = document.getElementById('matrixHiddenSummary');
-  const fullMatrixContent = document.getElementById('fullMatrixContent');
+
+  const recommendationCards = document.getElementById('recommendationCards');
+  const cautionBanner = document.getElementById('cautionBanner');
+  const criticalPrimaryTable = document.getElementById('criticalPrimaryTable');
+  const criticalExpandedTable = document.getElementById('criticalExpandedTable');
+  const criticalExpandedWrapper = document.getElementById('criticalExpandedWrapper');
+  const showMoreBtn = document.getElementById('showMoreBtn');
+  const providerFitCards = document.getElementById('providerFitCards');
+
+  const aiTabContent = document.getElementById('aiTabContent');
+  const commercialTabContent = document.getElementById('commercialTabContent');
+  const complianceTabContent = document.getElementById('complianceTabContent');
+  const matrixSummary = document.getElementById('matrixSummary');
+  const matrixContent = document.getElementById('matrixContent');
+
   const selectionReviewedBadge = document.getElementById('selectionReviewedBadge');
   const heroDirectoryBtn = document.getElementById('heroDirectoryBtn') as HTMLAnchorElement | null;
   const browseDirectoryBtn = document.getElementById('browseDirectoryBtn') as HTMLAnchorElement | null;
+
+  /* ---------- State ---------- */
 
   function getInitialSlugs(): string[] {
     const params = new URLSearchParams(window.location.search);
@@ -63,12 +68,25 @@ export function bootComparePage(dataset: CompareDataset) {
     return preset && dataset.presets[preset] ? preset : '';
   }
 
+  function getInitialGoal(): string {
+    const preset = getInitialPreset();
+    if (!preset) return '';
+    const goalButtons = document.querySelectorAll<HTMLElement>('.goal-pill');
+    for (const button of goalButtons) {
+      if (button.dataset.preset === preset) return button.dataset.goal || '';
+    }
+    return '';
+  }
+
   let activeSlugs = getInitialSlugs();
   let activePreset = getInitialPreset();
+  let activeGoal = getInitialGoal();
   let diffMode = Boolean(diffToggle?.checked);
-  let highConfidenceOnly = Boolean(highConfidenceToggle?.checked);
   let showEvidenceNotes = Boolean(notesToggle?.checked);
+  let expandedVisible = false;
   let sectionObserver: IntersectionObserver | null = null;
+
+  /* ---------- URL sync ---------- */
 
   function syncUrl() {
     const url = new URL(window.location.href);
@@ -82,12 +100,15 @@ export function bootComparePage(dataset: CompareDataset) {
     window.history.replaceState({}, '', url.toString());
   }
 
-  function renderPathwayStates() {
-    document.querySelectorAll<HTMLElement>('.pathway-card').forEach((button) => {
-      const isActive = Boolean(activePreset) && button.dataset.preset === activePreset;
-      button.classList.toggle('is-active', isActive);
+  /* ---------- Goal selector ---------- */
+
+  function renderGoalStates() {
+    document.querySelectorAll<HTMLElement>('.goal-pill').forEach((button) => {
+      button.classList.toggle('is-active', button.dataset.goal === activeGoal);
     });
   }
+
+  /* ---------- Modal ---------- */
 
   function filterPicker(query: string) {
     const search = query.toLowerCase();
@@ -111,6 +132,8 @@ export function bootComparePage(dataset: CompareDataset) {
     document.body.style.overflow = '';
   }
 
+  /* ---------- Chip events ---------- */
+
   function bindChipEvents() {
     providerChips?.querySelectorAll<HTMLElement>('.remove-provider').forEach((button) => {
       button.addEventListener('click', (event) => {
@@ -119,42 +142,52 @@ export function bootComparePage(dataset: CompareDataset) {
         if (!slug || activeSlugs.length <= 2) return;
         activeSlugs = activeSlugs.filter((candidate) => candidate !== slug);
         activePreset = '';
+        activeGoal = '';
         render();
       });
     });
   }
 
+  /* ---------- Render ---------- */
+
   function render() {
     const view = buildCompareRender(activeSlugs, dataset, {
       diffMode,
-      highConfidenceOnly,
+      highConfidenceOnly: false,
       showEvidenceNotes,
     });
 
+    /* Control bar */
     if (providerChips) providerChips.innerHTML = view.chipsHtml;
     bindChipEvents();
 
+    /* Metadata */
     if (selectionReviewedBadge) selectionReviewedBadge.textContent = `Selection reviewed: ${view.latestReviewedLabel}`;
     if (heroDirectoryBtn) heroDirectoryBtn.href = view.directoryHref;
     if (browseDirectoryBtn) browseDirectoryBtn.href = view.directoryHref;
 
-    if (decisionSummaryCards) decisionSummaryCards.innerHTML = view.decisionSummaryHtml;
-    if (decisionSummaryCaution) decisionSummaryCaution.innerHTML = view.decisionSummaryCautionHtml;
-    if (explainableInsights) explainableInsights.innerHTML = view.explainableInsightsHtml;
-    if (providerSnapshotCards) providerSnapshotCards.innerHTML = view.providerCardsHtml;
-    if (snapshotTable) snapshotTable.innerHTML = view.snapshotTableHtml;
-    if (pinnedDifferences) pinnedDifferences.innerHTML = view.pinnedDifferencesHtml;
-    if (criticalDifferencesTable) criticalDifferencesTable.innerHTML = view.criticalDifferencesHtml;
-    if (aiTaxonomyGrid) aiTaxonomyGrid.innerHTML = view.aiTaxonomyHtml;
-    if (commercialTable) commercialTable.innerHTML = view.commercialTableHtml;
-    if (complianceTable) complianceTable.innerHTML = view.complianceTableHtml;
-    if (matrixHiddenSummary) matrixHiddenSummary.innerHTML = view.fullMatrixSummaryHtml;
-    if (fullMatrixContent) fullMatrixContent.innerHTML = view.fullMatrixContentHtml;
+    /* Shortlist */
+    if (recommendationCards) recommendationCards.innerHTML = view.recommendationHtml;
+    if (cautionBanner) cautionBanner.innerHTML = view.cautionHtml;
+    if (criticalPrimaryTable) criticalPrimaryTable.innerHTML = view.criticalPrimaryHtml;
+    if (criticalExpandedTable) criticalExpandedTable.innerHTML = view.criticalExpandedHtml;
+    if (providerFitCards) providerFitCards.innerHTML = view.providerCardsHtml;
 
-    renderPathwayStates();
+    /* Deep dive tabs */
+    if (aiTabContent) aiTabContent.innerHTML = view.aiTabHtml;
+    if (commercialTabContent) commercialTabContent.innerHTML = view.commercialTabHtml;
+    if (complianceTabContent) complianceTabContent.innerHTML = view.complianceTabHtml;
+    if (matrixSummary) matrixSummary.innerHTML = view.fullMatrixSummaryHtml;
+    if (matrixContent) matrixContent.innerHTML = view.fullMatrixContentHtml;
+
+    /* Goal states */
+    renderGoalStates();
+
     syncUrl();
     filterPicker(networkSearch?.value || '');
   }
+
+  /* ---------- Section nav observer ---------- */
 
   function updateSectionNav() {
     const links = Array.from(document.querySelectorAll<HTMLElement>('.section-anchor-link'));
@@ -169,21 +202,15 @@ export function bootComparePage(dataset: CompareDataset) {
       });
     }, { rootMargin: '-180px 0px -62% 0px' });
 
-    [
-      'buyerPathways',
-      'recommendationSummarySection',
-      'providerSnapshot',
-      'criticalDifferences',
-      'aiIntelligence',
-      'commercialCompliance',
-      'fullMatrix',
-      'methodology',
-    ].forEach((id) => {
+    ['startHere', 'shortlistDecision', 'deepDive', 'methodology'].forEach((id) => {
       const element = document.getElementById(id);
       if (element) sectionObserver?.observe(element);
     });
   }
 
+  /* ---------- Event bindings ---------- */
+
+  /* Modal */
   addNetworkBtn?.addEventListener('click', openModal);
   closeModalButton?.addEventListener('click', closeModal);
   modalBackdrop?.addEventListener('click', closeModal);
@@ -202,19 +229,26 @@ export function bootComparePage(dataset: CompareDataset) {
       if (activeSlugs.length >= 6) activeSlugs.shift();
       activeSlugs.push(slug);
       activePreset = '';
+      activeGoal = '';
       closeModal();
       render();
     });
   });
 
-  document.querySelectorAll<HTMLElement>('.pathway-card').forEach((button) => {
+  /* Goal selector */
+  document.querySelectorAll<HTMLElement>('.goal-pill').forEach((button) => {
     button.addEventListener('click', () => {
+      const goalId = button.dataset.goal;
       const preset = button.dataset.preset;
       if (!preset || !dataset.presets[preset]) return;
-      if (activePreset === preset) {
+
+      if (activeGoal === goalId) {
+        /* Deselect: revert to defaults */
+        activeGoal = '';
         activePreset = '';
         activeSlugs = [...dataset.defaultSlugs];
       } else {
+        activeGoal = goalId || '';
         activePreset = preset;
         activeSlugs = [...dataset.presets[preset]];
       }
@@ -222,13 +256,9 @@ export function bootComparePage(dataset: CompareDataset) {
     });
   });
 
+  /* Toggles */
   diffToggle?.addEventListener('change', () => {
     diffMode = Boolean(diffToggle.checked);
-    render();
-  });
-
-  highConfidenceToggle?.addEventListener('change', () => {
-    highConfidenceOnly = Boolean(highConfidenceToggle.checked);
     render();
   });
 
@@ -237,6 +267,29 @@ export function bootComparePage(dataset: CompareDataset) {
     render();
   });
 
+  /* Show more / fewer critical differences */
+  showMoreBtn?.addEventListener('click', () => {
+    expandedVisible = !expandedVisible;
+    criticalExpandedWrapper?.classList.toggle('hidden', !expandedVisible);
+    if (showMoreBtn) {
+      showMoreBtn.innerHTML = expandedVisible
+        ? '<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 15-6-6-6 6"/></svg> Show fewer factors'
+        : '<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg> Show more buying factors';
+    }
+  });
+
+  /* Tab switching */
+  document.querySelectorAll<HTMLElement>('.tab-btn').forEach((button) => {
+    button.addEventListener('click', () => {
+      const tab = button.dataset.tab;
+      document.querySelectorAll<HTMLElement>('.tab-btn').forEach((b) => b.classList.toggle('is-active', b === button));
+      document.querySelectorAll<HTMLElement>('.tab-panel').forEach((panel) => {
+        panel.classList.toggle('hidden', panel.dataset.tabPanel !== tab);
+      });
+    });
+  });
+
+  /* Column highlighting */
   document.addEventListener('mouseover', (event) => {
     const cell = (event.target as HTMLElement).closest<HTMLElement>('.provider-col');
     const slug = cell?.dataset.slug;
@@ -255,6 +308,7 @@ export function bootComparePage(dataset: CompareDataset) {
     });
   });
 
+  /* ---------- Init ---------- */
   render();
   updateSectionNav();
 }
