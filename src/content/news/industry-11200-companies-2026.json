@@ -10,5 +10,14 @@
   "summary": "An estimated 11,200 firms across all industries use expert network services in 2026, per Inex One's market sizing report. By spend, consulting accounts for ~50%, capital market players (asset management, PE, hedge funds) ~42%, and corporates ~10%. Inex One estimates the industry at ~$3B in 2025, growing 12% annually between 2023–2025.",
   "sourceUrl": "https://inex.one/blog/expert-network-market-size",
   "relatedNetworks": [],
-  "published": true
+  "published": true,
+  "sourceType": "Industry Report",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "The sheer number of companies in the expert network ecosystem reveals a highly fragmented market ripe for consolidation.",
+  "impactTags": [
+    "Market Data",
+    "Industry Size",
+    "Fragmentation"
+  ]
 }

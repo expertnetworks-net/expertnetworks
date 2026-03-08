@@ -128,6 +128,13 @@ const news = defineCollection({
     gradientTo: z.string().optional(),
     relatedNetworks: z.array(z.string()).default([]),
     published: z.boolean().default(true),
+
+    // V2 news fields
+    sourceType: z.enum(['Press Release', 'Industry Report', 'News Coverage', 'Regulatory', 'Product Update']).optional(),
+    significance: z.enum(['major', 'standard', 'brief']).optional(),
+    featured: z.boolean().default(false),
+    whyItMatters: z.string().optional(),
+    impactTags: z.array(z.string()).default([]),
   }),
 });
 

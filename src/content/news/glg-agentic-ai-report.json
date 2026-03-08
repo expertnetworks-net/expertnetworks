@@ -9,6 +9,17 @@
   "gradientTo": "#a855f7",
   "summary": "GLG released a report on agentic AI implementation based on insights from 110 senior leaders. Key finding: only 46% of firms have agentic AI in production, with 71% citing concerns about erroneous output. Includes a tactical playbook for operationalization.",
   "sourceUrl": "https://www.prnewswire.com/news-releases/glg-publishes-agentic-ai-report-featuring-implementation-playbook-302686540.html",
-  "relatedNetworks": ["glg"],
-  "published": true
+  "relatedNetworks": [
+    "glg"
+  ],
+  "published": true,
+  "sourceType": "Industry Report",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "GLG's research on agentic AI adoption provides expert-sourced data on how enterprises are deploying autonomous AI systems.",
+  "impactTags": [
+    "AI Research",
+    "Thought Leadership",
+    "Enterprise AI"
+  ]
 }

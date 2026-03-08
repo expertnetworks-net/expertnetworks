@@ -9,6 +9,17 @@
   "gradientTo": "#ef4444",
   "summary": "AlphaSense announced it surpassed $500M in ARR, reflecting accelerating adoption of its agentic AI workflows. Over 6,500 customers now use the platform, including 88% of the S&P 100, with clients like Google, JP Morgan, Pfizer, Microsoft, and Nvidia.",
   "sourceUrl": "https://www.alpha-sense.com/press/alphasense-surpasses-500m-in-arr/",
-  "relatedNetworks": ["alphasense-tegus"],
-  "published": true
+  "relatedNetworks": [
+    "alphasense-tegus"
+  ],
+  "published": true,
+  "sourceType": "Press Release",
+  "significance": "major",
+  "featured": true,
+  "whyItMatters": "Validates AlphaSense as the revenue leader in AI-powered market intelligence, signaling rapid enterprise adoption of agentic AI workflows.",
+  "impactTags": [
+    "Revenue Milestone",
+    "AI Platform",
+    "Enterprise Adoption"
+  ]
 }

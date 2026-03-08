@@ -9,6 +9,17 @@
   "gradientTo": "#22c55e",
   "summary": "AlphaSense announced Financial Data integration into Company Profile pages, bringing structured financials, KPIs, valuation metrics, and historical performance alongside qualitative content. Access is expanding to the full user base in early 2026.",
   "sourceUrl": "https://www.alpha-sense.com/resources/product-articles/product-releases-2025/",
-  "relatedNetworks": ["alphasense-tegus"],
-  "published": true
+  "relatedNetworks": [
+    "alphasense-tegus"
+  ],
+  "published": true,
+  "sourceType": "Product Update",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "Adding financial data to the platform positions AlphaSense to compete with Bloomberg and FactSet, not just expert networks.",
+  "impactTags": [
+    "Product Expansion",
+    "Financial Data",
+    "Platform Strategy"
+  ]
 }

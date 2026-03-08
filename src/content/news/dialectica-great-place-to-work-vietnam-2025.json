@@ -9,6 +9,17 @@
   "gradientTo": "#22c55e",
   "summary": "Dialectica Vietnam earned its first Great Place to Work certification, based entirely on employee feedback. The office scored highly in workplace safety, inclusive treatment, and fair resource provision for staff success.",
   "sourceUrl": "https://www.dialectica.io/blog/dialectica-vietnam-earns-prestigious-recognition-as-a-great-place-to-work-r",
-  "relatedNetworks": ["dialectica"],
-  "published": true
+  "relatedNetworks": [
+    "dialectica"
+  ],
+  "published": true,
+  "sourceType": "Press Release",
+  "significance": "brief",
+  "featured": false,
+  "whyItMatters": "Workplace certification in Vietnam reflects Dialectica's global talent strategy.",
+  "impactTags": [
+    "Culture",
+    "APAC",
+    "Employer Brand"
+  ]
 }

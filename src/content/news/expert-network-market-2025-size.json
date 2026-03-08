@@ -9,6 +9,17 @@
   "gradientTo": "#a855f7",
   "summary": "Inex One's annual market sizing report reveals the global expert network industry surpassed $2.5 billion in 2024. Growth was driven by rebounding PE deal activity and expanding survey products as corporates increasingly substitute traditional B2C panels.",
   "sourceUrl": "https://www.prnewswire.com/news-releases/inex-one-the-expert-network-industry-exceeds-2-5-billion-302429073.html",
-  "relatedNetworks": ["inex-one"],
-  "published": true
+  "relatedNetworks": [
+    "inex-one"
+  ],
+  "published": true,
+  "sourceType": "Industry Report",
+  "significance": "major",
+  "featured": false,
+  "whyItMatters": "Inex One's independent research provides the most granular market sizing, pegging the industry at ~$3B with 16% growth — a key benchmark for the sector.",
+  "impactTags": [
+    "Market Data",
+    "Industry Growth",
+    "Benchmarking"
+  ]
 }

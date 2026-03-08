@@ -9,6 +9,17 @@
   "gradientTo": "#3b82f6",
   "summary": "Dialectica won two bronze awards: Best Use of AIOps/MLOps Tool in DevOps for its GenAI-powered automated transcription system (90% success rate), and Best Use of Microservices/Containers for its monolith-to-microservices migration that yielded a 35% increase in customer satisfaction.",
   "sourceUrl": "https://www.dialectica.io/blog/dialectica-two-distinctions-for-its-innovative-practices-at-the-devops-agile-awards-2024",
-  "relatedNetworks": ["dialectica"],
-  "published": true
+  "relatedNetworks": [
+    "dialectica"
+  ],
+  "published": true,
+  "sourceType": "Press Release",
+  "significance": "brief",
+  "featured": false,
+  "whyItMatters": "DevOps award highlights Dialectica's technology-driven approach to expert network operations.",
+  "impactTags": [
+    "Technology",
+    "Awards",
+    "Engineering"
+  ]
 }

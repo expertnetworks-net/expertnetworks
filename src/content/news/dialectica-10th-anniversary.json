@@ -9,6 +9,17 @@
   "gradientTo": "#a855f7",
   "summary": "Dialectica celebrated its 10th anniversary having grown to $100M+ annual revenue, 1,400 employees across six offices on three continents, and a 70% CAGR — the highest in the expert network industry. The firm has invested over $25M in technology with 100+ engineers and serves 70,000+ clients across 165 countries.",
   "sourceUrl": "https://www.dialectica.io/blog/a-decade-of-dialectica-redefining-business-decision-making-with-the-power-of-ai",
-  "relatedNetworks": ["dialectica"],
-  "published": true
+  "relatedNetworks": [
+    "dialectica"
+  ],
+  "published": true,
+  "sourceType": "Press Release",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "A decade of growth from Athens startup to global expert network illustrates the industry's expansion opportunity.",
+  "impactTags": [
+    "Milestone",
+    "Company History",
+    "Growth"
+  ]
 }

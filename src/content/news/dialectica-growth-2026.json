@@ -9,6 +9,17 @@
   "gradientTo": "#22c55e",
   "summary": "Dialectica actively promotes its B2B Surveys product and due-diligence use cases in early 2026, positioning its high-curation expert matching and survey capabilities for private equity and corporate strategy clients.",
   "sourceUrl": "https://inex.one/expert-network-directory/dialectica",
-  "relatedNetworks": ["dialectica"],
-  "published": true
+  "relatedNetworks": [
+    "dialectica"
+  ],
+  "published": true,
+  "sourceType": "Product Update",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "Dialectica's B2B survey push and due-diligence positioning signal the firm's strategy to capture PE and corporate strategy budgets.",
+  "impactTags": [
+    "Product Strategy",
+    "B2B Surveys",
+    "PE Market"
+  ]
 }

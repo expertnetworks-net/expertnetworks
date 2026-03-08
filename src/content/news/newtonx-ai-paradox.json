@@ -9,6 +9,17 @@
   "gradientTo": "#a855f7",
   "summary": "NewtonX released thought leadership on the AI paradox and digital twins concept, positioning its AI-moderated expert interview platform as a solution for capturing nuanced human expertise alongside AI automation.",
   "sourceUrl": "https://www.newtonx.com/article/the-2026-ai-paradox-why-evidence-density-is-the-new-b2b-moat/",
-  "relatedNetworks": ["newtonx"],
-  "published": true
+  "relatedNetworks": [
+    "newtonx"
+  ],
+  "published": true,
+  "sourceType": "Industry Report",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "NewtonX's AI paradox research highlights the tension between AI automation and the enduring need for verified human expertise.",
+  "impactTags": [
+    "AI Research",
+    "Human vs AI",
+    "Thought Leadership"
+  ]
 }

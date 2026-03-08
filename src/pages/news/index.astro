@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ParticleHero from '../../components/ParticleHero.astro';
-import TrackedNetworksMarquee from '../../components/TrackedNetworksMarquee.astro';
 import { getCollection } from 'astro:content';
 
 const allNews = await getCollection('news');
@@ -16,85 +15,293 @@ const networkMap = Object.fromEntries(
 const networkLogoMap: Record<string, string> = Object.fromEntries(
   allNetworks.filter(n => n.data.published && n.data.logo).map(n => [n.data.slug, n.data.logo])
 );
+const networkGradientMap: Record<string, {from: string, to: string}> = Object.fromEntries(
+  allNetworks.filter(n => n.data.published).map(n => [n.data.slug, {from: n.data.gradientFrom, to: n.data.gradientTo}])
+);
 
-// Get unique categories and related networks
+// Featured articles for "What Matters Now"
+const featuredArticles = articles.filter(a => a.data.featured).slice(0, 5);
+
+// Get unique categories, source types, and related networks
 const categories = [...new Set(articles.map(a => a.data.category))].sort();
+const sourceTypes = [...new Set(articles.map(a => a.data.sourceType).filter(Boolean))].sort();
 const relatedSlugs = [...new Set(articles.flatMap(a => a.data.relatedNetworks))].filter(s => networkMap[s]).sort();
+
+// Coverage intelligence counts
+const majorCount = articles.filter(a => a.data.significance === 'major').length;
+const standardCount = articles.filter(a => a.data.significance === 'standard').length;
+const briefCount = articles.filter(a => a.data.significance === 'brief').length;
+const networksCovered = new Set(articles.flatMap(a => a.data.relatedNetworks).filter(Boolean)).size;
+const sourcesCount = new Set(articles.map(a => a.data.source)).size;
+
+// Source type badge colors
+const sourceTypeColors: Record<string, {bg: string, text: string}> = {
+  'Press Release': { bg: 'bg-blue-50', text: 'text-blue-700' },
+  'Industry Report': { bg: 'bg-violet-50', text: 'text-violet-700' },
+  'News Coverage': { bg: 'bg-amber-50', text: 'text-amber-700' },
+  'Regulatory': { bg: 'bg-red-50', text: 'text-red-700' },
+  'Product Update': { bg: 'bg-emerald-50', text: 'text-emerald-700' },
+};
+
+// Significance border colors
+const sigColors: Record<string, string> = {
+  'major': 'border-l-accent',
+  'standard': 'border-l-secondary/30',
+  'brief': 'border-l-transparent',
+};
+
+// Time range helper
+const now = new Date();
+const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+const ninetyDaysAgo = new Date(now.getTime() - 90 * 24 * 60 * 60 * 1000);
+const oneYearAgo = new Date(now.getTime() - 365 * 24 * 60 * 60 * 1000);
+
+// Trend pulse: count articles per category in last 90 days
+const recentArticles = articles.filter(a => new Date(a.data.date) >= ninetyDaysAgo);
+const trendCounts: Record<string, number> = {};
+recentArticles.forEach(a => {
+  trendCounts[a.data.category] = (trendCounts[a.data.category] || 0) + 1;
+});
+const topTrends = Object.entries(trendCounts).sort((a, b) => b[1] - a[1]).slice(0, 6);
 ---
 
 <BaseLayout
-  title="Industry News — Expert Networks Hub"
-  description="Curated expert network industry news from independent sources. Track funding rounds, acquisitions, product launches, and regulatory developments across GLG, AlphaSights, Third Bridge, and more."
+  title="Industry Intelligence — Expert Networks Hub"
+  description="Expert network industry intelligence desk. Track major signals, funding rounds, acquisitions, product launches, and regulatory developments across GLG, AlphaSights, Third Bridge, and 30+ providers."
   jsonLd={{
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": "Expert Network Industry News",
-    "description": "Curated expert network industry news from independent sources.",
+    "name": "Expert Network Industry Intelligence",
+    "description": "Curated expert network industry intelligence from independent sources.",
     "url": "https://expertnetworks.net/news",
     "isPartOf": { "@type": "WebSite", "name": "ExpertNetworks.net", "url": "https://expertnetworks.net" }
   }}
 >
-  <!-- Header with particle background -->
+  <!-- Compact Hero -->
   <ParticleHero>
     <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
       <div>
-        <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight text-white">Industry News</h1>
-        <p class="text-[#a1a1a6] text-sm mt-1">Curated from third-party sources. Company announcements labeled as such.</p>
+        <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight text-white">Industry Intelligence</h1>
+        <p class="text-[#a1a1a6] text-sm mt-1">Signals, analysis, and developments across the expert network ecosystem.</p>
       </div>
-      <a href="/" class="text-accent text-sm font-medium no-underline hover:underline" style="pointer-events: auto;">&larr; Dashboard</a>
+      <div class="flex items-center gap-3" style="pointer-events: auto;">
+        <a href="/" class="text-accent text-sm font-medium no-underline hover:underline">&larr; Dashboard</a>
+      </div>
     </div>
   </ParticleHero>
 
-  <!-- Networks covered marquee -->
-  <TrackedNetworksMarquee />
-
-  <!-- Filters -->
-  <section class="py-4 px-6 border-b border-border/40 bg-bg-secondary/50">
-    <div class="max-w-site mx-auto flex flex-wrap gap-3 items-center">
-      <span class="text-xs font-bold uppercase tracking-wide text-tertiary">Filter:</span>
-
-      <!-- Category filter -->
-      <select id="filterCategory" aria-label="Filter by category" class="text-[13px] font-medium text-primary bg-white border border-border rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
-        <option value="">All Categories</option>
-        {categories.map(cat => (
-          <option value={cat}>{cat}</option>
-        ))}
-      </select>
-
-      <!-- Network filter -->
-      <select id="filterNetwork" aria-label="Filter by network" class="text-[13px] font-medium text-primary bg-white border border-border rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
-        <option value="">All Networks</option>
-        {relatedSlugs.map(slug => (
-          <option value={slug}>{networkMap[slug]}</option>
-        ))}
-      </select>
-
-      <!-- Date sort -->
-      <select id="filterSort" aria-label="Sort by date" class="text-[13px] font-medium text-primary bg-white border border-border rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
-        <option value="newest">Newest First</option>
-        <option value="oldest">Oldest First</option>
-      </select>
-
-      <button id="clearFilters" aria-label="Clear filters" class="text-[13px] font-medium text-accent hover:underline cursor-pointer hidden border-none bg-transparent">Clear</button>
+  <!-- Coverage Intelligence Bar -->
+  <section class="py-3 px-6 bg-white border-b border-bg-secondary">
+    <div class="max-w-site mx-auto flex flex-wrap items-center gap-4 md:gap-6">
+      <div class="flex items-center gap-1.5">
+        <span class="text-lg font-extrabold text-primary">{articles.length}</span>
+        <span class="text-[11px] text-tertiary uppercase tracking-wide font-semibold">Signals</span>
+      </div>
+      <div class="h-4 w-px bg-bg-secondary"></div>
+      <div class="flex items-center gap-1.5">
+        <span class="w-2 h-2 rounded-full bg-accent"></span>
+        <span class="text-[12px] font-semibold text-primary">{majorCount}</span>
+        <span class="text-[11px] text-tertiary">Major</span>
+      </div>
+      <div class="flex items-center gap-1.5">
+        <span class="w-2 h-2 rounded-full bg-secondary/40"></span>
+        <span class="text-[12px] font-semibold text-primary">{standardCount}</span>
+        <span class="text-[11px] text-tertiary">Standard</span>
+      </div>
+      <div class="flex items-center gap-1.5">
+        <span class="w-2 h-2 rounded-full bg-tertiary/30"></span>
+        <span class="text-[12px] font-semibold text-primary">{briefCount}</span>
+        <span class="text-[11px] text-tertiary">Brief</span>
+      </div>
+      <div class="h-4 w-px bg-bg-secondary hidden md:block"></div>
+      <div class="flex items-center gap-1.5 hidden md:flex">
+        <span class="text-[12px] font-semibold text-primary">{networksCovered}</span>
+        <span class="text-[11px] text-tertiary">Networks</span>
+      </div>
+      <div class="flex items-center gap-1.5 hidden md:flex">
+        <span class="text-[12px] font-semibold text-primary">{sourcesCount}</span>
+        <span class="text-[11px] text-tertiary">Sources</span>
+      </div>
     </div>
   </section>
 
-  <!-- Article list -->
+  <!-- What Matters Now — Featured Signals -->
+  {featuredArticles.length > 0 && (
+    <section class="py-8 px-6 bg-bg-secondary/50" id="featured">
+      <div class="max-w-site mx-auto">
+        <div class="flex items-center gap-2 mb-5">
+          <div class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></div>
+          <h2 class="text-sm font-bold uppercase tracking-wide text-primary">What Matters Now</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {featuredArticles.map((article, idx) => {
+            const formattedDate = new Date(article.data.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+            const primarySlug = article.data.relatedNetworks[0];
+            const logoSrc = primarySlug ? networkLogoMap[primarySlug] : null;
+            const stColors = article.data.sourceType ? sourceTypeColors[article.data.sourceType] : null;
+            const isHero = idx === 0;
+            return (
+              <div class={`bg-white rounded-card shadow-card hover:shadow-card-hover transition-shadow p-5 flex flex-col ${isHero ? 'md:col-span-2 lg:col-span-2' : ''}`}>
+                <div class="flex items-center gap-2 mb-3">
+                  {logoSrc ? (
+                    <img src={logoSrc} alt="" width="20" height="20" class="w-5 h-5 rounded object-cover" loading="lazy" />
+                  ) : (
+                    <div class="w-5 h-5 rounded flex items-center justify-center" style={`background: ${article.data.gradientFrom || '#1a365d'}`}>
+                      <div class="w-1.5 h-1.5 rounded-full bg-white/60"></div>
+                    </div>
+                  )}
+                  {stColors && (
+                    <span class={`inline-block px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide rounded-full ${stColors.bg} ${stColors.text}`}>{article.data.sourceType}</span>
+                  )}
+                  <span class="text-[11px] text-tertiary ml-auto">{formattedDate}</span>
+                </div>
+                <h3 class={`font-bold text-primary leading-snug mb-2 ${isHero ? 'text-[16px]' : 'text-[14px]'}`}>{article.data.title}</h3>
+                <p class="text-[13px] text-secondary leading-relaxed mb-3 flex-1">{article.data.summary}</p>
+                {article.data.whyItMatters && (
+                  <div class="bg-accent/5 rounded-lg px-3 py-2 mb-3">
+                    <span class="text-[10px] font-bold uppercase tracking-wide text-accent">Why it matters</span>
+                    <p class="text-[12px] text-primary leading-relaxed mt-0.5">{article.data.whyItMatters}</p>
+                  </div>
+                )}
+                <div class="flex flex-wrap items-center gap-2 mt-auto">
+                  <span class="text-[11px] font-bold uppercase tracking-wide" style={`color: ${article.data.categoryColor || '#0071E3'}`}>{article.data.category}</span>
+                  {article.data.relatedNetworks.map((s: string) => networkMap[s] ? (
+                    <a href={`/networks/${s}`} class="inline-block px-2 py-0.5 text-[10px] font-medium rounded-full bg-accent/10 text-accent no-underline hover:bg-accent/20 transition-colors">{networkMap[s]}</a>
+                  ) : null)}
+                  {article.data.sourceUrl && (
+                    <a href={article.data.sourceUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-[11px] font-medium text-accent hover:underline no-underline ml-auto">
+                      Source
+                      <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    </a>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Trend Pulse Strip -->
+  {topTrends.length > 0 && (
+    <section class="py-3 px-6 bg-white border-b border-bg-secondary">
+      <div class="max-w-site mx-auto flex flex-wrap items-center gap-3">
+        <span class="text-[11px] font-bold uppercase tracking-wide text-tertiary">Trending (90d):</span>
+        {topTrends.map(([cat, count]) => (
+          <button class="trend-btn inline-flex items-center gap-1.5 px-2.5 py-1 text-[12px] font-medium text-primary bg-bg-secondary rounded-full hover:bg-accent/10 hover:text-accent transition-colors cursor-pointer border-none" data-trend-category={cat}>
+            {cat}
+            <span class="text-[10px] text-tertiary font-normal">({count})</span>
+          </button>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- Control Bar -->
+  <section class="py-3 px-6 bg-bg-secondary/50 border-b border-bg-secondary sticky top-[56px] z-40" id="controlBar">
+    <div class="max-w-site mx-auto">
+      <div class="flex flex-wrap gap-3 items-center">
+        <!-- Category filter -->
+        <select id="filterCategory" aria-label="Filter by category" class="text-[13px] font-medium text-primary bg-white border border-border rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
+          <option value="">All Categories</option>
+          {categories.map(cat => (
+            <option value={cat}>{cat}</option>
+          ))}
+        </select>
+
+        <!-- Network filter -->
+        <select id="filterNetwork" aria-label="Filter by network" class="text-[13px] font-medium text-primary bg-white border border-border rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
+          <option value="">All Networks</option>
+          {relatedSlugs.map(slug => (
+            <option value={slug}>{networkMap[slug]}</option>
+          ))}
+        </select>
+
+        <!-- Source type filter -->
+        <select id="filterSourceType" aria-label="Filter by source type" class="text-[13px] font-medium text-primary bg-white border border-border rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
+          <option value="">All Source Types</option>
+          {sourceTypes.map(st => (
+            <option value={st}>{st}</option>
+          ))}
+        </select>
+
+        <!-- Time range filter -->
+        <select id="filterTimeRange" aria-label="Filter by time range" class="text-[13px] font-medium text-primary bg-white border border-border rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
+          <option value="">All Time</option>
+          <option value="30">Last 30 Days</option>
+          <option value="90">Last 90 Days</option>
+          <option value="365">Last Year</option>
+        </select>
+
+        <!-- Significance filter -->
+        <select id="filterSignificance" aria-label="Filter by significance" class="text-[13px] font-medium text-primary bg-white border border-border rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
+          <option value="">All Levels</option>
+          <option value="major">Major Only</option>
+          <option value="standard">Standard</option>
+          <option value="brief">Brief</option>
+        </select>
+
+        <!-- Sort -->
+        <select id="filterSort" aria-label="Sort" class="text-[13px] font-medium text-primary bg-white border border-border rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+        </select>
+
+        <!-- View toggle -->
+        <div class="flex items-center gap-0.5 bg-white border border-border rounded-lg p-0.5 ml-auto">
+          <button id="viewFeed" class="view-btn px-2.5 py-1 text-[12px] font-semibold rounded-md transition-colors bg-accent text-white border-none cursor-pointer" title="Feed View">
+            <svg class="w-3.5 h-3.5 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <button id="viewSignals" class="view-btn px-2.5 py-1 text-[12px] font-semibold rounded-md transition-colors text-secondary border-none cursor-pointer" title="Signals View">
+            <svg class="w-3.5 h-3.5 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          </button>
+        </div>
+
+        <button id="clearFilters" aria-label="Clear filters" class="text-[13px] font-medium text-accent hover:underline cursor-pointer hidden border-none bg-transparent">Clear All</button>
+      </div>
+
+      <!-- Active filter summary -->
+      <div id="filterSummary" class="hidden mt-2 flex flex-wrap items-center gap-2">
+        <span class="text-[11px] text-tertiary font-semibold">Active:</span>
+        <div id="filterChips" class="flex flex-wrap gap-1.5"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Article Feed -->
   <section class="py-6 px-6">
     <div class="max-w-site mx-auto">
-      <div id="articleCount" class="text-xs text-tertiary mb-4">{articles.length} articles</div>
-      <div class="space-y-1" id="articleList">
+      <div id="articleCount" class="text-xs text-tertiary mb-4">{articles.length} signals</div>
+
+      <!-- Feed View -->
+      <div id="feedView" class="space-y-1">
         {articles.map(article => {
           const formattedDate = new Date(article.data.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
           const relatedNames = article.data.relatedNetworks.map((s: string) => networkMap[s]).filter(Boolean);
           const primarySlug = article.data.relatedNetworks[0];
           const logoSrc = primarySlug ? networkLogoMap[primarySlug] : null;
+          const sig = article.data.significance || 'standard';
+          const stColors = article.data.sourceType ? sourceTypeColors[article.data.sourceType] : null;
+          const borderClass = sig === 'major' ? 'border-l-[3px] border-l-accent' : sig === 'brief' ? 'border-l-[3px] border-l-transparent' : 'border-l-[3px] border-l-secondary/20';
+
           return (
             <div
-              class="news-item flex items-start gap-3 px-4 py-4 rounded-xl hover:bg-bg-secondary transition-colors group border-b border-bg-secondary last:border-0"
+              class={`news-item flex items-start gap-3 px-4 py-4 rounded-xl hover:bg-bg-secondary/60 transition-colors group ${borderClass}`}
               data-category={article.data.category}
               data-networks={article.data.relatedNetworks.join(',')}
               data-date={article.data.date}
+              data-significance={sig}
+              data-source-type={article.data.sourceType || ''}
+              data-slug={article.data.slug}
+              data-why={article.data.whyItMatters || ''}
+              data-source-url={article.data.sourceUrl || ''}
+              data-impact-tags={(article.data.impactTags || []).join(',')}
+              data-title={article.data.title}
+              data-summary={article.data.summary}
+              data-source={article.data.source}
+              data-category-color={article.data.categoryColor || '#0071E3'}
+              data-gradient-from={article.data.gradientFrom || '#1a365d'}
             >
               {logoSrc ? (
                 <img src={logoSrc} alt={networkMap[primarySlug] || ''} width="40" height="40" class="w-10 h-10 rounded-lg flex-shrink-0 mt-0.5 object-cover" loading="lazy" />
@@ -104,21 +311,37 @@ const relatedSlugs = [...new Set(articles.flatMap(a => a.data.relatedNetworks))]
                 </div>
               )}
               <div class="min-w-0 flex-1">
-                <div class="text-[14px] font-semibold text-primary leading-snug mb-1">{article.data.title}</div>
-                <p class="text-[13px] text-secondary leading-relaxed mb-2">{article.data.summary}</p>
+                <div class="flex items-center gap-2 mb-1">
+                  {sig === 'major' && (
+                    <span class="inline-block w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0"></span>
+                  )}
+                  <span class={`text-[14px] font-semibold text-primary leading-snug ${sig === 'major' ? 'font-bold' : ''}`}>{article.data.title}</span>
+                </div>
+                {sig !== 'brief' && (
+                  <p class="text-[13px] text-secondary leading-relaxed mb-2">{article.data.summary}</p>
+                )}
+                {article.data.whyItMatters && sig === 'major' && (
+                  <div class="bg-accent/5 rounded-lg px-3 py-2 mb-2">
+                    <span class="text-[10px] font-bold uppercase tracking-wide text-accent">Why it matters</span>
+                    <p class="text-[12px] text-primary leading-relaxed mt-0.5">{article.data.whyItMatters}</p>
+                  </div>
+                )}
                 <div class="flex flex-wrap items-center gap-2">
+                  {stColors && (
+                    <span class={`inline-block px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide rounded-full ${stColors.bg} ${stColors.text}`}>{article.data.sourceType}</span>
+                  )}
                   <span class="text-[11px] font-bold uppercase tracking-wide" style={`color: ${article.data.categoryColor || '#0071E3'}`}>{article.data.category}</span>
                   <span class="text-[11px] text-tertiary">{formattedDate}</span>
                   <span class="text-[11px] text-tertiary">&middot; {article.data.source}</span>
                   {relatedNames.length > 0 && (
                     <span class="text-[11px] text-tertiary">&middot;</span>
                   )}
-                  {relatedNames.map((name: string) => (
-                    <span class="inline-block px-2 py-0.5 text-[10px] font-medium rounded-full bg-accent/10 text-accent">{name}</span>
-                  ))}
+                  {article.data.relatedNetworks.map((s: string) => networkMap[s] ? (
+                    <a href={`/networks/${s}`} class="inline-block px-2 py-0.5 text-[10px] font-medium rounded-full bg-accent/10 text-accent no-underline hover:bg-accent/20 transition-colors">{networkMap[s]}</a>
+                  ) : null)}
                   {article.data.sourceUrl && (
                     <a href={article.data.sourceUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-[11px] font-medium text-accent hover:underline no-underline ml-auto">
-                      View Source
+                      Source
                       <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                     </a>
                   )}
@@ -128,7 +351,37 @@ const relatedSlugs = [...new Set(articles.flatMap(a => a.data.relatedNetworks))]
           );
         })}
       </div>
-      <div id="noResults" class="hidden text-center py-12 text-sm text-tertiary">No articles match your filters.</div>
+
+      <!-- Signals View (grid, rendered client-side) -->
+      <div id="signalsView" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+
+      <div id="noResults" class="hidden text-center py-12 text-sm text-tertiary">No signals match your filters.</div>
+    </div>
+  </section>
+
+  <!-- Network Profile Integration -->
+  <section class="py-8 px-6 bg-bg-secondary/50 border-t border-bg-secondary">
+    <div class="max-w-site mx-auto">
+      <h2 class="text-sm font-bold uppercase tracking-wide text-tertiary mb-4">Coverage by Network</h2>
+      <div class="flex flex-wrap gap-2">
+        {relatedSlugs.map(slug => {
+          const count = articles.filter(a => a.data.relatedNetworks.includes(slug)).length;
+          const logo = networkLogoMap[slug];
+          return (
+            <a href={`/networks/${slug}`} class="network-coverage-chip inline-flex items-center gap-1.5 px-3 py-1.5 bg-white rounded-full shadow-sm hover:shadow-card transition-shadow text-[12px] font-medium text-primary no-underline border border-bg-secondary" data-network-slug={slug}>
+              {logo ? (
+                <img src={logo} alt="" width="16" height="16" class="w-4 h-4 rounded object-cover" loading="lazy" />
+              ) : (
+                <div class="w-4 h-4 rounded flex items-center justify-center" style={`background: linear-gradient(135deg, ${networkGradientMap[slug]?.from || '#333'}, ${networkGradientMap[slug]?.to || '#666'})`}>
+                  <span class="text-[7px] text-white font-bold">{networkMap[slug]?.[0]}</span>
+                </div>
+              )}
+              {networkMap[slug]}
+              <span class="text-[10px] text-tertiary">({count})</span>
+            </a>
+          );
+        })}
+      </div>
     </div>
   </section>
 </BaseLayout>
@@ -136,17 +389,43 @@ const relatedSlugs = [...new Set(articles.flatMap(a => a.data.relatedNetworks))]
 <script>
   const filterCategory = document.getElementById('filterCategory') as HTMLSelectElement;
   const filterNetwork = document.getElementById('filterNetwork') as HTMLSelectElement;
+  const filterSourceType = document.getElementById('filterSourceType') as HTMLSelectElement;
+  const filterTimeRange = document.getElementById('filterTimeRange') as HTMLSelectElement;
+  const filterSignificance = document.getElementById('filterSignificance') as HTMLSelectElement;
   const filterSort = document.getElementById('filterSort') as HTMLSelectElement;
   const clearBtn = document.getElementById('clearFilters') as HTMLElement;
   const items = document.querySelectorAll('.news-item') as NodeListOf<HTMLElement>;
   const articleCount = document.getElementById('articleCount') as HTMLElement;
   const noResults = document.getElementById('noResults') as HTMLElement;
-  const articleList = document.getElementById('articleList') as HTMLElement;
+  const feedView = document.getElementById('feedView') as HTMLElement;
+  const signalsView = document.getElementById('signalsView') as HTMLElement;
+  const viewFeedBtn = document.getElementById('viewFeed') as HTMLElement;
+  const viewSignalsBtn = document.getElementById('viewSignals') as HTMLElement;
+  const filterSummary = document.getElementById('filterSummary') as HTMLElement;
+  const filterChips = document.getElementById('filterChips') as HTMLElement;
+  const trendBtns = document.querySelectorAll('.trend-btn') as NodeListOf<HTMLElement>;
+
+  let currentView = 'feed';
+
+  // Source type badge colors (client-side mirror)
+  const stColorMap: Record<string, {bg: string, text: string}> = {
+    'Press Release': { bg: 'bg-blue-50', text: 'text-blue-700' },
+    'Industry Report': { bg: 'bg-violet-50', text: 'text-violet-700' },
+    'News Coverage': { bg: 'bg-amber-50', text: 'text-amber-700' },
+    'Regulatory': { bg: 'bg-red-50', text: 'text-red-700' },
+    'Product Update': { bg: 'bg-emerald-50', text: 'text-emerald-700' },
+  };
 
   function applyFilters() {
     const cat = filterCategory?.value || '';
     const net = filterNetwork?.value || '';
+    const st = filterSourceType?.value || '';
+    const timeRange = filterTimeRange?.value || '';
+    const sig = filterSignificance?.value || '';
     const sort = filterSort?.value || 'newest';
+
+    const now = Date.now();
+    const timeThreshold = timeRange ? now - parseInt(timeRange) * 24 * 60 * 60 * 1000 : 0;
 
     let visible = 0;
     const itemsArr = Array.from(items);
@@ -154,11 +433,17 @@ const relatedSlugs = [...new Set(articles.flatMap(a => a.data.relatedNetworks))]
     itemsArr.forEach(item => {
       const itemCat = item.getAttribute('data-category') || '';
       const itemNets = item.getAttribute('data-networks') || '';
+      const itemSt = item.getAttribute('data-source-type') || '';
+      const itemSig = item.getAttribute('data-significance') || '';
+      const itemDate = new Date(item.getAttribute('data-date') || '').getTime();
 
       const matchCat = !cat || itemCat === cat;
       const matchNet = !net || itemNets.split(',').includes(net);
+      const matchSt = !st || itemSt === st;
+      const matchSig = !sig || itemSig === sig;
+      const matchTime = !timeRange || itemDate >= timeThreshold;
 
-      if (matchCat && matchNet) {
+      if (matchCat && matchNet && matchSt && matchSig && matchTime) {
         item.style.display = '';
         visible++;
       } else {
@@ -175,22 +460,216 @@ const relatedSlugs = [...new Set(articles.flatMap(a => a.data.relatedNetworks))]
         return sort === 'newest' ? db - da : da - db;
       });
 
-    sortedItems.forEach(item => articleList?.appendChild(item));
-    // Re-append hidden ones too
-    itemsArr.filter(i => i.style.display === 'none').forEach(i => articleList?.appendChild(i));
+    sortedItems.forEach(item => feedView?.appendChild(item));
+    itemsArr.filter(i => i.style.display === 'none').forEach(i => feedView?.appendChild(i));
 
-    if (articleCount) articleCount.textContent = `${visible} article${visible !== 1 ? 's' : ''}`;
+    if (articleCount) articleCount.textContent = `${visible} signal${visible !== 1 ? 's' : ''}`;
     noResults?.classList.toggle('hidden', visible > 0);
-    clearBtn?.classList.toggle('hidden', !cat && !net);
+
+    const hasFilters = cat || net || st || timeRange || sig;
+    clearBtn?.classList.toggle('hidden', !hasFilters);
+
+    // Update filter summary
+    updateFilterSummary(cat, net, st, timeRange, sig);
+
+    // Update signals view if active
+    if (currentView === 'signals') {
+      renderSignalsView(sortedItems);
+    }
   }
 
+  function updateFilterSummary(cat: string, net: string, st: string, timeRange: string, sig: string) {
+    const chips: string[] = [];
+    if (cat) chips.push(cat);
+    if (net) {
+      const label = filterNetwork?.options[filterNetwork.selectedIndex]?.text || net;
+      chips.push(label);
+    }
+    if (st) chips.push(st);
+    if (timeRange) {
+      const labels: Record<string, string> = { '30': '30 Days', '90': '90 Days', '365': '1 Year' };
+      chips.push(labels[timeRange] || timeRange);
+    }
+    if (sig) chips.push(sig.charAt(0).toUpperCase() + sig.slice(1));
+
+    if (chips.length > 0 && filterSummary && filterChips) {
+      filterSummary.classList.remove('hidden');
+      filterChips.innerHTML = chips.map(c =>
+        `<span class="inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-medium rounded-full bg-accent/10 text-accent">${c}</span>`
+      ).join('');
+    } else if (filterSummary) {
+      filterSummary.classList.add('hidden');
+    }
+  }
+
+  function renderSignalsView(visibleItems: HTMLElement[]) {
+    if (!signalsView) return;
+    signalsView.innerHTML = '';
+
+    visibleItems.forEach(item => {
+      const title = item.getAttribute('data-title') || '';
+      const summary = item.getAttribute('data-summary') || '';
+      const sig = item.getAttribute('data-significance') || 'standard';
+      const cat = item.getAttribute('data-category') || '';
+      const catColor = item.getAttribute('data-category-color') || '#0071E3';
+      const sourceType = item.getAttribute('data-source-type') || '';
+      const date = item.getAttribute('data-date') || '';
+      const source = item.getAttribute('data-source') || '';
+      const why = item.getAttribute('data-why') || '';
+      const sourceUrl = item.getAttribute('data-source-url') || '';
+      const networks = item.getAttribute('data-networks') || '';
+      const impactTags = item.getAttribute('data-impact-tags') || '';
+      const gradFrom = item.getAttribute('data-gradient-from') || '#1a365d';
+
+      const formattedDate = new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+      const stC = stColorMap[sourceType];
+
+      const borderColor = sig === 'major' ? 'border-t-[3px] border-t-accent' : sig === 'brief' ? 'border-t-[3px] border-t-tertiary/20' : 'border-t-[3px] border-t-secondary/20';
+
+      let card = `<div class="bg-white rounded-card shadow-card hover:shadow-card-hover transition-shadow p-4 flex flex-col ${borderColor}">`;
+      card += `<div class="flex items-center gap-2 mb-2">`;
+      if (stC) {
+        card += `<span class="inline-block px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide rounded-full ${stC.bg} ${stC.text}">${sourceType}</span>`;
+      }
+      card += `<span class="text-[11px] text-tertiary ml-auto">${formattedDate}</span>`;
+      card += `</div>`;
+
+      card += `<h3 class="text-[14px] font-bold text-primary leading-snug mb-2">${title}</h3>`;
+
+      if (sig !== 'brief') {
+        card += `<p class="text-[12px] text-secondary leading-relaxed mb-3 flex-1 line-clamp-3">${summary}</p>`;
+      }
+
+      if (why && sig === 'major') {
+        card += `<div class="bg-accent/5 rounded-lg px-3 py-2 mb-3">`;
+        card += `<span class="text-[10px] font-bold uppercase tracking-wide text-accent">Why it matters</span>`;
+        card += `<p class="text-[11px] text-primary leading-relaxed mt-0.5">${why}</p>`;
+        card += `</div>`;
+      }
+
+      // Impact tags
+      if (impactTags) {
+        const tags = impactTags.split(',').filter(Boolean).slice(0, 3);
+        if (tags.length > 0) {
+          card += `<div class="flex flex-wrap gap-1 mb-2">`;
+          tags.forEach(tag => {
+            card += `<span class="inline-block px-1.5 py-0.5 text-[9px] font-medium rounded bg-bg-secondary text-secondary">${tag.trim()}</span>`;
+          });
+          card += `</div>`;
+        }
+      }
+
+      card += `<div class="flex flex-wrap items-center gap-2 mt-auto pt-2 border-t border-bg-secondary">`;
+      card += `<span class="text-[11px] font-bold uppercase tracking-wide" style="color: ${catColor}">${cat}</span>`;
+      card += `<span class="text-[10px] text-tertiary">${source}</span>`;
+      if (sourceUrl) {
+        card += `<a href="${sourceUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-[11px] font-medium text-accent hover:underline no-underline ml-auto">Source <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>`;
+      }
+      card += `</div>`;
+      card += `</div>`;
+
+      signalsView.insertAdjacentHTML('beforeend', card);
+    });
+  }
+
+  // View toggle
+  function setView(view: string) {
+    currentView = view;
+    if (view === 'feed') {
+      feedView?.classList.remove('hidden');
+      signalsView?.classList.add('hidden');
+      viewFeedBtn?.classList.add('bg-accent', 'text-white');
+      viewFeedBtn?.classList.remove('text-secondary');
+      viewSignalsBtn?.classList.remove('bg-accent', 'text-white');
+      viewSignalsBtn?.classList.add('text-secondary');
+    } else {
+      feedView?.classList.add('hidden');
+      signalsView?.classList.remove('hidden');
+      viewSignalsBtn?.classList.add('bg-accent', 'text-white');
+      viewSignalsBtn?.classList.remove('text-secondary');
+      viewFeedBtn?.classList.remove('bg-accent', 'text-white');
+      viewFeedBtn?.classList.add('text-secondary');
+      // Render signals from currently visible items
+      const visibleItems = Array.from(items).filter(i => i.style.display !== 'none');
+      renderSignalsView(visibleItems);
+    }
+  }
+
+  viewFeedBtn?.addEventListener('click', () => setView('feed'));
+  viewSignalsBtn?.addEventListener('click', () => setView('signals'));
+
+  // Filter listeners
   filterCategory?.addEventListener('change', applyFilters);
   filterNetwork?.addEventListener('change', applyFilters);
+  filterSourceType?.addEventListener('change', applyFilters);
+  filterTimeRange?.addEventListener('change', applyFilters);
+  filterSignificance?.addEventListener('change', applyFilters);
   filterSort?.addEventListener('change', applyFilters);
+
   clearBtn?.addEventListener('click', () => {
     filterCategory.value = '';
     filterNetwork.value = '';
+    filterSourceType.value = '';
+    filterTimeRange.value = '';
+    filterSignificance.value = '';
     filterSort.value = 'newest';
     applyFilters();
   });
+
+  // Trend buttons → set category filter
+  trendBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const trendCat = btn.getAttribute('data-trend-category') || '';
+      if (filterCategory) {
+        filterCategory.value = trendCat;
+        applyFilters();
+        // Scroll to control bar
+        document.getElementById('controlBar')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Network coverage chips → set network filter
+  document.querySelectorAll('.network-coverage-chip').forEach(chip => {
+    chip.addEventListener('click', (e) => {
+      e.preventDefault();
+      const slug = (chip as HTMLElement).getAttribute('data-network-slug') || '';
+      if (filterNetwork && slug) {
+        filterNetwork.value = slug;
+        applyFilters();
+        document.getElementById('controlBar')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // URL parameter support
+  function restoreFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const cat = params.get('category');
+    const net = params.get('network');
+    const st = params.get('sourceType');
+    const time = params.get('time');
+    const sig = params.get('significance');
+
+    if (cat && filterCategory) filterCategory.value = cat;
+    if (net && filterNetwork) filterNetwork.value = net;
+    if (st && filterSourceType) filterSourceType.value = st;
+    if (time && filterTimeRange) filterTimeRange.value = time;
+    if (sig && filterSignificance) filterSignificance.value = sig;
+
+    if (cat || net || st || time || sig) {
+      applyFilters();
+    }
+  }
+
+  restoreFromUrl();
 </script>
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

@@ -9,6 +9,17 @@
   "gradientTo": "#ef4444",
   "summary": "Cambridge-based AI-powered life sciences expert network Techspert secured £5 million in debt financing from Palatine Growth Credit to hire approximately 20 employees and expand its AI-driven research tools and expert matching platform.",
   "sourceUrl": "https://www.prolificnorth.co.uk/news/north-west-investor-brings-5m-boost-to-growing-ai-healthtech/",
-  "relatedNetworks": ["techspert"],
-  "published": true
+  "relatedNetworks": [
+    "techspert"
+  ],
+  "published": true,
+  "sourceType": "Press Release",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "New funding for an AI-native expert network validates investor interest in technology-first approaches to expert matching.",
+  "impactTags": [
+    "Funding",
+    "AI-Native",
+    "Growth"
+  ]
 }

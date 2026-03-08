@@ -9,6 +9,17 @@
   "gradientTo": "#a855f7",
   "summary": "Dialectica launched a new 'Dealmaker Insights' content series in early 2026, publishing weekly curated market intelligence briefs for private equity and M&A professionals. The series, which began publishing in February 2026, signals Dialectica's strategic push into content-driven insights beyond traditional expert calls.",
   "sourceUrl": "https://www.dialectica.io",
-  "relatedNetworks": ["dialectica"],
-  "published": true
+  "relatedNetworks": [
+    "dialectica"
+  ],
+  "published": true,
+  "sourceType": "Industry Report",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "Dialectica's dealmaker insights provide unique data on PE due-diligence trends, positioning the firm as a thought leader.",
+  "impactTags": [
+    "Research",
+    "PE Market",
+    "Thought Leadership"
+  ]
 }

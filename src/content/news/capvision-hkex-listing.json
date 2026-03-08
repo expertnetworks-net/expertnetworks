@@ -9,6 +9,17 @@
   "gradientTo": "#f59e0b",
   "summary": "Shanghai-based Capvision Partners has ticker 810221 reserved on the HKEX after multiple filing attempts since 2021, originally aiming to raise $300M at a $1.5-3B valuation. The IPO stalled after offices were raided in late 2022 and state broadcaster CCTV aired a crackdown report in May 2023 accusing the firm of helping leak sensitive information. As of late 2025, the company remains privately held with no confirmed listing date.",
   "sourceUrl": "https://inex.one/expert-network-directory/capvision",
-  "relatedNetworks": ["capvision"],
-  "published": true
+  "relatedNetworks": [
+    "capvision"
+  ],
+  "published": true,
+  "sourceType": "Regulatory",
+  "significance": "major",
+  "featured": false,
+  "whyItMatters": "Capvision's stalled IPO after regulatory crackdowns highlights the risks expert networks face in China's evolving compliance environment.",
+  "impactTags": [
+    "IPO",
+    "Regulatory Risk",
+    "China Market"
+  ]
 }

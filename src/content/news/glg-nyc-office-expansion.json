@@ -9,6 +9,16 @@
   "gradientTo": "#3b82f6",
   "summary": "GLG expanded its global headquarters at One Grand Central Place by 18,230 SF to a total of 95,612 SF across two full floors, following an April 2025 lease renewal of 77,382 SF. The expansion signals continued confidence in the expert network's NYC hub.",
   "sourceUrl": "https://commercialobserver.com/2025/11/gerson-lehrman-group-expansion-one-grand-central-place/",
-  "relatedNetworks": ["glg"],
-  "published": true
+  "relatedNetworks": [
+    "glg"
+  ],
+  "published": true,
+  "sourceType": "News Coverage",
+  "significance": "brief",
+  "featured": false,
+  "whyItMatters": "Office expansion indicates continued headcount growth at the industry's largest player.",
+  "impactTags": [
+    "Expansion",
+    "Workplace"
+  ]
 }

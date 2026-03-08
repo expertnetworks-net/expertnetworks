@@ -9,6 +9,17 @@
   "gradientTo": "#3b82f6",
   "summary": "GLG opened an expanded office in Dubai's International Finance Centre at Al Fattan Currency House, Tower 2, with capacity for 50+ employees. The expansion supports GLG's fastest-growing regional team and its global service capabilities.",
   "sourceUrl": "https://glginsights.com/news/glg-expands-dubai-office/",
-  "relatedNetworks": ["glg"],
-  "published": true
+  "relatedNetworks": [
+    "glg"
+  ],
+  "published": true,
+  "sourceType": "News Coverage",
+  "significance": "brief",
+  "featured": false,
+  "whyItMatters": "Dubai office signals GLG's push into Middle East markets, following broader industry expansion trends.",
+  "impactTags": [
+    "Expansion",
+    "Middle East",
+    "Global Growth"
+  ]
 }

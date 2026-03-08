@@ -10,5 +10,14 @@
   "summary": "Business Research Insights estimates the global expert network market at $4.19 billion in 2025, projected to reach $18.03 billion by 2034 at a 16% CAGR. Note: BRI's broader methodology yields higher figures than Inex One's ~$3B estimate for 2025, which counts only direct expert-network revenue. BRI reports Asia Pacific leads with 47% market share and PE applications represent 52% of overall usage.",
   "sourceUrl": "https://www.businessresearchinsights.com/market-reports/expert-networks-market-109731",
   "relatedNetworks": [],
-  "published": true
+  "published": true,
+  "sourceType": "Industry Report",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "Long-term market projections to 2030 provide strategic context for investment and competitive positioning decisions.",
+  "impactTags": [
+    "Market Forecast",
+    "Long-Term Outlook",
+    "Industry Growth"
+  ]
 }

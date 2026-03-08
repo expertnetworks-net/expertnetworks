@@ -9,6 +9,17 @@
   "gradientTo": "#06b6d4",
   "summary": "Third Bridge joined Aiera's $25M Series B consortium as the sole expert network partner, alongside 10 major investment banks and Microsoft. The partnership integrates Third Bridge's expert content library into Aiera's AI platform, establishing a new standard for compliant GenAI in financial research.",
   "sourceUrl": "https://aiera.com/newsroom/accelerated-access-to-third-bridge-expert-insights/",
-  "relatedNetworks": ["third-bridge"],
-  "published": true
+  "relatedNetworks": [
+    "third-bridge"
+  ],
+  "published": true,
+  "sourceType": "Press Release",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "Joining Aiera's consortium positions Third Bridge content alongside alternative data providers in AI-driven investment workflows.",
+  "impactTags": [
+    "Partnership",
+    "AI Consortium",
+    "Alternative Data"
+  ]
 }

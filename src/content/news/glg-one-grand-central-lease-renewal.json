@@ -9,6 +9,16 @@
   "gradientTo": "#3b82f6",
   "summary": "GLG renewed its headquarters lease at One Grand Central Place in Midtown Manhattan with Empire State Realty Trust. CEO Gemma Postlethwaite cited the location's unmatched environment for convening experts and clients as a key factor in the long-term commitment.",
   "sourceUrl": "https://www.businesswire.com/news/home/20250416285694/en/Gerson-Lehrman-Group-Inc.-Signs-77382-Square-Foot-Renewal-Lease-at-One-Grand-Central-Place",
-  "relatedNetworks": ["glg"],
-  "published": true
+  "relatedNetworks": [
+    "glg"
+  ],
+  "published": true,
+  "sourceType": "News Coverage",
+  "significance": "brief",
+  "featured": false,
+  "whyItMatters": "Major lease renewal signals long-term commitment to NYC headquarters presence.",
+  "impactTags": [
+    "Real Estate",
+    "Workplace"
+  ]
 }

@@ -9,6 +9,17 @@
   "gradientTo": "#06b6d4",
   "summary": "Third Bridge announced a collaboration with Rogo to integrate its expert content into AI-driven finance research workflows, one of the clearest 2026 partnership signals in the expert network space.",
   "sourceUrl": "https://inex.one/expert-network-directory/third-bridge",
-  "relatedNetworks": ["third-bridge"],
-  "published": true
+  "relatedNetworks": [
+    "third-bridge"
+  ],
+  "published": true,
+  "sourceType": "Press Release",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "Rogo partnership extends Third Bridge content into AI-powered financial research workflows used by investment professionals.",
+  "impactTags": [
+    "Partnership",
+    "AI Integration",
+    "Financial Research"
+  ]
 }

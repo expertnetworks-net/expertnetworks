@@ -9,6 +9,17 @@
   "gradientTo": "#3b82f6",
   "summary": "GLG participated as an investor in UK challenger bank Allica Bank's $155M Series D round, which valued Allica at $1.2B. The round was led by Ventura Capital with participation from GLG, Sona AM, and existing backers TCV and Blue Owl. The investment reflects GLG's strategic activity beyond expert consulting.",
   "sourceUrl": "https://pitchbook.com/profiles/company/11423-08",
-  "relatedNetworks": ["glg"],
-  "published": true
+  "relatedNetworks": [
+    "glg"
+  ],
+  "published": true,
+  "sourceType": "News Coverage",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "Showcases GLG's role in major PE deal-making, highlighting expert networks as essential due-diligence infrastructure.",
+  "impactTags": [
+    "PE Deal",
+    "Due Diligence",
+    "Case Study"
+  ]
 }

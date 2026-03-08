@@ -9,6 +9,17 @@
   "gradientTo": "#059669",
   "summary": "AlphaSense launched the next generation of Generative Search in January 2026, evolving its conversational search tool into an end-to-end research agent that can find documents, answer complex questions, automate workflows, and create deliverables.",
   "sourceUrl": "https://www.alpha-sense.com/resources/product-articles/product-releases-2025/",
-  "relatedNetworks": ["alphasense-tegus"],
-  "published": true
+  "relatedNetworks": [
+    "alphasense-tegus"
+  ],
+  "published": true,
+  "sourceType": "Product Update",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "Deep Research capability signals AlphaSense's push toward autonomous AI-driven analysis, potentially reducing reliance on traditional expert calls.",
+  "impactTags": [
+    "AI Platform",
+    "Product Innovation",
+    "Agentic AI"
+  ]
 }

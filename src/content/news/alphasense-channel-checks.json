@@ -9,6 +9,17 @@
   "gradientTo": "#22c55e",
   "summary": "AlphaSense launched Channel Checks as a new product in 2025, using an AI Interviewer to capture ground-level visibility into demand patterns, pricing movements, supply-chain shifts, and competitive sentiment through structured expert conversations.",
   "sourceUrl": "https://www.alpha-sense.com/resources/product-articles/product-releases-2025/",
-  "relatedNetworks": ["alphasense-tegus"],
-  "published": true
+  "relatedNetworks": [
+    "alphasense-tegus"
+  ],
+  "published": true,
+  "sourceType": "Product Update",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "Channel checks integration brings traditional expert network research methodology into AlphaSense's AI platform.",
+  "impactTags": [
+    "Product Innovation",
+    "Expert Calls",
+    "Research Tools"
+  ]
 }

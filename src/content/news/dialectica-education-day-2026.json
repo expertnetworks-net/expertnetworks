@@ -9,6 +9,17 @@
   "gradientTo": "#a855f7",
   "summary": "On World Education Day 2026, Dialectica showcased its 2025 'Educational Paths' initiatives including 32,000+ employee training hours, global academic partnerships, and continuous learning programs. The company emphasized that staying ahead in information services requires both the right technology and a growth mindset across its 1,400+ person team.",
   "sourceUrl": "https://www.dialectica.io/blog/world-education-day-2026-a-look-into-dialectica-commitment-to-lifelong-learning",
-  "relatedNetworks": ["dialectica"],
-  "published": true
+  "relatedNetworks": [
+    "dialectica"
+  ],
+  "published": true,
+  "sourceType": "Press Release",
+  "significance": "brief",
+  "featured": false,
+  "whyItMatters": "Education initiatives support Dialectica's employer brand and talent pipeline.",
+  "impactTags": [
+    "Culture",
+    "Education",
+    "Employer Brand"
+  ]
 }

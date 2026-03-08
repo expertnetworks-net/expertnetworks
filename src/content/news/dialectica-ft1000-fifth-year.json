@@ -9,6 +9,17 @@
   "gradientTo": "#a855f7",
   "summary": "Dialectica was named one of Europe's 1,000 fastest-growing companies by the Financial Times and Statista for the fifth consecutive year, based on compound annual growth rate from 2020 to 2023 — an achievement unmatched by any other Greek company.",
   "sourceUrl": "https://www.dialectica.io/blog/dialectica-recognized-by-financial-times-as-one-of-europes-fastest-growing-companies-for-the-fifth-consecutive-year",
-  "relatedNetworks": ["dialectica"],
-  "published": true
+  "relatedNetworks": [
+    "dialectica"
+  ],
+  "published": true,
+  "sourceType": "News Coverage",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "Fifth consecutive FT 1000 ranking confirms Dialectica as one of Europe's fastest-growing expert networks, sustaining momentum.",
+  "impactTags": [
+    "Growth Recognition",
+    "Europe",
+    "Ranking"
+  ]
 }

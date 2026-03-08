@@ -9,6 +9,17 @@
   "gradientTo": "#f59e0b",
   "summary": "Dialectica appointed Jason Howard as Chief Legal & Regulatory Officer to lead legal, compliance, and regulatory functions. Howard previously served as General Counsel and Chief Compliance Officer at Tegus for nearly five years, and spent over 13 years at the SEC Division of Enforcement.",
   "sourceUrl": "https://www.prnewswire.com/news-releases/dialectica-appoints-jason-howard-as-chief-legal--regulatory-officer-302363264.html",
-  "relatedNetworks": ["dialectica"],
-  "published": true
+  "relatedNetworks": [
+    "dialectica"
+  ],
+  "published": true,
+  "sourceType": "Press Release",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "Appointing a Chief Legal and Risk Officer signals Dialectica's maturation and commitment to enterprise-grade compliance.",
+  "impactTags": [
+    "Leadership",
+    "Compliance",
+    "Governance"
+  ]
 }

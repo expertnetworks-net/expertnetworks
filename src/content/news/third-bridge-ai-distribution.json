@@ -9,6 +9,17 @@
   "gradientTo": "#06b6d4",
   "summary": "Third Bridge expanded content distribution to AI platforms including Anthropic, Finster AI, Samaya AI, and Rogo, building on earlier integrations with Portrait Analytics, Hebbia, and Model ML in 2025.",
   "sourceUrl": "https://inex.one/expert-network-directory/third-bridge",
-  "relatedNetworks": ["third-bridge"],
-  "published": true
+  "relatedNetworks": [
+    "third-bridge"
+  ],
+  "published": true,
+  "sourceType": "Press Release",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "Third Bridge's AI distribution strategy aims to make expert content more accessible and discoverable for clients.",
+  "impactTags": [
+    "AI Distribution",
+    "Content Strategy",
+    "Product"
+  ]
 }

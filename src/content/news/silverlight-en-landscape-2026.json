@@ -10,5 +10,14 @@
   "summary": "Silverlight Research published its institutional index covering leading global expert networks including GLG, AlphaSights, Third Bridge, Guidepoint, Capvision, Atheneum, and VisasQ, with detailed profiles on compliance, coverage, and operating models.",
   "sourceUrl": "https://www.silverlightresearch.com/global-expert-network-landscape.html",
   "relatedNetworks": [],
-  "published": true
+  "published": true,
+  "sourceType": "Industry Report",
+  "significance": "major",
+  "featured": true,
+  "whyItMatters": "Silverlight's annual landscape report is the most comprehensive competitive analysis of the expert network industry, shaping buyer decisions.",
+  "impactTags": [
+    "Industry Analysis",
+    "Competitive Landscape",
+    "Benchmarking"
+  ]
 }

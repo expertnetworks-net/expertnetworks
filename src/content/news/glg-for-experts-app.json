@@ -9,6 +9,17 @@
   "gradientTo": "#22c55e",
   "summary": "GLG launched a dedicated mobile app for its network members, the first of its kind in the expert network industry. Built with input from their global expert community, the app features AI-suggested responses, push notifications, and tools to discover new engagement opportunities.",
   "sourceUrl": "https://glginsights.com/news/introducing-glg-for-experts/",
-  "relatedNetworks": ["glg"],
-  "published": true
+  "relatedNetworks": [
+    "glg"
+  ],
+  "published": true,
+  "sourceType": "Product Update",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "A dedicated expert-facing app improves expert engagement and availability, key competitive factors for network quality.",
+  "impactTags": [
+    "Product",
+    "Expert Experience",
+    "Platform"
+  ]
 }

@@ -9,6 +9,17 @@
   "gradientTo": "#6366f1",
   "summary": "NewtonX conducted Salesforce's 2026 CIO Study, surveying 200 CIOs across 24 countries. The study reveals a 282% jump in full AI implementation (from 11% in 2024 to 42% in 2025), with CIOs now allocating approximately 30% of their AI budgets to agentic AI solutions.",
   "sourceUrl": "https://www.newtonx.com/press/salesforce-cio-study-2026/",
-  "relatedNetworks": ["newtonx"],
-  "published": true
+  "relatedNetworks": [
+    "newtonx"
+  ],
+  "published": true,
+  "sourceType": "Industry Report",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "Enterprise partnership with Salesforce validates NewtonX's B2B research methodology for Fortune 500 clients.",
+  "impactTags": [
+    "Research",
+    "Enterprise Partnership",
+    "CIO Insights"
+  ]
 }

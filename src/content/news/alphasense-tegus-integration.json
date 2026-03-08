@@ -9,6 +9,17 @@
   "gradientTo": "#2563eb",
   "summary": "Following the $930M acquisition in 2024, AlphaSense continues integrating Tegus's expert transcript library into its platform; direct primary-source confirmation of full completion has not been independently verified.",
   "sourceUrl": "https://inex.one/blog/ma-in-the-expert-network-industry",
-  "relatedNetworks": ["alphasense-tegus"],
-  "published": true
+  "relatedNetworks": [
+    "alphasense-tegus"
+  ],
+  "published": true,
+  "sourceType": "Press Release",
+  "significance": "major",
+  "featured": true,
+  "whyItMatters": "The Tegus integration creates the largest combined expert transcript and intelligence platform, reshaping competitive dynamics across the industry.",
+  "impactTags": [
+    "M&A",
+    "Platform Integration",
+    "Market Consolidation"
+  ]
 }

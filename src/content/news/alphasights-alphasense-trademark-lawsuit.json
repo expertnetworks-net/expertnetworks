@@ -9,6 +9,18 @@
   "gradientTo": "#ef4444",
   "summary": "AlphaSights' trademark infringement and unfair competition lawsuit against AlphaSense continues in the Southern District of New York after the court denied AlphaSense's motion to dismiss key claims in August 2025. AlphaSights alleges the similar names and AlphaSense's 'AS Expert Insights' branding cause widespread client confusion. A parallel case has also been admitted to Ireland's commercial court against Tegus Ltd.",
   "sourceUrl": "https://dockets.justia.com/docket/new-york/nysdce/1:2025cv00479/635192",
-  "relatedNetworks": ["alphasights", "alphasense-tegus"],
-  "published": true
+  "relatedNetworks": [
+    "alphasights",
+    "alphasense-tegus"
+  ],
+  "published": true,
+  "sourceType": "Regulatory",
+  "significance": "major",
+  "featured": false,
+  "whyItMatters": "Trademark dispute between two industry leaders signals intensifying competition and brand differentiation challenges in the expert network space.",
+  "impactTags": [
+    "Legal",
+    "Competition",
+    "Brand"
+  ]
 }

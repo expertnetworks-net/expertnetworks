@@ -9,6 +9,17 @@
   "gradientTo": "#3b82f6",
   "summary": "AlphaSense began occupying its new global HQ at Hudson Commons (441 Ninth Avenue) in early 2026, following a June 2025 announcement of a 10-year, 50,000 sq ft lease. The move from Union Square accommodates AlphaSense's growth to 2,000+ global employees and $500M+ ARR.",
   "sourceUrl": "https://www.prnewswire.com/news-releases/alphasense-expands-global-footprint-with-new-flagship-headquarters-in-new-york-city-302468973.html",
-  "relatedNetworks": ["alphasense-tegus"],
-  "published": true
+  "relatedNetworks": [
+    "alphasense-tegus"
+  ],
+  "published": true,
+  "sourceType": "News Coverage",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "Premium office expansion reflects AlphaSense's growth trajectory and commitment to attracting top talent in a competitive market.",
+  "impactTags": [
+    "Expansion",
+    "Workplace",
+    "Growth Signal"
+  ]
 }

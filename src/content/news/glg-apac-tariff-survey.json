@@ -9,6 +9,17 @@
   "gradientTo": "#a855f7",
   "summary": "GLG surveyed 300+ senior APAC executives on U.S. tariff impacts. Key findings: 50% shifted market focus away from the U.S., 25%+ raised prices or reduced headcount, and 70% of exporters report significant challenges from trade instability, especially in automotive and aerospace.",
   "sourceUrl": "https://www.plataformamedia.com/en/2025/10/02/glg-publishes-report-on-impact-of-u-s-tariffs-on-asia-pacific-businesses/",
-  "relatedNetworks": ["glg"],
-  "published": true
+  "relatedNetworks": [
+    "glg"
+  ],
+  "published": true,
+  "sourceType": "Industry Report",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "Demonstrates GLG's ability to rapidly mobilize expert surveys on breaking macro-economic developments.",
+  "impactTags": [
+    "Survey",
+    "Macro Research",
+    "APAC"
+  ]
 }

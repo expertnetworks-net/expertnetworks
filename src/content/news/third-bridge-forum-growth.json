@@ -9,6 +9,17 @@
   "gradientTo": "#22c55e",
   "summary": "Third Bridge continues to emphasize its Library product (formerly Forum) as a major transcript archive and content-distribution engine in early 2026, with the subscription-based content service complementing traditional per-call expert consultations.",
   "sourceUrl": "https://inex.one/expert-network-directory/third-bridge",
-  "relatedNetworks": ["third-bridge"],
-  "published": true
+  "relatedNetworks": [
+    "third-bridge"
+  ],
+  "published": true,
+  "sourceType": "Press Release",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "Forum's growth validates the demand for curated expert content libraries as a complement to live expert calls.",
+  "impactTags": [
+    "Content Library",
+    "Growth",
+    "Product Traction"
+  ]
 }

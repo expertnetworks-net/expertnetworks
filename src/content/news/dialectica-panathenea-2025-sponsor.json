@@ -9,6 +9,17 @@
   "gradientTo": "#a855f7",
   "summary": "Dialectica sponsored Panathēnea 2025, a three-day innovation festival in Athens attracting 3,100+ attendees from 44 countries. CEO George Tsarouchas joined a founders panel. The festival featured 100+ international speakers including Canva CEO Melanie Perkins and Google Maps co-founder Lars Rasmussen.",
   "sourceUrl": "https://www.dialectica.io/blog/from-startup-to-global-stage-dialectica-champions-innovation-at-panathenea-2025",
-  "relatedNetworks": ["dialectica"],
-  "published": true
+  "relatedNetworks": [
+    "dialectica"
+  ],
+  "published": true,
+  "sourceType": "Press Release",
+  "significance": "brief",
+  "featured": false,
+  "whyItMatters": "Community sponsorship reflects Dialectica's Greek heritage and local engagement.",
+  "impactTags": [
+    "Community",
+    "Brand",
+    "Greece"
+  ]
 }

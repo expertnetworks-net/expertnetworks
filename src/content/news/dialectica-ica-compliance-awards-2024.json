@@ -9,6 +9,16 @@
   "gradientTo": "#22d3ee",
   "summary": "Dialectica was shortlisted in two categories at the ICA Compliance Awards 2024: Compliance Team of the Year (Non-Financial Services) and Training Initiative of the Year, the latter recognizing its program on responsible use of AI in business. The ceremony was held June 27, 2024 at Park Plaza, Westminster.",
   "sourceUrl": "https://www.dialectica.io/blog/dialectica-is-shortlisted-in-two-categories-at-the-ica-compliance-awards-2024",
-  "relatedNetworks": ["dialectica"],
-  "published": true
+  "relatedNetworks": [
+    "dialectica"
+  ],
+  "published": true,
+  "sourceType": "Press Release",
+  "significance": "brief",
+  "featured": false,
+  "whyItMatters": "ICA compliance award validates Dialectica's investment in regulatory best practices.",
+  "impactTags": [
+    "Compliance",
+    "Awards"
+  ]
 }

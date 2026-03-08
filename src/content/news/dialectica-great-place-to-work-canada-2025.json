@@ -9,6 +9,17 @@
   "gradientTo": "#22c55e",
   "summary": "Dialectica earned Great Place to Work certification in Canada for 2025, marking its third such certification globally alongside Greece and Vietnam. The certification is based on employee feedback regarding workplace experience, inclusion, and fair treatment.",
   "sourceUrl": "https://www.dialectica.io/blog/dialectica-earns-2025-great-place-to-work-certification-in-canada",
-  "relatedNetworks": ["dialectica"],
-  "published": true
+  "relatedNetworks": [
+    "dialectica"
+  ],
+  "published": true,
+  "sourceType": "Press Release",
+  "significance": "brief",
+  "featured": false,
+  "whyItMatters": "Canadian workplace recognition supports Dialectica's North American growth.",
+  "impactTags": [
+    "Culture",
+    "North America",
+    "Employer Brand"
+  ]
 }

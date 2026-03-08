@@ -9,6 +9,17 @@
   "gradientTo": "#06b6d4",
   "summary": "Third Bridge partnered with Samaya AI to distribute its expert content through AI-powered finance research workflows, expanding its integration footprint beyond traditional platforms.",
   "sourceUrl": "https://inex.one/expert-network-directory/third-bridge",
-  "relatedNetworks": ["third-bridge"],
-  "published": true
+  "relatedNetworks": [
+    "third-bridge"
+  ],
+  "published": true,
+  "sourceType": "Press Release",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "Partnership with Samaya AI demonstrates Third Bridge's strategy of integrating expert content into third-party AI platforms.",
+  "impactTags": [
+    "Partnership",
+    "AI Integration",
+    "Distribution"
+  ]
 }
