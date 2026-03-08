@@ -216,6 +216,10 @@ const { minHeight = '220px' } = Astro.props;
   // ─── Intersection Observer ───
   var observer = new IntersectionObserver(function(entries) {
     isVisible = entries[0].isIntersecting;
+    if (isVisible && !prefersReducedMotion && !animationId) {
+      lastTime = 0;
+      animationId = requestAnimationFrame(draw);
+    }
   }, { threshold: 0.05 });
   observer.observe(hero);
 
@@ -235,8 +239,11 @@ const { minHeight = '220px' } = Astro.props;
 
   // ─── Draw ───
   function draw(now) {
+    if (!isVisible) {
+      animationId = null;
+      return;
+    }
     animationId = requestAnimationFrame(draw);
-    if (!isVisible) return;
 
     var dt = lastTime ? Math.min((now - lastTime) / 16.667, 3) : 1;
     lastTime = now;

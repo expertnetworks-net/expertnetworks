@@ -7,8 +7,9 @@ const publishedCount = allNetworks.filter(n => n.data.published).length;
 ---
 
 <BaseLayout
-  title="About — ExpertNetworks.net"
-  description={`About ExpertNetworks.net: an independent, free information resource covering ${publishedCount}+ expert networks. No affiliations, no paywalls, no sign-ups.`}
+  title="About ExpertNetworks.net | Why This Independent Expert Network Research Site Exists"
+  description="Learn why ExpertNetworks.net exists, how it evaluates information, and how it brings public-source clarity to the expert network industry."
+  canonicalPath="/about"
   jsonLd={{
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -18,42 +19,695 @@ const publishedCount = allNetworks.filter(n => n.data.published).length;
     ]
   }}
 >
-  <section class="pt-32 pb-24 px-6">
-    <div class="max-w-3xl mx-auto">
-      <a href="/" class="inline-flex items-center gap-1 text-accent text-sm font-medium no-underline mb-8 hover:underline">
-        &larr; Home
-      </a>
 
-      <h1 class="text-3xl font-extrabold text-primary mb-4">About ExpertNetworks.net</h1>
-      <p class="text-lg text-secondary leading-relaxed mb-10">An independent information resource for the expert network industry.</p>
+  <!-- ═══ 1. HERO — Cinematic dark hero with network visualization ═══ -->
+  <section class="about-hero relative overflow-hidden bg-[#0a0a0c]" id="aboutHero">
+    <!-- Ambient grid -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    <!-- Radial glow -->
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 60% 40%, rgba(0,113,227,0.06) 0%, transparent 60%);"></div>
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 30% 70%, rgba(100,80,160,0.04) 0%, transparent 50%);"></div>
 
-      <div class="prose prose-sm text-secondary leading-relaxed space-y-6">
-        <h2 class="text-lg font-bold text-primary">Why This Exists</h2>
-        <p>The expert network industry generates billions in annual revenue and serves the world's largest investors, consultancies, and corporations — yet there is no independent, non-commercial source of information about it. Every existing resource is either a marketplace (INEX ONE, Dialectica, GLG's own site) or self-promotional content.</p>
-        <p>ExpertNetworks.net was created to fill that gap: a neutral directory and intelligence hub where buyers, researchers, and industry professionals can find accurate, comparable information about expert networks without signing up for anything or dealing with sales pitches.</p>
+    <!-- Asset 1: Hero SVG network visualization -->
+    <div class="absolute right-0 top-0 w-full h-full pointer-events-none overflow-hidden" aria-hidden="true">
+      <svg class="about-hero-svg absolute right-[-5%] top-[10%] w-[55%] h-[80%] opacity-[0.12] md:opacity-[0.16]" viewBox="0 0 600 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Connection lines -->
+        <line x1="300" y1="250" x2="150" y2="120" stroke="rgba(0,113,227,0.4)" stroke-width="0.8"/>
+        <line x1="300" y1="250" x2="460" y2="140" stroke="rgba(0,113,227,0.3)" stroke-width="0.8"/>
+        <line x1="300" y1="250" x2="120" y2="350" stroke="rgba(0,113,227,0.35)" stroke-width="0.8"/>
+        <line x1="300" y1="250" x2="480" y2="340" stroke="rgba(0,113,227,0.3)" stroke-width="0.8"/>
+        <line x1="300" y1="250" x2="200" y2="420" stroke="rgba(0,113,227,0.25)" stroke-width="0.8"/>
+        <line x1="300" y1="250" x2="420" y2="430" stroke="rgba(0,113,227,0.25)" stroke-width="0.8"/>
+        <line x1="150" y1="120" x2="260" y2="80" stroke="rgba(120,140,170,0.2)" stroke-width="0.5"/>
+        <line x1="460" y1="140" x2="520" y2="220" stroke="rgba(120,140,170,0.2)" stroke-width="0.5"/>
+        <line x1="120" y1="350" x2="80" y2="280" stroke="rgba(120,140,170,0.2)" stroke-width="0.5"/>
+        <line x1="480" y1="340" x2="540" y2="280" stroke="rgba(120,140,170,0.2)" stroke-width="0.5"/>
+        <line x1="150" y1="120" x2="120" y2="350" stroke="rgba(120,140,170,0.12)" stroke-width="0.5"/>
+        <line x1="460" y1="140" x2="480" y2="340" stroke="rgba(120,140,170,0.12)" stroke-width="0.5"/>
+        <line x1="200" y1="420" x2="420" y2="430" stroke="rgba(120,140,170,0.1)" stroke-width="0.5"/>
+        <line x1="260" y1="80" x2="460" y2="140" stroke="rgba(120,140,170,0.15)" stroke-width="0.5"/>
+        <!-- Outer nodes -->
+        <circle cx="150" cy="120" r="4" fill="rgba(0,113,227,0.5)"/>
+        <circle cx="460" cy="140" r="3.5" fill="rgba(0,113,227,0.4)"/>
+        <circle cx="120" cy="350" r="3.5" fill="rgba(0,113,227,0.4)"/>
+        <circle cx="480" cy="340" r="3" fill="rgba(0,113,227,0.35)"/>
+        <circle cx="200" cy="420" r="2.5" fill="rgba(100,120,160,0.35)"/>
+        <circle cx="420" cy="430" r="2.5" fill="rgba(100,120,160,0.35)"/>
+        <circle cx="260" cy="80" r="2" fill="rgba(100,120,160,0.3)"/>
+        <circle cx="520" cy="220" r="2" fill="rgba(100,120,160,0.25)"/>
+        <circle cx="80" cy="280" r="2" fill="rgba(100,120,160,0.25)"/>
+        <circle cx="540" cy="280" r="2" fill="rgba(100,120,160,0.25)"/>
+        <!-- Center node — glow -->
+        <circle cx="300" cy="250" r="20" fill="rgba(0,113,227,0.06)"/>
+        <circle cx="300" cy="250" r="12" fill="rgba(0,113,227,0.1)"/>
+        <circle cx="300" cy="250" r="5" fill="rgba(0,113,227,0.6)"/>
+        <!-- Pulse rings (animated via CSS) -->
+        <circle cx="300" cy="250" r="30" stroke="rgba(0,113,227,0.15)" stroke-width="0.5" fill="none" class="about-pulse-ring about-pulse-1"/>
+        <circle cx="300" cy="250" r="50" stroke="rgba(0,113,227,0.08)" stroke-width="0.5" fill="none" class="about-pulse-ring about-pulse-2"/>
+      </svg>
+    </div>
 
-        <h2 class="text-lg font-bold text-primary">What We Are</h2>
-        <ul class="list-disc pl-5 space-y-1 text-sm">
-          <li>A free, open information resource — no accounts, no paywalls</li>
-          <li>An independent project with no commercial ties to any expert network</li>
-          <li>A growing directory — we currently cover {publishedCount}+ networks and are expanding toward broader industry coverage</li>
-        </ul>
-
-        <h2 class="text-lg font-bold text-primary">What We Are Not</h2>
-        <ul class="list-disc pl-5 space-y-1 text-sm">
-          <li>Not a marketplace — we don't broker expert calls or take referral fees</li>
-          <li>Not affiliated with any expert network company</li>
-          <li>Not an exhaustive directory (yet) — there are 100+ active networks globally, and we're working toward more complete coverage</li>
-        </ul>
-
-        <h2 class="text-lg font-bold text-primary">Our Approach</h2>
-        <p>We compile profiles from publicly available information and label our sources. We distinguish between independent journalism and company-originated press releases. We track compliance approaches because that's what serious buyers care about most. See our <a href="/sources" class="text-accent hover:underline">Sources & Methodology</a> page for details.</p>
-
-        <h2 class="text-lg font-bold text-primary">Contact</h2>
-        <p>If you represent an expert network and want to correct information about your company, or if you're a researcher with feedback, reach out. Accuracy matters more than speed.</p>
-
-        <p class="text-xs text-tertiary mt-8">Last updated: March 2026</p>
+    <div class="relative z-10 pt-[100px] pb-16 md:pt-[120px] md:pb-20 lg:pt-[140px] lg:pb-24 px-6">
+      <div class="max-w-site mx-auto">
+        <div class="max-w-2xl">
+          <div class="inline-flex items-center gap-2 mb-6 opacity-0 about-fade-up about-delay-1">
+            <span class="w-8 h-px bg-[rgba(0,113,227,0.5)]"></span>
+            <span class="text-[11px] font-semibold tracking-[0.15em] uppercase text-[#6e8aaf]">About this project</span>
+          </div>
+          <h1 class="text-[2rem] md:text-[2.75rem] lg:text-[3.25rem] font-extrabold text-white leading-[1.12] tracking-tight mb-5 opacity-0 about-fade-up about-delay-2">
+            We built the guide we wished already existed
+          </h1>
+          <p class="text-[#9a9aa0] text-base md:text-lg leading-relaxed mb-8 max-w-xl opacity-0 about-fade-up about-delay-3">
+            ExpertNetworks.net is an independent, public-source research project built to make the expert network industry easier to understand, compare, and navigate.
+          </p>
+          <div class="flex flex-wrap gap-3 opacity-0 about-fade-up about-delay-4">
+            <a href="/sources" class="inline-flex items-center gap-1.5 px-5 py-2.5 bg-[rgba(0,113,227,0.12)] text-[#5ba4e6] text-sm font-semibold rounded-lg no-underline hover:bg-[rgba(0,113,227,0.2)] transition-colors border border-[rgba(0,113,227,0.15)]">
+              View methodology
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a href="/networks" class="inline-flex items-center gap-1.5 px-5 py-2.5 bg-[rgba(255,255,255,0.06)] text-[#c5c5ca] text-sm font-semibold rounded-lg no-underline hover:bg-[rgba(255,255,255,0.1)] transition-colors border border-[rgba(255,255,255,0.06)]">
+              Explore networks
+            </a>
+          </div>
+        </div>
       </div>
     </div>
+
+    <!-- Hero bottom edge -->
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.06)] to-transparent"></div>
   </section>
+
+
+  <!-- ═══ 2. THE PROBLEM — "A major industry. Surprisingly little public clarity." ═══ -->
+  <section class="relative bg-[#0d0d10] py-20 md:py-28 px-6 overflow-hidden">
+    <!-- Subtle grain texture -->
+    <div class="absolute inset-0 opacity-[0.015]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E');"></div>
+
+    <div class="max-w-site mx-auto">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <!-- Left: Editorial copy -->
+        <div class="fade-in">
+          <h2 class="text-2xl md:text-3xl font-bold text-white leading-tight mb-6">
+            A multi-billion-dollar industry.<br/>
+            <span class="text-[#6e8aaf]">Surprisingly little public clarity.</span>
+          </h2>
+          <div class="space-y-4 text-[#9a9aa0] text-[15px] leading-relaxed">
+            <p>
+              Expert networks facilitate hundreds of thousands of consultations every year between knowledge-holders and decision-makers. The category serves private equity, hedge funds, management consultancies, corporate strategy teams, and law firms worldwide.
+            </p>
+            <p>
+              Yet the public information landscape for this industry remains fragmented. Much of what exists is provider-owned marketing, marketplace-driven content, or promotional material designed to generate leads — not to inform.
+            </p>
+            <p>
+              There is no neutral, structured resource where someone can compare providers on the dimensions that actually matter: pricing model, compliance posture, expert sourcing, AI capabilities, and service architecture.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: Asset 2 — Fragmented-to-structured visual -->
+        <div class="fade-in stagger-2" aria-hidden="true">
+          <div class="relative">
+            <!-- Fragmented state (top) -->
+            <div class="relative mb-4">
+              <div class="text-[10px] font-semibold tracking-[0.15em] uppercase text-[#4a4a52] mb-3">Before: Scattered information</div>
+              <div class="relative h-[120px] md:h-[140px] rounded-xl border border-[rgba(255,255,255,0.04)] bg-[rgba(255,255,255,0.015)] overflow-hidden">
+                <!-- Scattered fragments -->
+                <div class="absolute top-3 left-4 w-16 h-5 rounded bg-[rgba(255,100,100,0.08)] border border-[rgba(255,100,100,0.1)]"></div>
+                <div class="absolute top-8 left-28 w-20 h-4 rounded bg-[rgba(255,180,60,0.08)] border border-[rgba(255,180,60,0.1)]"></div>
+                <div class="absolute top-5 right-8 w-14 h-6 rounded bg-[rgba(100,140,255,0.08)] border border-[rgba(100,140,255,0.1)]"></div>
+                <div class="absolute bottom-8 left-8 w-12 h-4 rounded bg-[rgba(200,100,255,0.08)] border border-[rgba(200,100,255,0.1)]"></div>
+                <div class="absolute bottom-5 left-32 w-18 h-5 rounded bg-[rgba(255,100,100,0.06)] border border-[rgba(255,100,100,0.08)]"></div>
+                <div class="absolute bottom-10 right-12 w-16 h-4 rounded bg-[rgba(255,180,60,0.06)] border border-[rgba(255,180,60,0.08)]"></div>
+                <div class="absolute top-16 left-16 w-10 h-3 rounded bg-[rgba(100,200,100,0.06)] border border-[rgba(100,200,100,0.08)]"></div>
+                <div class="absolute top-14 right-20 w-22 h-4 rounded bg-[rgba(180,180,180,0.05)] border border-[rgba(180,180,180,0.08)]"></div>
+                <!-- Disconnection lines -->
+                <svg class="absolute inset-0 w-full h-full" viewBox="0 0 400 140">
+                  <line x1="60" y1="30" x2="120" y2="55" stroke="rgba(255,255,255,0.03)" stroke-width="0.5" stroke-dasharray="3,4"/>
+                  <line x1="200" y1="40" x2="300" y2="70" stroke="rgba(255,255,255,0.03)" stroke-width="0.5" stroke-dasharray="3,4"/>
+                  <line x1="80" y1="100" x2="180" y2="80" stroke="rgba(255,255,255,0.03)" stroke-width="0.5" stroke-dasharray="3,4"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Transition arrow -->
+            <div class="flex items-center justify-center my-3">
+              <svg class="w-5 h-5 text-[#3a6a9e]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+
+            <!-- Structured state (bottom) -->
+            <div>
+              <div class="text-[10px] font-semibold tracking-[0.15em] uppercase text-[#5a7a9e] mb-3">After: Structured clarity</div>
+              <div class="relative h-[120px] md:h-[140px] rounded-xl border border-[rgba(0,113,227,0.12)] bg-[rgba(0,113,227,0.03)] overflow-hidden">
+                <!-- Structured grid -->
+                <div class="absolute inset-3 grid grid-cols-4 gap-2">
+                  <div class="rounded-md bg-[rgba(0,113,227,0.08)] border border-[rgba(0,113,227,0.12)] flex items-center justify-center">
+                    <div class="w-3 h-3 rounded-full bg-[rgba(0,113,227,0.25)]"></div>
+                  </div>
+                  <div class="rounded-md bg-[rgba(0,113,227,0.06)] border border-[rgba(0,113,227,0.1)] flex items-center justify-center">
+                    <div class="w-3 h-3 rounded-full bg-[rgba(0,113,227,0.2)]"></div>
+                  </div>
+                  <div class="rounded-md bg-[rgba(0,113,227,0.08)] border border-[rgba(0,113,227,0.12)] flex items-center justify-center">
+                    <div class="w-3 h-3 rounded-full bg-[rgba(0,113,227,0.25)]"></div>
+                  </div>
+                  <div class="rounded-md bg-[rgba(0,113,227,0.06)] border border-[rgba(0,113,227,0.1)] flex items-center justify-center">
+                    <div class="w-3 h-3 rounded-full bg-[rgba(0,113,227,0.2)]"></div>
+                  </div>
+                  <div class="rounded-md bg-[rgba(0,113,227,0.06)] border border-[rgba(0,113,227,0.1)] flex items-center justify-center">
+                    <div class="w-3 h-3 rounded-full bg-[rgba(0,113,227,0.2)]"></div>
+                  </div>
+                  <div class="rounded-md bg-[rgba(0,113,227,0.08)] border border-[rgba(0,113,227,0.12)] flex items-center justify-center">
+                    <div class="w-3 h-3 rounded-full bg-[rgba(0,113,227,0.25)]"></div>
+                  </div>
+                  <div class="rounded-md bg-[rgba(0,113,227,0.06)] border border-[rgba(0,113,227,0.1)] flex items-center justify-center">
+                    <div class="w-3 h-3 rounded-full bg-[rgba(0,113,227,0.2)]"></div>
+                  </div>
+                  <div class="rounded-md bg-[rgba(0,113,227,0.08)] border border-[rgba(0,113,227,0.12)] flex items-center justify-center">
+                    <div class="w-3 h-3 rounded-full bg-[rgba(0,113,227,0.25)]"></div>
+                  </div>
+                </div>
+                <!-- Connection lines (structured) -->
+                <svg class="absolute inset-0 w-full h-full opacity-40" viewBox="0 0 400 140">
+                  <line x1="50" y1="35" x2="150" y2="35" stroke="rgba(0,113,227,0.2)" stroke-width="0.5"/>
+                  <line x1="150" y1="35" x2="250" y2="35" stroke="rgba(0,113,227,0.2)" stroke-width="0.5"/>
+                  <line x1="250" y1="35" x2="350" y2="35" stroke="rgba(0,113,227,0.2)" stroke-width="0.5"/>
+                  <line x1="50" y1="105" x2="150" y2="105" stroke="rgba(0,113,227,0.2)" stroke-width="0.5"/>
+                  <line x1="150" y1="105" x2="250" y2="105" stroke="rgba(0,113,227,0.2)" stroke-width="0.5"/>
+                  <line x1="250" y1="105" x2="350" y2="105" stroke="rgba(0,113,227,0.2)" stroke-width="0.5"/>
+                  <line x1="50" y1="35" x2="50" y2="105" stroke="rgba(0,113,227,0.15)" stroke-width="0.5"/>
+                  <line x1="150" y1="35" x2="150" y2="105" stroke="rgba(0,113,227,0.15)" stroke-width="0.5"/>
+                  <line x1="250" y1="35" x2="250" y2="105" stroke="rgba(0,113,227,0.15)" stroke-width="0.5"/>
+                  <line x1="350" y1="35" x2="350" y2="105" stroke="rgba(0,113,227,0.15)" stroke-width="0.5"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section divider -->
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.04)] to-transparent"></div>
+  </section>
+
+
+  <!-- ═══ 3. WHY THIS EXISTS — Editorial origin story ═══ -->
+  <section class="relative bg-[#0b0b0e] py-20 md:py-28 px-6">
+    <div class="max-w-site mx-auto">
+      <div class="max-w-2xl mx-auto fade-in">
+        <!-- Accent line -->
+        <div class="w-10 h-px bg-[rgba(0,113,227,0.4)] mb-8"></div>
+        <h2 class="text-2xl md:text-3xl font-bold text-white leading-tight mb-8">Why this exists</h2>
+        <div class="space-y-5 text-[#9a9aa0] text-[15px] leading-[1.75]">
+          <p>
+            We kept seeing the same pattern: a serious industry making important decisions — which expert network to use, which compliance framework to trust, which pricing model fits — but scattered information and almost no public comparability.
+          </p>
+          <p>
+            Most available resources are either provider websites describing themselves in marketing language, or marketplace platforms with their own commercial incentives. Serious comparative analysis barely exists outside of private consulting engagements and paywalled research.
+          </p>
+          <p>
+            ExpertNetworks.net was built as a neutral, open research layer for the expert network category. It compiles publicly available information, labels sources and confidence levels, and makes it structured enough to be useful — without requiring sign-ups, subscriptions, or sales conversations.
+          </p>
+          <p class="text-[#6e8aaf] italic border-l-2 border-[rgba(0,113,227,0.3)] pl-5">
+            The site is not comprehensive. It is not finished. But the goal has always been the same: bring clarity to a category that operates largely behind closed doors.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.04)] to-transparent"></div>
+  </section>
+
+
+  <!-- ═══ 4. WHAT THIS SITE IS / IS NOT — Two-panel contrast ═══ -->
+  <section class="relative bg-[#0d0d10] py-20 md:py-28 px-6">
+    <div class="max-w-site mx-auto">
+      <div class="text-center mb-12 fade-in">
+        <h2 class="text-2xl md:text-3xl font-bold text-white">What this site is — and is not</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto">
+        <!-- IS panel -->
+        <div class="fade-in stagger-1 rounded-2xl p-7 md:p-8 border border-[rgba(0,113,227,0.12)] bg-[rgba(0,113,227,0.03)]" style="backdrop-filter: blur(8px);">
+          <div class="flex items-center gap-2.5 mb-5">
+            <div class="w-7 h-7 rounded-lg bg-[rgba(0,113,227,0.15)] flex items-center justify-center">
+              <svg class="w-4 h-4 text-[#5ba4e6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3 class="text-base font-bold text-white">What this site is</h3>
+          </div>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-2.5 text-[#9a9aa0] text-[14px] leading-relaxed">
+              <span class="w-1 h-1 rounded-full bg-[rgba(0,113,227,0.5)] mt-2 shrink-0"></span>
+              Independent, public-source research on expert networks
+            </li>
+            <li class="flex items-start gap-2.5 text-[#9a9aa0] text-[14px] leading-relaxed">
+              <span class="w-1 h-1 rounded-full bg-[rgba(0,113,227,0.5)] mt-2 shrink-0"></span>
+              Free and open to access — no accounts, no paywalls
+            </li>
+            <li class="flex items-start gap-2.5 text-[#9a9aa0] text-[14px] leading-relaxed">
+              <span class="w-1 h-1 rounded-full bg-[rgba(0,113,227,0.5)] mt-2 shrink-0"></span>
+              Built for comparison and category understanding
+            </li>
+            <li class="flex items-start gap-2.5 text-[#9a9aa0] text-[14px] leading-relaxed">
+              <span class="w-1 h-1 rounded-full bg-[rgba(0,113,227,0.5)] mt-2 shrink-0"></span>
+              Structured around pricing, compliance, AI, service model, and market position
+            </li>
+            <li class="flex items-start gap-2.5 text-[#9a9aa0] text-[14px] leading-relaxed">
+              <span class="w-1 h-1 rounded-full bg-[rgba(0,113,227,0.5)] mt-2 shrink-0"></span>
+              Currently covering {publishedCount}+ providers, with ongoing expansion
+            </li>
+          </ul>
+        </div>
+
+        <!-- IS NOT panel -->
+        <div class="fade-in stagger-2 rounded-2xl p-7 md:p-8 border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.02)]" style="backdrop-filter: blur(8px);">
+          <div class="flex items-center gap-2.5 mb-5">
+            <div class="w-7 h-7 rounded-lg bg-[rgba(255,255,255,0.06)] flex items-center justify-center">
+              <svg class="w-4 h-4 text-[#6e6e73]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </div>
+            <h3 class="text-base font-bold text-white">What this site is not</h3>
+          </div>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-2.5 text-[#6e6e73] text-[14px] leading-relaxed">
+              <span class="w-1 h-1 rounded-full bg-[rgba(255,255,255,0.15)] mt-2 shrink-0"></span>
+              Not a marketplace — we do not broker expert calls or take referral fees
+            </li>
+            <li class="flex items-start gap-2.5 text-[#6e6e73] text-[14px] leading-relaxed">
+              <span class="w-1 h-1 rounded-full bg-[rgba(255,255,255,0.15)] mt-2 shrink-0"></span>
+              Not a broker and not a lead-generation platform
+            </li>
+            <li class="flex items-start gap-2.5 text-[#6e6e73] text-[14px] leading-relaxed">
+              <span class="w-1 h-1 rounded-full bg-[rgba(255,255,255,0.15)] mt-2 shrink-0"></span>
+              Not paid placement — no provider can buy position or ranking
+            </li>
+            <li class="flex items-start gap-2.5 text-[#6e6e73] text-[14px] leading-relaxed">
+              <span class="w-1 h-1 rounded-full bg-[rgba(255,255,255,0.15)] mt-2 shrink-0"></span>
+              Not affiliated with any expert network company
+            </li>
+            <li class="flex items-start gap-2.5 text-[#6e6e73] text-[14px] leading-relaxed">
+              <span class="w-1 h-1 rounded-full bg-[rgba(255,255,255,0.15)] mt-2 shrink-0"></span>
+              Not a claim of perfect completeness — coverage is expanding
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.04)] to-transparent"></div>
+  </section>
+
+
+  <!-- ═══ 5. HOW WE WORK — Four-step methodology (glass cards) ═══ -->
+  <section class="relative bg-[#0a0a0c] py-20 md:py-28 px-6 overflow-hidden" id="methodology">
+    <!-- Subtle grid background -->
+    <div class="absolute inset-0 opacity-[0.02]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+    <div class="max-w-site mx-auto relative">
+      <div class="text-center mb-4 fade-in">
+        <div class="inline-flex items-center gap-2 mb-4">
+          <span class="w-8 h-px bg-[rgba(0,113,227,0.4)]"></span>
+          <span class="text-[10px] font-semibold tracking-[0.18em] uppercase text-[#5a7a9e]">Research process</span>
+          <span class="w-8 h-px bg-[rgba(0,113,227,0.4)]"></span>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-3">How we work</h2>
+        <p class="text-[#6e6e73] text-sm max-w-lg mx-auto">Four principles guide how information moves from raw source material to published profile.</p>
+      </div>
+
+      <!-- Methodology cards -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-12">
+        <!-- Step 1: Collect -->
+        <div class="fade-in stagger-1 group relative rounded-2xl p-6 border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.02)] hover:border-[rgba(0,113,227,0.15)] hover:bg-[rgba(0,113,227,0.03)] transition-all duration-300" style="backdrop-filter: blur(12px);">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-9 h-9 rounded-xl bg-[rgba(0,113,227,0.1)] border border-[rgba(0,113,227,0.15)] flex items-center justify-center group-hover:bg-[rgba(0,113,227,0.15)] transition-colors">
+              <span class="text-[13px] font-bold text-[#5ba4e6]">01</span>
+            </div>
+            <h3 class="text-[15px] font-bold text-white">Collect</h3>
+          </div>
+          <p class="text-[#6e6e73] text-[13px] leading-relaxed">
+            Public company pages, product materials, journalism, regulatory filings, press releases, and industry reports.
+          </p>
+          <!-- Decorative corner -->
+          <div class="absolute top-0 right-0 w-12 h-12 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true">
+            <svg viewBox="0 0 48 48" class="w-full h-full"><path d="M48 0v16c0-8.8-7.2-16-16-16H48z" fill="rgba(0,113,227,0.06)"/></svg>
+          </div>
+        </div>
+
+        <!-- Step 2: Separate -->
+        <div class="fade-in stagger-2 group relative rounded-2xl p-6 border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.02)] hover:border-[rgba(0,113,227,0.15)] hover:bg-[rgba(0,113,227,0.03)] transition-all duration-300" style="backdrop-filter: blur(12px);">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-9 h-9 rounded-xl bg-[rgba(0,113,227,0.1)] border border-[rgba(0,113,227,0.15)] flex items-center justify-center group-hover:bg-[rgba(0,113,227,0.15)] transition-colors">
+              <span class="text-[13px] font-bold text-[#5ba4e6]">02</span>
+            </div>
+            <h3 class="text-[15px] font-bold text-white">Separate</h3>
+          </div>
+          <p class="text-[#6e6e73] text-[13px] leading-relaxed">
+            Independent reporting is distinguished from company-originated claims. Marketing language is identified and treated accordingly.
+          </p>
+          <div class="absolute top-0 right-0 w-12 h-12 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true">
+            <svg viewBox="0 0 48 48" class="w-full h-full"><path d="M48 0v16c0-8.8-7.2-16-16-16H48z" fill="rgba(0,113,227,0.06)"/></svg>
+          </div>
+        </div>
+
+        <!-- Step 3: Label -->
+        <div class="fade-in stagger-3 group relative rounded-2xl p-6 border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.02)] hover:border-[rgba(0,113,227,0.15)] hover:bg-[rgba(0,113,227,0.03)] transition-all duration-300" style="backdrop-filter: blur(12px);">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-9 h-9 rounded-xl bg-[rgba(0,113,227,0.1)] border border-[rgba(0,113,227,0.15)] flex items-center justify-center group-hover:bg-[rgba(0,113,227,0.15)] transition-colors">
+              <span class="text-[13px] font-bold text-[#5ba4e6]">03</span>
+            </div>
+            <h3 class="text-[15px] font-bold text-white">Label</h3>
+          </div>
+          <p class="text-[#6e6e73] text-[13px] leading-relaxed">
+            Where possible, data points are tagged as verified, company positioning, inference, or estimate. See the <a href="/verification" class="text-[#5ba4e6] hover:underline">verification framework</a>.
+          </p>
+          <div class="absolute top-0 right-0 w-12 h-12 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true">
+            <svg viewBox="0 0 48 48" class="w-full h-full"><path d="M48 0v16c0-8.8-7.2-16-16-16H48z" fill="rgba(0,113,227,0.06)"/></svg>
+          </div>
+        </div>
+
+        <!-- Step 4: Update -->
+        <div class="fade-in stagger-4 group relative rounded-2xl p-6 border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.02)] hover:border-[rgba(0,113,227,0.15)] hover:bg-[rgba(0,113,227,0.03)] transition-all duration-300" style="backdrop-filter: blur(12px);">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-9 h-9 rounded-xl bg-[rgba(0,113,227,0.1)] border border-[rgba(0,113,227,0.15)] flex items-center justify-center group-hover:bg-[rgba(0,113,227,0.15)] transition-colors">
+              <span class="text-[13px] font-bold text-[#5ba4e6]">04</span>
+            </div>
+            <h3 class="text-[15px] font-bold text-white">Update</h3>
+          </div>
+          <p class="text-[#6e6e73] text-[13px] leading-relaxed">
+            Corrections and revisions are reviewed against evidence and reflected clearly. The goal is accuracy, not speed.
+          </p>
+          <div class="absolute top-0 right-0 w-12 h-12 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true">
+            <svg viewBox="0 0 48 48" class="w-full h-full"><path d="M48 0v16c0-8.8-7.2-16-16-16H48z" fill="rgba(0,113,227,0.06)"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Methodology link -->
+      <div class="text-center mt-10 fade-in">
+        <a href="/sources" class="inline-flex items-center gap-1.5 text-[#5ba4e6] text-sm font-medium hover:underline no-underline">
+          Full sources & methodology
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.04)] to-transparent"></div>
+  </section>
+
+
+  <!-- ═══ 6. WHO THIS IS FOR — Audience cards ═══ -->
+  <section class="relative bg-[#0d0d10] py-20 md:py-28 px-6">
+    <div class="max-w-site mx-auto">
+      <div class="text-center mb-12 fade-in">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-3">Who this is for</h2>
+        <p class="text-[#6e6e73] text-sm max-w-md mx-auto">Built for professionals who evaluate, purchase, or study expert network services.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
+        <!-- Investors -->
+        <div class="fade-in stagger-1 rounded-2xl p-6 border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.02)] text-center">
+          <div class="w-10 h-10 rounded-xl bg-[rgba(0,113,227,0.08)] border border-[rgba(0,113,227,0.1)] flex items-center justify-center mx-auto mb-4">
+            <svg class="w-5 h-5 text-[#5ba4e6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 20h20M5 20V8l7-5 7 5v12M9 20v-6h6v6"/></svg>
+          </div>
+          <h3 class="text-[14px] font-bold text-white mb-1.5">Investors</h3>
+          <p class="text-[#6e6e73] text-[12px] leading-relaxed">PE firms, hedge funds, and asset managers evaluating expert network partnerships.</p>
+        </div>
+
+        <!-- Consultants -->
+        <div class="fade-in stagger-2 rounded-2xl p-6 border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.02)] text-center">
+          <div class="w-10 h-10 rounded-xl bg-[rgba(0,113,227,0.08)] border border-[rgba(0,113,227,0.1)] flex items-center justify-center mx-auto mb-4">
+            <svg class="w-5 h-5 text-[#5ba4e6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 class="text-[14px] font-bold text-white mb-1.5">Advisory teams</h3>
+          <p class="text-[#6e6e73] text-[12px] leading-relaxed">Management consultancies and advisory firms sourcing expert knowledge at scale.</p>
+        </div>
+
+        <!-- Corporate -->
+        <div class="fade-in stagger-3 rounded-2xl p-6 border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.02)] text-center">
+          <div class="w-10 h-10 rounded-xl bg-[rgba(0,113,227,0.08)] border border-[rgba(0,113,227,0.1)] flex items-center justify-center mx-auto mb-4">
+            <svg class="w-5 h-5 text-[#5ba4e6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+          </div>
+          <h3 class="text-[14px] font-bold text-white mb-1.5">Corporate strategy</h3>
+          <p class="text-[#6e6e73] text-[12px] leading-relaxed">In-house research and strategy teams comparing provider capabilities and pricing.</p>
+        </div>
+
+        <!-- Researchers -->
+        <div class="fade-in stagger-4 rounded-2xl p-6 border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.02)] text-center">
+          <div class="w-10 h-10 rounded-xl bg-[rgba(0,113,227,0.08)] border border-[rgba(0,113,227,0.1)] flex items-center justify-center mx-auto mb-4">
+            <svg class="w-5 h-5 text-[#5ba4e6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          </div>
+          <h3 class="text-[14px] font-bold text-white mb-1.5">Industry observers</h3>
+          <p class="text-[#6e6e73] text-[12px] leading-relaxed">Journalists, academics, and analysts tracking market structure and competitive dynamics.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.04)] to-transparent"></div>
+  </section>
+
+
+  <!-- ═══ 7. WHY THIS MATTERS — Market-scale statistics ═══ -->
+  <section class="relative bg-[#0a0a0c] py-20 md:py-28 px-6 overflow-hidden">
+    <!-- Accent glow -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] pointer-events-none opacity-[0.04]" style="background: radial-gradient(ellipse, rgba(0,113,227,1) 0%, transparent 70%);"></div>
+
+    <div class="max-w-site mx-auto relative">
+      <div class="text-center mb-14 fade-in">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-3">Why this matters</h2>
+        <p class="text-[#6e6e73] text-sm max-w-lg mx-auto">The expert network industry is large, growing, and increasingly consequential for global capital allocation.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+        <!-- Stat 1 -->
+        <div class="fade-in stagger-1 text-center py-8 px-6 rounded-2xl border border-[rgba(255,255,255,0.04)] bg-[rgba(255,255,255,0.015)]">
+          <div class="text-3xl md:text-4xl font-extrabold text-white mb-2 tracking-tight">
+            $2B+
+          </div>
+          <div class="text-[#6e6e73] text-[13px] leading-relaxed">
+            Estimated annual market revenue across the expert network category
+          </div>
+        </div>
+
+        <!-- Stat 2 -->
+        <div class="fade-in stagger-2 text-center py-8 px-6 rounded-2xl border border-[rgba(255,255,255,0.04)] bg-[rgba(255,255,255,0.015)]">
+          <div class="text-3xl md:text-4xl font-extrabold text-white mb-2 tracking-tight">
+            100+
+          </div>
+          <div class="text-[#6e6e73] text-[13px] leading-relaxed">
+            Active expert network providers globally, across multiple models and geographies
+          </div>
+        </div>
+
+        <!-- Stat 3 -->
+        <div class="fade-in stagger-3 text-center py-8 px-6 rounded-2xl border border-[rgba(255,255,255,0.04)] bg-[rgba(255,255,255,0.015)]">
+          <div class="text-3xl md:text-4xl font-extrabold text-white mb-2 tracking-tight">
+            1M+
+          </div>
+          <div class="text-[#6e6e73] text-[13px] leading-relaxed">
+            Expert consultations facilitated annually, informing high-stakes decisions
+          </div>
+        </div>
+      </div>
+
+      <p class="text-center text-[11px] text-[#4a4a52] mt-6 fade-in">Figures are industry-level estimates drawn from public reporting, press releases, and industry analysis. Individual provider claims may vary.</p>
+    </div>
+
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.04)] to-transparent"></div>
+  </section>
+
+
+  <!-- ═══ 8. CORRECTIONS & STANDARDS — Editorial policy ═══ -->
+  <section class="relative bg-[#0d0d10] py-20 md:py-28 px-6">
+    <div class="max-w-site mx-auto">
+      <div class="max-w-2xl mx-auto fade-in">
+        <div class="rounded-2xl p-8 md:p-10 border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.02)]" style="backdrop-filter: blur(8px);">
+          <h2 class="text-xl md:text-2xl font-bold text-white mb-2">Accuracy matters more than speed</h2>
+          <p class="text-[#6e6e73] text-[13px] mb-8">Our editorial standards for maintaining trust.</p>
+
+          <div class="space-y-5 text-[#9a9aa0] text-[14px] leading-relaxed">
+            <p>
+              Providers can challenge factual errors about their company. Corrections are reviewed against publicly available evidence — not against marketing preference. If a claim is wrong, it gets fixed. If a claim is accurately reported but unflattering, it stays.
+            </p>
+            <p>
+              Public clarity matters more than any individual provider's preference for how they are described.
+            </p>
+          </div>
+
+          <!-- Principles -->
+          <div class="grid sm:grid-cols-3 gap-4 mt-8 pt-8 border-t border-[rgba(255,255,255,0.04)]">
+            <div class="text-center">
+              <div class="text-[12px] font-bold text-[#5ba4e6] mb-1">Evidence over assertion</div>
+              <div class="text-[11px] text-[#4a4a52]">Claims require sources</div>
+            </div>
+            <div class="text-center">
+              <div class="text-[12px] font-bold text-[#5ba4e6] mb-1">Clarity over promotion</div>
+              <div class="text-[11px] text-[#4a4a52]">Accuracy trumps flattery</div>
+            </div>
+            <div class="text-center">
+              <div class="text-[12px] font-bold text-[#5ba4e6] mb-1">Revision over stubbornness</div>
+              <div class="text-[11px] text-[#4a4a52]">When wrong, we correct</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.04)] to-transparent"></div>
+  </section>
+
+
+  <!-- ═══ 9. CONTACT / CLOSING CTA ═══ -->
+  <section class="relative bg-[#0a0a0c] py-20 md:py-24 px-6">
+    <div class="max-w-site mx-auto text-center fade-in">
+      <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Help improve the public record</h2>
+      <p class="text-[#9a9aa0] text-[15px] leading-relaxed max-w-lg mx-auto mb-3">
+        If you represent an expert network and want to correct information, or if you're a researcher with sourced feedback, we want to hear from you.
+      </p>
+      <p class="text-[#6e6e73] text-sm mb-8">
+        The site is still growing. The goal is not noise. The goal is clarity.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="mailto:contact@expertnetworks.net" class="inline-flex items-center gap-1.5 px-6 py-2.5 bg-accent text-white text-sm font-semibold rounded-lg no-underline hover:bg-accent-hover transition-colors">
+          Get in touch
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+        <a href="/networks" class="inline-flex items-center gap-1.5 px-6 py-2.5 bg-[rgba(255,255,255,0.06)] text-[#c5c5ca] text-sm font-semibold rounded-lg no-underline hover:bg-[rgba(255,255,255,0.1)] transition-colors border border-[rgba(255,255,255,0.06)]">
+          Explore the directory
+        </a>
+        <a href="/compare" class="inline-flex items-center gap-1.5 px-6 py-2.5 bg-[rgba(255,255,255,0.06)] text-[#c5c5ca] text-sm font-semibold rounded-lg no-underline hover:bg-[rgba(255,255,255,0.1)] transition-colors border border-[rgba(255,255,255,0.06)]">
+          Compare providers
+        </a>
+      </div>
+
+      <p class="text-[#4a4a52] text-[11px] mt-10">Last updated: March 2026</p>
+    </div>
+  </section>
+
 </BaseLayout>
+
+
+<style>
+  /* ─── Hero animations ─── */
+  .about-fade-up {
+    transform: translateY(24px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .about-fade-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .about-delay-1 { transition-delay: 0.1s; }
+  .about-delay-2 { transition-delay: 0.25s; }
+  .about-delay-3 { transition-delay: 0.45s; }
+  .about-delay-4 { transition-delay: 0.65s; }
+
+  /* ─── Pulse rings on hero SVG ─── */
+  .about-pulse-ring {
+    transform-origin: center;
+  }
+  .about-pulse-1 {
+    animation: aboutPulse 4s ease-in-out infinite;
+  }
+  .about-pulse-2 {
+    animation: aboutPulse 4s ease-in-out 2s infinite;
+  }
+  @keyframes aboutPulse {
+    0%, 100% { opacity: 0.15; transform: scale(1); }
+    50% { opacity: 0.05; transform: scale(1.3); }
+  }
+
+  /* ─── Slow float for hero SVG ─── */
+  .about-hero-svg {
+    animation: aboutFloat 20s ease-in-out infinite;
+  }
+  @keyframes aboutFloat {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(-8px, 6px); }
+    50% { transform: translate(4px, -8px); }
+    75% { transform: translate(-4px, 4px); }
+  }
+
+  /* ─── Reduced motion ─── */
+  @media (prefers-reduced-motion: reduce) {
+    .about-fade-up {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    .about-pulse-ring,
+    .about-hero-svg {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+// ─── Hero fade-up reveal ───
+(function() {
+  var items = document.querySelectorAll('.about-fade-up');
+  if (!items.length) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    items.forEach(function(el) { el.classList.add('is-visible'); });
+    return;
+  }
+
+  // Small delay to allow the page to paint first
+  setTimeout(function() {
+    items.forEach(function(el) { el.classList.add('is-visible'); });
+  }, 100);
+})();
+</script>
+
+<!-- Nav dark mode — same pattern as ParticleHero -->
+<script>
+(function() {
+  var nav = document.querySelector('nav');
+  var heroSection = document.getElementById('aboutHero');
+  if (!nav || !heroSection) return;
+
+  var brandLink = nav.querySelector('a[href="/"]');
+  var menuBtn = nav.querySelector('#menuBtn');
+  var navLinks = nav.querySelectorAll('ul a');
+  var searchBtn = nav.querySelector('#searchTrigger');
+  var linkedinLink = nav.querySelector('a[aria-label="LinkedIn"]');
+
+  var isDark = false;
+
+  function setDarkNav() {
+    if (isDark) return;
+    isDark = true;
+    nav.style.background = 'rgba(10,10,12,0.85)';
+    nav.style.borderBottomColor = 'rgba(255,255,255,0.06)';
+    if (brandLink) { brandLink.style.color = '#fff'; }
+    if (menuBtn) { menuBtn.style.color = '#a1a1a6'; }
+    navLinks.forEach(function(l) { l.style.color = '#a1a1a6'; });
+    if (searchBtn) { searchBtn.style.background = 'rgba(255,255,255,0.08)'; searchBtn.style.color = '#a1a1a6'; }
+    if (linkedinLink) { linkedinLink.style.color = '#a1a1a6'; }
+  }
+
+  function setLightNav() {
+    if (!isDark) return;
+    isDark = false;
+    nav.style.background = '';
+    nav.style.borderBottomColor = '';
+    if (brandLink) { brandLink.style.color = ''; }
+    if (menuBtn) { menuBtn.style.color = ''; }
+    navLinks.forEach(function(l) { l.style.color = ''; });
+    if (searchBtn) { searchBtn.style.background = ''; searchBtn.style.color = ''; }
+    if (linkedinLink) { linkedinLink.style.color = ''; }
+  }
+
+  // Since the entire about page is dark, keep nav dark always
+  setDarkNav();
+
+  // But watch scroll in case we ever add a light section
+  function check() {
+    var heroBottom = heroSection.getBoundingClientRect().bottom;
+    // Keep dark nav for the full dark page
+    setDarkNav();
+  }
+
+  window.addEventListener('scroll', check, { passive: true });
+})();
+</script>
