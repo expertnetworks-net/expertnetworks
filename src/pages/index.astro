@@ -711,22 +711,22 @@ const descriptors: Record<string, string> = {
           <div class="w-9 h-9 rounded-lg bg-accent-orange/10 flex items-center justify-center mb-3">
             <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-accent-orange"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           </div>
-          <h3 class="font-bold text-primary text-sm mb-1 group-hover:text-accent transition-colors">I'm new to expert networks</h3>
-          <p class="text-xs text-secondary">Learn how the category works, what it costs, and how to choose a provider.</p>
+          <h3 class="font-bold text-primary text-sm mb-1 group-hover:text-accent transition-colors">I'm new to this category</h3>
+          <p class="text-xs text-secondary">Learn how expert networks work, what they cost, and how to choose a provider.</p>
         </a>
         <a href="/news" class="group bg-white rounded-card p-5 shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all no-underline border border-border/30">
           <div class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center mb-3">
             <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-blue-500"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
           </div>
-          <h3 class="font-bold text-primary text-sm mb-1 group-hover:text-accent transition-colors">I want current industry signals</h3>
+          <h3 class="font-bold text-primary text-sm mb-1 group-hover:text-accent transition-colors">I want the latest market news</h3>
           <p class="text-xs text-secondary">Track launches, M&A, AI products, and market developments.</p>
         </a>
         <a href="/best-expert-networks" class="group bg-white rounded-card p-5 shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all no-underline border border-border/30">
           <div class="w-9 h-9 rounded-lg bg-rose-50 flex items-center justify-center mb-3">
             <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-rose-500"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>
           </div>
-          <h3 class="font-bold text-primary text-sm mb-1 group-hover:text-accent transition-colors">I want to see the best providers</h3>
-          <p class="text-xs text-secondary">Ranked overview of leading expert networks by category and strength.</p>
+          <h3 class="font-bold text-primary text-sm mb-1 group-hover:text-accent transition-colors">I want to explore leading providers</h3>
+          <p class="text-xs text-secondary">Curated overview of top expert networks by category and strength.</p>
         </a>
       </div>
     </div>
@@ -763,52 +763,28 @@ const descriptors: Record<string, string> = {
     </div>
   </section>
 
-  <!-- ═══ 6. Top providers at a glance ═══ -->
-  <section class="py-12 md:py-16 px-4 md:px-6">
+  <!-- ═══ 6. Featured profiles ═══ -->
+  <section class="py-10 md:py-12 px-4 md:px-6">
     <div class="max-w-site mx-auto">
-      <div class="flex items-center justify-between mb-8">
-        <h2 class="text-xl md:text-2xl font-bold text-primary">Top providers at a glance</h2>
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-lg md:text-xl font-bold text-primary">Featured profiles</h2>
         <a href="/networks" class="text-accent text-sm font-medium no-underline hover:underline">View all {publishedNetworks.length} &rarr;</a>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
         {top6.map(n => {
-          const desc = descriptors[n.data.slug] || (n.data.description ? n.data.description.slice(0, 80) + '…' : n.data.type || '');
+          const desc = descriptors[n.data.slug] || (n.data.description ? n.data.description.slice(0, 60) + '…' : n.data.type || '');
           return (
-            <div class="bg-white rounded-card p-5 shadow-card border border-border/30 hover:shadow-card-hover transition-shadow">
-              <div class="flex items-center gap-3 mb-3">
-                {n.data.logo ? (
-                  <img src={n.data.logo} alt={n.data.name} width="36" height="36" class="w-9 h-9 rounded-lg object-cover flex-shrink-0" loading="lazy" />
-                ) : (
-                  <div class="w-9 h-9 rounded-lg flex items-center justify-center text-white font-bold text-xs flex-shrink-0" style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}>
-                    {n.data.shortName}
-                  </div>
-                )}
-                <div>
-                  <div class="text-sm font-bold text-primary">{n.data.name.split(' (')[0]}</div>
-                  <div class="text-[11px] text-tertiary">Founded {n.data.founded}</div>
+            <a href={`/networks/${n.data.slug}`} class="group bg-white rounded-card p-4 shadow-card border border-border/30 hover:shadow-card-hover hover:-translate-y-0.5 transition-all no-underline text-center">
+              {n.data.logo ? (
+                <img src={n.data.logo} alt={n.data.name} width="32" height="32" class="w-8 h-8 rounded-lg object-cover mx-auto mb-2" loading="lazy" />
+              ) : (
+                <div class="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-[10px] mx-auto mb-2" style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}>
+                  {n.data.shortName}
                 </div>
-              </div>
-              <p class="text-xs text-secondary mb-3 leading-relaxed">{desc}</p>
-              <div class="space-y-1.5 mb-4">
-                <div class="flex items-center gap-2 text-[11px]">
-                  <span class="text-tertiary font-medium w-14 flex-shrink-0">Model</span>
-                  <span class="text-primary">{n.data.deliveryModel || n.data.pricingModel || '—'}</span>
-                </div>
-                <div class="flex items-center gap-2 text-[11px]">
-                  <span class="text-tertiary font-medium w-14 flex-shrink-0">Best for</span>
-                  <span class="text-primary truncate">{(n.data.bestFor || [])[0] || '—'}</span>
-                </div>
-                <div class="flex items-center gap-2 text-[11px]">
-                  <span class="text-tertiary font-medium w-14 flex-shrink-0">Region</span>
-                  <span class="text-primary">{n.data.regionStrength || 'Global'}</span>
-                </div>
-              </div>
-              <div class="flex gap-2">
-                <a href={`/networks/${n.data.slug}`} class="text-xs font-semibold text-accent no-underline hover:underline">View profile</a>
-                <span class="text-border">|</span>
-                <a href={`/compare?add=${n.data.slug}`} class="text-xs font-semibold text-secondary no-underline hover:text-accent hover:underline">Add to compare</a>
-              </div>
-            </div>
+              )}
+              <div class="text-xs font-bold text-primary mb-1 group-hover:text-accent transition-colors">{n.data.name.split(' (')[0]}</div>
+              <div class="text-[10px] text-tertiary leading-snug">{desc}</div>
+            </a>
           );
         })}
       </div>
@@ -851,37 +827,7 @@ const descriptors: Record<string, string> = {
     </div>
   </section>
 
-  <!-- ═══ 8. Understand the category — resources ═══ -->
-  <section class="py-12 md:py-16 px-4 md:px-6">
-    <div class="max-w-site mx-auto">
-      <h2 class="text-xl md:text-2xl font-bold text-primary mb-8 text-center">Understand the category</h2>
-      <div class="grid sm:grid-cols-3 gap-4">
-        <a href="/what-is-an-expert-network" class="group bg-white rounded-card p-6 shadow-card hover:shadow-card-hover transition-all no-underline border border-border/30 hover:-translate-y-0.5 text-center">
-          <div class="w-11 h-11 rounded-xl bg-accent-orange/10 flex items-center justify-center mx-auto mb-4">
-            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-accent-orange"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          </div>
-          <h3 class="font-bold text-primary text-sm mb-2 group-hover:text-accent transition-colors">What Is an Expert Network?</h3>
-          <p class="text-xs text-secondary">Definition, workflow, use cases, services, compliance, and provider overview.</p>
-        </a>
-        <a href="/expert-network-pricing" class="group bg-white rounded-card p-6 shadow-card hover:shadow-card-hover transition-all no-underline border border-border/30 hover:-translate-y-0.5 text-center">
-          <div class="w-11 h-11 rounded-xl bg-accent-green/10 flex items-center justify-center mx-auto mb-4">
-            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-accent-green"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-          </div>
-          <h3 class="font-bold text-primary text-sm mb-2 group-hover:text-accent transition-colors">Expert Network Pricing</h3>
-          <p class="text-xs text-secondary">How pricing works across calls, subscriptions, and content access.</p>
-        </a>
-        <a href="/compare" class="group bg-white rounded-card p-6 shadow-card hover:shadow-card-hover transition-all no-underline border border-border/30 hover:-translate-y-0.5 text-center">
-          <div class="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-4">
-            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-accent"><path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M21 3l-7 7"/><path d="M3 3l7 7"/><path d="M3 21l7-7"/><path d="M21 21l-7-7"/><path d="M16 21h5v-5"/><path d="M8 21H3v-5"/></svg>
-          </div>
-          <h3 class="font-bold text-primary text-sm mb-2 group-hover:text-accent transition-colors">Compare Providers</h3>
-          <p class="text-xs text-secondary">Side-by-side view of service models, compliance, AI, and content.</p>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ 9. How this site works — methodology / trust ═══ -->
+  <!-- ═══ 8. How this site works — methodology / trust ═══ -->
   <section class="py-12 md:py-16 px-4 md:px-6 bg-bg-secondary">
     <div class="max-w-4xl mx-auto">
       <h2 class="text-xl md:text-2xl font-bold text-primary mb-4">How this site works</h2>
@@ -904,11 +850,14 @@ const descriptors: Record<string, string> = {
           <div class="text-[11px] font-medium text-primary">Corrections welcomed</div>
         </div>
       </div>
-      <a href="/sources" class="text-xs font-semibold text-accent no-underline hover:underline">Read methodology &rarr;</a>
+      <div class="flex gap-4">
+        <a href="/sources" class="text-xs font-semibold text-accent no-underline hover:underline">Sources &amp; methodology &rarr;</a>
+        <a href="/verification" class="text-xs font-semibold text-secondary no-underline hover:text-accent hover:underline">Verification framework &rarr;</a>
+      </div>
     </div>
   </section>
 
-  <!-- ═══ 10. Final CTA ═══ -->
+  <!-- ═══ 9. Final CTA ═══ -->
   <section class="py-14 md:py-20 px-4 md:px-6">
     <div class="max-w-3xl mx-auto text-center">
       <h2 class="text-xl md:text-2xl font-bold text-primary mb-3">Ready to narrow your shortlist?</h2>
