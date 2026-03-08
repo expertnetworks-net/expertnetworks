@@ -1,24 +1,51 @@
 {
-  "networks": ["glg", "alphasights", "third-bridge", "dialectica", "guidepoint", "alphasense-tegus"],
+  "networks": ["glg", "alphasights", "third-bridge", "guidepoint", "dialectica", "alphasense-tegus"],
   "presets": {
     "leaders": ["glg", "alphasights", "third-bridge", "guidepoint", "dialectica", "alphasense-tegus"],
     "consulting": ["glg", "alphasights", "guidepoint", "dialectica", "atheneum", "newtonx"],
     "pe": ["alphasights", "third-bridge", "dialectica", "guidepoint", "glg", "stax"],
     "enterprise": ["glg", "alphasense-tegus", "guidepoint", "newtonx", "third-bridge", "atheneum"],
     "asia": ["capvision", "arches", "visasq", "lynk", "alphaexpert", "cg-consulting"],
-    "ai": ["alphasense-tegus", "techspert", "dialectica", "newtonx", "prosynth", "prosapient"],
-    "library": ["alphasense-tegus", "third-bridge", "glg", "guidepoint", "dialectica", "arches"]
+    "library": ["alphasense-tegus", "third-bridge", "glg", "guidepoint", "dialectica", "arches"],
+    "aiMatching": ["alphasights", "guidepoint", "alphasense-tegus", "dialectica", "newtonx", "techspert"],
+    "aiResearch": ["alphasense-tegus", "third-bridge", "glg", "dialectica", "guidepoint", "alphasights"],
+    "agentic": ["alphasense-tegus", "dialectica", "third-bridge", "glg", "alphasights", "guidepoint"]
+  },
+  "presetMeta": {
+    "leaders": { "label": "Global Leaders", "description": "Largest expert networks by scale and market reach" },
+    "consulting": { "label": "Consulting Fit", "description": "Best suited for management consulting and advisory firms" },
+    "pe": { "label": "PE / Hedge Funds", "description": "Optimized for private equity and hedge fund workflows" },
+    "enterprise": { "label": "Enterprise", "description": "Suited for large corporate strategy and procurement teams" },
+    "asia": { "label": "APAC Specialists", "description": "Providers with strong Asia-Pacific coverage" },
+    "library": { "label": "Transcript Leaders", "description": "Strongest transcript and content library capabilities" },
+    "aiMatching": { "label": "AI Matching", "description": "Leaders in AI-powered expert identification and matching" },
+    "aiResearch": { "label": "AI Research", "description": "Most advanced AI-powered research and content tools" },
+    "agentic": { "label": "Agentic Workflows", "description": "Providers with autonomous AI research capabilities" }
   },
   "sections": [
     {
       "id": "core",
       "name": "Core Offering",
       "rows": [
+        { "label": "Provider Type", "key": "providerType", "source": "enriched", "type": "chip-provider" },
         { "label": "Expert Calls", "key": "comparison.expertCalls", "type": "boolean" },
         { "label": "Surveys", "key": "comparison.surveys", "type": "boolean" },
         { "label": "Content Library", "key": "comparison.contentLibrary", "type": "boolean-or-string" },
-        { "label": "AI Matching", "key": "comparison.aiMatching", "type": "boolean-or-string" },
-        { "label": "Compliance Tools", "key": "comparison.complianceTools", "type": "boolean" }
+        { "label": "Compliance Tools", "key": "comparison.complianceTools", "type": "boolean" },
+        { "label": "Delivery Model", "key": "deliveryModel", "type": "chip" }
+      ]
+    },
+    {
+      "id": "ai",
+      "name": "AI & Workflow Stack",
+      "rows": [
+        { "label": "Expert Matching AI", "key": "ai.matchingAI", "source": "enriched", "type": "capability", "description": "AI-powered expert identification and matching" },
+        { "label": "Library / Transcript Q&A", "key": "ai.libraryQA", "source": "enriched", "type": "capability", "description": "AI search and Q&A across transcript and content libraries" },
+        { "label": "Source-Cited Synthesis", "key": "ai.synthesis", "source": "enriched", "type": "capability", "description": "AI-generated answers with source citations" },
+        { "label": "Workflow Agents", "key": "ai.agents", "source": "enriched", "type": "capability", "description": "Autonomous AI agents for repeatable research tasks" },
+        { "label": "AI Interviewing", "key": "ai.interviewing", "source": "enriched", "type": "capability", "description": "AI-conducted expert interviews or channel checks" },
+        { "label": "Compliance AI", "key": "ai.complianceAI", "source": "enriched", "type": "capability", "description": "AI-powered compliance monitoring and transcript scanning" },
+        { "label": "Official AI Products", "key": "officialAIProducts", "source": "enriched", "type": "product-names" }
       ]
     },
     {
@@ -26,25 +53,24 @@
       "name": "Commercial Model",
       "rows": [
         { "label": "Pricing Model", "key": "pricingModel", "type": "text" },
-        { "label": "Delivery Model", "key": "deliveryModel", "type": "chip" },
-        { "label": "Pricing Detail", "key": "pricingDetail", "type": "text" }
+        { "label": "Pricing Detail", "key": "pricingDetail", "type": "text" },
+        { "label": "Region Strength", "key": "regionStrength", "type": "chip" }
       ]
     },
     {
       "id": "scale",
       "name": "Scale & Coverage",
       "rows": [
-        { "label": "Claimed Scale", "key": "expertCount", "type": "text" },
+        { "label": "Claimed Scale", "key": "expertCount", "type": "text-evidence", "evidenceField": "scaleEvidence" },
         { "label": "Scale Basis", "key": "expertCountLabel", "type": "text" },
-        { "label": "Employees", "key": "employeeCount", "type": "text" },
+        { "label": "Employees", "key": "employeeCount", "type": "text-evidence", "evidenceField": "employeeEvidence" },
         { "label": "Founded", "key": "founded", "type": "text" },
-        { "label": "Headquarters", "key": "headquarters", "type": "text" },
-        { "label": "Region Strength", "key": "regionStrength", "type": "chip" }
+        { "label": "Headquarters", "key": "headquarters", "type": "text" }
       ]
     },
     {
       "id": "compliance",
-      "name": "Compliance",
+      "name": "Compliance & Governance",
       "rows": [
         { "label": "Compliance Posture", "key": "complianceBadge", "type": "graded" },
         { "label": "MNPI Policy", "key": "compliance.mnpiPolicy", "type": "text" },
@@ -54,31 +80,286 @@
       ]
     },
     {
-      "id": "ai",
-      "name": "AI & Technology",
-      "rows": [
-        { "label": "AI Maturity", "key": "aiBadge", "type": "graded" },
-        { "label": "AI Capabilities", "key": "aiCapabilities", "type": "list" },
-        { "label": "Category", "key": "categoryBadge", "type": "chip" }
-      ]
-    },
-    {
       "id": "fit",
       "name": "User Fit",
       "rows": [
         { "label": "Best For", "key": "bestFor", "type": "list" },
         { "label": "Key Differentiators", "key": "keyDifferentiators", "type": "list" },
-        { "label": "Services", "key": "services", "type": "list" }
+        { "label": "Weakness / Tradeoff", "key": "weakness", "source": "enriched", "type": "text-italic" },
+        { "label": "Category", "key": "categoryBadge", "type": "chip" }
       ]
     }
   ],
-  "features": [
-    { "name": "Expert Calls", "key": "expertCalls" },
-    { "name": "Content Library", "key": "contentLibrary" },
-    { "name": "AI Matching", "key": "aiMatching" },
-    { "name": "Surveys", "key": "surveys" },
-    { "name": "Expert Count", "key": "expertCount" },
-    { "name": "Pricing Model", "key": "pricingModel" },
-    { "name": "Compliance Tools", "key": "complianceTools" }
-  ]
+  "enriched": {
+    "glg": {
+      "providerType": "Pure-Play Expert Network",
+      "officialAIProducts": "myGLG, Ask AI, GLG Library",
+      "weakness": "Higher cost structure; AI platform modernization still catching up to AI-native competitors",
+      "scaleEvidence": "Company-Stated",
+      "employeeEvidence": "Estimated",
+      "ai": {
+        "matchingAI": ["Yes", "Company-Stated", "myGLG platform"],
+        "libraryQA": ["Yes", "Company-Stated", "Ask AI cross-transcript search"],
+        "synthesis": ["Limited", "Company-Stated", "Cross-transcript synthesis in myGLG"],
+        "agents": ["Not Publicly Clear", "Inferred"],
+        "interviewing": ["No", "Inferred"],
+        "complianceAI": ["Not Publicly Clear", "Inferred"]
+      }
+    },
+    "alphasights": {
+      "providerType": "Pure-Play Expert Network",
+      "officialAIProducts": "AlphaGPT, AlphaGraph, AlphaNow",
+      "weakness": "Premium pricing; no public expert count disclosure; less platform-led than some competitors",
+      "scaleEvidence": "Inferred",
+      "employeeEvidence": "Company-Stated",
+      "ai": {
+        "matchingAI": ["Strong", "Company-Stated", "AlphaGraph ML knowledge graph (25M+ relationships)"],
+        "libraryQA": ["Yes", "Company-Stated", "AlphaGPT conversational AI"],
+        "synthesis": ["Limited", "Company-Stated", "AI Project Summary"],
+        "agents": ["Not Publicly Clear", "Inferred"],
+        "interviewing": ["No", "Inferred"],
+        "complianceAI": ["Yes", "Company-Stated", "Automated risk profiling via AlphaGraph"]
+      }
+    },
+    "third-bridge": {
+      "providerType": "Hybrid Expert Network",
+      "officialAIProducts": "Library, Maps, Connections",
+      "weakness": "Credit model can get expensive; content-first orientation may not suit all call-heavy workflows",
+      "scaleEvidence": "Company-Stated",
+      "employeeEvidence": "Company-Stated",
+      "ai": {
+        "matchingAI": ["Yes", "Company-Stated"],
+        "libraryQA": ["Strong", "Company-Stated", "AI-powered search across 65K+ company Library"],
+        "synthesis": ["Yes", "Company-Stated", "AI summaries; open distribution via Claude, Aiera, Hebbia"],
+        "agents": ["Limited", "Inferred", "Maps visual intelligence, alerts"],
+        "interviewing": ["No", "Inferred"],
+        "complianceAI": ["Not Publicly Clear", "Inferred"]
+      }
+    },
+    "alphasense-tegus": {
+      "providerType": "Research Platform",
+      "officialAIProducts": "Generative Search, Deep Research, AI Agent Interviewer, Workflow Agents, Generative Grid",
+      "weakness": "Not a pure expert network — platform-led model may not suit all use cases; higher minimum commitment",
+      "scaleEvidence": "Company-Stated",
+      "employeeEvidence": "Estimated",
+      "ai": {
+        "matchingAI": ["Yes", "Company-Stated", "Semantic search, Smart Synonyms"],
+        "libraryQA": ["Strong", "Verified", "Generative Search across 500M+ premium documents"],
+        "synthesis": ["Strong", "Verified", "Source-cited answers across Tegus transcripts and filings"],
+        "agents": ["Strong", "Verified", "Deep Research agent + Workflow Agents + Generative Grid"],
+        "interviewing": ["Yes", "Verified", "AI Agent Interviewer for Channel Checks"],
+        "complianceAI": ["Yes", "Company-Stated", "AI-powered transcript scanning + human review"]
+      }
+    },
+    "guidepoint": {
+      "providerType": "Pure-Play Expert Network",
+      "officialAIProducts": "AskGP, Guidepoint360, Guidepoint Insights, Qsight",
+      "weakness": "AI capabilities still maturing; less content depth than transcript-first competitors",
+      "scaleEvidence": "Company-Stated",
+      "employeeEvidence": "Company-Stated",
+      "ai": {
+        "matchingAI": ["Yes", "Company-Stated", "AI-powered scheduling and matching"],
+        "libraryQA": ["Yes", "Company-Stated", "AskGP conversational AI research assistant"],
+        "synthesis": ["Limited", "Company-Stated", "Via AskGP platform"],
+        "agents": ["Not Publicly Clear", "Inferred"],
+        "interviewing": ["No", "Inferred"],
+        "complianceAI": ["Not Publicly Clear", "Inferred"]
+      }
+    },
+    "dialectica": {
+      "providerType": "Hybrid Expert Network",
+      "officialAIProducts": "Dialectica IQ, Origin",
+      "weakness": "Smaller scale than established leaders; Origin deal-sourcing platform less proven at scale",
+      "scaleEvidence": "Company-Stated",
+      "employeeEvidence": "Company-Stated",
+      "ai": {
+        "matchingAI": ["Yes", "Company-Stated", "AI-assisted expert matching"],
+        "libraryQA": ["Yes", "Company-Stated", "Dialectica IQ knowledge graph (80M+ records)"],
+        "synthesis": ["Limited", "Company-Stated", "Via IQ platform"],
+        "agents": ["Yes", "Company-Stated", "Proprietary AI agents (50+ GenAI tools)"],
+        "interviewing": ["Not Publicly Clear", "Inferred"],
+        "complianceAI": ["Yes", "Company-Stated", "Automated compliance monitoring"]
+      }
+    },
+    "atheneum": {
+      "providerType": "Pure-Play Expert Network",
+      "officialAIProducts": "Not publicly detailed",
+      "weakness": "Less AI-differentiated than tech-forward competitors; less content depth",
+      "scaleEvidence": "Company-Stated",
+      "employeeEvidence": "Estimated",
+      "ai": {
+        "matchingAI": ["Yes", "Inferred"],
+        "libraryQA": ["Limited", "Inferred"],
+        "synthesis": ["No", "Inferred"],
+        "agents": ["No", "Inferred"],
+        "interviewing": ["No", "Inferred"],
+        "complianceAI": ["Not Publicly Clear", "Inferred"]
+      }
+    },
+    "newtonx": {
+      "providerType": "Technology-First Network",
+      "officialAIProducts": "NewtonX Platform",
+      "weakness": "B2B survey-focused; less suited for traditional one-on-one expert call workflows",
+      "scaleEvidence": "Company-Stated",
+      "employeeEvidence": "Estimated",
+      "ai": {
+        "matchingAI": ["Strong", "Company-Stated", "AI-powered B2B matching"],
+        "libraryQA": ["Limited", "Inferred"],
+        "synthesis": ["Not Publicly Clear", "Inferred"],
+        "agents": ["Not Publicly Clear", "Inferred"],
+        "interviewing": ["Not Publicly Clear", "Inferred"],
+        "complianceAI": ["Not Publicly Clear", "Inferred"]
+      }
+    },
+    "stax": {
+      "providerType": "Boutique Specialist",
+      "officialAIProducts": "Not publicly detailed",
+      "weakness": "Smaller scale; consulting-origin model less suited for high-volume call programs",
+      "scaleEvidence": "Inferred",
+      "employeeEvidence": "Estimated",
+      "ai": {
+        "matchingAI": ["Limited", "Inferred"],
+        "libraryQA": ["No", "Inferred"],
+        "synthesis": ["No", "Inferred"],
+        "agents": ["No", "Inferred"],
+        "interviewing": ["No", "Inferred"],
+        "complianceAI": ["Not Publicly Clear", "Inferred"]
+      }
+    },
+    "capvision": {
+      "providerType": "Asia Specialist Network",
+      "officialAIProducts": "Capvision Platform",
+      "weakness": "Primarily Asia-focused; less global coverage than market leaders",
+      "scaleEvidence": "Company-Stated",
+      "employeeEvidence": "Estimated",
+      "ai": {
+        "matchingAI": ["Yes", "Inferred"],
+        "libraryQA": ["Limited", "Inferred"],
+        "synthesis": ["No", "Inferred"],
+        "agents": ["No", "Inferred"],
+        "interviewing": ["No", "Inferred"],
+        "complianceAI": ["Not Publicly Clear", "Inferred"]
+      }
+    },
+    "arches": {
+      "providerType": "Regional Expert Network",
+      "officialAIProducts": "Not publicly detailed",
+      "weakness": "Regional focus; smaller network scale than global leaders",
+      "scaleEvidence": "Company-Stated",
+      "employeeEvidence": "Estimated",
+      "ai": {
+        "matchingAI": ["Yes", "Inferred"],
+        "libraryQA": ["Yes", "Inferred", "Content platform"],
+        "synthesis": ["Not Publicly Clear", "Inferred"],
+        "agents": ["No", "Inferred"],
+        "interviewing": ["No", "Inferred"],
+        "complianceAI": ["Not Publicly Clear", "Inferred"]
+      }
+    },
+    "visasq": {
+      "providerType": "Marketplace Platform",
+      "officialAIProducts": "VisasQ Platform",
+      "weakness": "Marketplace model; less curated than concierge providers",
+      "scaleEvidence": "Company-Stated",
+      "employeeEvidence": "Company-Stated",
+      "ai": {
+        "matchingAI": ["Yes", "Inferred", "Marketplace matching"],
+        "libraryQA": ["Limited", "Inferred"],
+        "synthesis": ["No", "Inferred"],
+        "agents": ["No", "Inferred"],
+        "interviewing": ["No", "Inferred"],
+        "complianceAI": ["Not Publicly Clear", "Inferred"]
+      }
+    },
+    "lynk": {
+      "providerType": "Asia Specialist Network",
+      "officialAIProducts": "Lynk Platform",
+      "weakness": "Asia-focused; smaller global footprint than established leaders",
+      "scaleEvidence": "Company-Stated",
+      "employeeEvidence": "Estimated",
+      "ai": {
+        "matchingAI": ["Yes", "Inferred"],
+        "libraryQA": ["Limited", "Inferred"],
+        "synthesis": ["No", "Inferred"],
+        "agents": ["No", "Inferred"],
+        "interviewing": ["No", "Inferred"],
+        "complianceAI": ["Not Publicly Clear", "Inferred"]
+      }
+    },
+    "alphaexpert": {
+      "providerType": "Regional Expert Network",
+      "officialAIProducts": "Not publicly detailed",
+      "weakness": "Regional provider; limited public information on capabilities and scale",
+      "scaleEvidence": "Inferred",
+      "employeeEvidence": "Inferred",
+      "ai": {
+        "matchingAI": ["Limited", "Inferred"],
+        "libraryQA": ["No", "Inferred"],
+        "synthesis": ["No", "Inferred"],
+        "agents": ["No", "Inferred"],
+        "interviewing": ["No", "Inferred"],
+        "complianceAI": ["Not Publicly Clear", "Inferred"]
+      }
+    },
+    "cg-consulting": {
+      "providerType": "Boutique Specialist",
+      "officialAIProducts": "Not publicly detailed",
+      "weakness": "Boutique scale; primarily Greater China focus",
+      "scaleEvidence": "Inferred",
+      "employeeEvidence": "Inferred",
+      "ai": {
+        "matchingAI": ["Limited", "Inferred"],
+        "libraryQA": ["No", "Inferred"],
+        "synthesis": ["No", "Inferred"],
+        "agents": ["No", "Inferred"],
+        "interviewing": ["No", "Inferred"],
+        "complianceAI": ["Not Publicly Clear", "Inferred"]
+      }
+    },
+    "techspert": {
+      "providerType": "Technology-First Network",
+      "officialAIProducts": "Techspert AI Platform",
+      "weakness": "Technology-focused; less established track record than market leaders",
+      "scaleEvidence": "Company-Stated",
+      "employeeEvidence": "Estimated",
+      "ai": {
+        "matchingAI": ["Strong", "Company-Stated", "AI-native expert identification"],
+        "libraryQA": ["Limited", "Inferred"],
+        "synthesis": ["Not Publicly Clear", "Inferred"],
+        "agents": ["Not Publicly Clear", "Inferred"],
+        "interviewing": ["Not Publicly Clear", "Inferred"],
+        "complianceAI": ["Not Publicly Clear", "Inferred"]
+      }
+    },
+    "prosynth": {
+      "providerType": "Technology-First Network",
+      "officialAIProducts": "ProSynth Platform",
+      "weakness": "Smaller provider; less public information on capabilities",
+      "scaleEvidence": "Inferred",
+      "employeeEvidence": "Inferred",
+      "ai": {
+        "matchingAI": ["Yes", "Company-Stated"],
+        "libraryQA": ["Limited", "Inferred"],
+        "synthesis": ["Not Publicly Clear", "Inferred"],
+        "agents": ["Not Publicly Clear", "Inferred"],
+        "interviewing": ["Not Publicly Clear", "Inferred"],
+        "complianceAI": ["Not Publicly Clear", "Inferred"]
+      }
+    },
+    "prosapient": {
+      "providerType": "Pure-Play Expert Network",
+      "officialAIProducts": "Prosapient Platform",
+      "weakness": "Smaller scale than market leaders; newer entrant",
+      "scaleEvidence": "Company-Stated",
+      "employeeEvidence": "Estimated",
+      "ai": {
+        "matchingAI": ["Yes", "Inferred"],
+        "libraryQA": ["Limited", "Inferred"],
+        "synthesis": ["No", "Inferred"],
+        "agents": ["No", "Inferred"],
+        "interviewing": ["No", "Inferred"],
+        "complianceAI": ["Not Publicly Clear", "Inferred"]
+      }
+    }
+  }
 }
