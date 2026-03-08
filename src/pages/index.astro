@@ -727,31 +727,40 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
           <canvas id="topNetworksCanvas" class="absolute inset-0 w-full h-full z-[1]" style="pointer-events: none;" role="presentation" aria-hidden="true"></canvas>
           <!-- Content -->
           <div class="relative z-[2] flex flex-col h-full">
-            <div class="flex items-center justify-between px-5 pt-5 pb-3">
+            <div class="px-4 pt-4 pb-2">
               <h2 class="text-[15px] font-bold text-white">Top Networks</h2>
-              <a href="/networks" class="text-accent text-[13px] font-medium no-underline hover:underline">All {publishedNetworks.length} &rarr;</a>
             </div>
 
-            <!-- All 7: Uniform compact button cards -->
-            <div class="px-2 pb-3 flex-1 flex flex-col justify-between gap-1">
+            <!-- All 7: Clean rows, box only appears on hover -->
+            <div class="px-2 flex-1 flex flex-col justify-between gap-0.5">
               {top7.map((network, i) => (
                 <a
                   href={`/networks/${network.data.slug}`}
-                  class="flex items-center gap-2.5 px-2.5 py-2 rounded-xl no-underline bg-white/[0.05] hover:bg-white/[0.12] border border-white/[0.06] hover:border-white/[0.12] transition-all duration-200 group"
+                  class="flex items-center gap-2.5 px-2.5 py-2 rounded-xl no-underline border border-transparent hover:bg-white/[0.08] hover:border-white/[0.08] transition-all duration-200 group"
                 >
                   <img
                     src={network.data.logo || ''}
                     alt={network.data.name}
-                    width="30"
-                    height="30"
-                    class="w-[30px] h-[30px] rounded-lg object-cover flex-shrink-0"
+                    width="28"
+                    height="28"
+                    class="w-7 h-7 rounded-lg object-cover flex-shrink-0"
                     loading="lazy"
                   />
                   <div class="min-w-0 flex-1">
-                    <div class="text-[12.5px] font-semibold text-white/90 truncate group-hover:text-white transition-colors">{network.data.name.split(' (')[0]}</div>
+                    <div class="text-[12.5px] font-medium text-white/80 truncate group-hover:text-white transition-colors">{network.data.name.split(' (')[0]}</div>
                   </div>
                 </a>
               ))}
+            </div>
+
+            <!-- "View all" button -->
+            <div class="px-3 pb-3 pt-2">
+              <a
+                href="/networks"
+                class="flex items-center justify-center gap-1.5 w-full py-2 rounded-xl text-[12px] font-semibold text-white/50 no-underline bg-white/[0.04] hover:bg-white/[0.1] hover:text-white/80 border border-white/[0.06] hover:border-white/[0.1] transition-all duration-200"
+              >
+                View all {publishedNetworks.length} networks
+              </a>
             </div>
           </div>
         </div>
@@ -765,9 +774,9 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
     var PARTICLE_COUNT_DESKTOP = 70;
     var PARTICLE_COUNT_TABLET = 45;
     var PARTICLE_COUNT_MOBILE = 25;
-    var MAX_CONN_DIST = 140;
+    var MAX_CONN_DIST = 220;
     var MAX_CONN_DIST_SQ = MAX_CONN_DIST * MAX_CONN_DIST;
-    var LINE_OPACITY = 0.18;
+    var LINE_OPACITY = 0.12;
     var BASE_OPACITY = 0.55;
     var DRIFT = 0.18;
     var POINTER_RADIUS = 200;
@@ -807,14 +816,14 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
     var currentTier = getTier();
     var cachedW = 0, cachedH = 0, lastTime = 0;
 
-    // Color palette: mix of cool grays, soft blues, and accent blues
+    // Monochrome palette: grays and whites
     var COLORS = [
-      [180, 185, 195],  // cool gray
-      [180, 185, 195],  // cool gray (weighted)
-      [100, 140, 220],  // soft blue
-      [0, 113, 227],    // accent blue
-      [60, 120, 200],   // mid blue
-      [140, 160, 200],  // steel blue
+      [140, 145, 155],  // medium gray
+      [170, 175, 180],  // light gray
+      [200, 205, 210],  // silver
+      [225, 228, 232],  // near-white
+      [255, 255, 255],  // white
+      [160, 163, 168],  // cool gray
     ];
 
     function createParticle(w, h) {
