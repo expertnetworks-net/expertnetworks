@@ -1,44 +1,465 @@
 ---
-import siteConfig from '../content/site.json';
-const { footer } = siteConfig;
+import { getCollection } from 'astro:content';
+
+// Get recently updated networks for the dynamic strip
+const allNetworks = await getCollection('networks');
+const publishedNetworks = allNetworks.filter(n => n.data.published);
+const networkCount = publishedNetworks.length;
+
+// Get the 3 most recently updated networks
+const recentlyUpdated = [...publishedNetworks]
+  .sort((a, b) => new Date(b.data.lastUpdated).getTime() - new Date(a.data.lastUpdated).getTime())
+  .slice(0, 3);
+
+// Format the last update date
+const latestDate = recentlyUpdated[0]?.data.lastUpdated;
+const formattedDate = latestDate
+  ? new Date(latestDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
+  : null;
 ---
-<footer class="bg-bg-dark text-white/50 pt-16 pb-10 px-6">
-  <div class="max-w-site mx-auto flex flex-col md:flex-row justify-between items-start gap-8">
-    <div>
-      <div class="text-base font-bold text-white mb-2">
-        Expert<span class="text-accent">Networks</span>
+
+<footer class="relative overflow-hidden bg-[#111113]" id="siteFooter">
+  <!-- Particle canvas -->
+  <canvas id="footerCanvas" class="absolute inset-0 w-full h-full" style="pointer-events: none;" role="presentation" aria-hidden="true"></canvas>
+  <!-- Subtle top gradient edge -->
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent"></div>
+
+  <!-- Interaction surface for particles -->
+  <div id="footerInteraction" class="absolute inset-0 z-[1]" style="cursor: default;" aria-hidden="true"></div>
+
+  <!-- ═══ Main footer content ═══ -->
+  <div class="relative z-10 pt-16 pb-0 px-6" style="pointer-events: none;">
+    <div class="max-w-site mx-auto" style="pointer-events: auto;">
+
+      <!-- ─── 4-Column Grid ─── -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+
+        <!-- Column 1: Brand + Trust -->
+        <div class="lg:col-span-1 md:col-span-2 lg:pr-4">
+          <a href="/" class="inline-block mb-4 group">
+            <span class="text-[22px] font-bold text-white tracking-tight">Expert<span class="text-accent">Networks</span></span>
+          </a>
+          <p class="text-[13px] text-white/40 leading-[1.7] mb-5 max-w-[360px]">
+            Compare providers, review industry news, and assess pricing, compliance, expert coverage, and AI capabilities across {networkCount} networks. No paywalls. No affiliations. Built from public-source research.
+          </p>
+          <!-- Trust chips -->
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.06] text-[11px] text-white/50 font-medium tracking-wide">
+              <span class="w-1.5 h-1.5 rounded-full bg-accent-green/70"></span>
+              {networkCount} Networks
+            </span>
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.06] text-[11px] text-white/50 font-medium tracking-wide">
+              Independent
+            </span>
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.06] text-[11px] text-white/50 font-medium tracking-wide">
+              Public Sources
+            </span>
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.06] text-[11px] text-white/50 font-medium tracking-wide">
+              No Paywall
+            </span>
+          </div>
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/company/expertnetworks-net/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-white/35 hover:text-white/70 transition-colors group" aria-label="Follow updates on LinkedIn">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            <span class="text-[12px] font-medium">Follow updates on LinkedIn</span>
+          </a>
+        </div>
+
+        <!-- Column 2: Explore -->
+        <div>
+          <h4 class="footer-heading">Explore</h4>
+          <nav class="flex flex-col gap-0.5" aria-label="Explore links">
+            <a href="/networks" class="footer-link">All Networks</a>
+            <a href="/compare" class="footer-link">Compare Networks</a>
+            <a href="/news" class="footer-link">Latest News</a>
+            <a href="/about" class="footer-link">About the Project</a>
+          </nav>
+        </div>
+
+        <!-- Column 3: Research Standards -->
+        <div>
+          <h4 class="footer-heading">Research Standards</h4>
+          <nav class="flex flex-col gap-0.5" aria-label="Research standards links">
+            <a href="/sources" class="footer-link">Sources &amp; Methodology</a>
+            <a href="/sources#verification" class="footer-link">Verification Framework</a>
+            <a href="/disclaimer" class="footer-link">Disclaimer</a>
+            <a href="/privacy" class="footer-link">Privacy</a>
+          </nav>
+          <p class="mt-4 text-[11px] text-white/25 leading-[1.65] max-w-[240px]">
+            Every profile and news item is based on publicly available materials and labeled where claims are verified, positioned, or inferred.
+          </p>
+        </div>
+
+        <!-- Column 4: Popular Profiles -->
+        <div>
+          <h4 class="footer-heading">Popular Profiles</h4>
+          <nav class="flex flex-col gap-0.5" aria-label="Popular network profiles">
+            <a href="/networks/glg" class="footer-link">GLG</a>
+            <a href="/networks/alphasights" class="footer-link">AlphaSights</a>
+            <a href="/networks/third-bridge" class="footer-link">Third Bridge</a>
+            <a href="/networks/guidepoint" class="footer-link">Guidepoint</a>
+            <a href="/networks/dialectica" class="footer-link">Dialectica</a>
+            <a href="/networks/alphasense-tegus" class="footer-link">AlphaSense / Tegus</a>
+          </nav>
+        </div>
       </div>
-      <p class="text-[13px] max-w-[300px] leading-relaxed">{footer.description}</p>
-      <a href="https://www.linkedin.com/company/expertnetworks-net/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 mt-3 text-white/50 hover:text-white transition-colors" aria-label="Follow us on LinkedIn">
-        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        <span class="text-[13px]">LinkedIn</span>
-      </a>
+
+      <!-- ─── Dynamic "Recently Updated" Strip ─── -->
+      <div class="mt-12 py-4 border-t border-white/[0.06] flex flex-wrap items-center gap-x-4 gap-y-2">
+        <span class="text-[11px] text-white/25 font-medium uppercase tracking-wider">Recently updated</span>
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
+          {recentlyUpdated.map(n => (
+            <a href={`/networks/${n.data.slug}`} class="text-[12px] text-white/40 hover:text-white/70 transition-colors">
+              {n.data.shortName || n.data.name}
+            </a>
+          ))}
+        </div>
+        {formattedDate && (
+          <span class="text-[11px] text-white/20 ml-auto hidden sm:inline">
+            Coverage updated {formattedDate}
+          </span>
+        )}
+      </div>
+
+      <!-- ─── Bottom Bar ─── -->
+      <div class="py-5 border-t border-white/[0.06] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+        <span class="text-[11px] text-white/25">&copy; 2026 ExpertNetworks.net</span>
+        <span class="text-[11px] text-white/20">Independent information resource. Not affiliated with any expert network.</span>
+      </div>
     </div>
-    <div class="flex gap-12 md:gap-12">
-      <div>
-        <h4 class="text-white text-[13px] font-bold uppercase tracking-wide mb-4">Navigate</h4>
-        <a href="/networks" class="block text-white/50 no-underline text-[13px] mb-2 hover:text-white transition-colors">All Networks</a>
-        <a href="/#news" class="block text-white/50 no-underline text-[13px] mb-2 hover:text-white transition-colors">Latest News</a>
-        <a href="/compare" class="block text-white/50 no-underline text-[13px] mb-2 hover:text-white transition-colors">Compare</a>
-        <a href="/about" class="block text-white/50 no-underline text-[13px] mb-2 hover:text-white transition-colors">About</a>
-      </div>
-      <div>
-        <h4 class="text-white text-[13px] font-bold uppercase tracking-wide mb-4">Top Networks</h4>
-        <a href="/networks/glg" class="block text-white/50 no-underline text-[13px] mb-2 hover:text-white transition-colors">GLG</a>
-        <a href="/networks/alphasights" class="block text-white/50 no-underline text-[13px] mb-2 hover:text-white transition-colors">AlphaSights</a>
-        <a href="/networks/third-bridge" class="block text-white/50 no-underline text-[13px] mb-2 hover:text-white transition-colors">Third Bridge</a>
-        <a href="/networks/guidepoint" class="block text-white/50 no-underline text-[13px] mb-2 hover:text-white transition-colors">Guidepoint</a>
-      </div>
-      <div>
-        <h4 class="text-white text-[13px] font-bold uppercase tracking-wide mb-4">Legal</h4>
-        <a href="/disclaimer" class="block text-white/50 no-underline text-[13px] mb-2 hover:text-white transition-colors">Disclaimer</a>
-        <a href="/privacy" class="block text-white/50 no-underline text-[13px] mb-2 hover:text-white transition-colors">Privacy</a>
-        <a href="/sources" class="block text-white/50 no-underline text-[13px] mb-2 hover:text-white transition-colors">Sources</a>
-      </div>
-    </div>
-  </div>
-  <div class="max-w-site mx-auto mt-10 pt-5 border-t border-white/10 text-xs flex flex-col md:flex-row justify-between gap-2">
-    <span>&copy; {footer.copyright}</span>
-    <span>{footer.disclaimer}</span>
   </div>
 </footer>
+
+<style>
+  .footer-heading {
+    @apply text-[11px] font-semibold uppercase tracking-[0.12em] text-white/50 mb-4;
+  }
+  .footer-link {
+    @apply block text-[13px] text-white/40 no-underline py-1.5 transition-colors duration-150;
+  }
+  .footer-link:hover {
+    @apply text-white/80;
+  }
+</style>
+
+<script>
+(function() {
+  // ─── Footer Particle System (lightweight variant) ───
+  var PARTICLE_COUNT_DESKTOP = 45;
+  var PARTICLE_COUNT_TABLET = 28;
+  var PARTICLE_COUNT_MOBILE = 14;
+  var MAX_CONN_DIST = 120;
+  var MAX_CONN_DIST_SQ = MAX_CONN_DIST * MAX_CONN_DIST;
+  var LINE_OPACITY = 0.06;
+  var BASE_OPACITY = 0.25;
+  var DRIFT = 0.1;
+  var POINTER_RADIUS = 160;
+  var POINTER_RADIUS_SQ = POINTER_RADIUS * POINTER_RADIUS;
+  var REPULSION = 90;
+  var RECOVERY = 0.012;
+  var INTERP = 0.1;
+  var DPR_CAP = 2;
+
+  var canvas = document.getElementById('footerCanvas');
+  var footer = document.getElementById('siteFooter');
+  var interactionLayer = document.getElementById('footerInteraction');
+  if (!canvas || !footer || !interactionLayer) return;
+  var ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  var motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var prefersReducedMotion = motionQuery.matches;
+
+  function getTier() {
+    var w = window.innerWidth;
+    if (w >= 1024) return 'desktop';
+    if (w >= 640) return 'tablet';
+    return 'mobile';
+  }
+
+  function getCount(tier) {
+    if (tier === 'desktop') return PARTICLE_COUNT_DESKTOP;
+    if (tier === 'tablet') return PARTICLE_COUNT_TABLET;
+    return PARTICLE_COUNT_MOBILE;
+  }
+
+  var pointer = { x: -9999, y: -9999 };
+  var smoothPointer = { x: -9999, y: -9999 };
+  var isPointerInside = false;
+  var particles = [];
+  var animationId = null;
+  var isVisible = false;
+  var currentTier = getTier();
+  var cachedW = 0;
+  var cachedH = 0;
+  var lastTime = 0;
+
+  function createParticle(w, h) {
+    return {
+      x: Math.random() * w,
+      y: Math.random() * h,
+      homeX: 0, homeY: 0,
+      vx: (Math.random() - 0.5) * DRIFT,
+      vy: (Math.random() - 0.5) * DRIFT,
+      size: 0.8 + Math.random() * 1,
+      opacity: BASE_OPACITY * (0.4 + Math.random() * 0.6),
+    };
+  }
+
+  function resize() {
+    var rect = footer.getBoundingClientRect();
+    var dpr = Math.min(window.devicePixelRatio || 1, DPR_CAP);
+    cachedW = rect.width;
+    cachedH = rect.height;
+    canvas.width = cachedW * dpr;
+    canvas.height = cachedH * dpr;
+    canvas.style.width = cachedW + 'px';
+    canvas.style.height = cachedH + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    var newTier = getTier();
+    var needsRebuild = (newTier !== currentTier) || particles.length === 0;
+    currentTier = newTier;
+
+    if (needsRebuild) {
+      var count = getCount(currentTier);
+      particles = [];
+      for (var i = 0; i < count; i++) {
+        var p = createParticle(cachedW, cachedH);
+        p.homeX = p.x;
+        p.homeY = p.y;
+        particles.push(p);
+      }
+    } else {
+      for (var k = 0; k < particles.length; k++) {
+        var p = particles[k];
+        p.homeX = Math.min(p.homeX, cachedW);
+        p.homeY = Math.min(p.homeY, cachedH);
+        p.x = Math.min(p.x, cachedW);
+        p.y = Math.min(p.y, cachedH);
+      }
+    }
+  }
+
+  // Pointer events
+  function onPointerMove(e) {
+    var rect = footer.getBoundingClientRect();
+    pointer.x = e.clientX - rect.left;
+    pointer.y = e.clientY - rect.top;
+    isPointerInside = true;
+  }
+  function onPointerLeave() { isPointerInside = false; }
+  function onTouchStart(e) {
+    if (e.touches.length > 0) {
+      var rect = footer.getBoundingClientRect();
+      pointer.x = e.touches[0].clientX - rect.left;
+      pointer.y = e.touches[0].clientY - rect.top;
+      isPointerInside = true;
+    }
+  }
+  function onTouchMove(e) {
+    if (e.touches.length > 0) {
+      var rect = footer.getBoundingClientRect();
+      pointer.x = e.touches[0].clientX - rect.left;
+      pointer.y = e.touches[0].clientY - rect.top;
+      isPointerInside = true;
+    }
+  }
+  function onTouchEnd() { isPointerInside = false; }
+
+  interactionLayer.addEventListener('mousemove', onPointerMove, { passive: true });
+  interactionLayer.addEventListener('mouseleave', onPointerLeave, { passive: true });
+  interactionLayer.addEventListener('touchstart', onTouchStart, { passive: true });
+  interactionLayer.addEventListener('touchmove', onTouchMove, { passive: true });
+  interactionLayer.addEventListener('touchend', onTouchEnd, { passive: true });
+  interactionLayer.addEventListener('touchcancel', onTouchEnd, { passive: true });
+
+  // Visibility
+  var observer = new IntersectionObserver(function(entries) {
+    isVisible = entries[0].isIntersecting;
+  }, { threshold: 0.05 });
+  observer.observe(footer);
+
+  function onVisibilityChange() {
+    if (document.hidden) {
+      if (animationId) { cancelAnimationFrame(animationId); animationId = null; }
+    } else if (!prefersReducedMotion && !animationId) {
+      lastTime = 0;
+      animationId = requestAnimationFrame(draw);
+    }
+  }
+  document.addEventListener('visibilitychange', onVisibilityChange);
+
+  // Draw loop
+  function draw(now) {
+    animationId = requestAnimationFrame(draw);
+    if (!isVisible) return;
+
+    var dt = lastTime ? Math.min((now - lastTime) / 16.667, 3) : 1;
+    lastTime = now;
+
+    var w = cachedW;
+    var h = cachedH;
+    ctx.clearRect(0, 0, w, h);
+
+    if (isPointerInside) {
+      smoothPointer.x += (pointer.x - smoothPointer.x) * INTERP;
+      smoothPointer.y += (pointer.y - smoothPointer.y) * INTERP;
+    } else {
+      smoothPointer.x += (-9999 - smoothPointer.x) * 0.02;
+      smoothPointer.y += (-9999 - smoothPointer.y) * 0.02;
+    }
+
+    var spx = smoothPointer.x;
+    var spy = smoothPointer.y;
+
+    // Particles
+    ctx.fillStyle = 'rgb(160,160,170)';
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      p.x += p.vx * dt;
+      p.y += p.vy * dt;
+
+      var dx = p.x - spx;
+      var dy = p.y - spy;
+      var distSq = dx * dx + dy * dy;
+      if (distSq < POINTER_RADIUS_SQ && distSq > 0) {
+        var dist = Math.sqrt(distSq);
+        var proximity = 1 - dist / POINTER_RADIUS;
+        var force = proximity * proximity * REPULSION;
+        p.x += (dx / dist) * force * 0.04 * dt;
+        p.y += (dy / dist) * force * 0.04 * dt;
+      }
+
+      var rf = 1 - Math.pow(1 - RECOVERY, dt);
+      p.x += (p.homeX - p.x) * rf;
+      p.y += (p.homeY - p.y) * rf;
+
+      if (p.x < -10) p.x = w + 10;
+      if (p.x > w + 10) p.x = -10;
+      if (p.y < -10) p.y = h + 10;
+      if (p.y > h + 10) p.y = -10;
+
+      ctx.globalAlpha = p.opacity;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // Connections
+    ctx.strokeStyle = 'rgb(160,160,170)';
+    ctx.lineWidth = 0.5;
+    for (var i = 0; i < particles.length; i++) {
+      for (var j = i + 1; j < particles.length; j++) {
+        var a = particles[i];
+        var b = particles[j];
+        var dxAB = a.x - b.x;
+        var dyAB = a.y - b.y;
+        var distSqAB = dxAB * dxAB + dyAB * dyAB;
+        if (distSqAB > MAX_CONN_DIST_SQ) continue;
+        var distAB = Math.sqrt(distSqAB);
+        var lineFade = 1 - (distAB / MAX_CONN_DIST);
+
+        var stress = 1;
+        var midX = (a.x + b.x) * 0.5;
+        var midY = (a.y + b.y) * 0.5;
+        var midDx = midX - spx;
+        var midDy = midY - spy;
+        var midDistSq = midDx * midDx + midDy * midDy;
+        if (midDistSq < POINTER_RADIUS_SQ) {
+          stress = Math.sqrt(midDistSq) / POINTER_RADIUS;
+          stress = stress * stress;
+        }
+
+        ctx.globalAlpha = LINE_OPACITY * lineFade * stress;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      }
+    }
+
+    ctx.globalAlpha = 1;
+  }
+
+  // Static fallback
+  function drawStatic() {
+    resize();
+    ctx.clearRect(0, 0, cachedW, cachedH);
+    ctx.fillStyle = 'rgb(160,160,170)';
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      ctx.globalAlpha = p.opacity * 0.6;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.strokeStyle = 'rgb(160,160,170)';
+    ctx.lineWidth = 0.5;
+    for (var i = 0; i < particles.length; i++) {
+      for (var j = i + 1; j < particles.length; j++) {
+        var a = particles[i];
+        var b = particles[j];
+        var dxAB = a.x - b.x;
+        var dyAB = a.y - b.y;
+        var distSqAB = dxAB * dxAB + dyAB * dyAB;
+        if (distSqAB > MAX_CONN_DIST_SQ) continue;
+        var distAB = Math.sqrt(distSqAB);
+        var lineFade = 1 - (distAB / MAX_CONN_DIST);
+        ctx.globalAlpha = LINE_OPACITY * lineFade * 0.6;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  // Cleanup
+  function cleanup() {
+    if (animationId) { cancelAnimationFrame(animationId); animationId = null; }
+    observer.disconnect();
+    interactionLayer.removeEventListener('mousemove', onPointerMove);
+    interactionLayer.removeEventListener('mouseleave', onPointerLeave);
+    interactionLayer.removeEventListener('touchstart', onTouchStart);
+    interactionLayer.removeEventListener('touchmove', onTouchMove);
+    interactionLayer.removeEventListener('touchend', onTouchEnd);
+    interactionLayer.removeEventListener('touchcancel', onTouchEnd);
+    document.removeEventListener('visibilitychange', onVisibilityChange);
+    window.removeEventListener('resize', debouncedResize);
+    motionQuery.removeEventListener('change', onMotionChange);
+  }
+
+  function onMotionChange(e) {
+    prefersReducedMotion = e.matches;
+    if (prefersReducedMotion) {
+      if (animationId) { cancelAnimationFrame(animationId); animationId = null; }
+      drawStatic();
+    } else {
+      if (!animationId) { lastTime = 0; animationId = requestAnimationFrame(draw); }
+    }
+  }
+  motionQuery.addEventListener('change', onMotionChange);
+
+  // Init
+  if (prefersReducedMotion) {
+    drawStatic();
+  } else {
+    resize();
+    lastTime = 0;
+    animationId = requestAnimationFrame(draw);
+  }
+
+  var resizeTimeout;
+  function debouncedResize() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(function() {
+      resize();
+      if (prefersReducedMotion) drawStatic();
+    }, 150);
+  }
+  window.addEventListener('resize', debouncedResize, { passive: true });
+  window.addEventListener('beforeunload', cleanup);
+})();
+</script>
