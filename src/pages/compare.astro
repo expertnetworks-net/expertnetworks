@@ -3,757 +3,737 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ParticleHero from '../components/ParticleHero.astro';
 import { getCollection } from 'astro:content';
 import compareConfig from '../content/compare.json';
+import { buildCompareRender, formatDateLabel, projectCompareNetwork } from '../lib/compare-v2';
 
 const allNetworks = await getCollection('networks');
-const published = allNetworks.filter(n => n.data.published).sort((a, b) => a.data.priority - b.data.priority);
+const published = allNetworks.filter((n) => n.data.published).sort((a, b) => a.data.priority - b.data.priority);
 
 const defaultSlugs = compareConfig.networks as string[];
-const defaultNetworks = defaultSlugs
-  .map((slug: string) => published.find(n => n.data.slug === slug))
-  .filter(Boolean);
-
 const presets = compareConfig.presets as Record<string, string[]>;
-const presetMeta = (compareConfig as any).presetMeta as Record<string, { label: string; description: string }>;
+const sections = compareConfig.sections as any[];
 const enriched = (compareConfig as any).enriched as Record<string, any>;
+const substituteTypes = (compareConfig as any).substituteTypes as Record<string, string>;
+const pathwayGroups = (compareConfig as any).buyerPathwayGroups as any[];
+const explainableInsights = (compareConfig as any).explainableInsights as any[];
+const contextualDisclaimers = (compareConfig as any).contextualDisclaimers as Record<string, string>;
+const comparisonNote = (compareConfig as any).comparisonNote as string;
 
-const allNetworkList = published.map(n => ({
-  slug: n.data.slug,
-  name: n.data.name,
-  shortName: n.data.shortName,
-  logo: n.data.logo || '',
-  gradientFrom: n.data.gradientFrom,
-  gradientTo: n.data.gradientTo,
+const networkDataMap = Object.fromEntries(published.map((entry) => [entry.data.slug, projectCompareNetwork(entry.data)]));
+const allNetworkList = published.map((entry) => ({
+  slug: entry.data.slug,
+  name: entry.data.name,
+  shortName: entry.data.shortName,
+  logo: entry.data.logo || '',
+  gradientFrom: entry.data.gradientFrom,
+  gradientTo: entry.data.gradientTo,
 }));
 
-const sections = compareConfig.sections as any[];
-
-function resolve(data: any, key: string): any {
-  return key.split('.').reduce((obj, k) => obj?.[k], data);
+function shortDisplayName(slug: string): string {
+  const data = networkDataMap[slug];
+  if (!data) return slug;
+  return data.name.split(' (')[0].split(' / ')[0];
 }
 
-const providerTypeColors: Record<string, string> = {
-  'Pure-Play Expert Network': 'bg-blue-500/10 text-blue-700 border-blue-200/50',
-  'Hybrid Expert Network': 'bg-violet-500/10 text-violet-700 border-violet-200/50',
-  'Research Platform': 'bg-emerald-500/10 text-emerald-700 border-emerald-200/50',
-  'Technology-First Network': 'bg-cyan-500/10 text-cyan-700 border-cyan-200/50',
-  'Asia Specialist Network': 'bg-rose-500/10 text-rose-700 border-rose-200/50',
-  'Regional Expert Network': 'bg-amber-500/10 text-amber-700 border-amber-200/50',
-  'Marketplace Platform': 'bg-orange-500/10 text-orange-700 border-orange-200/50',
-  'Boutique Specialist': 'bg-slate-100 text-slate-600 border-slate-200/50',
+const defaultLatestReviewed = defaultSlugs
+  .map((slug) => networkDataMap[slug]?.lastUpdated)
+  .filter(Boolean)
+  .sort()
+  .at(-1);
+
+const compareClientData = {
+  networkDataMap,
+  defaultSlugs,
+  presets,
+  sections,
+  enriched,
+  substituteTypes,
+  explainableInsights,
+  comparisonNote,
 };
 
-const complianceColors: Record<string, string> = {
-  'Strong Compliance': 'bg-emerald-500/10 text-emerald-700',
-  'Standard Compliance': 'bg-slate-100 text-slate-600',
-  'Compliance Tools': 'bg-blue-500/10 text-blue-600',
-  'Limited Public Detail': 'bg-amber-500/10 text-amber-600',
-};
-const aiColors: Record<string, string> = {
-  'AI-Native': 'bg-violet-500/10 text-violet-700',
-  'AI Research': 'bg-blue-500/10 text-blue-600',
-  'AI Matching': 'bg-cyan-500/10 text-cyan-600',
-  'AI Moderation': 'bg-teal-500/10 text-teal-600',
-  'Limited AI Detail': 'bg-slate-100 text-slate-500',
-};
-const badgeColors: Record<string, string> = {
-  'Global Leader': 'bg-amber-500/10 text-amber-700',
-  'Major Provider': 'bg-blue-500/10 text-blue-700',
-  'Fast-Growing': 'bg-emerald-500/10 text-emerald-700',
-  'Asia Specialist': 'bg-rose-500/10 text-rose-700',
-  'Research Platform': 'bg-violet-500/10 text-violet-700',
-  'Technology-First': 'bg-cyan-500/10 text-cyan-700',
-  'Marketplace': 'bg-orange-500/10 text-orange-700',
-  'Boutique Specialist': 'bg-slate-100 text-slate-600',
-};
-const deliveryColors: Record<string, string> = {
-  'Concierge': 'bg-blue-500/10 text-blue-700',
-  'Hybrid': 'bg-violet-500/10 text-violet-600',
-  'Self-Serve': 'bg-emerald-500/10 text-emerald-700',
-  'Marketplace': 'bg-orange-500/10 text-orange-700',
-  'Platform-Led': 'bg-cyan-500/10 text-cyan-700',
-};
-const regionColors: Record<string, string> = {
-  'Global': 'bg-blue-500/10 text-blue-700',
-  'North America': 'bg-slate-100 text-slate-700',
-  'Europe': 'bg-indigo-500/10 text-indigo-700',
-  'Asia-Pacific': 'bg-rose-500/10 text-rose-700',
-  'Greater China': 'bg-red-500/10 text-red-700',
-  'India': 'bg-amber-500/10 text-amber-700',
-  'Emerging Markets': 'bg-teal-500/10 text-teal-700',
-};
-
-const networkDataMap: Record<string, any> = {};
-published.forEach(n => { networkDataMap[n.data.slug] = n.data; });
-
-function evidenceDotClass(ev: string): string {
-  if (ev === 'Verified') return 'ev-verified';
-  if (ev === 'Company-Stated') return 'ev-stated';
-  if (ev === 'Estimated') return 'ev-estimated';
-  return 'ev-inferred';
-}
-
-function capabilityClass(val: string): string {
-  if (val === 'Strong') return 'text-emerald-600 font-semibold';
-  if (val === 'Yes') return 'text-emerald-600 font-medium';
-  if (val === 'Limited') return 'text-amber-600 font-medium';
-  if (val === 'No') return 'text-tertiary/60';
-  return 'text-secondary';
-}
-
-function getCellValue(networkData: any, slug: string, row: any): any {
-  if (row.source === 'enriched') {
-    const e = enriched[slug];
-    if (!e) return null;
-    return resolve(e, row.key);
-  }
-  return resolve(networkData, row.key);
-}
-
-function getEvidence(slug: string, field: string): string {
-  return enriched[slug]?.[field] || 'Inferred';
-}
+const initialRender = buildCompareRender(defaultSlugs, compareClientData);
+const defaultDirectoryHref = initialRender.directoryHref;
+const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u003c');
 ---
 
 <BaseLayout
-  title="Compare Expert Networks Side-by-Side: GLG vs AlphaSights vs Third Bridge | ExpertNetworks.net"
-  description="Interactive side-by-side expert network comparison. Evaluate GLG, AlphaSights, Third Bridge, Guidepoint, and 29+ providers across pricing, compliance, AI capabilities, and expert coverage."
+  title="Compare Expert Networks: buyer guide and evidence matrix | ExpertNetworks.net"
+  description="Compare expert networks and adjacent research platforms by workflow fit, AI maturity, compliance posture, commercial model, and geographic strength."
   jsonLd={{
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    'itemListElement': [
-      { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': 'https://expertnetworks.net/' },
-      { '@type': 'ListItem', 'position': 2, 'name': 'Compare Networks' }
-    ]
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://expertnetworks.net/' },
+      { '@type': 'ListItem', position: 2, name: 'Compare Networks', item: 'https://expertnetworks.net/compare/' },
+    ],
   }}
 >
-  <ParticleHero minHeight="180px">
-    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
-      <div>
-        <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight text-white">Compare Networks</h1>
-        <p class="text-[#a1a1a6] text-sm mt-1.5 max-w-xl">Side-by-side evaluation across commercial model, compliance, AI capabilities, content, and geographic coverage.</p>
+  <ParticleHero minHeight="230px">
+    <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+      <div class="max-w-3xl">
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="compare-hero-badge">Independent research</span>
+          <span class="compare-hero-badge">Public-source methodology</span>
+          <span class="compare-hero-badge" id="selectionReviewedBadge">Selection reviewed: {formatDateLabel(defaultLatestReviewed)}</span>
+        </div>
+        <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-white">Compare Expert Networks</h1>
+        <p class="text-[#b4b4bc] text-sm md:text-base mt-3 max-w-2xl leading-relaxed">
+          Compare expert networks and adjacent research platforms by workflow fit, AI maturity, compliance posture, commercial model, and geographic strength.
+        </p>
       </div>
-      <div class="flex items-center gap-3 flex-shrink-0" style="pointer-events: auto;">
-        <span class="hidden sm:inline-flex items-center gap-1.5 text-[11px] text-[#86868b]">
-          <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Independent Research
-        </span>
-        <a id="heroDirectoryBtn" href="/networks" class="inline-flex items-center gap-1.5 px-3 py-2 bg-white/[0.06] text-[#a1a1a6] text-sm font-medium rounded-lg no-underline hover:bg-white/[0.1] transition-colors border border-white/[0.08]">&larr; Directory</a>
+      <div class="flex flex-wrap gap-3" style="pointer-events: auto;">
+        <a href="/sources" class="compare-hero-link">Methodology</a>
+        <a href="/disclaimer" class="compare-hero-link">Disclaimer</a>
+        <a id="heroDirectoryBtn" href={defaultDirectoryHref} class="compare-hero-primary">&larr; Directory</a>
       </div>
     </div>
   </ParticleHero>
 
-  <!-- Sticky Control Bar -->
-  <div id="controlBar" class="sticky top-[52px] z-40 bg-white border-b border-border/40 shadow-sm">
-    <div class="max-w-site mx-auto px-4 md:px-6 py-3">
-      <div class="flex items-center gap-2 mb-2.5 overflow-x-auto scrollbar-none pb-1">
-        <span class="text-[10px] font-bold uppercase tracking-widest text-tertiary whitespace-nowrap mr-1">Comparing</span>
-        <div id="providerChips" class="flex items-center gap-1.5">
-          {defaultNetworks.map((n: any) => (
-            <div class="provider-chip flex items-center gap-1.5 px-2.5 py-1 bg-[#f5f5f7] rounded-lg border border-border/30 whitespace-nowrap" data-slug={n.data.slug}>
-              {n.data.logo ? (
-                <img src={n.data.logo} alt="" width="16" height="16" class="w-4 h-4 rounded object-contain" loading="lazy" />
-              ) : (
-                <div class="w-4 h-4 rounded flex items-center justify-center text-white text-[7px] font-bold" style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}>{n.data.shortName}</div>
-              )}
-              <span class="text-[12px] font-medium text-primary">{n.data.name.split(' (')[0].split(' / ')[0]}</span>
-              <button class="remove-provider ml-0.5 text-tertiary hover:text-red-500 transition-colors bg-transparent border-none cursor-pointer p-0" data-slug={n.data.slug} aria-label={`Remove ${n.data.name}`}>
-                <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
-              </button>
-            </div>
-          ))}
+  <section class="px-4 md:px-6 pt-5">
+    <div class="max-w-site mx-auto">
+      <div class="rounded-2xl border border-amber-200/70 bg-amber-50 px-4 py-4 md:px-5 md:py-4">
+        <div class="flex items-start gap-3">
+          <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-amber-100 text-amber-700">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+          </div>
+          <div class="min-w-0">
+            <div class="text-[11px] font-bold uppercase tracking-[0.18em] text-amber-800">Comparison note</div>
+            <p class="mt-1 text-[13px] text-amber-900 leading-relaxed">{comparisonNote}</p>
+          </div>
         </div>
-        <button id="addNetworkBtn" class="flex items-center gap-1 px-2.5 py-1 text-[12px] font-medium text-accent bg-accent/[0.06] rounded-lg border border-accent/20 hover:bg-accent/[0.1] transition-colors cursor-pointer whitespace-nowrap">
-          <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          Add
-        </button>
       </div>
-      <div class="flex items-center justify-between gap-3 flex-wrap">
-        <div class="flex items-center gap-1.5 overflow-x-auto scrollbar-none">
-          <span class="text-[10px] font-bold uppercase tracking-widest text-tertiary whitespace-nowrap mr-1">Presets</span>
-          {Object.entries(presetMeta).map(([key, meta]) => (
-            <button class="preset-btn px-2.5 py-1 text-[11px] font-medium rounded-full border border-border/50 text-secondary hover:border-accent hover:text-accent transition-all whitespace-nowrap cursor-pointer bg-transparent" data-preset={key} title={meta.description}>{meta.label}</button>
-          ))}
+    </div>
+  </section>
+
+  <div id="controlBar" class="sticky top-[52px] z-40 bg-white/95 backdrop-blur border-b border-border/40 shadow-sm">
+    <div class="max-w-site mx-auto px-4 md:px-6 py-3">
+      <div class="flex flex-col gap-3">
+        <div class="flex items-center gap-2 overflow-x-auto scrollbar-none pb-1">
+          <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-tertiary whitespace-nowrap mr-1">Comparing</span>
+          <div id="providerChips" class="flex items-center gap-1.5" set:html={initialRender.chipsHtml}></div>
+          <button id="addNetworkBtn" class="inline-flex items-center gap-1 px-2.5 py-1 text-[12px] font-medium text-accent bg-accent/[0.07] rounded-xl border border-accent/20 hover:bg-accent/[0.1] transition-colors cursor-pointer whitespace-nowrap">
+            <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Add
+          </button>
         </div>
-        <div class="flex items-center gap-3 flex-shrink-0">
-          <label class="flex items-center gap-1.5 text-[11px] text-secondary cursor-pointer whitespace-nowrap">
-            <input type="checkbox" id="diffToggle" class="rounded border-border/60 text-accent focus:ring-accent/30" />
-            Differences only
-          </label>
-          <div class="hidden md:flex items-center gap-2 pl-3 border-l border-border/30">
-            <span class="flex items-center gap-1 text-[10px] text-tertiary"><span class="ev-dot ev-verified"></span>Verified</span>
-            <span class="flex items-center gap-1 text-[10px] text-tertiary"><span class="ev-dot ev-stated"></span>Stated</span>
-            <span class="flex items-center gap-1 text-[10px] text-tertiary"><span class="ev-dot ev-inferred"></span>Inferred</span>
-            <span class="flex items-center gap-1 text-[10px] text-tertiary"><span class="ev-dot ev-estimated"></span>Estimated</span>
+
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div class="flex flex-wrap items-center gap-2 text-[11px] text-secondary">
+            <label class="inline-flex items-center gap-1.5 cursor-pointer rounded-full bg-[#f5f5f7] px-2.5 py-1.5 border border-border/40">
+              <input type="checkbox" id="diffToggle" class="rounded border-border/60 text-accent focus:ring-accent/30" />
+              Differences only
+            </label>
+            <label class="inline-flex items-center gap-1.5 cursor-pointer rounded-full bg-[#f5f5f7] px-2.5 py-1.5 border border-border/40">
+              <input type="checkbox" id="highConfidenceToggle" class="rounded border-border/60 text-accent focus:ring-accent/30" />
+              High-confidence rows
+            </label>
+            <label class="inline-flex items-center gap-1.5 cursor-pointer rounded-full bg-[#f5f5f7] px-2.5 py-1.5 border border-border/40">
+              <input type="checkbox" id="notesToggle" class="rounded border-border/60 text-accent focus:ring-accent/30" />
+              Evidence notes
+            </label>
+          </div>
+
+          <div class="flex items-center gap-2 overflow-x-auto scrollbar-none text-[10px] text-tertiary">
+            <span class="inline-flex items-center gap-1"><span class="ev-dot ev-verified"></span>Verified</span>
+            <span class="inline-flex items-center gap-1"><span class="ev-dot ev-stated"></span>Company-stated</span>
+            <span class="inline-flex items-center gap-1"><span class="ev-dot ev-inferred"></span>Inferred</span>
+            <span class="inline-flex items-center gap-1"><span class="ev-dot ev-estimated"></span>Estimated</span>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Add Network Modal -->
   <div id="addNetworkModal" class="fixed inset-0 z-[200] hidden">
-    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" id="modalBackdrop"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden">
-      <div class="px-5 pt-5 pb-3 border-b border-border/30">
+    <div class="absolute inset-0 bg-black/45 backdrop-blur-sm" id="modalBackdrop"></div>
+    <div class="absolute top-1/2 left-1/2 w-full max-w-md -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-3xl bg-white shadow-2xl">
+      <div class="border-b border-border/30 px-5 pb-4 pt-5">
         <div class="flex items-center justify-between">
-          <h3 class="text-[15px] font-semibold text-primary">Add Network to Comparison</h3>
-          <button id="closeModal" class="text-tertiary hover:text-primary transition-colors bg-transparent border-none cursor-pointer p-1">
+          <h3 class="text-[15px] font-semibold text-primary">Add provider to comparison</h3>
+          <button id="closeModal" class="rounded-full p-1 text-tertiary hover:bg-[#f5f5f7] hover:text-primary transition-colors bg-transparent border-none cursor-pointer" aria-label="Close">
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
           </button>
         </div>
-        <input id="networkSearch" type="text" placeholder="Search networks..." class="mt-3 w-full text-[13px] text-primary bg-[#f5f5f7] border border-border/30 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-accent/30" />
+        <input id="networkSearch" type="text" placeholder="Search providers..." class="mt-3 w-full rounded-xl border border-border/30 bg-[#f5f5f7] px-3 py-2 text-[13px] text-primary focus:outline-none focus:ring-2 focus:ring-accent/25" />
       </div>
-      <div id="networkPickerList" class="max-h-72 overflow-y-auto p-2">
-        {allNetworkList.map(n => (
-          <button class="network-pick-btn flex items-center gap-3 w-full px-3 py-2.5 text-left rounded-lg hover:bg-[#f5f5f7] transition-colors cursor-pointer bg-transparent border-none" data-slug={n.slug} data-name={n.name.toLowerCase()}>
-            {n.logo ? (
-              <img src={n.logo} alt="" width="24" height="24" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" loading="lazy" />
+      <div id="networkPickerList" class="max-h-80 overflow-y-auto p-2">
+        {allNetworkList.map((network) => (
+          <button class="network-pick-btn flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left hover:bg-[#f5f5f7] transition-colors bg-transparent border-none cursor-pointer" data-slug={network.slug} data-name={network.name.toLowerCase()}>
+            {network.logo ? (
+              <img src={network.logo} alt="" width="24" height="24" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" loading="lazy" />
             ) : (
-              <div class="w-6 h-6 rounded-lg flex items-center justify-center text-white text-[8px] font-bold flex-shrink-0" style={`background: linear-gradient(135deg, ${n.gradientFrom}, ${n.gradientTo})`}>{n.shortName}</div>
+              <div class="w-6 h-6 rounded-lg flex items-center justify-center text-white text-[8px] font-bold flex-shrink-0" style={`background: linear-gradient(135deg, ${network.gradientFrom}, ${network.gradientTo})`}>{network.shortName}</div>
             )}
-            <span class="text-[13px] font-medium text-primary">{n.name}</span>
+            <span class="text-[13px] font-medium text-primary">{network.name}</span>
           </button>
         ))}
       </div>
     </div>
   </div>
 
-  <!-- Insight Summary Strip -->
-  <section id="insightStrip" class="py-4 px-4 md:px-6 bg-gradient-to-b from-[#f8f8fa] to-white border-b border-border/20">
-    <div class="max-w-site mx-auto">
-      <div class="flex items-center gap-2 mb-3">
-        <svg class="w-4 h-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
-        <h2 class="text-[13px] font-bold uppercase tracking-wide text-primary">Quick Insights</h2>
-      </div>
-      <div id="insightPills" class="flex flex-wrap gap-2"></div>
-    </div>
-  </section>
-
-  <!-- Executive Summary Cards -->
-  <section id="execSummary" class="py-5 px-4 md:px-6 bg-[#fafafa] border-b border-border/20">
-    <div class="max-w-site mx-auto">
-      <div class="flex items-center gap-2 mb-3">
-        <h2 class="text-[13px] font-bold uppercase tracking-wide text-tertiary">At a Glance</h2>
-      </div>
-      <div id="summaryCards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-        {defaultNetworks.map((n: any) => {
-          const d = n.data;
-          const provType = enriched[d.slug]?.providerType || '';
-          const provClass = providerTypeColors[provType] || 'bg-slate-100 text-slate-600 border-slate-200/50';
-          return (
-            <div class="summary-card bg-white rounded-xl border border-border/30 p-4 hover:shadow-sm transition-shadow" data-slug={d.slug}>
-              <div class="flex items-center gap-2.5 mb-2">
-                {d.logo ? (
-                  <img src={d.logo} alt="" width="28" height="28" class="w-7 h-7 rounded-lg object-contain flex-shrink-0" loading="lazy" />
-                ) : (
-                  <div class="w-7 h-7 rounded-lg flex items-center justify-center text-white text-[9px] font-bold flex-shrink-0" style={`background: linear-gradient(135deg, ${d.gradientFrom}, ${d.gradientTo})`}>{d.shortName}</div>
-                )}
-                <div class="min-w-0">
-                  <a href={`/networks/${d.slug}`} class="text-[14px] font-semibold text-primary hover:text-accent transition-colors no-underline block truncate">{d.name.split(' (')[0]}</a>
-                  {provType && <span class={`inline-block mt-0.5 px-1.5 py-0.5 text-[8px] font-semibold uppercase tracking-wider rounded border ${provClass}`}>{provType}</span>}
-                </div>
-              </div>
-              <p class="text-[11.5px] text-secondary leading-relaxed line-clamp-2 mb-3">{d.description.slice(0, 120)}{d.description.length > 120 ? '...' : ''}</p>
-              <div class="grid grid-cols-2 gap-x-3 gap-y-1.5 text-[11px]">
-                <div><span class="text-tertiary">Model </span><span class="font-semibold text-primary">{d.deliveryModel || '—'}</span></div>
-                <div><span class="text-tertiary">Pricing </span><span class="font-semibold text-primary">{d.pricingModel || '—'}</span></div>
-                <div><span class="text-tertiary">AI </span><span class={`font-semibold ${d.aiBadge === 'AI-Native' ? 'text-violet-600' : d.aiBadge === 'AI Research' ? 'text-blue-600' : 'text-primary'}`}>{d.aiBadge || '—'}</span></div>
-                <div><span class="text-tertiary">Compliance </span><span class={`font-semibold ${d.complianceBadge === 'Strong Compliance' ? 'text-emerald-600' : 'text-primary'}`}>{d.complianceBadge === 'Strong Compliance' ? 'Strong' : d.complianceBadge === 'Standard Compliance' ? 'Standard' : d.complianceBadge || '—'}</span></div>
-                <div><span class="text-tertiary">Region </span><span class="font-semibold text-primary">{d.regionStrength || '—'}</span></div>
-                <div><span class="text-tertiary">Scale </span><span class="font-semibold text-primary">{d.expertCount || '—'}</span></div>
-              </div>
-              {d.bestFor && d.bestFor.length > 0 && (
-                <div class="mt-2.5 pt-2.5 border-t border-border/20">
-                  <div class="text-[10px] text-tertiary font-medium mb-1">Best for</div>
-                  <div class="flex flex-wrap gap-1">
-                    {d.bestFor.slice(0, 3).map((b: string) => (
-                      <span class="px-1.5 py-0.5 text-[9px] font-medium rounded bg-accent/[0.06] text-accent">{b}</span>
-                    ))}
-                    {d.bestFor.length > 3 && <span class="text-[9px] text-tertiary">+{d.bestFor.length - 3}</span>}
-                  </div>
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  </section>
-
-  <!-- Scroll Progress -->
-  <div id="scrollProgress" class="hidden lg:block sticky top-[140px] z-30 bg-white/90 backdrop-blur border-b border-border/20">
-    <div class="max-w-site mx-auto px-6 flex items-center gap-1 py-1.5 overflow-x-auto scrollbar-none">
-      {sections.map((s: any) => (
-        <a href={`#section-${s.id}`} class="scroll-nav-link px-2.5 py-1 text-[11px] font-medium text-tertiary hover:text-accent rounded-md transition-colors whitespace-nowrap no-underline" data-section={s.id}>{s.name}</a>
-      ))}
+  <div id="sectionNav" class="hidden lg:block sticky top-[141px] z-30 bg-white/90 backdrop-blur border-b border-border/20">
+    <div class="max-w-site mx-auto px-6 py-1.5 flex items-center gap-1 overflow-x-auto scrollbar-none">
+      <a href="#buyerPathways" class="section-anchor-link" data-section="buyerPathways">Pathways</a>
+      <a href="#recommendationSummarySection" class="section-anchor-link" data-section="recommendationSummarySection">Summary</a>
+      <a href="#providerSnapshot" class="section-anchor-link" data-section="providerSnapshot">Snapshot</a>
+      <a href="#criticalDifferences" class="section-anchor-link" data-section="criticalDifferences">Critical Differences</a>
+      <a href="#aiIntelligence" class="section-anchor-link" data-section="aiIntelligence">AI Intelligence</a>
+      <a href="#commercialCompliance" class="section-anchor-link" data-section="commercialCompliance">Commercial + Compliance</a>
+      <a href="#fullMatrix" class="section-anchor-link" data-section="fullMatrix">Full Matrix</a>
+      <a href="#methodology" class="section-anchor-link" data-section="methodology">Methodology</a>
     </div>
   </div>
 
-  <!-- Main Comparison Matrix -->
-  <section id="matrixSection" class="py-6 px-4 md:px-6">
-    <div class="max-w-site mx-auto" id="matrixContainer">
-      {sections.map((section: any) => (
-        <div class="compare-section mb-6" id={`section-${section.id}`} data-section-id={section.id}>
-          <button class="section-toggle flex items-center gap-2 w-full text-left py-3 px-1 border-b-2 border-primary/10 hover:border-accent/30 transition-colors bg-transparent cursor-pointer group">
-            <svg class="w-4 h-4 text-tertiary group-hover:text-accent transition-colors section-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-            <h3 class="text-[13px] font-bold uppercase tracking-wide text-primary">{section.name}</h3>
-            <span class="text-[11px] text-tertiary ml-auto">{section.rows.length} fields</span>
-          </button>
-          <div class="section-body overflow-x-auto mt-1">
-            <table class="w-full border-collapse">
-              <thead>
-                <tr>
-                  <th class="text-left text-[11px] font-semibold uppercase tracking-wide text-tertiary px-3 py-2.5 w-40 min-w-[140px] bg-white sticky left-0 z-10">Field</th>
-                  {defaultNetworks.map((n: any) => (
-                    <th class="text-left text-[11px] font-semibold text-secondary px-3 py-2.5 min-w-[140px] provider-col" data-slug={n.data.slug}>
-                      <div class="flex items-center gap-1.5">
-                        {n.data.logo ? (
-                          <img src={n.data.logo} alt="" width="16" height="16" class="w-4 h-4 rounded object-contain flex-shrink-0" loading="lazy" />
-                        ) : (
-                          <div class="w-4 h-4 rounded flex items-center justify-center text-white text-[6px] font-bold flex-shrink-0" style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}>{n.data.shortName}</div>
-                        )}
-                        <span class="truncate">{n.data.name.split(' (')[0].split(' / ')[0]}</span>
-                      </div>
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {section.rows.map((row: any) => {
-                  const values = defaultNetworks.map((n: any) => {
-                    const v = getCellValue(n.data, n.data.slug, row);
-                    return Array.isArray(v) ? v[0] : v;
-                  });
-                  const allSame = values.every((v: any) => JSON.stringify(v) === JSON.stringify(values[0]));
-                  return (
-                    <tr class={`compare-row border-b border-border/10 hover:bg-[#fafafa] transition-colors ${allSame ? 'same-row' : 'diff-row'}`} data-same={allSame ? '1' : '0'}>
-                      <td class="px-3 py-3 text-[12px] font-medium text-primary bg-white sticky left-0 z-10">
-                        <div class="flex items-center gap-1">
-                          {row.label}
-                          {!allSame && <span class="inline-block w-1.5 h-1.5 rounded-full bg-accent/60" title="Values differ"></span>}
-                        </div>
-                        {row.description && <div class="text-[10px] text-tertiary font-normal mt-0.5 leading-tight">{row.description}</div>}
-                      </td>
-                      {defaultNetworks.map((n: any) => {
-                        const slug = n.data.slug;
-                        const val = getCellValue(n.data, slug, row);
-                        const type = row.type;
-                        return (
-                          <td class="px-3 py-3 text-[12px] provider-col" data-slug={slug}>
-                            {type === 'capability' && Array.isArray(val) ? (
-                              <div class="flex items-start gap-1.5 flex-wrap">
-                                <span class={capabilityClass(val[0])}>{val[0]}</span>
-                                {val[1] && <span class={`ev-dot ${evidenceDotClass(val[1])}`} title={val[1]}></span>}
-                                {val[2] && <span class="text-[9px] text-tertiary leading-tight" title={val[2]}>({val[2].length > 30 ? val[2].slice(0, 28) + '…' : val[2]})</span>}
-                              </div>
-                            ) : type === 'capability' ? (
-                              <span class="text-tertiary/40">—</span>
-                            ) : type === 'chip-provider' ? (
-                              val ? <span class={`inline-block px-1.5 py-0.5 text-[10px] font-semibold rounded border ${providerTypeColors[val as string] || 'bg-slate-100 text-slate-600 border-slate-200/50'}`}>{val}</span> : <span class="text-tertiary/40">—</span>
-                            ) : type === 'product-names' ? (
-                              val ? <span class="text-[11px] italic text-secondary">{val}</span> : <span class="text-tertiary/40">—</span>
-                            ) : type === 'text-evidence' ? (
-                              val != null && val !== '' ? (
-                                <div class="flex items-center gap-1.5">
-                                  <span class="text-primary text-[12px]">{String(val)}</span>
-                                  <span class={`ev-dot ${evidenceDotClass(getEvidence(slug, row.evidenceField))}`} title={getEvidence(slug, row.evidenceField)}></span>
-                                </div>
-                              ) : <span class="text-tertiary/40">—</span>
-                            ) : type === 'text-italic' ? (
-                              val ? <span class="text-[11px] italic text-secondary leading-snug">{val}</span> : <span class="text-tertiary/40">—</span>
-                            ) : type === 'boolean' ? (
-                              val === true ? <span class="text-emerald-500 font-bold">&#10003;</span> : <span class="text-tertiary/40">—</span>
-                            ) : type === 'boolean-or-string' ? (
-                              val === true ? <span class="text-emerald-500 font-bold">&#10003;</span> : typeof val === 'string' ? <span class="text-emerald-600 font-medium text-[11px]">{val}</span> : <span class="text-tertiary/40">—</span>
-                            ) : type === 'graded' ? (
-                              val ? <span class={`inline-block px-1.5 py-0.5 text-[10px] font-semibold rounded ${row.key === 'complianceBadge' ? (complianceColors[val as string] || 'bg-slate-100 text-slate-600') : row.key === 'aiBadge' ? (aiColors[val as string] || 'bg-slate-100 text-slate-600') : 'bg-slate-100 text-slate-600'}`}>{val}</span> : <span class="text-tertiary/40">—</span>
-                            ) : type === 'chip' ? (
-                              val ? <span class={`inline-block px-1.5 py-0.5 text-[10px] font-semibold rounded ${row.key === 'deliveryModel' ? (deliveryColors[val as string] || 'bg-slate-100 text-slate-600') : row.key === 'regionStrength' ? (regionColors[val as string] || 'bg-slate-100 text-slate-600') : row.key === 'categoryBadge' ? (badgeColors[val as string] || 'bg-slate-100 text-slate-600') : 'bg-slate-100 text-slate-600'}`}>{val}</span> : <span class="text-tertiary/40">—</span>
-                            ) : type === 'list' ? (
-                              Array.isArray(val) && val.length > 0 ? (
-                                <div class="flex flex-wrap gap-1">
-                                  {(val as string[]).slice(0, 3).map((item: string) => (
-                                    <span class="px-1.5 py-0.5 text-[9px] font-medium rounded bg-[#f5f5f7] text-secondary">{item.length > 28 ? item.slice(0, 25) + '...' : item}</span>
-                                  ))}
-                                  {val.length > 3 && <span class="text-[9px] text-tertiary">+{val.length - 3}</span>}
-                                </div>
-                              ) : <span class="text-tertiary/40">—</span>
-                            ) : (
-                              val != null && val !== '' ? <span class="text-primary text-[12px]">{String(val)}</span> : <span class="text-tertiary/40">—</span>
-                            )}
-                          </td>
-                        );
-                      })}
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+  <section id="buyerPathways" class="py-8 px-4 md:px-6">
+    <div class="max-w-site mx-auto">
+      <div class="max-w-2xl">
+        <div class="section-eyebrow">Buyer Pathway</div>
+        <h2 class="section-title">What are you trying to optimize?</h2>
+        <p class="section-copy">
+          Use a buyer pathway to load a shorter, more relevant compare set. These are editorial shortcuts, not hard rankings.
+        </p>
+      </div>
+
+      <div class="mt-6 space-y-6">
+        {pathwayGroups.map((group) => (
+          <div>
+            <div class="mb-3 flex items-center justify-between gap-3">
+              <h3 class="text-[12px] font-bold uppercase tracking-[0.18em] text-tertiary">{group.label}</h3>
+              <span class="text-[11px] text-tertiary">{group.items.length} pathways</span>
+            </div>
+            <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+              {group.items.map((item: any) => (
+                <button
+                  class="pathway-card rounded-2xl border border-border/40 bg-white p-4 text-left shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
+                  data-pathway={item.id}
+                  data-preset={item.preset}
+                  type="button"
+                >
+                  <div class="flex items-start justify-between gap-3">
+                    <div>
+                      <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-tertiary">{group.label}</div>
+                      <h4 class="mt-1 text-[15px] font-semibold text-primary">{item.label}</h4>
+                    </div>
+                    <span class="confidence-chip" data-confidence={item.confidence}>{item.confidence}</span>
+                  </div>
+                  <p class="mt-3 text-[12px] leading-relaxed text-secondary">{item.reason}</p>
+                  <div class="mt-3 flex flex-wrap gap-1.5">
+                    {item.providers.map((slug: string) => (
+                      <span class="inline-flex items-center rounded-full bg-[#f5f5f7] px-2 py-1 text-[10px] font-medium text-primary">{shortDisplayName(slug)}</span>
+                    ))}
+                  </div>
+                  <p class="mt-3 text-[11px] leading-relaxed text-tertiary">{item.caveat}</p>
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- Key Differences -->
-  <section id="insightsPanel" class="py-6 px-4 md:px-6 bg-[#fafafa] border-t border-border/20">
-    <div class="max-w-site mx-auto">
-      <h2 class="text-[13px] font-bold uppercase tracking-wide text-tertiary mb-4">Key Differences</h2>
-      <div id="insightCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"></div>
-    </div>
-  </section>
-
-  <!-- Methodology Note -->
-  <section class="py-6 px-4 md:px-6 border-t border-border/20 bg-white">
-    <div class="max-w-site mx-auto">
-      <div class="max-w-2xl mx-auto text-center">
-        <div class="flex items-center justify-center gap-2 mb-3">
-          <svg class="w-4 h-4 text-tertiary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          <h3 class="text-[13px] font-bold uppercase tracking-wide text-tertiary">Data Methodology</h3>
-        </div>
-        <p class="text-[12px] text-secondary leading-relaxed mb-3">
-          All comparison data is sourced from public materials including company websites, press releases, regulatory filings, and industry reports.
-          Evidence labels indicate data provenance: <span class="inline-flex items-center gap-1"><span class="ev-dot ev-verified"></span><strong>Verified</strong></span> (independently confirmed),
-          <span class="inline-flex items-center gap-1"><span class="ev-dot ev-stated"></span><strong>Company-Stated</strong></span> (company claims not independently verified),
-          <span class="inline-flex items-center gap-1"><span class="ev-dot ev-inferred"></span><strong>Inferred</strong></span> (derived from available evidence),
-          <span class="inline-flex items-center gap-1"><span class="ev-dot ev-estimated"></span><strong>Estimated</strong></span> (editorial estimate).
-        </p>
-        <p class="text-[11px] text-tertiary">
-          This project is independent and not affiliated with any expert network provider.
-          <a href="/sources" class="text-accent hover:underline">Read our full methodology</a>.
-        </p>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Next Steps -->
-  <section class="py-8 px-4 md:px-6 border-t border-border/20">
+  <section id="recommendationSummarySection" class="border-t border-border/20 bg-[#fafafa] py-8 px-4 md:px-6">
+    <div class="max-w-site mx-auto">
+      <div class="max-w-2xl">
+        <div class="section-eyebrow">Recommendation Summary</div>
+        <h2 class="section-title">What should I choose?</h2>
+        <p class="section-copy">
+          The summary below updates with your current selection. It is designed to surface the most decision-relevant fit signals first.
+        </p>
+      </div>
+      <noscript>
+        <p class="mt-4 rounded-2xl border border-border/40 bg-white p-4 text-[13px] text-secondary">JavaScript is required for the interactive recommendation summary and matrix filters on this page.</p>
+      </noscript>
+      <div id="decisionSummaryCards" class="mt-6 grid gap-3 lg:grid-cols-4" set:html={initialRender.decisionSummaryHtml}></div>
+      <div id="decisionSummaryCaution" class="mt-4" set:html={initialRender.decisionSummaryCautionHtml}></div>
+    </div>
+  </section>
+
+  <section id="explainableInsightsSection" class="border-t border-border/20 py-8 px-4 md:px-6">
+    <div class="max-w-site mx-auto">
+      <div class="max-w-2xl">
+        <div class="section-eyebrow">Explainable Insights</div>
+        <h2 class="section-title">Editorial conclusions with criteria, evidence, and caveats</h2>
+        <p class="section-copy">
+          Each insight calls out what drove the conclusion, how strong the public evidence is, and where comparability is only partial.
+        </p>
+      </div>
+      <div id="explainableInsights" class="mt-6 grid gap-3 lg:grid-cols-2" set:html={initialRender.explainableInsightsHtml}></div>
+    </div>
+  </section>
+
+  <section id="providerSnapshot" class="border-t border-border/20 bg-[#fafafa] py-8 px-4 md:px-6">
+    <div class="max-w-site mx-auto">
+      <div class="max-w-2xl">
+        <div class="section-eyebrow">Compared Providers Snapshot</div>
+        <h2 class="section-title">Sharper positioning, caveats, and substitute context</h2>
+        <p class="section-copy">
+          These cards are intentionally decisive: best fit, not ideal for, closest alternatives, and confidence all sit above the deeper evidence table.
+        </p>
+      </div>
+
+      <div id="providerSnapshotCards" class="mt-6 grid gap-4 lg:grid-cols-2 xl:grid-cols-3" set:html={initialRender.providerCardsHtml}></div>
+
+      <div class="mt-6 rounded-3xl border border-border/30 bg-white p-4 shadow-sm">
+        <div class="mb-3 flex items-center justify-between gap-3">
+          <div>
+            <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-tertiary">Layer A</div>
+            <h3 class="text-[15px] font-semibold text-primary">Compact decision snapshot</h3>
+          </div>
+          <span class="text-[11px] text-tertiary">High-signal fields only</span>
+        </div>
+        <div id="snapshotTable" set:html={initialRender.snapshotTableHtml}></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="criticalDifferences" class="border-t border-border/20 py-8 px-4 md:px-6">
+    <div class="max-w-site mx-auto">
+      <div class="max-w-2xl">
+        <div class="section-eyebrow">Layer B</div>
+        <h2 class="section-title">Critical differences for actual buying decisions</h2>
+        <p class="section-copy">
+          This layer prioritizes the rows most likely to change a shortlist: call strength, reusable content, AI posture, pricing structure, geography, and compliance.
+        </p>
+      </div>
+
+      <div id="pinnedDifferences" class="mt-6 grid gap-3 lg:grid-cols-5" set:html={initialRender.pinnedDifferencesHtml}></div>
+
+      <div class="mt-6 rounded-3xl border border-border/30 bg-white p-4 shadow-sm">
+        <div class="mb-3 flex items-center justify-between gap-3">
+          <div>
+            <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-tertiary">Decision table</div>
+            <h3 class="text-[15px] font-semibold text-primary">Importance-sorted deltas</h3>
+          </div>
+          <span class="text-[11px] text-tertiary">Major, moderate, and minor differences</span>
+        </div>
+        <div id="criticalDifferencesTable" set:html={initialRender.criticalDifferencesHtml}></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="aiIntelligence" class="border-t border-border/20 bg-[#fafafa] py-8 px-4 md:px-6">
+    <div class="max-w-site mx-auto">
+      <div class="max-w-2xl">
+        <div class="section-eyebrow">AI & Workflow Intelligence</div>
+        <h2 class="section-title">Stricter AI taxonomy, less hype, clearer caveats</h2>
+        <p class="section-copy">
+          AI comparisons here distinguish sourcing, content interrogation, workflow automation, compliance, and primary-research capture. Public visibility is not treated as proof of production maturity.
+        </p>
+      </div>
+
+      <div class="mt-5 rounded-2xl border border-blue-200/60 bg-blue-50 px-4 py-4 text-[12px] text-blue-900 leading-relaxed">
+        <strong class="font-semibold">AI caveat:</strong> {contextualDisclaimers.ai}
+      </div>
+
+      <div id="aiTaxonomyGrid" class="mt-6 grid gap-4 xl:grid-cols-2" set:html={initialRender.aiTaxonomyHtml}></div>
+    </div>
+  </section>
+
+  <section id="commercialCompliance" class="border-t border-border/20 py-8 px-4 md:px-6">
+    <div class="max-w-site mx-auto">
+      <div class="max-w-2xl">
+        <div class="section-eyebrow">Commercial + Compliance</div>
+        <h2 class="section-title">Contract reality, scale caveats, and governance posture</h2>
+        <p class="section-copy">
+          These sections stay concise by default because many claims in pricing, scale, and compliance are directionally useful rather than perfectly standardized.
+        </p>
+      </div>
+
+      <div class="mt-6 grid gap-4 xl:grid-cols-2">
+        <div class="rounded-3xl border border-border/30 bg-white p-4 shadow-sm">
+          <div class="flex items-center justify-between gap-3">
+            <div>
+              <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-tertiary">Commercial model</div>
+              <h3 class="text-[15px] font-semibold text-primary">Pricing, geography, and scale</h3>
+            </div>
+            <span class="info-chip">Indicative only</span>
+          </div>
+          <div class="mt-3 space-y-3">
+            <p class="rounded-2xl border border-amber-200/60 bg-amber-50 px-3 py-3 text-[11px] leading-relaxed text-amber-900">{contextualDisclaimers.pricing}</p>
+            <p class="rounded-2xl border border-slate-200/60 bg-slate-50 px-3 py-3 text-[11px] leading-relaxed text-slate-700">{contextualDisclaimers.scale}</p>
+          </div>
+          <div id="commercialTable" class="mt-4" set:html={initialRender.commercialTableHtml}></div>
+        </div>
+
+        <div class="rounded-3xl border border-border/30 bg-white p-4 shadow-sm">
+          <div class="flex items-center justify-between gap-3">
+            <div>
+              <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-tertiary">Compliance posture</div>
+              <h3 class="text-[15px] font-semibold text-primary">Governance and control signals</h3>
+            </div>
+            <span class="info-chip">Needs diligence</span>
+          </div>
+          <p class="mt-3 rounded-2xl border border-emerald-200/60 bg-emerald-50 px-3 py-3 text-[11px] leading-relaxed text-emerald-900">{contextualDisclaimers.compliance}</p>
+          <div id="complianceTable" class="mt-4" set:html={initialRender.complianceTableHtml}></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fullMatrix" class="border-t border-border/20 bg-[#fafafa] py-8 px-4 md:px-6">
+    <div class="max-w-site mx-auto">
+      <div class="max-w-2xl">
+        <div class="section-eyebrow">Layer C</div>
+        <h2 class="section-title">Full evidence matrix</h2>
+        <p class="section-copy">
+          The full table is still here for power users. It stays collapsed by default so the page behaves like a decision tool first and a raw evidence slab second.
+        </p>
+      </div>
+
+      <details id="fullMatrixDetails" class="mt-6 rounded-3xl border border-border/30 bg-white shadow-sm" open={false}>
+        <summary class="list-none cursor-pointer px-5 py-4 flex items-center justify-between gap-3">
+          <div>
+            <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-tertiary">Full comparison</div>
+            <div class="text-[15px] font-semibold text-primary">Show full matrix</div>
+          </div>
+          <span class="summary-pill">29 tracked fields</span>
+        </summary>
+        <div class="border-t border-border/20 px-4 pb-4 pt-4 md:px-5">
+          <div id="matrixHiddenSummary" class="mb-4" set:html={initialRender.fullMatrixSummaryHtml}></div>
+          <div id="fullMatrixContent" set:html={initialRender.fullMatrixContentHtml}></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section id="methodology" class="border-t border-border/20 py-8 px-4 md:px-6">
+    <div class="max-w-site mx-auto">
+      <div class="grid gap-4 xl:grid-cols-[1.3fr_1fr]">
+        <div class="rounded-3xl border border-border/30 bg-white p-5 shadow-sm">
+          <div class="section-eyebrow">Methodology</div>
+          <h2 class="text-[20px] font-semibold text-primary">What this page does and does not claim</h2>
+          <p class="mt-3 text-[13px] leading-relaxed text-secondary">
+            This project compares public-facing evidence, company materials, and editorial synthesis. It does not claim private product access, confidential pricing data, or perfect apples-to-apples comparability where the underlying services are structurally different.
+          </p>
+          <div class="mt-5 grid gap-3 md:grid-cols-2">
+            <div class="rounded-2xl border border-border/30 bg-[#fafafa] p-4">
+              <div class="text-[11px] font-semibold text-primary">Evidence provenance</div>
+              <div class="mt-3 flex flex-wrap gap-2 text-[11px] text-secondary">
+                <span class="inline-flex items-center gap-1 rounded-full bg-white px-2 py-1 border border-border/30"><span class="ev-dot ev-verified"></span>Verified</span>
+                <span class="inline-flex items-center gap-1 rounded-full bg-white px-2 py-1 border border-border/30"><span class="ev-dot ev-stated"></span>Company-stated</span>
+                <span class="inline-flex items-center gap-1 rounded-full bg-white px-2 py-1 border border-border/30"><span class="ev-dot ev-inferred"></span>Inferred</span>
+                <span class="inline-flex items-center gap-1 rounded-full bg-white px-2 py-1 border border-border/30"><span class="ev-dot ev-estimated"></span>Estimated</span>
+              </div>
+            </div>
+            <div class="rounded-2xl border border-border/30 bg-[#fafafa] p-4">
+              <div class="text-[11px] font-semibold text-primary">AI maturity language</div>
+              <div class="mt-3 flex flex-wrap gap-2 text-[11px] text-secondary">
+                <span class="inline-flex items-center rounded-full bg-white px-2 py-1 border border-border/30">Publicly documented</span>
+                <span class="inline-flex items-center rounded-full bg-white px-2 py-1 border border-border/30">Publicly indicated</span>
+                <span class="inline-flex items-center rounded-full bg-white px-2 py-1 border border-border/30">Limited public evidence</span>
+                <span class="inline-flex items-center rounded-full bg-white px-2 py-1 border border-border/30">Not publicly clear</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap gap-3">
+            <a href="/sources" class="compare-hero-primary">Read methodology</a>
+            <a href="/disclaimer" class="compare-hero-link compare-hero-link-light">Read disclaimer</a>
+          </div>
+        </div>
+
+        <div class="rounded-3xl border border-border/30 bg-white p-5 shadow-sm">
+          <div class="section-eyebrow">Contextual cautions</div>
+          <h2 class="text-[20px] font-semibold text-primary">Always keep these in view</h2>
+          <div class="mt-4 space-y-3">
+            <div class="rounded-2xl border border-amber-200/60 bg-amber-50 px-4 py-3">
+              <div class="text-[11px] font-semibold text-amber-900">Pricing</div>
+              <p class="mt-1 text-[11px] leading-relaxed text-amber-900">{contextualDisclaimers.pricing}</p>
+            </div>
+            <div class="rounded-2xl border border-slate-200/60 bg-slate-50 px-4 py-3">
+              <div class="text-[11px] font-semibold text-slate-800">Scale</div>
+              <p class="mt-1 text-[11px] leading-relaxed text-slate-700">{contextualDisclaimers.scale}</p>
+            </div>
+            <div class="rounded-2xl border border-blue-200/60 bg-blue-50 px-4 py-3">
+              <div class="text-[11px] font-semibold text-blue-900">AI</div>
+              <p class="mt-1 text-[11px] leading-relaxed text-blue-900">{contextualDisclaimers.ai}</p>
+            </div>
+            <div class="rounded-2xl border border-emerald-200/60 bg-emerald-50 px-4 py-3">
+              <div class="text-[11px] font-semibold text-emerald-900">Compliance</div>
+              <p class="mt-1 text-[11px] leading-relaxed text-emerald-900">{contextualDisclaimers.compliance}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-border/20 py-8 px-4 md:px-6">
     <div class="max-w-site mx-auto text-center">
-      <h2 class="text-lg font-bold text-primary mb-1.5">Explore Further</h2>
-      <p class="text-[13px] text-secondary mb-4">Dive into individual profiles or browse the full directory.</p>
+      <h2 class="text-lg font-bold text-primary mb-1.5">Explore further</h2>
+      <p class="text-[13px] text-secondary mb-4">Open detailed provider profiles or move back to the broader directory.</p>
       <div class="flex items-center justify-center gap-3 flex-wrap">
-        <a id="browseDirectoryBtn" href="/networks" class="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-white text-sm font-semibold rounded-lg no-underline hover:bg-accent/90 transition-colors">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-          Browse Directory
-        </a>
-        <a href="/" class="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-primary text-sm font-semibold rounded-lg no-underline hover:bg-[#f5f5f7] transition-colors border border-border/60">&larr; Dashboard</a>
+        <a id="browseDirectoryBtn" href={defaultDirectoryHref} class="compare-hero-primary">Browse directory</a>
+        <a href="/" class="compare-hero-link compare-hero-link-light">&larr; Home</a>
       </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
   .scrollbar-none::-webkit-scrollbar { display: none; }
   .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
-  .preset-btn.active { border-color: #0071E3; color: #0071E3; background: rgba(0, 113, 227, 0.06); }
-  .section-chevron { transition: transform 0.2s ease; }
-  .section-collapsed .section-chevron { transform: rotate(-90deg); }
-  .section-collapsed .section-body { display: none; }
-  .provider-col.highlight { background: rgba(0, 113, 227, 0.03); }
-  .compare-row.hidden-diff { display: none; }
-  .scroll-nav-link.active { color: #0071E3; background: rgba(0, 113, 227, 0.06); }
-  .ev-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 1px; }
-  .ev-verified { background: #30D158; }
-  .ev-stated { background: #0071E3; }
-  .ev-inferred { background: #FF9F0A; }
-  .ev-estimated { background: #BF5AF2; }
-  .insight-pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: white; border: 1px solid rgba(210,210,215,0.4); border-radius: 10px; font-size: 12px; color: #1D1D1F; white-space: nowrap; }
-  .insight-pill .pill-label { color: #86868B; font-weight: 500; }
-  .insight-pill .pill-value { font-weight: 600; }
+  .compare-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.06);
+    color: #d6d6dc;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .compare-hero-link,
+  .compare-hero-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 16px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  .compare-hero-link {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.06);
+    color: #d6d6dc;
+  }
+  .compare-hero-link:hover { background: rgba(255, 255, 255, 0.1); }
+  .compare-hero-link-light {
+    border-color: rgba(210, 210, 215, 0.7);
+    background: white;
+    color: #1d1d1f;
+  }
+  .compare-hero-link-light:hover { background: #f5f5f7; }
+  .compare-hero-primary {
+    background: #0071e3;
+    color: white;
+  }
+  .compare-hero-primary:hover { background: #0064cc; }
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #86868b;
+  }
+  .section-title {
+    margin-top: 8px;
+    font-size: 28px;
+    line-height: 1.15;
+    font-weight: 700;
+    color: #1d1d1f;
+  }
+  .section-copy {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #4a4a52;
+  }
+  .pathway-card.is-active {
+    border-color: rgba(0, 113, 227, 0.45);
+    box-shadow: 0 18px 38px rgba(0, 113, 227, 0.12);
+    transform: translateY(-2px);
+  }
+  .confidence-chip,
+  .info-chip,
+  .summary-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    padding: 5px 10px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .confidence-chip[data-confidence="High"],
+  .confidence-pill-high {
+    background: rgba(48, 209, 88, 0.12);
+    color: #1b7f37;
+  }
+  .confidence-chip[data-confidence="Medium"],
+  .confidence-pill-medium {
+    background: rgba(0, 113, 227, 0.1);
+    color: #0051a7;
+  }
+  .confidence-chip[data-confidence="Low"],
+  .confidence-pill-low {
+    background: rgba(255, 159, 10, 0.14);
+    color: #a85c00;
+  }
+  .info-chip,
+  .summary-pill {
+    background: #f5f5f7;
+    color: #4a4a52;
+  }
+  .section-anchor-link {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 7px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #6e6e73;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+  }
+  .section-anchor-link:hover,
+  .section-anchor-link.is-active {
+    color: #0071e3;
+    background: rgba(0, 113, 227, 0.08);
+  }
+  .ev-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    flex-shrink: 0;
+  }
+  .ev-verified { background: #30d158; }
+  .ev-stated { background: #0071e3; }
+  .ev-inferred { background: #ff9f0a; }
+  .ev-estimated { background: #bf5af2; }
+  .table-shell {
+    overflow-x: auto;
+    border: 1px solid rgba(210, 210, 215, 0.55);
+    border-radius: 22px;
+  }
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 760px;
+    background: white;
+  }
+  .compare-table th,
+  .compare-table td {
+    border-bottom: 1px solid rgba(210, 210, 215, 0.38);
+    padding: 14px 14px;
+    vertical-align: top;
+  }
+  .provider-col.highlight {
+    background: rgba(0, 113, 227, 0.04);
+  }
+  .compare-table tr:last-child td,
+  .compare-table tr:last-child th {
+    border-bottom: none;
+  }
+  .compare-head {
+    background: #fbfbfc;
+    color: #6e6e73;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .sticky-col {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    background: white;
+  }
+  .compare-head.sticky-col {
+    z-index: 4;
+    background: #fbfbfc;
+  }
+  .row-label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 160px;
+  }
+  .row-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: #1d1d1f;
+  }
+  .row-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+  }
+  .row-note {
+    font-size: 10px;
+    line-height: 1.45;
+    color: #86868b;
+  }
+  .importance-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    padding: 4px 8px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .importance-major {
+    background: rgba(0, 113, 227, 0.1);
+    color: #0051a7;
+  }
+  .importance-moderate {
+    background: rgba(255, 159, 10, 0.16);
+    color: #9b5a00;
+  }
+  .importance-minor {
+    background: rgba(142, 142, 147, 0.14);
+    color: #5a5a5f;
+  }
+  .data-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    border-radius: 999px;
+    padding: 6px 10px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .insight-detail {
+    border: 1px solid rgba(210, 210, 215, 0.45);
+    border-radius: 22px;
+    background: white;
+    overflow: hidden;
+  }
+  .insight-detail summary {
+    list-style: none;
+    cursor: pointer;
+  }
+  .insight-detail summary::-webkit-details-marker { display: none; }
+  .insight-detail[open] {
+    box-shadow: 0 16px 36px rgba(17, 17, 17, 0.06);
+  }
+  .empty-panel {
+    border: 1px dashed rgba(210, 210, 215, 0.9);
+    border-radius: 22px;
+    background: rgba(245, 245, 247, 0.45);
+    padding: 18px;
+    font-size: 13px;
+    color: #6e6e73;
+  }
   @media (max-width: 768px) {
-    .compare-section table { font-size: 11px; }
-    .compare-section th, .compare-section td { min-width: 120px !important; padding: 6px 8px !important; }
-    .compare-section th:first-child, .compare-section td:first-child { min-width: 110px !important; }
+    .section-title { font-size: 24px; }
+    .compare-table th,
+    .compare-table td { padding: 12px 10px; }
+    .row-label { min-width: 140px; }
   }
 </style>
 
-<script define:vars={{ networkDataMap, presets, presetMeta, sections, defaultSlugs, allNetworkList, enriched, providerTypeColors }} is:inline>
-  function getInitialSlugs() {
-    const params = new URLSearchParams(window.location.search);
-    const fromUrl = params.get('networks');
-    if (fromUrl) {
-      const slugs = fromUrl.split(',').filter(s => networkDataMap[s]);
-      if (slugs.length === 1) {
-        const base = [...defaultSlugs];
-        if (!base.includes(slugs[0])) {
-          base.push(slugs[0]);
-        }
-        return base.slice(0, 6);
-      }
-      if (slugs.length >= 2) return slugs.slice(0, 6);
-    }
-    const presetParam = params.get('preset');
-    if (presetParam && presets[presetParam]) return [...presets[presetParam]];
-    const addParam = params.get('add');
-    if (addParam && networkDataMap[addParam]) { const base = [...defaultSlugs]; if (!base.includes(addParam)) base.push(addParam); return base.slice(0, 6); }
-    return [...defaultSlugs];
+<script id="compare-client-data" type="application/json" set:html={compareClientJson} is:inline></script>
+<script>
+  import { bootComparePage } from '../scripts/compare-page';
+
+  const compareDataElement = document.getElementById('compare-client-data');
+  if (compareDataElement?.textContent) {
+    bootComparePage(JSON.parse(compareDataElement.textContent));
   }
-  let activeSlugs = getInitialSlugs();
-  let activePreset = new URLSearchParams(window.location.search).get('preset') || '';
-  let diffMode = false;
-  let scrollNavObserver = null;
-
-  function syncUrl() {
-    const slugStr = activeSlugs.join(',');
-    const url = new URL(window.location.href);
-    url.searchParams.set('networks', slugStr);
-    url.searchParams.delete('preset');
-    url.searchParams.delete('add');
-    window.history.replaceState({}, '', url.toString());
-    const dirUrl = '/networks?selected=' + slugStr;
-    const h = document.getElementById('heroDirectoryBtn');
-    const b = document.getElementById('browseDirectoryBtn');
-    if (h) h.setAttribute('href', dirUrl);
-    if (b) b.setAttribute('href', dirUrl);
-  }
-
-  const providerChips = document.getElementById('providerChips');
-  const addNetworkBtn = document.getElementById('addNetworkBtn');
-  const addNetworkModal = document.getElementById('addNetworkModal');
-  const closeModalEl = document.getElementById('closeModal');
-  const modalBackdrop = document.getElementById('modalBackdrop');
-  const networkSearch = document.getElementById('networkSearch');
-  const networkPickerList = document.getElementById('networkPickerList');
-  const diffToggle = document.getElementById('diffToggle');
-  const summaryCards = document.getElementById('summaryCards');
-  const insightCards = document.getElementById('insightCards');
-  const insightPills = document.getElementById('insightPills');
-
-  function resolve(data, key) { return key.split('.').reduce((obj, k) => obj?.[k], data); }
-  function getCellValue(slug, row) {
-    if (row.source === 'enriched') { const e = enriched[slug]; return e ? resolve(e, row.key) : null; }
-    return resolve(networkDataMap[slug], row.key);
-  }
-  function getEvidence(slug, field) { return enriched[slug]?.[field] || 'Inferred'; }
-  function evidenceDotClass(ev) { if (ev === 'Verified') return 'ev-verified'; if (ev === 'Company-Stated') return 'ev-stated'; if (ev === 'Estimated') return 'ev-estimated'; return 'ev-inferred'; }
-  function capabilityClass(val) { if (val === 'Strong') return 'text-emerald-600 font-semibold'; if (val === 'Yes') return 'text-emerald-600 font-medium'; if (val === 'Limited') return 'text-amber-600 font-medium'; if (val === 'No') return 'text-tertiary/60'; return 'text-secondary'; }
-  function getComparableValue(slug, row) { const val = getCellValue(slug, row); return Array.isArray(val) ? val[0] : val; }
-
-  const complianceColors = { 'Strong Compliance':'bg-emerald-500/10 text-emerald-700', 'Standard Compliance':'bg-slate-100 text-slate-600', 'Compliance Tools':'bg-blue-500/10 text-blue-600', 'Limited Public Detail':'bg-amber-500/10 text-amber-600' };
-  const aiColors = { 'AI-Native':'bg-violet-500/10 text-violet-700', 'AI Research':'bg-blue-500/10 text-blue-600', 'AI Matching':'bg-cyan-500/10 text-cyan-600', 'AI Moderation':'bg-teal-500/10 text-teal-600', 'Limited AI Detail':'bg-slate-100 text-slate-500' };
-  const badgeColorMap = { 'Global Leader':'bg-amber-500/10 text-amber-700', 'Major Provider':'bg-blue-500/10 text-blue-700', 'Fast-Growing':'bg-emerald-500/10 text-emerald-700', 'Asia Specialist':'bg-rose-500/10 text-rose-700', 'Research Platform':'bg-violet-500/10 text-violet-700', 'Technology-First':'bg-cyan-500/10 text-cyan-700', 'Marketplace':'bg-orange-500/10 text-orange-700', 'Boutique Specialist':'bg-slate-100 text-slate-600' };
-  const deliveryColorMap = { 'Concierge':'bg-blue-500/10 text-blue-700', 'Hybrid':'bg-violet-500/10 text-violet-600', 'Self-Serve':'bg-emerald-500/10 text-emerald-700', 'Marketplace':'bg-orange-500/10 text-orange-700', 'Platform-Led':'bg-cyan-500/10 text-cyan-700' };
-  const regionColorMap = { 'Global':'bg-blue-500/10 text-blue-700', 'North America':'bg-slate-100 text-slate-700', 'Europe':'bg-indigo-500/10 text-indigo-700', 'Asia-Pacific':'bg-rose-500/10 text-rose-700', 'Greater China':'bg-red-500/10 text-red-700', 'India':'bg-amber-500/10 text-amber-700', 'Emerging Markets':'bg-teal-500/10 text-teal-700' };
-
-  function renderChips() {
-    if (!providerChips) return;
-    providerChips.innerHTML = '';
-    activeSlugs.forEach(slug => {
-      const d = networkDataMap[slug]; if (!d) return;
-      const chip = document.createElement('div');
-      chip.className = 'provider-chip flex items-center gap-1.5 px-2.5 py-1 bg-[#f5f5f7] rounded-lg border border-border/30 whitespace-nowrap';
-      chip.dataset.slug = slug;
-      const dn = d.name.split(' (')[0].split(' / ')[0];
-      chip.innerHTML = (d.logo ? `<img src="${d.logo}" alt="" width="16" height="16" class="w-4 h-4 rounded object-contain" loading="lazy" />` : `<div class="w-4 h-4 rounded flex items-center justify-center text-white text-[7px] font-bold" style="background:linear-gradient(135deg,${d.gradientFrom},${d.gradientTo})">${d.shortName}</div>`) + `<span class="text-[12px] font-medium text-primary">${dn}</span><button class="remove-provider ml-0.5 text-tertiary hover:text-red-500 transition-colors bg-transparent border-none cursor-pointer p-0" data-slug="${slug}"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg></button>`;
-      providerChips.appendChild(chip);
-    });
-    providerChips.querySelectorAll('.remove-provider').forEach(btn => {
-      btn.addEventListener('click', e => { e.stopPropagation(); if (activeSlugs.length <= 2) return; activeSlugs = activeSlugs.filter(s => s !== btn.dataset.slug); rebuildComparison(); });
-    });
-  }
-
-  function renderSummaryCards() {
-    if (!summaryCards) return;
-    summaryCards.innerHTML = '';
-    activeSlugs.forEach(slug => {
-      const d = networkDataMap[slug]; if (!d) return;
-      const provType = enriched[slug]?.providerType || '';
-      const provClass = providerTypeColors[provType] || 'bg-slate-100 text-slate-600 border-slate-200/50';
-      const card = document.createElement('div');
-      card.className = 'summary-card bg-white rounded-xl border border-border/30 p-4 hover:shadow-sm transition-shadow';
-      card.dataset.slug = slug;
-      const dn = d.name.split(' (')[0];
-      const desc = d.description.length > 120 ? d.description.slice(0, 120) + '...' : d.description;
-      let bf = '';
-      if (d.bestFor?.length > 0) {
-        const pills = d.bestFor.slice(0, 3).map(b => `<span class="px-1.5 py-0.5 text-[9px] font-medium rounded bg-accent/[0.06] text-accent">${b}</span>`).join('');
-        bf = `<div class="mt-2.5 pt-2.5 border-t border-border/20"><div class="text-[10px] text-tertiary font-medium mb-1">Best for</div><div class="flex flex-wrap gap-1">${pills}${d.bestFor.length > 3 ? `<span class="text-[9px] text-tertiary">+${d.bestFor.length - 3}</span>` : ''}</div></div>`;
-      }
-      const cl = d.complianceBadge === 'Strong Compliance' ? 'Strong' : d.complianceBadge === 'Standard Compliance' ? 'Standard' : d.complianceBadge || '—';
-      const cc = d.complianceBadge === 'Strong Compliance' ? 'text-emerald-600' : 'text-primary';
-      const ac = d.aiBadge === 'AI-Native' ? 'text-violet-600' : d.aiBadge === 'AI Research' ? 'text-blue-600' : 'text-primary';
-      card.innerHTML = `<div class="flex items-center gap-2.5 mb-2">${d.logo ? `<img src="${d.logo}" alt="" width="28" height="28" class="w-7 h-7 rounded-lg object-contain flex-shrink-0" loading="lazy" />` : `<div class="w-7 h-7 rounded-lg flex items-center justify-center text-white text-[9px] font-bold flex-shrink-0" style="background:linear-gradient(135deg,${d.gradientFrom},${d.gradientTo})">${d.shortName}</div>`}<div class="min-w-0"><a href="/networks/${d.slug}" class="text-[14px] font-semibold text-primary hover:text-accent transition-colors no-underline block truncate">${dn}</a>${provType ? `<span class="inline-block mt-0.5 px-1.5 py-0.5 text-[8px] font-semibold uppercase tracking-wider rounded border ${provClass}">${provType}</span>` : ''}</div></div><p class="text-[11.5px] text-secondary leading-relaxed line-clamp-2 mb-3">${desc}</p><div class="grid grid-cols-2 gap-x-3 gap-y-1.5 text-[11px]"><div><span class="text-tertiary">Model </span><span class="font-semibold text-primary">${d.deliveryModel || '—'}</span></div><div><span class="text-tertiary">Pricing </span><span class="font-semibold text-primary">${d.pricingModel || '—'}</span></div><div><span class="text-tertiary">AI </span><span class="font-semibold ${ac}">${d.aiBadge || '—'}</span></div><div><span class="text-tertiary">Compliance </span><span class="font-semibold ${cc}">${cl}</span></div><div><span class="text-tertiary">Region </span><span class="font-semibold text-primary">${d.regionStrength || '—'}</span></div><div><span class="text-tertiary">Scale </span><span class="font-semibold text-primary">${d.expertCount || '—'}</span></div></div>${bf}`;
-      summaryCards.appendChild(card);
-    });
-  }
-
-  function renderCellValue(slug, row) {
-    const val = getCellValue(slug, row);
-    const type = row.type;
-    const key = row.key;
-    if (type === 'capability') {
-      if (Array.isArray(val)) {
-        const ev = val[1] ? `<span class="ev-dot ${evidenceDotClass(val[1])}" title="${val[1]}"></span>` : '';
-        const note = val[2] ? `<span class="text-[9px] text-tertiary" title="${val[2]}">(${val[2].length > 30 ? val[2].slice(0, 28) + '…' : val[2]})</span>` : '';
-        return `<div class="flex items-start gap-1.5 flex-wrap"><span class="${capabilityClass(val[0])}">${val[0]}</span>${ev}${note}</div>`;
-      }
-      return '<span class="text-tertiary/40">—</span>';
-    }
-    if (type === 'chip-provider') {
-      if (val) { const cls = providerTypeColors[val] || 'bg-slate-100 text-slate-600 border-slate-200/50'; return `<span class="inline-block px-1.5 py-0.5 text-[10px] font-semibold rounded border ${cls}">${val}</span>`; }
-      return '<span class="text-tertiary/40">—</span>';
-    }
-    if (type === 'product-names') return val ? `<span class="text-[11px] italic text-secondary">${val}</span>` : '<span class="text-tertiary/40">—</span>';
-    if (type === 'text-evidence') {
-      if (val != null && val !== '') { const ev = getEvidence(slug, row.evidenceField); return `<div class="flex items-center gap-1.5"><span class="text-primary text-[12px]">${String(val)}</span><span class="ev-dot ${evidenceDotClass(ev)}" title="${ev}"></span></div>`; }
-      return '<span class="text-tertiary/40">—</span>';
-    }
-    if (type === 'text-italic') return val ? `<span class="text-[11px] italic text-secondary leading-snug">${val}</span>` : '<span class="text-tertiary/40">—</span>';
-    if (type === 'boolean') return val === true ? '<span class="text-emerald-500 font-bold">&#10003;</span>' : '<span class="text-tertiary/40">—</span>';
-    if (type === 'boolean-or-string') { if (val === true) return '<span class="text-emerald-500 font-bold">&#10003;</span>'; if (typeof val === 'string') return `<span class="text-emerald-600 font-medium text-[11px]">${val}</span>`; return '<span class="text-tertiary/40">—</span>'; }
-    if (type === 'graded' && val) { const cm = key === 'complianceBadge' ? complianceColors : key === 'aiBadge' ? aiColors : {}; return `<span class="inline-block px-1.5 py-0.5 text-[10px] font-semibold rounded ${cm[val] || 'bg-slate-100 text-slate-600'}">${val}</span>`; }
-    if (type === 'chip' && val) { const cm = key === 'deliveryModel' ? deliveryColorMap : key === 'regionStrength' ? regionColorMap : key === 'categoryBadge' ? badgeColorMap : {}; return `<span class="inline-block px-1.5 py-0.5 text-[10px] font-semibold rounded ${cm[val] || 'bg-slate-100 text-slate-600'}">${val}</span>`; }
-    if (type === 'list' && Array.isArray(val) && val.length > 0) { const items = val.slice(0, 3).map(i => `<span class="px-1.5 py-0.5 text-[9px] font-medium rounded bg-[#f5f5f7] text-secondary">${i.length > 28 ? i.slice(0, 25) + '...' : i}</span>`).join(''); return `<div class="flex flex-wrap gap-1">${items}${val.length > 3 ? `<span class="text-[9px] text-tertiary">+${val.length - 3}</span>` : ''}</div>`; }
-    if (val != null && val !== '') return `<span class="text-primary text-[12px]">${String(val)}</span>`;
-    return '<span class="text-tertiary/40">—</span>';
-  }
-
-  function renderMatrix() {
-    const container = document.getElementById('matrixContainer');
-    if (!container) return;
-    container.innerHTML = '';
-    sections.forEach(section => {
-      const sEl = document.createElement('div');
-      sEl.className = 'compare-section mb-6'; sEl.id = `section-${section.id}`; sEl.dataset.sectionId = section.id;
-      const tBtn = document.createElement('button');
-      tBtn.className = 'section-toggle flex items-center gap-2 w-full text-left py-3 px-1 border-b-2 border-primary/10 hover:border-accent/30 transition-colors bg-transparent cursor-pointer group';
-      tBtn.innerHTML = `<svg class="w-4 h-4 text-tertiary group-hover:text-accent transition-colors section-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg><h3 class="text-[13px] font-bold uppercase tracking-wide text-primary">${section.name}</h3><span class="text-[11px] text-tertiary ml-auto">${section.rows.length} fields</span>`;
-      sEl.appendChild(tBtn);
-      const body = document.createElement('div'); body.className = 'section-body overflow-x-auto mt-1';
-      const table = document.createElement('table'); table.className = 'w-full border-collapse';
-      const thead = document.createElement('thead');
-      let hh = '<tr><th class="text-left text-[11px] font-semibold uppercase tracking-wide text-tertiary px-3 py-2.5 w-40 min-w-[140px] bg-white sticky left-0 z-10">Field</th>';
-      activeSlugs.forEach(slug => { const d = networkDataMap[slug]; if (!d) return; const dn = d.name.split(' (')[0].split(' / ')[0]; const ic = d.logo ? `<img src="${d.logo}" alt="" width="16" height="16" class="w-4 h-4 rounded object-contain flex-shrink-0" loading="lazy" />` : `<div class="w-4 h-4 rounded flex items-center justify-center text-white text-[6px] font-bold flex-shrink-0" style="background:linear-gradient(135deg,${d.gradientFrom},${d.gradientTo})">${d.shortName}</div>`; hh += `<th class="text-left text-[11px] font-semibold text-secondary px-3 py-2.5 min-w-[140px] provider-col" data-slug="${slug}"><div class="flex items-center gap-1.5">${ic}<span class="truncate">${dn}</span></div></th>`; });
-      hh += '</tr>'; thead.innerHTML = hh; table.appendChild(thead);
-      const tbody = document.createElement('tbody');
-      section.rows.forEach(row => {
-        const vals = activeSlugs.map(s => getComparableValue(s, row));
-        const same = vals.every(v => JSON.stringify(v) === JSON.stringify(vals[0]));
-        const tr = document.createElement('tr');
-        tr.className = `compare-row border-b border-border/10 hover:bg-[#fafafa] transition-colors ${same ? 'same-row' : 'diff-row'}`;
-        tr.dataset.same = same ? '1' : '0';
-        const dsc = row.description ? `<div class="text-[10px] text-tertiary font-normal mt-0.5 leading-tight">${row.description}</div>` : '';
-        let rh = `<td class="px-3 py-3 text-[12px] font-medium text-primary bg-white sticky left-0 z-10"><div class="flex items-center gap-1">${row.label}${!same ? '<span class="inline-block w-1.5 h-1.5 rounded-full bg-accent/60" title="Values differ"></span>' : ''}</div>${dsc}</td>`;
-        activeSlugs.forEach(slug => { rh += `<td class="px-3 py-3 text-[12px] provider-col" data-slug="${slug}">${renderCellValue(slug, row)}</td>`; });
-        tr.innerHTML = rh; tbody.appendChild(tr);
-      });
-      table.appendChild(tbody); body.appendChild(table); sEl.appendChild(body);
-      tBtn.addEventListener('click', () => sEl.classList.toggle('section-collapsed'));
-      container.appendChild(sEl);
-    });
-    applyDiffMode();
-  }
-
-  function renderInsightStrip() {
-    if (!insightPills) return;
-    insightPills.innerHTML = '';
-    const pills = [];
-    const types = {};
-    activeSlugs.forEach(s => { const pt = enriched[s]?.providerType; if (pt) types[pt] = (types[pt] || 0) + 1; });
-    const te = Object.entries(types).sort((a, b) => b[1] - a[1]);
-    if (te.length > 1) pills.push({ label: 'Provider mix', value: te.map(([t, c]) => `${c} ${t.split(' ')[0]}`).join(', ') });
-    ['matchingAI', 'libraryQA', 'synthesis', 'agents'].forEach(field => {
-      const strong = [];
-      activeSlugs.forEach(s => { const ai = enriched[s]?.ai; if (ai && Array.isArray(ai[field]) && ai[field][0] === 'Strong') strong.push(networkDataMap[s]?.name?.split(' (')[0]?.split(' / ')[0] || s); });
-      if (strong.length > 0 && strong.length < activeSlugs.length) {
-        const labels = { matchingAI: 'Strongest AI Matching', libraryQA: 'Strongest Library AI', synthesis: 'Best Synthesis', agents: 'Most Advanced Agents' };
-        pills.push({ label: labels[field], value: strong.join(', ') });
-      }
-    });
-    const models = {};
-    activeSlugs.forEach(s => { const m = networkDataMap[s]?.deliveryModel; if (m) models[m] = 1; });
-    if (Object.keys(models).length > 1) pills.push({ label: 'Delivery models', value: Object.keys(models).join(' vs ') });
-    const sc = activeSlugs.filter(s => networkDataMap[s]?.complianceBadge === 'Strong Compliance').length;
-    if (sc > 0 && sc < activeSlugs.length) pills.push({ label: 'Strong Compliance', value: `${sc} of ${activeSlugs.length}` });
-    if (pills.length === 0) pills.push({ label: 'Comparing', value: `${activeSlugs.length} networks` });
-    pills.slice(0, 5).forEach(p => { const el = document.createElement('div'); el.className = 'insight-pill'; el.innerHTML = `<span class="pill-label">${p.label}</span><span class="pill-value">${p.value}</span>`; insightPills.appendChild(el); });
-  }
-
-  function renderInsights() {
-    if (!insightCards) return;
-    insightCards.innerHTML = '';
-    const diffs = [];
-    sections.forEach(section => { section.rows.forEach(row => {
-      const vals = activeSlugs.map(s => getComparableValue(s, row));
-      const same = vals.every(v => JSON.stringify(v) === JSON.stringify(vals[0]));
-      if (!same) diffs.push({ section: section.name, label: row.label, values: activeSlugs.map((s, i) => ({ slug: s, name: networkDataMap[s]?.name?.split(' (')[0] || s, value: vals[i] })) });
-    }); });
-    if (diffs.length === 0) { insightCards.innerHTML = '<p class="text-[13px] text-tertiary col-span-full">All selected providers are similar across tracked fields.</p>'; return; }
-    diffs.slice(0, 6).forEach(diff => {
-      const card = document.createElement('div'); card.className = 'bg-white rounded-xl border border-border/30 p-4';
-      const items = diff.values.map(v => { let dv = v.value; if (dv === true) dv = '✓'; else if (dv === false || dv == null) dv = '—'; else if (Array.isArray(dv)) dv = dv.slice(0, 2).join(', ') + (dv.length > 2 ? '…' : ''); return `<div class="flex items-center justify-between text-[11px]"><span class="text-secondary">${v.name.split(' / ')[0]}</span><span class="font-medium text-primary">${dv}</span></div>`; }).join('');
-      card.innerHTML = `<div class="text-[10px] font-bold uppercase tracking-wider text-tertiary mb-1">${diff.section}</div><div class="text-[13px] font-semibold text-primary mb-2">${diff.label}</div><div class="space-y-1">${items}</div>`;
-      insightCards.appendChild(card);
-    });
-    if (diffs.length > 6) { const m = document.createElement('div'); m.className = 'bg-white rounded-xl border border-border/30 p-4 flex items-center justify-center'; m.innerHTML = `<span class="text-[13px] text-tertiary">+${diffs.length - 6} more differences</span>`; insightCards.appendChild(m); }
-  }
-
-  function applyDiffMode() {
-    let hc = 0;
-    document.querySelectorAll('.compare-row').forEach(r => { if (diffMode && r.dataset.same === '1') { r.classList.add('hidden-diff'); hc++; } else r.classList.remove('hidden-diff'); });
-    const ex = document.getElementById('diffCount'); if (ex) ex.remove();
-    if (diffMode && hc > 0) { const c = document.createElement('span'); c.id = 'diffCount'; c.className = 'text-[10px] text-tertiary ml-1'; c.textContent = `(${hc} identical rows hidden)`; diffToggle?.parentElement?.appendChild(c); }
-  }
-
-  function rebuildComparison() { renderChips(); renderInsightStrip(); renderSummaryCards(); renderMatrix(); renderInsights(); updateScrollNav(); syncUrl(); }
-
-  function openModal() { addNetworkModal?.classList.remove('hidden'); document.body.style.overflow = 'hidden'; if (networkSearch) networkSearch.value = ''; filterPicker(''); networkSearch?.focus(); }
-  function closeModalFn() { addNetworkModal?.classList.add('hidden'); document.body.style.overflow = ''; }
-  addNetworkBtn?.addEventListener('click', openModal);
-  closeModalEl?.addEventListener('click', closeModalFn);
-  modalBackdrop?.addEventListener('click', closeModalFn);
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalFn(); });
-
-  function filterPicker(query) { const l = query.toLowerCase(); networkPickerList?.querySelectorAll('.network-pick-btn').forEach(btn => { const n = btn.dataset.name || ''; const s = btn.dataset.slug || ''; btn.style.display = (!query || n.includes(l)) && !activeSlugs.includes(s) ? '' : 'none'; }); }
-  networkSearch?.addEventListener('input', e => filterPicker(e.target.value));
-
-  networkPickerList?.querySelectorAll('.network-pick-btn').forEach(btn => {
-    btn.addEventListener('click', () => { const s = btn.dataset.slug; if (!s || activeSlugs.includes(s)) return; if (activeSlugs.length >= 6) activeSlugs.shift(); activeSlugs.push(s); closeModalFn(); activePreset = ''; document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active')); rebuildComparison(); });
-  });
-
-  document.querySelectorAll('.preset-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const p = btn.dataset.preset || '';
-      if (activePreset === p) { activePreset = ''; btn.classList.remove('active'); activeSlugs = [...defaultSlugs]; }
-      else { document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active')); activePreset = p; btn.classList.add('active'); if (presets[p]) activeSlugs = [...presets[p]]; }
-      rebuildComparison();
-    });
-  });
-
-  diffToggle?.addEventListener('change', () => { diffMode = diffToggle.checked; applyDiffMode(); });
-
-  document.querySelectorAll('.remove-provider').forEach(btn => { btn.addEventListener('click', e => { e.stopPropagation(); if (activeSlugs.length <= 2) return; activeSlugs = activeSlugs.filter(s => s !== btn.dataset.slug); rebuildComparison(); }); });
-  document.querySelectorAll('.section-toggle').forEach(btn => { btn.addEventListener('click', () => btn.closest('.compare-section')?.classList.toggle('section-collapsed')); });
-
-  document.addEventListener('mouseover', e => { const c = e.target.closest('.provider-col'); if (!c?.dataset.slug) return; document.querySelectorAll(`.provider-col[data-slug="${c.dataset.slug}"]`).forEach(el => el.classList.add('highlight')); });
-  document.addEventListener('mouseout', e => { const c = e.target.closest('.provider-col'); if (!c?.dataset.slug) return; document.querySelectorAll(`.provider-col[data-slug="${c.dataset.slug}"]`).forEach(el => el.classList.remove('highlight')); });
-
-  renderInsightStrip();
-  const initParams = new URLSearchParams(window.location.search);
-  if (initParams.has('networks') || initParams.has('preset') || initParams.has('add')) {
-    if (activePreset) document.querySelectorAll('.preset-btn').forEach(b => b.classList.toggle('active', b.dataset.preset === activePreset));
-    rebuildComparison();
-  } else { syncUrl(); }
-
-  function updateScrollNav() {
-    const links = document.querySelectorAll('.scroll-nav-link');
-    if (scrollNavObserver) {
-      scrollNavObserver.disconnect();
-      scrollNavObserver = null;
-    }
-    if (!links.length) return;
-
-    scrollNavObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.dataset.sectionId;
-          links.forEach(l => l.classList.toggle('active', l.dataset.section === id));
-        }
-      });
-    }, { rootMargin: '-200px 0px -60% 0px' });
-
-    document.querySelectorAll('.compare-section').forEach(s => scrollNavObserver.observe(s));
-  }
-  updateScrollNav();
 </script>
