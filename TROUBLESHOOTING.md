@@ -2,6 +2,8 @@
 
 Common issues and their solutions when working on ExpertNetworks Hub.
 
+Last verified against codebase: March 8, 2026
+
 ---
 
 ## Build Errors
@@ -15,23 +17,27 @@ Common issues and their solutions when working on ExpertNetworks Hub.
 2. Either fix the JSON file to match the schema, or update the schema in `content.config.ts`
 3. Common causes:
    - New field added to JSON but not to schema
-   - Typo in enum value (e.g., `confidence` only accepts `verified`, `positioning`, `inference`, `partially-unverifiable`)
+   - Typo in enum value
    - Wrong type (string where number expected, etc.)
 
-**Example error:**
-```
-confidence.founderBackgrounds: Invalid enum value.
-Expected 'verified' | 'positioning' | 'inference', received 'partially-unverifiable'
-```
-**Fix:** Add the new enum value to the schema in `content.config.ts`
+**Valid enum values (verified from `content.config.ts`):**
+
+| Field | Valid Values |
+|---|---|
+| `confidence.*` | `verified`, `positioning`, `inference`, `partially-unverifiable` |
+| `sourceType` (news) | `Press Release`, `Industry Report`, `News Coverage`, `Regulatory`, `Product Update` |
+| `significance` (news) | `major`, `standard`, `brief` |
+| `categoryBadge` (network) | `Global Leader`, `Major Provider`, `Fast-Growing`, `Asia Specialist`, `Research Platform`, `Technology-First`, `Marketplace`, `Boutique Specialist` |
+| `deliveryModel` (network) | `Concierge`, `Hybrid`, `Self-Serve`, `Marketplace`, `Platform-Led` |
+| `regionStrength` (network) | `Global`, `North America`, `Europe`, `Asia-Pacific`, `Greater China`, `India`, `Emerging Markets` |
+| `complianceBadge` (network) | `Strong Compliance`, `Standard Compliance`, `Compliance Tools`, `Limited Public Detail` |
+| `aiBadge` (network) | `AI-Native`, `AI Research`, `AI Matching`, `AI Moderation`, `Limited AI Detail` |
 
 ---
 
 ### "Cannot find module '@astrojs/sitemap'"
 
-**What it means:** The sitemap package isn't installed.
-
-**How to fix:**
+**Fix:**
 ```bash
 npm install @astrojs/sitemap
 ```
@@ -40,9 +46,21 @@ npm install @astrojs/sitemap
 
 ### Build succeeds but pages are missing
 
-**What it means:** The content file exists but `published` is set to `false` (or missing).
+**Cause:** The content file has `published` set to `false` or missing.
 
-**How to fix:** Set `"published": true` in the relevant JSON file.
+**Fix:** Set `"published": true` in the relevant JSON file.
+
+---
+
+### Build succeeds but news signal not in "What Matters Now"
+
+**Cause:** The featured signals section requires all of:
+1. `"featured": true`
+2. `"significance": "major"`
+3. `"whyItMatters": "..."` (for the editorial context display)
+4. `"sourceType"` set to a valid enum value
+
+If any are missing, the signal appears in the main feed but not the featured section.
 
 ---
 
@@ -50,64 +68,58 @@ npm install @astrojs/sitemap
 
 ### Page appears "stuck" — can't scroll, clicks don't work
 
-**What it means:** An overlay (search, menu, or mobile sidebar) set `overflow: hidden` on `<body>` and it wasn't cleared.
+**What it means:** An overlay set `overflow: hidden` on `<body>` and didn't clear it.
 
-**This should be fixed now** — BaseLayout.astro resets `document.body.style.overflow = ''` on every page load. But if it happens again:
+**Quick fix:** DevTools Console → `document.body.style.overflow = ''`
 
-**Causes:**
-1. A new overlay was added without a proper close handler
+**This should not recur** — `BaseLayout.astro` resets overflow on every page load. If it does:
+
+1. A new overlay was added without a close handler
 2. A link inside an overlay navigates without closing the overlay first
-3. JavaScript error prevented the close function from running
+3. A JavaScript error prevented the close function from running
 
-**How to debug:**
-1. Open browser DevTools → Elements tab
-2. Check if `<body>` has `style="overflow: hidden"`
-3. Run `document.body.style.overflow = ''` in the console to unstick it
-4. Check the Console tab for JavaScript errors
-
-**How to prevent:**
-- Every overlay that sets `overflow: hidden` must:
-  - Clear it in its close function
-  - Have a click handler on links inside it that calls the close function
-  - Respond to the Escape key
-- BaseLayout.astro has a safety-net reset on page load
+**Prevention:** Every overlay must:
+- Clear `overflow` in its close function
+- Have click handlers on internal links that call close before navigation
+- Respond to the Escape key
 
 ---
 
 ### Search overlay doesn't show results
 
-**What it means:** The search data was not properly injected into the page.
-
-**How to debug:**
-1. Open DevTools Console
-2. Check if `searchNetworks` variable exists in the inline script scope
-3. Look for JavaScript errors
-
-**Common cause:** The `define:vars` in Header.astro passes network data inline. If a network has unusual characters in its name, it could break the JSON serialization. All names are now escaped with `escapeHtml()`.
+**Debug:**
+1. DevTools Console — check for JavaScript errors
+2. `define:vars` in `Header.astro` injects network data inline
+3. If a network has unusual characters, it could break JSON serialization
+4. All names are escaped with `escapeHtml()` (XSS fix applied)
 
 ---
 
 ### Mobile sidebar doesn't close
 
-**What it means:** The close handlers aren't attached or fired.
-
-**How to debug:**
-1. Check DevTools Console for errors
-2. Verify the DOM IDs: `sidebarToggle`, `sidebarBackdrop`, `mobileSidebar`, `closeSidebar`
-3. Ensure the [slug].astro script block is loading
-
-**Fix:** The sidebar should close on: backdrop click, close button click, Escape key, or clicking any link inside it.
+**Debug:**
+1. DevTools Console for errors
+2. Verify DOM IDs: `sidebarToggle`, `sidebarBackdrop`, `mobileSidebar`, `closeSidebar`
+3. Should close on: backdrop click, close button, Escape, or link click inside sidebar
 
 ---
 
-### Filters on networks/news page don't work
+### News page filters don't work
 
-**What it means:** The client-side JavaScript for filtering isn't running.
+**Debug:**
+1. DevTools Console for errors
+2. The news page has 5 filter controls: category, network, source type, time range, significance
+3. Check that news signal elements have correct `data-*` attributes
+4. The trending sidebar computes 90-day counts from `impactTags` — missing tags = wrong counts
 
-**How to debug:**
-1. Check DevTools Console for errors
+---
+
+### Network directory filters don't work
+
+**Debug:**
+1. DevTools Console for errors
 2. Verify DOM IDs: `searchInput`, `filterType`, `filterPricing`, `filterRegion`, `sortBy`, `networkList`
-3. Check that `.network-row` elements have the correct `data-*` attributes
+3. Check that `.network-row` elements have correct `data-*` attributes
 
 ---
 
@@ -115,72 +127,43 @@ npm install @astrojs/sitemap
 
 ### Network logo not showing (gradient placeholder instead)
 
-**What it means:** Either:
-1. The `logo` field is missing or empty in the network's JSON file
-2. The logo file doesn't exist at the path specified in the JSON
-3. The file path is case-sensitive and doesn't match
+**Causes:**
+1. `logo` field missing or empty in the network's JSON
+2. Logo file doesn't exist at the specified path in `public/images/networks/`
+3. Path case mismatch — Linux is case-sensitive (`GLG.png` ≠ `glg.png`)
 
-**How to fix:**
-1. Add a PNG logo to `public/images/networks/` (e.g., `my-network.png`)
-2. Set `"logo": "/images/networks/my-network.png"` in the network's JSON file
-3. Paths are case-sensitive on Linux — `GLG.png` and `glg.png` are different files
+**Fix:**
+1. Add a PNG to `public/images/networks/`
+2. Set `"logo": "/images/networks/my-network.png"` in the JSON
+3. Currently 11 of 33 networks have logos; 22 use gradient placeholders
 
 ---
 
 ### Network not appearing in comparison table
 
-**What it means:** The network's slug isn't listed in `src/content/compare.json`.
-
-**How to fix:** Add the network's slug to the `networks` array in `compare.json`:
-```json
-{
-  "networks": ["glg", "alphasights", "third-bridge", "dialectica", "guidepoint", "alphasense-tegus", "your-new-slug"]
-}
-```
+**Fix:** Edit `src/content/compare.json`:
+- `networks` array: controls the default comparison set
+- `presets` object: controls the 7 preset tabs (leaders, consulting, pe, enterprise, asia, ai, library)
+- Slugs must match filenames in `src/content/networks/` (without `.json`)
 
 ---
 
-### News article not linking to correct network
+### News signal not linking to correct network
 
-**What it means:** The `relatedNetworks` array in the news JSON has the wrong slug.
-
-**How to fix:** Make sure the slug matches an existing network file. For example, if the network file is `src/content/networks/alphasense-tegus.json`, the slug is `alphasense-tegus`.
-
----
-
-### News signal not appearing in "What Matters Now" section
-
-**What it means:** The news article needs `"featured": true` and `"significance": "major"` to appear in the featured signals section of the news page.
-
-**How to fix:**
-1. Set `"featured": true` in the news JSON file
-2. Set `"significance": "major"`
-3. Add a `"whyItMatters"` string to display editorial context
-4. Ensure `"sourceType"` is set (Press Release, Industry Report, News Coverage, Regulatory, or Product Update)
-
----
-
-### News V2 field enum validation error
-
-**What it means:** A news JSON file has an invalid value for `sourceType` or `significance`.
-
-**Valid values:**
-- `sourceType`: `Press Release`, `Industry Report`, `News Coverage`, `Regulatory`, `Product Update`
-- `significance`: `major`, `standard`, `brief`
+**Fix:** Ensure `relatedNetworks` slugs match network filenames. Example: if the file is `src/content/networks/alphasense-tegus.json`, the slug is `"alphasense-tegus"`.
 
 ---
 
 ### Rich profile sections not showing (no accordion)
 
-**What it means:** The profile page detects whether to show the accordion deep-dive based on this check:
-
+**Detection logic in `[slug].astro`:**
 ```js
 const isRich = !!(d.overview || d.history || d.servicesDetailed?.length || d.aiPlatform || d.strengths?.length);
 ```
 
-If none of these fields are present, the page falls back to the basic "legacy" layout.
+If none present → basic layout. Add at least one rich field to trigger accordions.
 
-**How to fix:** Add at least one rich field (`overview`, `history`, `servicesDetailed`, `aiPlatform`, or `strengths`) to the network's JSON file.
+Currently 5 networks have rich profiles: GLG, AlphaSights, Third Bridge, Guidepoint, Dialectica.
 
 ---
 
@@ -188,77 +171,109 @@ If none of these fields are present, the page falls back to the basic "legacy" l
 
 ### Page not indexed by Google
 
-**Checklist:**
-1. Is the page in the sitemap? Check `dist/sitemap-0.xml` after building
-2. Is `published: true` set in the content JSON?
-3. Is `robots.txt` blocking the path? It should only block `/admin/` and `/api/`
-4. Has the sitemap been submitted in Google Search Console?
-5. Is the canonical URL correct? Check the `<link rel="canonical">` tag
+1. In sitemap? Check `dist/sitemap-0.xml` after building
+2. `published: true` set?
+3. `robots.txt` blocking? Only `/admin/` and `/api/` are blocked
+4. Sitemap submitted in Google Search Console?
+5. Canonical URL correct? Check `<link rel="canonical">`
 
 ---
 
 ### Social share preview shows no image
 
-**What it means:** The `og:image` tag points to `/og-default.svg`. Some platforms (Facebook, LinkedIn) don't render SVG images.
+**Cause:** `og:image` points to `/og-default.svg`. Facebook and LinkedIn don't render SVG.
 
-**How to fix:** Convert `public/og-default.svg` to a 1200x630 PNG, save as `public/og-default.png`, and update `src/layouts/BaseLayout.astro` line 18 from `'/og-default.svg'` to `'/og-default.png'`.
+**Fix:** Convert to 1200x630 PNG, save as `public/og-default.png`, update `src/layouts/BaseLayout.astro` to reference the PNG.
 
 ---
 
 ## Admin Panel
 
-### Admin panel pages load but forms don't work
+### Admin panel forms don't work
 
-**What it means:** The admin panel's API endpoints (`/api/*`) only work in dev/SSR mode. In the static build, POST requests have no server to handle them.
+**Cause:** API endpoints only work in dev/preview mode (SSR). Static build has no server for POST requests.
 
-**How to fix:** Run the site in dev mode to use the admin panel:
+**Fix:**
 ```bash
 npm run dev
-# Then visit http://localhost:4321/admin/login
+# Visit http://localhost:4321/admin/login
 ```
 
 ---
 
-### "Unauthorized" error when using admin API
+### "Unauthorized" error
 
-**What it means:** The `admin_session` cookie is missing or invalid.
-
-**How to fix:**
+**Fix:**
 1. Go to `/admin/login`
-2. Enter the password from `.env` (`ADMIN_PASSWORD`)
-3. Try the API call again
+2. Enter password from `.env` (`ADMIN_PASSWORD`)
+3. Retry
+
+---
+
+### No .env file / password not working
+
+**Cause:** `.env` is gitignored and not included in the repo.
+
+**Fix:**
+```bash
+cp .env.example .env
+# Edit .env: ADMIN_PASSWORD=your_password_here
+```
+
+Auth checks `import.meta.env.ADMIN_PASSWORD || process.env.ADMIN_PASSWORD` in `src/pages/api/auth.ts`.
 
 ---
 
 ## Development Environment
 
-### `npm run dev` shows port already in use
+### Port already in use
 
-**How to fix:**
 ```bash
-# Kill the process on port 4321
 lsof -i :4321 | grep LISTEN | awk '{print $2}' | xargs kill
-
-# Or use a different port
-npm run dev -- --port 4322
+# Or: npm run dev -- --port 4322
 ```
 
 ---
 
-### Changes not reflecting after edit
+### Changes not reflecting
 
-**What to check:**
-1. If you edited a JSON file, the dev server should hot-reload. If not, restart with `npm run dev`
-2. If you edited `content.config.ts`, you must restart the dev server
-3. If you edited `tailwind.config.mjs`, you must restart the dev server
-4. If you edited an `.astro` file, it should hot-reload automatically
+| What you edited | Expected behavior |
+|---|---|
+| JSON content file | Hot-reload. If not, restart `npm run dev` |
+| `content.config.ts` | **Must restart** dev server |
+| `tailwind.config.mjs` | **Must restart** dev server |
+| `.astro` file | Hot-reload automatically |
 
 ---
 
 ### TypeScript errors in .astro files
 
-**What it means:** Astro uses TypeScript for type checking in the frontmatter (the code between `---` markers). Common errors include:
-- `Property 'X' does not exist on type` — the field isn't in the Zod schema
-- `Type 'X' is not assignable to type 'Y'` — wrong type in a function argument
+- `Property 'X' does not exist on type` → field not in Zod schema (`content.config.ts`)
+- `Type 'X' is not assignable to type 'Y'` → wrong type in function argument
 
-**How to fix:** Update the schema in `content.config.ts` to match your data, or fix the type in your code.
+---
+
+### `npm run fetch-news` fails
+
+**Cause:** `scripts/fetch-news.ts` does not exist. The npm script is defined in `package.json` but the file was never created.
+
+**Fix:** Either create the script or remove the entry from `package.json`.
+
+---
+
+## Quick Reference: Debug Locations
+
+| Issue | File to check |
+|---|---|
+| Build errors | `src/content.config.ts` (Zod schemas) |
+| Auth issues | `src/middleware.ts` + `src/pages/api/auth.ts` |
+| Search bugs | `src/components/Header.astro` (inline script) |
+| Sidebar bugs | `src/pages/networks/[slug].astro` (inline script) |
+| Network filter bugs | `src/pages/networks/index.astro` (inline script) |
+| News filter bugs | `src/pages/news/index.astro` (inline script) |
+| SEO tags | `src/layouts/BaseLayout.astro` |
+| Stuck page / overflow | `src/layouts/BaseLayout.astro` (safety-net reset) |
+| Sitemap config | `astro.config.mjs` (sitemap filter) |
+| Crawl rules | `public/robots.txt` |
+| Comparison table | `src/content/compare.json` + `src/components/CompareTable.astro` |
+| Env var usage | `src/pages/api/auth.ts` (line 14) |
