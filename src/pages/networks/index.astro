@@ -46,6 +46,40 @@ const badgeColors: Record<string, string> = {
   'Marketplace': 'bg-orange-500/10 text-orange-700 border-orange-500/20',
   'Boutique Specialist': 'bg-slate-500/10 text-slate-600 border-slate-500/20',
 };
+
+const directoryEntries = networks.map((network, index) => {
+  const data = network.data;
+  const services = data.services || [];
+  return {
+    slug: data.slug,
+    name: data.name,
+    displayName: data.name.split(' (')[0],
+    shortName: data.shortName,
+    logo: data.logo || '',
+    type: data.type,
+    pricingModel: data.pricingModel || '',
+    region: getRegion(data.headquarters || ''),
+    regionStrength: data.regionStrength || '',
+    deliveryModel: data.deliveryModel || '',
+    founded: data.founded || 0,
+    rank: index,
+    badge: data.categoryBadge || '',
+    description: data.description,
+    complianceBadge: data.complianceBadge || '',
+    aiBadge: data.aiBadge || '',
+    expertCount: data.expertCount || '',
+    services,
+    bestFor: data.bestFor || [],
+    comparison: {
+      aiMatching: Boolean(data.comparison?.aiMatching),
+      complianceTools: Boolean(data.comparison?.complianceTools),
+      surveys: Boolean(data.comparison?.surveys),
+      contentLibrary: Boolean(data.comparison?.contentLibrary),
+    },
+    gradientFrom: data.gradientFrom,
+    gradientTo: data.gradientTo,
+  };
+});
 ---
 
 <BaseLayout
@@ -356,76 +390,8 @@ const badgeColors: Record<string, string> = {
           })}
         </div>
 
-        <!-- List view (hidden by default) -->
-        <div id="networkList" class="hidden space-y-1.5">
-          {networks.map((network, i) => {
-            const n = network.data;
-            const region = getRegion(n.headquarters || '');
-            const badge = n.categoryBadge || '';
-            const badgeClass = badgeColors[badge] || 'bg-slate-500/10 text-slate-600 border-slate-500/20';
-            return (
-              <div
-                class="network-row flex items-center gap-3 px-4 py-3 bg-white rounded-xl border border-border/30 hover:border-border/60 hover:shadow-sm hover:-translate-y-[0.5px] transition-all"
-                data-name={n.name.toLowerCase()}
-                data-slug={n.slug}
-                data-type={n.type}
-                data-pricing={n.pricingModel || ''}
-                data-region={region}
-                data-region-strength={n.regionStrength || ''}
-                data-delivery={n.deliveryModel || ''}
-                data-founded={n.founded || 0}
-                data-rank={i}
-                data-badge={badge}
-                data-ai={n.comparison?.aiMatching ? '1' : '0'}
-                data-compliance={n.comparison?.complianceTools ? '1' : '0'}
-                data-surveys={n.comparison?.surveys ? '1' : '0'}
-                data-library={n.comparison?.contentLibrary ? '1' : '0'}
-                data-best-for={(n.bestFor || []).join(',').toLowerCase()}
-                data-services={(n.services || []).join(',').toLowerCase()}
-              >
-                <!-- Rank -->
-                <div class="text-[11px] text-tertiary/50 font-bold w-4 text-right flex-shrink-0">{i + 1}</div>
-
-                <!-- Logo -->
-                {n.logo ? (
-                  <img src={n.logo} alt={n.name} width="32" height="32" class="w-8 h-8 rounded-lg object-contain flex-shrink-0" loading="lazy" />
-                ) : (
-                  <div
-                    class="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0"
-                    style={`background: linear-gradient(135deg, ${n.gradientFrom}, ${n.gradientTo})`}
-                  >
-                    {n.shortName}
-                  </div>
-                )}
-
-                <!-- Name + badge -->
-                <div class="min-w-0 w-40 flex-shrink-0">
-                  <a href={`/networks/${n.slug}`} class="text-[13px] font-semibold text-primary hover:text-accent transition-colors no-underline truncate block">{n.name.split(' (')[0]}</a>
-                  {badge && <span class={`inline-block mt-0.5 px-1.5 py-0.5 text-[8px] font-semibold uppercase tracking-wider rounded border ${badgeClass}`}>{badge}</span>}
-                </div>
-
-                <!-- Brief -->
-                <div class="hidden md:block min-w-0 flex-1">
-                  <p class="text-[12px] text-secondary truncate m-0">{n.description.slice(0, 90)}{n.description.length > 90 ? '...' : ''}</p>
-                </div>
-
-                <!-- Key metrics (desktop) -->
-                <div class="hidden lg:flex items-center gap-4 flex-shrink-0">
-                  {n.pricingModel && <span class="text-[11px] text-primary font-medium w-16 text-center">{n.pricingModel}</span>}
-                  {n.deliveryModel && <span class="text-[11px] text-tertiary w-20 text-center">{n.deliveryModel}</span>}
-                </div>
-
-                <!-- Compare + arrow -->
-                <div class="flex items-center gap-2 flex-shrink-0">
-                  <input type="checkbox" class="compare-check rounded border-border/60 text-accent focus:ring-accent/30 cursor-pointer" data-slug={n.slug} data-name={n.name} title="Compare" />
-                  <a href={`/networks/${n.slug}`} class="text-tertiary hover:text-accent transition-colors no-underline">
-                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-                  </a>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        <!-- List view (rendered client-side on demand) -->
+        <div id="networkList" class="hidden space-y-1.5"></div>
       </div>
     </div>
   </section>
@@ -463,38 +429,53 @@ const badgeColors: Record<string, string> = {
   }
 </style>
 
+<script type="application/json" id="directoryData" is:inline>{JSON.stringify(directoryEntries)}</script>
+
 <script>
-  // Elements
-  const heroSearch = document.getElementById('heroSearch') as HTMLInputElement;
-  const filterType = document.getElementById('filterType') as HTMLSelectElement;
-  const filterPricing = document.getElementById('filterPricing') as HTMLSelectElement;
-  const filterHq = document.getElementById('filterHq') as HTMLSelectElement;
-  const filterDelivery = document.getElementById('filterDelivery') as HTMLSelectElement;
-  const filterRegionStrength = document.getElementById('filterRegionStrength') as HTMLSelectElement;
-  const sortBy = document.getElementById('sortBy') as HTMLSelectElement;
-  const capAI = document.getElementById('capAI') as HTMLInputElement;
-  const capCompliance = document.getElementById('capCompliance') as HTMLInputElement;
-  const capSurveys = document.getElementById('capSurveys') as HTMLInputElement;
-  const capLibrary = document.getElementById('capLibrary') as HTMLInputElement;
-  const resetAll = document.getElementById('resetAll') as HTMLElement;
-  const resultCount = document.getElementById('resultCount') as HTMLElement;
-  const noResults = document.getElementById('noResults') as HTMLElement;
-  const networkGrid = document.getElementById('networkGrid') as HTMLElement;
-  const networkList = document.getElementById('networkList') as HTMLElement;
-  const viewGrid = document.getElementById('viewGrid') as HTMLElement;
-  const viewList = document.getElementById('viewList') as HTMLElement;
-  const compareTray = document.getElementById('compareTray') as HTMLElement;
-  const compareCount = document.getElementById('compareCount') as HTMLElement;
-  const compareNames = document.getElementById('compareNames') as HTMLElement;
-  const compareLink = document.getElementById('compareLink') as HTMLAnchorElement;
-  const clearCompare = document.getElementById('clearCompare') as HTMLElement;
-  const mobileFilterToggle = document.getElementById('mobileFilterToggle') as HTMLElement;
-  const filterPanel = document.getElementById('filterPanel') as HTMLElement;
+  // @ts-nocheck
+  const directoryDataEl = document.getElementById('directoryData');
+  const directoryEntries = directoryDataEl ? JSON.parse(directoryDataEl.textContent || '[]') : [];
+  const directoryBySlug = new Map(directoryEntries.map(entry => [entry.slug, entry]));
+
+  const heroSearch = document.getElementById('heroSearch') as HTMLInputElement | null;
+  const filterType = document.getElementById('filterType') as HTMLSelectElement | null;
+  const filterPricing = document.getElementById('filterPricing') as HTMLSelectElement | null;
+  const filterHq = document.getElementById('filterHq') as HTMLSelectElement | null;
+  const filterDelivery = document.getElementById('filterDelivery') as HTMLSelectElement | null;
+  const filterRegionStrength = document.getElementById('filterRegionStrength') as HTMLSelectElement | null;
+  const sortBy = document.getElementById('sortBy') as HTMLSelectElement | null;
+  const capAI = document.getElementById('capAI') as HTMLInputElement | null;
+  const capCompliance = document.getElementById('capCompliance') as HTMLInputElement | null;
+  const capSurveys = document.getElementById('capSurveys') as HTMLInputElement | null;
+  const capLibrary = document.getElementById('capLibrary') as HTMLInputElement | null;
+  const resetAll = document.getElementById('resetAll') as HTMLElement | null;
+  const resultCount = document.getElementById('resultCount') as HTMLElement | null;
+  const noResults = document.getElementById('noResults') as HTMLElement | null;
+  const networkGrid = document.getElementById('networkGrid') as HTMLElement | null;
+  const networkList = document.getElementById('networkList') as HTMLElement | null;
+  const viewGrid = document.getElementById('viewGrid') as HTMLElement | null;
+  const viewList = document.getElementById('viewList') as HTMLElement | null;
+  const compareTray = document.getElementById('compareTray') as HTMLElement | null;
+  const compareCount = document.getElementById('compareCount') as HTMLElement | null;
+  const compareNames = document.getElementById('compareNames') as HTMLElement | null;
+  const compareLink = document.getElementById('compareLink') as HTMLAnchorElement | null;
+  const clearCompare = document.getElementById('clearCompare') as HTMLElement | null;
+  const mobileFilterToggle = document.getElementById('mobileFilterToggle') as HTMLElement | null;
+  const filterPanel = document.getElementById('filterPanel') as HTMLElement | null;
+  const heroCompareBtn = document.getElementById('heroCompareBtn') as HTMLAnchorElement | null;
 
   const cards = Array.from(document.querySelectorAll('.network-card')) as HTMLElement[];
-  const rows = Array.from(document.querySelectorAll('.network-row')) as HTMLElement[];
-
-  // Preset definitions
+  const badgeClassMap: Record<string, string> = {
+    'Global Leader': 'bg-amber-500/10 text-amber-700 border-amber-500/20',
+    'Major Provider': 'bg-blue-500/10 text-blue-700 border-blue-500/20',
+    'Fast-Growing': 'bg-emerald-500/10 text-emerald-700 border-emerald-500/20',
+    'Asia Specialist': 'bg-rose-500/10 text-rose-700 border-rose-500/20',
+    'Research Platform': 'bg-violet-500/10 text-violet-700 border-violet-500/20',
+    'Technology-First': 'bg-cyan-500/10 text-cyan-700 border-cyan-500/20',
+    'Marketplace': 'bg-orange-500/10 text-orange-700 border-orange-500/20',
+    'Boutique Specialist': 'bg-slate-500/10 text-slate-600 border-slate-500/20',
+  };
+  const selected = new Map<string, string>();
   const presets: Record<string, (el: HTMLElement) => boolean> = {
     consulting: el => el.dataset.bestFor?.includes('consult') || false,
     pe: el => el.dataset.bestFor?.includes('private equity') || el.dataset.bestFor?.includes('pe') || false,
@@ -506,65 +487,96 @@ const badgeColors: Record<string, string> = {
   };
 
   let activePreset = '';
-
-  // Mobile filter toggle
-  mobileFilterToggle?.addEventListener('click', () => {
-    const isHidden = filterPanel?.classList.contains('hidden');
-    filterPanel?.classList.toggle('hidden', !isHidden);
-    const chevron = mobileFilterToggle.querySelector('.filter-chevron');
-    if (chevron) (chevron as HTMLElement).style.transform = isHidden ? 'rotate(180deg)' : '';
-  });
-
-  // Preset buttons
-  document.querySelectorAll('.preset-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const p = (btn as HTMLElement).dataset.preset || '';
-      if (activePreset === p) {
-        activePreset = '';
-        btn.classList.remove('active');
-      } else {
-        document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
-        activePreset = p;
-        btn.classList.add('active');
-      }
-      clearFilters(false);
-      applyFilters();
-    });
-  });
-
-  // View toggle
   let currentView = 'grid';
-  viewGrid?.addEventListener('click', () => {
-    currentView = 'grid';
-    networkGrid?.classList.remove('hidden');
-    networkList?.classList.add('hidden');
-    viewGrid.classList.add('bg-white', 'shadow-sm', 'text-primary');
-    viewGrid.classList.remove('text-tertiary', 'bg-transparent');
-    viewList?.classList.remove('bg-white', 'shadow-sm', 'text-primary');
-    viewList?.classList.add('text-tertiary', 'bg-transparent');
-  });
-  viewList?.addEventListener('click', () => {
-    currentView = 'list';
+
+  function getVisibleCards(): HTMLElement[] {
+    return cards.filter(card => card.style.display !== 'none');
+  }
+
+  function renderListView() {
+    if (!networkList) return;
+    const rowsHtml = getVisibleCards().map(card => {
+      const slug = card.dataset.slug || '';
+      const entry = directoryBySlug.get(slug);
+      if (!entry) return '';
+      const badgeClass = badgeClassMap[entry.badge] || 'bg-slate-500/10 text-slate-600 border-slate-500/20';
+      const shortDescription = entry.description.length > 90 ? `${entry.description.slice(0, 90)}...` : entry.description;
+      const compareChecked = selected.has(slug) ? 'checked' : '';
+      const logoHtml = entry.logo
+        ? `<img src="${entry.logo}" alt="${entry.name}" width="32" height="32" class="w-8 h-8 rounded-lg object-contain flex-shrink-0" loading="lazy" />`
+        : `<div class="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0" style="background: linear-gradient(135deg, ${entry.gradientFrom}, ${entry.gradientTo})">${entry.shortName}</div>`;
+      const badgeHtml = entry.badge
+        ? `<span class="inline-block mt-0.5 px-1.5 py-0.5 text-[8px] font-semibold uppercase tracking-wider rounded border ${badgeClass}">${entry.badge}</span>`
+        : '';
+      const pricingHtml = entry.pricingModel
+        ? `<span class="text-[11px] text-primary font-medium w-16 text-center">${entry.pricingModel}</span>`
+        : '';
+      const deliveryHtml = entry.deliveryModel
+        ? `<span class="text-[11px] text-tertiary w-20 text-center">${entry.deliveryModel}</span>`
+        : '';
+
+      return `
+        <div class="network-row flex items-center gap-3 px-4 py-3 bg-white rounded-xl border border-border/30 hover:border-border/60 hover:shadow-sm hover:-translate-y-[0.5px] transition-all">
+          <div class="text-[11px] text-tertiary/50 font-bold w-4 text-right flex-shrink-0">${entry.rank + 1}</div>
+          ${logoHtml}
+          <div class="min-w-0 w-40 flex-shrink-0">
+            <a href="/networks/${entry.slug}" class="text-[13px] font-semibold text-primary hover:text-accent transition-colors no-underline truncate block">${entry.displayName}</a>
+            ${badgeHtml}
+          </div>
+          <div class="hidden md:block min-w-0 flex-1">
+            <p class="text-[12px] text-secondary truncate m-0">${shortDescription}</p>
+          </div>
+          <div class="hidden lg:flex items-center gap-4 flex-shrink-0">
+            ${pricingHtml}
+            ${deliveryHtml}
+          </div>
+          <div class="flex items-center gap-2 flex-shrink-0">
+            <input type="checkbox" class="compare-check rounded border-border/60 text-accent focus:ring-accent/30 cursor-pointer" data-slug="${entry.slug}" data-name="${entry.name}" title="Compare" ${compareChecked} />
+            <a href="/networks/${entry.slug}" class="text-tertiary hover:text-accent transition-colors no-underline">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+        </div>`;
+    }).join('');
+
+    networkList.innerHTML = rowsHtml;
+  }
+
+  function setView(view: 'grid' | 'list') {
+    currentView = view;
+    if (view === 'grid') {
+      networkGrid?.classList.remove('hidden');
+      networkList?.classList.add('hidden');
+      viewGrid?.classList.add('bg-white', 'shadow-sm', 'text-primary');
+      viewGrid?.classList.remove('text-tertiary', 'bg-transparent');
+      viewList?.classList.remove('bg-white', 'shadow-sm', 'text-primary');
+      viewList?.classList.add('text-tertiary', 'bg-transparent');
+      return;
+    }
+
+    renderListView();
     networkGrid?.classList.add('hidden');
     networkList?.classList.remove('hidden');
     viewList?.classList.add('bg-white', 'shadow-sm', 'text-primary');
     viewList?.classList.remove('text-tertiary', 'bg-transparent');
     viewGrid?.classList.remove('bg-white', 'shadow-sm', 'text-primary');
     viewGrid?.classList.add('text-tertiary', 'bg-transparent');
-  });
-
-  function getItems(): HTMLElement[] {
-    return currentView === 'grid' ? cards : rows;
-  }
-
-  function getContainer(): HTMLElement {
-    return currentView === 'grid' ? networkGrid : networkList;
   }
 
   function hasActiveFilter(): boolean {
-    return !!(heroSearch?.value || filterType?.value || filterPricing?.value || filterHq?.value ||
-      filterDelivery?.value || filterRegionStrength?.value || capAI?.checked || capCompliance?.checked ||
-      capSurveys?.checked || capLibrary?.checked || activePreset);
+    return Boolean(
+      heroSearch?.value ||
+      filterType?.value ||
+      filterPricing?.value ||
+      filterHq?.value ||
+      filterDelivery?.value ||
+      filterRegionStrength?.value ||
+      capAI?.checked ||
+      capCompliance?.checked ||
+      capSurveys?.checked ||
+      capLibrary?.checked ||
+      activePreset
+    );
   }
 
   function applyFilters() {
@@ -580,47 +592,46 @@ const badgeColors: Record<string, string> = {
     const wantSurveys = capSurveys?.checked || false;
     const wantLibrary = capLibrary?.checked || false;
 
-    // Apply to both views
-    [cards, rows].forEach(items => {
-      let visible = 0;
-      items.forEach(el => {
-        let match = true;
-        if (search && !(el.dataset.name || '').includes(search)) match = false;
-        if (type && el.dataset.type !== type) match = false;
-        if (pricing && el.dataset.pricing !== pricing) match = false;
-        if (hq && el.dataset.region !== hq) match = false;
-        if (delivery && el.dataset.delivery !== delivery) match = false;
-        if (regionStr && el.dataset.regionStrength !== regionStr) match = false;
-        if (wantAI && el.getAttribute('data-ai') !== '1') match = false;
-        if (wantCompliance && el.getAttribute('data-compliance') !== '1') match = false;
-        if (wantSurveys && el.getAttribute('data-surveys') !== '1') match = false;
-        if (wantLibrary && el.getAttribute('data-library') !== '1') match = false;
-        if (activePreset && presets[activePreset] && !presets[activePreset](el)) match = false;
+    let visibleCount = 0;
+    cards.forEach(card => {
+      let match = true;
+      if (search && !(card.dataset.name || '').includes(search)) match = false;
+      if (type && card.dataset.type !== type) match = false;
+      if (pricing && card.dataset.pricing !== pricing) match = false;
+      if (hq && card.dataset.region !== hq) match = false;
+      if (delivery && card.dataset.delivery !== delivery) match = false;
+      if (regionStr && card.dataset.regionStrength !== regionStr) match = false;
+      if (wantAI && card.getAttribute('data-ai') !== '1') match = false;
+      if (wantCompliance && card.getAttribute('data-compliance') !== '1') match = false;
+      if (wantSurveys && card.getAttribute('data-surveys') !== '1') match = false;
+      if (wantLibrary && card.getAttribute('data-library') !== '1') match = false;
+      if (activePreset && presets[activePreset] && !presets[activePreset](card)) match = false;
 
-        el.style.display = match ? '' : 'none';
-        if (match) visible++;
-      });
-
-      // Sort
-      const container = items === cards ? networkGrid : networkList;
-      const visibleItems = items.filter(r => r.style.display !== 'none');
-      visibleItems.sort((a, b) => {
-        if (sort === 'name') return (a.dataset.name || '').localeCompare(b.dataset.name || '');
-        if (sort === 'founded') return parseInt(b.dataset.founded || '0') - parseInt(a.dataset.founded || '0');
-        if (sort === 'founded-oldest') return parseInt(a.dataset.founded || '0') - parseInt(b.dataset.founded || '0');
-        return parseInt(a.dataset.rank || '0') - parseInt(b.dataset.rank || '0');
-      });
-      visibleItems.forEach(el => container?.appendChild(el));
-      items.filter(r => r.style.display === 'none').forEach(r => container?.appendChild(r));
-
-      if (items === getItems()) {
-        if (resultCount) resultCount.textContent = `${visible} network${visible !== 1 ? 's' : ''}`;
-        noResults?.classList.toggle('hidden', visible > 0);
-      }
+      card.style.display = match ? '' : 'none';
+      if (match) visibleCount++;
     });
 
+    const visibleCards = getVisibleCards().sort((a, b) => {
+      if (sort === 'name') return (a.dataset.name || '').localeCompare(b.dataset.name || '');
+      if (sort === 'founded') return parseInt(b.dataset.founded || '0', 10) - parseInt(a.dataset.founded || '0', 10);
+      if (sort === 'founded-oldest') return parseInt(a.dataset.founded || '0', 10) - parseInt(b.dataset.founded || '0', 10);
+      return parseInt(a.dataset.rank || '0', 10) - parseInt(b.dataset.rank || '0', 10);
+    });
+
+    visibleCards.forEach(card => networkGrid?.appendChild(card));
+    cards.filter(card => card.style.display === 'none').forEach(card => networkGrid?.appendChild(card));
+
+    if (resultCount) {
+      resultCount.textContent = `${visibleCount} network${visibleCount !== 1 ? 's' : ''}`;
+    }
+    noResults?.classList.toggle('hidden', visibleCount > 0);
     resetAll?.classList.toggle('hidden', !hasActiveFilter());
-    if (hasActiveFilter()) resetAll.style.display = 'inline-flex';
+    if (hasActiveFilter() && resetAll) {
+      resetAll.style.display = 'inline-flex';
+    }
+    if (currentView === 'list') {
+      renderListView();
+    }
   }
 
   function clearFilters(clearPreset = true) {
@@ -637,24 +648,17 @@ const badgeColors: Record<string, string> = {
     if (sortBy) sortBy.value = 'rank';
     if (clearPreset) {
       activePreset = '';
-      document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
     }
   }
 
-  // Event listeners
-  heroSearch?.addEventListener('input', () => { activePreset = ''; document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active')); applyFilters(); });
-  [filterType, filterPricing, filterHq, filterDelivery, filterRegionStrength, sortBy].forEach(el => el?.addEventListener('change', applyFilters));
-  [capAI, capCompliance, capSurveys, capLibrary].forEach(el => el?.addEventListener('change', applyFilters));
-  resetAll?.addEventListener('click', () => { clearFilters(); applyFilters(); });
-
-  // Compare functionality
-  const selected = new Map<string, string>();
-  const heroCompareBtn = document.getElementById('heroCompareBtn') as HTMLAnchorElement;
-
   function buildCompareUrl(): string {
     const slugs = Array.from(selected.keys());
-    if (slugs.length > 0) {
-      return '/compare?networks=' + slugs.join(',');
+    if (slugs.length === 1) {
+      return `/compare?add=${encodeURIComponent(slugs[0])}`;
+    }
+    if (slugs.length >= 2) {
+      return `/compare?networks=${slugs.join(',')}`;
     }
     return '/compare';
   }
@@ -666,71 +670,121 @@ const badgeColors: Record<string, string> = {
       compareNames.innerHTML = '';
       const names = Array.from(selected.values());
       names.slice(0, 3).forEach(name => {
-        const span = document.createElement('span');
-        span.className = 'px-1.5 py-0.5 bg-white/10 rounded text-[11px]';
-        span.textContent = name;
-        compareNames.appendChild(span);
+        const chip = document.createElement('span');
+        chip.className = 'px-1.5 py-0.5 bg-white/10 rounded text-[11px]';
+        chip.textContent = name;
+        compareNames.appendChild(chip);
       });
       if (names.length > 3) {
-        const span = document.createElement('span');
-        span.className = 'text-[11px]';
-        span.textContent = `+${names.length - 3}`;
-        compareNames.appendChild(span);
+        const extra = document.createElement('span');
+        extra.className = 'text-[11px]';
+        extra.textContent = `+${names.length - 3}`;
+        compareNames.appendChild(extra);
       }
     }
-    // Update compare links with selected slugs
+
     const url = buildCompareUrl();
     if (compareLink) compareLink.href = url;
     if (heroCompareBtn) heroCompareBtn.href = url;
-
     compareTray?.classList.toggle('translate-y-full', count === 0);
     compareTray?.classList.toggle('translate-y-0', count > 0);
   }
 
-  // Restore selections from URL (when coming back from compare page)
+  function syncCompareCheckboxes(slug: string, checked: boolean) {
+    document.querySelectorAll(`.compare-check[data-slug="${slug}"]`).forEach(input => {
+      (input as HTMLInputElement).checked = checked;
+    });
+  }
+
+  function handleCompareToggle(input: HTMLInputElement) {
+    const slug = input.dataset.slug || '';
+    const name = input.dataset.name || '';
+    if (!slug) return;
+    if (input.checked) {
+      selected.set(slug, name);
+    } else {
+      selected.delete(slug);
+    }
+    syncCompareCheckboxes(slug, input.checked);
+    updateCompareTray();
+  }
+
   function restoreFromUrl() {
     const params = new URLSearchParams(window.location.search);
-    const sel = params.get('selected');
-    if (sel) {
-      sel.split(',').forEach(slug => {
-        const cb = document.querySelector(`.compare-check[data-slug="${slug}"]`) as HTMLInputElement;
-        if (cb) {
-          cb.checked = true;
-          selected.set(slug, cb.dataset.name || slug);
-          // Sync across views
-          document.querySelectorAll(`.compare-check[data-slug="${slug}"]`).forEach(other => {
-            (other as HTMLInputElement).checked = true;
-          });
-        }
-      });
-      updateCompareTray();
-      // Clean URL without reload
-      const cleanUrl = window.location.pathname;
-      window.history.replaceState({}, '', cleanUrl);
-    }
-  }
-  restoreFromUrl();
+    const slugs = params.get('selected');
+    if (!slugs) return;
 
-  document.querySelectorAll('.compare-check').forEach(cb => {
-    (cb as HTMLInputElement).addEventListener('change', function() {
-      const slug = this.dataset.slug || '';
-      const name = this.dataset.name || '';
-      if (this.checked) {
-        selected.set(slug, name);
-      } else {
-        selected.delete(slug);
-      }
-      // Sync checkboxes across views
-      document.querySelectorAll(`.compare-check[data-slug="${slug}"]`).forEach(other => {
-        (other as HTMLInputElement).checked = this.checked;
-      });
-      updateCompareTray();
+    slugs.split(',').forEach(slug => {
+      const checkbox = document.querySelector(`.compare-check[data-slug="${slug}"]`) as HTMLInputElement | null;
+      if (!checkbox) return;
+      checkbox.checked = true;
+      selected.set(slug, checkbox.dataset.name || slug);
+      syncCompareCheckboxes(slug, true);
     });
+
+    updateCompareTray();
+    window.history.replaceState({}, '', window.location.pathname);
+  }
+
+  mobileFilterToggle?.addEventListener('click', () => {
+    const isHidden = filterPanel?.classList.contains('hidden');
+    filterPanel?.classList.toggle('hidden', !isHidden);
+    const chevron = mobileFilterToggle.querySelector('.filter-chevron');
+    if (chevron) {
+      (chevron as HTMLElement).style.transform = isHidden ? 'rotate(180deg)' : '';
+    }
+  });
+
+  document.querySelectorAll('.preset-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const preset = (button as HTMLElement).dataset.preset || '';
+      if (activePreset === preset) {
+        activePreset = '';
+        button.classList.remove('active');
+      } else {
+        document.querySelectorAll('.preset-btn').forEach(item => item.classList.remove('active'));
+        activePreset = preset;
+        button.classList.add('active');
+      }
+      clearFilters(false);
+      applyFilters();
+    });
+  });
+
+  viewGrid?.addEventListener('click', () => setView('grid'));
+  viewList?.addEventListener('click', () => setView('list'));
+
+  heroSearch?.addEventListener('input', () => {
+    activePreset = '';
+    document.querySelectorAll('.preset-btn').forEach(button => button.classList.remove('active'));
+    applyFilters();
+  });
+  [filterType, filterPricing, filterHq, filterDelivery, filterRegionStrength, sortBy].forEach(input => input?.addEventListener('change', applyFilters));
+  [capAI, capCompliance, capSurveys, capLibrary].forEach(input => input?.addEventListener('change', applyFilters));
+  resetAll?.addEventListener('click', () => {
+    clearFilters();
+    applyFilters();
+  });
+
+  document.querySelectorAll('.compare-check').forEach(input => {
+    input.addEventListener('change', () => handleCompareToggle(input as HTMLInputElement));
+  });
+  networkList?.addEventListener('change', event => {
+    const target = event.target;
+    if (target instanceof HTMLInputElement && target.classList.contains('compare-check')) {
+      handleCompareToggle(target);
+    }
   });
 
   clearCompare?.addEventListener('click', () => {
     selected.clear();
-    document.querySelectorAll('.compare-check').forEach(cb => (cb as HTMLInputElement).checked = false);
+    document.querySelectorAll('.compare-check').forEach(input => {
+      (input as HTMLInputElement).checked = false;
+    });
     updateCompareTray();
   });
+
+  restoreFromUrl();
+  setView('grid');
+  applyFilters();
 </script>

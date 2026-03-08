@@ -468,11 +468,21 @@ function getEvidence(slug: string, field: string): string {
   }
 </style>
 
-<script define:vars={{ networkDataMap, presets, presetMeta, sections, defaultSlugs, allNetworkList, enriched, providerTypeColors }}>
+<script define:vars={{ networkDataMap, presets, presetMeta, sections, defaultSlugs, allNetworkList, enriched, providerTypeColors }} is:inline>
   function getInitialSlugs() {
     const params = new URLSearchParams(window.location.search);
     const fromUrl = params.get('networks');
-    if (fromUrl) { const slugs = fromUrl.split(',').filter(s => networkDataMap[s]); if (slugs.length >= 2) return slugs.slice(0, 6); }
+    if (fromUrl) {
+      const slugs = fromUrl.split(',').filter(s => networkDataMap[s]);
+      if (slugs.length === 1) {
+        const base = [...defaultSlugs];
+        if (!base.includes(slugs[0])) {
+          base.push(slugs[0]);
+        }
+        return base.slice(0, 6);
+      }
+      if (slugs.length >= 2) return slugs.slice(0, 6);
+    }
     const presetParam = params.get('preset');
     if (presetParam && presets[presetParam]) return [...presets[presetParam]];
     const addParam = params.get('add');
@@ -482,11 +492,14 @@ function getEvidence(slug: string, field: string): string {
   let activeSlugs = getInitialSlugs();
   let activePreset = new URLSearchParams(window.location.search).get('preset') || '';
   let diffMode = false;
+  let scrollNavObserver = null;
 
   function syncUrl() {
     const slugStr = activeSlugs.join(',');
     const url = new URL(window.location.href);
     url.searchParams.set('networks', slugStr);
+    url.searchParams.delete('preset');
+    url.searchParams.delete('add');
     window.history.replaceState({}, '', url.toString());
     const dirUrl = '/networks?selected=' + slugStr;
     const h = document.getElementById('heroDirectoryBtn');
@@ -724,9 +737,23 @@ function getEvidence(slug: string, field: string): string {
   } else { syncUrl(); }
 
   function updateScrollNav() {
-    const links = document.querySelectorAll('.scroll-nav-link'); if (!links.length) return;
-    const obs = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) { const id = entry.target.dataset.sectionId; links.forEach(l => l.classList.toggle('active', l.dataset.section === id)); } }); }, { rootMargin: '-200px 0px -60% 0px' });
-    document.querySelectorAll('.compare-section').forEach(s => obs.observe(s));
+    const links = document.querySelectorAll('.scroll-nav-link');
+    if (scrollNavObserver) {
+      scrollNavObserver.disconnect();
+      scrollNavObserver = null;
+    }
+    if (!links.length) return;
+
+    scrollNavObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.dataset.sectionId;
+          links.forEach(l => l.classList.toggle('active', l.dataset.section === id));
+        }
+      });
+    }, { rootMargin: '-200px 0px -60% 0px' });
+
+    document.querySelectorAll('.compare-section').forEach(s => scrollNavObserver.observe(s));
   }
   updateScrollNav();
 </script>

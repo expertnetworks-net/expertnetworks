@@ -7,8 +7,6 @@ export default defineConfig({
   site: 'https://expertnetworks.net',
   integrations: [
     tailwind(),
-    sitemap({
-      filter: (page) => !page.includes('/admin'),
-    }),
+    sitemap(),
   ],
 });

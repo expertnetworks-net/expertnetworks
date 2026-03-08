@@ -1,5 +1,7 @@
 # Architecture
 
+> Note: parts of this document predate the March 2026 static-only cleanup. Any references to `/admin`, `/api/*`, middleware auth, or `site.json` are historical and no longer reflect the live codebase.
+
 ## System Overview
 
 ExpertNetworks.net is a **fully static site** built with Astro 5.18. At build time, Astro reads JSON content files, validates them against Zod schemas, renders Astro/React components into HTML, and outputs a `dist/` folder of pure static HTML/CSS/JS. No server is needed in production.

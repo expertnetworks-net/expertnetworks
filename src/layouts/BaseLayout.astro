@@ -75,7 +75,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
 
   <!-- JSON-LD Structured Data -->
   {jsonLd && (
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
   )}
 
   <!-- Organization Schema (every page) -->
@@ -87,7 +87,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
     "logo": "https://expertnetworks.net/favicon-512.png",
     "description": "Independent expert network directory and industry intelligence resource.",
     "sameAs": []
-  })} />
+  })} is:inline />
 </head>
 <body>
   <Header />

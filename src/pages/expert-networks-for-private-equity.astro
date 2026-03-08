@@ -85,7 +85,7 @@ const peNetworks = published.filter(n => {
       <p class="text-secondary text-sm mb-8">{peNetworks.length} providers serve the PE market. Here are the ones that matter most:</p>
 
       <div class="space-y-4">
-        {peNetworks.slice(0, 10).map((n, i) => {
+        {peNetworks.slice(0, 10).map((n) => {
           const peRelevance = (n.data.bestFor || []).filter((b: string) => {
             const lower = b.toLowerCase();
             return lower.includes('private equity') || lower.includes('pe ') || lower.includes('deal') || lower.includes('due diligence') || lower.includes('investor');

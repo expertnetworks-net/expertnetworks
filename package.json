@@ -6,7 +6,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "fetch-news": "ts-node --esm scripts/fetch-news.ts"
+    "check": "astro check",
+    "verify:links": "node scripts/verify-dist-links.mjs",
+    "verify": "npm run build && npm run verify:links && npm run check"
   },
   "dependencies": {
     "@astrojs/node": "^9.5.4",
@@ -19,5 +21,9 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "tailwindcss": "^3.4.19"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "typescript": "^5.9.3"
   }
 }

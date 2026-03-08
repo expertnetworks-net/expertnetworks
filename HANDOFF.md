@@ -1,5 +1,7 @@
 # Handoff Document
 
+> Note: parts of this document predate the March 2026 static-only cleanup. Any references to the removed admin/API workflow or the old `fetch-news` script should be treated as historical.
+
 Last updated: March 8, 2026
 
 ## Current State

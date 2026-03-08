@@ -1,5 +1,7 @@
 # Troubleshooting
 
+> Note: parts of this document predate the March 2026 static-only cleanup. Any troubleshooting steps that mention `/admin`, `/api/*`, or `ADMIN_PASSWORD` no longer apply to the current production architecture.
+
 Common issues and their solutions when working on ExpertNetworks Hub.
 
 Last verified against codebase: March 8, 2026

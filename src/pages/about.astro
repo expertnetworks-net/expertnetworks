@@ -99,7 +99,7 @@ const publishedCount = allNetworks.filter(n => n.data.published).length;
         <div class="fade-in stagger-2">
           <div class="relative rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.06)]">
             <img
-              src="/images/about/problem-clarity.png"
+              src="/images/about/hero-artwork.svg"
               alt="Scattered documents and fragmented information flowing into a structured, interconnected network — representing the transformation from industry opacity to organized clarity."
               class="w-full h-auto object-cover"
               loading="lazy"
@@ -531,6 +531,7 @@ const publishedCount = allNetworks.filter(n => n.data.published).length;
 </style>
 
 <script>
+  // @ts-nocheck
 // ─── Hero fade-up reveal ───
 (function() {
   var items = document.querySelectorAll('.about-fade-up');
@@ -550,6 +551,7 @@ const publishedCount = allNetworks.filter(n => n.data.published).length;
 
 <!-- Nav dark mode — same pattern as ParticleHero -->
 <script>
+  // @ts-nocheck
 (function() {
   var nav = document.querySelector('nav');
   var heroSection = document.getElementById('aboutHero');

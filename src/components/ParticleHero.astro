@@ -30,6 +30,7 @@ const { minHeight = '220px' } = Astro.props;
 </section>
 
 <script>
+  // @ts-nocheck
 (function() {
   // ─── Tuning constants ───
   const PARTICLE_COUNT_DESKTOP = 110;
@@ -521,6 +522,7 @@ const { minHeight = '220px' } = Astro.props;
 
 <!-- Nav dark mode — makes nav white-on-dark while hero is visible -->
 <script>
+  // @ts-nocheck
 (function() {
   var nav = document.querySelector('nav');
   var heroSection = document.getElementById('particleHero');
