@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Verification Framework — ExpertNetworks.net"
+  description="How ExpertNetworks.net labels and classifies the confidence level of data across network profiles. Understand the difference between verified, positioning, inference, and partially-unverifiable claims."
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': 'https://expertnetworks.net/' },
+      { '@type': 'ListItem', 'position': 2, 'name': 'Verification Framework' }
+    ]
+  }}
+>
+  <section class="pt-32 pb-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <a href="/" class="inline-flex items-center gap-1 text-accent text-sm font-medium no-underline mb-8 hover:underline">
+        &larr; Home
+      </a>
+
+      <h1 class="text-3xl font-extrabold text-primary mb-3">Verification Framework</h1>
+      <p class="text-secondary text-[15px] leading-relaxed mb-10">How we classify the confidence level of every data point on this site.</p>
+
+      <div class="prose prose-sm text-secondary leading-relaxed space-y-6">
+
+        <h2 class="text-lg font-bold text-primary">Why This Matters</h2>
+        <p>Expert networks self-report most of their own data — expert counts, compliance practices, AI capabilities, pricing structures. There is no independent auditor for this industry. That means not all claims carry the same weight.</p>
+        <p>Rather than present everything as equally reliable, we label each data point with a confidence tier so you can judge for yourself what to trust.</p>
+
+        <h2 class="text-lg font-bold text-primary">The Four Confidence Tiers</h2>
+
+        <p>Every factual claim in a network profile is assigned one of four labels:</p>
+
+        <div class="not-prose space-y-4 my-6">
+          <div class="border border-border rounded-sm p-4">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="inline-block w-2.5 h-2.5 rounded-full bg-accent-green"></span>
+              <span class="text-sm font-bold text-primary">Verified</span>
+            </div>
+            <p class="text-sm text-secondary leading-relaxed m-0">Confirmed through independent, third-party sources — regulatory filings, audited reports, court documents, credible journalism, or official registrations. These facts do not rely on the company's own claims.</p>
+            <p class="text-xs text-tertiary mt-2 m-0">Examples: founding year from incorporation records, headquarters from regulatory filings, employee count from LinkedIn or annual reports.</p>
+          </div>
+
+          <div class="border border-border rounded-sm p-4">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="inline-block w-2.5 h-2.5 rounded-full bg-accent"></span>
+              <span class="text-sm font-bold text-primary">Positioning</span>
+            </div>
+            <p class="text-sm text-secondary leading-relaxed m-0">Sourced from the company's own materials — website copy, press releases, marketing collateral, or executive statements. The claim may be accurate, but it originates from the company itself and has not been independently corroborated.</p>
+            <p class="text-xs text-tertiary mt-2 m-0">Examples: expert count from company website, compliance policies from marketing materials, service descriptions from product pages.</p>
+          </div>
+
+          <div class="border border-border rounded-sm p-4">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="inline-block w-2.5 h-2.5 rounded-full bg-accent-orange"></span>
+              <span class="text-sm font-bold text-primary">Inference</span>
+            </div>
+            <p class="text-sm text-secondary leading-relaxed m-0">Derived from indirect evidence, industry context, or pattern analysis rather than a direct source. We make reasonable deductions based on available information but flag these clearly so you know the basis is interpretive.</p>
+            <p class="text-xs text-tertiary mt-2 m-0">Examples: pricing model estimated from job postings and industry norms, geographic coverage inferred from office locations and hiring patterns.</p>
+          </div>
+
+          <div class="border border-border rounded-sm p-4">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="inline-block w-2.5 h-2.5 rounded-full bg-accent-purple"></span>
+              <span class="text-sm font-bold text-primary">Partially Unverifiable</span>
+            </div>
+            <p class="text-sm text-secondary leading-relaxed m-0">The claim cannot be fully confirmed or denied through publicly available information. This often applies to internal processes, proprietary technology details, or compliance practices that are not disclosed in sufficient detail to assess.</p>
+            <p class="text-xs text-tertiary mt-2 m-0">Examples: internal vetting procedures, proprietary AI matching accuracy, specific compliance audit results.</p>
+          </div>
+        </div>
+
+        <h2 class="text-lg font-bold text-primary">How Labels Are Assigned</h2>
+        <p>Confidence labels are assigned per field, not per profile. A single network profile may have its founding year marked as <strong>verified</strong>, its expert count as <strong>positioning</strong>, and its pricing model as <strong>inference</strong> — because each data point has a different evidence basis.</p>
+        <p>We review and update labels when new sources become available. If a previously inferred claim is later confirmed by a third-party report, we upgrade it to verified.</p>
+
+        <h2 class="text-lg font-bold text-primary">What This Means for You</h2>
+        <ul class="list-disc pl-5 space-y-1 text-sm">
+          <li><strong>Verified</strong> data can be cited with confidence in research and due diligence.</li>
+          <li><strong>Positioning</strong> data is useful but should be understood as the company's own framing.</li>
+          <li><strong>Inference</strong> data provides directional insight but warrants additional validation for high-stakes decisions.</li>
+          <li><strong>Partially unverifiable</strong> data is included for completeness but should not be relied upon without further investigation.</li>
+        </ul>
+
+        <h2 class="text-lg font-bold text-primary">Relationship to Sources & Methodology</h2>
+        <p>This framework describes <em>how confident</em> we are in each claim. Our <a href="/sources" class="text-accent hover:underline">Sources & Methodology</a> page describes <em>where</em> we gather data and <em>how</em> we select which networks to include. The two pages are complementary — methodology explains process, verification explains output quality.</p>
+
+        <p class="text-xs text-tertiary mt-8">Last updated: March 2026</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
