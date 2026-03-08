@@ -722,41 +722,61 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
 
       <!-- Right: Top Networks — self-contained dark box with particles -->
       <div class="w-full lg:w-[360px] lg:min-w-[360px]" id="networks">
-        <div class="relative overflow-hidden rounded-card shadow-card" id="topNetworksBox">
-          <!-- Particle canvas background -->
-          <canvas id="topNetworksCanvas" class="absolute inset-0 w-full h-full" style="pointer-events: none;" role="presentation" aria-hidden="true"></canvas>
-          <!-- Dark background -->
-          <div class="absolute inset-0 bg-[#111113]"></div>
+        <div class="relative overflow-hidden rounded-card shadow-card bg-[#111113]" id="topNetworksBox">
+          <!-- Particle canvas background (z-[1] above bg, below content) -->
+          <canvas id="topNetworksCanvas" class="absolute inset-0 w-full h-full z-[1]" style="pointer-events: none;" role="presentation" aria-hidden="true"></canvas>
           <!-- Content -->
-          <div class="relative z-10">
-            <div class="flex items-center justify-between px-5 pt-5 pb-3">
+          <div class="relative z-[2]">
+            <div class="flex items-center justify-between px-5 pt-5 pb-2">
               <h2 class="text-[15px] font-bold text-white">Top Networks</h2>
               <a href="/networks" class="text-accent text-[13px] font-medium no-underline hover:underline">All {publishedNetworks.length} &rarr;</a>
             </div>
-            <div class="px-2 pb-3">
-              {top7.map((network, i) => (
+
+            <!-- Top 3: Featured cards -->
+            <div class="px-3 pb-2 space-y-2">
+              {top7.slice(0, 3).map((network, i) => (
                 <a
                   href={`/networks/${network.data.slug}`}
-                  class:list={[
-                    'flex items-center gap-3 px-3 py-[10px] rounded-xl no-underline text-white hover:bg-white/[0.06] transition-colors',
-                  ]}
+                  class="flex items-center gap-4 px-4 py-3.5 rounded-2xl no-underline bg-white/[0.06] hover:bg-white/[0.12] border border-white/[0.06] transition-all duration-200 group"
                 >
-                  <div class="text-[11px] text-white/30 font-bold w-4 text-right flex-shrink-0">{i + 1}</div>
-                  {network.data.logo ? (
-                    <img src={network.data.logo} alt={network.data.name} width="32" height="32" class="w-8 h-8 rounded-lg object-contain flex-shrink-0 bg-white/10 p-0.5" loading="lazy" />
-                  ) : (
-                    <div
-                      class="w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-xs flex-shrink-0"
-                      style={`background: linear-gradient(135deg, ${network.data.gradientFrom}, ${network.data.gradientTo})`}
-                    >
-                      {network.data.shortName}
-                    </div>
-                  )}
+                  <div class="text-[13px] text-white/25 font-black w-5 text-right flex-shrink-0">{i + 1}</div>
+                  <img
+                    src={network.data.logo || ''}
+                    alt={network.data.name}
+                    width="44"
+                    height="44"
+                    class="w-11 h-11 rounded-xl object-cover flex-shrink-0 shadow-sm"
+                    loading="lazy"
+                  />
                   <div class="min-w-0 flex-1">
-                    <div class="text-[13px] font-medium truncate text-white/90">{network.data.name.split(' (')[0]}</div>
-                    <div class="text-[11px] text-white/35 truncate">{network.data.expertCount} experts &middot; {network.data.pricingModel}</div>
+                    <div class="text-[14px] font-semibold text-white/95 truncate group-hover:text-white transition-colors">{network.data.name.split(' (')[0]}</div>
                   </div>
-                  <svg class="w-3.5 h-3.5 flex-shrink-0 text-white/20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                  <svg class="w-4 h-4 flex-shrink-0 text-white/15 group-hover:text-white/40 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </a>
+              ))}
+            </div>
+
+            <!-- Divider -->
+            <div class="mx-5 border-t border-white/[0.06]"></div>
+
+            <!-- 4-7: Compact list -->
+            <div class="px-3 py-2 pb-4">
+              {top7.slice(3).map((network, i) => (
+                <a
+                  href={`/networks/${network.data.slug}`}
+                  class="flex items-center gap-3 px-3 py-2 rounded-xl no-underline hover:bg-white/[0.06] transition-colors group"
+                >
+                  <div class="text-[11px] text-white/20 font-bold w-4 text-right flex-shrink-0">{i + 4}</div>
+                  <img
+                    src={network.data.logo || ''}
+                    alt={network.data.name}
+                    width="28"
+                    height="28"
+                    class="w-7 h-7 rounded-lg object-cover flex-shrink-0"
+                    loading="lazy"
+                  />
+                  <div class="text-[13px] font-medium text-white/70 truncate group-hover:text-white/90 transition-colors">{network.data.name.split(' (')[0]}</div>
+                  <svg class="w-3 h-3 flex-shrink-0 text-white/10 group-hover:text-white/30 transition-colors ml-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
                 </a>
               ))}
             </div>
