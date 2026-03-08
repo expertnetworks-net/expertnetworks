@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ParticleHero from '../../components/ParticleHero.astro';
 import { getCollection } from 'astro:content';
 
 const allNetworks = await getCollection('networks');
@@ -40,21 +41,19 @@ const allHqs = [...new Set(networks.map(n => getRegion(n.data.headquarters || ''
     "isPartOf": { "@type": "WebSite", "name": "ExpertNetworks.net", "url": "https://expertnetworks.net" }
   }}
 >
-  <!-- Header -->
-  <section class="pt-[72px] pb-4 px-6 border-b border-border/40">
-    <div class="max-w-site mx-auto">
-      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
-        <div>
-          <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight text-primary">Expert Networks Directory</h1>
-          <p class="text-secondary text-sm mt-1">{networks.length} providers with independent profiles, pricing, and compliance data.</p>
-        </div>
-        <div class="flex gap-2">
-          <a href="/compare" class="inline-flex items-center gap-1.5 px-4 py-2 bg-accent text-white text-sm font-semibold rounded-lg no-underline hover:bg-accent-hover transition-colors">Compare</a>
-          <a href="/" class="inline-flex items-center gap-1.5 px-4 py-2 bg-bg-secondary text-primary text-sm font-semibold rounded-lg no-underline hover:bg-border/50 transition-colors">&larr; Dashboard</a>
-        </div>
+  <!-- Header with particle background -->
+  <ParticleHero>
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+      <div>
+        <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight text-white">Expert Networks Directory</h1>
+        <p class="text-[#a1a1a6] text-sm mt-1">{networks.length} providers with independent profiles, pricing, and compliance data.</p>
+      </div>
+      <div class="flex gap-2" style="pointer-events: auto;">
+        <a href="/compare" class="inline-flex items-center gap-1.5 px-4 py-2 bg-accent text-white text-sm font-semibold rounded-lg no-underline hover:bg-accent-hover transition-colors">Compare</a>
+        <a href="/" class="inline-flex items-center gap-1.5 px-4 py-2 bg-[rgba(255,255,255,0.08)] text-[#e5e5ea] text-sm font-semibold rounded-lg no-underline hover:bg-[rgba(255,255,255,0.14)] transition-colors border border-[rgba(255,255,255,0.08)]">&larr; Dashboard</a>
       </div>
     </div>
-  </section>
+  </ParticleHero>
 
   <!-- Filter bar -->
   <section class="py-3 px-6 border-b border-border/40 bg-bg-secondary/50">

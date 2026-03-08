@@ -1,0 +1,570 @@
+---
+/**
+ * ParticleHero — Reusable dark interactive particle background for page headers.
+ * Extracted from the homepage hero. Includes the full particle system with:
+ * - Primary particles with idle drift, pointer repulsion, click pulse
+ * - Reveal layer (hidden intelligence mesh near cursor)
+ * - Frame-rate independent animation via delta time
+ * - Reduced motion support (static fallback + mid-session toggle)
+ * - Tab visibility handling (pauses when hidden)
+ * - Full cleanup on teardown
+ * - Nav dark mode while hero is visible
+ */
+interface Props {
+  minHeight?: string;
+}
+const { minHeight = '220px' } = Astro.props;
+---
+
+<section class="relative overflow-hidden bg-[#0d0d0f]" id="particleHero" style={`min-height: ${minHeight}`}>
+  <!-- Canvas -->
+  <canvas id="phCanvas" class="absolute inset-0 w-full h-full" style="pointer-events: none;" role="presentation" aria-hidden="true"></canvas>
+  <!-- Readability vignette -->
+  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 50% 40%, transparent 30%, rgba(13,13,15,0.55) 100%);"></div>
+  <!-- Content slot -->
+  <div class="relative z-10 pt-[88px] pb-8 md:pt-[100px] md:pb-10 px-6" style="pointer-events: none;">
+    <div class="max-w-site mx-auto">
+      <slot />
+    </div>
+  </div>
+  <!-- Interaction surface -->
+  <div id="phInteraction" class="absolute inset-0 z-[5]" style="cursor: default;" aria-hidden="true"></div>
+</section>
+
+<script>
+(function() {
+  // ─── Tuning constants ───
+  const PARTICLE_COUNT_DESKTOP = 80;
+  const PARTICLE_COUNT_TABLET = 50;
+  const PARTICLE_COUNT_MOBILE = 25;
+  const MAX_CONNECTION_DIST = 140;
+  const MAX_CONNECTION_DIST_SQ = MAX_CONNECTION_DIST * MAX_CONNECTION_DIST;
+  const LINE_OPACITY = 0.09;
+  const BASE_PARTICLE_OPACITY = 0.4;
+  const IDLE_DRIFT_STRENGTH = 0.18;
+  const POINTER_INFLUENCE_RADIUS = 180;
+  const POINTER_INFLUENCE_RADIUS_SQ = POINTER_INFLUENCE_RADIUS * POINTER_INFLUENCE_RADIUS;
+  const POINTER_REPULSION_STRENGTH = 130;
+  const REVEAL_RADIUS = 200;
+  const REVEAL_RADIUS_SQ = REVEAL_RADIUS * REVEAL_RADIUS;
+  const REVEAL_OPACITY_BOOST = 0.5;
+  const RECOVERY_SPEED = 0.018;
+  const INTERPOLATION_FACTOR = 0.12;
+  const CLICK_PULSE_STRENGTH = 200;
+  const CLICK_PULSE_DURATION = 500;
+  const DPR_CAP = 2;
+
+  // ─── Reveal layer constants ───
+  const REVEAL_PARTICLE_COUNT_DESKTOP = 100;
+  const REVEAL_PARTICLE_COUNT_TABLET = 60;
+  const REVEAL_PARTICLE_COUNT_MOBILE = 35;
+  const REVEAL_MAX_CONNECTION_DIST = 110;
+  const REVEAL_MAX_CONNECTION_DIST_SQ = REVEAL_MAX_CONNECTION_DIST * REVEAL_MAX_CONNECTION_DIST;
+  const REVEAL_LINE_OPACITY = 0.22;
+  const REVEAL_PARTICLE_OPACITY = 0.6;
+
+  const canvas = document.getElementById('phCanvas');
+  const hero = document.getElementById('particleHero');
+  const interactionLayer = document.getElementById('phInteraction');
+  if (!canvas || !hero || !interactionLayer) return;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  // ─── Reduced motion — live query ───
+  const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let prefersReducedMotion = motionQuery.matches;
+
+  // ─── Responsive tier ───
+  function getTier() {
+    var w = window.innerWidth;
+    if (w >= 1024) return 'desktop';
+    if (w >= 640) return 'tablet';
+    return 'mobile';
+  }
+
+  function getParticleCount(tier) {
+    if (tier === 'desktop') return PARTICLE_COUNT_DESKTOP;
+    if (tier === 'tablet') return PARTICLE_COUNT_TABLET;
+    return PARTICLE_COUNT_MOBILE;
+  }
+
+  function getRevealCount(tier) {
+    if (tier === 'desktop') return REVEAL_PARTICLE_COUNT_DESKTOP;
+    if (tier === 'tablet') return REVEAL_PARTICLE_COUNT_TABLET;
+    return REVEAL_PARTICLE_COUNT_MOBILE;
+  }
+
+  // ─── State ───
+  var pointer = { x: -9999, y: -9999 };
+  var smoothPointer = { x: -9999, y: -9999 };
+  var isPointerInside = false;
+  var clickPulse = { active: false, x: 0, y: 0, startTime: 0 };
+  var particles = [];
+  var revealParticles = [];
+  var animationId = null;
+  var isVisible = true;
+  var currentTier = getTier();
+  var cachedW = 0;
+  var cachedH = 0;
+  var lastTime = 0;
+
+  // ─── Particle factory ───
+  function createParticle(w, h) {
+    return {
+      x: Math.random() * w,
+      y: Math.random() * h,
+      homeX: 0, homeY: 0,
+      vx: (Math.random() - 0.5) * IDLE_DRIFT_STRENGTH,
+      vy: (Math.random() - 0.5) * IDLE_DRIFT_STRENGTH,
+      size: 1 + Math.random() * 1.2,
+      opacity: BASE_PARTICLE_OPACITY * (0.4 + Math.random() * 0.6),
+    };
+  }
+
+  function createRevealParticle(w, h) {
+    return {
+      x: Math.random() * w,
+      y: Math.random() * h,
+      size: 0.8 + Math.random() * 0.8,
+      opacity: REVEAL_PARTICLE_OPACITY * (0.5 + Math.random() * 0.5),
+    };
+  }
+
+  // ─── Resize (caches dimensions) ───
+  function resize() {
+    var rect = hero.getBoundingClientRect();
+    var dpr = Math.min(window.devicePixelRatio || 1, DPR_CAP);
+    cachedW = rect.width;
+    cachedH = rect.height;
+    canvas.width = cachedW * dpr;
+    canvas.height = cachedH * dpr;
+    canvas.style.width = cachedW + 'px';
+    canvas.style.height = cachedH + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    var newTier = getTier();
+    var needsRebuild = (newTier !== currentTier) || particles.length === 0;
+    currentTier = newTier;
+
+    if (needsRebuild) {
+      var count = getParticleCount(currentTier);
+      var revCount = getRevealCount(currentTier);
+      particles = [];
+      revealParticles = [];
+      for (var i = 0; i < count; i++) {
+        var p = createParticle(cachedW, cachedH);
+        p.homeX = p.x;
+        p.homeY = p.y;
+        particles.push(p);
+      }
+      for (var i = 0; i < revCount; i++) {
+        revealParticles.push(createRevealParticle(cachedW, cachedH));
+      }
+    } else {
+      for (var k = 0; k < particles.length; k++) {
+        var p = particles[k];
+        p.homeX = Math.min(p.homeX, cachedW);
+        p.homeY = Math.min(p.homeY, cachedH);
+        p.x = Math.min(p.x, cachedW);
+        p.y = Math.min(p.y, cachedH);
+      }
+    }
+  }
+
+  // ─── Pointer events ───
+  function onPointerMove(e) {
+    var rect = hero.getBoundingClientRect();
+    pointer.x = e.clientX - rect.left;
+    pointer.y = e.clientY - rect.top;
+    isPointerInside = true;
+  }
+  function onPointerLeave() {
+    isPointerInside = false;
+  }
+  function onClick(e) {
+    var rect = hero.getBoundingClientRect();
+    clickPulse.active = true;
+    clickPulse.x = e.clientX - rect.left;
+    clickPulse.y = e.clientY - rect.top;
+    clickPulse.startTime = performance.now();
+  }
+  function onTouchStart(e) {
+    if (e.touches.length > 0) {
+      var rect = hero.getBoundingClientRect();
+      pointer.x = e.touches[0].clientX - rect.left;
+      pointer.y = e.touches[0].clientY - rect.top;
+      isPointerInside = true;
+    }
+  }
+  function onTouchMove(e) {
+    if (e.touches.length > 0) {
+      var rect = hero.getBoundingClientRect();
+      pointer.x = e.touches[0].clientX - rect.left;
+      pointer.y = e.touches[0].clientY - rect.top;
+      isPointerInside = true;
+    }
+  }
+  function onTouchEnd() {
+    isPointerInside = false;
+  }
+
+  interactionLayer.addEventListener('mousemove', onPointerMove, { passive: true });
+  interactionLayer.addEventListener('mouseleave', onPointerLeave, { passive: true });
+  interactionLayer.addEventListener('click', onClick);
+  interactionLayer.addEventListener('touchstart', onTouchStart, { passive: true });
+  interactionLayer.addEventListener('touchmove', onTouchMove, { passive: true });
+  interactionLayer.addEventListener('touchend', onTouchEnd, { passive: true });
+  interactionLayer.addEventListener('touchcancel', onTouchEnd, { passive: true });
+
+  // ─── Intersection Observer ───
+  var observer = new IntersectionObserver(function(entries) {
+    isVisible = entries[0].isIntersecting;
+  }, { threshold: 0.05 });
+  observer.observe(hero);
+
+  // ─── Visibility change ───
+  function onVisibilityChange() {
+    if (document.hidden) {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+      }
+    } else if (!prefersReducedMotion && !animationId) {
+      lastTime = 0;
+      animationId = requestAnimationFrame(draw);
+    }
+  }
+  document.addEventListener('visibilitychange', onVisibilityChange);
+
+  // ─── Draw ───
+  function draw(now) {
+    animationId = requestAnimationFrame(draw);
+    if (!isVisible) return;
+
+    var dt = lastTime ? Math.min((now - lastTime) / 16.667, 3) : 1;
+    lastTime = now;
+
+    var w = cachedW;
+    var h = cachedH;
+    ctx.clearRect(0, 0, w, h);
+
+    if (isPointerInside) {
+      smoothPointer.x += (pointer.x - smoothPointer.x) * INTERPOLATION_FACTOR;
+      smoothPointer.y += (pointer.y - smoothPointer.y) * INTERPOLATION_FACTOR;
+    } else {
+      smoothPointer.x += (-9999 - smoothPointer.x) * 0.02;
+      smoothPointer.y += (-9999 - smoothPointer.y) * 0.02;
+    }
+
+    var pulseStrength = 0;
+    var pulseRadius = 0;
+    var pulseRadiusSq = 0;
+    if (clickPulse.active) {
+      var elapsed = now - clickPulse.startTime;
+      if (elapsed > CLICK_PULSE_DURATION) {
+        clickPulse.active = false;
+      } else {
+        var t = elapsed / CLICK_PULSE_DURATION;
+        pulseStrength = CLICK_PULSE_STRENGTH * (1 - t);
+        pulseRadius = POINTER_INFLUENCE_RADIUS * (1 + t * 1.5);
+        pulseRadiusSq = pulseRadius * pulseRadius;
+      }
+    }
+
+    var spx = smoothPointer.x;
+    var spy = smoothPointer.y;
+    var revealActive = spx > -1000 && spy > -1000;
+
+    // ─── Reveal layer ───
+    if (revealActive) {
+      ctx.strokeStyle = 'rgb(120,140,170)';
+      ctx.lineWidth = 0.5;
+      for (var i = 0; i < revealParticles.length; i++) {
+        var a = revealParticles[i];
+        var dxA = a.x - spx;
+        var dyA = a.y - spy;
+        var distSqA = dxA * dxA + dyA * dyA;
+        if (distSqA > REVEAL_RADIUS_SQ) continue;
+        var distA = Math.sqrt(distSqA);
+        var alphaA = 1 - (distA / REVEAL_RADIUS);
+
+        for (var j = i + 1; j < revealParticles.length; j++) {
+          var b = revealParticles[j];
+          var dxB = b.x - spx;
+          var dyB = b.y - spy;
+          var distSqB = dxB * dxB + dyB * dyB;
+          if (distSqB > REVEAL_RADIUS_SQ) continue;
+
+          var dxAB = a.x - b.x;
+          var dyAB = a.y - b.y;
+          var distSqAB = dxAB * dxAB + dyAB * dyAB;
+          if (distSqAB > REVEAL_MAX_CONNECTION_DIST_SQ) continue;
+
+          var distB = Math.sqrt(distSqB);
+          var distAB = Math.sqrt(distSqAB);
+          var alphaB = 1 - (distB / REVEAL_RADIUS);
+          var lineFade = 1 - (distAB / REVEAL_MAX_CONNECTION_DIST);
+          ctx.globalAlpha = REVEAL_LINE_OPACITY * alphaA * alphaB * lineFade;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+
+      ctx.fillStyle = 'rgb(140,160,190)';
+      for (var i = 0; i < revealParticles.length; i++) {
+        var p = revealParticles[i];
+        var dx = p.x - spx;
+        var dy = p.y - spy;
+        var distSq = dx * dx + dy * dy;
+        if (distSq > REVEAL_RADIUS_SQ) continue;
+        var proximity = 1 - (Math.sqrt(distSq) / REVEAL_RADIUS);
+        ctx.globalAlpha = p.opacity * proximity * REVEAL_OPACITY_BOOST;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    // ─── Primary particles ───
+    ctx.fillStyle = 'rgb(180,180,190)';
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      p.x += p.vx * dt;
+      p.y += p.vy * dt;
+
+      var dx = p.x - spx;
+      var dy = p.y - spy;
+      var distSq = dx * dx + dy * dy;
+      if (distSq < POINTER_INFLUENCE_RADIUS_SQ && distSq > 0) {
+        var dist = Math.sqrt(distSq);
+        var proximity = 1 - dist / POINTER_INFLUENCE_RADIUS;
+        var force = proximity * proximity * POINTER_REPULSION_STRENGTH;
+        p.x += (dx / dist) * force * 0.04 * dt;
+        p.y += (dy / dist) * force * 0.04 * dt;
+      }
+
+      if (clickPulse.active && pulseStrength > 0) {
+        var cdx = p.x - clickPulse.x;
+        var cdy = p.y - clickPulse.y;
+        var cdistSq = cdx * cdx + cdy * cdy;
+        if (cdistSq < pulseRadiusSq && cdistSq > 0) {
+          var cdist = Math.sqrt(cdistSq);
+          var pProx = 1 - cdist / pulseRadius;
+          var pForce = pProx * pProx * pulseStrength;
+          p.x += (cdx / cdist) * pForce * 0.06 * dt;
+          p.y += (cdy / cdist) * pForce * 0.06 * dt;
+        }
+      }
+
+      var recoveryFactor = 1 - Math.pow(1 - RECOVERY_SPEED, dt);
+      p.x += (p.homeX - p.x) * recoveryFactor;
+      p.y += (p.homeY - p.y) * recoveryFactor;
+
+      if (p.x < -10) p.x = w + 10;
+      if (p.x > w + 10) p.x = -10;
+      if (p.y < -10) p.y = h + 10;
+      if (p.y > h + 10) p.y = -10;
+
+      ctx.globalAlpha = p.opacity;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // ─── Connections ───
+    ctx.strokeStyle = 'rgb(180,180,190)';
+    ctx.lineWidth = 0.5;
+    for (var i = 0; i < particles.length; i++) {
+      for (var j = i + 1; j < particles.length; j++) {
+        var a = particles[i];
+        var b = particles[j];
+        var dxAB = a.x - b.x;
+        var dyAB = a.y - b.y;
+        var distSqAB = dxAB * dxAB + dyAB * dyAB;
+        if (distSqAB > MAX_CONNECTION_DIST_SQ) continue;
+        var distAB = Math.sqrt(distSqAB);
+        var lineFade = 1 - (distAB / MAX_CONNECTION_DIST);
+
+        var stress = 1;
+        var midX = (a.x + b.x) * 0.5;
+        var midY = (a.y + b.y) * 0.5;
+        var midDx = midX - spx;
+        var midDy = midY - spy;
+        var midDistSq = midDx * midDx + midDy * midDy;
+        if (midDistSq < POINTER_INFLUENCE_RADIUS_SQ) {
+          stress = Math.sqrt(midDistSq) / POINTER_INFLUENCE_RADIUS;
+          stress = stress * stress;
+        }
+
+        ctx.globalAlpha = LINE_OPACITY * lineFade * stress;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      }
+    }
+
+    // ─── Click pulse ring ───
+    if (clickPulse.active) {
+      var elapsed = now - clickPulse.startTime;
+      var t = elapsed / CLICK_PULSE_DURATION;
+      var ringRadius = 20 + t * POINTER_INFLUENCE_RADIUS * 1.2;
+      ctx.strokeStyle = 'rgb(120,150,200)';
+      ctx.globalAlpha = 0.15 * (1 - t);
+      ctx.lineWidth = 1.5 * (1 - t);
+      ctx.beginPath();
+      ctx.arc(clickPulse.x, clickPulse.y, ringRadius, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+
+    ctx.globalAlpha = 1;
+  }
+
+  // ─── Static fallback ───
+  function drawStatic() {
+    resize();
+    ctx.clearRect(0, 0, cachedW, cachedH);
+    ctx.fillStyle = 'rgb(180,180,190)';
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      ctx.globalAlpha = p.opacity * 0.7;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.strokeStyle = 'rgb(180,180,190)';
+    ctx.lineWidth = 0.5;
+    for (var i = 0; i < particles.length; i++) {
+      for (var j = i + 1; j < particles.length; j++) {
+        var a = particles[i];
+        var b = particles[j];
+        var dxAB = a.x - b.x;
+        var dyAB = a.y - b.y;
+        var distSqAB = dxAB * dxAB + dyAB * dyAB;
+        if (distSqAB > MAX_CONNECTION_DIST_SQ) continue;
+        var distAB = Math.sqrt(distSqAB);
+        var lineFade = 1 - (distAB / MAX_CONNECTION_DIST);
+        ctx.globalAlpha = LINE_OPACITY * lineFade * 0.7;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  // ─── Cleanup ───
+  function cleanup() {
+    if (animationId) {
+      cancelAnimationFrame(animationId);
+      animationId = null;
+    }
+    observer.disconnect();
+    interactionLayer.removeEventListener('mousemove', onPointerMove);
+    interactionLayer.removeEventListener('mouseleave', onPointerLeave);
+    interactionLayer.removeEventListener('click', onClick);
+    interactionLayer.removeEventListener('touchstart', onTouchStart);
+    interactionLayer.removeEventListener('touchmove', onTouchMove);
+    interactionLayer.removeEventListener('touchend', onTouchEnd);
+    interactionLayer.removeEventListener('touchcancel', onTouchEnd);
+    document.removeEventListener('visibilitychange', onVisibilityChange);
+    window.removeEventListener('resize', debouncedResize);
+    motionQuery.removeEventListener('change', onMotionChange);
+  }
+
+  // ─── Reduced motion change ───
+  function onMotionChange(e) {
+    prefersReducedMotion = e.matches;
+    if (prefersReducedMotion) {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+      }
+      drawStatic();
+    } else {
+      if (!animationId) {
+        lastTime = 0;
+        animationId = requestAnimationFrame(draw);
+      }
+    }
+  }
+  motionQuery.addEventListener('change', onMotionChange);
+
+  // ─── Init ───
+  if (prefersReducedMotion) {
+    drawStatic();
+  } else {
+    resize();
+    lastTime = 0;
+    animationId = requestAnimationFrame(draw);
+  }
+
+  var resizeTimeout;
+  function debouncedResize() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(function() {
+      resize();
+      if (prefersReducedMotion) drawStatic();
+    }, 150);
+  }
+  window.addEventListener('resize', debouncedResize, { passive: true });
+  window.addEventListener('beforeunload', cleanup);
+})();
+</script>
+
+<!-- Nav dark mode — makes nav white-on-dark while hero is visible -->
+<script>
+(function() {
+  var nav = document.querySelector('nav');
+  var heroSection = document.getElementById('particleHero');
+  if (!nav || !heroSection) return;
+
+  var brandLink = nav.querySelector('a[href="/"]');
+  var menuBtn = nav.querySelector('#menuBtn');
+  var navLinks = nav.querySelectorAll('ul a');
+  var searchBtn = nav.querySelector('#searchTrigger');
+  var linkedinLink = nav.querySelector('a[aria-label="LinkedIn"]');
+
+  var isDark = false;
+
+  function setDarkNav() {
+    if (isDark) return;
+    isDark = true;
+    nav.style.background = 'rgba(13,13,15,0.82)';
+    nav.style.borderBottomColor = 'rgba(255,255,255,0.06)';
+    if (brandLink) { brandLink.style.color = '#fff'; }
+    if (menuBtn) { menuBtn.style.color = '#a1a1a6'; }
+    navLinks.forEach(function(l) { l.style.color = '#a1a1a6'; });
+    if (searchBtn) { searchBtn.style.background = 'rgba(255,255,255,0.08)'; searchBtn.style.color = '#a1a1a6'; }
+    if (linkedinLink) { linkedinLink.style.color = '#a1a1a6'; }
+  }
+
+  function setLightNav() {
+    if (!isDark) return;
+    isDark = false;
+    nav.style.background = '';
+    nav.style.borderBottomColor = '';
+    if (brandLink) { brandLink.style.color = ''; }
+    if (menuBtn) { menuBtn.style.color = ''; }
+    navLinks.forEach(function(l) { l.style.color = ''; });
+    if (searchBtn) { searchBtn.style.background = ''; searchBtn.style.color = ''; }
+    if (linkedinLink) { linkedinLink.style.color = ''; }
+  }
+
+  function check() {
+    var heroBottom = heroSection.getBoundingClientRect().bottom;
+    if (heroBottom > 52) {
+      setDarkNav();
+    } else {
+      setLightNav();
+    }
+  }
+
+  check();
+  window.addEventListener('scroll', check, { passive: true });
+  window.addEventListener('resize', check, { passive: true });
+})();
+</script>

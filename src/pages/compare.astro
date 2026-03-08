@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ParticleHero from '../components/ParticleHero.astro';
 import CompareTable from '../components/CompareTable.astro';
 ---
 
@@ -15,11 +16,12 @@ import CompareTable from '../components/CompareTable.astro';
     ]
   }}
 >
-  <section class="pt-32 pb-8 px-6">
-    <div class="max-w-site mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-primary">Compare Networks</h1>
-      <p class="text-secondary mt-3 text-lg">Side-by-side comparison of leading expert networks.</p>
+  <!-- Header with particle background -->
+  <ParticleHero minHeight="240px">
+    <div class="text-center">
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">Compare Networks</h1>
+      <p class="text-[#a1a1a6] mt-3 text-base md:text-lg">Side-by-side comparison of leading expert networks.</p>
     </div>
-  </section>
+  </ParticleHero>
   <CompareTable />
 </BaseLayout>
