@@ -5,31 +5,33 @@ const allNetworks = await getCollection('networks');
 const tracked = allNetworks
   .filter(n => n.data.published && n.data.logo)
   .sort((a, b) => (a.data.priority ?? 99) - (b.data.priority ?? 99))
-  .slice(0, 12);
+  .slice(0, 15);
 ---
 
-<section class="py-4 sm:py-5 px-4 sm:px-6 border-b border-border/40 overflow-hidden">
+<section class="py-4 sm:py-5 px-4 sm:px-6 border-b border-border/40 overflow-hidden" id="marqueeSection">
   <div class="max-w-site mx-auto">
     <div class="text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-tertiary mb-2.5 sm:mb-3">Networks Covered</div>
 
-    <!-- Desktop: infinite scrolling marquee -->
-    <div class="marquee-wrap relative hidden sm:block" aria-label="Expert networks covered">
-      <div class="marquee-track flex gap-5 items-center w-max">
-        {[...tracked, ...tracked].map((n) => (
+    <!-- Desktop: JS-powered infinite marquee -->
+    <div class="marquee-wrap relative hidden sm:block" id="marqueeWrap" aria-label="Expert networks covered">
+      <div class="marquee-track flex items-center" id="marqueeTrack" style="gap: 20px;">
+        {tracked.map((n) => (
           <a
             href={`/networks/${n.data.slug}`}
-            class="flex-shrink-0 flex items-center gap-2 px-3 py-2 rounded-lg border border-border/50 bg-white hover:border-accent/40 hover:shadow-sm transition-all group no-underline"
+            class="marquee-item flex-shrink-0 flex items-center gap-2 px-3 py-2 rounded-lg border border-border/50 bg-white hover:border-accent/40 hover:shadow-sm transition-all group no-underline"
             title={n.data.name.split(' (')[0]}
+            draggable="false"
           >
             <img
               src={n.data.logo}
               alt={n.data.name.split(' (')[0]}
               width="24"
               height="24"
-              class="w-6 h-6 rounded object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all"
+              class="w-6 h-6 rounded object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all pointer-events-none"
               loading="lazy"
+              draggable="false"
             />
-            <span class="text-[12px] font-medium text-tertiary group-hover:text-primary transition-colors whitespace-nowrap">
+            <span class="text-[12px] font-medium text-tertiary group-hover:text-primary transition-colors whitespace-nowrap pointer-events-none">
               {n.data.name.split(' (')[0].split(' / ')[0]}
             </span>
           </a>
@@ -64,38 +66,15 @@ const tracked = allNetworks
 </section>
 
 <style>
-  /* Desktop marquee */
   .marquee-wrap {
     mask-image: linear-gradient(to right, transparent, black 48px, black calc(100% - 48px), transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 48px, black calc(100% - 48px), transparent);
   }
 
   .marquee-track {
-    animation: marquee-scroll 40s linear infinite;
+    will-change: transform;
   }
 
-  .marquee-wrap:hover .marquee-track {
-    animation-play-state: paused;
-  }
-
-  @keyframes marquee-scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .marquee-track {
-      animation: none;
-      flex-wrap: wrap;
-      width: auto;
-    }
-    .marquee-wrap {
-      mask-image: none;
-      -webkit-mask-image: none;
-    }
-  }
-
-  /* Hide scrollbar on mobile swipe row */
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -104,3 +83,136 @@ const tracked = allNetworks
     display: none;
   }
 </style>
+
+<script>
+(function() {
+  var wrap = document.getElementById('marqueeWrap');
+  var track = document.getElementById('marqueeTrack');
+  if (!wrap || !track) return;
+
+  // Respect reduced motion
+  var motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (motionQuery.matches) {
+    track.style.flexWrap = 'wrap';
+    track.style.gap = '8px 12px';
+    wrap.style.maskImage = 'none';
+    wrap.style.webkitMaskImage = 'none';
+    return;
+  }
+
+  // ── Config ──
+  var SPEED = 0.5;              // px per frame at 60fps
+  var DECEL_RATE = 0.92;        // hover deceleration (smooth stop)
+  var ACCEL_RATE = 0.06;        // hover release acceleration (smooth start)
+  var GAP = 20;                 // gap between items in px
+
+  // ── Clone items until track is at least 3x viewport wide ──
+  var origItems = track.querySelectorAll('.marquee-item');
+  var origCount = origItems.length;
+  if (origCount === 0) return;
+
+  function getSetWidth() {
+    var last = track.children[origCount - 1];
+    return last.offsetLeft + last.offsetWidth - track.children[0].offsetLeft + GAP;
+  }
+
+  // Clone enough sets to fill 3x the wrapper width
+  function ensureClones() {
+    var wrapWidth = wrap.offsetWidth;
+    var setWidth = getSetWidth();
+    var setsNeeded = Math.ceil((wrapWidth * 3) / setWidth) + 1;
+    var currentSets = Math.round(track.children.length / origCount);
+
+    while (currentSets < setsNeeded) {
+      for (var i = 0; i < origCount; i++) {
+        var clone = origItems[i].cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        clone.setAttribute('tabindex', '-1');
+        track.appendChild(clone);
+      }
+      currentSets++;
+    }
+  }
+  ensureClones();
+
+  // ── State ──
+  var offset = 0;
+  var currentSpeed = SPEED;
+  var targetSpeed = SPEED;
+  var isHovered = false;
+  var animId = null;
+  var isVisible = true;
+  var setWidth = getSetWidth();
+  var lastTime = 0;
+
+  // ── Hover: smooth deceleration/acceleration ──
+  wrap.addEventListener('mouseenter', function() {
+    isHovered = true;
+    targetSpeed = 0;
+  }, { passive: true });
+
+  wrap.addEventListener('mouseleave', function() {
+    isHovered = false;
+    targetSpeed = SPEED;
+  }, { passive: true });
+
+  // ── Visibility: stop animation when off-screen ──
+  var observer = new IntersectionObserver(function(entries) {
+    isVisible = entries[0].isIntersecting;
+    if (isVisible && !animId) {
+      lastTime = 0;
+      animId = requestAnimationFrame(tick);
+    }
+  }, { threshold: 0.01 });
+  observer.observe(wrap);
+
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      if (animId) { cancelAnimationFrame(animId); animId = null; }
+    } else if (isVisible && !animId) {
+      lastTime = 0;
+      animId = requestAnimationFrame(tick);
+    }
+  });
+
+  // ── Animation loop ──
+  function tick(now) {
+    if (!isVisible) { animId = null; return; }
+    animId = requestAnimationFrame(tick);
+
+    var dt = lastTime ? Math.min((now - lastTime) / 16.667, 3) : 1;
+    lastTime = now;
+
+    // Smooth speed transitions
+    if (isHovered) {
+      currentSpeed *= Math.pow(DECEL_RATE, dt);
+      if (currentSpeed < 0.01) currentSpeed = 0;
+    } else {
+      currentSpeed += (targetSpeed - currentSpeed) * ACCEL_RATE * dt;
+    }
+
+    offset += currentSpeed * dt;
+
+    // Seamless reset: when we've scrolled one full set, snap back
+    if (offset >= setWidth) {
+      offset -= setWidth;
+    }
+
+    track.style.transform = 'translate3d(' + (-offset) + 'px, 0, 0)';
+  }
+
+  // ── Resize handling ──
+  var resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      ensureClones();
+      setWidth = getSetWidth();
+    }, 200);
+  }, { passive: true });
+
+  // ── Start ──
+  lastTime = 0;
+  animId = requestAnimationFrame(tick);
+})();
+</script>
