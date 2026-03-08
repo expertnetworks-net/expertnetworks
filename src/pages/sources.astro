@@ -4,7 +4,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
   title="Sources & Methodology — ExpertNetworks.net"
-  description="How ExpertNetworks.net gathers and verifies data about expert networks. Learn about our sources, inclusion criteria, and methodology for tracking the expert network industry."
+  description="How ExpertNetworks.net gathers, weighs, labels, and updates information across provider profiles, pricing pages, and industry news. Public-source research with clear labeling."
+  canonicalPath="/sources"
   jsonLd={{
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -14,57 +15,563 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     ]
   }}
 >
-  <section class="pt-32 pb-24 px-6">
-    <div class="max-w-3xl mx-auto">
-      <a href="/" class="inline-flex items-center gap-1 text-accent text-sm font-medium no-underline mb-8 hover:underline">
-        &larr; Home
-      </a>
 
-      <h1 class="text-3xl font-extrabold text-primary mb-8">Sources & Methodology</h1>
+  <!-- ═══ 1. HERO ═══ -->
+  <section class="relative overflow-hidden bg-[#0a0a0c]" id="sourcesHero">
+    <!-- Grid texture -->
+    <div class="absolute inset-0 opacity-[0.025]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 50% 60%, rgba(0,113,227,0.05) 0%, transparent 60%);"></div>
 
-      <div class="prose prose-sm text-secondary leading-relaxed space-y-6">
-        <h2 class="text-lg font-bold text-primary">How We Gather Data</h2>
-        <p>Network profiles are compiled from publicly available information including company websites, press releases, industry reports, regulatory filings, and third-party news coverage. We do not use proprietary or confidential data.</p>
+    <div class="relative z-10 pt-[100px] pb-14 md:pt-[120px] md:pb-18 lg:pt-[136px] lg:pb-20 px-6">
+      <div class="max-w-site mx-auto">
+        <div class="max-w-2xl">
+          <div class="inline-flex items-center gap-2 mb-5 opacity-0 src-fade-up src-delay-1">
+            <span class="w-8 h-px bg-[rgba(0,113,227,0.5)]"></span>
+            <span class="text-[11px] font-semibold tracking-[0.15em] uppercase text-[#6e8aaf]">Research standards</span>
+          </div>
+          <h1 class="text-[2rem] md:text-[2.75rem] lg:text-[3rem] font-extrabold text-white leading-[1.12] tracking-tight mb-4 opacity-0 src-fade-up src-delay-2">
+            Sources & Methodology
+          </h1>
+          <p class="text-[#9a9aa0] text-base md:text-lg leading-relaxed mb-6 max-w-xl opacity-0 src-fade-up src-delay-3">
+            How ExpertNetworks.net gathers, weighs, labels, and updates information across provider profiles, pricing pages, and industry news.
+          </p>
+          <p class="text-[#6e6e73] text-sm mb-7 opacity-0 src-fade-up src-delay-3">
+            Public-source research. Clear labeling. Corrections over ego.
+          </p>
 
-        <h2 class="text-lg font-bold text-primary">Data Points We Track</h2>
-        <p>Each network profile includes the following where available:</p>
-        <ul class="list-disc pl-5 space-y-1 text-sm">
-          <li>Company name, headquarters, and founding year</li>
-          <li>Approximate expert count and employee count</li>
-          <li>Core services and AI capabilities</li>
-          <li>Industries served and geographic focus</li>
-          <li>Pricing model</li>
-          <li>Key differentiators</li>
-          <li>Compliance approach (MNPI policies, vetting procedures)</li>
-          <li>Best-fit buyer persona (PE, consulting, hedge fund, corporate)</li>
-        </ul>
+          <!-- Trust pills -->
+          <div class="flex flex-wrap gap-2 opacity-0 src-fade-up src-delay-4">
+            <span class="inline-flex items-center px-3 py-1.5 rounded-full text-[11px] font-semibold text-[#6e8aaf] bg-[rgba(0,113,227,0.08)] border border-[rgba(0,113,227,0.12)]">Public-source only</span>
+            <span class="inline-flex items-center px-3 py-1.5 rounded-full text-[11px] font-semibold text-[#6e8aaf] bg-[rgba(0,113,227,0.08)] border border-[rgba(0,113,227,0.12)]">No paid placement</span>
+            <span class="inline-flex items-center px-3 py-1.5 rounded-full text-[11px] font-semibold text-[#6e8aaf] bg-[rgba(0,113,227,0.08)] border border-[rgba(0,113,227,0.12)]">Claims labeled</span>
+            <span class="inline-flex items-center px-3 py-1.5 rounded-full text-[11px] font-semibold text-[#6e8aaf] bg-[rgba(0,113,227,0.08)] border border-[rgba(0,113,227,0.12)]">Corrections welcome</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
-        <h2 class="text-lg font-bold text-primary">Expert Counts & Employee Numbers</h2>
-        <p>These figures are approximate and typically sourced from company websites, LinkedIn, press releases, and industry reports. Expert counts in particular are self-reported by networks and vary in definition — some count registered experts, others count active or vetted experts. We report the most commonly cited figure and note the source date.</p>
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.06)] to-transparent"></div>
+  </section>
 
-        <h2 class="text-lg font-bold text-primary">News Curation</h2>
-        <p>Industry news is curated from third-party journalism, industry reports, and analyst coverage. We label the source of each article. Where a news item originates from a press release wire service (e.g., Business Wire, PR Newswire), we label it as such — these are company-originated announcements distributed via paid channels, not independent reporting.</p>
 
-        <h2 class="text-lg font-bold text-primary">What We Exclude</h2>
-        <p>We aim to exclude self-promotional content disguised as news. However, we may include company announcements when they contain material facts (funding rounds, acquisitions, product launches) and we label them honestly as company-sourced.</p>
+  <!-- ═══ 2. WHAT THIS PAGE COVERS ═══ -->
+  <section class="relative bg-[#0d0d10] py-16 md:py-20 px-6">
+    <div class="max-w-site mx-auto">
+      <div class="max-w-3xl mx-auto fade-in">
+        <div class="rounded-2xl p-7 md:p-8 border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.02)]" style="backdrop-filter: blur(8px);">
+          <h2 class="text-lg font-bold text-white mb-3">What this page covers</h2>
+          <p class="text-[#9a9aa0] text-[14px] leading-[1.75]">
+            This page explains how information is collected, how different source types are weighed, how claims are labeled, and how corrections are handled. The goal is not to imply perfect certainty. The goal is to make public information more usable, more comparable, and more honest about its limits.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.04)] to-transparent"></div>
+  </section>
 
-        <h2 class="text-lg font-bold text-primary">Corrections & Updates</h2>
-        <p>If you identify inaccurate information on this site, please reach out. We review corrections promptly and update profiles with a new "last updated" timestamp. Each profile shows when it was last reviewed.</p>
 
-        <h2 class="text-lg font-bold text-primary">Inclusion Criteria</h2>
-        <p>To be listed on ExpertNetworks.net, a company must:</p>
-        <ul class="list-disc pl-5 space-y-1 text-sm">
-          <li>Operate primarily as an expert network (connecting clients with subject-matter experts)</li>
-          <li>Have a public-facing website with verifiable information</li>
-          <li>Be actively operating (not defunct or acquired without a successor product)</li>
-        </ul>
-        <p>We do not charge for inclusion and do not accept payment for favorable profiles.</p>
+  <!-- ═══ 3. HOW WE GATHER AND WEIGH INFORMATION ═══ -->
+  <section class="relative bg-[#0b0b0e] py-20 md:py-24 px-6">
+    <div class="max-w-site mx-auto">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-4 fade-in">How we gather and weigh information</h2>
+        <p class="text-[#9a9aa0] text-[15px] leading-[1.75] mb-10 fade-in">
+          ExpertNetworks.net compiles information from publicly available materials, including company websites, product pages, regulatory filings, press releases, industry reports, and independent news coverage. Not all public sources carry the same evidentiary weight.
+        </p>
 
-        <h2 class="text-lg font-bold text-primary">Limitations</h2>
-        <p>This site does not yet cover the full landscape of 100+ active expert networks globally. We are expanding coverage and prioritize accuracy over quantity. Our current directory is a growing subset, not an exhaustive list.</p>
+        <!-- Source hierarchy cards -->
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="fade-in stagger-1 rounded-2xl p-6 border border-[rgba(0,113,227,0.12)] bg-[rgba(0,113,227,0.03)]">
+            <div class="flex items-center gap-2.5 mb-3">
+              <div class="w-7 h-7 rounded-lg bg-[rgba(0,113,227,0.15)] flex items-center justify-center">
+                <span class="text-[11px] font-bold text-[#5ba4e6]">1</span>
+              </div>
+              <h3 class="text-[14px] font-bold text-white">Primary sources</h3>
+            </div>
+            <p class="text-[#6e6e73] text-[13px] leading-relaxed">
+              Company websites, official product pages, regulatory filings, public records.
+            </p>
+          </div>
 
-        <p class="text-xs text-tertiary mt-8">Last updated: March 2026</p>
+          <div class="fade-in stagger-2 rounded-2xl p-6 border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.02)]">
+            <div class="flex items-center gap-2.5 mb-3">
+              <div class="w-7 h-7 rounded-lg bg-[rgba(255,255,255,0.06)] flex items-center justify-center">
+                <span class="text-[11px] font-bold text-[#9a9aa0]">2</span>
+              </div>
+              <h3 class="text-[14px] font-bold text-white">Independent reporting</h3>
+            </div>
+            <p class="text-[#6e6e73] text-[13px] leading-relaxed">
+              Reputable journalism, trade reporting, public interviews, analyst coverage.
+            </p>
+          </div>
+
+          <div class="fade-in stagger-3 rounded-2xl p-6 border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.02)]">
+            <div class="flex items-center gap-2.5 mb-3">
+              <div class="w-7 h-7 rounded-lg bg-[rgba(255,255,255,0.06)] flex items-center justify-center">
+                <span class="text-[11px] font-bold text-[#9a9aa0]">3</span>
+              </div>
+              <h3 class="text-[14px] font-bold text-white">Company-originated</h3>
+            </div>
+            <p class="text-[#6e6e73] text-[13px] leading-relaxed">
+              Press releases, investor updates, marketing materials, sponsored content.
+            </p>
+          </div>
+
+          <div class="fade-in stagger-4 rounded-2xl p-6 border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.02)]">
+            <div class="flex items-center gap-2.5 mb-3">
+              <div class="w-7 h-7 rounded-lg bg-[rgba(255,255,255,0.06)] flex items-center justify-center">
+                <span class="text-[11px] font-bold text-[#9a9aa0]">4</span>
+              </div>
+              <h3 class="text-[14px] font-bold text-white">Editorial synthesis</h3>
+            </div>
+            <p class="text-[#6e6e73] text-[13px] leading-relaxed">
+              Comparative analysis and clearly labeled inferences drawn from public evidence.
+            </p>
+          </div>
+        </div>
+
+        <p class="text-[#6e6e73] text-[13px] leading-relaxed mt-6 fade-in">
+          In general, official disclosures, current product materials, and independently reported facts are weighted more heavily than promotional content or unattributed summaries.
+        </p>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.04)] to-transparent"></div>
+  </section>
+
+
+  <!-- ═══ 4. WHAT WE TRACK ═══ -->
+  <section class="relative bg-[#0d0d10] py-20 md:py-24 px-6">
+    <div class="max-w-site mx-auto">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-3 fade-in">What we track</h2>
+        <p class="text-[#9a9aa0] text-[14px] leading-relaxed mb-8 fade-in">
+          Profiles aim to capture the fields buyers actually compare: structure, pricing, compliance, service model, content access, and operating focus.
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div class="fade-in stagger-1 rounded-xl p-4 border border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.015)] text-center">
+            <div class="w-8 h-8 rounded-lg bg-[rgba(0,113,227,0.08)] flex items-center justify-center mx-auto mb-2.5">
+              <svg class="w-4 h-4 text-[#5ba4e6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+            </div>
+            <div class="text-[12px] font-semibold text-white">Company basics</div>
+          </div>
+          <div class="fade-in stagger-2 rounded-xl p-4 border border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.015)] text-center">
+            <div class="w-8 h-8 rounded-lg bg-[rgba(0,113,227,0.08)] flex items-center justify-center mx-auto mb-2.5">
+              <svg class="w-4 h-4 text-[#5ba4e6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="text-[12px] font-semibold text-white">Scale indicators</div>
+          </div>
+          <div class="fade-in stagger-3 rounded-xl p-4 border border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.015)] text-center">
+            <div class="w-8 h-8 rounded-lg bg-[rgba(0,113,227,0.08)] flex items-center justify-center mx-auto mb-2.5">
+              <svg class="w-4 h-4 text-[#5ba4e6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <div class="text-[12px] font-semibold text-white">Services</div>
+          </div>
+          <div class="fade-in stagger-4 rounded-xl p-4 border border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.015)] text-center">
+            <div class="w-8 h-8 rounded-lg bg-[rgba(0,113,227,0.08)] flex items-center justify-center mx-auto mb-2.5">
+              <svg class="w-4 h-4 text-[#5ba4e6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a4 4 0 0 1 4 4c0 2-2 3-2 5h-4c0-2-2-3-2-5a4 4 0 0 1 4-4z"/><path d="M10 17h4"/><path d="M10 20h4"/></svg>
+            </div>
+            <div class="text-[12px] font-semibold text-white">AI capabilities</div>
+          </div>
+          <div class="fade-in stagger-5 rounded-xl p-4 border border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.015)] text-center">
+            <div class="w-8 h-8 rounded-lg bg-[rgba(0,113,227,0.08)] flex items-center justify-center mx-auto mb-2.5">
+              <svg class="w-4 h-4 text-[#5ba4e6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="text-[12px] font-semibold text-white">Pricing model</div>
+          </div>
+          <div class="fade-in stagger-6 rounded-xl p-4 border border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.015)] text-center">
+            <div class="w-8 h-8 rounded-lg bg-[rgba(0,113,227,0.08)] flex items-center justify-center mx-auto mb-2.5">
+              <svg class="w-4 h-4 text-[#5ba4e6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="text-[12px] font-semibold text-white">Compliance</div>
+          </div>
+          <div class="fade-in stagger-7 rounded-xl p-4 border border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.015)] text-center">
+            <div class="w-8 h-8 rounded-lg bg-[rgba(0,113,227,0.08)] flex items-center justify-center mx-auto mb-2.5">
+              <svg class="w-4 h-4 text-[#5ba4e6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"/></svg>
+            </div>
+            <div class="text-[12px] font-semibold text-white">Geography</div>
+          </div>
+          <div class="fade-in stagger-8 rounded-xl p-4 border border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.015)] text-center">
+            <div class="w-8 h-8 rounded-lg bg-[rgba(0,113,227,0.08)] flex items-center justify-center mx-auto mb-2.5">
+              <svg class="w-4 h-4 text-[#5ba4e6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div class="text-[12px] font-semibold text-white">Buyer fit</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.04)] to-transparent"></div>
+  </section>
+
+
+  <!-- ═══ 5. CLAIM LABELS ═══ -->
+  <section class="relative bg-[#0a0a0c] py-20 md:py-24 px-6 overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.02]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+    <div class="max-w-site mx-auto relative">
+      <div class="max-w-3xl mx-auto">
+        <div class="inline-flex items-center gap-2 mb-4 fade-in">
+          <span class="w-8 h-px bg-[rgba(0,113,227,0.4)]"></span>
+          <span class="text-[10px] font-semibold tracking-[0.18em] uppercase text-[#5a7a9e]">Evidence standards</span>
+          <span class="w-8 h-px bg-[rgba(0,113,227,0.4)]"></span>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-3 fade-in">How claims are labeled</h2>
+        <p class="text-[#9a9aa0] text-[14px] leading-relaxed mb-10 fade-in">
+          Every factual claim in a network profile is assigned one of four labels. This system matches the site's <a href="/verification" class="text-[#5ba4e6] hover:underline">verification framework</a>.
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <!-- Verified -->
+          <div class="fade-in stagger-1 rounded-2xl p-6 border border-[rgba(48,209,88,0.15)] bg-[rgba(48,209,88,0.03)]">
+            <div class="flex items-center gap-2.5 mb-3">
+              <span class="w-2.5 h-2.5 rounded-full bg-accent-green"></span>
+              <h3 class="text-[14px] font-bold text-white">Verified</h3>
+            </div>
+            <p class="text-[#9a9aa0] text-[13px] leading-relaxed mb-2">
+              Directly supported by primary public sources or multiple credible sources.
+            </p>
+            <p class="text-[#4a4a52] text-[11px] leading-relaxed">
+              E.g., founding year from incorporation records, headquarters from regulatory filings.
+            </p>
+          </div>
+
+          <!-- Positioned -->
+          <div class="fade-in stagger-2 rounded-2xl p-6 border border-[rgba(0,113,227,0.15)] bg-[rgba(0,113,227,0.03)]">
+            <div class="flex items-center gap-2.5 mb-3">
+              <span class="w-2.5 h-2.5 rounded-full bg-accent"></span>
+              <h3 class="text-[14px] font-bold text-white">Positioned</h3>
+            </div>
+            <p class="text-[#9a9aa0] text-[13px] leading-relaxed mb-2">
+              Company-originated claim or marketing framing, presented as such.
+            </p>
+            <p class="text-[#4a4a52] text-[11px] leading-relaxed">
+              E.g., expert count from company website, service descriptions from product pages.
+            </p>
+          </div>
+
+          <!-- Inferred -->
+          <div class="fade-in stagger-3 rounded-2xl p-6 border border-[rgba(255,159,10,0.15)] bg-[rgba(255,159,10,0.03)]">
+            <div class="flex items-center gap-2.5 mb-3">
+              <span class="w-2.5 h-2.5 rounded-full bg-accent-orange"></span>
+              <h3 class="text-[14px] font-bold text-white">Inferred</h3>
+            </div>
+            <p class="text-[#9a9aa0] text-[13px] leading-relaxed mb-2">
+              Editorial conclusion drawn from available public evidence.
+            </p>
+            <p class="text-[#4a4a52] text-[11px] leading-relaxed">
+              E.g., pricing model estimated from job postings, geographic scope from office locations.
+            </p>
+          </div>
+
+          <!-- Estimated -->
+          <div class="fade-in stagger-4 rounded-2xl p-6 border border-[rgba(191,90,242,0.15)] bg-[rgba(191,90,242,0.03)]">
+            <div class="flex items-center gap-2.5 mb-3">
+              <span class="w-2.5 h-2.5 rounded-full bg-accent-purple"></span>
+              <h3 class="text-[14px] font-bold text-white">Estimated</h3>
+            </div>
+            <p class="text-[#9a9aa0] text-[13px] leading-relaxed mb-2">
+              Approximate figure used when definitions vary or precise disclosure is unavailable.
+            </p>
+            <p class="text-[#4a4a52] text-[11px] leading-relaxed">
+              E.g., employee count from LinkedIn, expert network market size from analyst reports.
+            </p>
+          </div>
+        </div>
+
+        <p class="text-[#6e6e73] text-[13px] leading-relaxed mt-6 fade-in">
+          Labels are assigned per field, not per profile. A single network may have its founding year marked as verified, its expert count as positioned, and its pricing model as inferred — because each data point has a different evidence basis.
+        </p>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.04)] to-transparent"></div>
+  </section>
+
+
+  <!-- ═══ 6. NUMBERS NEED CONTEXT ═══ -->
+  <section class="relative bg-[#0d0d10] py-20 md:py-24 px-6">
+    <div class="max-w-site mx-auto">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-xl md:text-2xl font-bold text-white mb-4 fade-in">Expert counts, employee counts, and other approximate figures</h2>
+        <p class="text-[#9a9aa0] text-[14px] leading-[1.75] mb-8 fade-in">
+          Scale metrics are often the least standardized fields in the category. Expert counts are frequently self-reported and may refer to registered, available, active, or vetted experts. Employee counts may vary across company disclosures, LinkedIn-derived estimates, and third-party databases.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-5 fade-in">
+          <!-- Common issues -->
+          <div class="rounded-2xl p-6 border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.02)]">
+            <h3 class="text-[13px] font-bold text-[#9a9aa0] uppercase tracking-wide mb-4">Common issues</h3>
+            <ul class="space-y-2.5">
+              <li class="flex items-start gap-2.5 text-[#6e6e73] text-[13px] leading-relaxed">
+                <span class="w-1 h-1 rounded-full bg-[rgba(255,159,10,0.5)] mt-2 shrink-0"></span>
+                Different definitions of "expert" across providers
+              </li>
+              <li class="flex items-start gap-2.5 text-[#6e6e73] text-[13px] leading-relaxed">
+                <span class="w-1 h-1 rounded-full bg-[rgba(255,159,10,0.5)] mt-2 shrink-0"></span>
+                Self-reporting without standardized methodology
+              </li>
+              <li class="flex items-start gap-2.5 text-[#6e6e73] text-[13px] leading-relaxed">
+                <span class="w-1 h-1 rounded-full bg-[rgba(255,159,10,0.5)] mt-2 shrink-0"></span>
+                Stale or infrequently updated figures
+              </li>
+              <li class="flex items-start gap-2.5 text-[#6e6e73] text-[13px] leading-relaxed">
+                <span class="w-1 h-1 rounded-full bg-[rgba(255,159,10,0.5)] mt-2 shrink-0"></span>
+                Conflicting estimates across third-party databases
+              </li>
+            </ul>
+          </div>
+
+          <!-- How we handle them -->
+          <div class="rounded-2xl p-6 border border-[rgba(0,113,227,0.1)] bg-[rgba(0,113,227,0.02)]">
+            <h3 class="text-[13px] font-bold text-[#5ba4e6] uppercase tracking-wide mb-4">How we handle them</h3>
+            <ul class="space-y-2.5">
+              <li class="flex items-start gap-2.5 text-[#9a9aa0] text-[13px] leading-relaxed">
+                <span class="w-1 h-1 rounded-full bg-[rgba(0,113,227,0.5)] mt-2 shrink-0"></span>
+                Use the most commonly cited current figure
+              </li>
+              <li class="flex items-start gap-2.5 text-[#9a9aa0] text-[13px] leading-relaxed">
+                <span class="w-1 h-1 rounded-full bg-[rgba(0,113,227,0.5)] mt-2 shrink-0"></span>
+                Note approximation and source where possible
+              </li>
+              <li class="flex items-start gap-2.5 text-[#9a9aa0] text-[13px] leading-relaxed">
+                <span class="w-1 h-1 rounded-full bg-[rgba(0,113,227,0.5)] mt-2 shrink-0"></span>
+                Prefer primary sources over aggregated estimates
+              </li>
+              <li class="flex items-start gap-2.5 text-[#9a9aa0] text-[13px] leading-relaxed">
+                <span class="w-1 h-1 rounded-full bg-[rgba(0,113,227,0.5)] mt-2 shrink-0"></span>
+                Avoid false precision — directional is better than wrong
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="text-[#6e6e73] text-[13px] leading-relaxed mt-6 fade-in">
+          Where exact comparability is not possible, figures are treated as directional unless otherwise noted.
+        </p>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.04)] to-transparent"></div>
+  </section>
+
+
+  <!-- ═══ 7. NEWS CURATION AND SOURCE DISCLOSURE ═══ -->
+  <section class="relative bg-[#0b0b0e] py-20 md:py-24 px-6">
+    <div class="max-w-site mx-auto">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-xl md:text-2xl font-bold text-white mb-4 fade-in">News curation and source disclosure</h2>
+        <p class="text-[#9a9aa0] text-[14px] leading-[1.75] mb-8 fade-in">
+          News items are curated from independent journalism, trade reporting, industry analysis, and selected company-originated announcements. When a news item originates from a press release wire service or another company-distributed channel, it is labeled clearly as company-originated rather than treated as equivalent to independent reporting.
+        </p>
+
+        <!-- Source type legend -->
+        <div class="grid sm:grid-cols-2 gap-3 fade-in">
+          <div class="flex items-center gap-3 rounded-xl px-4 py-3 border border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.015)]">
+            <span class="w-2 h-2 rounded-full bg-accent-green shrink-0"></span>
+            <span class="text-[13px] text-[#9a9aa0]">Independent reporting</span>
+          </div>
+          <div class="flex items-center gap-3 rounded-xl px-4 py-3 border border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.015)]">
+            <span class="w-2 h-2 rounded-full bg-accent shrink-0"></span>
+            <span class="text-[13px] text-[#9a9aa0]">Trade / analyst coverage</span>
+          </div>
+          <div class="flex items-center gap-3 rounded-xl px-4 py-3 border border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.015)]">
+            <span class="w-2 h-2 rounded-full bg-accent-orange shrink-0"></span>
+            <span class="text-[13px] text-[#9a9aa0]">Company-originated announcement</span>
+          </div>
+          <div class="flex items-center gap-3 rounded-xl px-4 py-3 border border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.015)]">
+            <span class="w-2 h-2 rounded-full bg-accent-purple shrink-0"></span>
+            <span class="text-[13px] text-[#9a9aa0]">Public filing / official record</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.04)] to-transparent"></div>
+  </section>
+
+
+  <!-- ═══ 8. WHAT WE EXCLUDE ═══ -->
+  <section class="relative bg-[#0d0d10] py-16 md:py-20 px-6">
+    <div class="max-w-site mx-auto">
+      <div class="max-w-3xl mx-auto fade-in">
+        <h2 class="text-xl md:text-2xl font-bold text-white mb-4">What we exclude</h2>
+        <p class="text-[#9a9aa0] text-[14px] leading-[1.75]">
+          We generally avoid promotional material presented as if it were neutral reporting. Company announcements may still be included when they contain material facts — such as funding rounds, acquisitions, product launches, or major leadership changes — but their origin is disclosed clearly.
+        </p>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.04)] to-transparent"></div>
+  </section>
+
+
+  <!-- ═══ 9. INCLUSION CRITERIA ═══ -->
+  <section class="relative bg-[#0b0b0e] py-16 md:py-20 px-6">
+    <div class="max-w-site mx-auto">
+      <div class="max-w-3xl mx-auto fade-in">
+        <h2 class="text-xl md:text-2xl font-bold text-white mb-4">Inclusion criteria</h2>
+        <p class="text-[#9a9aa0] text-[14px] leading-[1.75] mb-6">
+          To be listed, a company should generally:
+        </p>
+
+        <div class="space-y-3 mb-6">
+          <div class="flex items-start gap-3 rounded-xl px-5 py-4 border border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.015)]">
+            <span class="w-6 h-6 rounded-lg bg-[rgba(0,113,227,0.1)] flex items-center justify-center shrink-0 mt-0.5">
+              <span class="text-[11px] font-bold text-[#5ba4e6]">1</span>
+            </span>
+            <span class="text-[#9a9aa0] text-[14px] leading-relaxed">Operate primarily as an expert network or closely related expert-access platform</span>
+          </div>
+          <div class="flex items-start gap-3 rounded-xl px-5 py-4 border border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.015)]">
+            <span class="w-6 h-6 rounded-lg bg-[rgba(0,113,227,0.1)] flex items-center justify-center shrink-0 mt-0.5">
+              <span class="text-[11px] font-bold text-[#5ba4e6]">2</span>
+            </span>
+            <span class="text-[#9a9aa0] text-[14px] leading-relaxed">Have a public-facing presence with verifiable information</span>
+          </div>
+          <div class="flex items-start gap-3 rounded-xl px-5 py-4 border border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.015)]">
+            <span class="w-6 h-6 rounded-lg bg-[rgba(0,113,227,0.1)] flex items-center justify-center shrink-0 mt-0.5">
+              <span class="text-[11px] font-bold text-[#5ba4e6]">3</span>
+            </span>
+            <span class="text-[#9a9aa0] text-[14px] leading-relaxed">Appear to be actively operating rather than defunct or absorbed without a continuing product identity</span>
+          </div>
+        </div>
+
+        <p class="text-[#5ba4e6] text-[14px] font-semibold">
+          We do not charge for inclusion and do not accept payment for favorable profiles.
+        </p>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.04)] to-transparent"></div>
+  </section>
+
+
+  <!-- ═══ 10. CORRECTIONS AND REVISIONS ═══ -->
+  <section class="relative bg-[#0d0d10] py-20 md:py-24 px-6">
+    <div class="max-w-site mx-auto">
+      <div class="max-w-3xl mx-auto fade-in">
+        <div class="rounded-2xl p-8 md:p-10 border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.02)]" style="backdrop-filter: blur(8px);">
+          <h2 class="text-xl md:text-2xl font-bold text-white mb-2">Corrections and revisions</h2>
+          <p class="text-[#6e6e73] text-[13px] mb-6">How factual errors are handled.</p>
+
+          <p class="text-[#9a9aa0] text-[14px] leading-[1.75] mb-6">
+            If you identify a factual error, contact us with supporting public evidence. Corrections are reviewed against publicly available documentation, not against marketing preference. Material inaccuracies are revised clearly, with an updated timestamp. Accuracy matters more than speed.
+          </p>
+
+          <div class="grid sm:grid-cols-3 gap-4 pt-6 border-t border-[rgba(255,255,255,0.04)]">
+            <div class="text-center">
+              <div class="text-[12px] font-bold text-[#5ba4e6] mb-1">Evidence over assertion</div>
+              <div class="text-[11px] text-[#4a4a52]">Claims require sources</div>
+            </div>
+            <div class="text-center">
+              <div class="text-[12px] font-bold text-[#5ba4e6] mb-1">Clarity over convenience</div>
+              <div class="text-[11px] text-[#4a4a52]">Accuracy trumps flattery</div>
+            </div>
+            <div class="text-center">
+              <div class="text-[12px] font-bold text-[#5ba4e6] mb-1">Revision over defensiveness</div>
+              <div class="text-[11px] text-[#4a4a52]">When wrong, we correct</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.04)] to-transparent"></div>
+  </section>
+
+
+  <!-- ═══ 11. LIMITATIONS ═══ -->
+  <section class="relative bg-[#0b0b0e] py-16 md:py-20 px-6">
+    <div class="max-w-site mx-auto">
+      <div class="max-w-3xl mx-auto fade-in">
+        <h2 class="text-xl md:text-2xl font-bold text-white mb-4">Limitations</h2>
+        <p class="text-[#9a9aa0] text-[14px] leading-[1.75]">
+          This directory is a curated and expanding subset of the market, not a complete census. Coverage depth varies by provider, and some fields are easier to verify than others. Where data is partial, approximate, or inconsistent across sources, the aim is to label that uncertainty rather than hide it.
+        </p>
+        <p class="text-[#4a4a52] text-[11px] mt-6">Last updated: March 2026</p>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.04)] to-transparent"></div>
+  </section>
+
+
+  <!-- ═══ 12. CLOSING CTA ═══ -->
+  <section class="relative bg-[#0a0a0c] py-16 md:py-20 px-6">
+    <div class="max-w-site mx-auto text-center fade-in">
+      <h2 class="text-xl md:text-2xl font-bold text-white mb-3">Questions, corrections, or sourced feedback?</h2>
+      <p class="text-[#9a9aa0] text-[14px] mb-7">Help improve the public record.</p>
+
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="mailto:contact@expertnetworks.net" class="inline-flex items-center gap-1.5 px-6 py-2.5 bg-accent text-white text-sm font-semibold rounded-lg no-underline hover:bg-accent-hover transition-colors">
+          Contact
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+        <a href="/verification" class="inline-flex items-center gap-1.5 px-6 py-2.5 bg-[rgba(255,255,255,0.06)] text-[#c5c5ca] text-sm font-semibold rounded-lg no-underline hover:bg-[rgba(255,255,255,0.1)] transition-colors border border-[rgba(255,255,255,0.06)]">
+          Verification framework
+        </a>
+        <a href="/networks" class="inline-flex items-center gap-1.5 px-6 py-2.5 bg-[rgba(255,255,255,0.06)] text-[#c5c5ca] text-sm font-semibold rounded-lg no-underline hover:bg-[rgba(255,255,255,0.1)] transition-colors border border-[rgba(255,255,255,0.06)]">
+          Browse networks
+        </a>
       </div>
     </div>
   </section>
+
 </BaseLayout>
+
+
+<style>
+  /* ─── Hero fade-up animations ─── */
+  .src-fade-up {
+    transform: translateY(24px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .src-fade-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .src-delay-1 { transition-delay: 0.1s; }
+  .src-delay-2 { transition-delay: 0.25s; }
+  .src-delay-3 { transition-delay: 0.4s; }
+  .src-delay-4 { transition-delay: 0.6s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .src-fade-up {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+// ─── Hero fade-up reveal ───
+(function() {
+  var items = document.querySelectorAll('.src-fade-up');
+  if (!items.length) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    items.forEach(function(el) { el.classList.add('is-visible'); });
+    return;
+  }
+
+  setTimeout(function() {
+    items.forEach(function(el) { el.classList.add('is-visible'); });
+  }, 100);
+})();
+</script>
+
+<!-- Nav dark mode -->
+<script>
+(function() {
+  var nav = document.querySelector('nav');
+  if (!nav) return;
+
+  var brandLink = nav.querySelector('a[href="/"]');
+  var menuBtn = nav.querySelector('#menuBtn');
+  var navLinks = nav.querySelectorAll('ul a');
+  var searchBtn = nav.querySelector('#searchTrigger');
+  var linkedinLink = nav.querySelector('a[aria-label="LinkedIn"]');
+
+  nav.style.background = 'rgba(10,10,12,0.85)';
+  nav.style.borderBottomColor = 'rgba(255,255,255,0.06)';
+  if (brandLink) { brandLink.style.color = '#fff'; }
+  if (menuBtn) { menuBtn.style.color = '#a1a1a6'; }
+  navLinks.forEach(function(l) { l.style.color = '#a1a1a6'; });
+  if (searchBtn) { searchBtn.style.background = 'rgba(255,255,255,0.08)'; searchBtn.style.color = '#a1a1a6'; }
+  if (linkedinLink) { linkedinLink.style.color = '#a1a1a6'; }
+})();
+</script>
