@@ -720,63 +720,38 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
         </div>
       </div>
 
-      <!-- Right: Top Networks — self-contained dark box with particles -->
-      <div class="w-full lg:w-[360px] lg:min-w-[360px]" id="networks">
-        <div class="relative overflow-hidden rounded-card shadow-card bg-[#111113]" id="topNetworksBox">
+      <!-- Right: Top Networks — self-contained dark box with particles, same height as news -->
+      <div class="flex-1 min-w-0" id="networks">
+        <div class="relative overflow-hidden rounded-card shadow-card bg-[#111113] h-full" id="topNetworksBox">
           <!-- Particle canvas background (z-[1] above bg, below content) -->
           <canvas id="topNetworksCanvas" class="absolute inset-0 w-full h-full z-[1]" style="pointer-events: none;" role="presentation" aria-hidden="true"></canvas>
           <!-- Content -->
-          <div class="relative z-[2]">
-            <div class="flex items-center justify-between px-5 pt-5 pb-2">
+          <div class="relative z-[2] flex flex-col h-full">
+            <div class="flex items-center justify-between px-5 pt-5 pb-3">
               <h2 class="text-[15px] font-bold text-white">Top Networks</h2>
               <a href="/networks" class="text-accent text-[13px] font-medium no-underline hover:underline">All {publishedNetworks.length} &rarr;</a>
             </div>
 
-            <!-- Top 3: Featured cards -->
-            <div class="px-3 pb-2 space-y-2">
-              {top7.slice(0, 3).map((network, i) => (
+            <!-- All 7: Uniform button cards -->
+            <div class="px-3 pb-4 flex-1 flex flex-col justify-between gap-1.5">
+              {top7.map((network, i) => (
                 <a
                   href={`/networks/${network.data.slug}`}
-                  class="flex items-center gap-4 px-4 py-3.5 rounded-2xl no-underline bg-white/[0.06] hover:bg-white/[0.12] border border-white/[0.06] transition-all duration-200 group"
+                  class="flex items-center gap-4 px-4 py-3 rounded-2xl no-underline bg-white/[0.05] hover:bg-white/[0.12] border border-white/[0.06] hover:border-white/[0.12] transition-all duration-200 group"
                 >
-                  <div class="text-[13px] text-white/25 font-black w-5 text-right flex-shrink-0">{i + 1}</div>
+                  <div class="text-[13px] text-white/20 font-black w-5 text-right flex-shrink-0">{i + 1}</div>
                   <img
                     src={network.data.logo || ''}
                     alt={network.data.name}
-                    width="44"
-                    height="44"
-                    class="w-11 h-11 rounded-xl object-cover flex-shrink-0 shadow-sm"
+                    width="40"
+                    height="40"
+                    class="w-10 h-10 rounded-xl object-cover flex-shrink-0 shadow-sm"
                     loading="lazy"
                   />
                   <div class="min-w-0 flex-1">
-                    <div class="text-[14px] font-semibold text-white/95 truncate group-hover:text-white transition-colors">{network.data.name.split(' (')[0]}</div>
+                    <div class="text-[14px] font-semibold text-white/90 truncate group-hover:text-white transition-colors">{network.data.name.split(' (')[0]}</div>
                   </div>
                   <svg class="w-4 h-4 flex-shrink-0 text-white/15 group-hover:text-white/40 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-                </a>
-              ))}
-            </div>
-
-            <!-- Divider -->
-            <div class="mx-5 border-t border-white/[0.06]"></div>
-
-            <!-- 4-7: Compact list -->
-            <div class="px-3 py-2 pb-4">
-              {top7.slice(3).map((network, i) => (
-                <a
-                  href={`/networks/${network.data.slug}`}
-                  class="flex items-center gap-3 px-3 py-2 rounded-xl no-underline hover:bg-white/[0.06] transition-colors group"
-                >
-                  <div class="text-[11px] text-white/20 font-bold w-4 text-right flex-shrink-0">{i + 4}</div>
-                  <img
-                    src={network.data.logo || ''}
-                    alt={network.data.name}
-                    width="28"
-                    height="28"
-                    class="w-7 h-7 rounded-lg object-cover flex-shrink-0"
-                    loading="lazy"
-                  />
-                  <div class="text-[13px] font-medium text-white/70 truncate group-hover:text-white/90 transition-colors">{network.data.name.split(' (')[0]}</div>
-                  <svg class="w-3 h-3 flex-shrink-0 text-white/10 group-hover:text-white/30 transition-colors ml-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
                 </a>
               ))}
             </div>
