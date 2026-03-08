@@ -1,0 +1,216 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allNetworks = await getCollection('networks');
+const published = allNetworks.filter(n => n.data.published).sort((a, b) => a.data.priority - b.data.priority);
+
+// Filter networks strong in PE
+const peNetworks = published.filter(n => {
+  const industries = (n.data.industries || []).map((i: string) => i.toLowerCase());
+  const bestFor = (n.data.bestFor || []).map((b: string) => b.toLowerCase());
+  const all = [...industries, ...bestFor].join(' ');
+  return all.includes('private equity') || all.includes('pe ') || all.includes('due diligence') || all.includes('deal');
+});
+---
+
+<BaseLayout
+  title="Best Expert Networks for Private Equity (2026 Guide) | ExpertNetworks.net"
+  description="Guide to expert networks for PE firms: which providers are best for deal diligence, portfolio optimization, and sector research. Compare GLG, AlphaSights, Third Bridge, Dialectica, and more for private equity use cases."
+  canonicalPath="/expert-networks-for-private-equity"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Best Expert Networks for Private Equity (2026)",
+    "description": "Guide to choosing expert networks for PE deal diligence, portfolio optimization, and sector research.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "ExpertNetworks.net",
+      "url": "https://expertnetworks.net"
+    },
+    "datePublished": "2026-03-08",
+    "dateModified": "2026-03-08"
+  }}
+>
+  <!-- Hero -->
+  <section class="pt-32 pb-16 px-6 bg-gradient-to-b from-bg-secondary to-bg-primary">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex items-center gap-3 mb-6">
+        <a href="/what-is-an-expert-network" class="text-accent text-sm font-medium no-underline hover:underline">&larr; What's an Expert Network?</a>
+      </div>
+      <span class="inline-block px-3 py-1 bg-accent-purple/10 text-accent-purple text-xs font-semibold rounded-full mb-4 tracking-wide uppercase">Private Equity Guide</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-primary mb-6 leading-tight">
+        Expert Networks for Private Equity
+      </h1>
+      <p class="text-lg text-secondary max-w-3xl leading-relaxed">
+        PE firms are the largest customer segment for expert networks. Here's how to use them for deal diligence, portfolio value creation, and sector research — and which providers do it best.
+      </p>
+    </div>
+  </section>
+
+  <!-- Why PE Uses Expert Networks -->
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-8">Why PE Firms Use Expert Networks</h2>
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="bg-bg-secondary rounded-card p-5">
+          <div class="w-10 h-10 rounded-lg bg-accent-purple/10 flex items-center justify-center mb-3">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-accent-purple"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+          </div>
+          <h3 class="font-bold text-primary text-sm mb-2">Deal Due Diligence</h3>
+          <p class="text-xs text-secondary">The #1 use case. Before deploying $100M+ on an acquisition, PE deal teams talk to customers, competitors, former employees, and industry experts to validate (or kill) a thesis. Expert networks compress this from weeks to days.</p>
+        </div>
+        <div class="bg-bg-secondary rounded-card p-5">
+          <div class="w-10 h-10 rounded-lg bg-accent-green/10 flex items-center justify-center mb-3">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-accent-green"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3 class="font-bold text-primary text-sm mb-2">Portfolio Value Creation</h3>
+          <p class="text-xs text-secondary">Post-acquisition, PE operating teams use expert networks to benchmark portfolio companies, identify operational improvements, and connect portfolio company leadership with domain specialists.</p>
+        </div>
+        <div class="bg-bg-secondary rounded-card p-5">
+          <div class="w-10 h-10 rounded-lg bg-accent-orange/10 flex items-center justify-center mb-3">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-accent-orange"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <h3 class="font-bold text-primary text-sm mb-2">Sector Mapping & Sourcing</h3>
+          <p class="text-xs text-secondary">Mapping competitive landscapes, identifying acquisition targets, and understanding market dynamics before formal processes begin. Dialectica Origin is purpose-built for PE deal sourcing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Best Providers for PE -->
+  <section class="py-16 px-6 bg-bg-secondary">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-3">Best Expert Networks for PE</h2>
+      <p class="text-secondary text-sm mb-8">{peNetworks.length} providers serve the PE market. Here are the ones that matter most:</p>
+
+      <div class="space-y-4">
+        {peNetworks.slice(0, 10).map((n, i) => {
+          const peRelevance = (n.data.bestFor || []).filter((b: string) => {
+            const lower = b.toLowerCase();
+            return lower.includes('private equity') || lower.includes('pe ') || lower.includes('deal') || lower.includes('due diligence') || lower.includes('investor');
+          });
+          return (
+            <a href={`/networks/${n.data.slug}`} class="block no-underline group">
+              <div class="flex items-start gap-4 p-5 bg-white rounded-card shadow-card hover:shadow-card-hover transition-shadow">
+                {n.data.logo ? (
+                  <img src={n.data.logo} alt="" width="44" height="44" class="w-11 h-11 rounded-lg object-cover flex-shrink-0" loading="lazy" />
+                ) : (
+                  <div class="w-11 h-11 rounded-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0" style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}>
+                    {n.data.shortName}
+                  </div>
+                )}
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-center gap-2 flex-wrap mb-1">
+                    <h3 class="text-sm font-bold text-primary group-hover:text-accent transition-colors">{n.data.name.split(' (')[0]}</h3>
+                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-accent-purple/10 text-accent-purple font-medium">{n.data.pricingModel}</span>
+                    {n.data.deliveryModel && (
+                      <span class="text-[10px] px-2 py-0.5 rounded-full bg-bg-secondary text-tertiary font-medium">{n.data.deliveryModel}</span>
+                    )}
+                  </div>
+                  <p class="text-xs text-secondary mb-2">{n.data.expertCount} experts · {n.data.headquarters?.split(',')[0]} · Founded {n.data.founded}</p>
+                  {peRelevance.length > 0 && (
+                    <p class="text-xs text-accent-purple italic">PE fit: {peRelevance[0]}</p>
+                  )}
+                </div>
+                <svg class="w-4 h-4 text-tertiary flex-shrink-0 mt-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- PE-Specific Features -->
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-8">PE-Specific Features to Look For</h2>
+      <div class="grid md:grid-cols-2 gap-5">
+        <div class="border border-border/60 rounded-card p-5">
+          <h3 class="font-bold text-primary text-sm mb-2">Deal Sourcing Platforms</h3>
+          <p class="text-xs text-secondary mb-2"><a href="/networks/dialectica" class="text-accent hover:underline">Dialectica Origin</a> is the only major expert network with a dedicated PE deal-sourcing product. It helps firms identify acquisition targets through expert-validated market maps.</p>
+        </div>
+        <div class="border border-border/60 rounded-card p-5">
+          <h3 class="font-bold text-primary text-sm mb-2">Content Libraries for Diligence</h3>
+          <p class="text-xs text-secondary"><a href="/networks/third-bridge" class="text-accent hover:underline">Third Bridge Library</a> (65,000+ companies) lets you read existing expert interview transcripts before commissioning new calls — faster and cheaper for initial diligence screening.</p>
+        </div>
+        <div class="border border-border/60 rounded-card p-5">
+          <h3 class="font-bold text-primary text-sm mb-2">Speed of Delivery</h3>
+          <p class="text-xs text-secondary"><a href="/networks/alphasights" class="text-accent hover:underline">AlphaSights</a> is consistently cited as the fastest for PE deal timelines. Their custom-sourcing model prioritizes same-day or next-day expert delivery for time-sensitive processes.</p>
+        </div>
+        <div class="border border-border/60 rounded-card p-5">
+          <h3 class="font-bold text-primary text-sm mb-2">Compliance for Regulated Investors</h3>
+          <p class="text-xs text-secondary">PE firms under SEC/FCA oversight need audit-ready compliance. <a href="/networks/glg" class="text-accent hover:underline">GLG</a> and <a href="/networks/third-bridge" class="text-accent hover:underline">Third Bridge</a> have the most established compliance infrastructure, including cooling-off periods and call monitoring.</p>
+        </div>
+        <div class="border border-border/60 rounded-card p-5">
+          <h3 class="font-bold text-primary text-sm mb-2">Healthcare Diligence</h3>
+          <p class="text-xs text-secondary">Healthcare PE is a massive vertical. <a href="/networks/guidepoint" class="text-accent hover:underline">Guidepoint Qsight</a> provides specialized healthcare data; GLG has deep life sciences coverage; and several boutiques specialize in pharma/biotech experts.</p>
+        </div>
+        <div class="border border-border/60 rounded-card p-5">
+          <h3 class="font-bold text-primary text-sm mb-2">AI Research Synthesis</h3>
+          <p class="text-xs text-secondary">After 20 expert calls on a deal, you need synthesis tools. AlphaGPT, AskGP, and GLG's Ask AI can query across your past calls and generate investment-memo-ready summaries.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Typical PE Workflow -->
+  <section class="py-16 px-6 bg-bg-secondary">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-8">Typical PE Due Diligence Workflow</h2>
+      <div class="bg-white rounded-card p-6 shadow-card">
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-full bg-accent-purple text-white flex items-center justify-center text-sm font-bold flex-shrink-0">1</div>
+            <div>
+              <h4 class="font-bold text-primary text-sm">Pre-diligence: Screen with content library</h4>
+              <p class="text-xs text-secondary">Search Third Bridge Library or AlphaNow for existing transcripts on the target company and its competitors. Get up to speed before any calls.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-full bg-accent-purple text-white flex items-center justify-center text-sm font-bold flex-shrink-0">2</div>
+            <div>
+              <h4 class="font-bold text-primary text-sm">Week 1: Commission expert calls</h4>
+              <p class="text-xs text-secondary">Brief your network(s) on what you need: former employees, customers, competitors, industry analysts. Expect 5–15 profiles within 24–48 hours from top providers.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-full bg-accent-purple text-white flex items-center justify-center text-sm font-bold flex-shrink-0">3</div>
+            <div>
+              <h4 class="font-bold text-primary text-sm">Weeks 1–3: Run 10–30 expert calls</h4>
+              <p class="text-xs text-secondary">Customer reference calls, competitive intelligence, operational deep dives. Get transcripts and AI summaries after each call.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-full bg-accent-purple text-white flex items-center justify-center text-sm font-bold flex-shrink-0">4</div>
+            <div>
+              <h4 class="font-bold text-primary text-sm">Week 2–3: Run a focused survey</h4>
+              <p class="text-xs text-secondary">Quantitative validation of qualitative findings. "70% of customers said X" is more convincing to an IC than "3 experts told us X."</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-full bg-accent-green text-white flex items-center justify-center text-sm font-bold flex-shrink-0">5</div>
+            <div>
+              <h4 class="font-bold text-primary text-sm">Synthesis: AI-powered research summary</h4>
+              <p class="text-xs text-secondary">Use AI tools (AlphaGPT, AskGP) to synthesize insights across all calls. Generate IC-ready materials that connect expert perspectives to your investment thesis.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-xl font-bold text-primary mb-4">Ready to evaluate providers?</h2>
+      <p class="text-secondary text-sm mb-8">Use our comparison tool to evaluate providers across the dimensions that matter most for PE: compliance, speed, pricing, and content libraries.</p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="/compare" class="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white rounded-full font-semibold text-sm no-underline hover:bg-accent-hover transition-colors">Compare Networks</a>
+        <a href="/best-expert-networks" class="inline-flex items-center gap-2 px-6 py-3 bg-bg-secondary text-primary rounded-full font-semibold text-sm no-underline hover:bg-border/40 transition-colors">Best Networks Ranked</a>
+        <a href="/expert-network-pricing" class="inline-flex items-center gap-2 px-6 py-3 bg-bg-secondary text-primary rounded-full font-semibold text-sm no-underline hover:bg-border/40 transition-colors">Pricing Guide</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

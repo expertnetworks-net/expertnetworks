@@ -1,0 +1,173 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allNetworks = await getCollection('networks');
+const published = allNetworks.filter(n => n.data.published).sort((a, b) => a.data.priority - b.data.priority);
+const ranked = published.slice(0, 15);
+
+const categoryGroups: Record<string, typeof published> = {};
+published.forEach(n => {
+  const cat = n.data.categoryBadge || 'Other';
+  if (!categoryGroups[cat]) categoryGroups[cat] = [];
+  categoryGroups[cat].push(n);
+});
+
+const deliveryModels: Record<string, typeof published> = {};
+published.forEach(n => {
+  const d = n.data.deliveryModel || 'Other';
+  if (!deliveryModels[d]) deliveryModels[d] = [];
+  deliveryModels[d].push(n);
+});
+---
+
+<BaseLayout
+  title="Best Expert Networks in 2026: Top 15 Providers Ranked | ExpertNetworks.net"
+  description="Independently ranked list of the best expert networks in 2026. Compare GLG, AlphaSights, Third Bridge, Guidepoint, Dialectica, and 28+ more across pricing, compliance, expert coverage, and AI capabilities."
+  canonicalPath="/best-expert-networks"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Best Expert Networks 2026",
+    "description": "Independently ranked expert network providers",
+    "numberOfItems": ranked.length,
+    "itemListElement": ranked.map((n, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "name": n.data.name,
+      "url": `https://expertnetworks.net/networks/${n.data.slug}`
+    }))
+  }}
+>
+  <!-- Hero -->
+  <section class="pt-32 pb-16 px-6 bg-gradient-to-b from-bg-secondary to-bg-primary">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex items-center gap-3 mb-6">
+        <a href="/what-is-an-expert-network" class="text-accent text-sm font-medium no-underline hover:underline">&larr; What's an Expert Network?</a>
+      </div>
+      <span class="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-semibold rounded-full mb-4 tracking-wide uppercase">Updated March 2026</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-primary mb-6 leading-tight">
+        Best Expert Networks in 2026
+      </h1>
+      <p class="text-lg text-secondary max-w-3xl leading-relaxed">
+        An independent ranking of {published.length} expert network providers based on scale, product breadth, compliance strength, AI investment, and market positioning. No affiliations, no sponsored placements.
+      </p>
+    </div>
+  </section>
+
+  <!-- Ranking Methodology Note -->
+  <section class="py-6 px-6 border-b border-border/40">
+    <div class="max-w-4xl mx-auto">
+      <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-blue-800">
+        <strong>How we rank:</strong> Priority is based on a combination of expert network size, global reach, product breadth, compliance maturity, AI investment, and market share. This is an editorial assessment based on publicly available information — not a paid ranking. See our <a href="/sources" class="text-blue-600 hover:underline">methodology</a>.
+      </div>
+    </div>
+  </section>
+
+  <!-- Top 15 Ranked List -->
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-8">Top {ranked.length} Expert Networks</h2>
+      <div class="space-y-4">
+        {ranked.map((n, i) => (
+          <a href={`/networks/${n.data.slug}`} class="block no-underline group">
+            <div class="flex items-start gap-4 p-5 bg-bg-secondary rounded-card hover:shadow-card transition-all">
+              <div class={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 ${i < 3 ? 'bg-accent text-white' : 'bg-border/60 text-secondary'}`}>
+                {i + 1}
+              </div>
+              {n.data.logo ? (
+                <img src={n.data.logo} alt="" width="48" height="48" class="w-12 h-12 rounded-lg object-cover flex-shrink-0" loading="lazy" />
+              ) : (
+                <div class="w-12 h-12 rounded-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0" style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}>
+                  {n.data.shortName}
+                </div>
+              )}
+              <div class="min-w-0 flex-1">
+                <div class="flex items-center gap-2 flex-wrap mb-1">
+                  <h3 class="text-base font-bold text-primary group-hover:text-accent transition-colors">{n.data.name.split(' (')[0]}</h3>
+                  {n.data.categoryBadge && (
+                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-accent/10 text-accent font-medium">{n.data.categoryBadge}</span>
+                  )}
+                </div>
+                <p class="text-xs text-secondary mb-2 line-clamp-2">{n.data.description.slice(0, 180)}...</p>
+                <div class="flex flex-wrap gap-3 text-[11px] text-tertiary">
+                  <span>Founded {n.data.founded}</span>
+                  <span>·</span>
+                  <span>{n.data.expertCount} experts</span>
+                  <span>·</span>
+                  <span>{n.data.pricingModel} pricing</span>
+                  <span>·</span>
+                  <span>{n.data.headquarters?.split(',')[0]}</span>
+                </div>
+              </div>
+              <svg class="w-5 h-5 text-tertiary flex-shrink-0 mt-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- By Category -->
+  <section class="py-16 px-6 bg-bg-secondary">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-8">By Category</h2>
+      <div class="grid md:grid-cols-2 gap-5">
+        {Object.entries(categoryGroups).filter(([cat]) => cat !== 'Other').map(([category, networks]) => (
+          <div class="bg-white rounded-card p-5 shadow-card">
+            <h3 class="text-sm font-bold text-primary mb-3">{category}</h3>
+            <div class="space-y-2">
+              {networks.slice(0, 5).map(n => (
+                <a href={`/networks/${n.data.slug}`} class="flex items-center gap-3 no-underline text-secondary hover:text-accent transition-colors text-sm">
+                  <div class="w-6 h-6 rounded flex items-center justify-center text-white font-bold text-[8px] flex-shrink-0" style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}>
+                    {n.data.shortName}
+                  </div>
+                  <span class="truncate">{n.data.name.split(' (')[0]}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- By Delivery Model -->
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-3">By Delivery Model</h2>
+      <p class="text-secondary text-sm mb-8">How do they serve you? Some are white-glove concierge, others let you self-serve.</p>
+      <div class="grid md:grid-cols-3 gap-4">
+        {Object.entries(deliveryModels).filter(([d]) => d !== 'Other').map(([model, networks]) => (
+          <div class="border border-border/60 rounded-card p-4">
+            <h3 class="text-sm font-bold text-primary mb-1">{model}</h3>
+            <p class="text-[11px] text-tertiary mb-3">{networks.length} provider{networks.length > 1 ? 's' : ''}</p>
+            <div class="space-y-1.5">
+              {networks.slice(0, 4).map(n => (
+                <a href={`/networks/${n.data.slug}`} class="block text-xs text-secondary hover:text-accent transition-colors no-underline truncate">
+                  {n.data.name.split(' (')[0]}
+                </a>
+              ))}
+              {networks.length > 4 && (
+                <span class="text-[11px] text-tertiary">+{networks.length - 4} more</span>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 px-6 bg-bg-secondary">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-xl font-bold text-primary mb-4">Go deeper</h2>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="/compare" class="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white rounded-full font-semibold text-sm no-underline hover:bg-accent-hover transition-colors">Compare Side-by-Side</a>
+        <a href="/glg-vs-alphasights" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary border border-border rounded-full font-semibold text-sm no-underline hover:bg-bg-secondary transition-colors">GLG vs AlphaSights</a>
+        <a href="/expert-network-pricing" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary border border-border rounded-full font-semibold text-sm no-underline hover:bg-bg-secondary transition-colors">Pricing Guide</a>
+        <a href="/expert-networks-for-private-equity" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary border border-border rounded-full font-semibold text-sm no-underline hover:bg-bg-secondary transition-colors">Expert Networks for PE</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

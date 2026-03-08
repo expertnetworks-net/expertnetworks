@@ -1,0 +1,274 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allNetworks = await getCollection('networks');
+const glg = allNetworks.find(n => n.data.slug === 'glg')!;
+const alpha = allNetworks.find(n => n.data.slug === 'alphasights')!;
+
+const comparisons = [
+  { label: 'Founded', glg: String(glg.data.founded), alpha: String(alpha.data.founded) },
+  { label: 'Headquarters', glg: glg.data.headquarters, alpha: alpha.data.headquarters },
+  { label: 'Expert Network Size', glg: glg.data.expertCount, alpha: alpha.data.expertCount },
+  { label: 'Employees', glg: glg.data.employeeCount, alpha: alpha.data.employeeCount },
+  { label: 'Pricing Model', glg: glg.data.pricingModel, alpha: alpha.data.pricingModel },
+  { label: 'Pricing Detail', glg: glg.data.pricingDetail || 'N/A', alpha: alpha.data.pricingDetail || 'N/A' },
+  { label: 'Delivery Model', glg: glg.data.deliveryModel || 'Concierge', alpha: alpha.data.deliveryModel || 'Concierge' },
+  { label: 'Category', glg: glg.data.categoryBadge || 'Global Leader', alpha: alpha.data.categoryBadge || 'Global Leader' },
+  { label: 'Region Strength', glg: glg.data.regionStrength || 'Global', alpha: alpha.data.regionStrength || 'Global' },
+  { label: 'AI Badge', glg: glg.data.aiBadge || 'N/A', alpha: alpha.data.aiBadge || 'N/A' },
+  { label: 'Compliance', glg: glg.data.complianceBadge || 'Strong Compliance', alpha: alpha.data.complianceBadge || 'Strong Compliance' },
+];
+---
+
+<BaseLayout
+  title="GLG vs AlphaSights: Complete Comparison (2026) | ExpertNetworks.net"
+  description="Head-to-head comparison of GLG and AlphaSights — the two largest expert networks. Compare pricing, expert coverage, AI capabilities, compliance, services, and which is right for your team."
+  canonicalPath="/glg-vs-alphasights"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "GLG vs AlphaSights: Complete Comparison (2026)",
+    "description": "Head-to-head comparison of GLG and AlphaSights expert networks across pricing, AI, compliance, and services.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "ExpertNetworks.net",
+      "url": "https://expertnetworks.net"
+    },
+    "datePublished": "2026-03-08",
+    "dateModified": "2026-03-08"
+  }}
+>
+  <!-- Hero -->
+  <section class="pt-32 pb-16 px-6 bg-gradient-to-b from-bg-secondary to-bg-primary">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex items-center gap-3 mb-6">
+        <a href="/what-is-an-expert-network" class="text-accent text-sm font-medium no-underline hover:underline">&larr; What's an Expert Network?</a>
+      </div>
+      <span class="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-semibold rounded-full mb-4 tracking-wide uppercase">Head-to-Head</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-primary mb-6 leading-tight">
+        GLG vs AlphaSights
+      </h1>
+      <p class="text-lg text-secondary max-w-3xl leading-relaxed">
+        The industry pioneer vs. the fastest-growing challenger. Here's how they actually compare on the things that matter — pricing, speed, AI, compliance, and product depth.
+      </p>
+    </div>
+  </section>
+
+  <!-- Visual Face-off -->
+  <section class="py-12 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-6">
+        <a href="/networks/glg" class="block no-underline group">
+          <div class="rounded-card p-6 text-center border-2 border-transparent hover:border-accent/30 transition-colors" style="background: linear-gradient(135deg, rgba(26,54,93,0.06), rgba(37,99,235,0.06))">
+            {glg.data.logo ? (
+              <img src={glg.data.logo} alt="GLG logo" width="64" height="64" class="w-16 h-16 rounded-xl object-cover mx-auto mb-4" loading="lazy" />
+            ) : (
+              <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white font-bold text-xl mx-auto mb-4" style={`background: linear-gradient(135deg, ${glg.data.gradientFrom}, ${glg.data.gradientTo})`}>G</div>
+            )}
+            <h2 class="text-xl font-bold text-primary mb-1 group-hover:text-accent transition-colors">GLG</h2>
+            <p class="text-xs text-secondary">Gerson Lehrman Group</p>
+            <div class="mt-3 text-2xl font-extrabold text-primary">{glg.data.expertCount}</div>
+            <div class="text-xs text-tertiary">experts · est. {glg.data.founded}</div>
+          </div>
+        </a>
+        <a href="/networks/alphasights" class="block no-underline group">
+          <div class="rounded-card p-6 text-center border-2 border-transparent hover:border-accent/30 transition-colors" style="background: linear-gradient(135deg, rgba(15,118,110,0.06), rgba(20,184,166,0.06))">
+            {alpha.data.logo ? (
+              <img src={alpha.data.logo} alt="AlphaSights logo" width="64" height="64" class="w-16 h-16 rounded-xl object-cover mx-auto mb-4" loading="lazy" />
+            ) : (
+              <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white font-bold text-xl mx-auto mb-4" style={`background: linear-gradient(135deg, ${alpha.data.gradientFrom}, ${alpha.data.gradientTo})`}>A</div>
+            )}
+            <h2 class="text-xl font-bold text-primary mb-1 group-hover:text-accent transition-colors">AlphaSights</h2>
+            <p class="text-xs text-secondary">&nbsp;</p>
+            <div class="mt-3 text-2xl font-extrabold text-primary">{alpha.data.expertCount}</div>
+            <div class="text-xs text-tertiary">expert relationships · est. {alpha.data.founded}</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="py-12 px-6 bg-bg-secondary">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-6">Side-by-Side Comparison</h2>
+      <div class="bg-white rounded-card shadow-card overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-border/40">
+                <th class="text-left px-5 py-3 text-xs font-semibold text-tertiary uppercase tracking-wider w-1/3">Metric</th>
+                <th class="text-left px-5 py-3 text-xs font-semibold uppercase tracking-wider w-1/3" style={`color: ${glg.data.gradientTo}`}>GLG</th>
+                <th class="text-left px-5 py-3 text-xs font-semibold uppercase tracking-wider w-1/3" style={`color: ${alpha.data.gradientTo}`}>AlphaSights</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparisons.map((row, i) => (
+                <tr class={`${i % 2 === 0 ? 'bg-bg-secondary/30' : ''} border-b border-border/20`}>
+                  <td class="px-5 py-3 font-medium text-primary text-xs">{row.label}</td>
+                  <td class="px-5 py-3 text-secondary text-xs">{row.glg}</td>
+                  <td class="px-5 py-3 text-secondary text-xs">{row.alpha}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Comparison -->
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-8">Products & Services</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-bold text-primary mb-4 flex items-center gap-2">
+            <div class="w-6 h-6 rounded flex items-center justify-center text-white font-bold text-[9px]" style={`background: linear-gradient(135deg, ${glg.data.gradientFrom}, ${glg.data.gradientTo})`}>G</div>
+            GLG Services
+          </h3>
+          <ul class="space-y-2">
+            {(glg.data.services || []).map((s: string) => (
+              <li class="flex items-center gap-2 text-sm text-secondary">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="text-accent-green flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+                {s}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-bold text-primary mb-4 flex items-center gap-2">
+            <div class="w-6 h-6 rounded flex items-center justify-center text-white font-bold text-[9px]" style={`background: linear-gradient(135deg, ${alpha.data.gradientFrom}, ${alpha.data.gradientTo})`}>A</div>
+            AlphaSights Services
+          </h3>
+          <ul class="space-y-2">
+            {(alpha.data.services || []).map((s: string) => (
+              <li class="flex items-center gap-2 text-sm text-secondary">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="text-accent-green flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+                {s}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Comparison -->
+  <section class="py-16 px-6 bg-bg-secondary">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-8">AI & Technology</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-card p-5 shadow-card">
+          <h3 class="font-bold text-primary mb-3">GLG AI Stack</h3>
+          <ul class="space-y-2">
+            {(glg.data.aiCapabilities || []).map((c: string) => (
+              <li class="text-sm text-secondary flex items-start gap-2">
+                <span class="text-accent-orange mt-0.5">&#9679;</span>
+                {c}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="bg-white rounded-card p-5 shadow-card">
+          <h3 class="font-bold text-primary mb-3">AlphaSights AI Stack</h3>
+          <ul class="space-y-2">
+            {(alpha.data.aiCapabilities || []).map((c: string) => (
+              <li class="text-sm text-secondary flex items-start gap-2">
+                <span class="text-accent-green mt-0.5">&#9679;</span>
+                {c}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Differentiators -->
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-8">Key Differentiators</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="border border-border/60 rounded-card p-5">
+          <h3 class="font-bold text-primary mb-3">Why Choose GLG</h3>
+          <ul class="space-y-2">
+            {(glg.data.keyDifferentiators || []).map((d: string) => (
+              <li class="text-sm text-secondary flex items-start gap-2">
+                <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="text-accent flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+                {d}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="border border-border/60 rounded-card p-5">
+          <h3 class="font-bold text-primary mb-3">Why Choose AlphaSights</h3>
+          <ul class="space-y-2">
+            {(alpha.data.keyDifferentiators || []).map((d: string) => (
+              <li class="text-sm text-secondary flex items-start gap-2">
+                <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="text-accent flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+                {d}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Best For -->
+  <section class="py-16 px-6 bg-bg-secondary">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-8">Best For</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-card p-5 shadow-card">
+          <h3 class="font-bold text-primary mb-3">GLG Is Best For</h3>
+          <ul class="space-y-2">
+            {(glg.data.bestFor || []).map((b: string) => (
+              <li class="text-sm text-secondary">&rarr; {b}</li>
+            ))}
+          </ul>
+        </div>
+        <div class="bg-white rounded-card p-5 shadow-card">
+          <h3 class="font-bold text-primary mb-3">AlphaSights Is Best For</h3>
+          <ul class="space-y-2">
+            {(alpha.data.bestFor || []).map((b: string) => (
+              <li class="text-sm text-secondary">&rarr; {b}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Verdict -->
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-6">The Bottom Line</h2>
+      <div class="prose prose-sm text-secondary leading-relaxed max-w-none space-y-4">
+        <p>
+          <strong>GLG</strong> is the industry's broadest platform. If you need multi-format research (calls + surveys + events + library + placements), global coverage across nearly every sector, and the most established compliance infrastructure in the space, GLG is the default choice for large institutional buyers. The trade-off: it's typically the most expensive option, and the breadth of the platform can feel heavy for teams that just need fast expert calls.
+        </p>
+        <p>
+          <strong>AlphaSights</strong> is the speed and service leader. If your team operates under time pressure (PE deal diligence, fast-moving hedge fund research), AlphaSights' custom-sourcing model and high-touch project management consistently deliver. Their AI investment (AlphaGPT, AlphaGraph) is aggressive and they're growing faster than any peer. The trade-off: narrower product suite than GLG, and the per-call pricing model can add up for high-volume users.
+        </p>
+        <p>
+          Many serious research teams use both — GLG for breadth and AlphaSights for speed. They're complementary more than they are substitutes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related -->
+  <section class="py-12 px-6 bg-bg-secondary">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-xl font-bold text-primary mb-6">Keep exploring</h2>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="/compare" class="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white rounded-full font-semibold text-sm no-underline hover:bg-accent-hover transition-colors">Full Comparison Tool</a>
+        <a href="/best-expert-networks" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary border border-border rounded-full font-semibold text-sm no-underline hover:bg-bg-secondary transition-colors">Best Networks Ranked</a>
+        <a href="/expert-network-pricing" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary border border-border rounded-full font-semibold text-sm no-underline hover:bg-bg-secondary transition-colors">Pricing Guide</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
