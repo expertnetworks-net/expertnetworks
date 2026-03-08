@@ -41,9 +41,9 @@ networks/          (33 JSON files → 33 static profile pages)
   ├── alphasights.json
   └── ... (one file per provider)
 
-news/              (40+ JSON files → rendered in news feed)
+news/              (52 JSON files → rendered in news feed)
   ├── glg-agentic-ai-report.json
-  └── ... (one file per article)
+  └── ... (one file per signal)
 ```
 
 Each JSON file is validated at build time against a Zod schema. If a file doesn't match the schema, the build fails with a clear error pointing to the invalid field.
@@ -93,8 +93,10 @@ BaseLayout.astro
 | Compare | `/compare` | compare.json + networks | Static comparison table |
 | About | `/about` | networks (count) | Static content |
 | Sources | `/sources` | none | Static content |
+| Verification | `/verification` | none | Methodology & verification details |
 | Disclaimer | `/disclaimer` | none | Static content |
 | Privacy | `/privacy` | none | Static content |
+| 404 | `/404` | none | Custom error page |
 
 ### Component Responsibilities
 
@@ -193,7 +195,7 @@ BaseLayout.astro generates:
 
 Sitemap (@astrojs/sitemap):
 ├── /sitemap-index.xml  → references sitemap-0.xml
-└── /sitemap-0.xml      → 41 URLs (all public pages, no /admin)
+└── /sitemap-0.xml      → ~50 URLs (all public pages, no /admin)
 
 robots.txt:
 ├── Allow: /
@@ -204,7 +206,7 @@ robots.txt:
 
 ## Performance Characteristics
 
-- **Build time:** ~5.5 seconds (48 pages)
+- **Build time:** ~6-9 seconds (50 pages)
 - **Page weight:** HTML-only, no client-side framework shipped (React is SSR-only)
 - **Images:** All below-fold images use `loading="lazy"`
 - **Fonts:** Preconnected to both `fonts.googleapis.com` and `fonts.gstatic.com`

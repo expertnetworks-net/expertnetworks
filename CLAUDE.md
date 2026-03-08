@@ -35,7 +35,7 @@ This file is optimized for AI assistants (Claude, GPT, Copilot) working on this 
 
 ### To change data:
 - `src/content/networks/*.json` — one file per network (33 files)
-- `src/content/news/*.json` — one file per article (40+ files)
+- `src/content/news/*.json` — one file per news signal (52 files)
 - `src/content/site.json` — hero text, footer text, about section text
 - `src/content/compare.json` — which networks appear in comparison table and which features to compare
 
@@ -80,6 +80,13 @@ METADATA:
 ```
 REQUIRED: title, slug, date (YYYY-MM-DD), source, summary, category
 OPTIONAL: sourceUrl, categoryColor, gradientFrom, gradientTo, relatedNetworks[], published
+
+V2 FIELDS (news intelligence):
+  sourceType — enum: 'Press Release' | 'Industry Report' | 'News Coverage' | 'Regulatory' | 'Product Update'
+  significance — enum: 'major' | 'standard' | 'brief'
+  featured (boolean) — shows in "What Matters Now" on news page
+  whyItMatters (string) — editorial context for major signals
+  impactTags[] — topic tags for trending sidebar (e.g., "M&A", "AI & Automation")
 ```
 
 ## JavaScript Behavior
@@ -156,7 +163,7 @@ Shadows: card, card-hover
 ## Build & Deploy
 
 ```bash
-npm run build          # Outputs to dist/ (static HTML, ~48 pages)
+npm run build          # Outputs to dist/ (static HTML, ~50 pages)
 npm run preview        # Preview the built site locally
 ```
 

@@ -1,6 +1,6 @@
 # Handoff Document
 
-Last updated: March 7, 2026
+Last updated: March 8, 2026
 
 ## Current State
 
@@ -9,7 +9,7 @@ The site is **production-ready**. All core features are built, all known bugs ar
 ### What's Live
 
 - **33 network profiles** — all published, 6 featured (GLG, AlphaSights, Third Bridge, Guidepoint, AlphaSense/Tegus, Dialectica)
-- **40+ news articles** — curated from third-party sources
+- **52 news signals** — curated from press releases, industry reports, and news coverage with V2 intelligence features (significance tiers, source types, "Why it matters" editorial context, impact tags)
 - **Rich profiles** for GLG, AlphaSights, Third Bridge, Guidepoint, and Dialectica (with deep-dive accordions, timelines, source notes, confidence badges)
 - **Comparison table** comparing 6 top networks across 7 features
 - **Full SEO suite** — sitemap, robots.txt, OG tags, Twitter Cards, JSON-LD, canonical URLs, unique descriptions
@@ -17,14 +17,24 @@ The site is **production-ready**. All core features are built, all known bugs ar
 
 ### What Was Done Recently (March 2026)
 
-1. **SEO implementation** — added @astrojs/sitemap, robots.txt, Open Graph, Twitter Cards, canonical URLs, JSON-LD structured data, unique meta descriptions for all page types
-2. **Stuck loading bug fix** — overlays (search, menu, mobile sidebar) were setting `overflow: hidden` on `<body>` but not clearing it when users navigated away via links inside the overlay. Fixed with:
-   - `document.body.style.overflow = ''` reset on every page load (BaseLayout.astro)
-   - Click handlers on links inside all overlays to close them before navigation
-   - Escape key handler for mobile sidebar on profile pages
-3. **Security fix** — search results innerHTML was using unescaped network data (XSS risk). All dynamic values now escaped.
-4. **Performance** — added `loading="lazy"` to all below-fold images (~100+ images across directory, profiles, news), passive scroll listeners, font preconnect optimization
-5. **Deep research profiles** — GLG, AlphaSights, Third Bridge, Guidepoint, Dialectica all have independently verified profiles with confidence badges, source notes, and extended fields
+1. **News V2 intelligence desk** — Redesigned news feed from flat article list to an intelligence-desk layout with:
+   - "What Matters Now" featured signals section (major stories with editorial "Why it matters")
+   - Significance tiers: major (10), standard (32), brief (11)
+   - Source type badges: Press Release, Industry Report, News Coverage, Regulatory, Product Update
+   - Impact tags and trending sidebar (90-day category breakdown)
+   - Dual view: featured signals + full chronological list
+2. **News accuracy audit** — Two-pass editorial review of all 52 signals for factual accuracy:
+   - Fixed dates, tightened attribution, reframed editorial claims as hedged observations
+   - Removed entries that were market-status inferences rather than discrete events
+   - Added methodology disclaimers where sources use different counting approaches
+   - Corrected "Why it matters" sections that mischaracterized deal theses
+3. **SEO implementation** — @astrojs/sitemap, robots.txt, Open Graph, Twitter Cards, canonical URLs, JSON-LD structured data, unique meta descriptions
+4. **Stuck loading bug fix** — overlays setting `overflow: hidden` on `<body>` without clearing; fixed with safety-net reset and close-before-navigate handlers
+5. **Security fix** — search results innerHTML XSS risk eliminated with `escapeHtml()`
+6. **Performance** — `loading="lazy"` on all below-fold images, passive scroll listeners, font preconnect
+7. **Deep research profiles** — GLG, AlphaSights, Third Bridge, Guidepoint, Dialectica with confidence badges, source notes, extended fields
+8. **Custom 404 page** — Added `src/pages/404.astro`
+9. **Verification page** — Added `src/pages/verification.astro` for methodology transparency
 
 ## Content Coverage
 
@@ -50,6 +60,7 @@ The site is **production-ready**. All core features are built, all known bugs ar
 2. **INEX ONE** is listed as a meta-platform but could use a more detailed breakdown of how it aggregates other networks
 3. **Logo images** are missing for ~20 networks (they use gradient placeholders instead)
 4. **News coverage** is skewed toward larger networks — smaller networks have little or no coverage
+5. **Some news signals** still have secondary sourcing (Capvision IPO details from industry summaries rather than primary HKEX filings)
 
 ## Known Limitations
 
@@ -57,11 +68,10 @@ The site is **production-ready**. All core features are built, all known bugs ar
    - Run the admin locally, edit JSON files, rebuild and deploy
    - Add a headless CMS (e.g., Tina, Decap)
    - Switch to Astro SSR mode with the Node adapter
-2. **No real-time news** — news articles are manually curated JSON files, not auto-fetched
+2. **No real-time news** — news signals are manually curated JSON files, not auto-fetched
 3. **No analytics** — no Google Analytics, Plausible, or other tracking (intentionally, per the privacy-first approach)
 4. **OG image is SVG** — social platforms (Facebook, LinkedIn) may not render SVG og:images. For best social sharing, convert `public/og-default.svg` to a 1200x630 PNG using any image tool
-5. **No 404 page** — Astro's default 404 is used. Could create a custom `src/pages/404.astro`
-6. **Duplicate logo files** — some logos exist in both lowercase and capitalized versions (e.g., `Alphasights.png` and `alphasights.png`). The JSON files reference the lowercase versions.
+5. **Duplicate logo files** — some logos exist in both lowercase and capitalized versions (e.g., `Alphasights.png` and `alphasights.png`). The JSON files reference the lowercase versions.
 
 ## Deployment
 
@@ -102,7 +112,7 @@ npm run build         # Generate dist/
 
 ### Why JSON files (not a database or CMS)
 
-- 33 network profiles + 40 news articles is small enough for file-based content
+- 33 network profiles + 52 news signals is small enough for file-based content
 - JSON files are version-controlled in Git (full audit trail)
 - No database dependency to manage, back up, or pay for
 - Easy to edit with any text editor or AI assistant
@@ -119,16 +129,16 @@ npm run build         # Generate dist/
 ### High Priority
 
 1. **Convert OG image to PNG** for better social media sharing compatibility
-2. **Create a 404 page** (`src/pages/404.astro`)
-3. **Add rich profiles** for the remaining 28 networks (prioritize by size/relevance)
-4. **Set up Google Search Console** and submit the sitemap
+2. **Add rich profiles** for the remaining 28 networks (prioritize by size/relevance)
+3. **Set up Google Search Console** and submit the sitemap
 
 ### Medium Priority
 
-5. **Add missing network logos** (20 networks use gradient placeholders)
-6. **Clean up duplicate logo files** in `public/images/networks/`
-7. **Add a contact form** or email address for corrections
-8. **Set up automated news fetching** (the `scripts/fetch-news.ts` exists but may need configuration)
+4. **Add missing network logos** (20 networks use gradient placeholders)
+5. **Clean up duplicate logo files** in `public/images/networks/`
+6. **Add a contact form** or email address for corrections
+7. **Set up automated news fetching** (the `scripts/fetch-news.ts` exists but may need configuration)
+8. **Strengthen primary sourcing** for Capvision IPO and other entries flagged during accuracy audit
 
 ### Low Priority
 
@@ -136,3 +146,4 @@ npm run build         # Generate dist/
 10. **Add View Transitions** for smoother navigation (would require event listener cleanup)
 11. **Create per-network OG images** for better social sharing of individual profiles
 12. **Add Bing Webmaster Tools** submission alongside Google
+13. **Expand news coverage** to smaller/boutique networks that currently have no signals

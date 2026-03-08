@@ -9,7 +9,7 @@ An independent, free information hub for the expert network industry. No affilia
 ExpertNetworks.net is a static website that independently tracks expert network providers (companies like GLG, AlphaSights, Third Bridge, Guidepoint, Dialectica, etc.). It provides:
 
 - **Network profiles** for 33 providers with pricing, compliance, expert counts, AI capabilities, and deep-dive content
-- **Industry news** curated from third-party sources (not vendor marketing)
+- **Industry news feed** with 52 curated signals — sourced from press releases, industry reports, and news coverage (not vendor marketing)
 - **Side-by-side comparison** table of top networks
 - **Admin panel** for content management (password-protected)
 
@@ -58,10 +58,13 @@ ExpertNetworks_Hub/
 │   │   ├── Footer.astro       # Global footer
 │   │   ├── NetworkCard.astro  # Network card (used on homepage featured section)
 │   │   ├── CompareTable.astro # Side-by-side comparison table
+│   │   ├── NewsCard.astro     # News signal card (used in news feed and homepage)
+│   │   ├── Hero.astro         # Hero section component
+│   │   ├── ParticleHero.astro # Animated particle hero variant
 │   │   └── TrackedNetworksMarquee.astro  # Scrolling network logos bar
 │   ├── content/               # All site data (JSON)
 │   │   ├── networks/          # 33 network profile JSON files
-│   │   ├── news/              # 40+ news article JSON files
+│   │   ├── news/              # 52 news signal JSON files
 │   │   ├── site.json          # Site-wide text (hero, footer, about)
 │   │   └── compare.json       # Which networks appear in comparison table
 │   ├── layouts/
@@ -76,8 +79,10 @@ ExpertNetworks_Hub/
 │   │   ├── compare.astro      # Comparison table page
 │   │   ├── about.astro        # About page
 │   │   ├── sources.astro      # Sources & methodology
+│   │   ├── verification.astro # Verification & methodology page
 │   │   ├── disclaimer.astro   # Legal disclaimer
 │   │   ├── privacy.astro      # Privacy policy
+│   │   ├── 404.astro          # Custom 404 error page
 │   │   ├── admin/             # Admin panel pages (protected)
 │   │   └── api/               # REST API endpoints (protected)
 │   ├── styles/
@@ -106,8 +111,9 @@ ExpertNetworks_Hub/
 
 1. Create a JSON file in `src/content/news/` (e.g., `my-article.json`)
 2. Required fields: `title`, `slug`, `date`, `source`, `summary`, `category`
-3. Use `relatedNetworks` array to link to network slugs
-4. Set `published: true` to make it visible
+3. Optional V2 fields: `sourceType` (Press Release / Industry Report / News Coverage / Regulatory / Product Update), `significance` (major / standard / brief), `featured`, `whyItMatters`, `impactTags[]`
+4. Use `relatedNetworks` array to link to network slugs
+5. Set `published: true` to make it visible
 
 ### Network Profile Tiers
 

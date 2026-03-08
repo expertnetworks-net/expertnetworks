@@ -148,6 +148,28 @@ npm install @astrojs/sitemap
 
 ---
 
+### News signal not appearing in "What Matters Now" section
+
+**What it means:** The news article needs `"featured": true` and `"significance": "major"` to appear in the featured signals section of the news page.
+
+**How to fix:**
+1. Set `"featured": true` in the news JSON file
+2. Set `"significance": "major"`
+3. Add a `"whyItMatters"` string to display editorial context
+4. Ensure `"sourceType"` is set (Press Release, Industry Report, News Coverage, Regulatory, or Product Update)
+
+---
+
+### News V2 field enum validation error
+
+**What it means:** A news JSON file has an invalid value for `sourceType` or `significance`.
+
+**Valid values:**
+- `sourceType`: `Press Release`, `Industry Report`, `News Coverage`, `Regulatory`, `Product Update`
+- `significance`: `major`, `standard`, `brief`
+
+---
+
 ### Rich profile sections not showing (no accordion)
 
 **What it means:** The profile page detects whether to show the accordion deep-dive based on this check:
