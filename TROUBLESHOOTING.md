@@ -1,281 +1,297 @@
 # Troubleshooting
 
-> Note: parts of this document predate the March 2026 static-only cleanup. Any troubleshooting steps that mention `/admin`, `/api/*`, or `ADMIN_PASSWORD` no longer apply to the current production architecture.
+Last verified against the repository: March 8, 2026
 
-Common issues and their solutions when working on ExpertNetworks Hub.
+This guide only covers the current static-site architecture.
 
-Last verified against codebase: March 8, 2026
+The repo no longer includes an admin panel, API routes, or environment-variable-based auth flow. If you see documentation or old notes referring to `/admin`, `/api/*`, or `ADMIN_PASSWORD`, treat them as stale.
 
----
+## Install And Setup Problems
 
-## Build Errors
+### `npm install` fails or produces incompatible dependency errors
 
-### "InvalidContentEntryDataError: data does not match collection schema"
+Recommended baseline is Node 20 to match `.github/workflows/verify.yml`.
 
-**What it means:** A JSON file in `src/content/networks/` or `src/content/news/` has a field that doesn't match the Zod schema in `src/content.config.ts`.
+Check:
 
-**How to fix:**
-1. The error message tells you exactly which file and field is wrong
-2. Either fix the JSON file to match the schema, or update the schema in `content.config.ts`
-3. Common causes:
-   - New field added to JSON but not to schema
-   - Typo in enum value
-   - Wrong type (string where number expected, etc.)
-
-**Valid enum values (verified from `content.config.ts`):**
-
-| Field | Valid Values |
-|---|---|
-| `confidence.*` | `verified`, `positioning`, `inference`, `partially-unverifiable` |
-| `sourceType` (news) | `Press Release`, `Industry Report`, `News Coverage`, `Regulatory`, `Product Update` |
-| `significance` (news) | `major`, `standard`, `brief` |
-| `categoryBadge` (network) | `Global Leader`, `Major Provider`, `Fast-Growing`, `Asia Specialist`, `Research Platform`, `Technology-First`, `Marketplace`, `Boutique Specialist` |
-| `deliveryModel` (network) | `Concierge`, `Hybrid`, `Self-Serve`, `Marketplace`, `Platform-Led` |
-| `regionStrength` (network) | `Global`, `North America`, `Europe`, `Asia-Pacific`, `Greater China`, `India`, `Emerging Markets` |
-| `complianceBadge` (network) | `Strong Compliance`, `Standard Compliance`, `Compliance Tools`, `Limited Public Detail` |
-| `aiBadge` (network) | `AI-Native`, `AI Research`, `AI Matching`, `AI Moderation`, `Limited AI Detail` |
-
----
-
-### "Cannot find module '@astrojs/sitemap'"
-
-**Fix:**
 ```bash
-npm install @astrojs/sitemap
+node -v
+npm -v
 ```
 
----
+If your local Node version is far behind CI, switch to Node 20 and reinstall:
 
-### Build succeeds but pages are missing
-
-**Cause:** The content file has `published` set to `false` or missing.
-
-**Fix:** Set `"published": true` in the relevant JSON file.
-
----
-
-### Build succeeds but news signal not in "What Matters Now"
-
-**Cause:** The featured signals section requires all of:
-1. `"featured": true`
-2. `"significance": "major"`
-3. `"whyItMatters": "..."` (for the editorial context display)
-4. `"sourceType"` set to a valid enum value
-
-If any are missing, the signal appears in the main feed but not the featured section.
-
----
-
-## Runtime Issues
-
-### Page appears "stuck" — can't scroll, clicks don't work
-
-**What it means:** An overlay set `overflow: hidden` on `<body>` and didn't clear it.
-
-**Quick fix:** DevTools Console → `document.body.style.overflow = ''`
-
-**This should not recur** — `BaseLayout.astro` resets overflow on every page load. If it does:
-
-1. A new overlay was added without a close handler
-2. A link inside an overlay navigates without closing the overlay first
-3. A JavaScript error prevented the close function from running
-
-**Prevention:** Every overlay must:
-- Clear `overflow` in its close function
-- Have click handlers on internal links that call close before navigation
-- Respond to the Escape key
-
----
-
-### Search overlay doesn't show results
-
-**Debug:**
-1. DevTools Console — check for JavaScript errors
-2. `define:vars` in `Header.astro` injects network data inline
-3. If a network has unusual characters, it could break JSON serialization
-4. All names are escaped with `escapeHtml()` (XSS fix applied)
-
----
-
-### Mobile sidebar doesn't close
-
-**Debug:**
-1. DevTools Console for errors
-2. Verify DOM IDs: `sidebarToggle`, `sidebarBackdrop`, `mobileSidebar`, `closeSidebar`
-3. Should close on: backdrop click, close button, Escape, or link click inside sidebar
-
----
-
-### News page filters don't work
-
-**Debug:**
-1. DevTools Console for errors
-2. The news page has 5 filter controls: category, network, source type, time range, significance
-3. Check that news signal elements have correct `data-*` attributes
-4. The trending sidebar computes 90-day counts from `impactTags` — missing tags = wrong counts
-
----
-
-### Network directory filters don't work
-
-**Debug:**
-1. DevTools Console for errors
-2. Verify DOM IDs: `searchInput`, `filterType`, `filterPricing`, `filterRegion`, `sortBy`, `networkList`
-3. Check that `.network-row` elements have correct `data-*` attributes
-
----
-
-## Content Issues
-
-### Network logo not showing (gradient placeholder instead)
-
-**Causes:**
-1. `logo` field missing or empty in the network's JSON
-2. Logo file doesn't exist at the specified path in `public/images/networks/`
-3. Path case mismatch — Linux is case-sensitive (`GLG.png` ≠ `glg.png`)
-
-**Fix:**
-1. Add a PNG to `public/images/networks/`
-2. Set `"logo": "/images/networks/my-network.png"` in the JSON
-3. Currently 11 of 33 networks have logos; 22 use gradient placeholders
-
----
-
-### Network not appearing in comparison table
-
-**Fix:** Edit `src/content/compare.json`:
-- `networks` array: controls the default comparison set
-- `presets` object: controls the 7 preset tabs (leaders, consulting, pe, enterprise, asia, ai, library)
-- Slugs must match filenames in `src/content/networks/` (without `.json`)
-
----
-
-### News signal not linking to correct network
-
-**Fix:** Ensure `relatedNetworks` slugs match network filenames. Example: if the file is `src/content/networks/alphasense-tegus.json`, the slug is `"alphasense-tegus"`.
-
----
-
-### Rich profile sections not showing (no accordion)
-
-**Detection logic in `[slug].astro`:**
-```js
-const isRich = !!(d.overview || d.history || d.servicesDetailed?.length || d.aiPlatform || d.strengths?.length);
+```bash
+rm -rf node_modules package-lock.json
+npm install
 ```
 
-If none present → basic layout. Add at least one rich field to trigger accordions.
+Only delete `package-lock.json` if you intend to regenerate it locally.
 
-Currently 5 networks have rich profiles: GLG, AlphaSights, Third Bridge, Guidepoint, Dialectica.
+### `npm run dev` starts, but changes do not show up
 
----
+Some changes require a full dev-server restart, especially:
 
-## SEO Issues
+- `src/content.config.ts`
+- `tailwind.config.mjs`
+- `astro.config.mjs`
 
-### Page not indexed by Google
+Stop and restart:
 
-1. In sitemap? Check `dist/sitemap-0.xml` after building
-2. `published: true` set?
-3. `robots.txt` blocking? Only `/admin/` and `/api/` are blocked
-4. Sitemap submitted in Google Search Console?
-5. Canonical URL correct? Check `<link rel="canonical">`
-
----
-
-### Social share preview shows no image
-
-**Cause:** `og:image` points to `/og-default.svg`. Facebook and LinkedIn don't render SVG.
-
-**Fix:** Convert to 1200x630 PNG, save as `public/og-default.png`, update `src/layouts/BaseLayout.astro` to reference the PNG.
-
----
-
-## Admin Panel
-
-### Admin panel forms don't work
-
-**Cause:** API endpoints only work in dev/preview mode (SSR). Static build has no server for POST requests.
-
-**Fix:**
 ```bash
 npm run dev
-# Visit http://localhost:4321/admin/login
 ```
 
----
+## Validation And Build Failures
 
-### "Unauthorized" error
+### `InvalidContentEntryDataError`
 
-**Fix:**
-1. Go to `/admin/login`
-2. Enter password from `.env` (`ADMIN_PASSWORD`)
-3. Retry
+This means a JSON file in `src/content/networks/` or `src/content/news/` does not match the schema in `src/content.config.ts`.
 
----
+Typical causes:
 
-### No .env file / password not working
+- a required field is missing
+- an enum value is wrong
+- a field type changed without a schema update
+- a number was entered as a string
 
-**Cause:** `.env` is gitignored and not included in the repo.
+Fix process:
 
-**Fix:**
+1. read the exact file and field named in the error
+2. compare it against `src/content.config.ts`
+3. update either the data or the schema
+4. rerun `npm run verify`
+
+### `astro check` fails after adding a new field
+
+If a content field is new, add it to `src/content.config.ts` before using it in a page.
+
+If a page expects `data.someField`, but the schema does not define it, TypeScript and Astro will complain.
+
+### A provider or news item is missing from the built site
+
+Check the `published` field in the corresponding JSON file.
+
+If `published` is `false`, the item will be omitted from public pages and, for provider profiles, from static path generation.
+
+## Cross-Reference Issues
+
+### News item does not show up on the expected provider page
+
+Check `relatedNetworks` in the news JSON file.
+
+Every entry in `relatedNetworks` must match a real provider slug from `src/content/networks/*.json`.
+
+Quick check:
+
 ```bash
-cp .env.example .env
-# Edit .env: ADMIN_PASSWORD=your_password_here
+rg -n '"slug": "your-provider-slug"' src/content/networks
 ```
 
-Auth checks `import.meta.env.ADMIN_PASSWORD || process.env.ADMIN_PASSWORD` in `src/pages/api/auth.ts`.
+### Compare preset or default provider is broken
 
----
+Check `src/content/compare.json`.
 
-## Development Environment
+Every slug in:
 
-### Port already in use
+- `networks`
+- `presets.*`
+- any compare-driven assumptions in page code
+
+must match a published provider slug.
+
+If a provider was renamed, compare defaults and presets must be updated manually.
+
+### Directory or news links look right in content, but behavior is wrong
+
+The schema validates structure, but not every relationship. A build can still succeed if:
+
+- `relatedNetworks` contains a typo
+- compare presets reference a removed slug
+- a page assumes a field exists but the content is only partially populated
+
+When in doubt, check the rendered page in the browser after `npm run verify`.
+
+## Internal Link Verification Problems
+
+### `npm run verify:links` says `dist/ does not exist`
+
+The link checker runs against built output, not source files.
+
+Build first:
 
 ```bash
-lsof -i :4321 | grep LISTEN | awk '{print $2}' | xargs kill
-# Or: npm run dev -- --port 4322
+npm run build
+npm run verify:links
 ```
 
----
+Or run the full command:
 
-### Changes not reflecting
+```bash
+npm run verify
+```
 
-| What you edited | Expected behavior |
+### `npm run verify:links` reports a broken internal reference
+
+The script in `scripts/verify-dist-links.mjs` checks `href` and `src` values in built HTML.
+
+Common causes:
+
+- wrong path in an `<a>` or `<img>`
+- moved file under `public/`
+- missing trailing `index.html` equivalent route
+- broken asset reference in page markup
+
+Fix process:
+
+1. note the file and resolved path from the error output
+2. confirm the target exists in `dist/` after build
+3. trace back to the source page or component that emitted the bad link
+
+## Static Asset And Path Issues
+
+### Logo or image does not render
+
+Check:
+
+- the asset exists under `public/`
+- the JSON or page points to the correct path
+- filename case matches exactly
+
+Static hosts and CI environments are case-sensitive even if your local machine is forgiving.
+
+### OG image or favicon changes do not appear
+
+These files are served from `public/`.
+
+Check:
+
+- the new file exists in `public/`
+- `src/layouts/BaseLayout.astro` points to the correct asset
+- your browser or CDN is not serving a cached copy
+
+## Page-Level UI Problems
+
+### Header search or menu drawer stops working
+
+Check `src/components/Header.astro`.
+
+This component contains inline JavaScript for:
+
+- search overlay open/close
+- menu drawer open/close
+- search results rendering
+
+Common breakage sources:
+
+- changed DOM IDs
+- changed element structure without updating selectors
+- syntax error in the inline script
+
+### Directory filters or compare selection stop working
+
+Check `src/pages/networks/index.astro`.
+
+That page owns:
+
+- filter state
+- search state
+- view toggle
+- compare tray state
+- compare handoff to `/compare`
+
+Pay attention to `data-*` attributes on rendered cards. Many filters rely on them.
+
+### Profile sidebar or mobile drawer breaks
+
+Check `src/pages/networks/[slug].astro`.
+
+That page contains sidebar navigation and mobile-panel logic. It is easy to break by renaming DOM IDs or changing the profile layout structure.
+
+### Compare page stops responding or URL behavior is wrong
+
+Check `src/pages/compare.astro`.
+
+The compare page manages:
+
+- default provider state
+- preset switching
+- add/remove provider actions
+- URL parameter normalization
+- differences-only mode
+- scroll-progress navigation
+
+If compare behavior regresses, test both:
+
+- a normal compare URL
+- a single-provider URL such as `/compare?networks=alphasights`
+
+### News filters or alternate view break
+
+Check `src/pages/news/index.astro`.
+
+That page owns:
+
+- filter controls
+- feed/signals view toggle
+- featured signal rendering assumptions
+- client-side data used by the alternate signals view
+
+## Static Hosting And Deployment Problems
+
+### Push succeeded, but the live site did not update
+
+Do not assume GitHub default branch equals Cloudflare production branch.
+
+Check Cloudflare Pages directly.
+
+Questions to verify:
+
+1. Which branch is configured as the production branch?
+2. Did Cloudflare build the commit you expected?
+3. Did you push to that branch, or only to `main`?
+
+This is a known operational gotcha in the current repo history.
+
+### Local build works, but Cloudflare Pages fails
+
+Check:
+
+- Node version differences between local and CI/Pages
+- missing files under `public/`
+- content schema issues that only show up on a clean install
+- whether `npm run verify` passes from a clean checkout
+
+Cloudflare Pages expects a static build output from `astro build`.
+
+## Environment Variable Confusion
+
+### Do I need a `.env` file?
+
+No, not for the current site.
+
+The repo does not require environment variables for:
+
+- `npm run dev`
+- `npm run build`
+- `npm run preview`
+- static deployment
+
+If you see instructions mentioning `.env`, `ADMIN_PASSWORD`, or auth tokens for app runtime, they are from removed workflows.
+
+## Quick File Reference
+
+| Issue | First file to inspect |
 |---|---|
-| JSON content file | Hot-reload. If not, restart `npm run dev` |
-| `content.config.ts` | **Must restart** dev server |
-| `tailwind.config.mjs` | **Must restart** dev server |
-| `.astro` file | Hot-reload automatically |
-
----
-
-### TypeScript errors in .astro files
-
-- `Property 'X' does not exist on type` → field not in Zod schema (`content.config.ts`)
-- `Type 'X' is not assignable to type 'Y'` → wrong type in function argument
-
----
-
-### `npm run fetch-news` fails
-
-**Cause:** `scripts/fetch-news.ts` does not exist. The npm script is defined in `package.json` but the file was never created.
-
-**Fix:** Either create the script or remove the entry from `package.json`.
-
----
-
-## Quick Reference: Debug Locations
-
-| Issue | File to check |
-|---|---|
-| Build errors | `src/content.config.ts` (Zod schemas) |
-| Auth issues | `src/middleware.ts` + `src/pages/api/auth.ts` |
-| Search bugs | `src/components/Header.astro` (inline script) |
-| Sidebar bugs | `src/pages/networks/[slug].astro` (inline script) |
-| Network filter bugs | `src/pages/networks/index.astro` (inline script) |
-| News filter bugs | `src/pages/news/index.astro` (inline script) |
-| SEO tags | `src/layouts/BaseLayout.astro` |
-| Stuck page / overflow | `src/layouts/BaseLayout.astro` (safety-net reset) |
-| Sitemap config | `astro.config.mjs` (sitemap filter) |
-| Crawl rules | `public/robots.txt` |
-| Comparison table | `src/content/compare.json` + `src/components/CompareTable.astro` |
-| Env var usage | `src/pages/api/auth.ts` (line 14) |
+| Content schema mismatch | `src/content.config.ts` |
+| Network content issue | `src/content/networks/*.json` |
+| News content issue | `src/content/news/*.json` |
+| Compare preset/default issue | `src/content/compare.json` |
+| Global metadata or layout issue | `src/layouts/BaseLayout.astro` |
+| Header search/menu issue | `src/components/Header.astro` |
+| Directory UI issue | `src/pages/networks/index.astro` |
+| Provider page UI issue | `src/pages/networks/[slug].astro` |
+| Compare UI issue | `src/pages/compare.astro` |
+| News UI issue | `src/pages/news/index.astro` |
+| Link verification behavior | `scripts/verify-dist-links.mjs` |
+| CI verification behavior | `.github/workflows/verify.yml` |

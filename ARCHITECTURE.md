@@ -1,346 +1,340 @@
 # Architecture
 
-> Note: parts of this document predate the March 2026 static-only cleanup. Any references to `/admin`, `/api/*`, middleware auth, or `site.json` are historical and no longer reflect the live codebase.
+Last verified against the codebase: March 8, 2026
 
-## System Overview
+## System Summary
 
-ExpertNetworks.net is a **fully static site** built with Astro 5.18. At build time, Astro reads JSON content files, validates them against Zod schemas, renders Astro/React components into HTML, and outputs a `dist/` folder of pure static HTML/CSS/JS. No server is needed in production.
+ExpertNetworks.net is a static Astro site.
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                    BUILD TIME                           │
-│                                                         │
-│  JSON files ──→ Zod validation ──→ Astro templates ──→ dist/
-│  (content/)     (content.config.ts)  (pages/*.astro)    (static HTML)
-│                                                         │
-│  Tailwind CSS ──→ PostCSS ──→ Optimized CSS bundle      │
-│  Google Fonts ──→ <link> tags in <head>                 │
-│  public/ assets ──→ Copied to dist/ as-is               │
-└─────────────────────────────────────────────────────────┘
+At build time, Astro reads JSON content from `src/content/`, validates it through `src/content.config.ts`, renders Astro pages from `src/pages/`, and writes static output to `dist/`.
 
-┌─────────────────────────────────────────────────────────┐
-│                    RUNTIME (browser)                    │
-│                                                         │
-│  Static HTML served by any web server                   │
-│  Inline <script> blocks handle:                         │
-│    - Search overlay (Header.astro)                      │
-│    - Filter/sort on directory and news pages            │
-│    - Mobile sidebar toggle on profile pages             │
-│    - Particle animation + typewriter (homepage hero)    │
-│    - Scroll animations (IntersectionObserver)           │
-│  No client-side routing — full page loads on navigation │
-│  No React shipped to browser — React is SSR-only        │
-└─────────────────────────────────────────────────────────┘
+At runtime, the browser receives static HTML, CSS, images, and page-specific JavaScript. There is no backend service, no API layer, no request-time database, and no admin workflow in the current repository.
+
+## Runtime Model
+
+```text
+src/content/*.json
+        |
+        v
+src/content.config.ts
+  Astro Content Collections
+  Zod validation
+        |
+        v
+src/pages/*.astro + src/components/*.astro
+        |
+        v
+astro build
+        |
+        v
+dist/ static HTML, CSS, JS, images, sitemap, robots.txt
 ```
 
-## Data Architecture
+Key implications:
 
-### Content Collections
+- production hosting only needs to serve static files
+- publishing is Git-based
+- content edits are code changes
+- build-time validation is the main safety net
 
-Astro Content Collections with Zod validation. Two collections defined in `src/content.config.ts`:
+## What Data Lives Where
 
-```
-networks/          (33 JSON files → 33 static profile pages)
-  ├── glg.json
-  ├── alphasights.json
-  ├── third-bridge.json
-  └── ... (one file per provider)
+### Provider profiles
 
-news/              (52 JSON files → rendered in news feed)
-  ├── glg-agentic-ai-report.json
-  ├── alphasense-500m-arr.json
-  └── ... (one file per signal)
+Directory: `src/content/networks/`
 
-site.json          (hero text, footer text, about content)
-compare.json       (comparison table config: networks, presets, sections)
-```
+Each JSON file describes one provider. These entries feed:
 
-Each JSON file is validated at build time. Schema violations fail the build with a clear error pointing to the invalid file and field.
+- homepage summaries
+- the directory page
+- provider profile pages
+- global search in the header
+- compare-page provider cards and matrix values
+- footer counts and marquee items
 
-### Data Flow
+Important fields include:
 
-```
-Network JSON ──→ getCollection('networks') ──→ filter(published) + sort ──→ render
-                                                      │
-                                                      ├── index.astro (top 7 + featured cards)
-                                                      ├── networks/index.astro (full directory)
-                                                      ├── networks/[slug].astro (individual profile)
-                                                      ├── CompareTable.astro (comparison matrix)
-                                                      ├── Header.astro (search data)
-                                                      ├── Footer.astro (top network links)
-                                                      └── TrackedNetworksMarquee.astro (logo bar)
+- identity and branding: `name`, `shortName`, `slug`, `logo`, gradients
+- commercial data: `pricingModel`, `pricingDetail`, `deliveryModel`
+- classification data: `type`, `categoryBadge`, `regionStrength`, `aiBadge`, `complianceBadge`
+- compare-facing fields: `comparison`, `bestFor`, `keyDifferentiators`
+- profile-page deep-dive fields: `overview`, `history`, `servicesDetailed`, `aiPlatform`, `complianceExtended`, `clientFit`, `strengths`, `caveats`, `sourceNotes`, `confidence`
 
-News JSON ──→ getCollection('news') ──→ filter(published) + sort(date desc) ──→ render
-                                                      │
-                                                      ├── news/index.astro (intelligence desk)
-                                                      ├── index.astro (homepage news feed)
-                                                      └── networks/[slug].astro (related news)
-```
+### News signals
 
-### Static Config Files
+Directory: `src/content/news/`
 
-| File | Purpose | Used By |
-|---|---|---|
-| `site.json` | Hero text, footer text, about features | `index.astro`, `Footer.astro` |
-| `compare.json` | Networks list, 7 presets, 6 comparison sections with rows | `CompareTable.astro` |
+Each JSON file is one published signal or development. These entries feed:
 
-## Component Architecture
+- the homepage news section
+- `/news`
+- related-news sections on provider pages
 
-### Layout Hierarchy
+Important fields include:
 
-```
-BaseLayout.astro
-├── <head>
-│   ├── Meta tags (title, description, canonical URL)
-│   ├── Open Graph tags (6 tags)
-│   ├── Twitter Card tags (4 tags)
-│   ├── JSON-LD structured data (varies by page type)
-│   ├── Font preconnects (googleapis.com, gstatic.com)
-│   └── Favicon
-├── Header.astro (nav bar + search overlay + menu drawer)
-├── <slot /> (page content)
-├── Footer.astro
-└── <script>
-    ├── IntersectionObserver for .fade-in animations (threshold 0.1)
-    ├── Passive scroll listener for nav opacity (only if #hero exists)
-    └── document.body.style.overflow = '' reset (safety net)
-```
+- `title`, `slug`, `date`, `source`, `sourceUrl`
+- `category`, `sourceType`, `significance`
+- `summary`, `whyItMatters`
+- `relatedNetworks`
+- `impactTags`
 
-### Page Inventory
+### Compare configuration
 
-| Page | Route | Data Source | Key Features |
-|---|---|---|---|
-| Homepage | `/` | networks + news | Particle hero with typewriter, news feed, top 7 sidebar, featured cards, marquee |
-| Directory | `/networks` | networks | Search, filter (type/pricing/region), sort, stats bar |
-| Profile | `/networks/[slug]` | network + news | Desktop sidebar, mobile sidebar, accordion deep-dive, related news |
-| News | `/news` | news + networks | Intelligence desk: featured signals, significance tiers, source type badges, trending sidebar, category/network/time filters, feed/grid view toggle |
-| Compare | `/compare` | compare.json + networks | Comparison matrix with 7 presets, 6 sections, modal overlay (z-200) |
-| About | `/about` | networks (count) | Static content |
-| Sources | `/sources` | none | Static content |
-| Verification | `/verification` | none | Confidence tier methodology explanation |
-| Disclaimer | `/disclaimer` | none | Legal disclaimer |
-| Privacy | `/privacy` | none | Privacy policy |
-| 404 | N/A | none | Custom error page with navigation links |
-| Admin (7 pages) | `/admin/*` | various | Dashboard, login, networks, news, compare, settings, preview |
-| API (6 endpoints) | `/api/*` | various | auth, networks, news, compare, settings, upload |
+File: `src/content/compare.json`
 
-**Total: ~50 pages generated at build time**
+This file drives the structure of `/compare`:
 
-### Component Responsibilities
+- default provider set
+- preset groups
+- section layout
+- row definitions
+- enriched compare-only metadata such as provider type, evidence labels, AI workflow capabilities, and tradeoff notes
 
-```
-Header.astro
-├── Fixed navigation bar (z-50)
-├── Skip-to-content link (z-300, visible on focus)
-├── Search overlay (z-200) — searches network data inline, opens with / key
-├── Menu drawer (z-100) — slide-out nav with expandable "Top Networks" and "Resources"
-├── Menu backdrop (z-90)
-└── Keyboard shortcuts: / opens search, Escape closes overlays
+## Content Validation
 
-Footer.astro
-├── Brand + description
-├── Navigation links, top network links, legal links
-└── Copyright + disclaimer
+`src/content.config.ts` defines two Astro content collections:
 
-NetworkCard.astro
-├── Two variants: 'logo' (compact) and 'profile' (detailed)
-└── Used on homepage featured section
+- `networks`
+- `news`
 
-NewsCard.astro
-├── Signal card with source type badge, significance indicator, date
-├── "Why it matters" expandable section for major signals
-└── Related network chips and impact tags
+Both use Zod schemas. Invalid content fails the build.
 
-CompareTable.astro
-├── Reads compare.json for network slugs, presets, sections
-├── 7 preset tabs (Leaders, Consulting, PE, Enterprise, Asia, AI, Library)
-├── 6 evaluation sections with typed rows (boolean, text, chip, graded, list)
-└── Horizontally scrollable on mobile
+This is the main content integrity layer. It validates field shape and allowed enum values, but it does not fully enforce cross-file relationships such as:
 
-ParticleHero.astro
-├── Canvas-based particle animation with pointer repulsion
-├── Click pulse effect
-├── Frame-rate independent animation
-└── Typewriter effect on hero title
+- whether every `relatedNetworks` slug points to a real provider
+- whether every compare preset slug points to a published provider
 
-TrackedNetworksMarquee.astro
-├── Desktop: infinite CSS marquee animation (pauses on hover)
-├── Mobile: horizontal scroll
-└── Shows top 12 networks with logos
-```
+Those relationships still need maintainer attention.
 
-## Network Profile Page Architecture
+## How Pages Are Generated
 
-The `[slug].astro` page is the most complex. Two-panel layout:
+### Homepage
 
-```
-┌──────────────────┬──────────────────────────────────┐
-│   SIDEBAR        │   MAIN CONTENT                   │
-│   (desktop only) │                                  │
-│                  │   Layer 1: Always visible         │
-│   Search bar     │   ├── Header (logo, name, meta)  │
-│   Featured list  │   ├── Description                │
-│   All networks   │   ├── Stats (experts, employees) │
-│                  │   ├── Services chips              │
-│   Active item    │   ├── Best for / When not ideal   │
-│   highlighted    │   └── Strengths / Caveats         │
-│                  │                                  │
-│                  │   Layer 2: Expandable accordions  │
-│                  │   ├── Overview                    │
-│                  │   ├── History (with timeline)     │
-│                  │   ├── Services in Detail          │
-│                  │   ├── AI & Platform               │
-│                  │   ├── Compliance                  │
-│                  │   ├── Client Fit                  │
-│                  │   ├── Notable Facts               │
-│                  │   └── Source Notes                │
-│                  │                                  │
-│                  │   Related News                    │
-│                  │   Website link                    │
-└──────────────────┴──────────────────────────────────┘
+File: `src/pages/index.astro`
 
-Mobile: Sidebar hidden, FAB toggle button opens slide-out panel
-```
+Uses `getCollection('networks')` and `getCollection('news')` to render:
 
-Rich profile detection:
-```js
-const isRich = !!(d.overview || d.history || d.servicesDetailed?.length || d.aiPlatform || d.strengths?.length);
-```
+- hero content
+- top provider summaries
+- curated recent news
+- tracked-network marquee
 
-## News Intelligence Desk Architecture
+The page also contains inline JavaScript for the homepage-specific hero animation.
 
-The `news/index.astro` page implements a V2 intelligence desk:
+### Directory
 
-```
-┌──────────────────────────────────────────────────────┐
-│  Coverage Intelligence Bar                           │
-│  [52 SIGNALS] [10 Major] [32 Standard] [11 Brief]   │
-├──────────────────────────────────────────────────────┤
-│                                                      │
-│  WHAT MATTERS NOW (featured signals only)            │
-│  ┌────────────────────────────┐                      │
-│  │ Major signal with          │                      │
-│  │ WHY IT MATTERS context     │                      │
-│  │ Source type badge + date   │                      │
-│  └────────────────────────────┘                      │
-│                                                      │
-├──────────────────────────────────────┬───────────────┤
-│  CONTROL BAR                        │ TRENDING      │
-│  Category | Network | Source Type   │ (90-day)      │
-│  Time Range | Significance          │ Industry (6)  │
-│  [Feed View] [Grid View]           │ Product  (6)  │
-│                                     │ M&A      (3)  │
-├─────────────────────────────────────│ ...           │
-│  ALL SIGNALS (chronological)        │               │
-│  ┌─────────────────────────────┐   │               │
-│  │ Signal card                  │   │               │
-│  │ Left border = significance   │   │               │
-│  │ accent=major, gray=standard  │   │               │
-│  └─────────────────────────────┘   │               │
-└──────────────────────────────────────┴───────────────┘
-```
+File: `src/pages/networks/index.astro`
 
-## Auth & Admin Architecture
+Reads all published network entries and renders:
 
-```
-Browser ──→ /admin/login ──→ POST /api/auth ──→ Checks ADMIN_PASSWORD env var
-                                                     │
-                                                     ▼
-                                              Sets cookie: admin_session=authenticated
-                                                     │
-         /admin/* pages ──→ middleware.ts checks cookie ──→ Allow or redirect to /admin/login
-         /api/* endpoints ──→ middleware.ts checks cookie ──→ Allow or return 401 JSON
+- searchable/filterable provider directory
+- compare selection tray
+- grid view
+- client-rendered list view
 
-Admin pages:              API endpoints:
-  /admin/                   /api/auth     (login, no auth required)
-  /admin/login              /api/networks (CRUD)
-  /admin/networks           /api/news     (CRUD)
-  /admin/news               /api/compare  (update)
-  /admin/compare            /api/settings (update)
-  /admin/settings           /api/upload   (file upload)
-  /admin/preview
-```
+The page serializes a directory dataset into the HTML so the alternate list view can be built client-side without shipping two full SSR views.
 
-**Critical:** Admin panel and API endpoints only work in dev/preview mode (SSR). In the static production build, these routes exist as static HTML but POST/PUT/DELETE requests have no server to handle them.
+### Provider pages
 
-## Z-Index Hierarchy
+File: `src/pages/networks/[slug].astro`
 
-```
-z-300  — Skip-to-content link (visible on focus only)
-z-200  — Header search overlay (fixed, highest interactive priority)
-z-200  — Compare page modal overlay (fixed)
-z-100  — Header menu drawer (fixed)
-z-90   — Header menu backdrop (fixed)
-z-80   — [slug] mobile sidebar panel (fixed)
-z-70   — [slug] mobile sidebar toggle + backdrop (fixed)
-z-50   — Header nav bar (fixed)
-```
+Uses `getStaticPaths()` to create one static page per published provider slug.
 
-## SEO Architecture
+Each page combines:
 
-```
-BaseLayout.astro generates per page:
-├── <meta name="description">              (unique per page type)
-├── <link rel="canonical">                 (full URL with site base)
-├── <meta property="og:*">                 (6 Open Graph tags)
-├── <meta name="twitter:*">                (4 Twitter Card tags)
-├── <script type="application/ld+json">    (JSON-LD, varies by page type)
-├── <link rel="preconnect">                (2 font preconnects)
-└── <link rel="icon" href="/favicon.svg">
+- the provider’s own content
+- a global provider list for sidebar navigation
+- related news pulled from the news collection via `relatedNetworks`
 
-Sitemap (@astrojs/sitemap):
-├── /sitemap-index.xml  → references sitemap-0.xml
-└── /sitemap-0.xml      → ~50 URLs (all public pages, /admin excluded via config)
+The page supports both summary-only and deeper profiles through one shared schema and conditional rendering.
 
-robots.txt:
-├── User-agent: *
-├── Disallow: /admin/
-├── Disallow: /api/
-└── Sitemap: https://expertnetworks.net/sitemap-index.xml
+### Compare page
+
+File: `src/pages/compare.astro`
+
+Builds a provider comparison matrix from:
+
+- published network entries
+- `src/content/compare.json`
+
+The page pre-renders the default comparison and uses inline browser JavaScript for:
+
+- preset switching
+- provider add/remove
+- URL synchronization
+- differences-only filtering
+- section progress navigation
+
+### News page
+
+File: `src/pages/news/index.astro`
+
+Builds the intelligence desk from:
+
+- the news collection
+- published provider data for related-network labels, logos, and gradients
+
+It renders the main feed server-side and uses a smaller serialized client dataset to build the alternate signals view in the browser.
+
+### Editorial pages
+
+Files such as:
+
+- `src/pages/about.astro`
+- `src/pages/sources.astro`
+- `src/pages/verification.astro`
+- `src/pages/privacy.astro`
+- `src/pages/disclaimer.astro`
+- `src/pages/what-is-an-expert-network.astro`
+- `src/pages/best-expert-networks.astro`
+- `src/pages/expert-network-pricing.astro`
+- `src/pages/expert-networks-for-private-equity.astro`
+- `src/pages/glg-vs-alphasights.astro`
+
+These are static Astro pages with shared layout chrome and light page-specific scripting where needed.
+
+## Shared Layout And Components
+
+### `src/layouts/BaseLayout.astro`
+
+Responsible for:
+
+- global metadata
+- canonical tags
+- Open Graph and Twitter tags
+- JSON-LD injection
+- font loading
+- shared header and footer
+- a small amount of global browser behavior such as fade-in observation and `body` overflow reset
+
+### `src/components/Header.astro`
+
+Responsible for:
+
+- fixed site navigation
+- menu drawer
+- search overlay
+- top-network shortcuts inside the drawer
+
+The search overlay is fed by build-time network data passed into an inline script.
+
+### `src/components/Footer.astro`
+
+Responsible for:
+
+- footer navigation
+- legal/methodology links
+- top profile shortcuts
+- published network count summary
+
+### `src/components/ParticleHero.astro`
+
+Reusable dark hero/header component with:
+
+- canvas-based particle animation
+- responsive sizing
+- reduced-motion handling
+- visibility and cleanup logic
+
+### `src/components/TrackedNetworksMarquee.astro`
+
+Homepage component that renders:
+
+- a desktop marquee of tracked providers
+- a mobile horizontal scroll row
+- hover-card metadata derived from provider content
+
+## Client-Side Interactivity
+
+The site is not a SPA. There is no client-side router and no state library.
+
+Interactivity is implemented with inline scripts inside `.astro` files. Current interactive areas include:
+
+- global search and menu drawer
+- homepage hero effects
+- directory filtering and compare selection
+- profile-page sidebar toggles and search
+- compare-page presets, add/remove flow, differences-only mode, and URL state
+- news filters and feed/signals view switching
+
+This makes the project easy to host statically, but it also means UI logic is distributed across multiple page files rather than a shared client application.
+
+## Build And Verification Path
+
+Package scripts from `package.json`:
+
+```bash
+npm run dev
+npm run build
+npm run preview
+npm run check
+npm run verify:links
+npm run verify
 ```
 
-## Tailwind Custom Theme
+Current verification flow:
 
-Verified from `tailwind.config.mjs`:
+1. `astro build`
+2. `scripts/verify-dist-links.mjs` scans built `dist/` HTML for broken internal `href` and `src` references
+3. `astro check`
 
-```
-Colors:
-  primary: #1D1D1F       secondary: #6E6E73      tertiary: #86868B
-  accent: #0071E3        accent-hover: #0077ED
-  accent-green: #30D158  accent-orange: #FF9F0A   accent-purple: #BF5AF2
-  bg-primary: #FBFBFD    bg-secondary: #F5F5F7    bg-dark: #1D1D1F
-  border: #D2D2D7
+GitHub Actions mirrors that same flow in `.github/workflows/verify.yml`.
 
-Font:    Inter + system fallbacks (weights 300-800 via Google Fonts)
-Radius:  card: 16px, sm: 10px
-Width:   max-site: 1200px
-Shadows: card: 0 2px 12px rgba(0,0,0,0.08)
-         card-hover: 0 8px 30px rgba(0,0,0,0.12)
-```
+## Static Hosting And Deployment
 
-## Performance Characteristics
+`astro.config.mjs` sets:
 
-- **Build time:** ~6-9 seconds (50 pages)
-- **Page weight:** HTML-only, no client-side framework shipped (React is SSR-only)
-- **Images:** All below-fold images use `loading="lazy"`
-- **Fonts:** Preconnected to both `fonts.googleapis.com` and `fonts.gstatic.com`
-- **CSS:** Tailwind purges unused styles at build time
-- **JS:** Minimal inline scripts only — no bundled JavaScript framework in the browser
-- **Animations:** CSS-only marquee, IntersectionObserver for fade-ins (threshold 0.1), canvas particle animation on homepage, `prefers-reduced-motion` respected
-- **Scroll listeners:** All use `{ passive: true }`
+- `output: 'static'`
+- `site: 'https://expertnetworks.net'`
+- Tailwind integration
+- sitemap integration
 
-## Dependency Graph
+The resulting `dist/` output is appropriate for static hosts such as Cloudflare Pages.
 
-```
-astro@5.18 ──→ static site generation, content collections, routing
-  ├── @astrojs/react ──→ SSR-only React component rendering
-  ├── @astrojs/tailwind ──→ Tailwind CSS integration
-  ├── @astrojs/sitemap ──→ sitemap generation (excludes /admin)
-  └── @astrojs/node ──→ SSR adapter (dev/preview mode only, not used in static build)
+The repo is currently connected to GitHub Actions and Cloudflare Pages. The GitHub default branch and the Cloudflare production branch should be treated as separate settings and verified independently.
 
-react@19 + react-dom@19 ──→ component rendering (SSR only, not shipped to browser)
-tailwindcss@3.4 ──→ utility-first CSS with custom theme
+## What Is Intentionally Absent
 
-No database. No external APIs. No queues. No workers. No observability tools.
-Content is file-based JSON validated by Zod schemas at build time.
+The current architecture does not include:
+
+- admin routes
+- API endpoints
+- request-time auth
+- file uploads
+- cookies or session-based editing workflows
+- a database
+- a headless CMS
+- React islands
+- server adapters
+
+If any future change depends on those concepts, it should be treated as an architecture change, not a small feature addition.
+
+## Maintainability Notes
+
+- Content lives in JSON files and is easy to diff, review, and revert.
+- Schema enforcement is strong for field types but weaker for cross-file relationships.
+- The heaviest client logic lives in `networks/index.astro`, `compare.astro`, and `news/index.astro`.
+- Many UI behaviors rely on inline scripts, so regressions often show up as browser issues rather than compile failures.
+- `public/` asset paths must stay accurate because broken asset links only surface during build verification or manual review.
+
+## Concise Repo Map
+
+```text
+.
+├── .github/workflows/verify.yml
+├── public/
+├── scripts/verify-dist-links.mjs
+├── src/
+│   ├── components/
+│   ├── content/
+│   │   ├── compare.json
+│   │   ├── networks/
+│   │   └── news/
+│   ├── content.config.ts
+│   ├── layouts/
+│   └── pages/
+├── astro.config.mjs
+├── package.json
+├── tailwind.config.mjs
+└── tsconfig.json
 ```

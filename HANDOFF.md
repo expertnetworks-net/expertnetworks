@@ -1,187 +1,217 @@
-# Handoff Document
+# Handoff
 
-> Note: parts of this document predate the March 2026 static-only cleanup. Any references to the removed admin/API workflow or the old `fetch-news` script should be treated as historical.
+Last verified against the repository: March 8, 2026
 
-Last updated: March 8, 2026
+## Project Snapshot
 
-## Current State
+ExpertNetworks.net is a static Astro site that publishes expert network research from JSON content stored in Git.
 
-The site is **production-ready** for static deployment. All core features are built, SEO is fully implemented, and content has been editorially audited.
+Current verified scope:
 
-### What's Live
+- 33 published provider profiles
+- 52 published news signals
+- compare page with 6 default providers, 9 presets, and differences-only mode
+- public editorial pages for methodology, verification, privacy, disclaimer, and category guides
 
-- **33 network profiles** — all published, 6 featured (GLG, AlphaSights, Third Bridge, Guidepoint, AlphaSense/Tegus, Dialectica)
-- **52 news signals** — curated from press releases, industry reports, and news coverage with V2 intelligence features (significance tiers, source types, "Why it matters" editorial context, impact tags, trending analysis)
-- **5 rich profiles** with deep-dive accordions, timelines, source notes, and confidence badges (GLG, AlphaSights, Third Bridge, Guidepoint, Dialectica)
-- **Comparison table** with 7 presets (Leaders, Consulting, PE, Enterprise, Asia, AI, Library) across 6 evaluation sections
-- **Full SEO suite** — sitemap, robots.txt, OG tags, Twitter Cards, JSON-LD, canonical URLs, unique descriptions
-- **Custom 404 page** and **verification methodology page**
-- **Admin panel** — 7 pages + 6 API endpoints, functional in dev mode only
+There is no admin panel, no API layer, and no runtime editing workflow in the current codebase.
 
-### What Was Done (March 2026)
+## The Files That Matter Most
 
-1. **News V2 intelligence desk** — Redesigned news feed from flat list to intelligence-desk layout:
-   - "What Matters Now" featured signals section with editorial "Why it matters"
-   - Significance tiers: major (10), standard (32), brief (11)
-   - Source type badges: Press Release, Industry Report, News Coverage, Regulatory, Product Update
-   - Impact tags and trending sidebar (90-day category breakdown)
-   - Dual view: featured signals + full chronological feed/grid
-2. **Two-pass news accuracy audit** — Editorial review of all 52 signals:
-   - Fixed dates, tightened attribution, reframed editorial claims as hedged observations
-   - Removed entries that were market-status inferences rather than discrete events
-   - Added methodology disclaimers where sources use different counting methodologies
-   - Corrected "Why it matters" sections that mischaracterized deal theses (e.g., Carousel acquisition)
-   - Softened sourcing claims where only secondary sources exist (e.g., Capvision IPO)
-3. **SEO implementation** — @astrojs/sitemap, robots.txt, Open Graph, Twitter Cards, canonical URLs, JSON-LD structured data, unique meta descriptions
-4. **Stuck loading bug fix** — overlays setting `overflow: hidden` on `<body>` without clearing; fixed with safety-net reset and close-before-navigate handlers
-5. **Security fix** — search results innerHTML XSS risk eliminated with `escapeHtml()`
-6. **Performance** — `loading="lazy"` on all below-fold images, passive scroll listeners, font preconnect
-7. **Deep research profiles** — GLG, AlphaSights, Third Bridge, Guidepoint, Dialectica with confidence badges, source notes, extended fields
-8. **Custom 404 page** and **verification methodology page**
-9. **Full documentation audit** — all docs rewritten from scratch against verified codebase
+### Content and schemas
 
-## Critical Files
+- `src/content.config.ts`
+  Source of truth for content schema validation.
+- `src/content/networks/*.json`
+  One file per provider profile.
+- `src/content/news/*.json`
+  One file per news signal.
+- `src/content/compare.json`
+  Compare defaults, presets, sections, and enriched compare metadata.
 
-| File | What It Controls | Risk If Modified Incorrectly |
-|---|---|---|
-| `src/content.config.ts` | Zod schemas for all content | Build fails if schema doesn't match JSON |
-| `src/content/networks/*.json` | Network data (33 files) | Content errors, missing profiles |
-| `src/content/news/*.json` | News signals (52 files) | Content errors, missing signals |
-| `src/content/compare.json` | Comparison table config | Broken comparison page, invalid presets |
-| `src/middleware.ts` | Auth protection for admin/API | Security bypass if weakened |
-| `src/layouts/BaseLayout.astro` | SEO tags, overflow reset, animations | SEO regression, stuck-page bug |
-| `src/components/Header.astro` | Navigation, search, menu | Site-wide navigation failure |
-| `astro.config.mjs` | Build mode, sitemap, integrations | Build failure, missing sitemap |
+### Public pages
 
-## Content Coverage
+- `src/pages/index.astro`
+- `src/pages/networks/index.astro`
+- `src/pages/networks/[slug].astro`
+- `src/pages/compare.astro`
+- `src/pages/news/index.astro`
 
-### Networks by Profile Depth
+### Shared site chrome
 
-**Rich profiles (5 — full deep-dive with accordions, timelines, confidence badges):**
-- GLG, AlphaSights, Third Bridge, Guidepoint, Dialectica
+- `src/layouts/BaseLayout.astro`
+- `src/components/Header.astro`
+- `src/components/Footer.astro`
+- `src/components/ParticleHero.astro`
+- `src/components/TrackedNetworksMarquee.astro`
 
-**Basic profiles (28 — summary + services + compliance):**
-- All other networks
+### Verification and deploy-related files
 
-### Networks by Region
+- `scripts/verify-dist-links.mjs`
+- `.github/workflows/verify.yml`
+- `astro.config.mjs`
+- `public/robots.txt`
 
-- **US-based:** GLG, AlphaSights (also London), Guidepoint, Coleman Research, NewtonX, Maven, Zintro, Stax, Ridgetop, Silverlight, Mainstreet, Raven, Mosaic
-- **UK-based:** Third Bridge, Prosapient, Techspert
-- **Europe:** Dialectica (Montreal HQ, Greek origins), Atheneum (Berlin), Emerton (Paris)
-- **Asia:** Capvision (Shanghai), VisasQ (Tokyo), Lynk (Hong Kong)
-- **Other:** Astute Connect (India), OnFrontiers (DC, emerging markets focus)
+## How To Safely Update Content
 
-### Logo Coverage
+### Update a provider profile
 
-11 of 33 networks have logo PNGs in `public/images/networks/`. The remaining 22 use gradient placeholders generated from their `gradientFrom`/`gradientTo` colors.
+1. Edit the matching file in `src/content/networks/`.
+2. Keep the slug stable unless you are prepared to update every reference to it.
+3. If you add a new field, update `src/content.config.ts` first.
+4. If the provider is part of compare defaults or presets, check `src/content/compare.json`.
+5. Run `npm run verify`.
 
-### Content Gaps
+### Add a new provider
 
-1. **28 networks** still need rich profiles (deep-dive research like GLG/AlphaSights/Third Bridge)
-2. **INEX ONE** is listed as a meta-platform but could use a more detailed breakdown
-3. **22 networks missing logos** — they use gradient placeholders
-4. **News coverage skewed** toward larger networks — smaller/boutique networks have little or no coverage
-5. **Some news signals** still have secondary sourcing (Capvision IPO details from industry summaries rather than primary HKEX filings)
+1. Create a new JSON file in `src/content/networks/`.
+2. Add every required schema field.
+3. Confirm the slug is unique.
+4. Decide whether the provider should appear in compare presets, homepage treatments, or footer shortcuts.
+5. Run `npm run verify`.
 
-## Known Limitations
+### Update a news signal
 
-1. **Admin panel is dev-mode only** — API endpoints (POST routes) don't work in static build. Options:
-   - Run admin locally, edit JSON files, rebuild and deploy
-   - Add a headless CMS (Tina, Decap)
-   - Switch to Astro hybrid/SSR mode with the Node adapter
-2. **No real-time news** — signals are manually curated JSON files, not auto-fetched
-3. **No analytics** — no tracking (intentional, privacy-first approach)
-4. **OG image is SVG** — Facebook/LinkedIn may not render SVG og:images; convert to 1200x630 PNG for better sharing
-5. **Duplicate logo files** — some exist in both lowercase and capitalized versions; JSON references lowercase
-6. **No CI/CD pipeline** — no GitHub Actions or automated deployment
-7. **No linting or formatting tools** — no ESLint, Prettier, or similar
-8. **No automated tests** — no test framework configured
-9. **`fetch-news` npm script is broken** — references `scripts/fetch-news.ts` which does not exist
-10. **`@astrojs/node` installed but not configured** — listed in dependencies but not referenced in `astro.config.mjs`; likely leftover from SSR development
+1. Edit or create a JSON file in `src/content/news/`.
+2. Keep `relatedNetworks` aligned with real provider slugs.
+3. Confirm date formatting and enum values match the schema.
+4. Run `npm run verify`.
 
-## Brittle Areas / Risks
+### Update compare behavior
 
-- **Content schema changes** — adding a new field to network/news JSON requires updating `content.config.ts` first or the build will fail
-- **`confidence` enum** — only accepts exactly: `verified`, `positioning`, `inference`, `partially-unverifiable`
-- **Slug consistency** — network slugs in `compare.json`, news `relatedNetworks[]`, and actual filenames must all match
-- **Logo path case sensitivity** — Linux is case-sensitive; `GLG.png` ≠ `glg.png`
-- **Inline JavaScript** — all page interactivity is in inline `<script>` blocks in `.astro` files; no bundling, no source maps, harder to debug in production
+1. Edit `src/content/compare.json`.
+2. Keep all referenced slugs aligned with published provider files.
+3. Check presets, default networks, and section rows after the change.
+4. Run `npm run verify`.
 
-## Deployment
+## High-Risk Areas
 
-### Requirements
+### Slug relationships
 
-Any static hosting service. The `dist/` folder is self-contained (~50 HTML pages + CSS + minimal JS).
+The most failure-prone relationship in the repo is slug consistency across:
 
-### Recommended Hosting
+- `src/content/networks/*.json`
+- `src/content/news/*.json` via `relatedNetworks`
+- `src/content/compare.json`
 
-| Service | Notes |
-|---|---|
-| Cloudflare Pages | Free, fast, automatic HTTPS |
-| Netlify | Free tier, one-click deploy |
-| Vercel | Free tier, good Astro support |
-| AWS S3 + CloudFront | Production-grade, more setup |
+Schema validation will not catch every bad cross-reference.
 
-### Deploy Steps
+### Inline page scripts
+
+Large parts of the public UI rely on inline browser scripts inside:
+
+- `src/pages/networks/index.astro`
+- `src/pages/networks/[slug].astro`
+- `src/pages/compare.astro`
+- `src/pages/news/index.astro`
+- `src/components/Header.astro`
+
+Small DOM or ID changes can break runtime behavior even if the build still passes.
+
+### Compare page
+
+`src/pages/compare.astro` is the most stateful page in the site. Changes to:
+
+- URL parameter handling
+- presets
+- section structure
+- enriched compare fields
+- scroll-nav behavior
+
+need careful regression testing.
+
+### Base layout and metadata
+
+`src/layouts/BaseLayout.astro` controls global metadata, canonical URLs, JSON-LD, and shared page behavior. Regressions here affect the whole site.
+
+## Validation Workflow
+
+Standard maintainer check:
 
 ```bash
-npm run build         # Generates dist/
-# Upload dist/ contents to hosting platform
+npm install
+npm run verify
 ```
 
-### Environment Variables
+What `npm run verify` covers:
 
-| Variable | Purpose | Required |
-|---|---|---|
-| `ADMIN_PASSWORD` | Admin panel login | Only for dev mode |
+- static build success
+- content schema validation
+- internal link and asset reference checks against `dist/`
+- Astro/TypeScript diagnostics
 
-No environment variables are needed for production static deployment.
+What it does not cover:
 
-## Architecture Decisions
+- editorial correctness
+- visual regressions
+- all cross-file slug relationships
 
-### Why Astro (not Next.js, Nuxt, etc.)
+## What To Check Before Publishing
 
-- Content-heavy, read-only site — ideal for static generation
-- Ships zero JavaScript by default (React only renders at build time)
-- Content Collections provide type-safe JSON validation
-- No need for SSR, API routes, or client-side routing in production
+- Build passes with `npm run verify`
+- New or changed slugs are reflected wherever referenced
+- Compare presets still point to real published providers
+- News items link to the correct provider pages
+- New logo or image paths exist under `public/`
+- Page titles and descriptions still make sense if a core page changed
+- Cloudflare Pages is watching the branch you expect
 
-### Why JSON files (not a database or CMS)
+## Deployment Expectations
 
-- 33 network profiles + 52 news signals is small enough for file-based content
-- JSON files are version-controlled in Git (full audit trail)
-- No database to manage, back up, or pay for
-- Easy to edit with any text editor or AI assistant
+This project is deployed as a static site.
 
-### Why inline scripts (not bundled JS)
+Current operational reality, verified on March 8, 2026:
 
-- Each page needs <100 lines of interactivity (search, filters, sidebar)
-- Bundling adds complexity for minimal benefit at this scale
-- Inline scripts are simpler to read and debug
-- No build step for JavaScript, no framework overhead in browser
+- GitHub default branch is `main`
+- Cloudflare Pages production branch still needs to be treated as a separate setting
 
-## Next Steps (Suggestions)
+Do not assume that changing the GitHub default branch automatically changes Cloudflare production.
 
-### High Priority
+Always verify:
 
-1. **Convert OG image to PNG** — SVG og:image doesn't render on Facebook/LinkedIn
-2. **Add rich profiles** for remaining 28 networks (prioritize by traffic/relevance)
-3. **Set up Google Search Console** and submit the sitemap
-4. **Remove or implement `fetch-news` script** — currently broken reference in package.json
+1. which branch Cloudflare Pages treats as production
+2. whether the latest commit on that branch has deployed
 
-### Medium Priority
+## Known Constraints
 
-5. **Add missing network logos** (22 networks use gradient placeholders)
-6. **Clean up duplicate logo files** in `public/images/networks/`
-7. **Add CI/CD pipeline** (GitHub Actions for build verification on PR)
-8. **Strengthen primary sourcing** for signals flagged during accuracy audit (Capvision IPO, Uzabase date)
-9. **Add `.env.example` to onboarding docs** (now created)
+- No environment variables are required for the current site
+- No admin or dashboard workflow exists
+- No request-time data mutations are possible in production
+- No license file is currently present in the repo
+- The site uses static hosting assumptions everywhere
 
-### Low Priority
+## What Not To Break
 
-10. **Add analytics** (Plausible or Simple Analytics for privacy-first tracking)
-11. **Add linting/formatting** (ESLint + Prettier)
-12. **Create per-network OG images** for better social sharing
-13. **Add View Transitions** for smoother navigation
-14. **Expand news coverage** to smaller/boutique networks
-15. **Remove unused `@astrojs/node` dependency** if SSR is not planned
+- `src/content.config.ts` alignment with JSON content
+- slug consistency across content files
+- compare presets and compare section structure
+- header search and menu behavior
+- provider-directory filtering and compare selection
+- provider-page sidebar navigation
+- news filters and related-provider links
+- metadata generation in `BaseLayout`
+
+## How Networks, News, And Compare Interrelate
+
+### Networks
+
+The network collection is the anchor dataset. Other systems reference provider slugs from it.
+
+### News
+
+News signals attach to provider pages through `relatedNetworks`. If a slug is wrong, the article will not surface where expected.
+
+### Compare
+
+Compare uses both:
+
+- base provider fields from the network JSON files
+- compare-specific enriched metadata from `src/content/compare.json`
+
+Adding a provider to compare often means touching both datasets.
+
+## Recommended Maintainer Habits
+
+- Prefer small content diffs over sweeping schema changes
+- Keep docs aligned with code when architecture changes
+- Avoid adding aspirational workflow language that the repo does not implement
+- If a change adds runtime assumptions, call that out explicitly as an architecture change
