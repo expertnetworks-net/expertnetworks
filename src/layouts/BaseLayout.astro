@@ -13,8 +13,8 @@ interface Props {
 }
 
 const {
-  title = 'ExpertNetworks.net — The Independent Expert Network Source',
-  description = 'A neutral, independent hub for the expert network industry. Free. Open. No sign-ups. No bias.',
+  title = 'Expert Network Directory & Industry Intelligence | ExpertNetworks.net',
+  description = 'Independent expert network directory with 33+ provider profiles, side-by-side comparisons, pricing models, compliance frameworks, AI capabilities, and industry news. No sign-ups, no bias.',
   ogImage = '/og-default.svg',
   ogType = 'website',
   canonicalPath,
@@ -60,12 +60,28 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
+  <!-- Favicons -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <!-- JSON-LD Structured Data -->
   {jsonLd && (
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   )}
+
+  <!-- Organization Schema (every page) -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ExpertNetworks.net",
+    "url": "https://expertnetworks.net",
+    "logo": "https://expertnetworks.net/favicon.svg",
+    "description": "Independent expert network directory and industry intelligence resource.",
+    "sameAs": []
+  })} />
 </head>
 <body>
   <Header />
