@@ -14,13 +14,48 @@
   "expertCount": "25M+",
   "expertCountLabel": "Expert-to-company relationships (AlphaGraph)",
   "description": "AlphaSights is a global expert network founded in 2008 in London by Max Cartellieri and Andrew Heath. The firm connects decision-makers at investment funds, consultancies, and Fortune 500 corporations with domain experts for primary research. Unlike competitors that emphasize static database size, AlphaSights positions its custom-sourcing model — recruiting experts fresh against each brief — as a deliberate differentiator. The firm has grown to 2,000+ employees across nine offices worldwide, raised $400 million in September 2024 at a reported $4.2 billion valuation (led by Carlyle and TA Associates), and increasingly invests in AI-augmented workflows via AlphaGPT, AlphaGraph, and AlphaNow.",
-  "services": ["Expert Calls", "Surveys", "AlphaNow", "AlphaGPT", "Proprietary Events", "Custom Research Projects"],
-  "aiCapabilities": ["AlphaGPT conversational AI for research synthesis", "AlphaGraph ML knowledge graph (25M+ expert-to-company relationships)", "AlphaNow content platform with weekly expert insights", "AI Project Summary for automated call and project-level synthesis", "NLP transcription with human QA"],
-  "industries": ["Private Equity / Private Credit", "Hedge Funds", "Venture Capital", "Investment Banking", "Management Consulting", "Corporate Strategy", "Healthcare / Life Sciences", "Technology / TMT"],
+  "services": [
+    "Expert Calls",
+    "Surveys",
+    "AlphaNow",
+    "AlphaGPT",
+    "Proprietary Events",
+    "Custom Research Projects"
+  ],
+  "aiCapabilities": [
+    "AlphaGPT conversational AI for research synthesis",
+    "AlphaGraph ML knowledge graph (25M+ expert-to-company relationships)",
+    "AlphaNow content platform with weekly expert insights",
+    "AI Project Summary for automated call and project-level synthesis",
+    "NLP transcription with human QA"
+  ],
+  "industries": [
+    "Private Equity / Private Credit",
+    "Hedge Funds",
+    "Venture Capital",
+    "Investment Banking",
+    "Management Consulting",
+    "Corporate Strategy",
+    "Healthcare / Life Sciences",
+    "Technology / TMT"
+  ],
   "pricingModel": "Per-call",
   "pricingDetail": "Per-interaction pricing (~$700–$1,800/hr client-side depending on expert seniority)",
-  "keyDifferentiators": ["Speed of expert delivery — often within hours", "Custom-sourcing model (fresh recruitment per project, not static database)", "High-touch, relationship-driven client service with dedicated project teams", "AlphaGPT and AlphaGraph AI-assisted research workflows", "Strong PE, hedge fund, and consulting client base", "AlphaNow reusable content library"],
-  "bestFor": ["Private equity deal teams under time pressure", "Hedge funds needing fast thematic or company research", "Consulting firms on tight engagement timelines", "Corporate strategy and M&A teams at large enterprises", "Teams that value high-touch service over self-serve platforms"],
+  "keyDifferentiators": [
+    "Speed of expert delivery — often within hours",
+    "Custom-sourcing model (fresh recruitment per project, not static database)",
+    "High-touch, relationship-driven client service with dedicated project teams",
+    "AlphaGPT and AlphaGraph AI-assisted research workflows",
+    "Strong PE, hedge fund, and consulting client base",
+    "AlphaNow reusable content library"
+  ],
+  "bestFor": [
+    "Private equity deal teams under time pressure",
+    "Hedge funds needing fast thematic or company research",
+    "Consulting firms on tight engagement timelines",
+    "Corporate strategy and M&A teams at large enterprises",
+    "Teams that value high-touch service over self-serve platforms"
+  ],
   "compliance": {
     "mnpiPolicy": "Four-pillar compliance framework: no current-employer specifics, no MNPI/confidential/proprietary info, no conflicts of interest, full transaction confidentiality",
     "expertVetting": "60+ legal and compliance professionals across 9 cities providing 24/7 coverage; automated risk profiling via AlphaGraph for every interaction; background checks including bankruptcy, political affiliation, and criminal conviction screening",
@@ -31,6 +66,11 @@
   "featured": true,
   "priority": 2,
   "published": true,
+  "categoryBadge": "Global Leader",
+  "deliveryModel": "Concierge",
+  "regionStrength": "Global",
+  "complianceBadge": "Strong Compliance",
+  "aiBadge": "AI Matching",
   "comparison": {
     "expertCalls": true,
     "contentLibrary": "AlphaNow",
@@ -39,28 +79,64 @@
     "complianceTools": true
   },
   "lastUpdated": "2026-03-06",
-
   "overview": "AlphaSights connects decision-makers at investment funds, consultancies, and corporations with professionals who have relevant domain knowledge. The firm's core value proposition is speed and service quality — it often delivers expert matches within hours and assigns dedicated project teams to manage client engagements end-to-end. Distinctively, AlphaSights does not operate as a sign-up 'network' with a static database; instead, it custom-sources experts fresh for each project, qualified individually against each brief. The firm has expanded beyond basic expert calls into an increasingly AI-augmented platform that includes the AlphaNow content library, AlphaGPT conversational AI, and AlphaGraph — a ML-powered knowledge graph mapping 25 million+ expert-to-company relationships. In September 2024, the company raised $400 million in growth funding at a reported $4.2 billion valuation, led by Carlyle and TA Associates. Both co-founders remain as Co-CEOs.",
-
   "history": {
     "narrative": "AlphaSights was founded in 2008 (incorporated 2009) in London by Max Cartellieri and Andrew Heath, who met at Stanford Graduate School of Business. Cartellieri had previously founded Ciao AG, a European price comparison platform acquired by Microsoft in 2008. Heath had co-founded GoIndustry DoveBid, an industrial surplus marketplace he scaled to 300 employees. Their thesis: competitive advantage increasingly derives from non-codified, experience-based knowledge in people's heads, and there was a market gap for streamlined access to it. The company grew rapidly, becoming operationally profitable by mid-2010 with only ~30 employees, and has since expanded to nine global offices and over 2,000 employees.",
     "timeline": [
-      { "year": "2008", "event": "Founded in London by Max Cartellieri and Andrew Heath (Stanford GSB classmates)" },
-      { "year": "Mid-2010", "event": "Operationally profitable with approximately 30 employees" },
-      { "year": "2011", "event": "Opens New York and Hong Kong offices" },
-      { "year": "2012", "event": "Opens Dubai office" },
-      { "year": "2013", "event": "Named 3rd fastest-growing UK company by Sunday Times Fast Track 100" },
-      { "year": "2015", "event": "Opens San Francisco and Seoul offices" },
-      { "year": "2016", "event": "Opens Shanghai office" },
-      { "year": "2017", "event": "Opens Hamburg office; named to FT Europe's fastest-growing companies" },
-      { "year": "2018", "event": "Opens Tokyo office (9th and most recent office)" },
-      { "year": "2023", "event": "Wins 'Best Research Solution' at Hedgeweek European Credit Awards; achieves 70% revenue CAGR since 2009" },
-      { "year": "Sept 2024", "event": "Raises $400M at $4.2B valuation, led by Carlyle and TA Associates" },
-      { "year": "Jan 2025", "event": "Files trademark infringement lawsuit against AlphaSense in SDNY" },
-      { "year": "2025", "event": "Named to FT Europe's Long-Term Growth Champions 2026; expands to 2,000+ employees" }
+      {
+        "year": "2008",
+        "event": "Founded in London by Max Cartellieri and Andrew Heath (Stanford GSB classmates)"
+      },
+      {
+        "year": "Mid-2010",
+        "event": "Operationally profitable with approximately 30 employees"
+      },
+      {
+        "year": "2011",
+        "event": "Opens New York and Hong Kong offices"
+      },
+      {
+        "year": "2012",
+        "event": "Opens Dubai office"
+      },
+      {
+        "year": "2013",
+        "event": "Named 3rd fastest-growing UK company by Sunday Times Fast Track 100"
+      },
+      {
+        "year": "2015",
+        "event": "Opens San Francisco and Seoul offices"
+      },
+      {
+        "year": "2016",
+        "event": "Opens Shanghai office"
+      },
+      {
+        "year": "2017",
+        "event": "Opens Hamburg office; named to FT Europe's fastest-growing companies"
+      },
+      {
+        "year": "2018",
+        "event": "Opens Tokyo office (9th and most recent office)"
+      },
+      {
+        "year": "2023",
+        "event": "Wins 'Best Research Solution' at Hedgeweek European Credit Awards; achieves 70% revenue CAGR since 2009"
+      },
+      {
+        "year": "Sept 2024",
+        "event": "Raises $400M at $4.2B valuation, led by Carlyle and TA Associates"
+      },
+      {
+        "year": "Jan 2025",
+        "event": "Files trademark infringement lawsuit against AlphaSense in SDNY"
+      },
+      {
+        "year": "2025",
+        "event": "Named to FT Europe's Long-Term Growth Champions 2026; expands to 2,000+ employees"
+      }
     ]
   },
-
   "servicesDetailed": [
     {
       "name": "Expert Calls",
@@ -87,7 +163,6 @@
       "description": "Multi-method research engagements combining calls, surveys, events, and content into structured project deliverables. Designed for due diligence, market landscape assessments, and complex strategic questions requiring multiple expert perspectives."
     }
   ],
-
   "aiPlatform": {
     "narrative": "AlphaSights has invested significantly in technology and AI, positioning itself as a 'market leader in Generative AI-powered knowledge discovery.' AlphaGraph is the firm's ML-powered knowledge graph mapping 25 million+ expert-to-company relationships, continuously curated and enriched. It powers real-time expert matching and compliance risk detection. AlphaGPT provides conversational AI capabilities built on top of the proprietary knowledge graph. The firm also provides AI-generated call summaries on every transcript and a dynamic AI Project Summary tool that synthesizes insights across all calls in a project. NLP transcription is combined with human QA for rapid delivery.",
     "features": [
@@ -100,7 +175,6 @@
       "Private Library: Secure hosting for institutional knowledge alongside AlphaNow content"
     ]
   },
-
   "complianceExtended": {
     "narrative": "AlphaSights maintains a 60+ person legal and compliance team across nine cities providing 24/7 coverage. The firm's compliance framework is structured around four pillars: experts must not disclose current-employer specifics, must not disclose MNPI or confidential/proprietary information, must not participate where conflicts of interest exist, and all transactions must remain confidential. Compliance algorithms assess the unique risk profile of every scheduled interaction, and expert information is auto-cross-referenced against AlphaGraph to identify risks.",
     "highlights": [
@@ -114,7 +188,6 @@
     ],
     "regulatoryContext": "No SEC investigations, insider trading charges, or securities enforcement actions have been publicly reported against AlphaSights. The firm has operated since 2008 without significant public compliance incidents. A U.S. labor classification investigation examined whether certain associates were improperly classified as exempt from overtime, but no public ruling or settlement has been reported as of 2026. In January 2025, AlphaSights filed (not received) a trademark infringement lawsuit against AlphaSense — this is not a regulatory action against AlphaSights."
   },
-
   "clientFit": {
     "narrative": "AlphaSights is especially well suited for clients who value speed, responsiveness, and dedicated project management. Its high-touch model makes it a strong choice for deal teams under time pressure, hedge funds running fast-moving thematic research, and consulting firms needing rapid expert access on tight engagement timelines. The firm's PE and hedge fund client base is particularly strong, and the custom-sourcing model is especially valuable for niche or hard-to-reach expert segments.",
     "segments": [
@@ -126,7 +199,6 @@
       "Investment banks requiring specialist domain knowledge"
     ]
   },
-
   "strengths": [
     "Speed of delivery — often connects clients with experts within hours",
     "Custom-sourcing model recruits experts fresh per project, not from static database",
@@ -138,7 +210,6 @@
     "AlphaNow content library provides reusable research beyond bespoke calls",
     "Founder-led (both Co-CEOs since 2008) with strong institutional culture"
   ],
-
   "caveats": [
     "Per-call pricing can be expensive for high-volume users (~$700–$1,800/hr client-side depending on expert seniority)",
     "Less emphasis on pre-built transcript libraries than some competitors (e.g., Third Bridge Forum)",
@@ -147,7 +218,6 @@
     "Does not publicly disclose expert network size; custom-sourcing model makes direct comparison with competitors' ~1M+ database claims difficult",
     "Self-serve capabilities less developed than tech-first platforms; model is human-intensive"
   ],
-
   "notableFacts": [
     "Founded in 2008 by Max Cartellieri and Andrew Heath, who met at Stanford GSB",
     "Cartellieri previously founded Ciao AG (acquired by Microsoft 2008); Heath co-founded GoIndustry DoveBid",
@@ -164,7 +234,6 @@
     "Great Place to Work certified across US, UK, Germany, Korea, Japan, Greater China",
     "Filed trademark lawsuit against AlphaSense in SDNY (January 2025)"
   ],
-
   "sourceNotes": [
     "AlphaSights official website (alphasights.com) used as primary source for product descriptions, compliance framework, and company positioning",
     "Wikipedia and Grokipedia used for founding story, founder backgrounds, and office timeline — cross-referenced with company site",
@@ -175,10 +244,18 @@
     "Competitive weakness assessments partly originate from competitor marketing (AlphaSense, Third Bridge comparison pages) and should be weighted accordingly",
     "Pricing estimates from expert forums (Expert Opportunities, Highest Paying Gigs, Quora) — not official AlphaSights disclosures"
   ],
-
-  "whyChoose": ["Speed of delivery", "Custom sourcing model", "High-touch service", "AI-augmented workflow"],
-  "whenNotIdeal": ["Budget-constrained teams", "Needs large transcript library", "Wants self-serve platform", "Heavy quantitative needs"],
-
+  "whyChoose": [
+    "Speed of delivery",
+    "Custom sourcing model",
+    "High-touch service",
+    "AI-augmented workflow"
+  ],
+  "whenNotIdeal": [
+    "Budget-constrained teams",
+    "Needs large transcript library",
+    "Wants self-serve platform",
+    "Heavy quantitative needs"
+  ],
   "confidence": {
     "founded": "verified",
     "headquarters": "verified",

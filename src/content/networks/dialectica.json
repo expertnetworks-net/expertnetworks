@@ -14,13 +14,47 @@
   "expertCount": "750,000+",
   "expertCountLabel": "Vetted subject-matter experts (company-stated; also references 1M+ 'knowledge connectors')",
   "description": "Dialectica is a fast-growing B2B information services firm founded in 2015 by George Tsarouchas and Frederick Corkett. The company started in Athens with a small London sales office and has grown to 1,400+ employees across six offices on three continents, crossing $100 million in annual revenue. Dialectica differentiates through its Athens-based operational model (delivering high-quality service at lower cost than London/NYC-based competitors), aggressive AI investment ($25M+ in tech, 50+ GenAI tools, Dialectica IQ knowledge graph), and its Origin deal-sourcing platform for private equity. Named to the FT 1000 (Europe's fastest-growing companies) for five consecutive years (2021-2025). The company is entirely bootstrapped and founder-owned.",
-  "services": ["Calls (Expert Consultations)", "B2B Surveys", "Insights (Written Reports)", "Origin (Deal Sourcing Platform)", "Dialectica IQ (Knowledge Graph & Content Platform)"],
-  "aiCapabilities": ["Dialectica IQ knowledge graph (80M+ company/market records)", "50+ advanced GenAI tools", "Proprietary AI agents", "AI-assisted expert matching", "100+ software engineers, data scientists, and product specialists", "Automated compliance monitoring"],
-  "industries": ["Private Equity", "Management Consulting", "Corporate Strategy", "Healthcare / Life Sciences", "Technology", "Financial Services", "Investment Banking"],
+  "services": [
+    "Calls (Expert Consultations)",
+    "B2B Surveys",
+    "Insights (Written Reports)",
+    "Origin (Deal Sourcing Platform)",
+    "Dialectica IQ (Knowledge Graph & Content Platform)"
+  ],
+  "aiCapabilities": [
+    "Dialectica IQ knowledge graph (80M+ company/market records)",
+    "50+ advanced GenAI tools",
+    "Proprietary AI agents",
+    "AI-assisted expert matching",
+    "100+ software engineers, data scientists, and product specialists",
+    "Automated compliance monitoring"
+  ],
+  "industries": [
+    "Private Equity",
+    "Management Consulting",
+    "Corporate Strategy",
+    "Healthcare / Life Sciences",
+    "Technology",
+    "Financial Services",
+    "Investment Banking"
+  ],
   "pricingModel": "Credit-based",
   "pricingDetail": "Credit system (~$700–$1,100/call client-side; multiple credits may apply per call)",
-  "keyDifferentiators": ["Athens-based operations model — high quality at lower cost than London/NYC peers", "Aggressive AI investment (50+ GenAI tools, Dialectica IQ knowledge graph, $25M+ tech spend)", "Origin deal-sourcing platform for PE (unique in expert network space)", "70% lifetime CAGR (60% CAGR 2019-2024)", "Strong European and emerging market presence", "Appointed Jason Howard (former Tegus General Counsel & CCO, ex-SEC) as Chief Legal & Regulatory Officer (Jan 2025)"],
-  "bestFor": ["Private equity deal teams (especially via Origin platform)", "Consulting firms needing high-quality curated interactions", "European and emerging market research", "Teams seeking AI-augmented research workflows", "Budget-conscious clients wanting premium-quality service"],
+  "keyDifferentiators": [
+    "Athens-based operations model — high quality at lower cost than London/NYC peers",
+    "Aggressive AI investment (50+ GenAI tools, Dialectica IQ knowledge graph, $25M+ tech spend)",
+    "Origin deal-sourcing platform for PE (unique in expert network space)",
+    "70% lifetime CAGR (60% CAGR 2019-2024)",
+    "Strong European and emerging market presence",
+    "Appointed Jason Howard (former Tegus General Counsel & CCO, ex-SEC) as Chief Legal & Regulatory Officer (Jan 2025)"
+  ],
+  "bestFor": [
+    "Private equity deal teams (especially via Origin platform)",
+    "Consulting firms needing high-quality curated interactions",
+    "European and emerging market research",
+    "Teams seeking AI-augmented research workflows",
+    "Budget-conscious clients wanting premium-quality service"
+  ],
   "compliance": {
     "mnpiPolicy": "Structured MNPI policies with compliance screening integrated into platform workflow",
     "expertVetting": "Technology-assisted vetting with human compliance review; proprietary AI-powered compliance monitoring",
@@ -31,6 +65,11 @@
   "featured": true,
   "priority": 5,
   "published": true,
+  "categoryBadge": "Fast-Growing",
+  "deliveryModel": "Hybrid",
+  "regionStrength": "Global",
+  "complianceBadge": "Strong Compliance",
+  "aiBadge": "AI-Native",
   "comparison": {
     "expertCalls": true,
     "contentLibrary": "Insights",
@@ -39,24 +78,48 @@
     "complianceTools": true
   },
   "lastUpdated": "2026-03-06",
-
   "overview": "Dialectica is a B2B information services firm that has grown from a small Athens-based startup in 2015 to one of the fastest-growing expert networks globally. The company's model is built on a key insight: replicate the high-touch, high-quality service model of premium competitors like AlphaSights, but run operations from Athens rather than London or New York — achieving comparable quality at significantly lower cost. This has fueled a 70% lifetime CAGR (60% for 2019-2024) and revenue crossing $100 million. Dialectica is now pushing aggressively into AI with its Dialectica IQ knowledge graph, 50+ GenAI tools, and Origin deal-sourcing platform, while expanding its compliance infrastructure by appointing Jason Howard (former General Counsel & CCO at Tegus, 13 years at SEC Enforcement) as Chief Legal & Regulatory Officer. The firm was upgraded to 'Global Leader' status by Inex One in 2024 and has publicly stated its ambition to become a top-three global information services firm by 2035.",
-
   "history": {
     "narrative": "Dialectica was co-founded in 2015 by George Tsarouchas (CEO) and Frederick Corkett. Tsarouchas previously worked for institutional investors (specific firm not publicly named; a Goldman Sachs attribution appears in one third-party source but is unverified). Corkett was a strategy consultant at AMR International. Note: some sources attribute an AlphaSights background to the founders, but this appears to be a misreading of Sacra's description of the business model Dialectica replicated, not an employment history. They started the company in Athens, Greece with a small sales office in London, deliberately choosing Athens for its talent pool and cost advantages during Greek capital controls. The firm grew rapidly, earning a place on the FT 1000 (Europe's fastest-growing companies) for five consecutive years (2021-2025) and crossing $100 million in revenue. The company is entirely bootstrapped and founder-owned, with no confirmed external funding.",
     "timeline": [
-      { "year": "2015", "event": "Founded in Athens by George Tsarouchas and Frederick Corkett; small sales office in London" },
-      { "year": "2020", "event": "Montreal office opened to serve the Americas" },
-      { "year": "2021", "event": "Named fastest-growing expert network in Europe (FT 1000); opens New York sales office and Vancouver recruitment office" },
-      { "year": "2021–2025", "event": "Named to FT 1000 (Europe's fastest-growing companies) for five consecutive years" },
-      { "year": "2023", "event": "Expands to Bogotá, Colombia and Ho Chi Minh City, Vietnam; major senior leadership transition (new CFO, Product VP, regional heads)" },
-      { "year": "2024", "event": "Revenue reaches ~$121M (Sacra estimate, 39% YoY); upgraded to 'Global Leader' by Inex One; launches Origin deal-sourcing platform; opens Thessaloniki office" },
-      { "year": "2025-01", "event": "Appoints Jason Howard (former Tegus General Counsel & CCO, 13 years SEC Enforcement) as Chief Legal & Regulatory Officer" },
-      { "year": "2025-07", "event": "Appoints Dimitris Psaltoulis as Chief People Officer; rebrands domain from dialecticanet.com to dialectica.io" },
-      { "year": "2025-08", "event": "Celebrates 10th anniversary; announces revenue exceeding $100M, 1,400+ employees across 6 offices, 67 nationalities represented" }
+      {
+        "year": "2015",
+        "event": "Founded in Athens by George Tsarouchas and Frederick Corkett; small sales office in London"
+      },
+      {
+        "year": "2020",
+        "event": "Montreal office opened to serve the Americas"
+      },
+      {
+        "year": "2021",
+        "event": "Named fastest-growing expert network in Europe (FT 1000); opens New York sales office and Vancouver recruitment office"
+      },
+      {
+        "year": "2021–2025",
+        "event": "Named to FT 1000 (Europe's fastest-growing companies) for five consecutive years"
+      },
+      {
+        "year": "2023",
+        "event": "Expands to Bogotá, Colombia and Ho Chi Minh City, Vietnam; major senior leadership transition (new CFO, Product VP, regional heads)"
+      },
+      {
+        "year": "2024",
+        "event": "Revenue reaches ~$121M (Sacra estimate, 39% YoY); upgraded to 'Global Leader' by Inex One; launches Origin deal-sourcing platform; opens Thessaloniki office"
+      },
+      {
+        "year": "2025-01",
+        "event": "Appoints Jason Howard (former Tegus General Counsel & CCO, 13 years SEC Enforcement) as Chief Legal & Regulatory Officer"
+      },
+      {
+        "year": "2025-07",
+        "event": "Appoints Dimitris Psaltoulis as Chief People Officer; rebrands domain from dialecticanet.com to dialectica.io"
+      },
+      {
+        "year": "2025-08",
+        "event": "Celebrates 10th anniversary; announces revenue exceeding $100M, 1,400+ employees across 6 offices, 67 nationalities represented"
+      }
     ]
   },
-
   "servicesDetailed": [
     {
       "name": "Expert Calls",
@@ -79,7 +142,6 @@
       "description": "Dialectica's proprietary knowledge graph structuring 80M+ company and market records plus metadata from 1M+ historical expert interactions. Unlike competitors' searchable transcript libraries (Tegus, Third Bridge), Dialectica IQ is architecturally different — a dynamic, continuously evolving graph that powers AI-driven insight extraction, expert recommendation, and automated research workflows. Includes 50+ GenAI tools layered on top."
     }
   ],
-
   "aiPlatform": {
     "narrative": "Dialectica has made AI a central part of its identity and growth strategy. The firm positions itself as 'redefining how knowledge is discovered, indexed, and synthesized' through its Dialectica IQ knowledge graph — a dynamic, continuously evolving system that structures 80M+ company and market records and metadata from 1M+ historical expert interactions. The firm operates with 50+ advanced GenAI tools, proprietary AI agents, and a team of 100+ software engineers, data scientists, and product specialists ($25M+ invested in technology over the past 3 years). Datasets are enriched by a 1,000+ operations team, combining human intelligence with AI at scale. Notably, Dialectica does NOT offer a traditional searchable transcript library like Tegus or Third Bridge — its approach is knowledge-graph-first.",
     "features": [
@@ -93,7 +155,6 @@
       "First expert network to launch an AI Bootcamp for employee skill development (32,000+ training hours in 2025)"
     ]
   },
-
   "complianceExtended": {
     "narrative": "Dialectica has significantly invested in compliance infrastructure as it scales into larger institutional accounts. In January 2025, Dialectica appointed Jason Howard as Chief Legal & Regulatory Officer. Howard previously served as General Counsel & Chief Compliance Officer at Tegus (~5 years) and spent 13 years at the SEC Division of Enforcement. The firm uses technology-assisted vetting combined with human compliance review, and its proprietary AI tools include automated compliance monitoring capabilities. As a newer entrant (founded 2015), Dialectica's compliance infrastructure is less battle-tested than incumbents like GLG or Guidepoint, but the Howard appointment signals the firm is actively closing this gap.",
     "highlights": [
@@ -106,7 +167,6 @@
     ],
     "regulatoryContext": "No known regulatory enforcement actions against Dialectica were identified in this review. As a company founded in 2015, Dialectica is a newer entrant than the Big Five incumbents and has a shorter compliance track record. The January 2025 appointment of Jason Howard (former Tegus GC & CCO, 13 years SEC Enforcement) as Chief Legal & Regulatory Officer signals the firm's recognition that scaling into large institutional investor accounts requires more mature compliance infrastructure."
   },
-
   "clientFit": {
     "narrative": "Dialectica is especially well suited for clients who want premium-quality expert interactions at competitive pricing. The firm's Athens-based operational model delivers high curation quality while maintaining cost advantages over London and New York-based competitors. Origin makes it particularly strong for PE deal teams. The firm's European roots give it a natural advantage in European and emerging market research.",
     "segments": [
@@ -118,7 +178,6 @@
       "Teams focused on European and emerging market research"
     ]
   },
-
   "strengths": [
     "Exceptional growth trajectory — 70% lifetime CAGR (60% for 2019-2024), crossed $100M revenue, FT 1000 five consecutive years (2021-2025)",
     "Athens-based operations model: premium quality at lower cost than London/NYC peers",
@@ -130,7 +189,6 @@
     "Entirely bootstrapped and founder-led — no external PE/VC funding",
     "Strong European presence and emerging market coverage (Athens, Bogotá, Ho Chi Minh City, Thessaloniki)"
   ],
-
   "caveats": [
     "Younger company (founded 2015) — less established track record than Big Five incumbents",
     "Credit-based pricing can be opaque — multiple credits per call may make effective price higher than expected",
@@ -142,7 +200,6 @@
     "Does not offer a traditional searchable transcript library unlike Tegus and Third Bridge",
     "Athens talent pool now contested — Guidepoint and GLG have opened large Athens offices"
   ],
-
   "notableFacts": [
     "Founded in 2015 in Athens by George Tsarouchas and Frederick Corkett during Greek capital controls",
     "Tsarouchas background: institutional investor (firm not named publicly; Goldman Sachs attribution in one source is unverified); Corkett: strategy consultant at AMR International",
@@ -166,7 +223,6 @@
     "Major 2023 leadership transition: new CFO, Product VP, and heads of all four regions replaced",
     "First expert network to launch AI Bootcamp for employees (32,000+ training hours in 2025)"
   ],
-
   "sourceNotes": [
     "Dialectica official website (dialectica.io) used as primary source for product descriptions and company positioning",
     "Founding story sourced from Inex One, ListAlpha interview with Fred Corkett, Sacra, and Athens Times interview with Tsarouchas",
@@ -187,10 +243,18 @@
     "IMPORTANT: $2.2M raise attributed by Sacra appears to reference a different company (Milan-based biotech also named Dialectica); all authoritative sources describe this Dialectica as entirely bootstrapped",
     "Bogotá office scale (~382 employees) confirmed via EMIS 2025 data for Dialectica Colombia S.A.S."
   ],
-
-  "whyChoose": ["Premium quality, competitive cost", "AI-forward platform (Dialectica IQ)", "Origin for PE deals", "European & EM strength"],
-  "whenNotIdeal": ["Needs largest network scale", "Wants long compliance track record", "US-centric research only", "Wants searchable transcript library"],
-
+  "whyChoose": [
+    "Premium quality, competitive cost",
+    "AI-forward platform (Dialectica IQ)",
+    "Origin for PE deals",
+    "European & EM strength"
+  ],
+  "whenNotIdeal": [
+    "Needs largest network scale",
+    "Wants long compliance track record",
+    "US-centric research only",
+    "Wants searchable transcript library"
+  ],
   "confidence": {
     "founded": "verified",
     "headquarters": "verified",

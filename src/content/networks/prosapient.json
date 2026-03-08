@@ -12,13 +12,43 @@
   "employeeCount": "200+",
   "expertCount": "50K+",
   "description": "Technology-first expert network offering an AI-powered self-serve platform for expert consultations, surveys, and transcripts, with a focus on efficiency, speed, and transparency.",
-  "services": ["Expert Calls", "Surveys", "Transcripts", "Executive Placement", "Self-serve Platform"],
-  "aiCapabilities": ["AI-powered expert matching", "Semantic search", "Speech-to-text transcription", "Automated scheduling", "AI-assisted survey programming", "AI transcript summaries", "AI translations (48 languages)"],
-  "industries": ["Consulting", "Private Equity", "Venture Capital", "Corporate Strategy", "Financial Services"],
+  "services": [
+    "Expert Calls",
+    "Surveys",
+    "Transcripts",
+    "Executive Placement",
+    "Self-serve Platform"
+  ],
+  "aiCapabilities": [
+    "AI-powered expert matching",
+    "Semantic search",
+    "Speech-to-text transcription",
+    "Automated scheduling",
+    "AI-assisted survey programming",
+    "AI transcript summaries",
+    "AI translations (48 languages)"
+  ],
+  "industries": [
+    "Consulting",
+    "Private Equity",
+    "Venture Capital",
+    "Corporate Strategy",
+    "Financial Services"
+  ],
   "pricingModel": "Per-call",
   "pricingDetail": "Per-call / subscription",
-  "keyDifferentiators": ["Technology-first platform with AI-powered matching", "Self-serve model for faster expert access", "Transparent pricing and process", "High-accuracy AI transcription"],
-  "bestFor": ["Consulting Firms", "Private Equity", "Venture Capital", "Mid-Market Research Teams"],
+  "keyDifferentiators": [
+    "Technology-first platform with AI-powered matching",
+    "Self-serve model for faster expert access",
+    "Transparent pricing and process",
+    "High-accuracy AI transcription"
+  ],
+  "bestFor": [
+    "Consulting Firms",
+    "Private Equity",
+    "Venture Capital",
+    "Mid-Market Research Teams"
+  ],
   "compliance": {
     "mnpiPolicy": "Platform-integrated compliance checks with automated screening workflows",
     "expertVetting": "Automated vetting with manual review for flagged cases; compliance built into platform workflow",
@@ -28,6 +58,11 @@
   "featured": false,
   "priority": 8,
   "published": true,
+  "categoryBadge": "Technology-First",
+  "deliveryModel": "Self-Serve",
+  "regionStrength": "Europe",
+  "complianceBadge": "Compliance Tools",
+  "aiBadge": "AI Matching",
   "comparison": {
     "expertCalls": true,
     "contentLibrary": "Transcript library",
@@ -36,23 +71,44 @@
     "complianceTools": true
   },
   "lastUpdated": "2026-03-07",
-
   "overview": "proSapient is a London-based, technology-first expert network that was purpose-built around AI and machine learning from its founding in 2017. The company positions itself as the first expert network powered by machine learning AI technology, using semantic search and intelligent matching to connect clients with industry experts faster than traditional relationship-driven models.\n\nThe platform serves institutional investors, management consultants, and corporate professionals through expert consultations, surveys, transcripts, and executive placement services. proSapient has experienced rapid growth, reaching $55.8M in revenue and 100+ clients by 2024, and has been recognized among the Financial Times FT1000 fastest-growing businesses in Europe. With offices in London, Toronto, Raleigh, and Lisbon, and a technical development team in Kyiv, proSapient represents the newer wave of technology-led expert networks challenging established incumbents. Under CEO Aneil Rakity, with co-founder Margo Polishchuk serving as President, the company continues to expand its platform capabilities including AI-generated transcript summaries and translations in 48 languages.",
-
   "history": {
     "narrative": "proSapient was co-founded in 2017 by Margo Polishchuk and Jordan Shlosberg. Polishchuk came from an expert networking background and Shlosberg was a client — together they saw an opportunity to rebuild the expert network model from the ground up using AI and machine learning technology. The company raised seed funding and a $10M Series A led by Smedvig Capital, achieving rapid revenue growth and recognition as one of Europe's fastest-growing businesses.",
     "timeline": [
-      { "year": "2017", "event": "Founded in London by Margo Polishchuk and Jordan Shlosberg as an AI-first expert network" },
-      { "year": "2020", "event": "Raises seed funding from 24 Haymarket" },
-      { "year": "2020", "event": "Closes $10M Series A led by Smedvig Capital, with participation from Guy Hands and 24 Haymarket" },
-      { "year": "2021", "event": "Doubles workforce, opens Toronto office, and surpasses 100 clients across Europe and North America" },
-      { "year": "2022", "event": "Raises additional funding; valued at $84.4M" },
-      { "year": "2023", "event": "Named among Financial Times FT1000 fastest-growing businesses in Europe" },
-      { "year": "2023", "event": "Recognized as a Future Fifty company by Tech Nation" },
-      { "year": "2024", "event": "Reaches $55.8M revenue and 100+ clients" }
+      {
+        "year": "2017",
+        "event": "Founded in London by Margo Polishchuk and Jordan Shlosberg as an AI-first expert network"
+      },
+      {
+        "year": "2020",
+        "event": "Raises seed funding from 24 Haymarket"
+      },
+      {
+        "year": "2020",
+        "event": "Closes $10M Series A led by Smedvig Capital, with participation from Guy Hands and 24 Haymarket"
+      },
+      {
+        "year": "2021",
+        "event": "Doubles workforce, opens Toronto office, and surpasses 100 clients across Europe and North America"
+      },
+      {
+        "year": "2022",
+        "event": "Raises additional funding; valued at $84.4M"
+      },
+      {
+        "year": "2023",
+        "event": "Named among Financial Times FT1000 fastest-growing businesses in Europe"
+      },
+      {
+        "year": "2023",
+        "event": "Recognized as a Future Fifty company by Tech Nation"
+      },
+      {
+        "year": "2024",
+        "event": "Reaches $55.8M revenue and 100+ clients"
+      }
     ]
   },
-
   "servicesDetailed": [
     {
       "name": "Expert Consultations",
@@ -79,7 +135,6 @@
       "description": "Direct messaging capabilities within the platform for quick follow-up questions and asynchronous communication with experts, reducing the need for formal scheduled calls."
     }
   ],
-
   "aiPlatform": {
     "narrative": "Technology and AI are central to proSapient's identity — the company was founded explicitly as an AI-first expert network. Its platform uses machine learning and semantic search to match client requests with relevant experts, moving beyond simple keyword matching to understand the contextual meaning of research questions. The technology stack also includes AI-powered transcription, automated scheduling, and AI-assisted survey tools.",
     "features": [
@@ -94,7 +149,6 @@
       "Expert sourcing that extends beyond existing database to identify first-time consultants"
     ]
   },
-
   "complianceExtended": {
     "narrative": "proSapient integrates compliance directly into its platform workflow rather than treating it as a separate manual process. Automated screening and vetting are built into the expert onboarding and matching pipeline, with manual review triggered for flagged cases. The platform maintains full audit trails of all interactions.",
     "highlights": [
@@ -109,7 +163,6 @@
     ],
     "regulatoryContext": "proSapient operates under UK and EU regulatory frameworks with GDPR compliance for data protection and ISO 27001 certification for information security. The company has maintained a clean regulatory record since its founding in 2017. As a newer entrant, it has had the advantage of building compliance into its technology platform from the ground up rather than retrofitting legacy processes."
   },
-
   "clientFit": {
     "narrative": "proSapient is well suited for clients who value speed, technology-enabled workflows, and transparent pricing. The self-serve platform model appeals to teams that want direct control over expert sourcing and scheduling rather than relying entirely on managed-service intermediation. The company's growth among consulting and PE clients suggests strong product-market fit in mid-market professional services.",
     "segments": [
@@ -120,7 +173,6 @@
       "Research teams that prefer self-serve expert sourcing over fully managed services"
     ]
   },
-
   "strengths": [
     "AI-first platform built from the ground up with machine learning at the core",
     "Fast expert matching and scheduling — turnaround measured in hours",
@@ -130,7 +182,6 @@
     "Rapid growth trajectory — FT1000, Tech Nation Future Fifty recognition",
     "Clean regulatory record"
   ],
-
   "caveats": [
     "Smaller expert network (50K+) compared to established players like GLG (~1.2M) or AlphaSights",
     "Founded in 2017 — less track record than networks with 15–25 years of operating history",
@@ -139,7 +190,6 @@
     "Technology-first approach may not appeal to clients who prefer high-touch relationship-driven service",
     "Kyiv-based technical team may raise business continuity questions for some clients"
   ],
-
   "notableFacts": [
     "Founded in 2017 as the first expert network built from the ground up on machine learning AI",
     "Co-founded by Margo Polishchuk (expert network background) and Jordan Shlosberg (former client)",
@@ -152,7 +202,6 @@
     "Offices in London, Toronto, Raleigh, and Lisbon with technical development in Kyiv",
     "AI transcription claims 99% accuracy through combined AI and human review"
   ],
-
   "sourceNotes": [
     "proSapient official website (prosapient.com) used for platform features, service descriptions, and company positioning",
     "TechCrunch and Private Equity Wire used for Series A funding reporting",
@@ -162,10 +211,18 @@
     "Financial Times FT1000 and Tech Nation Future Fifty used for growth recognition verification",
     "Tracxn used for funding round details and investor information"
   ],
-
-  "whyChoose": ["AI-first platform speed", "Self-serve expert sourcing", "Transparent pricing", "High-accuracy transcription"],
-  "whenNotIdeal": ["Need for massive network scale", "Deep Asia-Pacific coverage", "Prefer fully managed research service", "Need long track record"],
-
+  "whyChoose": [
+    "AI-first platform speed",
+    "Self-serve expert sourcing",
+    "Transparent pricing",
+    "High-accuracy transcription"
+  ],
+  "whenNotIdeal": [
+    "Need for massive network scale",
+    "Deep Asia-Pacific coverage",
+    "Prefer fully managed research service",
+    "Need long track record"
+  ],
   "confidence": {
     "founded": "verified",
     "headquarters": "verified",

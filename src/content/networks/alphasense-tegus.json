@@ -14,14 +14,51 @@
   "expertCount": "1M (claimed)",
   "expertCountLabel": "Pre-qualified experts (AlphaSense marketing claim; not independently verified)",
   "description": "AI market intelligence platform combining proprietary search technology with 500M+ premium business documents, the Tegus Expert Transcript Library (240K+ transcripts, growing 8,000+/month, acquired for $930M in 2024), live expert calls, AI Interviewer-led Channel Checks across 350+ tickers, and structured financial data via Canalyst. Surpassed $500M ARR in October 2025 with 6,500+ enterprise customers including 88% of the S&P 100.",
-  "services": ["Expert Calls", "Expert Insights (Tegus Transcript Library)", "Channel Checks (AI Interviewer)", "Generative Search", "Deep Research", "Financial Data", "Workflow Agents", "Enterprise Intelligence", "Monitoring & Alerts"],
-  "aiCapabilities": ["Generative Search (multi-agent research system)", "Deep Research (autonomous analyst agent)", "AI Agent Interviewer for Channel Checks", "Workflow Agents (custom AI automations)", "Generative Grid (structured multi-question analysis)", "Smart Synonyms", "Sentiment analysis"],
-  "industries": ["Financial Services", "Healthcare / Life Sciences", "Technology / TMT", "Energy & Industrials", "Consumer", "Legal"],
+  "services": [
+    "Expert Calls",
+    "Expert Insights (Tegus Transcript Library)",
+    "Channel Checks (AI Interviewer)",
+    "Generative Search",
+    "Deep Research",
+    "Financial Data",
+    "Workflow Agents",
+    "Enterprise Intelligence",
+    "Monitoring & Alerts"
+  ],
+  "aiCapabilities": [
+    "Generative Search (multi-agent research system)",
+    "Deep Research (autonomous analyst agent)",
+    "AI Agent Interviewer for Channel Checks",
+    "Workflow Agents (custom AI automations)",
+    "Generative Grid (structured multi-question analysis)",
+    "Smart Synonyms",
+    "Sentiment analysis"
+  ],
+  "industries": [
+    "Financial Services",
+    "Healthcare / Life Sciences",
+    "Technology / TMT",
+    "Energy & Industrials",
+    "Consumer",
+    "Legal"
+  ],
   "pricingModel": "Subscription",
   "pricingDetail": "$10K–$20K per seat annually (annual contracts)",
-  "keyDifferentiators": ["AI-first platform with agentic research workflows", "Tegus transcript library ($930M acquisition, 240K+ transcripts, 8K+/month growth)", "500M+ premium documents in a single searchable platform", "Only platform offering autonomous AI Agent Interviewer for expert calls", "Unified quantitative financial data and qualitative content"],
+  "keyDifferentiators": [
+    "AI-first platform with agentic research workflows",
+    "Tegus transcript library ($930M acquisition, 240K+ transcripts, 8K+/month growth)",
+    "500M+ premium documents in a single searchable platform",
+    "Only platform offering autonomous AI Agent Interviewer for expert calls",
+    "Unified quantitative financial data and qualitative content"
+  ],
   "parentCompany": "AlphaSense Inc.",
-  "bestFor": ["Hedge funds & asset managers", "Private equity & venture capital", "Investment banks & equity research", "Corporate strategy & competitive intelligence", "Large enterprises (88% of S&P 100 are customers)"],
+  "bestFor": [
+    "Hedge funds & asset managers",
+    "Private equity & venture capital",
+    "Investment banks & equity research",
+    "Corporate strategy & competitive intelligence",
+    "Large enterprises (88% of S&P 100 are customers)"
+  ],
   "compliance": {
     "mnpiPolicy": "Multi-layered MNPI framework: pre-call compliance training, structured questionnaires, AI-powered transcript scanning, and human-in-the-loop review by dedicated compliance team",
     "expertVetting": "Pre-call vetting including Terms & Conditions agreement, compliance training on insider trading, and pre-call compliance questionnaire; all calls recorded and transcribed",
@@ -32,6 +69,11 @@
   "featured": false,
   "priority": 6,
   "published": true,
+  "categoryBadge": "Research Platform",
+  "deliveryModel": "Platform-Led",
+  "regionStrength": "North America",
+  "complianceBadge": "Strong Compliance",
+  "aiBadge": "AI-Native",
   "comparison": {
     "expertCalls": true,
     "contentLibrary": "Expert Insights (Tegus Library)",
@@ -40,33 +82,84 @@
     "complianceTools": true
   },
   "lastUpdated": "2026-03-07",
-
   "overview": "AlphaSense is an AI-powered market intelligence platform that combines proprietary search technology, generative AI workflows, and one of the largest collections of business content in the industry. Founded in 2011 by Jack Kokko and Raj Neervannan, the platform started as an AI search engine for financial documents and has evolved into a comprehensive research platform spanning document search, expert content, financial data, and autonomous AI research agents. The $930M acquisition of Tegus in July 2024 added a major expert transcript library and expert call services, making AlphaSense a direct competitor in the expert network space alongside its core document intelligence business.",
-
   "history": {
     "narrative": "AlphaSense was founded in 2011 by Jack Kokko (CEO) and Raj Neervannan (CTO), who met at Wharton. Kokko, originally from Oulu, Finland, conceived the idea while working as an investment banking analyst at Morgan Stanley, frustrated by the manual process of searching through thousands of PDFs. The company launched as an AI-powered search engine for financial research documents and grew through acquisitions (Stream in 2021, Sentieo in 2022) and organic growth, raising over $1.4B across multiple rounds. The transformative moment came in June 2024 with the $930M acquisition of Tegus (which also brought BamSEC and Canalyst), making AlphaSense a combined document intelligence and expert network platform. Notably, AlphaSense had previously sued both Sentieo and Tegus before acquiring them.",
     "timeline": [
-      { "year": "2011", "event": "Founded in New York by Jack Kokko (CEO) and Raj Neervannan (CTO), both Wharton MBA graduates" },
-      { "year": "2013", "event": "Raises $1.7M seed round; Helsinki office becomes the technology headquarters" },
-      { "year": "2016", "event": "Series A (~$33M cumulative); investors include Soros Fund Management and Tribeca Venture Partners" },
-      { "year": "2019", "event": "Series B: $50M from Innovation Endeavors, Euclidean Capital (Jim Simons), Soros" },
-      { "year": "2021 (Sep)", "event": "Series C: $180M led by Viking Global; valuation reaches ~$1.7B (unicorn status). Also acquires Stream (expert transcript library)" },
-      { "year": "2022 (May)", "event": "Acquires Sentieo (competing financial research platform). Series D: $225M from Viking Global, Goldman Sachs" },
-      { "year": "2023 (Apr)", "event": "Series D extension: $100M addition from Alphabet's CapitalG, Goldman Sachs, Viking Global" },
-      { "year": "2023 (Sep)", "event": "Series E: $150M led by BOND (Mary Meeker), valuation reaches $2.5B. BAM Elevate (Balyasny) joins as investor" },
-      { "year": "2024 (Apr)", "event": "Surpasses $200M in ARR" },
-      { "year": "2024 (Jun)", "event": "Announces $930M acquisition of Tegus (valued at $3B in 2021 — a ~69% haircut); raises $650M Series F co-led by Viking Global and BDT & MSD Partners; valuation reaches $4B" },
-      { "year": "2024 (Jul 8)", "event": "Completes Tegus acquisition. Tegus employees in Chicago, Vancouver, and Waterford join AlphaSense. Tegus brings BamSEC (SEC filings) and Canalyst (financial models on 4,000+ public companies)" },
-      { "year": "2024 (Nov)", "event": "Post-acquisition layoffs following Tegus/Sentieo integration" },
-      { "year": "2024 (Nov)", "event": "Launches Generative Search (natural language queries against full 500M document corpus)" },
-      { "year": "2025 (Mar)", "event": "Surpasses $400M in ARR with 6,000+ customers" },
-      { "year": "2025 (Jun 10)", "event": "Launches Deep Research (autonomous agentic analyst)" },
-      { "year": "2025 (Aug 19)", "event": "Launches AI Agent Interviewer and Channel Checks (AI-led expert interviews across 350+ tickers)" },
-      { "year": "2025 (Oct 7)", "event": "Surpasses $500M in ARR with 6,500+ customers. Acquires Carousel Technologies (AI-powered Excel modeling)" },
-      { "year": "2026", "event": "Opening global headquarters at Hudson Yards, New York City" }
+      {
+        "year": "2011",
+        "event": "Founded in New York by Jack Kokko (CEO) and Raj Neervannan (CTO), both Wharton MBA graduates"
+      },
+      {
+        "year": "2013",
+        "event": "Raises $1.7M seed round; Helsinki office becomes the technology headquarters"
+      },
+      {
+        "year": "2016",
+        "event": "Series A (~$33M cumulative); investors include Soros Fund Management and Tribeca Venture Partners"
+      },
+      {
+        "year": "2019",
+        "event": "Series B: $50M from Innovation Endeavors, Euclidean Capital (Jim Simons), Soros"
+      },
+      {
+        "year": "2021 (Sep)",
+        "event": "Series C: $180M led by Viking Global; valuation reaches ~$1.7B (unicorn status). Also acquires Stream (expert transcript library)"
+      },
+      {
+        "year": "2022 (May)",
+        "event": "Acquires Sentieo (competing financial research platform). Series D: $225M from Viking Global, Goldman Sachs"
+      },
+      {
+        "year": "2023 (Apr)",
+        "event": "Series D extension: $100M addition from Alphabet's CapitalG, Goldman Sachs, Viking Global"
+      },
+      {
+        "year": "2023 (Sep)",
+        "event": "Series E: $150M led by BOND (Mary Meeker), valuation reaches $2.5B. BAM Elevate (Balyasny) joins as investor"
+      },
+      {
+        "year": "2024 (Apr)",
+        "event": "Surpasses $200M in ARR"
+      },
+      {
+        "year": "2024 (Jun)",
+        "event": "Announces $930M acquisition of Tegus (valued at $3B in 2021 — a ~69% haircut); raises $650M Series F co-led by Viking Global and BDT & MSD Partners; valuation reaches $4B"
+      },
+      {
+        "year": "2024 (Jul 8)",
+        "event": "Completes Tegus acquisition. Tegus employees in Chicago, Vancouver, and Waterford join AlphaSense. Tegus brings BamSEC (SEC filings) and Canalyst (financial models on 4,000+ public companies)"
+      },
+      {
+        "year": "2024 (Nov)",
+        "event": "Post-acquisition layoffs following Tegus/Sentieo integration"
+      },
+      {
+        "year": "2024 (Nov)",
+        "event": "Launches Generative Search (natural language queries against full 500M document corpus)"
+      },
+      {
+        "year": "2025 (Mar)",
+        "event": "Surpasses $400M in ARR with 6,000+ customers"
+      },
+      {
+        "year": "2025 (Jun 10)",
+        "event": "Launches Deep Research (autonomous agentic analyst)"
+      },
+      {
+        "year": "2025 (Aug 19)",
+        "event": "Launches AI Agent Interviewer and Channel Checks (AI-led expert interviews across 350+ tickers)"
+      },
+      {
+        "year": "2025 (Oct 7)",
+        "event": "Surpasses $500M in ARR with 6,500+ customers. Acquires Carousel Technologies (AI-powered Excel modeling)"
+      },
+      {
+        "year": "2026",
+        "event": "Opening global headquarters at Hudson Yards, New York City"
+      }
     ]
   },
-
   "servicesDetailed": [
     {
       "name": "Expert Calls",
@@ -109,7 +202,6 @@
       "description": "Customized dashboards providing a single view of competitors, industry trends, and macro topics. Includes real-time alerts and mobile app access for tracking insights on the go."
     }
   ],
-
   "aiPlatform": {
     "narrative": "AlphaSense's AI capabilities are central to the platform and represent its primary competitive differentiation. The company has moved aggressively into agentic AI workflows, where autonomous agents conduct research, interview experts, and generate deliverables. The AI Agent Interviewer is the most distinctive capability — an autonomous conversational agent that conducts live 1:1 interviews with human experts, following structured guides while adapting dynamically to probe deeper. GenAI query usage increased 33% quarter-over-quarter as of late 2025, with exponential growth in LLM token consumption.",
     "features": [
@@ -123,7 +215,6 @@
       "AI-powered compliance scanning of expert transcripts for MNPI risk"
     ]
   },
-
   "complianceExtended": {
     "narrative": "AlphaSense operates a multi-layered compliance framework backed by 75+ dedicated compliance professionals and over $100M in annual investment in expert content. Every expert transcript undergoes AI-powered scanning for potential MNPI risks, followed by human-in-the-loop review. The process is overseen by CCO Brian Moroney (20+ years experience, former Goldman Sachs). Public company transcripts have a 14-day publication delay; private company transcripts have a 90-day delay. For AI-led Channel Checks, the AI Interviewer is tuned to avoid risky or inappropriate topics during live calls, and all transcripts go through the same compliance pipeline before publication.",
     "highlights": [
@@ -140,7 +231,6 @@
     ],
     "regulatoryContext": "No major public regulatory actions against AlphaSense or its expert network operations were identified. AlphaSights filed a trademark infringement lawsuit against AlphaSense in January 2025 (SDNY), but this is a branding dispute, not a compliance issue. AlphaSense acquired Tegus's compliance infrastructure in the July 2024 acquisition and has integrated it into a unified framework."
   },
-
   "clientFit": {
     "narrative": "AlphaSense is best suited for organizations that need both document-level market intelligence and expert-sourced primary research in a single platform. Its strength is in combining quantitative financial data with qualitative expert content and AI-powered synthesis, making it especially powerful for buy-side research workflows. The platform is priced at $10K–$20K per seat annually, positioning it for mid-to-large enterprise budgets.",
     "segments": [
@@ -152,7 +242,6 @@
       "Any team needing unified access to expert transcripts, financial data, and document search"
     ]
   },
-
   "strengths": [
     "Largest integrated content library in the category (500M+ documents + 240K+ expert transcripts growing 8K+/month)",
     "AI Agent Interviewer is a genuine first-mover product — no competitor offers autonomous AI-led expert calls at this scale",
@@ -161,7 +250,6 @@
     "Unified quantitative and qualitative research in one platform reduces tool fragmentation",
     "$4B valuation with $1.4B+ raised from blue-chip investors (Viking, Goldman, CapitalG, SoftBank, J.P. Morgan)"
   ],
-
   "caveats": [
     "Expert network capabilities are inherited from Tegus acquisition (July 2024) — integration of Tegus, Sentieo, BamSEC, Canalyst, and Carousel into one platform is complex; post-acquisition layoffs occurred Nov 2024",
     "Claims 1M pre-qualified experts, but this is a marketing figure not independently verified; the expert network is newer than incumbents like GLG (25+ years) or AlphaSights",
@@ -171,7 +259,6 @@
     "Channel Checks covers 20+ subsectors — narrower than traditional expert networks that serve any sector on demand",
     "Rapid feature velocity means the product experience changes frequently; some users may find this disorienting"
   ],
-
   "notableFacts": [
     "Founded by Jack Kokko (Finnish, from Oulu) and Raj Neervannan, who met at Wharton Business School",
     "Helsinki, Finland is the technology headquarters — the center of core platform development since day one",
@@ -187,7 +274,6 @@
     "GenAI query usage growing 33% quarter-over-quarter as of late 2025",
     "AlphaSights filed trademark infringement lawsuit against AlphaSense in January 2025 (SDNY)"
   ],
-
   "sourceNotes": [
     "Funding history and valuation from Tracxn, Crunchbase, and AlphaSense press releases via PR Newswire",
     "Tegus acquisition details ($930M, Jul 8 2024 completion) from AlphaSense and Tegus press releases via PR Newswire; Tegus $3B prior valuation from Fintech Futures",
@@ -202,10 +288,19 @@
     "Acquisition history (Stream, Sentieo, lawsuits) from Sacra research and Inex One directory",
     "Post-acquisition layoffs (Nov 2024) from Sacra; AlphaSights trademark lawsuit from Sacra and court records"
   ],
-
-  "whyChoose": ["Unified AI platform", "Tegus transcript depth", "Agentic research workflows", "Financial data integration", "Enterprise scale"],
-  "whenNotIdeal": ["Small one-off research needs", "Budget-constrained teams", "Need for very broad expert network", "Prefer human-only expert calls"],
-
+  "whyChoose": [
+    "Unified AI platform",
+    "Tegus transcript depth",
+    "Agentic research workflows",
+    "Financial data integration",
+    "Enterprise scale"
+  ],
+  "whenNotIdeal": [
+    "Small one-off research needs",
+    "Budget-constrained teams",
+    "Need for very broad expert network",
+    "Prefer human-only expert calls"
+  ],
   "confidence": {
     "founded": "verified",
     "headquarters": "verified",

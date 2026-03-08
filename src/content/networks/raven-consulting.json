@@ -11,12 +11,33 @@
   "employeeCount": "30+",
   "expertCount": "15K+",
   "description": "Boutique expert network specializing in private equity due diligence across European mid-market transactions, offering bespoke research and curated expert access with a white-glove service model.",
-  "services": ["Expert Calls", "Due Diligence Support", "Bespoke Research"],
-  "aiCapabilities": ["AI-assisted expert curation", "Deal-specific matching algorithms", "Automated compliance screening"],
-  "industries": ["Private Equity", "Industrials", "Business Services", "Healthcare"],
+  "services": [
+    "Expert Calls",
+    "Due Diligence Support",
+    "Bespoke Research"
+  ],
+  "aiCapabilities": [
+    "AI-assisted expert curation",
+    "Deal-specific matching algorithms",
+    "Automated compliance screening"
+  ],
+  "industries": [
+    "Private Equity",
+    "Industrials",
+    "Business Services",
+    "Healthcare"
+  ],
   "pricingModel": "Per-call",
-  "keyDifferentiators": ["Boutique PE specialization with personalized service", "European mid-market transaction expertise", "White-glove bespoke research model"],
-  "bestFor": ["Boutique PE", "Mid-Market", "European DD"],
+  "keyDifferentiators": [
+    "Boutique PE specialization with personalized service",
+    "European mid-market transaction expertise",
+    "White-glove bespoke research model"
+  ],
+  "bestFor": [
+    "Boutique PE",
+    "Mid-Market",
+    "European DD"
+  ],
   "compliance": {
     "mnpiPolicy": "PE-specific MNPI protocols aligned with FCA and European regulatory standards",
     "expertVetting": "Thorough vetting with conflict-of-interest screening for deal-related consultations",
@@ -26,53 +47,116 @@
   "featured": false,
   "priority": 29,
   "published": true,
+  "categoryBadge": "Boutique Specialist",
+  "deliveryModel": "Concierge",
+  "regionStrength": "Europe",
+  "complianceBadge": "Standard Compliance",
+  "aiBadge": "AI Matching",
   "lastUpdated": "2026-03-07",
-
   "overview": "Raven Expert Consulting is a London-based boutique expert network specializing in PE due diligence for European mid-market transactions. Founded in 2019, the company takes a white-glove approach — providing highly curated, deal-specific expert access with senior staff involved in every engagement.\n\nThe boutique model trades volume for quality, making Raven appealing to mid-market PE firms who value depth of service over breadth of platform.",
-
   "history": {
     "narrative": "Founded in 2019 in London to serve the European mid-market PE community with a boutique, high-touch expert network model.",
     "timeline": [
-      { "year": "2019", "event": "Founded in London with European mid-market PE focus" },
-      { "year": "2020-2023", "event": "Built curated expert network across European industrials, business services, and healthcare" },
-      { "year": "2024-2025", "event": "Expanded bespoke research capabilities for deal-specific due diligence" }
+      {
+        "year": "2019",
+        "event": "Founded in London with European mid-market PE focus"
+      },
+      {
+        "year": "2020-2023",
+        "event": "Built curated expert network across European industrials, business services, and healthcare"
+      },
+      {
+        "year": "2024-2025",
+        "event": "Expanded bespoke research capabilities for deal-specific due diligence"
+      }
     ]
   },
-
   "servicesDetailed": [
-    { "name": "Expert Consultations", "description": "Highly curated consultations with industry experts matched specifically to PE deal requirements." },
-    { "name": "Due Diligence Support", "description": "Deal-specific expert sourcing for European mid-market PE transactions, with rapid turnaround." },
-    { "name": "Bespoke Research Projects", "description": "Custom research combining expert interviews with market analysis for PE investment evaluation." }
+    {
+      "name": "Expert Consultations",
+      "description": "Highly curated consultations with industry experts matched specifically to PE deal requirements."
+    },
+    {
+      "name": "Due Diligence Support",
+      "description": "Deal-specific expert sourcing for European mid-market PE transactions, with rapid turnaround."
+    },
+    {
+      "name": "Bespoke Research Projects",
+      "description": "Custom research combining expert interviews with market analysis for PE investment evaluation."
+    }
   ],
-
   "aiPlatform": {
     "narrative": "Raven uses AI to assist expert curation and deal-specific matching, overlaid with human judgment.",
-    "features": ["AI-assisted expert curation", "Deal-specific matching algorithms", "Automated compliance screening"]
+    "features": [
+      "AI-assisted expert curation",
+      "Deal-specific matching algorithms",
+      "Automated compliance screening"
+    ]
   },
-
   "complianceExtended": {
     "narrative": "PE-specific compliance aligned with FCA and European standards.",
-    "highlights": ["FCA-aligned PE compliance", "Deal-specific conflict screening", "Cooling-off period enforcement", "Complete audit trail"],
+    "highlights": [
+      "FCA-aligned PE compliance",
+      "Deal-specific conflict screening",
+      "Cooling-off period enforcement",
+      "Complete audit trail"
+    ],
     "regulatoryContext": "PE due diligence requires careful handling of deal-sensitive information. Clean regulatory record."
   },
-
   "clientFit": {
     "narrative": "Ideal for mid-market PE firms in Europe who value personalized service over platform scale.",
-    "segments": ["European mid-market PE firms", "Boutique advisory firms supporting PE transactions", "Mid-market investors needing curated European expert access"]
+    "segments": [
+      "European mid-market PE firms",
+      "Boutique advisory firms supporting PE transactions",
+      "Mid-market investors needing curated European expert access"
+    ]
   },
-
-  "strengths": ["White-glove service with senior staff on every engagement", "European mid-market PE specialization", "Boutique model enables personalized attention"],
-  "caveats": ["Very small team (~30) limits capacity", "Expert database (15K) is smallest among profiled networks", "Limited coverage outside Europe"],
-  "notableFacts": ["Boutique model with senior staff on every engagement", "European mid-market PE specialization"],
-  "sourceNotes": ["Raven Expert Consulting website", "Expert network industry directories"],
-  "whyChoose": ["White-glove PE service", "European mid-market", "Senior-led engagements", "Deal-specific curation"],
-  "whenNotIdeal": ["Need high-volume calls", "Non-PE research", "Want self-service", "Need global coverage"],
-
+  "strengths": [
+    "White-glove service with senior staff on every engagement",
+    "European mid-market PE specialization",
+    "Boutique model enables personalized attention"
+  ],
+  "caveats": [
+    "Very small team (~30) limits capacity",
+    "Expert database (15K) is smallest among profiled networks",
+    "Limited coverage outside Europe"
+  ],
+  "notableFacts": [
+    "Boutique model with senior staff on every engagement",
+    "European mid-market PE specialization"
+  ],
+  "sourceNotes": [
+    "Raven Expert Consulting website",
+    "Expert network industry directories"
+  ],
+  "whyChoose": [
+    "White-glove PE service",
+    "European mid-market",
+    "Senior-led engagements",
+    "Deal-specific curation"
+  ],
+  "whenNotIdeal": [
+    "Need high-volume calls",
+    "Non-PE research",
+    "Want self-service",
+    "Need global coverage"
+  ],
   "confidence": {
-    "founded": "partially-unverifiable", "headquarters": "verified", "expertCount": "positioning",
-    "employeeCount": "partially-unverifiable", "pricingModel": "verified", "services": "positioning",
-    "compliance": "positioning", "overview": "positioning", "history": "inference",
-    "servicesDetailed": "positioning", "aiPlatform": "positioning", "complianceExtended": "positioning",
-    "clientFit": "inference", "strengths": "positioning", "caveats": "inference", "notableFacts": "positioning"
+    "founded": "partially-unverifiable",
+    "headquarters": "verified",
+    "expertCount": "positioning",
+    "employeeCount": "partially-unverifiable",
+    "pricingModel": "verified",
+    "services": "positioning",
+    "compliance": "positioning",
+    "overview": "positioning",
+    "history": "inference",
+    "servicesDetailed": "positioning",
+    "aiPlatform": "positioning",
+    "complianceExtended": "positioning",
+    "clientFit": "inference",
+    "strengths": "positioning",
+    "caveats": "inference",
+    "notableFacts": "positioning"
   }
 }

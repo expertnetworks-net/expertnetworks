@@ -14,13 +14,50 @@
   "expertCount": "1.75M+",
   "expertCountLabel": "Guidepoint Advisors",
   "description": "Guidepoint is a research enablement platform and one of the largest expert networks globally, founded in 2003 by Albert Sebag. Originally launched as Clinical Advisors to match cancer patients with clinical trials, the firm pivoted to the broader expert-network model and now connects more than 5,000 client organizations with 1.75 million+ advisors across 150+ industries. Guidepoint differentiates through breadth of coverage, flexible pricing, healthcare data products (Qsight), and its 2025 launch of Guidepoint360 — an AI-powered platform merging expert knowledge with generative AI via its AskGP interface.",
-  "services": ["Expert Calls", "Surveys", "Guidepoint Insights", "Guidepoint Qsight", "AI Moderation", "Guidepoint360 / AskGP", "Events"],
-  "aiCapabilities": ["AskGP conversational AI research assistant", "Guidepoint360 unified AI + expert knowledge platform", "AI Moderation for enterprise-scale expert calls", "AI-powered scheduling and matching", "Guidepoint360 mobile app with AI-driven research"],
-  "industries": ["Financial Services", "Healthcare / Life Sciences", "Private Equity", "Hedge Funds", "Management Consulting", "Technology", "Corporate Strategy", "Legal / Professional Services"],
+  "services": [
+    "Expert Calls",
+    "Surveys",
+    "Guidepoint Insights",
+    "Guidepoint Qsight",
+    "AI Moderation",
+    "Guidepoint360 / AskGP",
+    "Events"
+  ],
+  "aiCapabilities": [
+    "AskGP conversational AI research assistant",
+    "Guidepoint360 unified AI + expert knowledge platform",
+    "AI Moderation for enterprise-scale expert calls",
+    "AI-powered scheduling and matching",
+    "Guidepoint360 mobile app with AI-driven research"
+  ],
+  "industries": [
+    "Financial Services",
+    "Healthcare / Life Sciences",
+    "Private Equity",
+    "Hedge Funds",
+    "Management Consulting",
+    "Technology",
+    "Corporate Strategy",
+    "Legal / Professional Services"
+  ],
   "pricingModel": "Flexible",
   "pricingDetail": "Per-call and subscription options; known for competitive pricing vs. peers",
-  "keyDifferentiators": ["Very large advisor network (1.75M+ across 150+ industries)", "Healthcare data specialization via Qsight", "Flexible pricing model — competitive vs. premium peers", "Guidepoint360 + AskGP AI platform launched Oct 2025", "Breadth of client coverage (5,000+ organizations)", "Strong compliance infrastructure"],
-  "bestFor": ["Healthcare and life sciences investors", "Hedge funds seeking broad industry coverage", "Consulting firms (serves 9 of top 10)", "Private equity deal teams", "Corporate strategy and market intelligence teams", "Budget-conscious teams needing reliable expert access"],
+  "keyDifferentiators": [
+    "Very large advisor network (1.75M+ across 150+ industries)",
+    "Healthcare data specialization via Qsight",
+    "Flexible pricing model — competitive vs. premium peers",
+    "Guidepoint360 + AskGP AI platform launched Oct 2025",
+    "Breadth of client coverage (5,000+ organizations)",
+    "Strong compliance infrastructure"
+  ],
+  "bestFor": [
+    "Healthcare and life sciences investors",
+    "Hedge funds seeking broad industry coverage",
+    "Consulting firms (serves 9 of top 10)",
+    "Private equity deal teams",
+    "Corporate strategy and market intelligence teams",
+    "Budget-conscious teams needing reliable expert access"
+  ],
   "compliance": {
     "mnpiPolicy": "Industry-recognized compliance program with MNPI screening, monitoring, and dedicated compliance officers per engagement",
     "expertVetting": "Multi-layer advisor vetting including compliance tutorials, conflict-of-interest checks, and ongoing monitoring; client dashboard for compliance personnel to audit interactions",
@@ -31,6 +68,11 @@
   "featured": true,
   "priority": 4,
   "published": true,
+  "categoryBadge": "Major Provider",
+  "deliveryModel": "Hybrid",
+  "regionStrength": "Global",
+  "complianceBadge": "Strong Compliance",
+  "aiBadge": "AI Matching",
   "comparison": {
     "expertCalls": true,
     "contentLibrary": "Guidepoint Insights",
@@ -39,28 +81,64 @@
     "complianceTools": true
   },
   "lastUpdated": "2026-03-06",
-
   "overview": "Guidepoint is one of the largest expert networks globally, connecting more than 5,000 client organizations with 1.75 million+ advisors across 150+ industries and 500+ subsectors. The firm operates as a research enablement platform — providing not just expert access but also healthcare data intelligence (Qsight), content libraries (Guidepoint Insights with 65,000+ transcripts), live events (1,500+ per month), and since October 2025, the Guidepoint360 AI platform with its AskGP conversational research assistant. Guidepoint is privately held and founder-led by Albert Sebag, who serves as CEO. The company has grown from ~800 employees in 2020 to 1,600+ today across 19 global offices.",
-
   "history": {
     "narrative": "Guidepoint was founded in 2003 by Albert Sebag, an organic chemist turned patent attorney. Sebag earned his Ph.D. in Organic Chemistry from Northeastern University (with research at MIT) and his J.D. from Boston College Law School. He began as a patent litigator at Kenyon & Kenyon advising generic pharma companies, then founded Clinical Advisors to match cancer patients with clinical trials. As the model expanded into broader healthcare and other industries, the company rebranded to Guidepoint Global in 2007. Through organic growth and three acquisitions — Vista Research (2009, from Standard & Poor's, giving Guidepoint Asia presence), Innosquared (2015, European expert network), and Quanton Data Analytics (2016, alternative data, foundation for Qsight) — Guidepoint has become one of the 'Big Five' expert networks.",
     "timeline": [
-      { "year": "2003", "event": "Founded as Clinical Advisors by Albert Sebag in New York to match cancer patients with clinical trials" },
-      { "year": "2007", "event": "Rebranded to Guidepoint Global; launched Tracker product (recurring physician surveys)" },
-      { "year": "2009", "event": "Acquires Vista Research from Standard & Poor's — gains Asia presence and tech/telecom expertise; opens London office; becomes second-largest expert network after GLG" },
-      { "year": "2012", "event": "Expands into mainland China with Shanghai office" },
-      { "year": "2015", "event": "Acquires Innosquared, a Germany-based expert network, expanding European presence to 50,000+ EMEA experts" },
-      { "year": "2016", "event": "Acquires Quanton Data Analytics (alternative data provider), laying the foundation for Qsight" },
-      { "year": "2018", "event": "Launches Guidepoint Insights — moderated teleconferences with transcripts" },
-      { "year": "2020", "event": "Approximately 800 employees, 14 offices, 650,000+ experts" },
-      { "year": "2021", "event": "Network surpasses 1 million advisors (announced via PRNewswire)" },
-      { "year": "2022", "event": "Opens Mumbai office; reaches 1,000+ daily interactions" },
-      { "year": "2024", "event": "Grows to 1,300+ employees, 17 offices, 1.5M+ experts, 4,500+ clients; launches Guidepoint Qsight healthcare data platform" },
-      { "year": "Oct 2025", "event": "Launches Guidepoint360 AI platform with AskGP conversational research assistant and AI Moderation" },
-      { "year": "2025–2026", "event": "Expands to 1,600+ employees, 19 offices, 1.75M+ advisors, 5,000+ clients; launches Guidepoint360 mobile app" }
+      {
+        "year": "2003",
+        "event": "Founded as Clinical Advisors by Albert Sebag in New York to match cancer patients with clinical trials"
+      },
+      {
+        "year": "2007",
+        "event": "Rebranded to Guidepoint Global; launched Tracker product (recurring physician surveys)"
+      },
+      {
+        "year": "2009",
+        "event": "Acquires Vista Research from Standard & Poor's — gains Asia presence and tech/telecom expertise; opens London office; becomes second-largest expert network after GLG"
+      },
+      {
+        "year": "2012",
+        "event": "Expands into mainland China with Shanghai office"
+      },
+      {
+        "year": "2015",
+        "event": "Acquires Innosquared, a Germany-based expert network, expanding European presence to 50,000+ EMEA experts"
+      },
+      {
+        "year": "2016",
+        "event": "Acquires Quanton Data Analytics (alternative data provider), laying the foundation for Qsight"
+      },
+      {
+        "year": "2018",
+        "event": "Launches Guidepoint Insights — moderated teleconferences with transcripts"
+      },
+      {
+        "year": "2020",
+        "event": "Approximately 800 employees, 14 offices, 650,000+ experts"
+      },
+      {
+        "year": "2021",
+        "event": "Network surpasses 1 million advisors (announced via PRNewswire)"
+      },
+      {
+        "year": "2022",
+        "event": "Opens Mumbai office; reaches 1,000+ daily interactions"
+      },
+      {
+        "year": "2024",
+        "event": "Grows to 1,300+ employees, 17 offices, 1.5M+ experts, 4,500+ clients; launches Guidepoint Qsight healthcare data platform"
+      },
+      {
+        "year": "Oct 2025",
+        "event": "Launches Guidepoint360 AI platform with AskGP conversational research assistant and AI Moderation"
+      },
+      {
+        "year": "2025–2026",
+        "event": "Expands to 1,600+ employees, 19 offices, 1.75M+ advisors, 5,000+ clients; launches Guidepoint360 mobile app"
+      }
     ]
   },
-
   "servicesDetailed": [
     {
       "name": "Expert Calls",
@@ -91,7 +169,6 @@
       "description": "Guidepoint hosts 1,500+ live events per month including roundtables, teleconferences, and industry panels. Events bring together multiple advisors and clients around specific industry themes, providing broader perspective-gathering beyond one-on-one calls."
     }
   ],
-
   "aiPlatform": {
     "narrative": "Guidepoint's AI strategy has accelerated significantly in 2025. The centerpiece is Guidepoint360, launched in October 2025, which consolidates all client content — transcripts, call recordings, project briefs, and research — into a single AI-powered platform. AskGP, the conversational AI interface within Guidepoint360, lets clients query the full content library in natural language and synthesize insights across multiple expert interactions. Guidepoint also announced AI Moderation for enterprise-scale expert calls, and in early 2026 launched a Guidepoint360 mobile app for AI-driven research on the go.",
     "features": [
@@ -103,7 +180,6 @@
       "65,000+ searchable transcripts and audio recordings in content library"
     ]
   },
-
   "complianceExtended": {
     "narrative": "Guidepoint positions compliance as a core brand differentiator and structures its framework in three stages: Advisor Eligibility (third-party background checks, Employer Opt-Out Registry), Project Compliance (proprietary IT platform enforcing screens before workflow proceeds, advisor re-affirmation of T&Cs before each consultation), and Project Review (custom client controls, real-time dashboards). Advisors must complete a mandatory Compliance Tutorial upon joining and re-certify annually. Advisors are instructed to terminate any consultation where they believe they are being solicited for confidential or MNPI information — and are still paid for the full consultation. General Counsel Catherine Smith is a former Senior Counsel of the SEC Division of Enforcement.",
     "highlights": [
@@ -118,7 +194,6 @@
     ],
     "regulatoryContext": "Guidepoint has never been charged with wrongdoing. However, its name appeared in several insider trading cases where individual consultants (Dr. Yves Benhamou, Winifred Jiau) were charged — in each case, the individuals deliberately circumvented Guidepoint's compliance controls rather than exploiting gaps in them. Massachusetts Secretary of State William Galvin also filed a complaint against Risk Reward Capital Management for using Guidepoint to obtain inside information, but Guidepoint itself was not charged. Per Integrity Research: 'Guidepoint's compliance procedures protected it from accusations of wrongdoing.' The SEC's 2022 Risk Alert on expert networks was industry-wide and not directed at Guidepoint specifically."
   },
-
   "clientFit": {
     "narrative": "Guidepoint serves the broadest client base among the Big Five expert networks, with 5,000+ organizations including institutional investors, consulting firms, corporates, legal teams, and government agencies. The firm's positioning emphasizes breadth, flexibility, and competitive pricing — making it accessible to teams with varying budgets and research intensity. Qsight provides a uniquely specialized offering for healthcare investors.",
     "segments": [
@@ -131,7 +206,6 @@
       "Government and public sector organizations"
     ]
   },
-
   "strengths": [
     "Very large advisor network: 1.75M+ across 150+ industries and 500+ subsectors",
     "Broadest client coverage among Big Five: 5,000+ organizations",
@@ -143,7 +217,6 @@
     "19 global offices; rapid expansion from 800 employees (2020) to 1,600+ (2025)",
     "Founder-led with Albert Sebag as CEO since founding in 2003"
   ],
-
   "caveats": [
     "Less analyst-led curation than Third Bridge — Guidepoint operates more as an access platform",
     "AI capabilities (Guidepoint360) are very new (Oct 2025) and may not be fully mature",
@@ -152,7 +225,6 @@
     "Qsight is healthcare-specific — may create unevenness in depth across verticals",
     "Content library (65,000+ transcripts) is large but less differentiated than Third Bridge's analyst-curated Library"
   ],
-
   "notableFacts": [
     "Founded in 2003 as Clinical Advisors to match cancer patients with clinical trials",
     "Founder Albert Sebag holds a Ph.D. in Organic Chemistry (Northeastern/MIT) and J.D. (Boston College Law)",
@@ -172,7 +244,6 @@
     "Pune, India technology center for platform development",
     "AI Moderation can conduct autonomous expert interviews 24/7 without live client — unique among Big Five"
   ],
-
   "sourceNotes": [
     "Guidepoint official website (guidepoint.com) used as primary source for products, services, and company positioning",
     "Wikipedia entry used for founding story (Clinical Advisors origin), rebranding history, and acquisition timeline",
@@ -186,10 +257,18 @@
     "Client count (5,000+ organizations) and consulting firm stat (9 of top 10) from company website — not independently verified",
     "Competitive positioning draws on third-party comparisons (CleverX, Silverlight Research, Third Bridge) — these sources have competitive biases"
   ],
-
-  "whyChoose": ["Network breadth", "Healthcare (Qsight)", "Competitive pricing", "AI platform (AskGP)"],
-  "whenNotIdeal": ["Wants analyst-led curation", "Needs premium brand signaling", "Heavy transcript library user", "Early AI maturity concern"],
-
+  "whyChoose": [
+    "Network breadth",
+    "Healthcare (Qsight)",
+    "Competitive pricing",
+    "AI platform (AskGP)"
+  ],
+  "whenNotIdeal": [
+    "Wants analyst-led curation",
+    "Needs premium brand signaling",
+    "Heavy transcript library user",
+    "Early AI maturity concern"
+  ],
   "confidence": {
     "founded": "verified",
     "headquarters": "verified",

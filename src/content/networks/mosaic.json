@@ -11,12 +11,34 @@
   "employeeCount": "40+",
   "expertCount": "20K+",
   "description": "Next-generation expert network leveraging AI-powered matching to connect venture capital and growth equity investors with startup founders, operators, and technology specialists.",
-  "services": ["Expert Calls", "AI Matching", "Startup Research", "VC Due Diligence"],
-  "aiCapabilities": ["AI-powered expert-investor matching", "Startup ecosystem mapping", "Real-time expertise scoring"],
-  "industries": ["Venture Capital", "Technology", "Startups", "Growth Equity"],
+  "services": [
+    "Expert Calls",
+    "AI Matching",
+    "Startup Research",
+    "VC Due Diligence"
+  ],
+  "aiCapabilities": [
+    "AI-powered expert-investor matching",
+    "Startup ecosystem mapping",
+    "Real-time expertise scoring"
+  ],
+  "industries": [
+    "Venture Capital",
+    "Technology",
+    "Startups",
+    "Growth Equity"
+  ],
   "pricingModel": "Per-call",
-  "keyDifferentiators": ["AI-native matching built for the VC/growth equity ecosystem", "Deep startup and operator network", "Next-gen platform designed for modern investors"],
-  "bestFor": ["Growth Equity", "Venture Capital", "Tech Investors"],
+  "keyDifferentiators": [
+    "AI-native matching built for the VC/growth equity ecosystem",
+    "Deep startup and operator network",
+    "Next-gen platform designed for modern investors"
+  ],
+  "bestFor": [
+    "Growth Equity",
+    "Venture Capital",
+    "Tech Investors"
+  ],
   "compliance": {
     "mnpiPolicy": "Modern compliance framework with automated MNPI screening for pre-IPO companies",
     "expertVetting": "AI-assisted vetting with startup affiliation and conflict-of-interest checks",
@@ -26,53 +48,121 @@
   "featured": false,
   "priority": 33,
   "published": true,
+  "categoryBadge": "Boutique Specialist",
+  "deliveryModel": "Platform-Led",
+  "regionStrength": "North America",
+  "complianceBadge": "Standard Compliance",
+  "aiBadge": "AI Matching",
   "lastUpdated": "2026-03-07",
-
   "overview": "Mosaic Research is a New York-based next-generation expert network built specifically for the venture capital and growth equity ecosystem. Founded in 2021, the company uses AI-powered matching to connect investors with startup founders, operators, product managers, and technology specialists — a different expert universe than the corporate executives and industry practitioners served by traditional expert networks.\n\nThe company focuses on the pre-IPO technology ecosystem, where due diligence requires talking to users, competitors, and ecosystem participants rather than traditional industry experts. Mosaic's AI matching considers startup-specific signals like company stage, technology stack, go-to-market approach, and competitive landscape.",
-
   "history": {
     "narrative": "Mosaic Research was founded in 2021 in New York, recognizing that venture capital and growth equity investors needed a different kind of expert network — one connected to the startup ecosystem rather than traditional corporate networks.",
     "timeline": [
-      { "year": "2021", "event": "Founded in New York with focus on VC and growth equity investors" },
-      { "year": "2022-2023", "event": "Built AI-powered matching platform and startup operator network" },
-      { "year": "2024-2025", "event": "Expanded to 20K+ experts across the technology startup ecosystem" }
+      {
+        "year": "2021",
+        "event": "Founded in New York with focus on VC and growth equity investors"
+      },
+      {
+        "year": "2022-2023",
+        "event": "Built AI-powered matching platform and startup operator network"
+      },
+      {
+        "year": "2024-2025",
+        "event": "Expanded to 20K+ experts across the technology startup ecosystem"
+      }
     ]
   },
-
   "servicesDetailed": [
-    { "name": "Expert Consultations", "description": "Consultations with startup founders, operators, product managers, and technology specialists for VC/growth equity due diligence and market research." },
-    { "name": "AI-Powered Matching", "description": "Matching algorithm optimized for the startup ecosystem, considering company stage, technology stack, go-to-market approach, and competitive dynamics." },
-    { "name": "Startup Ecosystem Research", "description": "Research into startup competitive landscapes, technology adoption trends, and market dynamics for pre-IPO investment evaluation." }
+    {
+      "name": "Expert Consultations",
+      "description": "Consultations with startup founders, operators, product managers, and technology specialists for VC/growth equity due diligence and market research."
+    },
+    {
+      "name": "AI-Powered Matching",
+      "description": "Matching algorithm optimized for the startup ecosystem, considering company stage, technology stack, go-to-market approach, and competitive dynamics."
+    },
+    {
+      "name": "Startup Ecosystem Research",
+      "description": "Research into startup competitive landscapes, technology adoption trends, and market dynamics for pre-IPO investment evaluation."
+    }
   ],
-
   "aiPlatform": {
     "narrative": "Mosaic's AI platform is optimized for the VC/startup ecosystem with matching that considers startup-specific signals.",
-    "features": ["AI-powered expert-investor matching", "Startup ecosystem mapping", "Real-time expertise scoring", "Pre-IPO company conflict detection"]
+    "features": [
+      "AI-powered expert-investor matching",
+      "Startup ecosystem mapping",
+      "Real-time expertise scoring",
+      "Pre-IPO company conflict detection"
+    ]
   },
-
   "complianceExtended": {
     "narrative": "Mosaic's compliance framework is designed for pre-IPO company research, with automated MNPI screening adapted for private companies.",
-    "highlights": ["Automated MNPI screening for pre-IPO companies", "Startup affiliation conflict checks", "AI-assisted vetting", "Audit trail for all interactions"],
+    "highlights": [
+      "Automated MNPI screening for pre-IPO companies",
+      "Startup affiliation conflict checks",
+      "AI-assisted vetting",
+      "Audit trail for all interactions"
+    ],
     "regulatoryContext": "Pre-IPO expert consultations require different MNPI considerations than public company research. Clean regulatory record."
   },
-
   "clientFit": {
     "narrative": "Purpose-built for the VC/growth equity community. Less relevant for traditional institutional investors or corporate strategy teams.",
-    "segments": ["Venture capital firms conducting due diligence on startups", "Growth equity investors evaluating technology companies", "PE firms assessing technology-forward acquisition targets", "Corporate venture arms researching startup ecosystems"]
+    "segments": [
+      "Venture capital firms conducting due diligence on startups",
+      "Growth equity investors evaluating technology companies",
+      "PE firms assessing technology-forward acquisition targets",
+      "Corporate venture arms researching startup ecosystems"
+    ]
   },
-
-  "strengths": ["VC/startup ecosystem focus — a niche underserved by traditional networks", "AI-native matching optimized for startup-specific signals", "Expert network includes founders, operators, and product managers", "New York headquarters in major VC hub"],
-  "caveats": ["Very young company (2021) with limited track record", "Smallest expert database (20K+) among profiled networks", "Narrow VC/startup focus limits broader applicability", "Limited public information about funding and financial performance"],
-  "notableFacts": ["One of the few expert networks focused specifically on the VC/startup ecosystem", "AI matching considers startup-specific signals like company stage and tech stack", "Expert network includes startup founders and operators, not just traditional industry experts"],
-  "sourceNotes": ["Mosaic Research website", "Expert network industry directories"],
-  "whyChoose": ["VC/startup focus", "AI-native matching", "Operator and founder network", "Pre-IPO expertise"],
-  "whenNotIdeal": ["Traditional industry research", "Need large expert pools", "Want proven track record", "Public company research focus"],
-
+  "strengths": [
+    "VC/startup ecosystem focus — a niche underserved by traditional networks",
+    "AI-native matching optimized for startup-specific signals",
+    "Expert network includes founders, operators, and product managers",
+    "New York headquarters in major VC hub"
+  ],
+  "caveats": [
+    "Very young company (2021) with limited track record",
+    "Smallest expert database (20K+) among profiled networks",
+    "Narrow VC/startup focus limits broader applicability",
+    "Limited public information about funding and financial performance"
+  ],
+  "notableFacts": [
+    "One of the few expert networks focused specifically on the VC/startup ecosystem",
+    "AI matching considers startup-specific signals like company stage and tech stack",
+    "Expert network includes startup founders and operators, not just traditional industry experts"
+  ],
+  "sourceNotes": [
+    "Mosaic Research website",
+    "Expert network industry directories"
+  ],
+  "whyChoose": [
+    "VC/startup focus",
+    "AI-native matching",
+    "Operator and founder network",
+    "Pre-IPO expertise"
+  ],
+  "whenNotIdeal": [
+    "Traditional industry research",
+    "Need large expert pools",
+    "Want proven track record",
+    "Public company research focus"
+  ],
   "confidence": {
-    "founded": "partially-unverifiable", "headquarters": "verified", "expertCount": "positioning",
-    "employeeCount": "partially-unverifiable", "pricingModel": "verified", "services": "positioning",
-    "compliance": "positioning", "overview": "positioning", "history": "inference",
-    "servicesDetailed": "positioning", "aiPlatform": "positioning", "complianceExtended": "positioning",
-    "clientFit": "inference", "strengths": "positioning", "caveats": "inference", "notableFacts": "positioning"
+    "founded": "partially-unverifiable",
+    "headquarters": "verified",
+    "expertCount": "positioning",
+    "employeeCount": "partially-unverifiable",
+    "pricingModel": "verified",
+    "services": "positioning",
+    "compliance": "positioning",
+    "overview": "positioning",
+    "history": "inference",
+    "servicesDetailed": "positioning",
+    "aiPlatform": "positioning",
+    "complianceExtended": "positioning",
+    "clientFit": "inference",
+    "strengths": "positioning",
+    "caveats": "inference",
+    "notableFacts": "positioning"
   }
 }

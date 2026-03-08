@@ -15,11 +15,12 @@ function getRegion(hq: string): string {
   if (hq.includes('Germany') || hq.includes('Munich') || hq.includes('Berlin') || hq.includes('Frankfurt')) return 'Germany';
   if (hq.includes('France') || hq.includes('Paris')) return 'France';
   if (hq.includes('Singapore')) return 'Singapore';
-  if (hq.includes('India') || hq.includes('Mumbai') || hq.includes('Bangalore')) return 'India';
+  if (hq.includes('India') || hq.includes('Mumbai') || hq.includes('Bangalore') || hq.includes('Delhi')) return 'India';
   if (hq.includes('Japan') || hq.includes('Tokyo')) return 'Japan';
   if (hq.includes('Hong Kong')) return 'Hong Kong';
   if (hq.includes('China') || hq.includes('Shanghai') || hq.includes('Beijing') || hq.includes('Shenzhen')) return 'China';
   if (hq.includes('Switzerland') || hq.includes('Zurich')) return 'Switzerland';
+  if (hq.includes('Sweden') || hq.includes('Stockholm')) return 'Sweden';
   return 'United States';
 }
 
@@ -27,11 +28,29 @@ function getRegion(hq: string): string {
 const allTypes = [...new Set(networks.map(n => n.data.type))].sort();
 const allPricing = [...new Set(networks.map(n => n.data.pricingModel).filter(Boolean))].sort();
 const allHqs = [...new Set(networks.map(n => getRegion(n.data.headquarters || '')).filter(Boolean))].sort();
+const allDeliveryModels = [...new Set(networks.map(n => n.data.deliveryModel).filter(Boolean))].sort();
+const allRegionStrengths = [...new Set(networks.map(n => n.data.regionStrength).filter(Boolean))].sort();
+
+// Stats
+const aiCount = networks.filter(n => n.data.comparison?.aiMatching).length;
+const complianceCount = networks.filter(n => n.data.comparison?.complianceTools).length;
+
+// Badge color map
+const badgeColors: Record<string, string> = {
+  'Global Leader': 'bg-amber-500/10 text-amber-700 border-amber-500/20',
+  'Major Provider': 'bg-blue-500/10 text-blue-700 border-blue-500/20',
+  'Fast-Growing': 'bg-emerald-500/10 text-emerald-700 border-emerald-500/20',
+  'Asia Specialist': 'bg-rose-500/10 text-rose-700 border-rose-500/20',
+  'Research Platform': 'bg-violet-500/10 text-violet-700 border-violet-500/20',
+  'Technology-First': 'bg-cyan-500/10 text-cyan-700 border-cyan-500/20',
+  'Marketplace': 'bg-orange-500/10 text-orange-700 border-orange-500/20',
+  'Boutique Specialist': 'bg-slate-500/10 text-slate-600 border-slate-500/20',
+};
 ---
 
 <BaseLayout
-  title="All Networks — Expert Networks Hub"
-  description={`Browse ${networks.length} expert network providers with independent profiles, pricing models, compliance data, and expert pool sizes. Filter by type, region, and pricing.`}
+  title="Expert Networks Directory — ExpertNetworks.net"
+  description={`Browse ${networks.length} expert network providers with independent profiles, pricing models, compliance data, and expert pool sizes. Filter by use case, delivery model, region, and AI capabilities.`}
   jsonLd={{
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -41,212 +60,639 @@ const allHqs = [...new Set(networks.map(n => getRegion(n.data.headquarters || ''
     "isPartOf": { "@type": "WebSite", "name": "ExpertNetworks.net", "url": "https://expertnetworks.net" }
   }}
 >
-  <!-- Header with particle background -->
+  <!-- Hero -->
   <ParticleHero>
-    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+    <div class="flex flex-col gap-3">
       <div>
         <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight text-white">Expert Networks Directory</h1>
-        <p class="text-[#a1a1a6] text-sm mt-1">{networks.length} providers with independent profiles, pricing, and compliance data.</p>
+        <p class="text-[#a1a1a6] text-sm mt-1.5 max-w-2xl">{networks.length} providers with independent profiles, pricing, compliance, and capability data.</p>
+        <p class="text-[#86868b] text-xs mt-1 max-w-2xl">Compare networks by use case, pricing model, geography, compliance, and AI capabilities.</p>
       </div>
-      <div class="flex gap-2" style="pointer-events: auto;">
-        <a href="/compare" class="inline-flex items-center gap-1.5 px-4 py-2 bg-accent text-white text-sm font-semibold rounded-lg no-underline hover:bg-accent-hover transition-colors">Compare</a>
-        <a href="/" class="inline-flex items-center gap-1.5 px-4 py-2 bg-[rgba(255,255,255,0.08)] text-[#e5e5ea] text-sm font-semibold rounded-lg no-underline hover:bg-[rgba(255,255,255,0.14)] transition-colors border border-[rgba(255,255,255,0.08)]">&larr; Dashboard</a>
+      <!-- Action row -->
+      <div class="flex flex-wrap gap-2 mt-1" style="pointer-events: auto;">
+        <div class="relative">
+          <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#86868b] pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input id="heroSearch" type="text" placeholder="Search networks..." class="text-[13px] text-white bg-white/[0.08] border border-white/[0.12] rounded-lg pl-8 pr-3 py-2 w-52 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/40 placeholder:text-[#86868b]" />
+        </div>
+        <a href="/compare" class="inline-flex items-center gap-1.5 px-4 py-2 bg-accent text-white text-sm font-semibold rounded-lg no-underline hover:bg-accent/90 transition-colors">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+          Compare Selected
+        </a>
+        <button id="resetAll" class="hidden items-center gap-1 px-3 py-2 bg-white/[0.06] text-[#a1a1a6] text-sm font-medium rounded-lg hover:bg-white/[0.1] transition-colors border border-white/[0.08]">
+          <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+          Reset
+        </button>
+        <a href="/" class="inline-flex items-center gap-1.5 px-3 py-2 bg-white/[0.06] text-[#a1a1a6] text-sm font-medium rounded-lg no-underline hover:bg-white/[0.1] transition-colors border border-white/[0.08]">&larr; Dashboard</a>
       </div>
     </div>
   </ParticleHero>
 
-  <!-- Filter bar -->
-  <section class="py-3 px-6 border-b border-border/40 bg-bg-secondary/50">
-    <div class="max-w-site mx-auto flex flex-wrap gap-3 items-center">
-      <span class="text-xs font-bold uppercase tracking-wide text-tertiary">Filter:</span>
-      <input id="searchInput" type="text" placeholder="Search by name..." aria-label="Search networks by name" class="text-[13px] text-primary bg-white border border-border rounded-lg px-3 py-1.5 w-48 focus:outline-none focus:ring-2 focus:ring-accent/30" />
-      <select id="filterType" aria-label="Filter by type" class="text-[13px] font-medium text-primary bg-white border border-border rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
-        <option value="">All Types</option>
-        {allTypes.map(t => <option value={t}>{t}</option>)}
-      </select>
-      <select id="filterPricing" aria-label="Filter by pricing" class="text-[13px] font-medium text-primary bg-white border border-border rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
-        <option value="">All Pricing</option>
-        {allPricing.map(p => <option value={p}>{p}</option>)}
-      </select>
-      <select id="filterRegion" aria-label="Filter by region" class="text-[13px] font-medium text-primary bg-white border border-border rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
-        <option value="">All Regions</option>
-        {allHqs.map(h => <option value={h}>{h}</option>)}
-      </select>
-      <select id="sortBy" aria-label="Sort networks" class="text-[13px] font-medium text-primary bg-white border border-border rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
-        <option value="rank">By Rank</option>
-        <option value="name">A-Z</option>
-        <option value="founded">Newest First</option>
-      </select>
-      <button id="clearAll" aria-label="Clear all filters" class="text-[13px] font-medium text-accent hover:underline cursor-pointer hidden border-none bg-transparent">Clear</button>
-      <span id="resultCount" class="text-xs text-tertiary ml-auto">{networks.length} networks</span>
-    </div>
-  </section>
-
-  <!-- Stats bar -->
-  <section class="py-4 px-6 border-b border-border/20">
-    <div class="max-w-site mx-auto grid grid-cols-2 sm:grid-cols-4 gap-4">
-      <div class="text-center">
-        <div class="text-xl font-extrabold text-primary">{networks.length}</div>
-        <div class="text-[11px] text-tertiary uppercase tracking-wide">Networks Tracked</div>
-      </div>
-      <div class="text-center">
-        <div class="text-xl font-extrabold text-primary">{allHqs.length}+</div>
-        <div class="text-[11px] text-tertiary uppercase tracking-wide">Countries</div>
-      </div>
-      <div class="text-center">
-        <div class="text-xl font-extrabold text-primary">{networks.filter(n => n.data.comparison?.aiMatching).length}</div>
-        <div class="text-[11px] text-tertiary uppercase tracking-wide">With AI Matching</div>
-      </div>
-      <div class="text-center">
-        <div class="text-xl font-extrabold text-primary">{networks.filter(n => n.data.comparison?.complianceTools).length}</div>
-        <div class="text-[11px] text-tertiary uppercase tracking-wide">Compliance Tools</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Network list -->
-  <section class="py-6 px-6">
+  <!-- Quick Presets -->
+  <section class="py-3 px-4 md:px-6 border-b border-border/30 bg-white">
     <div class="max-w-site mx-auto">
-      <div id="noResults" class="hidden text-center py-12 text-sm text-tertiary">No networks match your filters.</div>
-      <div class="space-y-2" id="networkList">
-        {networks.map((network, i) => {
-          const n = network.data;
-          const region = getRegion(n.headquarters || '');
-          return (
-            <a
-              href={`/networks/${n.slug}`}
-              class="network-row flex items-center gap-4 px-5 py-4 bg-white rounded-xl shadow-[0_0_0_0.5px_rgba(0,0,0,0.04),0_1px_3px_rgba(0,0,0,0.06)] hover:shadow-card-hover hover:-translate-y-[1px] transition-all no-underline group"
-              data-name={n.name.toLowerCase()}
-              data-type={n.type}
-              data-pricing={n.pricingModel || ''}
-              data-region={region}
-              data-founded={n.founded || 0}
-              data-rank={i}
-            >
-              <!-- Rank -->
-              <div class="text-[12px] text-tertiary font-bold w-5 text-right flex-shrink-0">{i + 1}</div>
-
-              <!-- Logo -->
-              {n.logo ? (
-                <img src={n.logo} alt={n.name} width="40" height="40" class="w-10 h-10 rounded-xl object-contain flex-shrink-0" loading="lazy" />
-              ) : (
-                <div
-                  class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
-                  style={`background: linear-gradient(135deg, ${n.gradientFrom}, ${n.gradientTo})`}
-                >
-                  {n.shortName}
-                </div>
-              )}
-
-              <!-- Info -->
-              <div class="min-w-0 flex-1">
-                <div class="flex items-center gap-2">
-                  <span class="text-[14px] font-semibold text-primary group-hover:text-accent transition-colors truncate">{n.name.split(' (')[0]}</span>
-                  {n.featured && <span class="px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider bg-accent/10 text-accent rounded">Featured</span>}
-                </div>
-                <div class="text-[12px] text-secondary truncate mt-0.5">{n.description.slice(0, 100)}{n.description.length > 100 ? '...' : ''}</div>
-              </div>
-
-              <!-- Key metrics -->
-              <div class="hidden md:flex items-center gap-6 flex-shrink-0">
-                {n.expertCount && (
-                  <div class="text-center w-20">
-                    <div class="text-[13px] font-bold text-primary">{n.expertCount}</div>
-                    <div class="text-[10px] text-tertiary">Experts</div>
-                  </div>
-                )}
-                {n.pricingModel && (
-                  <div class="text-center w-20">
-                    <div class="text-[13px] font-bold text-primary">{n.pricingModel}</div>
-                    <div class="text-[10px] text-tertiary">Pricing</div>
-                  </div>
-                )}
-                <div class="text-center w-20">
-                  <div class="text-[13px] font-bold text-primary">{n.founded || '—'}</div>
-                  <div class="text-[10px] text-tertiary">Founded</div>
-                </div>
-              </div>
-
-              <!-- Services chips (hidden on small) -->
-              <div class="hidden lg:flex flex-wrap gap-1 w-40 flex-shrink-0">
-                {n.services.slice(0, 3).map((s: string) => (
-                  <span class="px-2 py-0.5 text-[10px] font-medium rounded-full bg-bg-secondary text-secondary">{s}</span>
-                ))}
-                {n.services.length > 3 && <span class="px-2 py-0.5 text-[10px] font-medium rounded-full bg-bg-secondary text-tertiary">+{n.services.length - 3}</span>}
-              </div>
-
-              <!-- Arrow -->
-              <svg class="w-4 h-4 text-tertiary group-hover:text-accent transition-colors flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-            </a>
-          );
-        })}
+      <div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+        <span class="text-[10px] font-bold uppercase tracking-widest text-tertiary whitespace-nowrap mr-1">Quick filters</span>
+        <button class="preset-btn px-3 py-1.5 text-[12px] font-medium rounded-full border border-border/60 text-secondary hover:border-accent hover:text-accent hover:bg-accent/[0.04] transition-all whitespace-nowrap cursor-pointer bg-transparent" data-preset="consulting">Best for Consulting</button>
+        <button class="preset-btn px-3 py-1.5 text-[12px] font-medium rounded-full border border-border/60 text-secondary hover:border-accent hover:text-accent hover:bg-accent/[0.04] transition-all whitespace-nowrap cursor-pointer bg-transparent" data-preset="pe">Best for Private Equity</button>
+        <button class="preset-btn px-3 py-1.5 text-[12px] font-medium rounded-full border border-border/60 text-secondary hover:border-accent hover:text-accent hover:bg-accent/[0.04] transition-all whitespace-nowrap cursor-pointer bg-transparent" data-preset="enterprise">Best for Enterprise</button>
+        <button class="preset-btn px-3 py-1.5 text-[12px] font-medium rounded-full border border-border/60 text-secondary hover:border-accent hover:text-accent hover:bg-accent/[0.04] transition-all whitespace-nowrap cursor-pointer bg-transparent" data-preset="asia">Asia Specialists</button>
+        <button class="preset-btn px-3 py-1.5 text-[12px] font-medium rounded-full border border-border/60 text-secondary hover:border-accent hover:text-accent hover:bg-accent/[0.04] transition-all whitespace-nowrap cursor-pointer bg-transparent" data-preset="ai">AI-Forward Platforms</button>
+        <button class="preset-btn px-3 py-1.5 text-[12px] font-medium rounded-full border border-border/60 text-secondary hover:border-accent hover:text-accent hover:bg-accent/[0.04] transition-all whitespace-nowrap cursor-pointer bg-transparent" data-preset="library">Transcript / Library</button>
+        <button class="preset-btn px-3 py-1.5 text-[12px] font-medium rounded-full border border-border/60 text-secondary hover:border-accent hover:text-accent hover:bg-accent/[0.04] transition-all whitespace-nowrap cursor-pointer bg-transparent" data-preset="boutique">Boutique Specialists</button>
       </div>
     </div>
   </section>
+
+  <!-- Metrics Strip -->
+  <section class="py-3.5 px-4 md:px-6 border-b border-border/20 bg-[#fafafa]">
+    <div class="max-w-site mx-auto flex items-center justify-between gap-4 overflow-x-auto">
+      <div class="flex items-center gap-2 whitespace-nowrap">
+        <span class="text-lg font-extrabold text-primary">{networks.length}</span>
+        <span class="text-[11px] text-tertiary uppercase tracking-wide font-medium">Networks Tracked</span>
+      </div>
+      <div class="w-px h-5 bg-border/40"></div>
+      <div class="flex items-center gap-2 whitespace-nowrap">
+        <span class="text-lg font-extrabold text-primary">{allHqs.length}+</span>
+        <span class="text-[11px] text-tertiary uppercase tracking-wide font-medium">Countries</span>
+      </div>
+      <div class="w-px h-5 bg-border/40"></div>
+      <div class="flex items-center gap-2 whitespace-nowrap">
+        <span class="text-lg font-extrabold text-primary">{aiCount}</span>
+        <span class="text-[11px] text-tertiary uppercase tracking-wide font-medium">AI Matching</span>
+      </div>
+      <div class="w-px h-5 bg-border/40"></div>
+      <div class="flex items-center gap-2 whitespace-nowrap">
+        <span class="text-lg font-extrabold text-primary">{complianceCount}</span>
+        <span class="text-[11px] text-tertiary uppercase tracking-wide font-medium">Compliance Tools</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters + Cards -->
+  <section class="py-5 px-4 md:px-6">
+    <div class="max-w-site mx-auto flex flex-col lg:flex-row gap-5">
+
+      <!-- Filter Sidebar -->
+      <aside class="w-full lg:w-56 flex-shrink-0">
+        <!-- Mobile filter toggle -->
+        <button id="mobileFilterToggle" class="lg:hidden flex items-center justify-between w-full px-4 py-2.5 bg-white rounded-xl border border-border/60 text-sm font-medium text-primary mb-3 cursor-pointer">
+          <span class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-tertiary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+            Filters
+          </span>
+          <svg class="w-4 h-4 text-tertiary filter-chevron transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div id="filterPanel" class="hidden lg:block space-y-5">
+          <!-- Group A: Fit -->
+          <div>
+            <h3 class="text-[10px] font-bold uppercase tracking-widest text-tertiary mb-2">Fit</h3>
+            <div class="space-y-2">
+              <select id="filterRegionStrength" class="filter-select w-full text-[13px] font-medium text-primary bg-white border border-border/60 rounded-lg px-3 py-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
+                <option value="">All Regions</option>
+                {allRegionStrengths.map(r => <option value={r}>{r}</option>)}
+              </select>
+              <select id="filterType" class="filter-select w-full text-[13px] font-medium text-primary bg-white border border-border/60 rounded-lg px-3 py-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
+                <option value="">All Types</option>
+                {allTypes.map(t => <option value={t}>{t}</option>)}
+              </select>
+            </div>
+          </div>
+          <!-- Group B: Commercial Model -->
+          <div>
+            <h3 class="text-[10px] font-bold uppercase tracking-widest text-tertiary mb-2">Commercial Model</h3>
+            <div class="space-y-2">
+              <select id="filterPricing" class="filter-select w-full text-[13px] font-medium text-primary bg-white border border-border/60 rounded-lg px-3 py-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
+                <option value="">All Pricing</option>
+                {allPricing.map(p => <option value={p}>{p}</option>)}
+              </select>
+              <select id="filterDelivery" class="filter-select w-full text-[13px] font-medium text-primary bg-white border border-border/60 rounded-lg px-3 py-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
+                <option value="">All Delivery Models</option>
+                {allDeliveryModels.map(d => <option value={d}>{d}</option>)}
+              </select>
+              <select id="filterHq" class="filter-select w-full text-[13px] font-medium text-primary bg-white border border-border/60 rounded-lg px-3 py-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
+                <option value="">All HQ Locations</option>
+                {allHqs.map(h => <option value={h}>{h}</option>)}
+              </select>
+            </div>
+          </div>
+          <!-- Group C: Capabilities -->
+          <div>
+            <h3 class="text-[10px] font-bold uppercase tracking-widest text-tertiary mb-2">Capabilities</h3>
+            <div class="space-y-1.5">
+              <label class="flex items-center gap-2 text-[13px] text-secondary cursor-pointer hover:text-primary transition-colors">
+                <input type="checkbox" id="capAI" class="cap-filter rounded border-border/60 text-accent focus:ring-accent/30" /> AI Matching
+              </label>
+              <label class="flex items-center gap-2 text-[13px] text-secondary cursor-pointer hover:text-primary transition-colors">
+                <input type="checkbox" id="capCompliance" class="cap-filter rounded border-border/60 text-accent focus:ring-accent/30" /> Compliance Tools
+              </label>
+              <label class="flex items-center gap-2 text-[13px] text-secondary cursor-pointer hover:text-primary transition-colors">
+                <input type="checkbox" id="capSurveys" class="cap-filter rounded border-border/60 text-accent focus:ring-accent/30" /> Surveys
+              </label>
+              <label class="flex items-center gap-2 text-[13px] text-secondary cursor-pointer hover:text-primary transition-colors">
+                <input type="checkbox" id="capLibrary" class="cap-filter rounded border-border/60 text-accent focus:ring-accent/30" /> Content Library
+              </label>
+            </div>
+          </div>
+          <!-- Group D: Sort -->
+          <div>
+            <h3 class="text-[10px] font-bold uppercase tracking-widest text-tertiary mb-2">Sort</h3>
+            <select id="sortBy" class="filter-select w-full text-[13px] font-medium text-primary bg-white border border-border/60 rounded-lg px-3 py-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/30">
+              <option value="rank">Default Order</option>
+              <option value="name">A–Z</option>
+              <option value="founded">Newest First</option>
+              <option value="founded-oldest">Oldest First</option>
+            </select>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Cards area -->
+      <div class="flex-1 min-w-0">
+        <!-- View toggle + result count -->
+        <div class="flex items-center justify-between mb-3">
+          <span id="resultCount" class="text-[13px] text-tertiary font-medium">{networks.length} networks</span>
+          <div class="flex items-center gap-1 bg-[#f5f5f7] rounded-lg p-0.5">
+            <button id="viewGrid" class="view-toggle px-2.5 py-1 text-[12px] font-medium rounded-md bg-white shadow-sm text-primary cursor-pointer border-none" aria-label="Grid view">
+              <svg class="w-3.5 h-3.5 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            </button>
+            <button id="viewList" class="view-toggle px-2.5 py-1 text-[12px] font-medium rounded-md text-tertiary cursor-pointer border-none bg-transparent" aria-label="List view">
+              <svg class="w-3.5 h-3.5 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div id="noResults" class="hidden text-center py-16 text-sm text-tertiary">
+          <svg class="w-10 h-10 mx-auto mb-3 text-tertiary/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          No networks match your filters.
+        </div>
+
+        <!-- Grid view (default) -->
+        <div id="networkGrid" class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {networks.map((network, i) => {
+            const n = network.data;
+            const region = getRegion(n.headquarters || '');
+            const badge = n.categoryBadge || '';
+            const badgeClass = badgeColors[badge] || 'bg-slate-500/10 text-slate-600 border-slate-500/20';
+            const servicesArr = n.services || [];
+            const maxChips = 3;
+            return (
+              <div
+                class="network-card bg-white rounded-xl border border-border/40 hover:border-border/80 hover:shadow-card-hover hover:-translate-y-[1px] transition-all overflow-hidden"
+                data-name={n.name.toLowerCase()}
+                data-slug={n.slug}
+                data-type={n.type}
+                data-pricing={n.pricingModel || ''}
+                data-region={region}
+                data-region-strength={n.regionStrength || ''}
+                data-delivery={n.deliveryModel || ''}
+                data-founded={n.founded || 0}
+                data-rank={i}
+                data-badge={badge}
+                data-ai={n.comparison?.aiMatching ? '1' : '0'}
+                data-compliance={n.comparison?.complianceTools ? '1' : '0'}
+                data-surveys={n.comparison?.surveys ? '1' : '0'}
+                data-library={n.comparison?.contentLibrary ? '1' : '0'}
+                data-best-for={(n.bestFor || []).join(',').toLowerCase()}
+                data-services={servicesArr.join(',').toLowerCase()}
+              >
+                <!-- Row 1: Identity -->
+                <div class="px-4 pt-4 pb-2">
+                  <div class="flex items-start gap-3">
+                    <div class="text-[11px] text-tertiary/60 font-bold w-4 text-right flex-shrink-0 mt-1.5">{i + 1}</div>
+                    {n.logo ? (
+                      <img src={n.logo} alt={n.name} width="36" height="36" class="w-9 h-9 rounded-lg object-contain flex-shrink-0" loading="lazy" />
+                    ) : (
+                      <div
+                        class="w-9 h-9 rounded-lg flex items-center justify-center text-white font-bold text-xs flex-shrink-0"
+                        style={`background: linear-gradient(135deg, ${n.gradientFrom}, ${n.gradientTo})`}
+                      >
+                        {n.shortName}
+                      </div>
+                    )}
+                    <div class="min-w-0 flex-1">
+                      <div class="flex items-center gap-2 flex-wrap">
+                        <a href={`/networks/${n.slug}`} class="text-[14px] font-semibold text-primary hover:text-accent transition-colors no-underline truncate">{n.name.split(' (')[0]}</a>
+                        {badge && <span class={`px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider rounded border ${badgeClass}`}>{badge}</span>}
+                      </div>
+                    </div>
+                    <label class="compare-label flex items-center gap-1.5 flex-shrink-0 cursor-pointer" title="Add to comparison">
+                      <input type="checkbox" class="compare-check rounded border-border/60 text-accent focus:ring-accent/30 cursor-pointer" data-slug={n.slug} data-name={n.name} />
+                      <span class="text-[10px] text-tertiary font-medium hidden sm:inline">Compare</span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Row 2: Brief text -->
+                <div class="px-4 pb-2.5">
+                  <p class="text-[12.5px] text-secondary leading-relaxed line-clamp-2 m-0">{n.description}</p>
+                </div>
+
+                <!-- Row 3: Decision strip -->
+                <div class="px-4 pb-2.5">
+                  <div class="flex flex-wrap gap-x-4 gap-y-1 text-[11px]">
+                    {n.pricingModel && (
+                      <div>
+                        <span class="text-tertiary">Pricing </span>
+                        <span class="font-semibold text-primary">{n.pricingModel}</span>
+                      </div>
+                    )}
+                    {n.expertCount && (
+                      <div>
+                        <span class="text-tertiary">Scale </span>
+                        <span class="font-semibold text-primary">{n.expertCount}</span>
+                      </div>
+                    )}
+                    {n.founded && (
+                      <div>
+                        <span class="text-tertiary">Est. </span>
+                        <span class="font-semibold text-primary">{n.founded}</span>
+                      </div>
+                    )}
+                    {n.deliveryModel && (
+                      <div>
+                        <span class="text-tertiary">Model </span>
+                        <span class="font-semibold text-primary">{n.deliveryModel}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <!-- Row 4: Service chips -->
+                <div class="px-4 pb-2.5">
+                  <div class="flex flex-wrap gap-1">
+                    {servicesArr.slice(0, maxChips).map((s: string) => (
+                      <span class="px-2 py-0.5 text-[10px] font-medium rounded-full bg-[#f5f5f7] text-secondary">{s.length > 25 ? s.slice(0, 22) + '...' : s}</span>
+                    ))}
+                    {servicesArr.length > maxChips && <span class="px-2 py-0.5 text-[10px] font-medium rounded-full bg-[#f5f5f7] text-tertiary">+{servicesArr.length - maxChips}</span>}
+                  </div>
+                </div>
+
+                <!-- Row 5: Bottom bar -->
+                <div class="flex items-center justify-between px-4 py-2 border-t border-border/20 bg-[#fafafa]">
+                  <div class="flex items-center gap-2">
+                    {n.complianceBadge && (
+                      <span class={`inline-flex items-center gap-1 text-[10px] font-medium ${n.complianceBadge === 'Strong Compliance' ? 'text-emerald-600' : n.complianceBadge === 'Compliance Tools' ? 'text-blue-600' : 'text-tertiary'}`}>
+                        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        {n.complianceBadge === 'Strong Compliance' ? 'Strong' : n.complianceBadge === 'Compliance Tools' ? 'Tools' : n.complianceBadge === 'Standard Compliance' ? 'Standard' : 'Limited'}
+                      </span>
+                    )}
+                    {n.aiBadge && (
+                      <span class={`inline-flex items-center gap-1 text-[10px] font-medium ${n.aiBadge === 'AI-Native' ? 'text-violet-600' : n.aiBadge === 'AI Research' ? 'text-blue-600' : 'text-tertiary'}`}>
+                        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2a4 4 0 0 1 4 4v2a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"/><path d="M16 14a4 4 0 0 1 4 4v2H4v-2a4 4 0 0 1 4-4h8z"/></svg>
+                        {n.aiBadge}
+                      </span>
+                    )}
+                    {n.regionStrength && (
+                      <span class="text-[10px] text-tertiary font-medium">{n.regionStrength}</span>
+                    )}
+                  </div>
+                  <a href={`/networks/${n.slug}`} class="inline-flex items-center gap-1 text-[11px] font-semibold text-accent hover:text-accent/80 no-underline transition-colors">
+                    View Profile
+                    <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                  </a>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <!-- List view (hidden by default) -->
+        <div id="networkList" class="hidden space-y-1.5">
+          {networks.map((network, i) => {
+            const n = network.data;
+            const region = getRegion(n.headquarters || '');
+            const badge = n.categoryBadge || '';
+            const badgeClass = badgeColors[badge] || 'bg-slate-500/10 text-slate-600 border-slate-500/20';
+            return (
+              <div
+                class="network-row flex items-center gap-3 px-4 py-3 bg-white rounded-xl border border-border/30 hover:border-border/60 hover:shadow-sm hover:-translate-y-[0.5px] transition-all"
+                data-name={n.name.toLowerCase()}
+                data-slug={n.slug}
+                data-type={n.type}
+                data-pricing={n.pricingModel || ''}
+                data-region={region}
+                data-region-strength={n.regionStrength || ''}
+                data-delivery={n.deliveryModel || ''}
+                data-founded={n.founded || 0}
+                data-rank={i}
+                data-badge={badge}
+                data-ai={n.comparison?.aiMatching ? '1' : '0'}
+                data-compliance={n.comparison?.complianceTools ? '1' : '0'}
+                data-surveys={n.comparison?.surveys ? '1' : '0'}
+                data-library={n.comparison?.contentLibrary ? '1' : '0'}
+                data-best-for={(n.bestFor || []).join(',').toLowerCase()}
+                data-services={(n.services || []).join(',').toLowerCase()}
+              >
+                <!-- Rank -->
+                <div class="text-[11px] text-tertiary/50 font-bold w-4 text-right flex-shrink-0">{i + 1}</div>
+
+                <!-- Logo -->
+                {n.logo ? (
+                  <img src={n.logo} alt={n.name} width="32" height="32" class="w-8 h-8 rounded-lg object-contain flex-shrink-0" loading="lazy" />
+                ) : (
+                  <div
+                    class="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0"
+                    style={`background: linear-gradient(135deg, ${n.gradientFrom}, ${n.gradientTo})`}
+                  >
+                    {n.shortName}
+                  </div>
+                )}
+
+                <!-- Name + badge -->
+                <div class="min-w-0 w-40 flex-shrink-0">
+                  <a href={`/networks/${n.slug}`} class="text-[13px] font-semibold text-primary hover:text-accent transition-colors no-underline truncate block">{n.name.split(' (')[0]}</a>
+                  {badge && <span class={`inline-block mt-0.5 px-1.5 py-0.5 text-[8px] font-semibold uppercase tracking-wider rounded border ${badgeClass}`}>{badge}</span>}
+                </div>
+
+                <!-- Brief -->
+                <div class="hidden md:block min-w-0 flex-1">
+                  <p class="text-[12px] text-secondary truncate m-0">{n.description.slice(0, 90)}{n.description.length > 90 ? '...' : ''}</p>
+                </div>
+
+                <!-- Key metrics (desktop) -->
+                <div class="hidden lg:flex items-center gap-4 flex-shrink-0">
+                  {n.pricingModel && <span class="text-[11px] text-primary font-medium w-16 text-center">{n.pricingModel}</span>}
+                  {n.deliveryModel && <span class="text-[11px] text-tertiary w-20 text-center">{n.deliveryModel}</span>}
+                </div>
+
+                <!-- Compare + arrow -->
+                <div class="flex items-center gap-2 flex-shrink-0">
+                  <input type="checkbox" class="compare-check rounded border-border/60 text-accent focus:ring-accent/30 cursor-pointer" data-slug={n.slug} data-name={n.name} title="Compare" />
+                  <a href={`/networks/${n.slug}`} class="text-tertiary hover:text-accent transition-colors no-underline">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                  </a>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky Compare Tray -->
+  <div id="compareTray" class="fixed bottom-0 left-0 right-0 z-50 translate-y-full transition-transform duration-300 ease-out">
+    <div class="max-w-site mx-auto px-4 md:px-6 pb-4">
+      <div class="bg-primary text-white rounded-xl shadow-2xl px-5 py-3 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <span class="text-sm font-semibold"><span id="compareCount">0</span> selected</span>
+          <div id="compareNames" class="hidden sm:flex items-center gap-1 text-[12px] text-[#a1a1a6] truncate max-w-xs"></div>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="clearCompare" class="px-3 py-1.5 text-[12px] font-medium text-[#a1a1a6] hover:text-white transition-colors bg-transparent border-none cursor-pointer">Clear</button>
+          <a id="compareLink" href="/compare" class="px-4 py-1.5 bg-accent text-white text-[13px] font-semibold rounded-lg no-underline hover:bg-accent/90 transition-colors">Compare Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </BaseLayout>
 
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+  .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+  .preset-btn.active {
+    border-color: #0071E3;
+    color: #0071E3;
+    background: rgba(0, 113, 227, 0.04);
+  }
+</style>
+
 <script>
-  const searchInput = document.getElementById('searchInput') as HTMLInputElement;
+  // Elements
+  const heroSearch = document.getElementById('heroSearch') as HTMLInputElement;
   const filterType = document.getElementById('filterType') as HTMLSelectElement;
   const filterPricing = document.getElementById('filterPricing') as HTMLSelectElement;
-  const filterRegion = document.getElementById('filterRegion') as HTMLSelectElement;
+  const filterHq = document.getElementById('filterHq') as HTMLSelectElement;
+  const filterDelivery = document.getElementById('filterDelivery') as HTMLSelectElement;
+  const filterRegionStrength = document.getElementById('filterRegionStrength') as HTMLSelectElement;
   const sortBy = document.getElementById('sortBy') as HTMLSelectElement;
-  const clearAll = document.getElementById('clearAll') as HTMLElement;
+  const capAI = document.getElementById('capAI') as HTMLInputElement;
+  const capCompliance = document.getElementById('capCompliance') as HTMLInputElement;
+  const capSurveys = document.getElementById('capSurveys') as HTMLInputElement;
+  const capLibrary = document.getElementById('capLibrary') as HTMLInputElement;
+  const resetAll = document.getElementById('resetAll') as HTMLElement;
   const resultCount = document.getElementById('resultCount') as HTMLElement;
   const noResults = document.getElementById('noResults') as HTMLElement;
+  const networkGrid = document.getElementById('networkGrid') as HTMLElement;
   const networkList = document.getElementById('networkList') as HTMLElement;
+  const viewGrid = document.getElementById('viewGrid') as HTMLElement;
+  const viewList = document.getElementById('viewList') as HTMLElement;
+  const compareTray = document.getElementById('compareTray') as HTMLElement;
+  const compareCount = document.getElementById('compareCount') as HTMLElement;
+  const compareNames = document.getElementById('compareNames') as HTMLElement;
+  const compareLink = document.getElementById('compareLink') as HTMLAnchorElement;
+  const clearCompare = document.getElementById('clearCompare') as HTMLElement;
+  const mobileFilterToggle = document.getElementById('mobileFilterToggle') as HTMLElement;
+  const filterPanel = document.getElementById('filterPanel') as HTMLElement;
+
+  const cards = Array.from(document.querySelectorAll('.network-card')) as HTMLElement[];
   const rows = Array.from(document.querySelectorAll('.network-row')) as HTMLElement[];
 
-  function applyFilters() {
-    const search = searchInput?.value.toLowerCase() || '';
-    const type = filterType?.value || '';
-    const pricing = filterPricing?.value || '';
-    const region = filterRegion?.value || '';
-    const sort = sortBy?.value || 'rank';
+  // Preset definitions
+  const presets: Record<string, (el: HTMLElement) => boolean> = {
+    consulting: el => el.dataset.bestFor?.includes('consult') || false,
+    pe: el => el.dataset.bestFor?.includes('private equity') || el.dataset.bestFor?.includes('pe') || false,
+    enterprise: el => el.dataset.bestFor?.includes('enterprise') || el.dataset.bestFor?.includes('corporate') || false,
+    asia: el => el.dataset.regionStrength === 'Asia-Pacific' || el.dataset.regionStrength === 'Greater China' || el.dataset.badge === 'Asia Specialist',
+    ai: el => el.dataset.badge === 'Technology-First' || el.dataset.badge === 'Research Platform' || el.getAttribute('data-ai') === '1',
+    library: el => el.getAttribute('data-library') === '1' || el.dataset.services?.includes('library') || el.dataset.services?.includes('transcript') || false,
+    boutique: el => el.dataset.badge === 'Boutique Specialist',
+  };
 
-    let visible = 0;
+  let activePreset = '';
 
-    rows.forEach(row => {
-      const name = row.getAttribute('data-name') || '';
-      const rType = row.getAttribute('data-type') || '';
-      const rPricing = row.getAttribute('data-pricing') || '';
-      const rRegion = row.getAttribute('data-region') || '';
+  // Mobile filter toggle
+  mobileFilterToggle?.addEventListener('click', () => {
+    const isHidden = filterPanel?.classList.contains('hidden');
+    filterPanel?.classList.toggle('hidden', !isHidden);
+    const chevron = mobileFilterToggle.querySelector('.filter-chevron');
+    if (chevron) (chevron as HTMLElement).style.transform = isHidden ? 'rotate(180deg)' : '';
+  });
 
-      const match = (!search || name.includes(search))
-        && (!type || rType === type)
-        && (!pricing || rPricing === pricing)
-        && (!region || rRegion === region);
-
-      row.style.display = match ? '' : 'none';
-      if (match) visible++;
+  // Preset buttons
+  document.querySelectorAll('.preset-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const p = (btn as HTMLElement).dataset.preset || '';
+      if (activePreset === p) {
+        activePreset = '';
+        btn.classList.remove('active');
+      } else {
+        document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+        activePreset = p;
+        btn.classList.add('active');
+      }
+      clearFilters(false);
+      applyFilters();
     });
+  });
 
-    // Sort visible rows
-    const visibleRows = rows.filter(r => r.style.display !== 'none');
-    visibleRows.sort((a, b) => {
-      if (sort === 'name') return (a.getAttribute('data-name') || '').localeCompare(b.getAttribute('data-name') || '');
-      if (sort === 'founded') return parseInt(b.getAttribute('data-founded') || '0') - parseInt(a.getAttribute('data-founded') || '0');
-      return parseInt(a.getAttribute('data-rank') || '0') - parseInt(b.getAttribute('data-rank') || '0');
-    });
-    visibleRows.forEach(row => networkList?.appendChild(row));
-    rows.filter(r => r.style.display === 'none').forEach(r => networkList?.appendChild(r));
+  // View toggle
+  let currentView = 'grid';
+  viewGrid?.addEventListener('click', () => {
+    currentView = 'grid';
+    networkGrid?.classList.remove('hidden');
+    networkList?.classList.add('hidden');
+    viewGrid.classList.add('bg-white', 'shadow-sm', 'text-primary');
+    viewGrid.classList.remove('text-tertiary', 'bg-transparent');
+    viewList?.classList.remove('bg-white', 'shadow-sm', 'text-primary');
+    viewList?.classList.add('text-tertiary', 'bg-transparent');
+  });
+  viewList?.addEventListener('click', () => {
+    currentView = 'list';
+    networkGrid?.classList.add('hidden');
+    networkList?.classList.remove('hidden');
+    viewList?.classList.add('bg-white', 'shadow-sm', 'text-primary');
+    viewList?.classList.remove('text-tertiary', 'bg-transparent');
+    viewGrid?.classList.remove('bg-white', 'shadow-sm', 'text-primary');
+    viewGrid?.classList.add('text-tertiary', 'bg-transparent');
+  });
 
-    if (resultCount) resultCount.textContent = `${visible} network${visible !== 1 ? 's' : ''}`;
-    noResults?.classList.toggle('hidden', visible > 0);
-    clearAll?.classList.toggle('hidden', !search && !type && !pricing && !region);
+  function getItems(): HTMLElement[] {
+    return currentView === 'grid' ? cards : rows;
   }
 
-  searchInput?.addEventListener('input', applyFilters);
-  filterType?.addEventListener('change', applyFilters);
-  filterPricing?.addEventListener('change', applyFilters);
-  filterRegion?.addEventListener('change', applyFilters);
-  sortBy?.addEventListener('change', applyFilters);
-  clearAll?.addEventListener('click', () => {
-    searchInput.value = '';
-    filterType.value = '';
-    filterPricing.value = '';
-    filterRegion.value = '';
-    sortBy.value = 'rank';
-    applyFilters();
+  function getContainer(): HTMLElement {
+    return currentView === 'grid' ? networkGrid : networkList;
+  }
+
+  function hasActiveFilter(): boolean {
+    return !!(heroSearch?.value || filterType?.value || filterPricing?.value || filterHq?.value ||
+      filterDelivery?.value || filterRegionStrength?.value || capAI?.checked || capCompliance?.checked ||
+      capSurveys?.checked || capLibrary?.checked || activePreset);
+  }
+
+  function applyFilters() {
+    const search = heroSearch?.value.toLowerCase().trim() || '';
+    const type = filterType?.value || '';
+    const pricing = filterPricing?.value || '';
+    const hq = filterHq?.value || '';
+    const delivery = filterDelivery?.value || '';
+    const regionStr = filterRegionStrength?.value || '';
+    const sort = sortBy?.value || 'rank';
+    const wantAI = capAI?.checked || false;
+    const wantCompliance = capCompliance?.checked || false;
+    const wantSurveys = capSurveys?.checked || false;
+    const wantLibrary = capLibrary?.checked || false;
+
+    // Apply to both views
+    [cards, rows].forEach(items => {
+      let visible = 0;
+      items.forEach(el => {
+        let match = true;
+        if (search && !(el.dataset.name || '').includes(search)) match = false;
+        if (type && el.dataset.type !== type) match = false;
+        if (pricing && el.dataset.pricing !== pricing) match = false;
+        if (hq && el.dataset.region !== hq) match = false;
+        if (delivery && el.dataset.delivery !== delivery) match = false;
+        if (regionStr && el.dataset.regionStrength !== regionStr) match = false;
+        if (wantAI && el.getAttribute('data-ai') !== '1') match = false;
+        if (wantCompliance && el.getAttribute('data-compliance') !== '1') match = false;
+        if (wantSurveys && el.getAttribute('data-surveys') !== '1') match = false;
+        if (wantLibrary && el.getAttribute('data-library') !== '1') match = false;
+        if (activePreset && presets[activePreset] && !presets[activePreset](el)) match = false;
+
+        el.style.display = match ? '' : 'none';
+        if (match) visible++;
+      });
+
+      // Sort
+      const container = items === cards ? networkGrid : networkList;
+      const visibleItems = items.filter(r => r.style.display !== 'none');
+      visibleItems.sort((a, b) => {
+        if (sort === 'name') return (a.dataset.name || '').localeCompare(b.dataset.name || '');
+        if (sort === 'founded') return parseInt(b.dataset.founded || '0') - parseInt(a.dataset.founded || '0');
+        if (sort === 'founded-oldest') return parseInt(a.dataset.founded || '0') - parseInt(b.dataset.founded || '0');
+        return parseInt(a.dataset.rank || '0') - parseInt(b.dataset.rank || '0');
+      });
+      visibleItems.forEach(el => container?.appendChild(el));
+      items.filter(r => r.style.display === 'none').forEach(r => container?.appendChild(r));
+
+      if (items === getItems()) {
+        if (resultCount) resultCount.textContent = `${visible} network${visible !== 1 ? 's' : ''}`;
+        noResults?.classList.toggle('hidden', visible > 0);
+      }
+    });
+
+    resetAll?.classList.toggle('hidden', !hasActiveFilter());
+    if (hasActiveFilter()) resetAll.style.display = 'inline-flex';
+  }
+
+  function clearFilters(clearPreset = true) {
+    if (heroSearch) heroSearch.value = '';
+    if (filterType) filterType.value = '';
+    if (filterPricing) filterPricing.value = '';
+    if (filterHq) filterHq.value = '';
+    if (filterDelivery) filterDelivery.value = '';
+    if (filterRegionStrength) filterRegionStrength.value = '';
+    if (capAI) capAI.checked = false;
+    if (capCompliance) capCompliance.checked = false;
+    if (capSurveys) capSurveys.checked = false;
+    if (capLibrary) capLibrary.checked = false;
+    if (sortBy) sortBy.value = 'rank';
+    if (clearPreset) {
+      activePreset = '';
+      document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+    }
+  }
+
+  // Event listeners
+  heroSearch?.addEventListener('input', () => { activePreset = ''; document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active')); applyFilters(); });
+  [filterType, filterPricing, filterHq, filterDelivery, filterRegionStrength, sortBy].forEach(el => el?.addEventListener('change', applyFilters));
+  [capAI, capCompliance, capSurveys, capLibrary].forEach(el => el?.addEventListener('change', applyFilters));
+  resetAll?.addEventListener('click', () => { clearFilters(); applyFilters(); });
+
+  // Compare functionality
+  const selected = new Map<string, string>();
+
+  function updateCompareTray() {
+    const count = selected.size;
+    if (compareCount) compareCount.textContent = String(count);
+    if (compareNames) {
+      compareNames.innerHTML = '';
+      const names = Array.from(selected.values());
+      names.slice(0, 3).forEach(name => {
+        const span = document.createElement('span');
+        span.className = 'px-1.5 py-0.5 bg-white/10 rounded text-[11px]';
+        span.textContent = name;
+        compareNames.appendChild(span);
+      });
+      if (names.length > 3) {
+        const span = document.createElement('span');
+        span.className = 'text-[11px]';
+        span.textContent = `+${names.length - 3}`;
+        compareNames.appendChild(span);
+      }
+    }
+    compareTray?.classList.toggle('translate-y-full', count === 0);
+    compareTray?.classList.toggle('translate-y-0', count > 0);
+  }
+
+  document.querySelectorAll('.compare-check').forEach(cb => {
+    (cb as HTMLInputElement).addEventListener('change', function() {
+      const slug = this.dataset.slug || '';
+      const name = this.dataset.name || '';
+      if (this.checked) {
+        selected.set(slug, name);
+      } else {
+        selected.delete(slug);
+      }
+      // Sync checkboxes across views
+      document.querySelectorAll(`.compare-check[data-slug="${slug}"]`).forEach(other => {
+        (other as HTMLInputElement).checked = this.checked;
+      });
+      updateCompareTray();
+    });
+  });
+
+  clearCompare?.addEventListener('click', () => {
+    selected.clear();
+    document.querySelectorAll('.compare-check').forEach(cb => (cb as HTMLInputElement).checked = false);
+    updateCompareTray();
   });
 </script>

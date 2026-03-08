@@ -37,6 +37,13 @@ const networks = defineCollection({
     featured: z.boolean().default(false),
     priority: z.number().default(50),
     published: z.boolean().default(true),
+
+    // V2 directory fields
+    categoryBadge: z.enum(['Global Leader', 'Major Provider', 'Fast-Growing', 'Asia Specialist', 'Research Platform', 'Technology-First', 'Marketplace', 'Boutique Specialist']).optional(),
+    deliveryModel: z.enum(['Concierge', 'Hybrid', 'Self-Serve', 'Marketplace', 'Platform-Led']).optional(),
+    regionStrength: z.enum(['Global', 'North America', 'Europe', 'Asia-Pacific', 'Greater China', 'India', 'Emerging Markets']).optional(),
+    complianceBadge: z.enum(['Strong Compliance', 'Standard Compliance', 'Compliance Tools', 'Limited Public Detail']).optional(),
+    aiBadge: z.enum(['AI-Native', 'AI Research', 'AI Matching', 'AI Moderation', 'Limited AI Detail']).optional(),
     comparison: z.object({
       expertCalls: z.boolean().default(false),
       contentLibrary: z.union([z.boolean(), z.string()]).default(false),

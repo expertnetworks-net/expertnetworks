@@ -11,13 +11,37 @@
   "employeeCount": "50+",
   "expertCount": "40K+",
   "description": "AI-native expert network leveraging LLMs and automation to deliver sub-hour expert matching and technology-driven research workflows with industry-leading turnaround times.",
-  "services": ["Expert Calls", "AI Matching", "Automated Research", "Research Synthesis"],
-  "aiCapabilities": ["LLM-powered expert discovery and matching", "Automated research synthesis", "Real-time expert availability prediction", "AI-generated project scoping"],
-  "industries": ["Technology", "Healthcare", "Financial Services", "Consumer", "SaaS"],
+  "services": [
+    "Expert Calls",
+    "AI Matching",
+    "Automated Research",
+    "Research Synthesis"
+  ],
+  "aiCapabilities": [
+    "LLM-powered expert discovery and matching",
+    "Automated research synthesis",
+    "Real-time expert availability prediction",
+    "AI-generated project scoping"
+  ],
+  "industries": [
+    "Technology",
+    "Healthcare",
+    "Financial Services",
+    "Consumer",
+    "SaaS"
+  ],
   "pricingModel": "Per-call",
   "pricingDetail": "Per-call pricing with technology-driven cost efficiency",
-  "keyDifferentiators": ["AI-native architecture enabling sub-hour expert matching", "Automated research synthesis combining expert insights with data", "Technology-first approach delivering industry-leading turnaround times"],
-  "bestFor": ["AI-First Buyers", "Technology Research", "Rapid Turnaround"],
+  "keyDifferentiators": [
+    "AI-native architecture enabling sub-hour expert matching",
+    "Automated research synthesis combining expert insights with data",
+    "Technology-first approach delivering industry-leading turnaround times"
+  ],
+  "bestFor": [
+    "AI-First Buyers",
+    "Technology Research",
+    "Rapid Turnaround"
+  ],
   "compliance": {
     "mnpiPolicy": "Automated MNPI screening powered by AI with real-time conflict detection",
     "expertVetting": "AI-assisted vetting with automated employment verification and continuous compliance monitoring",
@@ -28,6 +52,11 @@
   "featured": false,
   "priority": 24,
   "published": true,
+  "categoryBadge": "Technology-First",
+  "deliveryModel": "Platform-Led",
+  "regionStrength": "North America",
+  "complianceBadge": "Standard Compliance",
+  "aiBadge": "AI-Native",
   "comparison": {
     "expertCalls": true,
     "contentLibrary": false,
@@ -36,18 +65,24 @@
     "complianceTools": true
   },
   "lastUpdated": "2026-03-07",
-
   "overview": "Prosynth is an AI-native expert network founded in 2020 in New York City, built from the ground up with LLMs and automation at its core. The company represents the newest generation of expert networks — ones that prioritize technology speed over relationship-based sourcing. Prosynth's platform promises sub-hour expert matching, automated research synthesis, and AI-generated project scoping.\n\nThe company differentiates through its technology-first approach: rather than building a large team of human project managers, Prosynth relies on AI to discover, match, and engage experts, keeping its team lean (~50 employees) while claiming industry-leading turnaround times. The platform combines LLM-powered expert discovery with automated research workflows that synthesize expert insights into actionable output.\n\nAs one of the youngest and most technology-forward entrants in the expert network space, Prosynth appeals to clients who value speed and AI capabilities over the institutional relationships and compliance depth of established players.",
-
   "history": {
     "narrative": "Prosynth was founded in 2020, entering the expert network market with an explicitly AI-native approach. While established networks were adding AI features to existing human-led models, Prosynth built its entire workflow around LLMs and automation from day one.",
     "timeline": [
-      { "year": "2020", "event": "Founded in New York City with an AI-native expert network model" },
-      { "year": "2021-2023", "event": "Built LLM-powered expert discovery and matching platform" },
-      { "year": "2024-2025", "event": "Expanded to 40K+ experts with automated research synthesis capabilities" }
+      {
+        "year": "2020",
+        "event": "Founded in New York City with an AI-native expert network model"
+      },
+      {
+        "year": "2021-2023",
+        "event": "Built LLM-powered expert discovery and matching platform"
+      },
+      {
+        "year": "2024-2025",
+        "event": "Expanded to 40K+ experts with automated research synthesis capabilities"
+      }
     ]
   },
-
   "servicesDetailed": [
     {
       "name": "AI-Powered Expert Matching",
@@ -66,7 +101,6 @@
       "description": "Automated project scope definition using AI to analyze client requirements and suggest optimal research approaches, expert profiles, and engagement structures."
     }
   ],
-
   "aiPlatform": {
     "narrative": "Prosynth's entire business model is built on AI technology. The platform uses LLMs for expert discovery and matching, automated compliance screening, real-time availability prediction, and research synthesis. This AI-native architecture aims to reduce the human bottlenecks that slow traditional expert networks.",
     "features": [
@@ -79,7 +113,6 @@
       "Continuous compliance monitoring"
     ]
   },
-
   "complianceExtended": {
     "narrative": "Prosynth leverages AI for compliance automation, including automated MNPI screening, real-time conflict detection, and system-enforced cooling-off periods. While this technology-driven approach enables speed, it has less of the institutional compliance depth that comes from decades of human-led compliance culture.",
     "highlights": [
@@ -92,7 +125,6 @@
     ],
     "regulatoryContext": "As an AI-native company, Prosynth relies on technology for compliance rather than large compliance teams. Suitable for clients comfortable with automated compliance workflows. Clean regulatory record."
   },
-
   "clientFit": {
     "narrative": "Prosynth appeals to technology-forward clients who prioritize speed and AI capabilities. Best for organizations that value rapid turnaround over deep institutional relationships.",
     "segments": [
@@ -102,7 +134,6 @@
       "Corporate strategy teams valuing speed over relationship depth"
     ]
   },
-
   "strengths": [
     "AI-native architecture built for speed — sub-hour expert matching",
     "LLM-powered discovery finds experts across diverse databases",
@@ -110,7 +141,6 @@
     "Lean team keeps costs competitive while leveraging technology",
     "Real-time availability prediction reduces scheduling friction"
   ],
-
   "caveats": [
     "Very young company (founded 2020) with limited track record",
     "Smaller expert database (40K+) compared to established networks",
@@ -119,23 +149,29 @@
     "Limited public information about funding, leadership, and financial performance",
     "May struggle with very niche or relationship-dependent expert sourcing"
   ],
-
   "notableFacts": [
     "One of the youngest AI-native expert networks, founded in 2020",
     "Claims sub-hour expert matching through LLM-powered discovery",
     "Automated research synthesis combines multiple expert perspectives without manual analysis",
     "Technology-first approach across the entire workflow from matching to compliance"
   ],
-
   "sourceNotes": [
     "Prosynth official website (prosynth.ai) — company overview and service descriptions",
     "Crunchbase — company profile",
     "INEX ONE Expert Network Directory — profile listing"
   ],
-
-  "whyChoose": ["Sub-hour AI matching", "Automated research synthesis", "Technology-first speed", "LLM-powered discovery"],
-  "whenNotIdeal": ["Need institutional relationships", "Want proven track record", "Require deep compliance", "Prefer human-led matching"],
-
+  "whyChoose": [
+    "Sub-hour AI matching",
+    "Automated research synthesis",
+    "Technology-first speed",
+    "LLM-powered discovery"
+  ],
+  "whenNotIdeal": [
+    "Need institutional relationships",
+    "Want proven track record",
+    "Require deep compliance",
+    "Prefer human-led matching"
+  ],
   "confidence": {
     "founded": "partially-unverifiable",
     "headquarters": "partially-unverifiable",

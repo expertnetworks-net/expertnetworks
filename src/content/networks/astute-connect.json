@@ -11,13 +11,36 @@
   "employeeCount": "200+",
   "expertCount": "75K+",
   "description": "India-based expert network launched as a division of Astute Analytica, combining data analytics expertise with expert consultations. Serves 500+ global clients across 100+ countries with AI-enhanced expert matching.",
-  "services": ["Expert Calls", "Surveys", "Market Research", "Custom Recruitment"],
-  "aiCapabilities": ["AI-powered expert matching", "Data analytics integration", "Automated requirement analysis"],
-  "industries": ["Financial Services", "Healthcare", "Technology", "Consumer", "Manufacturing"],
+  "services": [
+    "Expert Calls",
+    "Surveys",
+    "Market Research",
+    "Custom Recruitment"
+  ],
+  "aiCapabilities": [
+    "AI-powered expert matching",
+    "Data analytics integration",
+    "Automated requirement analysis"
+  ],
+  "industries": [
+    "Financial Services",
+    "Healthcare",
+    "Technology",
+    "Consumer",
+    "Manufacturing"
+  ],
   "pricingModel": "Per-call",
   "pricingDetail": "Competitive per-call pricing with cost advantage from India operations",
-  "keyDifferentiators": ["Strong India and Asia coverage with local operations", "Integration with Astute Analytica's data analytics capabilities", "Competitive pricing from India-based operations"],
-  "bestFor": ["Emerging Markets Research", "India/South Asia Focus", "Cost-Sensitive Buyers"],
+  "keyDifferentiators": [
+    "Strong India and Asia coverage with local operations",
+    "Integration with Astute Analytica's data analytics capabilities",
+    "Competitive pricing from India-based operations"
+  ],
+  "bestFor": [
+    "Emerging Markets Research",
+    "India/South Asia Focus",
+    "Cost-Sensitive Buyers"
+  ],
   "compliance": {
     "mnpiPolicy": "Standard compliance protocols",
     "expertVetting": "Manual vetting with regional compliance awareness",
@@ -27,19 +50,30 @@
   "featured": false,
   "priority": 13,
   "published": true,
+  "categoryBadge": "Boutique Specialist",
+  "deliveryModel": "Concierge",
+  "regionStrength": "India",
+  "complianceBadge": "Standard Compliance",
+  "aiBadge": "AI Matching",
   "lastUpdated": "2026-03-07",
-
   "overview": "Astute Connect is an India-based expert network that launched in 2020 as a division of Astute Analytica and Report Ocean, market research firms with established data analytics capabilities. Headquartered in New Delhi, the company connects businesses with industry experts for one-on-one consultations and custom recruitment, leveraging its parent company's data analytics expertise to enhance expert matching.\n\nThe company claims to serve 500+ global clients across 100+ countries, with AI-powered matching algorithms that analyze client requirements and connect them with the most relevant experts. Astute Connect differentiates through its integration of traditional expert network services with data analytics capabilities inherited from its parent company.\n\nAs an organically grown, unfunded company, Astute Connect competes primarily on cost efficiency and regional expertise rather than technology or scale.",
-
   "history": {
     "narrative": "Astute Connect emerged from the Astute Analytica ecosystem, a market research and analytics firm based in India. The company was established around 2020 as a natural extension of Astute Analytica's existing research capabilities, adding expert network services to complement its data analytics and market research offerings. The company has grown organically without external funding.",
     "timeline": [
-      { "year": "2020", "event": "Launched as a division of Astute Analytica and Report Ocean in New Delhi, India" },
-      { "year": "2021-2023", "event": "Expanded global reach to 100+ countries with 500+ clients" },
-      { "year": "2024", "event": "Enhanced AI-powered expert matching; published industry analysis valuing expert network market at $2.52B" }
+      {
+        "year": "2020",
+        "event": "Launched as a division of Astute Analytica and Report Ocean in New Delhi, India"
+      },
+      {
+        "year": "2021-2023",
+        "event": "Expanded global reach to 100+ countries with 500+ clients"
+      },
+      {
+        "year": "2024",
+        "event": "Enhanced AI-powered expert matching; published industry analysis valuing expert network market at $2.52B"
+      }
     ]
   },
-
   "servicesDetailed": [
     {
       "name": "Expert Consultations",
@@ -54,7 +88,6 @@
       "description": "Combined expert consultations with data analytics and market research from the Astute Analytica platform."
     }
   ],
-
   "aiPlatform": {
     "narrative": "Astute Connect integrates AI-powered expert matching with its parent company's data analytics capabilities. The platform uses algorithms to analyze client requirements and match them with the most relevant experts.",
     "features": [
@@ -63,7 +96,6 @@
       "Automated expert sourcing across 100+ countries"
     ]
   },
-
   "complianceExtended": {
     "narrative": "Astute Connect maintains standard compliance protocols for expert consultations. As a relatively young company focused on market research, the compliance infrastructure is less mature than finance-focused networks.",
     "highlights": [
@@ -73,7 +105,6 @@
     ],
     "regulatoryContext": "Astute Connect operates primarily from India with a global client base. Compliance framework oriented toward market research rather than securities. Clean regulatory record."
   },
-
   "clientFit": {
     "narrative": "Best suited for clients seeking cost-effective expert consultations with strong India and South Asia coverage.",
     "segments": [
@@ -82,38 +113,42 @@
       "Market research firms needing expert access combined with data analytics"
     ]
   },
-
   "strengths": [
     "Cost-competitive pricing from India-based operations",
     "Integration with Astute Analytica's data analytics capabilities",
     "Strong India and South Asia expert coverage",
     "Global reach spanning 100+ countries with 500+ clients"
   ],
-
   "caveats": [
     "Unfunded company with limited resources compared to venture-backed competitors",
     "Less mature compliance infrastructure than finance-focused networks",
     "Younger company (2020) with shorter track record",
     "Limited brand recognition outside India"
   ],
-
   "notableFacts": [
     "Division of Astute Analytica and Report Ocean, established market research firms",
     "Serves 500+ global clients across 100+ countries",
     "Published industry analysis valuing the expert network market at $2.52 billion in 2024",
     "Organically grown without external venture funding"
   ],
-
   "sourceNotes": [
     "Astute Connect official website (astuteconnect.com) — company overview and services",
     "Yahoo Finance — Astute Connect vision and industry sizing articles",
     "Tracxn — company profile and funding status",
     "INEX ONE Expert Network Directory — Astute Connect profile"
   ],
-
-  "whyChoose": ["Cost-effective pricing", "India/South Asia depth", "Data analytics integration", "100+ country coverage"],
-  "whenNotIdeal": ["Need institutional compliance", "Want premium brand", "US/Europe primary focus", "Require deep audit trails"],
-
+  "whyChoose": [
+    "Cost-effective pricing",
+    "India/South Asia depth",
+    "Data analytics integration",
+    "100+ country coverage"
+  ],
+  "whenNotIdeal": [
+    "Need institutional compliance",
+    "Want premium brand",
+    "US/Europe primary focus",
+    "Require deep audit trails"
+  ],
   "confidence": {
     "founded": "partially-unverifiable",
     "headquarters": "verified",

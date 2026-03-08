@@ -11,13 +11,34 @@
   "employeeCount": "50+",
   "expertCount": "25K+",
   "description": "Institutional expert network founded in 2017 by a former Morgan Stanley investment manager, operating with a fully distributed workforce. Serves the world's largest PE funds, hedge funds, and sovereign wealth funds with a 97% engagement success rate and 65% client referral rate.",
-  "services": ["Expert Calls", "Curated Research", "Bespoke Projects"],
-  "aiCapabilities": ["Database-backed expert matching", "Distributed operations platform"],
-  "industries": ["Private Equity", "Hedge Funds", "Asset Management", "Sovereign Wealth Funds", "Consulting"],
+  "services": [
+    "Expert Calls",
+    "Curated Research",
+    "Bespoke Projects"
+  ],
+  "aiCapabilities": [
+    "Database-backed expert matching",
+    "Distributed operations platform"
+  ],
+  "industries": [
+    "Private Equity",
+    "Hedge Funds",
+    "Asset Management",
+    "Sovereign Wealth Funds",
+    "Consulting"
+  ],
   "pricingModel": "Per-call",
   "pricingDetail": "Per-call pricing for expert consultations",
-  "keyDifferentiators": ["Founded by former Morgan Stanley investment manager — understands institutional research needs", "Fully distributed workforce across EMEA, Americas, and Asia", "97% engagement success rate with 65% of new clients from referrals"],
-  "bestFor": ["Boutique PE Firms", "Hedge Funds", "Senior Expert Access"],
+  "keyDifferentiators": [
+    "Founded by former Morgan Stanley investment manager — understands institutional research needs",
+    "Fully distributed workforce across EMEA, Americas, and Asia",
+    "97% engagement success rate with 65% of new clients from referrals"
+  ],
+  "bestFor": [
+    "Boutique PE Firms",
+    "Hedge Funds",
+    "Senior Expert Access"
+  ],
   "compliance": {
     "mnpiPolicy": "Institutional-grade MNPI policies for hedge fund and PE clients",
     "expertVetting": "Thorough manual vetting with investment management perspective",
@@ -27,20 +48,34 @@
   "featured": false,
   "priority": 15,
   "published": true,
+  "categoryBadge": "Boutique Specialist",
+  "deliveryModel": "Concierge",
+  "regionStrength": "Europe",
+  "complianceBadge": "Standard Compliance",
+  "aiBadge": "Limited AI Detail",
   "lastUpdated": "2026-03-07",
-
   "overview": "Silverlight Research is a London-based institutional expert network founded in November 2017 by a former Morgan Stanley investment manager. The company operates with a distinctive fully distributed workforce model — all staff work part-time and remotely across key regions including EMEA (Portugal, Turkey, Bahrain, Saudi Arabia), the Americas (New York, Colombia), and Asia (Singapore, Pakistan, Hong Kong, Philippines).\n\nDespite its lean structure, Silverlight serves some of the world's largest private equity funds, hedge funds, long-only funds, sovereign wealth funds, and Fortune 500 corporations. The company maintains a 97% engagement success rate and a 61% expert acceptance rate. Perhaps most notably, 65% of new clients come from existing referrals — suggesting strong satisfaction among institutional buyers.\n\nSilverlight manages end-to-end expert sourcing, screening, compliance, scheduling, and documentation for time-bound practitioner consultations aligned with institutional research workflows. In April 2025, the company briefly launched 'Greystone expert network' as a separate branch under the same corporate entity.",
-
   "history": {
     "narrative": "Silverlight Research was founded in November 2017 by a former Morgan Stanley investment manager who recognized an opportunity to build an expert network with an institutional investor's perspective. The founder's investment management background shaped Silverlight's approach — the company speaks the language of its institutional clients and understands the compliance, speed, and quality requirements of buy-side research.\n\nThe company adopted a fully distributed workforce model from inception, avoiding the overhead of traditional office-based operations. This allows Silverlight to maintain competitive pricing while deploying research and operations staff across global time zones.",
     "timeline": [
-      { "year": "2017 (November)", "event": "Founded in London by a former Morgan Stanley investment manager" },
-      { "year": "2018-2022", "event": "Grew distributed team across EMEA, Americas, and Asia; built institutional client base" },
-      { "year": "2023-2024", "event": "Expanded to serve world's largest PE funds, hedge funds, SWFs, and Fortune 500 corporations" },
-      { "year": "2025 (April)", "event": "Briefly launched Greystone expert network as a separate branch" }
+      {
+        "year": "2017 (November)",
+        "event": "Founded in London by a former Morgan Stanley investment manager"
+      },
+      {
+        "year": "2018-2022",
+        "event": "Grew distributed team across EMEA, Americas, and Asia; built institutional client base"
+      },
+      {
+        "year": "2023-2024",
+        "event": "Expanded to serve world's largest PE funds, hedge funds, SWFs, and Fortune 500 corporations"
+      },
+      {
+        "year": "2025 (April)",
+        "event": "Briefly launched Greystone expert network as a separate branch"
+      }
     ]
   },
-
   "servicesDetailed": [
     {
       "name": "Expert Consultations",
@@ -55,7 +90,6 @@
       "description": "Geographically diversified research and operations spanning EMEA (London, Portugal, Turkey, Bahrain, Saudi Arabia), Americas (New York, Colombia), and Asia (Singapore, Pakistan, Hong Kong, Philippines), enabling round-the-clock expert sourcing."
     }
   ],
-
   "aiPlatform": {
     "narrative": "Silverlight operates as a database-backed expert network with manual curation and relationship-driven matching. The company's distributed model leverages technology for remote coordination and global coverage rather than AI-driven expert discovery.",
     "features": [
@@ -65,7 +99,6 @@
       "Compliance documentation and audit trail"
     ]
   },
-
   "complianceExtended": {
     "narrative": "Silverlight's compliance approach is shaped by its founder's institutional investment management background. The company manages expert screening, compliance documentation, and audit trails to meet the requirements of its buy-side institutional clients.",
     "highlights": [
@@ -77,7 +110,6 @@
     ],
     "regulatoryContext": "Silverlight serves institutional investors including hedge funds, PE funds, and sovereign wealth funds — clients with the highest compliance standards. The company's compliance infrastructure is designed to meet these requirements. Clean regulatory record."
   },
-
   "clientFit": {
     "narrative": "Silverlight is designed for institutional investors and corporate strategy teams who value a research-oriented expert network that understands buy-side workflows. The distributed model provides global coverage with competitive pricing. Less suited for clients needing a self-service technology platform.",
     "segments": [
@@ -88,7 +120,6 @@
       "Long-only asset managers needing industry expert consultations"
     ]
   },
-
   "strengths": [
     "Founded by former Morgan Stanley investment manager — authentic institutional understanding",
     "97% engagement success rate demonstrates reliable expert delivery",
@@ -97,7 +128,6 @@
     "Institutional client base including world's largest PE funds, hedge funds, and SWFs",
     "61% expert acceptance rate shows well-curated engagement approach"
   ],
-
   "caveats": [
     "Smaller company (~50 employees) limits capacity for very high-volume engagements",
     "Fully distributed workforce may reduce team cohesion compared to office-based networks",
@@ -106,7 +136,6 @@
     "Less brand recognition than established players like GLG or AlphaSights",
     "Greystone branch launch/drop in 2025 suggests strategic experimentation"
   ],
-
   "notableFacts": [
     "Founded by a former Morgan Stanley investment manager in November 2017",
     "Fully distributed workforce — all staff work part-time and remotely",
@@ -117,7 +146,6 @@
     "Operations span EMEA, Americas, and Asia across 10+ countries",
     "Briefly launched Greystone expert network as a separate branch in April 2025"
   ],
-
   "sourceNotes": [
     "Silverlight Research official website (silverlightresearch.com) — company overview and services",
     "LinkedIn — company profile, team structure, and founding information",
@@ -126,10 +154,18 @@
     "INEX ONE Expert Network Directory — Silverlight Research profile",
     "PitchBook — company profile and service breakdown"
   ],
-
-  "whyChoose": ["Institutional expertise", "97% success rate", "Global distributed coverage", "Morgan Stanley pedigree"],
-  "whenNotIdeal": ["Need self-service platform", "Want AI-driven matching", "Require large expert database", "High-volume call programs"],
-
+  "whyChoose": [
+    "Institutional expertise",
+    "97% success rate",
+    "Global distributed coverage",
+    "Morgan Stanley pedigree"
+  ],
+  "whenNotIdeal": [
+    "Need self-service platform",
+    "Want AI-driven matching",
+    "Require large expert database",
+    "High-volume call programs"
+  ],
   "confidence": {
     "founded": "verified",
     "headquarters": "verified",

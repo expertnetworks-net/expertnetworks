@@ -11,13 +11,38 @@
   "employeeCount": "250+",
   "expertCount": "160K+",
   "description": "Asia-focused expert network founded by former Accenture Strategy and YCP Solidiance consultants. Deep coverage across Japan, Southeast Asia, China, and India with 250+ employees across 8 offices and a Bloomberg Terminal-integrated Expert Transcript Library.",
-  "services": ["Expert Calls", "Expert Transcript Library", "Consulting Research", "Talent Matching", "Expert Surveys"],
-  "aiCapabilities": ["AI-powered expert matching", "Searchable transcript library", "Bloomberg Terminal integration"],
-  "industries": ["Private Equity", "Consulting", "Corporate Strategy", "Healthcare", "Technology", "Consumer"],
+  "services": [
+    "Expert Calls",
+    "Expert Transcript Library",
+    "Consulting Research",
+    "Talent Matching",
+    "Expert Surveys"
+  ],
+  "aiCapabilities": [
+    "AI-powered expert matching",
+    "Searchable transcript library",
+    "Bloomberg Terminal integration"
+  ],
+  "industries": [
+    "Private Equity",
+    "Consulting",
+    "Corporate Strategy",
+    "Healthcare",
+    "Technology",
+    "Consumer"
+  ],
   "pricingModel": "Per-call",
   "pricingDetail": "Per-call pricing; claims ~20% more cost-efficient than global networks",
-  "keyDifferentiators": ["Deep Asia-Pacific coverage with local recruiting capability across Japan, SEA, China, and India", "Bloomberg Terminal-integrated Expert Transcript Library", "~20% more cost-efficient than global networks through local sourcing"],
-  "bestFor": ["Asia-Pacific Research", "Japanese Market", "PE Due Diligence in Asia"],
+  "keyDifferentiators": [
+    "Deep Asia-Pacific coverage with local recruiting capability across Japan, SEA, China, and India",
+    "Bloomberg Terminal-integrated Expert Transcript Library",
+    "~20% more cost-efficient than global networks through local sourcing"
+  ],
+  "bestFor": [
+    "Asia-Pacific Research",
+    "Japanese Market",
+    "PE Due Diligence in Asia"
+  ],
   "compliance": {
     "mnpiPolicy": "MNPI controls with expert guidance on declining projects involving current employer competitors or sensitive business areas",
     "expertVetting": "Expert screening against stated background and involvement level; 250+ multilingual staff for vetting",
@@ -27,21 +52,38 @@
   "featured": false,
   "priority": 12,
   "published": true,
+  "categoryBadge": "Asia Specialist",
+  "deliveryModel": "Concierge",
+  "regionStrength": "Asia-Pacific",
+  "complianceBadge": "Standard Compliance",
+  "aiBadge": "AI Matching",
   "lastUpdated": "2026-03-07",
-
   "overview": "Arches is an Asia-focused expert network founded in 2019, headquartered in Singapore with roots in Japan. The company originated from NeedsArch Inc., a Japanese consumer research firm established in 2017, which pivoted to become an expert network. Arches connects PE firms, hedge funds, consulting firms, and Fortune 500 companies with 160,000+ vetted experts, primarily across Asia-Pacific markets.\n\nThe company has grown rapidly to 250+ employees across 8 offices, serving 600+ clients globally across 300+ industries. Arches differentiates through deep local recruiting capability in Japan, Southeast Asia, China, and India — markets where global expert networks often struggle to source quality experts. The firm claims approximately 20% greater cost efficiency than global networks through local sourcing and streamlined operations.\n\nA notable product innovation is Arches' Expert Transcript Library, which was integrated into Bloomberg Terminal in June 2025, making Arches' expert interview transcripts searchable alongside Bloomberg's financial data. The company has raised approximately $4 million in venture funding and is targeting an IPO by 2028.",
-
   "history": {
     "narrative": "Arches was co-founded by Hiroki Kato (CEO) and Shota Kambara (COO). Kato is a University of Tokyo economics graduate who worked at Sumitomo Corporation in energy investment and YCP Solidiance in growth strategy; he is also a World Economic Forum Global Shaper. Kambara is a Waseda University economics graduate, former Accenture Strategy consultant and Terradrone strategist with expertise in cross-border M&A.\n\nThe company began as NeedsArch Inc. in January 2017, initially operating as a consumer research firm in Japan. In May 2019, the founders pivoted to launch Arches as a full-fledged expert network. The company raised $1.6M in December 2021 from Uzabase, Hakuhodo DY Ventures, and angel investors, followed by a $2.6M (410M yen) Series B in June 2024 from KUSABI, VISIONAL, SMBC Venture Capital, and Grove Advisors Ventures.",
     "timeline": [
-      { "year": "2017 (January)", "event": "Originally established as NeedsArch Inc., a Japanese consumer research firm" },
-      { "year": "2019 (May)", "event": "Pivoted and relaunched as Arches expert network" },
-      { "year": "2021 (December)", "event": "Raised $1.6M from Uzabase, Hakuhodo DY Ventures, and angel investors" },
-      { "year": "2024 (June)", "event": "Raised $2.6M Series B from KUSABI, VISIONAL, SMBC Venture Capital, and Grove Advisors Ventures; total ~$4M" },
-      { "year": "2025", "event": "Bloomberg Terminal integration for Expert Transcript Library; opened offices in Seoul, Bogota, and Hong Kong; targeting IPO by 2028" }
+      {
+        "year": "2017 (January)",
+        "event": "Originally established as NeedsArch Inc., a Japanese consumer research firm"
+      },
+      {
+        "year": "2019 (May)",
+        "event": "Pivoted and relaunched as Arches expert network"
+      },
+      {
+        "year": "2021 (December)",
+        "event": "Raised $1.6M from Uzabase, Hakuhodo DY Ventures, and angel investors"
+      },
+      {
+        "year": "2024 (June)",
+        "event": "Raised $2.6M Series B from KUSABI, VISIONAL, SMBC Venture Capital, and Grove Advisors Ventures; total ~$4M"
+      },
+      {
+        "year": "2025",
+        "event": "Bloomberg Terminal integration for Expert Transcript Library; opened offices in Seoul, Bogota, and Hong Kong; targeting IPO by 2028"
+      }
     ]
   },
-
   "servicesDetailed": [
     {
       "name": "Expert Calls",
@@ -64,7 +106,6 @@
       "description": "Quantitative survey research and in-person consultation/seminar formats for clients needing structured data collection or group expert engagement."
     }
   ],
-
   "aiPlatform": {
     "narrative": "Arches' technology capabilities are focused on its Expert Transcript Library and Bloomberg Terminal integration rather than AI-driven expert matching. Expert matching is primarily human-driven by the 250+ person team with deep local knowledge across Asian markets. The company has announced plans to add ChatGPT-powered article summaries and trend analysis to the transcript library.",
     "features": [
@@ -75,7 +116,6 @@
       "Human-driven expert matching with deep local market knowledge"
     ]
   },
-
   "complianceExtended": {
     "narrative": "Arches maintains compliance standards appropriate for its Asia-focused expert network operations. Expert screening covers background verification and involvement-level assessment. MNPI controls guide experts to decline projects involving current employer competitors or sensitive business areas. The company's 250+ multilingual staff from 15+ nationalities supports thorough vetting of niche and hard-to-reach experts across diverse Asian regulatory environments.",
     "highlights": [
@@ -88,7 +128,6 @@
     ],
     "regulatoryContext": "Arches operates across multiple Asian jurisdictions (Japan, Singapore, Hong Kong, India, South Korea) with varying regulatory requirements. The company's local presence in each market enables jurisdiction-specific compliance adaptation. Clean regulatory record."
   },
-
   "clientFit": {
     "narrative": "Arches is ideal for investors and firms needing ground-level intelligence in Asian markets, particularly Japan, Southeast Asia, China, and India. The company's local recruiting capability and deep regional expertise make it a strong choice for Asia-focused due diligence. Clients focused exclusively on Western markets will find limited differentiation.",
     "segments": [
@@ -99,7 +138,6 @@
       "Fortune 500 corporations conducting competitive intelligence in APAC"
     ]
   },
-
   "strengths": [
     "Deep Asia-Pacific expertise with genuine local recruiting capability across Japan, SEA, China, and India",
     "~20% more cost-efficient than global networks through local sourcing and operations",
@@ -109,7 +147,6 @@
     "Founders' strategy consulting backgrounds (Accenture, YCP Solidiance) bring analytical rigor",
     "Targeting IPO by 2028 — indicates growth trajectory and institutional ambition"
   ],
-
   "caveats": [
     "Less established in Western markets (US, Europe) compared to global networks",
     "Technology platform is less sophisticated than AI-native competitors",
@@ -118,7 +155,6 @@
     "Bloomberg transcript integration currently focused on Japanese equities only",
     "Younger company (pivoted to expert network in 2019) with shorter track record than established players"
   ],
-
   "notableFacts": [
     "Co-founder Hiroki Kato is a World Economic Forum Global Shaper and University of Tokyo economics graduate",
     "Expert Transcript Library integrated into Bloomberg Terminal in June 2025",
@@ -133,7 +169,6 @@
     "Uses recruiting/headhunting firm partnerships to accelerate expert sourcing — an unusual model in the ENS industry",
     "Competes regionally with ShareFair, Mimir Uzabase, Resory, Hudson Research, and Nodes Global"
   ],
-
   "sourceNotes": [
     "Arches official website (arches-global.com) — company overview, services, and leadership",
     "Crunchbase — funding rounds ($1.6M in 2021, $2.6M Series B in 2024)",
@@ -146,10 +181,18 @@
     "Expert Network Calls directory — Arches profile",
     "Arches news page — Bloomberg integration and expansion announcements"
   ],
-
-  "whyChoose": ["Asia-Pacific depth", "Cost-efficient sourcing", "Bloomberg integration", "Local recruiting in Asia"],
-  "whenNotIdeal": ["Western market focus", "Need AI-driven platform", "Want largest expert pools", "Require US compliance standards"],
-
+  "whyChoose": [
+    "Asia-Pacific depth",
+    "Cost-efficient sourcing",
+    "Bloomberg integration",
+    "Local recruiting in Asia"
+  ],
+  "whenNotIdeal": [
+    "Western market focus",
+    "Need AI-driven platform",
+    "Want largest expert pools",
+    "Require US compliance standards"
+  ],
   "confidence": {
     "founded": "verified",
     "headquarters": "verified",

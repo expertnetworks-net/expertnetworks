@@ -11,12 +11,35 @@
   "employeeCount": "100+",
   "expertCount": "50K+",
   "description": "Southeast Asia specialist expert network providing deep regional expertise across ASEAN markets, with particular strength in healthcare, technology, and consumer sectors.",
-  "services": ["Expert Calls", "Surveys", "Asia Healthcare Research"],
-  "aiCapabilities": ["AI-powered expert matching for ASEAN markets", "Multilingual expert profiling", "Automated survey distribution across SE Asian geographies"],
-  "industries": ["Healthcare", "Technology", "Consumer", "Financial Services", "Manufacturing", "Real Estate"],
+  "services": [
+    "Expert Calls",
+    "Surveys",
+    "Asia Healthcare Research"
+  ],
+  "aiCapabilities": [
+    "AI-powered expert matching for ASEAN markets",
+    "Multilingual expert profiling",
+    "Automated survey distribution across SE Asian geographies"
+  ],
+  "industries": [
+    "Healthcare",
+    "Technology",
+    "Consumer",
+    "Financial Services",
+    "Manufacturing",
+    "Real Estate"
+  ],
   "pricingModel": "Per-call",
-  "keyDifferentiators": ["Deep specialization in Southeast Asian markets with local teams across ASEAN", "Leading healthcare expert network in the Asia-Pacific region", "Multilingual capabilities spanning major SE Asian languages"],
-  "bestFor": ["Southeast Asia", "Emerging Markets", "Healthcare Asia"],
+  "keyDifferentiators": [
+    "Deep specialization in Southeast Asian markets with local teams across ASEAN",
+    "Leading healthcare expert network in the Asia-Pacific region",
+    "Multilingual capabilities spanning major SE Asian languages"
+  ],
+  "bestFor": [
+    "Southeast Asia",
+    "Emerging Markets",
+    "Healthcare Asia"
+  ],
   "compliance": {
     "mnpiPolicy": "MNPI policies aligned with Singapore MAS guidelines and regional regulatory frameworks",
     "expertVetting": "Rigorous vetting with local language capabilities and regional employment verification",
@@ -27,6 +50,11 @@
   "featured": false,
   "priority": 21,
   "published": true,
+  "categoryBadge": "Asia Specialist",
+  "deliveryModel": "Concierge",
+  "regionStrength": "Asia-Pacific",
+  "complianceBadge": "Standard Compliance",
+  "aiBadge": "AI Matching",
   "comparison": {
     "expertCalls": true,
     "contentLibrary": false,
@@ -35,18 +63,24 @@
     "complianceTools": true
   },
   "lastUpdated": "2026-03-07",
-
   "overview": "AlphaExpert is a Southeast Asia specialist expert network headquartered in Singapore, providing deep regional expertise across ASEAN markets. The company focuses on connecting global investors, consulting firms, and corporations with industry experts across the diverse markets of Southeast Asia — including Singapore, Indonesia, Malaysia, Thailand, Vietnam, and the Philippines.\n\nWith particular strength in healthcare, technology, and consumer sectors, AlphaExpert serves clients who need on-the-ground intelligence in some of the world's fastest-growing economies. The company's multilingual capabilities spanning major Southeast Asian languages give it an advantage in markets where language barriers often limit traditional expert networks' effectiveness.",
-
   "history": {
     "narrative": "AlphaExpert was founded in 2018 in Singapore to address the growing demand for expert network services focused specifically on Southeast Asian markets. The company recognized that global expert networks often had limited depth in ASEAN countries and built local teams to provide genuine regional expertise.",
     "timeline": [
-      { "year": "2018", "event": "Founded in Singapore with focus on Southeast Asian expert network services" },
-      { "year": "2019-2022", "event": "Built local teams across ASEAN markets; expanded to 50K+ experts" },
-      { "year": "2023-2025", "event": "Deepened healthcare specialization across Asia-Pacific" }
+      {
+        "year": "2018",
+        "event": "Founded in Singapore with focus on Southeast Asian expert network services"
+      },
+      {
+        "year": "2019-2022",
+        "event": "Built local teams across ASEAN markets; expanded to 50K+ experts"
+      },
+      {
+        "year": "2023-2025",
+        "event": "Deepened healthcare specialization across Asia-Pacific"
+      }
     ]
   },
-
   "servicesDetailed": [
     {
       "name": "Expert Consultations",
@@ -61,7 +95,6 @@
       "description": "Quantitative survey research distributed across ASEAN geographies in local languages, supporting market sizing, competitive analysis, and pricing research."
     }
   ],
-
   "aiPlatform": {
     "narrative": "AlphaExpert uses AI-powered matching optimized for ASEAN markets, with multilingual expert profiling that captures expertise in local languages. The platform supports automated survey distribution across multiple Southeast Asian geographies.",
     "features": [
@@ -71,7 +104,6 @@
       "Regional employment verification integrated into matching workflow"
     ]
   },
-
   "complianceExtended": {
     "narrative": "AlphaExpert operates under Singapore MAS guidelines with compliance policies adapted for the diverse regulatory environments across ASEAN countries.",
     "highlights": [
@@ -83,7 +115,6 @@
     ],
     "regulatoryContext": "ASEAN markets have diverse regulatory environments. AlphaExpert's local presence in multiple countries enables jurisdiction-specific compliance. Clean regulatory record."
   },
-
   "clientFit": {
     "narrative": "AlphaExpert is ideal for investors, consulting firms, and corporations needing deep Southeast Asian expertise that global networks cannot match.",
     "segments": [
@@ -93,36 +124,40 @@
       "Corporations evaluating Southeast Asian market entry or expansion"
     ]
   },
-
   "strengths": [
     "Deep ASEAN specialization with local teams across multiple countries",
     "Multilingual capabilities spanning major Southeast Asian languages",
     "Strong healthcare focus in Asia-Pacific — a high-growth sector",
     "Singapore-based headquarters provides credible ASEAN anchor"
   ],
-
   "caveats": [
     "Limited coverage outside Southeast Asia",
     "Smaller expert database compared to global networks",
     "Limited public information about funding and leadership",
     "Less brand recognition among Western institutional buyers"
   ],
-
   "notableFacts": [
     "Headquartered in Singapore — a hub for ASEAN-focused financial services",
     "Multilingual capabilities spanning major Southeast Asian languages",
     "Healthcare specialization positions it in one of Asia's fastest-growing sectors"
   ],
-
   "sourceNotes": [
     "AlphaExpert website — company overview and services",
     "INEX ONE Expert Network Directory — profile listing",
     "Expert network industry directories — company information"
   ],
-
-  "whyChoose": ["ASEAN market depth", "Healthcare Asia focus", "Multilingual capabilities", "Local SE Asian teams"],
-  "whenNotIdeal": ["Need global coverage", "Want large expert pools", "US/Europe focused", "Need extensive compliance"],
-
+  "whyChoose": [
+    "ASEAN market depth",
+    "Healthcare Asia focus",
+    "Multilingual capabilities",
+    "Local SE Asian teams"
+  ],
+  "whenNotIdeal": [
+    "Need global coverage",
+    "Want large expert pools",
+    "US/Europe focused",
+    "Need extensive compliance"
+  ],
   "confidence": {
     "founded": "partially-unverifiable",
     "headquarters": "verified",

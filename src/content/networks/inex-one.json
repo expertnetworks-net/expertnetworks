@@ -11,13 +11,40 @@
   "employeeCount": "11-50",
   "expertCount": "Meta-platform (170+ networks)",
   "description": "The leading expert network marketplace and aggregator, enabling clients to access 170+ expert networks through a single platform with centralized compliance, spend analytics, and workflow management.",
-  "services": ["Network Aggregation", "Compliance Dashboard", "Spend Analytics", "Survey Management", "Knowledge Repository", "AI Transcription & LLM Chat"],
-  "aiCapabilities": ["AI-powered search across expert networks", "Intelligent network routing", "Cross-network expert matching", "Automated spend optimization analytics", "Compliance monitoring across networks"],
-  "industries": ["Private Equity", "Consulting", "Hedge Funds", "Investment Banking", "Corporate Strategy"],
+  "services": [
+    "Network Aggregation",
+    "Compliance Dashboard",
+    "Spend Analytics",
+    "Survey Management",
+    "Knowledge Repository",
+    "AI Transcription & LLM Chat"
+  ],
+  "aiCapabilities": [
+    "AI-powered search across expert networks",
+    "Intelligent network routing",
+    "Cross-network expert matching",
+    "Automated spend optimization analytics",
+    "Compliance monitoring across networks"
+  ],
+  "industries": [
+    "Private Equity",
+    "Consulting",
+    "Hedge Funds",
+    "Investment Banking",
+    "Corporate Strategy"
+  ],
   "pricingModel": "Subscription",
   "pricingDetail": "SaaS subscription model for platform access",
-  "keyDifferentiators": ["Single platform aggregating 170+ expert networks for unified access", "Centralized compliance dashboard across all network interactions", "Spend analytics and optimization tools reducing total cost of expert access"],
-  "bestFor": ["Multi-Network Buyers", "PE Firms", "Cost Optimization"],
+  "keyDifferentiators": [
+    "Single platform aggregating 170+ expert networks for unified access",
+    "Centralized compliance dashboard across all network interactions",
+    "Spend analytics and optimization tools reducing total cost of expert access"
+  ],
+  "bestFor": [
+    "Multi-Network Buyers",
+    "PE Firms",
+    "Cost Optimization"
+  ],
   "compliance": {
     "mnpiPolicy": "Centralized compliance layer monitoring interactions across all connected expert networks",
     "expertVetting": "Aggregates and surfaces vetting standards from underlying networks with additional compliance overlay",
@@ -28,6 +55,11 @@
   "featured": false,
   "priority": 18,
   "published": true,
+  "categoryBadge": "Marketplace",
+  "deliveryModel": "Marketplace",
+  "regionStrength": "Global",
+  "complianceBadge": "Compliance Tools",
+  "aiBadge": "AI Matching",
   "comparison": {
     "expertCalls": true,
     "contentLibrary": false,
@@ -36,21 +68,36 @@
     "complianceTools": true
   },
   "lastUpdated": "2026-03-07",
-
   "overview": "INEX ONE is the leading expert network marketplace — a SaaS platform that aggregates 170+ expert networks and survey providers into a single interface. Founded in 2018 in Stockholm by a team of ex-McKinsey consultants and tech entrepreneurs, the platform enables consulting firms, private equity teams, asset managers, and corporations to centralize expert call management, survey projects, and knowledge repositories across multiple expert network providers.\n\nRather than competing with expert networks, INEX ONE sits on top of them as an orchestration layer. Clients use the platform to send project briefs to multiple networks simultaneously, track expert interactions, manage compliance workflows, and analyze spend across providers. This meta-platform model gives buyers visibility into which networks perform best for specific topics and geographies, enabling data-driven vendor management.\n\nINEX ONE has grown rapidly, reaching 104M SEK (~$10M) in annual revenue by end of 2024 and an estimated ~$25M in 2025 — all on just $3M in seed funding. The platform now serves 8,000+ individual users across 700+ companies, including 7 of the top-10 global strategy consulting firms, 4 of the top-10 PE firms, and 8 of the top-10 market research firms. With a 90 NPS score (Q4 2025) and a #134 ranking on the Financial Times' Europe's Fastest-Growing Companies list (>1,100% revenue growth), INEX ONE has established itself as the industry's leading independent marketplace. The company also publishes the definitive annual Expert Network Market Sizing report, valued at $2.5B+ for 2024.",
-
   "history": {
     "narrative": "INEX ONE was founded in 2018 by four co-founders: Max Friberg and Filip Gruvstad (both ex-McKinsey consultants) along with Josefine Vinberg and Mehdi Rejraji (both from tech backgrounds). Max Friberg had previously co-founded Previro, a Swedish expert network in 2016, which he sold to Workvi when starting INEX ONE (Workvi later sold Previro to Danish Knowledge Gate in late 2019). The founding team identified a fragmentation problem — corporate buyers were juggling relationships with multiple networks, each with its own portal, compliance process, and invoicing system. Friberg described leaving McKinsey as 'like jumping off a bullet train.'\n\nThe company raised a $3M seed round in August 2021, attracting a remarkable roster of investors including senior partners from McKinsey, BCG, Oliver Wyman, and Kearney, plus PE firms Advent International, Triton Partners, Accent Capital, and Curitas Ventures. Board members included Richard Thornton (former CCO and deputy CEO at Cint), Bradford Brown and Ajay Gupta (both McKinsey Senior Partner emeriti). The diversity of investors from across the consulting and PE ecosystem validated the platform's neutral marketplace positioning.\n\nSince then, INEX ONE has scaled to serve 8,000+ users across 700+ companies from offices in Stockholm, New York, Paris, Raleigh, and Singapore. The company has achieved 100%+ annual revenue growth every year since founding, reaching an estimated ~$25M in 2025 on just $3M in total funding — making it one of the most capital-efficient companies in the expert network industry. The legal entity is AB Leverache (Swedish corporation).",
     "timeline": [
-      { "year": "2018", "event": "Founded in Stockholm by Max Friberg, Filip Gruvstad, Josefine Vinberg, and Mehdi Rejraji" },
-      { "year": "2021 (August)", "event": "Raised $3M seed round from McKinsey, BCG, Oliver Wyman, Kearney, Advent International, Triton Partners, and others" },
-      { "year": "2022", "event": "Expanded marketplace to 100+ connected expert networks" },
-      { "year": "2023", "event": "Published inaugural Expert Network Market Sizing report, establishing industry benchmark" },
-      { "year": "2024", "event": "Revenue reached 104M SEK (~$10M); marketplace expanded to 170+ networks" },
-      { "year": "2025", "event": "Ranked #136 on Financial Times' Europe's Fastest-Growing Companies list" }
+      {
+        "year": "2018",
+        "event": "Founded in Stockholm by Max Friberg, Filip Gruvstad, Josefine Vinberg, and Mehdi Rejraji"
+      },
+      {
+        "year": "2021 (August)",
+        "event": "Raised $3M seed round from McKinsey, BCG, Oliver Wyman, Kearney, Advent International, Triton Partners, and others"
+      },
+      {
+        "year": "2022",
+        "event": "Expanded marketplace to 100+ connected expert networks"
+      },
+      {
+        "year": "2023",
+        "event": "Published inaugural Expert Network Market Sizing report, establishing industry benchmark"
+      },
+      {
+        "year": "2024",
+        "event": "Revenue reached 104M SEK (~$10M); marketplace expanded to 170+ networks"
+      },
+      {
+        "year": "2025",
+        "event": "Ranked #136 on Financial Times' Europe's Fastest-Growing Companies list"
+      }
     ]
   },
-
   "servicesDetailed": [
     {
       "name": "Expert Network Marketplace",
@@ -81,7 +128,6 @@
       "description": "INEX ONE publishes the annual Expert Network Market Sizing report and maintains the Expert Network Directory and M&A tracker, providing the industry's most comprehensive independent analysis of market trends, sizing, and consolidation activity."
     }
   ],
-
   "aiPlatform": {
     "narrative": "INEX ONE's technology platform is designed as a marketplace orchestration layer. The platform uses AI-powered search to help clients find the right expert networks for specific topics, geographies, and methodologies. Intelligent routing algorithms analyze historical performance data to recommend which networks are most likely to deliver high-quality experts for a given brief. The platform integrates directly with network APIs where available, streamlining the workflow from brief submission through expert delivery and call scheduling. Analytics dashboards provide real-time visibility into network performance, spend, and compliance status across all providers.",
     "features": [
@@ -97,7 +143,6 @@
       "Centralized billing and invoicing across all network providers"
     ]
   },
-
   "complianceExtended": {
     "narrative": "INEX ONE was designed from inception as a compliance-first platform. The centralized compliance dashboard provides a single view across all expert network interactions regardless of provider, enabling regulated clients — particularly in private equity and asset management — to maintain consistent compliance standards. The platform tracks cooling-off periods, manages conflict-of-interest declarations, and provides audit trails for all interactions. By centralizing compliance monitoring, INEX ONE helps clients avoid the risk of inconsistent policies across different network providers.",
     "highlights": [
@@ -114,7 +159,6 @@
     ],
     "regulatoryContext": "INEX ONE serves as a compliance orchestration layer for clients who engage multiple expert networks. The platform's value proposition is particularly strong for regulated buyers in private equity and asset management, where consistent compliance documentation across all network interactions is critical. By centralizing monitoring, INEX ONE reduces the compliance burden that grows with each additional network relationship."
   },
-
   "clientFit": {
     "narrative": "INEX ONE is purpose-built for organizations that work with multiple expert networks and need a centralized way to manage those relationships. The platform delivers the most value to high-volume buyers who can leverage spend analytics and network performance data to optimize their expert network portfolio. Smaller organizations using only one or two networks may find less value in the aggregation layer.",
     "segments": [
@@ -125,7 +169,6 @@
       "Research teams wanting data-driven network selection and spend optimization"
     ]
   },
-
   "strengths": [
     "Only true marketplace aggregating 170+ expert networks — no equivalent competitor at this scale",
     "Neutral positioning: does not compete with expert networks, creating alignment of interests",
@@ -141,7 +184,6 @@
     "8,000+ users across 700+ companies including 7 of top-10 consulting firms",
     "Offices in Stockholm, New York, Paris, Raleigh, and Singapore"
   ],
-
   "caveats": [
     "Adds an additional platform layer and cost on top of expert network fees",
     "Value proposition is weaker for organizations using only one or two networks",
@@ -150,7 +192,6 @@
     "Platform adoption requires changing established workflows for network-by-network engagement",
     "AI capabilities are focused on routing and analytics rather than direct expert matching"
   ],
-
   "notableFacts": [
     "Founded by two ex-McKinsey consultants (Max Friberg, Filip Gruvstad) and two tech entrepreneurs (Josefine Vinberg, Mehdi Rejraji)",
     "Seed round investors included McKinsey, BCG, Oliver Wyman, Kearney, Advent International, and Triton Partners — an unprecedented coalition of consulting and PE firms",
@@ -167,7 +208,6 @@
     "Legal entity is AB Leverache (Swedish corporation)",
     "Clients include 7 of top-10 strategy consulting firms, 4 of top-10 PE firms, 8 of top-10 market research firms"
   ],
-
   "sourceNotes": [
     "INEX ONE official website (inex.one) — platform overview, marketplace description, and blog",
     "Tracxn — funding details ($3M seed, August 2021), revenue (104M SEK as of Dec 2024), team size",
@@ -183,10 +223,18 @@
     "Unleashed Podcast Ep. 426 — Max Friberg interview on founding story",
     "The Org — INEX ONE org chart and leadership profiles"
   ],
-
-  "whyChoose": ["Centralize multi-network access", "Compliance across providers", "Spend optimization analytics", "170+ networks in one platform"],
-  "whenNotIdeal": ["Using only 1-2 networks", "Need direct expert ownership", "Want full-service research", "Budget-constrained buyers"],
-
+  "whyChoose": [
+    "Centralize multi-network access",
+    "Compliance across providers",
+    "Spend optimization analytics",
+    "170+ networks in one platform"
+  ],
+  "whenNotIdeal": [
+    "Using only 1-2 networks",
+    "Need direct expert ownership",
+    "Want full-service research",
+    "Budget-constrained buyers"
+  ],
   "confidence": {
     "founded": "verified",
     "headquarters": "verified",

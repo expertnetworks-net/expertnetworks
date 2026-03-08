@@ -11,13 +11,43 @@
   "employeeCount": "~74",
   "expertCount": "280M+ indexed (400K actively engaged)",
   "description": "The world's first AI-driven expert network, using NLP and machine learning to autonomously scan 280 million+ professional profiles in real time. Specializes in healthcare and life sciences with 25M healthcare profiles covering 5M specialisms. Features ECHO Ask generative AI assistant.",
-  "services": ["Expert Calls", "AI Matching", "Technical Research", "KOL Identification", "Surveys", "Focus Groups", "Data Review"],
-  "aiCapabilities": ["NLP-based expert discovery across 280M+ profiles", "Real-time web crawling and profile analysis", "ML matching algorithms", "ECHO Ask generative AI assistant", "Automated expertise verification", "Semantic search across academic and clinical data", "Knowledge graph covering millions of expertise areas"],
-  "industries": ["Life Sciences", "Technology", "Healthcare", "Pharmaceuticals", "Energy"],
+  "services": [
+    "Expert Calls",
+    "AI Matching",
+    "Technical Research",
+    "KOL Identification",
+    "Surveys",
+    "Focus Groups",
+    "Data Review"
+  ],
+  "aiCapabilities": [
+    "NLP-based expert discovery across 280M+ profiles",
+    "Real-time web crawling and profile analysis",
+    "ML matching algorithms",
+    "ECHO Ask generative AI assistant",
+    "Automated expertise verification",
+    "Semantic search across academic and clinical data",
+    "Knowledge graph covering millions of expertise areas"
+  ],
+  "industries": [
+    "Life Sciences",
+    "Technology",
+    "Healthcare",
+    "Pharmaceuticals",
+    "Energy"
+  ],
   "pricingModel": "Per-call",
   "pricingDetail": "Per-call pricing; client-side ~$600-900/hr (lower than traditional networks). Expert pay: $100-200/hr (early career), $200-300 (director), $350-700 (senior executives)",
-  "keyDifferentiators": ["AI-native approach scanning 280M+ profiles in minutes", "Deep healthcare and life sciences specialization", "NLP expert discovery across academic journals, medical registries, and biographical data"],
-  "bestFor": ["Life Sciences", "Deep Tech Research", "Scientific Due Diligence"],
+  "keyDifferentiators": [
+    "AI-native approach scanning 280M+ profiles in minutes",
+    "Deep healthcare and life sciences specialization",
+    "NLP expert discovery across academic journals, medical registries, and biographical data"
+  ],
+  "bestFor": [
+    "Life Sciences",
+    "Deep Tech Research",
+    "Scientific Due Diligence"
+  ],
   "compliance": {
     "mnpiPolicy": "Standard compliance protocols for technical and scientific consultations",
     "expertVetting": "AI-assisted credential verification with domain expertise checks",
@@ -27,25 +57,54 @@
   "featured": false,
   "priority": 11,
   "published": true,
+  "categoryBadge": "Technology-First",
+  "deliveryModel": "Platform-Led",
+  "regionStrength": "Europe",
+  "complianceBadge": "Compliance Tools",
+  "aiBadge": "AI-Native",
   "lastUpdated": "2026-03-07",
-
   "overview": "Techspert is the world's first AI-driven expert network, founded in 2016 by Graham Mills and David Holden-White in Cambridge, UK. The company's core innovation is its deep search technology — machine learning algorithms that autonomously crawl online content in real time to identify the most qualified expert for any topic, no matter how niche. The platform can review profiles of 280 million potential experts from academic journals, medical registries, patent databases, and biographical data in minutes.\n\nTechspert has carved out a strong position in healthcare and life sciences, where finding experts in highly specialized therapeutic areas, rare diseases, and cutting-edge research requires searching beyond traditional expert databases. The company positions itself as a global leader in healthcare and life sciences expert connections, complementing its AI-driven sourcing with a growing international team in Cambridge and Houston.\n\nThe company has raised approximately £13.5 million across three funding rounds, backed by investors including BGF, Nauta Capital, Cambridge Angels, and Angel CoFund. Techspert has delivered projects in 100+ geographies, demonstrating the global reach of its AI-powered expert discovery engine.",
-
   "history": {
     "narrative": "Graham Mills, David Holden-White, and Hari Jackson (CTO) founded Techspert (originally as 'Biotechspert') in 2016 in Cambridge, UK. David holds a Master's in Biochemistry from Oxford and a Master's in Bioscience Enterprise from Cambridge; he previously worked as a biotech patent attorney and in corporate development. Hari Jackson, an AI expert with advanced degrees from Cambridge and Oxford, built the core AI search technology.\n\nThe company raised £1 million in December 2018 from Cambridge Angels and other investors. In February 2020, Techspert closed a £3.75 million Series A led by Nauta Capital. The biggest equity round came in October 2021: $12M from BGF and Nauta Capital, funding the Houston, Texas office opening. In 2023, Techspert secured venture debt from Western Technology Investment, launched the ECHO Ask generative AI assistant (first-to-market among expert networks), and acquired data/assets from FirstThought after that healthcare expert network went bankrupt. In February 2026, Techspert received £5M growth credit from Palatine Growth Credit. Total funding: approximately $21.8M.",
     "timeline": [
-      { "year": "2016", "event": "Founded by Graham Mills and David Holden-White in Cambridge, UK" },
-      { "year": "2018 (December)", "event": "Raised £1M angel round from Simon Thorpe, Angel CoFund, GW Asia Capital, and others" },
-      { "year": "2020 (February)", "event": "Raised £3.75M Series A led by Nauta Capital with Cambridge Angels and existing investors" },
-      { "year": "2021 (October)", "event": "Raised £8.8M ($12M) from BGF and Nauta Capital; opened Houston, Texas office" },
-      { "year": "2023 (March)", "event": "Secured venture debt from Western Technology Investment" },
-      { "year": "2023", "event": "Launched ECHO Ask generative AI assistant — first to market among expert networks" },
-      { "year": "2023 (late)", "event": "Acquired data and assets from FirstThought after that healthcare expert network went bankrupt" },
-      { "year": "2024-2025", "event": "Expanded to 100+ project geographies; estimated ~$18M annual revenue" },
-      { "year": "2026 (February)", "event": "Received £5M growth credit from Palatine Growth Credit; planning to hire ~20 employees" }
+      {
+        "year": "2016",
+        "event": "Founded by Graham Mills and David Holden-White in Cambridge, UK"
+      },
+      {
+        "year": "2018 (December)",
+        "event": "Raised £1M angel round from Simon Thorpe, Angel CoFund, GW Asia Capital, and others"
+      },
+      {
+        "year": "2020 (February)",
+        "event": "Raised £3.75M Series A led by Nauta Capital with Cambridge Angels and existing investors"
+      },
+      {
+        "year": "2021 (October)",
+        "event": "Raised £8.8M ($12M) from BGF and Nauta Capital; opened Houston, Texas office"
+      },
+      {
+        "year": "2023 (March)",
+        "event": "Secured venture debt from Western Technology Investment"
+      },
+      {
+        "year": "2023",
+        "event": "Launched ECHO Ask generative AI assistant — first to market among expert networks"
+      },
+      {
+        "year": "2023 (late)",
+        "event": "Acquired data and assets from FirstThought after that healthcare expert network went bankrupt"
+      },
+      {
+        "year": "2024-2025",
+        "event": "Expanded to 100+ project geographies; estimated ~$18M annual revenue"
+      },
+      {
+        "year": "2026 (February)",
+        "event": "Received £5M growth credit from Palatine Growth Credit; planning to hire ~20 employees"
+      }
     ]
   },
-
   "servicesDetailed": [
     {
       "name": "AI-Powered Expert Search",
@@ -76,7 +135,6 @@
       "description": "ECHO provides AI-generated call summaries with instant highlights. ECHO Ask is a generative AI assistant enabling cross-interview querying, quote compilation, segment summaries, and CSV export. Sources answers exclusively from call content (no hallucination risk). HIPAA-compliant with no data retained by third parties."
     }
   ],
-
   "aiPlatform": {
     "narrative": "Techspert's AI search engine, developed by Cambridge data scientists over 5+ years, scans billions of online data points in real time — publications, clinical trials, regulatory docs, news — indexing 280M+ expert profiles globally. A knowledge graph covering millions of expertise areas enriches queries, and probabilistic models refine matching. Experts are scored across four dimensions: experience, communication skills, influence, and commercial insight. The platform achieves a 70% expert acceptance rate (double the industry average) and 1 in 3-4 experts are first-time consultants.\n\nIn 2023, Techspert launched ECHO Ask — the first generative AI assistant in the expert network industry. ECHO Ask enables cross-interview querying, quote compilation, segment summaries, and CSV exports, sourcing answers exclusively from call content to prevent hallucination. ECHO is HIPAA-compliant with no data retained by third parties and customer data never used to train models.",
     "features": [
@@ -92,7 +150,6 @@
       "Real-time project portal with progress tracking and one-click scheduling"
     ]
   },
-
   "complianceExtended": {
     "narrative": "Techspert maintains standard compliance protocols appropriate for its focus on technical and scientific consultations. The company's AI-assisted credential verification cross-references expert qualifications against public databases, adding a layer of automated validation on top of manual review. As a UK-based company, Techspert operates under GDPR requirements for data handling of the professional profiles it processes.",
     "highlights": [
@@ -109,7 +166,6 @@
     ],
     "regulatoryContext": "Techspert's focus on healthcare and life sciences requires HIPAA compliance, Sunshine Act adherence, and adverse event reporting protocols. The company maintains dedicated compliance and legal teams. No publicly listed ISO 27001 or SOC 2 certifications found. Clean regulatory record."
   },
-
   "clientFit": {
     "narrative": "Techspert is purpose-built for clients who need to find niche technical and scientific experts that traditional expert networks cannot source. The platform excels when the required expertise is highly specialized — rare diseases, emerging technologies, regulatory science — and the experts are not registered on any database. Clients seeking general business expertise or high-volume, routine expert calls may find traditional networks more efficient.",
     "segments": [
@@ -120,7 +176,6 @@
       "Energy and industrial companies researching specialized technical topics"
     ]
   },
-
   "strengths": [
     "AI-driven search across 280M+ profiles finds experts no other network can — including those not registered on any database",
     "70% expert acceptance rate — double the industry average, indicating strong AI matching quality",
@@ -133,7 +188,6 @@
     "Projects delivered in 100+ geographies demonstrates global reach",
     "HIPAA compliant with GenAI data ringfenced — customer data never used to train models"
   ],
-
   "caveats": [
     "Healthcare/life sciences only — not suitable for generalist expert network needs",
     "280M+ 'experts' refers to indexed public profiles, not engaged/vetted experts; actively engaged pool is ~400K",
@@ -144,7 +198,6 @@
     "Recent headcount contraction (~12%) before Palatine investment suggests financial pressure",
     "Limited US presence (Houston office only)"
   ],
-
   "notableFacts": [
     "Originally named 'Biotechspert' before rebranding to Techspert",
     "First expert network to deploy generative AI for call summarization (ECHO Ask, early 2023)",
@@ -160,7 +213,6 @@
     "Climate-positive partnership with Ecologi",
     "Co-founder Hari Jackson (CTO) built the core AI search technology; advanced degrees from Cambridge and Oxford"
   ],
-
   "sourceNotes": [
     "Techspert official website (techspert.com) — company overview, AI capabilities, compliance, ECHO Ask details",
     "Techspert blog — Series A, $12M round, ECHO Ask launch announcements",
@@ -176,10 +228,18 @@
     "PitchBook — employee count (~74) and company profile",
     "Growjo — revenue estimates and employee trends"
   ],
-
-  "whyChoose": ["AI finds unfindable experts", "Healthcare & life sciences depth", "ECHO Ask generative AI", "280M+ searchable profiles"],
-  "whenNotIdeal": ["Need general business experts", "Want relationship-based sourcing", "Require finance-grade compliance", "High-volume routine calls"],
-
+  "whyChoose": [
+    "AI finds unfindable experts",
+    "Healthcare & life sciences depth",
+    "ECHO Ask generative AI",
+    "280M+ searchable profiles"
+  ],
+  "whenNotIdeal": [
+    "Need general business experts",
+    "Want relationship-based sourcing",
+    "Require finance-grade compliance",
+    "High-volume routine calls"
+  ],
   "confidence": {
     "founded": "verified",
     "headquarters": "verified",

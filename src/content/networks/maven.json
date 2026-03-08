@@ -11,13 +11,43 @@
   "employeeCount": "50-80",
   "expertCount": "1M+",
   "description": "Global knowledge marketplace and microconsulting platform with 1M+ experts across 200+ countries. Pioneered self-service expert access with transparent pay-as-you-go pricing starting at $150/call, plus B2B/HCP sample services and white-label consultant management platform.",
-  "services": ["Expert Calls", "Online Surveys", "Virtual Roundtables", "Consulting Projects", "B2B/HCP Sample", "Consultant Management Platform", "Talent Solutions"],
-  "aiCapabilities": ["AI-powered expert matching", "Peer referral network technology", "Knowledge capture tools", "Automated conflict filtering", "HRM/CRM integration"],
-  "industries": ["Technology", "Healthcare", "Financial Services", "Consumer", "Government", "Industrials"],
+  "services": [
+    "Expert Calls",
+    "Online Surveys",
+    "Virtual Roundtables",
+    "Consulting Projects",
+    "B2B/HCP Sample",
+    "Consultant Management Platform",
+    "Talent Solutions"
+  ],
+  "aiCapabilities": [
+    "AI-powered expert matching",
+    "Peer referral network technology",
+    "Knowledge capture tools",
+    "Automated conflict filtering",
+    "HRM/CRM integration"
+  ],
+  "industries": [
+    "Technology",
+    "Healthcare",
+    "Financial Services",
+    "Consumer",
+    "Government",
+    "Industrials"
+  ],
   "pricingModel": "Per-call",
   "pricingDetail": "Pay-as-you-go from $150/30min; unlimited subscriptions up to $30,000; no long-term contracts",
-  "keyDifferentiators": ["1M+ expert network across 200+ countries — among the largest globally", "Transparent pay-as-you-go pricing starting at $150 — lowest in the industry", "Dual model: self-service marketplace + white-label consultant management platform"],
-  "bestFor": ["Budget-Conscious Buyers", "Self-Service Research", "Healthcare/HCP Research", "Market Research Firms"],
+  "keyDifferentiators": [
+    "1M+ expert network across 200+ countries — among the largest globally",
+    "Transparent pay-as-you-go pricing starting at $150 — lowest in the industry",
+    "Dual model: self-service marketplace + white-label consultant management platform"
+  ],
+  "bestFor": [
+    "Budget-Conscious Buyers",
+    "Self-Service Research",
+    "Healthcare/HCP Research",
+    "Market Research Firms"
+  ],
   "compliance": {
     "mnpiPolicy": "Automated conflict filtering tools with customizable compliance controls",
     "expertVetting": "Multi-layered vetting with identity verification, credential validation, LinkedIn/resume cross-referencing, and peer verification",
@@ -28,6 +58,11 @@
   "featured": false,
   "priority": 16,
   "published": true,
+  "categoryBadge": "Marketplace",
+  "deliveryModel": "Marketplace",
+  "regionStrength": "North America",
+  "complianceBadge": "Standard Compliance",
+  "aiBadge": "AI Matching",
   "comparison": {
     "expertCalls": true,
     "contentLibrary": false,
@@ -36,21 +71,36 @@
     "complianceTools": true
   },
   "lastUpdated": "2026-03-07",
-
   "overview": "Maven is a global knowledge marketplace and microconsulting platform founded in 2008 by Wyatt Nordstrom and Mark Platosh. Deliberately positioning itself beyond the traditional 'expert network' label, Maven operates as a self-service platform connecting knowledge seekers with 1M+ experts across 200+ countries — making it one of the largest expert databases in the industry alongside GLG and Guidepoint.\n\nMaven's core differentiator is accessibility. While premium expert networks charge $1,000+ per call, Maven starts at $150 for a 30-minute consultation with no long-term contracts. This pay-as-you-go model appeals to SMBs, startups, consulting firms, and budget-conscious research teams. The company also offers unlimited subscription access for up to $30,000.\n\nBeyond expert calls, Maven has evolved into three interconnected businesses: (1) the expert marketplace for consultations, surveys, and consulting projects; (2) a leading B2B and Healthcare Professional (HCP) sample provider for market research firms, known for the highest-quality B2B/HCP sample with removal rates an order of magnitude below industry average; and (3) a white-label consultant management platform that enables organizations to build private, custom expert networks integrated with their HRM/CRM systems.\n\nNotable clients include Pepsi, IBM, NASA, Siemens, and Sanofi. Maven generates an estimated $5-10M in annual revenue.",
-
   "history": {
     "narrative": "Wyatt Nordstrom (CEO/Chairman) and Mark Platosh co-founded Maven around 2008, with Anthony J. D'Alessandro also listed as a co-founder. The company built what it calls the 'world's largest consultant referral network' — a proprietary peer referral system where experts recruit other experts, enabling organic network growth to 1M+ professionals without the massive recruiting teams required by traditional expert networks.\n\nMaven raised its first funding — $1M from Accel and angel investors — in 2010, followed by $2M from SuRo Capital in 2012. The company completed its Series A in January 2017, bringing total funding to approximately $3-8M (sources vary). Rather than pursuing aggressive venture-backed growth, Maven has operated relatively lean, building a sustainable business across expert calls, B2B sample, and enterprise platform services.",
     "timeline": [
-      { "year": "2008", "event": "Founded by Wyatt Nordstrom and Mark Platosh" },
-      { "year": "2010", "event": "Raised $1M from Accel and angel investors" },
-      { "year": "2012", "event": "Raised $2M from SuRo Capital to expand services" },
-      { "year": "2017 (January)", "event": "Completed Series A funding round" },
-      { "year": "2018-2022", "event": "Grew network to 1M+ experts across 200+ countries; expanded B2B/HCP sample business" },
-      { "year": "2023-2025", "event": "Launched OpenTalent model and white-label consultant management platform; expanded enterprise capabilities" }
+      {
+        "year": "2008",
+        "event": "Founded by Wyatt Nordstrom and Mark Platosh"
+      },
+      {
+        "year": "2010",
+        "event": "Raised $1M from Accel and angel investors"
+      },
+      {
+        "year": "2012",
+        "event": "Raised $2M from SuRo Capital to expand services"
+      },
+      {
+        "year": "2017 (January)",
+        "event": "Completed Series A funding round"
+      },
+      {
+        "year": "2018-2022",
+        "event": "Grew network to 1M+ experts across 200+ countries; expanded B2B/HCP sample business"
+      },
+      {
+        "year": "2023-2025",
+        "event": "Launched OpenTalent model and white-label consultant management platform; expanded enterprise capabilities"
+      }
     ]
   },
-
   "servicesDetailed": [
     {
       "name": "Expert Interviews (IDIs)",
@@ -81,7 +131,6 @@
       "description": "Source professionals for part-time, temporary, or full-time roles through the expert network. 15% fee on first-year compensation for permanent placements."
     }
   ],
-
   "aiPlatform": {
     "narrative": "Maven is technology-first with AI-powered expert matching that analyzes requests and continuously improves match quality. The platform's most distinctive technology is its proprietary peer referral system — described as the world's largest consultant referral network — which grows the expert database organically. The referral commission system pays 10% ongoing bonus for first-year referral earnings, 50% one-time commission for specific inquiry referrals, and 40% client discounts when referred experts consult with colleagues. This creates a viral growth loop that built the 1M+ expert network without traditional recruiting overhead.",
     "features": [
@@ -95,7 +144,6 @@
       "Double-blinded survey environment for research integrity"
     ]
   },
-
   "complianceExtended": {
     "narrative": "Maven maintains compliance controls appropriate for its diverse client base spanning corporate, healthcare, and investment research. The platform is particularly strong in healthcare compliance, with features designed for HIPAA, Sunshine Act, FCPA, and debarment screening — critical for HCP (Healthcare Professional) engagements. Maven is self-certified under the EU-U.S. Data Privacy Framework, UK Extension, and Swiss-U.S. Data Privacy Framework.",
     "highlights": [
@@ -109,7 +157,6 @@
     ],
     "regulatoryContext": "Maven serves a broad client base including healthcare/pharma companies requiring HIPAA compliance and investment firms needing MNPI controls. The self-service model places some compliance responsibility on clients. EU-U.S. Data Privacy Framework certified. No evidence of SOC 2 or ISO 27001 certification. Clean regulatory record."
   },
-
   "clientFit": {
     "narrative": "Maven is ideal for organizations that want expert network access without premium pricing or long-term commitments. The self-service model, transparent pricing, and pay-as-you-go structure make it the most accessible expert network for SMBs, startups, and budget-conscious research teams. Maven's HCP sample business also makes it a key partner for market research firms. However, teams with growing institutional needs often 'graduate' to larger networks like GLG or Third Bridge.",
     "segments": [
@@ -121,7 +168,6 @@
       "VC/PE firms conducting due diligence at lower cost than premium networks"
     ]
   },
-
   "strengths": [
     "1M+ experts across 200+ countries — one of the largest databases in the industry",
     "Lowest pricing in the industry: $150/30min vs. ~$1,000 at premium networks",
@@ -134,7 +180,6 @@
     "Discounts for startups, nonprofits, and educational institutions",
     "Notable clients include Pepsi, IBM, NASA, Siemens, and Sanofi"
   ],
-
   "caveats": [
     "Not among the 'Big Five' — less brand recognition with large institutional clients",
     "Self-service model means less hand-holding than full-service networks",
@@ -144,7 +189,6 @@
     "Teams with growing needs often 'graduate' to larger, more institutional networks",
     "Expert pay processing (3-10 days) noted as slower than some competitors"
   ],
-
   "notableFacts": [
     "Claims the world's largest consultant referral network — 1M+ experts grown organically through peer referrals",
     "Referral commission system: 10% ongoing for first-year earnings, 50% one-time for specific referrals",
@@ -156,7 +200,6 @@
     "Subscription pricing ranges from $150 (single call) to $30,000 (unlimited access)",
     "OpenTalent model combines internal and external expertise for enterprise clients"
   ],
-
   "sourceNotes": [
     "Maven official website (maven.co) — company overview, pricing, services, compliance, and product pages",
     "Maven About page — founding story, mission, and team information",
@@ -170,10 +213,18 @@
     "Expert Network Calls directory — Maven Research profile and service overview",
     "CleverX Expert Network Comparison Guide — competitive positioning"
   ],
-
-  "whyChoose": ["$150 starting price", "1M+ expert network", "Pay-as-you-go flexibility", "Healthcare/HCP sample leader"],
-  "whenNotIdeal": ["Need institutional prestige", "Want full-service hand-holding", "Require SOC 2 compliance", "Need analyst-led research"],
-
+  "whyChoose": [
+    "$150 starting price",
+    "1M+ expert network",
+    "Pay-as-you-go flexibility",
+    "Healthcare/HCP sample leader"
+  ],
+  "whenNotIdeal": [
+    "Need institutional prestige",
+    "Want full-service hand-holding",
+    "Require SOC 2 compliance",
+    "Need analyst-led research"
+  ],
   "confidence": {
     "founded": "verified",
     "headquarters": "verified",

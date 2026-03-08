@@ -14,13 +14,47 @@
   "expertCount": "1.5M+",
   "expertCountLabel": "Individually recruited & vetted experts",
   "description": "Third Bridge is an analyst-led expert network founded in 2007 as Cognolink and rebranded in 2015. The firm differentiates from access-model competitors through in-house analyst moderation of every expert call, producing structured, comparable, and reusable content. Third Bridge operates across 12 offices on four continents and serves 1,000+ clients, with particular strength in private equity due diligence. Its Library (formerly Forum) contains analyst-led interview transcripts covering 65,000+ companies, and its Maps product provides visual value-chain intelligence on 100,000+ companies. The firm has pursued an open distribution strategy for its content, partnering with Anthropic/Claude, Aiera, Hebbia, and other AI platforms in 2025.",
-  "services": ["Connections (Expert Calls)", "Library (Transcripts)", "Maps", "Surveys", "Advisors", "Data Feeds"],
-  "aiCapabilities": ["AI-powered search across Library transcripts", "AI-generated call summaries and transcripts", "Open distribution via Anthropic/Claude, Aiera, Hebbia, Portrait Analytics, Finster AI", "Personalized alerts and watchlists", "Maps visual value-chain intelligence"],
-  "industries": ["Private Equity", "Hedge Funds", "Mutual Funds / Public Equity", "Credit / Debt Funds", "Management Consulting", "Investment Banking", "Corporate Strategy"],
+  "services": [
+    "Connections (Expert Calls)",
+    "Library (Transcripts)",
+    "Maps",
+    "Surveys",
+    "Advisors",
+    "Data Feeds"
+  ],
+  "aiCapabilities": [
+    "AI-powered search across Library transcripts",
+    "AI-generated call summaries and transcripts",
+    "Open distribution via Anthropic/Claude, Aiera, Hebbia, Portrait Analytics, Finster AI",
+    "Personalized alerts and watchlists",
+    "Maps visual value-chain intelligence"
+  ],
+  "industries": [
+    "Private Equity",
+    "Hedge Funds",
+    "Mutual Funds / Public Equity",
+    "Credit / Debt Funds",
+    "Management Consulting",
+    "Investment Banking",
+    "Corporate Strategy"
+  ],
   "pricingModel": "Credit-based",
   "pricingDetail": "Subscription credits (1 credit ≈ 1 standard call); multipliers for senior experts",
-  "keyDifferentiators": ["Analyst-led moderation of every expert call", "Library transcript archive covering 65,000+ companies", "Maps: visual value-chain intelligence on 100,000+ companies", "Custom expert sourcing only — no self-referred experts", "Open AI distribution strategy (Claude, Aiera, Hebbia, etc.)", "Credit-based subscription model with bundled content access"],
-  "bestFor": ["Private equity due diligence", "Hedge funds needing reusable content library", "Asset managers wanting analyst-curated insights", "Teams that prefer structured, comparable research outputs", "Firms looking for AI-integrated content workflows"],
+  "keyDifferentiators": [
+    "Analyst-led moderation of every expert call",
+    "Library transcript archive covering 65,000+ companies",
+    "Maps: visual value-chain intelligence on 100,000+ companies",
+    "Custom expert sourcing only — no self-referred experts",
+    "Open AI distribution strategy (Claude, Aiera, Hebbia, etc.)",
+    "Credit-based subscription model with bundled content access"
+  ],
+  "bestFor": [
+    "Private equity due diligence",
+    "Hedge funds needing reusable content library",
+    "Asset managers wanting analyst-curated insights",
+    "Teams that prefer structured, comparable research outputs",
+    "Firms looking for AI-integrated content workflows"
+  ],
   "compliance": {
     "mnpiPolicy": "Experts contractually prohibited from disclosing MNPI; must decline participation if they possess MNPI about companies under discussion",
     "expertVetting": "All experts custom-sourced and background-checked; self-referred experts prohibited; additional checks for high-activity experts",
@@ -31,6 +65,11 @@
   "featured": true,
   "priority": 3,
   "published": true,
+  "categoryBadge": "Major Provider",
+  "deliveryModel": "Concierge",
+  "regionStrength": "Global",
+  "complianceBadge": "Strong Compliance",
+  "aiBadge": "AI Research",
   "comparison": {
     "expertCalls": true,
     "contentLibrary": "Library",
@@ -39,26 +78,56 @@
     "complianceTools": true
   },
   "lastUpdated": "2026-03-06",
-
   "overview": "Third Bridge is an analyst-led expert network that differentiates from access-model competitors (like GLG, AlphaSights, and Guidepoint) by having in-house analysts moderate every expert call. This produces structured, comparable transcripts that become reusable content in the Library. The firm was originally founded as Cognolink in 2007 by three former Bain & Company consultants and rebranded to Third Bridge in 2015. The name comes from a wooden bridge in Botswana's Okavango Delta — the third bridge travelers cross before entering unexplored territory, symbolizing discovery through local knowledge. Third Bridge serves 1,000+ clients across PE, hedge funds, consulting, and corporate strategy, with 12 offices across four continents and an increasingly open AI distribution strategy for its content.",
-
   "history": {
     "narrative": "Third Bridge was founded in 2007 as Cognolink by Emmanuel Tahar (CEO), Joshua Maxey, and Rodolphe De Hemptinne — all former Bain & Company consultants. Bain was reportedly an early client. Lacking a pre-built expert database, Cognolink pioneered custom-sourcing experts directly for live projects. The firm was one of the first to successfully challenge GLG's market dominance, growing in tandem with AlphaSights. In 2015, the company rebranded from Cognolink to Third Bridge, taking the name of one of its business units. The firm has grown to GBP 215 million in revenue (FY2023) with a 46% five-year revenue CAGR, backed by PE investors Astorg and IK Partners, while founders retain majority ownership.",
     "timeline": [
-      { "year": "2007", "event": "Founded as Cognolink in London by Emmanuel Tahar, Joshua Maxey, and Rodolphe De Hemptinne (all ex-Bain)" },
-      { "year": "2010", "event": "Acquires Epito (Swedish/Nordic expert network); opens Shanghai office" },
-      { "year": "2012", "event": "Raises ~$4.5M from Beringea for 13% stake (implying ~$35M post-money valuation)" },
-      { "year": "2015", "event": "Rebrands from Cognolink to Third Bridge" },
-      { "year": "2017", "event": "IK Partners acquires minority stake from founders and Beringea" },
-      { "year": "2019", "event": "Featured in Sunday Times BDO Profit Track 100 (fastest-growing profits among UK private companies)" },
-      { "year": "Jan 2021", "event": "Astorg invests >$200M for minority stake; IK reinvests alongside; founders retain majority ownership" },
-      { "year": "2022", "event": "Opens Dallas office" },
-      { "year": "2023", "event": "Revenue reaches GBP 215M (~$270M USD); 46% five-year CAGR; Library covers 65,000+ companies" },
-      { "year": "Apr 2025", "event": "Opens Dubai office (12th office, first in Middle East)" },
-      { "year": "2025", "event": "Launches AI distribution partnerships with Anthropic/Claude, Aiera, Hebbia, Portrait Analytics, Finster AI, Samaya AI, Rogo" }
+      {
+        "year": "2007",
+        "event": "Founded as Cognolink in London by Emmanuel Tahar, Joshua Maxey, and Rodolphe De Hemptinne (all ex-Bain)"
+      },
+      {
+        "year": "2010",
+        "event": "Acquires Epito (Swedish/Nordic expert network); opens Shanghai office"
+      },
+      {
+        "year": "2012",
+        "event": "Raises ~$4.5M from Beringea for 13% stake (implying ~$35M post-money valuation)"
+      },
+      {
+        "year": "2015",
+        "event": "Rebrands from Cognolink to Third Bridge"
+      },
+      {
+        "year": "2017",
+        "event": "IK Partners acquires minority stake from founders and Beringea"
+      },
+      {
+        "year": "2019",
+        "event": "Featured in Sunday Times BDO Profit Track 100 (fastest-growing profits among UK private companies)"
+      },
+      {
+        "year": "Jan 2021",
+        "event": "Astorg invests >$200M for minority stake; IK reinvests alongside; founders retain majority ownership"
+      },
+      {
+        "year": "2022",
+        "event": "Opens Dallas office"
+      },
+      {
+        "year": "2023",
+        "event": "Revenue reaches GBP 215M (~$270M USD); 46% five-year CAGR; Library covers 65,000+ companies"
+      },
+      {
+        "year": "Apr 2025",
+        "event": "Opens Dubai office (12th office, first in Middle East)"
+      },
+      {
+        "year": "2025",
+        "event": "Launches AI distribution partnerships with Anthropic/Claude, Aiera, Hebbia, Portrait Analytics, Finster AI, Samaya AI, Rogo"
+      }
     ]
   },
-
   "servicesDetailed": [
     {
       "name": "Connections (Expert Calls)",
@@ -85,7 +154,6 @@
       "description": "API and programmatic access to Third Bridge content for integration into clients' own platforms and workflows. Part of the firm's open distribution strategy, enabling institutional clients to embed Third Bridge intelligence into their internal research infrastructure."
     }
   ],
-
   "aiPlatform": {
     "narrative": "Third Bridge has pursued an open distribution strategy for its content — contrasting with the 'walled garden' approach of some competitors. Rather than building a single proprietary AI interface, Third Bridge has partnered with multiple AI platforms to make its expert insights available wherever clients work. In October 2025, Third Bridge announced integration with Anthropic's Claude for financial services. Throughout 2025, it also announced partnerships with Aiera (in which it invested), Portrait Analytics, Hebbia, Finster AI, Samaya AI, Rogo, and Model ML. Product-level AI features include AI-powered search across the Library, AI-generated call summaries and transcripts, and personalized alerts and watchlists.",
     "features": [
@@ -98,7 +166,6 @@
       "Investment in Aiera alongside content integration partnership"
     ]
   },
-
   "complianceExtended": {
     "narrative": "Third Bridge's compliance model is structurally differentiated by the analyst-moderated call format. Because every call is led by an in-house Third Bridge interviewer — not left to direct client-expert interaction — there is an additional layer of compliance oversight built into the core product. Experts are contractually prohibited from disclosing MNPI, must decline participation if they possess MNPI about companies under discussion, and self-referred experts are prohibited entirely. Third Bridge maintains a dedicated global compliance team with regular audits and continuous process updates. Clients can add their own compliance rules and restricted lists.",
     "highlights": [
@@ -112,7 +179,6 @@
     ],
     "regulatoryContext": "No known regulatory enforcement actions against Third Bridge were identified in this review. The SEC's 2022 Risk Alert on expert networks was an industry-wide communication, not directed at Third Bridge specifically. The firm's analyst-moderated call format and prohibition on self-referred experts are structural features that reduce certain categories of compliance risk relative to access-only models."
   },
-
   "clientFit": {
     "narrative": "Third Bridge is especially well suited for clients who value curated, analyst-led content and reusable research over raw expert access. The Library creates a compounding knowledge asset that rewards long-term subscription relationships. The firm's PE-centric workflows and structured output format make it particularly strong for deal teams and research-intensive investors.",
     "segments": [
@@ -124,7 +190,6 @@
       "Corporate strategy teams needing visual value-chain intelligence (Maps)"
     ]
   },
-
   "strengths": [
     "Analyst-led call moderation — every call is structured, probed, and quality-controlled",
     "Library creates a compounding content asset covering 65,000+ companies",
@@ -136,7 +201,6 @@
     "12 offices across 4 continents; 1,500+ employees",
     "GBP 215M revenue (FY2023) with 46% five-year CAGR"
   ],
-
   "caveats": [
     "Credit-based pricing can obscure true costs — multipliers for senior experts mean effective per-call rates may be higher than headline credit price",
     "Analyst-moderated format means less direct client-expert interaction than access-model competitors",
@@ -145,7 +209,6 @@
     "Lost three senior leaders in 2022 (President, CFO, Chief People Officer) — leadership stability question",
     "Employee count discrepancy: company says 1,500+ but third-party estimates range 2,100–2,300"
   ],
-
   "notableFacts": [
     "Founded in 2007 as Cognolink by three former Bain & Company consultants",
     "Named after the third wooden bridge in Botswana's Okavango Delta — symbolizing discovery through local knowledge",
@@ -161,7 +224,6 @@
     "Shortlisted for ICA Compliance Training Initiative of the Year (2024)",
     "Acquired Epito (Swedish/Nordic expert network) in 2010 — only known acquisition"
   ],
-
   "sourceNotes": [
     "Third Bridge official website (thirdbridge.com) used as primary source for product descriptions, compliance framework, and company positioning",
     "Founding story, rebranding history, and office timeline sourced from Wikipedia, Inex One, and Astorg/IK Partners press releases — cross-referenced with company site",
@@ -173,10 +235,18 @@
     "Leadership departure note (2022) sourced from industry reporting; context not fully available",
     "No Mosaic acquisition by Third Bridge was identified — the Mosaic/Stream acquisition was by AlphaSense in 2021"
   ],
-
-  "whyChoose": ["Analyst-led quality", "65K+ company library", "Maps intelligence", "Open AI distribution"],
-  "whenNotIdeal": ["Wants direct expert access", "Price-sensitive teams", "Needs pure self-serve", "Real-time call control"],
-
+  "whyChoose": [
+    "Analyst-led quality",
+    "65K+ company library",
+    "Maps intelligence",
+    "Open AI distribution"
+  ],
+  "whenNotIdeal": [
+    "Wants direct expert access",
+    "Price-sensitive teams",
+    "Needs pure self-serve",
+    "Real-time call control"
+  ],
   "confidence": {
     "founded": "verified",
     "headquarters": "verified",
