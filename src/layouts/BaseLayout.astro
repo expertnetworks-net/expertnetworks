@@ -14,7 +14,7 @@ interface Props {
 
 const {
   title = 'Expert Network Directory & Industry Intelligence | ExpertNetworks.net',
-  description = 'Independent expert network directory with 33+ provider profiles, side-by-side comparisons, pricing models, compliance frameworks, AI capabilities, and industry news. No sign-ups, no bias.',
+  description = 'Compare 33+ expert networks across pricing, compliance, expert coverage, AI capabilities, and market positioning. Independent profiles, side-by-side analysis, and industry news — free, no sign-ups.',
   ogImage = '/og-default.png',
   ogType = 'website',
   canonicalPath,
@@ -71,7 +71,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png" />
-  <link rel="apple-touch-icon" sizes="192x192" href="/favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
   <!-- JSON-LD Structured Data -->
   {jsonLd && (
@@ -84,7 +84,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
     "@type": "Organization",
     "name": "ExpertNetworks.net",
     "url": "https://expertnetworks.net",
-    "logo": "https://expertnetworks.net/favicon.svg",
+    "logo": "https://expertnetworks.net/favicon-512.png",
     "description": "Independent expert network directory and industry intelligence resource.",
     "sameAs": []
   })} />
