@@ -29,7 +29,7 @@ As verified in the current codebase on March 8, 2026, the site includes:
 
 - 33 published provider profiles in `src/content/networks/`
 - 52 published news signals in `src/content/news/`
-- a compare experience with 6 default providers, 9 presets, and a differences-only mode
+- a compare experience with 6 default providers, 14 presets, 13 buyer pathways, explainable insights, and layered comparison views
 - a network directory with search, filters, sort, compare selection, and grid/list views
 - individual profile pages with shared summary structure and optional deep-dive sections
 - an industry intelligence page with featured items, filters, and feed/signals views
@@ -67,7 +67,7 @@ This repository is intentionally transparent about its limitations. Public-sourc
 - Tailwind CSS 3
 - Astro Content Collections with Zod validation in `src/content.config.ts`
 - `@astrojs/sitemap` for sitemap generation
-- plain client-side JavaScript embedded inside `.astro` pages for interactive UI features
+- plain browser JavaScript for interactive UI features, with compare logic shared in `src/lib/compare-v2.ts` and `src/scripts/compare-page.ts`
 
 The current codebase does not use React components or Astro React islands.
 
@@ -82,7 +82,9 @@ Most interactivity is page-local:
 - `src/components/Header.astro` handles the global menu drawer and search overlay
 - `src/pages/networks/index.astro` handles directory search, filters, sort, view toggle, and compare selection
 - `src/pages/networks/[slug].astro` handles profile-side navigation and mobile drawer behavior
-- `src/pages/compare.astro` handles presets, provider add/remove, URL sync, and differences-only mode
+- `src/pages/compare.astro` server-renders the default Compare V2 state
+- `src/lib/compare-v2.ts` is the shared compare view-model and HTML renderer
+- `src/scripts/compare-page.ts` handles compare-page state, filters, URL sync, and modal interactions in the browser
 - `src/pages/news/index.astro` handles intelligence filters and alternate view rendering
 
 ## Content Model
@@ -120,8 +122,10 @@ This file defines:
 
 - the default providers shown on `/compare`
 - the preset comparison groups
+- buyer pathways grouped by buyer type, workflow need, and regional/specialty use case
+- explainable insights and recommendation-summary logic inputs
 - the section and row structure for the compare matrix
-- enriched compare-only fields such as provider type, AI workflow capabilities, evidence labels, and tradeoff notes
+- enriched compare-only fields such as provider type, substitute context, AI workflow capabilities, evidence labels, and tradeoff notes
 
 ## Local Development
 
@@ -179,6 +183,12 @@ The site is built as static output in `dist/` and is suitable for static hosting
 
 This repository is currently wired to GitHub and Cloudflare Pages. The exact production branch should always be confirmed in Cloudflare Pages settings before assuming which branch push will update the live site.
 
+Last verified operational state on March 8, 2026:
+
+- GitHub default branch: `main`
+- Cloudflare Pages preview branch: `main`
+- Cloudflare Pages production branch: `claude/expert-network-sources-6oGs1`
+
 The repo also includes a GitHub Actions workflow at `.github/workflows/verify.yml` that runs:
 
 - `npm ci`
@@ -200,7 +210,8 @@ If you are updating code:
 
 - preserve the static architecture unless there is an explicit decision to add runtime infrastructure
 - do not reintroduce admin, API, or dashboard language unless the implementation actually exists
-- be careful with inline browser scripts, since much of the UI depends on them
+- keep compare rendering logic centralized in `src/lib/compare-v2.ts` and `src/scripts/compare-page.ts` instead of duplicating it back into `src/pages/compare.astro`
+- be careful with browser-script selectors and `data-*` attributes, since much of the UI depends on them
 
 ## Repository Structure
 
@@ -212,8 +223,10 @@ src/
     networks/         One JSON file per provider
     news/             One JSON file per signal
   content.config.ts   Zod-backed collection schemas
+  lib/                Shared build-time helpers such as compare rendering
   layouts/            Shared page layout and metadata handling
   pages/              Public Astro routes
+  scripts/            Bundled browser controllers such as compare-page.ts
 scripts/
   verify-dist-links.mjs
 .github/workflows/
@@ -238,6 +251,8 @@ The current repository state is a static-only public site.
 
 - There is no admin panel.
 - There are no API endpoints.
+- The compare page now uses a shared render helper plus a smaller client controller instead of one giant inline script.
+- Query-string-specific compare selections still finalize client-side after load because the site is static and query params are not available at build time.
 - The repo acts as the CMS.
 - The compare, directory, news, and profile experiences all run on top of build-time JSON content plus page-local JavaScript.
 - The docs and config in this repo were audited against the actual codebase on March 8, 2026.

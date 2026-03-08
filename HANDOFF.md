@@ -10,7 +10,7 @@ Current verified scope:
 
 - 33 published provider profiles
 - 52 published news signals
-- compare page with 6 default providers, 9 presets, and differences-only mode
+- compare page with 6 default providers, 14 presets, 13 buyer pathways, explainable insights, and layered compare views
 - public editorial pages for methodology, verification, privacy, disclaimer, and category guides
 
 There is no admin panel, no API layer, and no runtime editing workflow in the current codebase.
@@ -35,6 +35,8 @@ There is no admin panel, no API layer, and no runtime editing workflow in the cu
 - `src/pages/networks/[slug].astro`
 - `src/pages/compare.astro`
 - `src/pages/news/index.astro`
+- `src/lib/compare-v2.ts`
+- `src/scripts/compare-page.ts`
 
 ### Shared site chrome
 
@@ -80,8 +82,9 @@ There is no admin panel, no API layer, and no runtime editing workflow in the cu
 
 1. Edit `src/content/compare.json`.
 2. Keep all referenced slugs aligned with published provider files.
-3. Check presets, default networks, and section rows after the change.
-4. Run `npm run verify`.
+3. If the change affects rendering or interaction logic, update `src/lib/compare-v2.ts` and `src/scripts/compare-page.ts` instead of re-adding large inline logic to `src/pages/compare.astro`.
+4. Check presets, buyer pathways, explainable insights, and section rows after the change.
+5. Run `npm run verify`.
 
 ## High-Risk Areas
 
@@ -109,12 +112,22 @@ Small DOM or ID changes can break runtime behavior even if the build still passe
 
 ### Compare page
 
-`src/pages/compare.astro` is the most stateful page in the site. Changes to:
+The compare experience is split across:
+
+- `src/pages/compare.astro`
+- `src/lib/compare-v2.ts`
+- `src/scripts/compare-page.ts`
+- `src/content/compare.json`
+
+Changes to:
 
 - URL parameter handling
 - presets
+- buyer pathways
+- explainable insights
 - section structure
 - enriched compare fields
+- server-rendered default compare state
 - scroll-nav behavior
 
 need careful regression testing.
@@ -145,6 +158,14 @@ What it does not cover:
 - visual regressions
 - all cross-file slug relationships
 
+If compare changed, also do a quick browser pass on `/compare` covering:
+
+- preset or pathway switching
+- `Differences only`
+- `High-confidence rows`
+- add/remove provider flow
+- a single-provider URL such as `/compare?networks=alphasights`
+
 ## What To Check Before Publishing
 
 - Build passes with `npm run verify`
@@ -162,7 +183,8 @@ This project is deployed as a static site.
 Current operational reality, verified on March 8, 2026:
 
 - GitHub default branch is `main`
-- Cloudflare Pages production branch still needs to be treated as a separate setting
+- Cloudflare Pages preview branch is `main`
+- Cloudflare Pages production branch is `claude/expert-network-sources-6oGs1`
 
 Do not assume that changing the GitHub default branch automatically changes Cloudflare production.
 
@@ -184,6 +206,7 @@ Always verify:
 - `src/content.config.ts` alignment with JSON content
 - slug consistency across content files
 - compare presets and compare section structure
+- compare render consistency between `compare.astro`, `compare-v2.ts`, and `compare-page.ts`
 - header search and menu behavior
 - provider-directory filtering and compare selection
 - provider-page sidebar navigation
@@ -206,6 +229,7 @@ Compare uses both:
 
 - base provider fields from the network JSON files
 - compare-specific enriched metadata from `src/content/compare.json`
+- a shared render helper in `src/lib/compare-v2.ts`
 
 Adding a provider to compare often means touching both datasets.
 

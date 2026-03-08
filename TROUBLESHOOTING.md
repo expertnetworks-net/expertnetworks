@@ -210,21 +210,30 @@ That page contains sidebar navigation and mobile-panel logic. It is easy to brea
 
 ### Compare page stops responding or URL behavior is wrong
 
-Check `src/pages/compare.astro`.
+Check all three compare files together:
+
+- `src/pages/compare.astro`
+- `src/lib/compare-v2.ts`
+- `src/scripts/compare-page.ts`
 
 The compare page manages:
 
 - default provider state
 - preset switching
+- buyer pathways
 - add/remove provider actions
 - URL parameter normalization
 - differences-only mode
+- high-confidence filtering
+- evidence-note filtering
 - scroll-progress navigation
 
 If compare behavior regresses, test both:
 
 - a normal compare URL
 - a single-provider URL such as `/compare?networks=alphasights`
+
+If server-rendered HTML and client-side behavior disagree, `src/lib/compare-v2.ts` is the first place to inspect because it now provides the shared compare render logic for both.
 
 ### News filters or alternate view break
 
@@ -252,6 +261,12 @@ Questions to verify:
 3. Did you push to that branch, or only to `main`?
 
 This is a known operational gotcha in the current repo history.
+
+Last verified on March 8, 2026:
+
+- GitHub default branch: `main`
+- Cloudflare preview branch: `main`
+- Cloudflare production branch: `claude/expert-network-sources-6oGs1`
 
 ### Local build works, but Cloudflare Pages fails
 
@@ -292,6 +307,8 @@ If you see instructions mentioning `.env`, `ADMIN_PASSWORD`, or auth tokens for 
 | Directory UI issue | `src/pages/networks/index.astro` |
 | Provider page UI issue | `src/pages/networks/[slug].astro` |
 | Compare UI issue | `src/pages/compare.astro` |
+| Compare render logic | `src/lib/compare-v2.ts` |
+| Compare client interactions | `src/scripts/compare-page.ts` |
 | News UI issue | `src/pages/news/index.astro` |
 | Link verification behavior | `scripts/verify-dist-links.mjs` |
 | CI verification behavior | `.github/workflows/verify.yml` |

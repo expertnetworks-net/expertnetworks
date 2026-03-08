@@ -157,13 +157,37 @@ Builds a provider comparison matrix from:
 - published network entries
 - `src/content/compare.json`
 
-The page pre-renders the default comparison and uses inline browser JavaScript for:
+The compare implementation is split across:
+
+- `src/pages/compare.astro`
+- `src/lib/compare-v2.ts`
+- `src/scripts/compare-page.ts`
+
+`src/pages/compare.astro` pre-renders the default Compare V2 state at build time. `src/lib/compare-v2.ts` is the shared compare renderer used for both the initial HTML and client-side rerenders. `src/scripts/compare-page.ts` owns browser state and interaction wiring.
+
+The page currently supports:
+
+- buyer pathways
+- recommendation summary cards
+- explainable insights
+- provider snapshot cards
+- layered comparison tables
+- contextual disclaimers
+- differences-only, high-confidence, and evidence-note filters
+- provider add/remove and URL synchronization
+
+Client-side behavior is still required for:
 
 - preset switching
+- buyer-pathway switching
 - provider add/remove
 - URL synchronization
 - differences-only filtering
+- high-confidence filtering
+- evidence-note expansion state
 - section progress navigation
+
+Because the site is static, query-string-specific selections are not known at build time. The default compare state is server-rendered, while URL-specific compare state is finalized client-side after load.
 
 ### News page
 
@@ -248,16 +272,16 @@ Homepage component that renders:
 
 The site is not a SPA. There is no client-side router and no state library.
 
-Interactivity is implemented with inline scripts inside `.astro` files. Current interactive areas include:
+Interactivity is implemented with a mix of inline scripts inside `.astro` files and small bundled browser modules. Current interactive areas include:
 
 - global search and menu drawer
 - homepage hero effects
 - directory filtering and compare selection
 - profile-page sidebar toggles and search
-- compare-page presets, add/remove flow, differences-only mode, and URL state
+- compare-page presets, pathways, add/remove flow, layered compare rerendering, and URL state
 - news filters and feed/signals view switching
 
-This makes the project easy to host statically, but it also means UI logic is distributed across multiple page files rather than a shared client application.
+This keeps the project easy to host statically, but UI logic is still distributed across multiple page files and helper modules rather than one shared client application.
 
 ## Build And Verification Path
 
@@ -291,7 +315,15 @@ GitHub Actions mirrors that same flow in `.github/workflows/verify.yml`.
 
 The resulting `dist/` output is appropriate for static hosts such as Cloudflare Pages.
 
-The repo is currently connected to GitHub Actions and Cloudflare Pages. The GitHub default branch and the Cloudflare production branch should be treated as separate settings and verified independently.
+The repo is currently connected to GitHub Actions and Cloudflare Pages.
+
+Last verified operational state on March 8, 2026:
+
+- GitHub default branch: `main`
+- Cloudflare Pages preview branch: `main`
+- Cloudflare Pages production branch: `claude/expert-network-sources-6oGs1`
+
+The GitHub default branch and the Cloudflare production branch should still be treated as separate settings and verified independently.
 
 ## What Is Intentionally Absent
 
@@ -313,7 +345,8 @@ If any future change depends on those concepts, it should be treated as an archi
 
 - Content lives in JSON files and is easy to diff, review, and revert.
 - Schema enforcement is strong for field types but weaker for cross-file relationships.
-- The heaviest client logic lives in `networks/index.astro`, `compare.astro`, and `news/index.astro`.
+- The heaviest client logic lives in `networks/index.astro`, `news/index.astro`, and the compare stack across `compare.astro`, `compare-v2.ts`, and `compare-page.ts`.
+- Compare rendering is now centralized enough to avoid duplicating HTML-generation logic between server and browser.
 - Many UI behaviors rely on inline scripts, so regressions often show up as browser issues rather than compile failures.
 - `public/` asset paths must stay accurate because broken asset links only surface during build verification or manual review.
 
@@ -331,8 +364,12 @@ If any future change depends on those concepts, it should be treated as an archi
 │   │   ├── networks/
 │   │   └── news/
 │   ├── content.config.ts
+│   ├── lib/
+│   │   └── compare-v2.ts
 │   ├── layouts/
-│   └── pages/
+│   ├── pages/
+│   └── scripts/
+│       └── compare-page.ts
 ├── astro.config.mjs
 ├── package.json
 ├── tailwind.config.mjs

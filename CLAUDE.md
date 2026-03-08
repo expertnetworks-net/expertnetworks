@@ -40,7 +40,7 @@ Do not invent features that are not implemented.
 ### Compare
 
 - File: `src/content/compare.json`
-- Controls default providers, presets, compare sections, and enriched compare-only fields
+- Controls default providers, presets, buyer pathways, explainable insights, compare sections, and enriched compare-only fields
 
 ## Page Ownership
 
@@ -51,7 +51,11 @@ Do not invent features that are not implemented.
 - `src/pages/networks/[slug].astro`
   Provider profile rendering, sidebar navigation, related news
 - `src/pages/compare.astro`
-  Compare matrix, preset logic, URL sync, differences-only mode
+  Compare page shell and server-rendered default compare state
+- `src/lib/compare-v2.ts`
+  Shared compare view-model and HTML renderer
+- `src/scripts/compare-page.ts`
+  Compare-page client controller for filters, modal actions, and URL sync
 - `src/pages/news/index.astro`
   Intelligence feed, filters, alternate view rendering
 
@@ -70,10 +74,11 @@ Do not invent features that are not implemented.
 
 ## Implementation Notes
 
-- Most interactivity is inline browser JavaScript inside `.astro` files.
+- Most interactivity is inline browser JavaScript inside `.astro` files, but the compare page now uses a shared helper plus a bundled client script.
 - This is not a SPA. Navigation is normal page navigation.
 - Build-time content validation is strong; cross-file slug validation is still partly a maintainer responsibility.
 - The compare page is the most stateful public page and easiest to regress.
+- Because the site is static, query-string-specific compare selections still resolve in the browser after load. Do not describe that as SSR.
 
 ## Common Pitfalls
 
@@ -82,6 +87,7 @@ Do not invent features that are not implemented.
 3. Inline-script regressions often come from changing DOM IDs or `data-*` attributes without updating selectors.
 4. Static asset paths under `public/` must match exactly, including filename case.
 5. If architecture changes, docs must be updated in the same pass.
+6. Keep compare rendering logic centralized in `src/lib/compare-v2.ts`; do not recreate a giant inline compare script in `src/pages/compare.astro`.
 
 ## Validation Commands
 
@@ -97,7 +103,8 @@ Use `npm run verify` as the default pre-merge check.
 ## Deployment Context
 
 - GitHub default branch is `main`.
-- Cloudflare Pages production branch should be verified directly before assuming a push will update the live site.
+- Cloudflare Pages preview branch is `main`.
+- Cloudflare Pages production branch is currently `claude/expert-network-sources-6oGs1` and should still be verified directly before assuming a push will update the live site.
 - The site is static and should stay static unless there is an explicit architecture change.
 
 ## Editing Guidance For AI Agents
@@ -105,4 +112,6 @@ Use `npm run verify` as the default pre-merge check.
 - Prefer precise, source-grounded edits over broad rewrites.
 - When rewriting docs, verify claims against code first.
 - When changing content, preserve editorial tone and field semantics.
+- If you change compare behavior, keep `src/pages/compare.astro`, `src/lib/compare-v2.ts`, `src/scripts/compare-page.ts`, and `src/content/compare.json` aligned.
+- If compare changed materially, run `npm run verify` and do a quick browser pass on `/compare`.
 - When unsure, describe current behavior rather than future intent.
