@@ -25,13 +25,15 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
 ---
 
 <BaseLayout
-  description={`Independent expert network intelligence hub tracking ${publishedNetworks.length} providers — compare pricing, compliance, expert pools, and AI capabilities across GLG, AlphaSights, Third Bridge, and more.`}
+  title={`Compare ${publishedNetworks.length} Expert Networks: Pricing, Compliance & AI Capabilities | ExpertNetworks.net`}
+  description={`Independent expert network directory with ${publishedNetworks.length} provider profiles. Compare pricing models, compliance frameworks, expert pools, and AI capabilities across GLG, AlphaSights, Third Bridge, and more.`}
   jsonLd={{
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "ExpertNetworks.net",
+    "alternateName": ["Expert Networks Hub", "Expert Networks Directory"],
     "url": "https://expertnetworks.net",
-    "description": `Independent expert network intelligence hub tracking ${publishedNetworks.length} providers.`,
+    "description": `Independent expert network directory with ${publishedNetworks.length} provider profiles, comparisons, pricing, compliance, and industry news.`,
     "potentialAction": {
       "@type": "SearchAction",
       "target": "https://expertnetworks.net/networks?q={search_term_string}",
@@ -48,8 +50,8 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
     <!-- Layer 5: Content -->
     <div class="relative z-10 pt-[72px] pb-8 md:pt-[88px] md:pb-12 lg:pt-[100px] lg:pb-14 px-4 md:px-6" id="heroContent">
       <div class="max-w-site mx-auto text-center">
-        <h1 id="heroTitle" class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-white" aria-label="The Expert Network Hub"><span id="heroTitleText"></span><span id="heroTitleCursor" class="inline-block w-[3px] h-[0.85em] bg-white/70 align-middle ml-0.5 animate-[heroBlink_0.53s_steps(2)_infinite]"></span></h1>
-        <p id="heroSubtext" class="text-[#a1a1a6] text-sm md:text-base mt-4 leading-relaxed max-w-2xl mx-auto opacity-0 transition-opacity duration-700">Your open guide to the expert network industry. Compare {publishedNetworks.length} providers — pricing, compliance, expert pools, and AI tools — all in one place. No sign-ups, no bias. Explore freely.</p>
+        <h1 id="heroTitle" class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-white" aria-label="Compare Expert Networks"><span id="heroTitleText"></span><span id="heroTitleCursor" class="inline-block w-[3px] h-[0.85em] bg-white/70 align-middle ml-0.5 animate-[heroBlink_0.53s_steps(2)_infinite]"></span></h1>
+        <p id="heroSubtext" class="text-[#a1a1a6] text-sm md:text-base mt-4 leading-relaxed max-w-2xl mx-auto opacity-0 transition-opacity duration-700">Independent directory of {publishedNetworks.length} expert network firms. Compare pricing models, compliance frameworks, expert coverage, AI capabilities, and industry news — all in one place. No sign-ups, no paywalls.</p>
         <div id="heroCtas" class="flex flex-col sm:flex-row gap-3 justify-center items-center mt-5 md:mt-6 opacity-0 transition-opacity duration-700">
           <a href="/networks" class="inline-flex items-center gap-1.5 px-5 py-3 md:py-2.5 bg-accent text-white text-sm font-semibold rounded-lg no-underline hover:bg-accent-hover transition-colors">
             Browse All
@@ -71,7 +73,7 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
   <script>
   // ─── Typewriter effect for hero title ───
   (function() {
-    const TITLE_TEXT = 'The Expert Network Hub';
+    const TITLE_TEXT = 'Compare Expert Networks';
     const TYPE_DELAY = 32;       // ms per character — fast, like real typing
     const START_DELAY = 300;     // ms before typing starts
     const CURSOR_LINGER = 500;   // ms cursor stays after typing finishes
