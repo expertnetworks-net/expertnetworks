@@ -13,7 +13,7 @@
   "employeeCountSource": "Employees (company claim; third-party estimates 2,100–2,300)",
   "expertCount": "1.5M+",
   "expertCountLabel": "Individually recruited & vetted experts",
-  "description": "Third Bridge is an analyst-led expert network founded in 2007 as Cognolink and rebranded in 2015. The firm differentiates from access-model competitors through in-house analyst moderation of every expert call, producing structured, comparable, and reusable content. Third Bridge operates across 12 offices on four continents and serves 1,000+ clients, with particular strength in private equity due diligence. Its Library (formerly Forum) contains analyst-led interview transcripts covering 65,000+ companies, and its Maps product provides visual value-chain intelligence on 100,000+ companies. The firm has pursued an open distribution strategy for its content, partnering with Anthropic/Claude, Aiera, Hebbia, and other AI platforms in 2025.",
+  "description": "Third Bridge is an analyst-led expert network founded in 2007 as Cognolink and rebranded in 2015. The firm differentiates from access-model competitors through in-house analyst moderation of its core expert calls, producing structured, comparable, and reusable content. Third Bridge operates across 12 offices on four continents and serves 1,000+ clients, with particular strength in private equity due diligence. Its Library (formerly Forum) contains analyst-led interview transcripts covering 65,000+ companies, and its Maps product provides visual value-chain intelligence on 100,000+ companies. The firm has pursued an open distribution strategy for its content, partnering with Anthropic/Claude, Aiera, Hebbia, and other AI platforms in 2025.",
   "services": [
     "Connections (Expert Calls)",
     "Library (Transcripts)",
@@ -41,7 +41,7 @@
   "pricingModel": "Credit-based",
   "pricingDetail": "Subscription credits (1 credit ≈ 1 standard call); multipliers for senior experts",
   "keyDifferentiators": [
-    "Analyst-led moderation of every expert call",
+    "Analyst-led moderation as a core differentiator across its Connections product",
     "Library transcript archive covering 65,000+ companies",
     "Maps: visual value-chain intelligence on 100,000+ companies",
     "Custom expert sourcing only — no self-referred experts",
@@ -60,7 +60,7 @@
     "expertVetting": "All experts custom-sourced and background-checked; self-referred experts prohibited; additional checks for high-activity experts",
     "coolingOffPeriod": "Enforced cooling-off periods for public company insiders",
     "auditTrail": true,
-    "regulatoryHistory": "No known regulatory enforcement actions against Third Bridge. Shortlisted for ICA Compliance Training Initiative of the Year Award (2024). All calls are analyst-moderated, adding a structural compliance layer."
+    "regulatoryHistory": "No known regulatory enforcement actions against Third Bridge. Shortlisted for ICA Compliance Training Initiative of the Year Award (2024). Analyst moderation of Connections calls adds a structural compliance layer."
   },
   "featured": true,
   "priority": 3,
@@ -78,7 +78,7 @@
     "complianceTools": true
   },
   "lastUpdated": "2026-03-06",
-  "overview": "Third Bridge is an analyst-led expert network that differentiates from access-model competitors (like GLG, AlphaSights, and Guidepoint) by having in-house analysts moderate every expert call. This produces structured, comparable transcripts that become reusable content in the Library. The firm was originally founded as Cognolink in 2007 by three former Bain & Company consultants and rebranded to Third Bridge in 2015. The name comes from a wooden bridge in Botswana's Okavango Delta — the third bridge travelers cross before entering unexplored territory, symbolizing discovery through local knowledge. Third Bridge serves 1,000+ clients across PE, hedge funds, consulting, and corporate strategy, with 12 offices across four continents and an increasingly open AI distribution strategy for its content.",
+  "overview": "Third Bridge is an analyst-led expert network that differentiates from access-model competitors (like GLG, AlphaSights, and Guidepoint) through in-house analyst moderation of its core Connections product. This produces structured, comparable transcripts that become reusable content in the Library. The firm was originally founded as Cognolink in 2007 by three former Bain & Company consultants and rebranded to Third Bridge in 2015. The name comes from a wooden bridge in Botswana's Okavango Delta — the third bridge travelers cross before entering unexplored territory, symbolizing discovery through local knowledge. Third Bridge serves 1,000+ clients across PE, hedge funds, consulting, and corporate strategy, with 12 offices across four continents and an increasingly open AI distribution strategy for its content.",
   "history": {
     "narrative": "Third Bridge was founded in 2007 as Cognolink by Emmanuel Tahar (CEO), Joshua Maxey, and Rodolphe De Hemptinne — all former Bain & Company consultants. Bain was reportedly an early client. Lacking a pre-built expert database, Cognolink pioneered custom-sourcing experts directly for live projects. The firm was one of the first to successfully challenge GLG's market dominance, growing in tandem with AlphaSights. In 2015, the company rebranded from Cognolink to Third Bridge, taking the name of one of its business units. The firm has grown to GBP 215 million in revenue (FY2023) with a 46% five-year revenue CAGR, backed by PE investors Astorg and IK Partners, while founders retain majority ownership.",
     "timeline": [
@@ -131,7 +131,7 @@
   "servicesDetailed": [
     {
       "name": "Connections (Expert Calls)",
-      "description": "Third Bridge's core offering — but fundamentally different from access-model competitors. Every call is moderated by an in-house Third Bridge analyst who follows a structured agenda, probes for depth, and challenges vague answers. This is not a client-runs-the-call model. All experts are custom-recruited for each engagement, and self-referred experts are prohibited. Calls include recordings, multilingual transcripts, and AI-generated summaries."
+      "description": "Third Bridge's core offering — fundamentally different from access-model competitors. Calls in the Connections product are moderated by in-house Third Bridge analysts who follow structured agendas, probe for depth, and challenge vague answers. Third Bridge also offers direct client-expert interactions for certain use cases. All experts are custom-recruited for each engagement, and self-referred experts are prohibited. Calls include recordings, multilingual transcripts, and AI-generated summaries."
     },
     {
       "name": "Library (formerly Forum)",
@@ -167,9 +167,9 @@
     ]
   },
   "complianceExtended": {
-    "narrative": "Third Bridge's compliance model is structurally differentiated by the analyst-moderated call format. Because every call is led by an in-house Third Bridge interviewer — not left to direct client-expert interaction — there is an additional layer of compliance oversight built into the core product. Experts are contractually prohibited from disclosing MNPI, must decline participation if they possess MNPI about companies under discussion, and self-referred experts are prohibited entirely. Third Bridge maintains a dedicated global compliance team with regular audits and continuous process updates. Clients can add their own compliance rules and restricted lists.",
+    "narrative": "Third Bridge's compliance model is structurally differentiated by the analyst-moderated call format in its Connections product. Because these calls are led by in-house Third Bridge interviewers rather than left to direct client-expert interaction, there is an additional layer of compliance oversight built into the core product. Experts are contractually prohibited from disclosing MNPI, must decline participation if they possess MNPI about companies under discussion, and self-referred experts are prohibited entirely. Third Bridge maintains a dedicated global compliance team with regular audits and continuous process updates. Clients can add their own compliance rules and restricted lists.",
     "highlights": [
-      "Analyst moderation of every call provides structural compliance oversight",
+      "Analyst moderation of Connections calls provides structural compliance oversight",
       "Experts contractually prohibited from disclosing MNPI",
       "Self-referred experts prohibited — all experts custom-sourced and vetted",
       "Background checks upon joining; additional checks for high-activity experts",
@@ -191,7 +191,7 @@
     ]
   },
   "strengths": [
-    "Analyst-led call moderation — every call is structured, probed, and quality-controlled",
+    "Analyst-led call moderation in Connections product — calls are structured, probed, and quality-controlled",
     "Library creates a compounding content asset covering 65,000+ companies",
     "Maps provide visual value-chain intelligence on 100,000+ companies — unique in the market",
     "Custom expert sourcing only; self-referred experts prohibited",

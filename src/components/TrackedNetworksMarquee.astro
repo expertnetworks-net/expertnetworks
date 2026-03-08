@@ -6,6 +6,25 @@ const tracked = allNetworks
   .filter(n => n.data.published && n.data.logo)
   .sort((a, b) => (a.data.priority ?? 99) - (b.data.priority ?? 99))
   .slice(0, 15);
+
+// Build descriptor map for hover cards
+const descriptors: Record<string, string> = {
+  'glg': 'Broad enterprise coverage and scale',
+  'alphasights': 'Fast sourcing and managed service',
+  'third-bridge': 'Library-rich research workflows',
+  'guidepoint': 'Large advisor network and flexible access',
+  'dialectica': 'Hard-to-find experts and research-heavy sourcing',
+  'alphasense-tegus': 'AI-led search plus expert content access',
+  'capvision': 'Asia-Pacific depth and global reach',
+  'atheneum': 'Global coverage with consulting-oriented service',
+  'prosapient': 'Self-serve platform with AI matching',
+  'newtonx': 'B2B surveys and verified professional research',
+  'techspert': 'AI-native expert sourcing for life sciences',
+  'inex-one': 'Marketplace aggregating multiple expert networks',
+  'coleman-research': 'Mid-market expert network with flexible access',
+  'maven': 'Marketplace-style expert access platform',
+  'visasq': 'Asia-Pacific specialist and marketplace model',
+};
 ---
 
 <section class="py-4 sm:py-5 px-4 sm:px-6 border-b border-border/40 overflow-hidden" id="marqueeSection">
@@ -15,27 +34,55 @@ const tracked = allNetworks
     <!-- Desktop: JS-powered infinite marquee -->
     <div class="marquee-wrap relative hidden sm:block" id="marqueeWrap" aria-label="Expert networks covered">
       <div class="marquee-track flex items-center" id="marqueeTrack" style="gap: 20px;">
-        {tracked.map((n) => (
-          <a
-            href={`/networks/${n.data.slug}`}
-            class="marquee-item flex-shrink-0 flex items-center gap-2 px-3 py-2 rounded-lg border border-border/50 bg-white hover:border-accent/40 hover:shadow-sm transition-all group no-underline"
-            title={n.data.name.split(' (')[0]}
-            draggable="false"
-          >
-            <img
-              src={n.data.logo}
-              alt={n.data.name.split(' (')[0]}
-              width="24"
-              height="24"
-              class="w-6 h-6 rounded object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all pointer-events-none"
-              loading="lazy"
+        {tracked.map((n) => {
+          const displayName = n.data.name.split(' (')[0].split(' / ')[0];
+          const desc = descriptors[n.data.slug] || (n.data.description ? n.data.description.slice(0, 70) + '…' : n.data.type || '');
+          const bestFor = (n.data.bestFor || [])[0] || '';
+          return (
+            <a
+              href={`/networks/${n.data.slug}`}
+              class="marquee-item flex-shrink-0 flex items-center gap-2 px-3 py-2 rounded-lg border border-border/50 bg-white hover:border-accent/40 hover:shadow-sm transition-all group no-underline"
+              title={n.data.name.split(' (')[0]}
               draggable="false"
-            />
-            <span class="text-[12px] font-medium text-tertiary group-hover:text-primary transition-colors whitespace-nowrap pointer-events-none">
-              {n.data.name.split(' (')[0].split(' / ')[0]}
-            </span>
-          </a>
-        ))}
+              data-slug={n.data.slug}
+              data-name={n.data.name.split(' (')[0]}
+              data-desc={desc}
+              data-bestfor={bestFor}
+              data-logo={n.data.logo}
+              data-badge={n.data.categoryBadge || ''}
+            >
+              <img
+                src={n.data.logo}
+                alt={n.data.name.split(' (')[0]}
+                width="24"
+                height="24"
+                class="w-6 h-6 rounded object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all pointer-events-none"
+                loading="lazy"
+                draggable="false"
+              />
+              <span class="text-[12px] font-medium text-tertiary group-hover:text-primary transition-colors whitespace-nowrap pointer-events-none">
+                {displayName}
+              </span>
+            </a>
+          );
+        })}
+      </div>
+
+      <!-- Hover card (positioned via JS) -->
+      <div id="marqueeHoverCard" class="marquee-hover-card" aria-hidden="true">
+        <div class="flex items-center gap-2.5 mb-2">
+          <img id="hcLogo" src="" alt="" width="28" height="28" class="w-7 h-7 rounded-lg object-cover flex-shrink-0" />
+          <div>
+            <div id="hcName" class="text-[13px] font-bold text-primary leading-tight"></div>
+            <div id="hcBadge" class="text-[10px] font-semibold uppercase tracking-wider text-accent mt-0.5"></div>
+          </div>
+        </div>
+        <p id="hcDesc" class="text-[11px] text-secondary leading-relaxed mb-1.5"></p>
+        <p id="hcBestFor" class="text-[11px] text-tertiary mb-3"><span class="font-medium text-secondary">Best for:</span> <span id="hcBestForText"></span></p>
+        <div class="flex gap-3 pt-2 border-t border-border/30">
+          <a id="hcProfile" href="#" class="text-[11px] font-semibold text-accent no-underline hover:underline">View profile</a>
+          <a id="hcCompare" href="#" class="text-[11px] font-semibold text-secondary no-underline hover:text-accent hover:underline">Add to compare</a>
+        </div>
       </div>
     </div>
 
@@ -75,6 +122,27 @@ const tracked = allNetworks
     will-change: transform;
   }
 
+  .marquee-hover-card {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 0;
+    width: 260px;
+    background: white;
+    border: 1px solid rgba(210, 210, 215, 0.5);
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+    z-index: 20;
+  }
+
+  .marquee-hover-card.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -101,10 +169,10 @@ const tracked = allNetworks
   }
 
   // ── Config ──
-  var SPEED = 0.5;              // px per frame at 60fps
-  var DECEL_RATE = 0.92;        // hover deceleration (smooth stop)
-  var ACCEL_RATE = 0.06;        // hover release acceleration (smooth start)
-  var GAP = 20;                 // gap between items in px
+  var SPEED = 0.5;
+  var DECEL_RATE = 0.92;
+  var ACCEL_RATE = 0.06;
+  var GAP = 20;
 
   // ── Clone items until track is at least 3x viewport wide ──
   var origItems = track.querySelectorAll('.marquee-item');
@@ -116,7 +184,6 @@ const tracked = allNetworks
     return last.offsetLeft + last.offsetWidth - track.children[0].offsetLeft + GAP;
   }
 
-  // Clone enough sets to fill 3x the wrapper width
   function ensureClones() {
     var wrapWidth = wrap.offsetWidth;
     var setWidth = getSetWidth();
@@ -145,6 +212,83 @@ const tracked = allNetworks
   var setWidth = getSetWidth();
   var lastTime = 0;
 
+  // ── Hover card ──
+  var hoverCard = document.getElementById('marqueeHoverCard');
+  var hcLogo = document.getElementById('hcLogo');
+  var hcName = document.getElementById('hcName');
+  var hcBadge = document.getElementById('hcBadge');
+  var hcDesc = document.getElementById('hcDesc');
+  var hcBestFor = document.getElementById('hcBestFor');
+  var hcBestForText = document.getElementById('hcBestForText');
+  var hcProfile = document.getElementById('hcProfile');
+  var hcCompare = document.getElementById('hcCompare');
+  var hoveredItem = null;
+  var hoverTimeout = null;
+
+  function showHoverCard(item) {
+    if (!hoverCard) return;
+    var slug = item.getAttribute('data-slug');
+    var name = item.getAttribute('data-name');
+    var desc = item.getAttribute('data-desc');
+    var bestFor = item.getAttribute('data-bestfor');
+    var logo = item.getAttribute('data-logo');
+    var badge = item.getAttribute('data-badge');
+
+    hcLogo.src = logo || '';
+    hcLogo.alt = name || '';
+    hcName.textContent = name || '';
+    hcBadge.textContent = badge || '';
+    hcBadge.style.display = badge ? '' : 'none';
+    hcDesc.textContent = desc || '';
+    if (bestFor) {
+      hcBestFor.style.display = '';
+      hcBestForText.textContent = bestFor;
+    } else {
+      hcBestFor.style.display = 'none';
+    }
+    hcProfile.href = '/networks/' + slug;
+    hcCompare.href = '/compare?add=' + slug;
+
+    // Position card above the item
+    var itemRect = item.getBoundingClientRect();
+    var wrapRect = wrap.getBoundingClientRect();
+    var cardLeft = itemRect.left - wrapRect.left + (itemRect.width / 2) - 130;
+    // Clamp to wrap bounds
+    cardLeft = Math.max(8, Math.min(cardLeft, wrapRect.width - 268));
+    hoverCard.style.left = cardLeft + 'px';
+    hoverCard.classList.add('is-visible');
+  }
+
+  function hideHoverCard() {
+    if (hoverCard) hoverCard.classList.remove('is-visible');
+    hoveredItem = null;
+  }
+
+  // Event delegation for hover on marquee items
+  track.addEventListener('mouseover', function(e) {
+    var item = e.target.closest('.marquee-item');
+    if (!item || item === hoveredItem) return;
+    clearTimeout(hoverTimeout);
+    hoveredItem = item;
+    hoverTimeout = setTimeout(function() {
+      showHoverCard(item);
+    }, 200);
+  }, { passive: true });
+
+  track.addEventListener('mouseout', function(e) {
+    var related = e.relatedTarget;
+    if (related && (related.closest('.marquee-item') || related.closest('#marqueeHoverCard'))) return;
+    clearTimeout(hoverTimeout);
+    hideHoverCard();
+  }, { passive: true });
+
+  // Keep card visible when hovering the card itself
+  if (hoverCard) {
+    hoverCard.addEventListener('mouseleave', function() {
+      hideHoverCard();
+    }, { passive: true });
+  }
+
   // ── Hover: smooth deceleration/acceleration ──
   wrap.addEventListener('mouseenter', function() {
     isHovered = true;
@@ -154,6 +298,8 @@ const tracked = allNetworks
   wrap.addEventListener('mouseleave', function() {
     isHovered = false;
     targetSpeed = SPEED;
+    clearTimeout(hoverTimeout);
+    hideHoverCard();
   }, { passive: true });
 
   // ── Visibility: stop animation when off-screen ──
