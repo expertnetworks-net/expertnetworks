@@ -40,22 +40,22 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
   }}
 >
   <!-- Hero — dark interactive intelligence surface -->
-  <section class="relative overflow-hidden bg-[#0d0d0f]" id="top" style="min-height: 260px;">
+  <section class="relative overflow-hidden bg-[#0d0d0f] min-h-[200px] md:min-h-[240px] lg:min-h-[260px]" id="top">
     <!-- Layer 1–3: Canvas (particles + reveal) -->
     <canvas id="heroCanvas" class="absolute inset-0 w-full h-full" style="pointer-events: none;" role="presentation" aria-hidden="true"></canvas>
     <!-- Layer 4: Readability vignette -->
     <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 50% 40%, transparent 30%, rgba(13,13,15,0.55) 100%);"></div>
     <!-- Layer 5: Content -->
-    <div class="relative z-10 pt-[88px] pb-12 md:pt-[100px] md:pb-14 px-6" id="heroContent">
+    <div class="relative z-10 pt-[72px] pb-8 md:pt-[88px] md:pb-12 lg:pt-[100px] lg:pb-14 px-4 md:px-6" id="heroContent">
       <div class="max-w-site mx-auto text-center">
-        <h1 id="heroTitle" class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white" aria-label="The Expert Network Hub"><span id="heroTitleText"></span><span id="heroTitleCursor" class="inline-block w-[3px] h-[0.85em] bg-white/70 align-middle ml-0.5 animate-[heroBlink_0.53s_steps(2)_infinite]"></span></h1>
+        <h1 id="heroTitle" class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-white" aria-label="The Expert Network Hub"><span id="heroTitleText"></span><span id="heroTitleCursor" class="inline-block w-[3px] h-[0.85em] bg-white/70 align-middle ml-0.5 animate-[heroBlink_0.53s_steps(2)_infinite]"></span></h1>
         <p id="heroSubtext" class="text-[#a1a1a6] text-sm md:text-base mt-4 leading-relaxed max-w-2xl mx-auto opacity-0 transition-opacity duration-700">Your open guide to the expert network industry. Compare {publishedNetworks.length} providers — pricing, compliance, expert pools, and AI tools — all in one place. No sign-ups, no bias. Explore freely.</p>
-        <div id="heroCtas" class="flex gap-3 justify-center mt-6 opacity-0 transition-opacity duration-700">
-          <a href="/networks" class="inline-flex items-center gap-1.5 px-5 py-2.5 bg-accent text-white text-sm font-semibold rounded-lg no-underline hover:bg-accent-hover transition-colors">
+        <div id="heroCtas" class="flex flex-col sm:flex-row gap-3 justify-center items-center mt-5 md:mt-6 opacity-0 transition-opacity duration-700">
+          <a href="/networks" class="inline-flex items-center gap-1.5 px-5 py-3 md:py-2.5 bg-accent text-white text-sm font-semibold rounded-lg no-underline hover:bg-accent-hover transition-colors">
             Browse All
             <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
           </a>
-          <a href="/compare" class="inline-flex items-center gap-1.5 px-5 py-2.5 bg-[rgba(255,255,255,0.08)] text-[#e5e5ea] text-sm font-semibold rounded-lg no-underline hover:bg-[rgba(255,255,255,0.14)] transition-colors border border-[rgba(255,255,255,0.08)]">Compare</a>
+          <a href="/compare" class="inline-flex items-center gap-1.5 px-5 py-3 md:py-2.5 bg-[rgba(255,255,255,0.08)] text-[#e5e5ea] text-sm font-semibold rounded-lg no-underline hover:bg-[rgba(255,255,255,0.14)] transition-colors border border-[rgba(255,255,255,0.08)]">Compare</a>
         </div>
       </div>
     </div>
@@ -668,8 +668,8 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
   <TrackedNetworksMarquee />
 
   <!-- ═══ Dashboard: News + Top Networks ═══ -->
-  <section class="py-10 px-6" id="dashboard">
-    <div class="max-w-site mx-auto flex flex-col lg:flex-row gap-8">
+  <section class="py-6 md:py-10 px-4 md:px-6" id="dashboard">
+    <div class="max-w-site mx-auto flex flex-col lg:flex-row gap-4 md:gap-6 lg:gap-8">
 
       <!-- Left: News feed — takes ~80% of the width -->
       <div class="flex-[4] min-w-0" id="news">
@@ -682,7 +682,7 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
           <div class="relative">
             <div class="absolute inset-x-0 top-0 h-4 bg-gradient-to-b from-white to-transparent z-[2] pointer-events-none"></div>
             <div class="absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-white to-transparent z-[2] pointer-events-none"></div>
-            <div class="max-h-[420px] overflow-y-auto overscroll-contain px-2 py-1 news-scroll" id="newsScroll">
+            <div class="max-h-[300px] md:max-h-[360px] lg:max-h-[420px] overflow-y-auto overscroll-contain px-2 py-1 news-scroll" id="newsScroll">
               <div class="space-y-0.5">
                 {publishedNews.map(article => {
                   const formattedDate = new Date(article.data.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
@@ -722,11 +722,11 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
 
       <!-- Right: Top Networks — compact, just wide enough for names -->
       <div class="w-full lg:w-auto lg:min-w-[220px] lg:max-w-[260px]" id="networks">
-        <div class="relative overflow-hidden rounded-card shadow-card bg-[#111113] h-full" id="topNetworksBox">
+        <div class="relative overflow-hidden rounded-card shadow-card bg-[#111113]" id="topNetworksBox">
           <!-- Particle canvas background (z-[1] above bg, below content) -->
           <canvas id="topNetworksCanvas" class="absolute inset-0 w-full h-full z-[1]" style="pointer-events: none;" role="presentation" aria-hidden="true"></canvas>
           <!-- Content -->
-          <div class="relative z-[2] flex flex-col h-full">
+          <div class="relative z-[2] flex flex-col">
             <div class="px-4 pt-4 pb-2">
               <h2 class="text-[15px] font-bold text-white">Top Networks</h2>
             </div>
@@ -736,7 +736,7 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
               {top7.map((network, i) => (
                 <a
                   href={`/networks/${network.data.slug}`}
-                  class="flex items-center gap-2.5 px-2.5 py-2 rounded-xl no-underline border border-transparent hover:bg-white/[0.08] hover:border-white/[0.08] transition-all duration-200 group"
+                  class="flex items-center gap-2.5 px-2.5 py-2.5 md:py-2 rounded-xl no-underline border border-transparent hover:bg-white/[0.08] hover:border-white/[0.08] transition-all duration-200 group"
                 >
                   <img
                     src={network.data.logo || ''}
@@ -757,7 +757,7 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
             <div class="px-3 pb-3 pt-2">
               <a
                 href="/networks"
-                class="flex items-center justify-center gap-1.5 w-full py-2 rounded-xl text-[12px] font-semibold text-white/50 no-underline bg-white/[0.04] hover:bg-white/[0.1] hover:text-white/80 border border-white/[0.06] hover:border-white/[0.1] transition-all duration-200"
+                class="flex items-center justify-center gap-1.5 w-full py-2.5 md:py-2 rounded-xl text-[12px] font-semibold text-white/50 no-underline bg-white/[0.04] hover:bg-white/[0.1] hover:text-white/80 border border-white/[0.06] hover:border-white/[0.1] transition-all duration-200 whitespace-nowrap"
               >
                 View all {publishedNetworks.length} networks
               </a>
@@ -1148,13 +1148,13 @@ const networkLogoMap: Record<string, string> = Object.fromEntries(
   </script>
 
   <!-- Featured Profiles -->
-  <section class="py-10 px-6 bg-bg-secondary">
+  <section class="py-6 md:py-10 px-4 md:px-6 bg-bg-secondary">
     <div class="max-w-site mx-auto">
-      <div class="flex items-center justify-between mb-6">
+      <div class="flex items-center justify-between mb-4 md:mb-6">
         <h2 class="text-lg font-bold text-primary">Featured Profiles</h2>
         <a href="/networks" class="text-accent text-sm font-medium no-underline hover:underline">View all &rarr;</a>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-5">
         {featuredNetworks.map(network => (
           <NetworkCard {...network.data} variant="profile" />
         ))}
