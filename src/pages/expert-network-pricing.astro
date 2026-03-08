@@ -1,0 +1,227 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allNetworks = await getCollection('networks');
+const published = allNetworks.filter(n => n.data.published).sort((a, b) => a.data.priority - b.data.priority);
+
+// Group by pricing model
+const pricingGroups: Record<string, typeof published> = {};
+published.forEach(n => {
+  const model = n.data.pricingModel || 'Unknown';
+  if (!pricingGroups[model]) pricingGroups[model] = [];
+  pricingGroups[model].push(n);
+});
+
+const pricingModelDescriptions: Record<string, string> = {
+  'Per-call': 'You pay for each expert interaction individually. Transparent but can add up with high volume.',
+  'Credit-based': 'Buy a subscription with credits. Each call/interaction costs credits. Good for predictable budgets.',
+  'Subscription': 'Flat fee for access to a platform or content library. Best for heavy users.',
+  'Mixed': 'Combination of per-call, subscription, and project-based pricing. Most flexible.',
+  'Flexible': 'Provider offers multiple pricing structures depending on your needs and volume.',
+  'Project-based': 'Priced per research project rather than per interaction. Good for defined-scope work.',
+  'Marketplace': 'Platform connects you with experts; pricing set by the marketplace dynamics.',
+};
+---
+
+<BaseLayout
+  title="Expert Network Pricing Guide 2026: What Do Expert Calls Cost? | ExpertNetworks.net"
+  description="Complete guide to expert network pricing in 2026. Compare per-call rates, credit-based subscriptions, and pricing models across GLG, AlphaSights, Third Bridge, Guidepoint, and 29+ more providers."
+  canonicalPath="/expert-network-pricing"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Expert Network Pricing Guide 2026",
+    "description": "Complete guide to expert network pricing across 33+ providers",
+    "publisher": {
+      "@type": "Organization",
+      "name": "ExpertNetworks.net",
+      "url": "https://expertnetworks.net"
+    },
+    "datePublished": "2026-03-08",
+    "dateModified": "2026-03-08"
+  }}
+>
+  <!-- Hero -->
+  <section class="pt-32 pb-16 px-6 bg-gradient-to-b from-bg-secondary to-bg-primary">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex items-center gap-3 mb-6">
+        <a href="/what-is-an-expert-network" class="text-accent text-sm font-medium no-underline hover:underline">&larr; What's an Expert Network?</a>
+      </div>
+      <span class="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-semibold rounded-full mb-4 tracking-wide uppercase">Pricing Guide</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-primary mb-6 leading-tight">
+        Expert Network Pricing
+      </h1>
+      <p class="text-lg text-secondary max-w-3xl leading-relaxed">
+        What does an expert call actually cost? Here's the most transparent breakdown available — pricing models, typical rates, and how {published.length} providers compare.
+      </p>
+    </div>
+  </section>
+
+  <!-- TL;DR -->
+  <section class="py-10 px-6 border-b border-border/40">
+    <div class="max-w-4xl mx-auto">
+      <div class="bg-blue-50 border border-blue-200 rounded-card p-5">
+        <h2 class="text-sm font-bold text-blue-800 mb-2">TL;DR on Expert Network Pricing</h2>
+        <ul class="text-sm text-blue-700 space-y-1">
+          <li><strong>Standard expert calls:</strong> $500–$1,800+/hour (client-side cost)</li>
+          <li><strong>Expert compensation:</strong> $200–$500+/hour (what the expert gets paid)</li>
+          <li><strong>Surveys:</strong> $50–$300 per respondent depending on complexity</li>
+          <li><strong>Content libraries:</strong> Subscription-based, typically $50K–$200K+/year</li>
+          <li><strong>Pricing is not public</strong> — every provider negotiates individually based on volume</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Models Explained -->
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-3">Pricing Models Explained</h2>
+      <p class="text-secondary text-sm mb-8">Expert networks use different pricing structures. Here's what each means for your budget:</p>
+
+      <div class="space-y-4">
+        {Object.entries(pricingGroups).map(([model, networks]) => (
+          <div class="bg-bg-secondary rounded-card p-5">
+            <div class="flex items-start justify-between gap-4 mb-3">
+              <div>
+                <h3 class="text-base font-bold text-primary">{model}</h3>
+                <p class="text-xs text-secondary mt-1">{pricingModelDescriptions[model] || 'Pricing varies by provider.'}</p>
+              </div>
+              <span class="text-xs text-tertiary whitespace-nowrap">{networks.length} provider{networks.length > 1 ? 's' : ''}</span>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              {networks.map(n => (
+                <a href={`/networks/${n.data.slug}`} class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white rounded-full text-xs text-secondary hover:text-accent transition-colors no-underline border border-border/40">
+                  <div class="w-4 h-4 rounded flex items-center justify-center text-white font-bold text-[6px] flex-shrink-0" style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}>
+                    {n.data.shortName}
+                  </div>
+                  {n.data.name.split(' (')[0]}
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Table -->
+  <section class="py-16 px-6 bg-bg-secondary">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-6">Provider Pricing Overview</h2>
+      <div class="bg-white rounded-card shadow-card overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-border/40 bg-bg-secondary/50">
+                <th class="text-left px-4 py-3 text-xs font-semibold text-tertiary uppercase tracking-wider">Provider</th>
+                <th class="text-left px-4 py-3 text-xs font-semibold text-tertiary uppercase tracking-wider">Model</th>
+                <th class="text-left px-4 py-3 text-xs font-semibold text-tertiary uppercase tracking-wider">Pricing Detail</th>
+              </tr>
+            </thead>
+            <tbody>
+              {published.slice(0, 20).map((n, i) => (
+                <tr class={`${i % 2 === 0 ? '' : 'bg-bg-secondary/20'} border-b border-border/20`}>
+                  <td class="px-4 py-3">
+                    <a href={`/networks/${n.data.slug}`} class="flex items-center gap-2 no-underline text-primary hover:text-accent transition-colors">
+                      <div class="w-6 h-6 rounded flex items-center justify-center text-white font-bold text-[7px] flex-shrink-0" style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}>
+                        {n.data.shortName}
+                      </div>
+                      <span class="text-xs font-medium">{n.data.name.split(' (')[0]}</span>
+                    </a>
+                  </td>
+                  <td class="px-4 py-3">
+                    <span class="text-xs px-2 py-0.5 rounded-full bg-bg-secondary font-medium text-secondary">{n.data.pricingModel}</span>
+                  </td>
+                  <td class="px-4 py-3 text-xs text-secondary max-w-xs">{n.data.pricingDetail || 'Contact provider'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      {published.length > 20 && (
+        <p class="text-center mt-4 text-sm text-tertiary">
+          Showing top 20 of {published.length} providers. <a href="/networks" class="text-accent hover:underline no-underline">View all</a>
+        </p>
+      )}
+    </div>
+  </section>
+
+  <!-- What Drives Cost -->
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-8">What Drives the Cost of an Expert Call?</h2>
+      <div class="grid md:grid-cols-2 gap-5">
+        <div class="border border-border/60 rounded-card p-5">
+          <h3 class="font-bold text-primary text-sm mb-2">Expert Seniority</h3>
+          <p class="text-xs text-secondary">A C-suite executive costs more than a mid-level manager. Former CEOs of public companies command the highest rates — sometimes $2,000+/hr on the client side.</p>
+        </div>
+        <div class="border border-border/60 rounded-card p-5">
+          <h3 class="font-bold text-primary text-sm mb-2">Sourcing Difficulty</h3>
+          <p class="text-xs text-secondary">Niche industries, rare expertise, or experts at specific companies that are hard to recruit will cost more. "Anyone in SaaS sales" is cheap; "former VP of supply chain at Company X" isn't.</p>
+        </div>
+        <div class="border border-border/60 rounded-card p-5">
+          <h3 class="font-bold text-primary text-sm mb-2">Turnaround Time</h3>
+          <p class="text-xs text-secondary">Need someone within 24 hours? That urgency premium is real. Networks that specialize in speed (AlphaSights) bake this into their value proposition.</p>
+        </div>
+        <div class="border border-border/60 rounded-card p-5">
+          <h3 class="font-bold text-primary text-sm mb-2">Volume & Commitment</h3>
+          <p class="text-xs text-secondary">High-volume users get better rates. Annual commitments, credit packages, and enterprise agreements all reduce per-interaction cost. A 5-call user pays more per call than a 500-call user.</p>
+        </div>
+        <div class="border border-border/60 rounded-card p-5">
+          <h3 class="font-bold text-primary text-sm mb-2">Service Level</h3>
+          <p class="text-xs text-secondary">Analyst-moderated calls (Third Bridge) cost more than self-directed calls. Concierge service costs more than self-serve platforms. You're paying for the wrapper, not just the expert.</p>
+        </div>
+        <div class="border border-border/60 rounded-card p-5">
+          <h3 class="font-bold text-primary text-sm mb-2">Geography</h3>
+          <p class="text-xs text-secondary">Expert rates vary by region. US/UK-based experts typically command higher rates than experts in emerging markets. Networks with operations in lower-cost hubs (Dialectica in Athens) can pass savings through.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tips -->
+  <section class="py-16 px-6 bg-bg-secondary">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-6">How to Get Better Pricing</h2>
+      <div class="bg-white rounded-card p-6 shadow-card">
+        <ol class="space-y-4 text-sm text-secondary">
+          <li class="flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-accent text-white flex items-center justify-center text-xs font-bold flex-shrink-0">1</span>
+            <div><strong class="text-primary">Use multiple providers.</strong> Most serious research teams use 2–4 expert networks. Competition keeps pricing honest, and different networks have different strengths.</div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-accent text-white flex items-center justify-center text-xs font-bold flex-shrink-0">2</span>
+            <div><strong class="text-primary">Negotiate annual commitments.</strong> If you know you'll do 100+ calls/year, lock in volume pricing. Most providers offer significant discounts for committed spend.</div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-accent text-white flex items-center justify-center text-xs font-bold flex-shrink-0">3</span>
+            <div><strong class="text-primary">Consider credit-based models.</strong> Third Bridge and Dialectica's credit systems can be more cost-effective than per-call pricing if you also use their content libraries.</div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-accent text-white flex items-center justify-center text-xs font-bold flex-shrink-0">4</span>
+            <div><strong class="text-primary">Evaluate total cost, not per-call cost.</strong> A cheaper per-call rate with poor expert quality wastes more money than a premium call that nails the insight. Factor in hit rate and expert relevance.</div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-accent text-white flex items-center justify-center text-xs font-bold flex-shrink-0">5</span>
+            <div><strong class="text-primary">Ask about content/library access.</strong> Some providers bundle transcript library access with call packages. If you'd use reusable content, this can dramatically lower effective per-insight cost.</div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-xl font-bold text-primary mb-4">Compare providers in detail</h2>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="/compare" class="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white rounded-full font-semibold text-sm no-underline hover:bg-accent-hover transition-colors">Side-by-Side Comparison</a>
+        <a href="/best-expert-networks" class="inline-flex items-center gap-2 px-6 py-3 bg-bg-secondary text-primary rounded-full font-semibold text-sm no-underline hover:bg-border/40 transition-colors">Best Networks Ranked</a>
+        <a href="/networks" class="inline-flex items-center gap-2 px-6 py-3 bg-bg-secondary text-primary rounded-full font-semibold text-sm no-underline hover:bg-border/40 transition-colors">All {published.length} Networks</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

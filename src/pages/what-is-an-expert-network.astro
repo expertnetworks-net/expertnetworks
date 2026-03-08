@@ -1,0 +1,485 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allNetworks = await getCollection('networks');
+const published = allNetworks.filter(n => n.data.published).sort((a, b) => a.data.priority - b.data.priority);
+const totalExperts = published.reduce((sum, n) => {
+  const match = (n.data.expertCount || '').replace(/[^0-9.]/g, '');
+  return sum + (parseFloat(match) || 0);
+}, 0);
+
+const topNetworks = published.slice(0, 7);
+const serviceTypes = [...new Set(published.flatMap(n => n.data.services || []))].slice(0, 20);
+---
+
+<BaseLayout
+  title="What Is an Expert Network? The Complete Guide (2026) | ExpertNetworks.net"
+  description="Learn what expert networks are, how they work, what products they offer (calls, surveys, AI platforms), who uses them, and how to choose one. Independent guide covering 33+ providers."
+  canonicalPath="/what-is-an-expert-network"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is an expert network?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An expert network is a service that connects professionals who need specialized knowledge (investors, consultants, corporate strategists) with subject-matter experts for paid consultations, surveys, and research projects."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does an expert network cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Expert network pricing typically ranges from $500 to $1,800+ per hour for expert calls. Some providers offer credit-based subscriptions, per-project pricing, or flexible models. See our pricing guide for details."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who uses expert networks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The primary users are private equity firms, hedge funds, management consultancies, investment banks, corporate strategy teams, and law firms conducting due diligence or market research."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are expert networks legal?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, expert networks are legal. They operate under compliance frameworks designed to prevent the exchange of material non-public information (MNPI). Reputable providers have extensive compliance programs including expert vetting, call monitoring, and audit trails."
+        }
+      }
+    ]
+  }}
+>
+  <!-- Hero -->
+  <section class="pt-32 pb-16 px-6 bg-gradient-to-b from-bg-secondary to-bg-primary">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-semibold rounded-full mb-6 tracking-wide uppercase">Complete Guide</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-primary mb-6 leading-tight">
+        What Is an Expert Network?
+      </h1>
+      <p class="text-lg md:text-xl text-secondary max-w-3xl mx-auto leading-relaxed">
+        Expert networks connect decision-makers with the people who have the answers. Whether you're a PE analyst doing due diligence or a corporate strategist exploring a new market — this is how the industry works.
+      </p>
+    </div>
+  </section>
+
+  <!-- Quick nav -->
+  <section class="py-8 px-6 border-b border-border/40">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex flex-wrap gap-3 justify-center text-sm">
+        <a href="#basics" class="px-4 py-2 rounded-full bg-bg-secondary text-secondary hover:bg-accent/10 hover:text-accent transition-colors no-underline font-medium">The Basics</a>
+        <a href="#products" class="px-4 py-2 rounded-full bg-bg-secondary text-secondary hover:bg-accent/10 hover:text-accent transition-colors no-underline font-medium">Products & Services</a>
+        <a href="#who-uses" class="px-4 py-2 rounded-full bg-bg-secondary text-secondary hover:bg-accent/10 hover:text-accent transition-colors no-underline font-medium">Who Uses Them</a>
+        <a href="#how-it-works" class="px-4 py-2 rounded-full bg-bg-secondary text-secondary hover:bg-accent/10 hover:text-accent transition-colors no-underline font-medium">How It Works</a>
+        <a href="#compliance" class="px-4 py-2 rounded-full bg-bg-secondary text-secondary hover:bg-accent/10 hover:text-accent transition-colors no-underline font-medium">Compliance</a>
+        <a href="#choosing" class="px-4 py-2 rounded-full bg-bg-secondary text-secondary hover:bg-accent/10 hover:text-accent transition-colors no-underline font-medium">Choosing a Provider</a>
+        <a href="#faq" class="px-4 py-2 rounded-full bg-bg-secondary text-secondary hover:bg-accent/10 hover:text-accent transition-colors no-underline font-medium">FAQ</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Basics -->
+  <section id="basics" class="py-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-6">The Basics</h2>
+      <div class="prose prose-sm text-secondary leading-relaxed space-y-5 max-w-none">
+        <p class="text-base">
+          An <strong>expert network</strong> is a service that connects professionals who need specialized knowledge — investors, consultants, corporate strategists, lawyers — with <strong>subject-matter experts</strong> who have real-world experience in specific industries, companies, or functional areas.
+        </p>
+        <p>
+          Think of it like this: if you're a private equity firm evaluating a $500M acquisition of a healthcare IT company, you probably want to talk to people who've actually worked there, competed with them, or bought their products. Expert networks make that happen — fast, compliantly, and at scale.
+        </p>
+        <p>
+          The industry was pioneered by <a href="/networks/glg" class="text-accent hover:underline">GLG (Gerson Lehrman Group)</a> in 1998 and has since grown into a multi-billion-dollar global market with {published.length}+ active providers that we track, ranging from full-service global platforms to specialized boutiques.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-4 not-prose mt-8">
+          <div class="bg-bg-secondary rounded-card p-5">
+            <div class="text-3xl font-extrabold text-accent mb-1">{published.length}+</div>
+            <div class="text-sm text-secondary">Active providers tracked</div>
+          </div>
+          <div class="bg-bg-secondary rounded-card p-5">
+            <div class="text-3xl font-extrabold text-accent mb-1">$5B+</div>
+            <div class="text-sm text-secondary">Est. global market size</div>
+          </div>
+          <div class="bg-bg-secondary rounded-card p-5">
+            <div class="text-3xl font-extrabold text-accent mb-1">Millions</div>
+            <div class="text-sm text-secondary">Experts on the supply side</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products & Services -->
+  <section id="products" class="py-20 px-6 bg-bg-secondary">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-3">Products & Services</h2>
+      <p class="text-secondary mb-10">Expert networks aren't just "phone calls with experts" anymore. Here's what the modern stack looks like:</p>
+
+      <div class="space-y-6">
+        <div class="bg-white rounded-card p-6 shadow-card">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-accent"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-primary mb-2">Expert Calls (Consultations)</h3>
+              <p class="text-sm text-secondary leading-relaxed">The core product. One-on-one phone or video calls with industry experts, typically 30–60 minutes. You brief the network on what you need, they source and vet experts, you talk. Pricing: $500–$1,800+/hr depending on the provider and expert seniority. This is still where most revenue comes from.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-card p-6 shadow-card">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg bg-accent-purple/10 flex items-center justify-center flex-shrink-0">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-accent-purple"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-primary mb-2">Content Libraries & Transcripts</h3>
+              <p class="text-sm text-secondary leading-relaxed">Pre-recorded, analyst-moderated expert interviews available as searchable transcripts. <a href="/networks/third-bridge" class="text-accent hover:underline">Third Bridge Library</a> covers 65,000+ companies; <a href="/networks/alphasights" class="text-accent hover:underline">AlphaSights' AlphaNow</a> provides weekly expert-written content. Reusable research you don't have to commission yourself.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-card p-6 shadow-card">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg bg-accent-green/10 flex items-center justify-center flex-shrink-0">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-accent-green"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-primary mb-2">Surveys</h3>
+              <p class="text-sm text-secondary leading-relaxed">Quantitative research at scale. Networks recruit expert panels to answer structured surveys — useful for market sizing, competitive benchmarking, or validating investment theses with data rather than anecdotes. Most major providers (GLG, Guidepoint, AlphaSights, Dialectica) offer this.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-card p-6 shadow-card">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg bg-accent-orange/10 flex items-center justify-center flex-shrink-0">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-accent-orange"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-primary mb-2">AI-Powered Research Platforms</h3>
+              <p class="text-sm text-secondary leading-relaxed">The newest frontier. <a href="/networks/alphasights" class="text-accent hover:underline">AlphaSights' AlphaGPT</a>, <a href="/networks/guidepoint" class="text-accent hover:underline">Guidepoint's AskGP</a>, <a href="/networks/glg" class="text-accent hover:underline">GLG's Ask AI</a>, and <a href="/networks/dialectica" class="text-accent hover:underline">Dialectica IQ</a> let you query expert knowledge bases using natural language. Think ChatGPT but trained on proprietary expert interviews and industry data.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-card p-6 shadow-card">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-blue-600"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-primary mb-2">Events, Workshops & Advisory</h3>
+              <p class="text-sm text-secondary leading-relaxed">Group formats: roundtables, panel discussions, in-person events, and ongoing advisory relationships. GLG Events and GLG Institute run C-suite leadership programs. Third Bridge Advisors provides ongoing expert relationships for longer-term research needs.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-card p-6 shadow-card">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg bg-rose-500/10 flex items-center justify-center flex-shrink-0">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-rose-600"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-primary mb-2">Data Products & Deal Sourcing</h3>
+              <p class="text-sm text-secondary leading-relaxed">Specialized offerings: <a href="/networks/guidepoint" class="text-accent hover:underline">Guidepoint Qsight</a> (healthcare data), <a href="/networks/third-bridge" class="text-accent hover:underline">Third Bridge Maps</a> (value-chain intelligence on 100,000+ companies), and <a href="/networks/dialectica" class="text-accent hover:underline">Dialectica Origin</a> (PE deal sourcing). These go beyond expert access into proprietary data and analytics.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who Uses Expert Networks -->
+  <section id="who-uses" class="py-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-3">Who Uses Expert Networks?</h2>
+      <p class="text-secondary mb-10">The short answer: anyone who needs to make high-stakes decisions based on real industry knowledge rather than public reports.</p>
+
+      <div class="grid md:grid-cols-2 gap-5">
+        <div class="border border-border/60 rounded-card p-5">
+          <h3 class="font-bold text-primary mb-2">Private Equity & Venture Capital</h3>
+          <p class="text-sm text-secondary">Due diligence on potential acquisitions, portfolio company optimization, market landscape analysis. PE firms are the largest customer segment for most expert networks.</p>
+          <a href="/expert-networks-for-private-equity" class="text-accent text-sm font-medium mt-3 inline-block hover:underline no-underline">PE buyer's guide &rarr;</a>
+        </div>
+        <div class="border border-border/60 rounded-card p-5">
+          <h3 class="font-bold text-primary mb-2">Hedge Funds & Asset Managers</h3>
+          <p class="text-sm text-secondary">Investment thesis development, channel checks, competitive intelligence. Expert calls help validate assumptions before deploying capital.</p>
+        </div>
+        <div class="border border-border/60 rounded-card p-5">
+          <h3 class="font-bold text-primary mb-2">Management Consultancies</h3>
+          <p class="text-sm text-secondary">Industry expertise to support client engagements. When McKinsey or BCG need to understand a niche market in 48 hours, they call expert networks.</p>
+        </div>
+        <div class="border border-border/60 rounded-card p-5">
+          <h3 class="font-bold text-primary mb-2">Corporate Strategy & Innovation</h3>
+          <p class="text-sm text-secondary">M&A target evaluation, market entry strategy, competitive benchmarking. Fortune 500 companies use expert networks for internal strategic decision-making.</p>
+        </div>
+        <div class="border border-border/60 rounded-card p-5">
+          <h3 class="font-bold text-primary mb-2">Investment Banks</h3>
+          <p class="text-sm text-secondary">Sector research, deal origination support, and fairness opinion work. Banks use expert insights to inform coverage and client advisory.</p>
+        </div>
+        <div class="border border-border/60 rounded-card p-5">
+          <h3 class="font-bold text-primary mb-2">Law Firms & Litigation Support</h3>
+          <p class="text-sm text-secondary">Expert witnesses, industry context for litigation, regulatory analysis. GLG and others have dedicated legal/regulatory practice areas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how-it-works" class="py-20 px-6 bg-bg-secondary">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-10">How an Expert Call Works (Step by Step)</h2>
+
+      <div class="space-y-0">
+        <div class="flex gap-4">
+          <div class="flex flex-col items-center">
+            <div class="w-8 h-8 rounded-full bg-accent text-white flex items-center justify-center text-sm font-bold flex-shrink-0">1</div>
+            <div class="w-0.5 flex-1 bg-border/60 mt-2"></div>
+          </div>
+          <div class="pb-10">
+            <h3 class="font-bold text-primary mb-1">You submit a project brief</h3>
+            <p class="text-sm text-secondary">Describe what you need: industry, company focus, expert profile, timeline. "We need 3 former VP-level executives from Company X's supply chain division, available this week."</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="flex flex-col items-center">
+            <div class="w-8 h-8 rounded-full bg-accent text-white flex items-center justify-center text-sm font-bold flex-shrink-0">2</div>
+            <div class="w-0.5 flex-1 bg-border/60 mt-2"></div>
+          </div>
+          <div class="pb-10">
+            <h3 class="font-bold text-primary mb-1">The network sources and vets experts</h3>
+            <p class="text-sm text-secondary">Depending on the provider, this takes hours to a few days. They recruit from their database or do custom sourcing. Compliance teams screen for conflicts of interest and MNPI risk.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="flex flex-col items-center">
+            <div class="w-8 h-8 rounded-full bg-accent text-white flex items-center justify-center text-sm font-bold flex-shrink-0">3</div>
+            <div class="w-0.5 flex-1 bg-border/60 mt-2"></div>
+          </div>
+          <div class="pb-10">
+            <h3 class="font-bold text-primary mb-1">You review expert profiles</h3>
+            <p class="text-sm text-secondary">The network sends you anonymized or named profiles with relevant background. You pick who you want to talk to.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="flex flex-col items-center">
+            <div class="w-8 h-8 rounded-full bg-accent text-white flex items-center justify-center text-sm font-bold flex-shrink-0">4</div>
+            <div class="w-0.5 flex-1 bg-border/60 mt-2"></div>
+          </div>
+          <div class="pb-10">
+            <h3 class="font-bold text-primary mb-1">The call happens</h3>
+            <p class="text-sm text-secondary">Typically 30–60 minutes via phone or video. Some networks (like Third Bridge) have an analyst moderate the call. Most provide transcription and recordings.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="flex flex-col items-center">
+            <div class="w-8 h-8 rounded-full bg-accent-green text-white flex items-center justify-center text-sm font-bold flex-shrink-0">5</div>
+          </div>
+          <div class="pb-4">
+            <h3 class="font-bold text-primary mb-1">You get deliverables</h3>
+            <p class="text-sm text-secondary">Transcript, recording, AI-generated summary. Some platforms let you query past calls with AI (AlphaGPT, AskGP) or access the expert's insights in a searchable library.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Compliance -->
+  <section id="compliance" class="py-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-3">Compliance & Legal</h2>
+      <p class="text-secondary mb-8">This is the most important section for serious buyers. Expert networks operate in a heavily scrutinized area — after the insider trading cases of 2010–2016, compliance isn't optional.</p>
+
+      <div class="bg-amber-50 border border-amber-200 rounded-card p-5 mb-8">
+        <div class="flex items-start gap-3">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-amber-600 flex-shrink-0 mt-0.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div>
+            <h4 class="font-bold text-amber-800 text-sm mb-1">The MNPI Question</h4>
+            <p class="text-sm text-amber-700">Material Non-Public Information (MNPI) is the central compliance concern. Experts cannot share insider information — earnings previews, unannounced deals, confidential business data. Every reputable network has safeguards against this.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5">
+        <div class="bg-bg-secondary rounded-card p-5">
+          <h4 class="font-bold text-primary text-sm mb-2">Expert Vetting</h4>
+          <p class="text-xs text-secondary">Background checks, employment verification, conflict-of-interest screening before any engagement. Some networks (Third Bridge) individually recruit every expert; others maintain large pre-vetted databases.</p>
+        </div>
+        <div class="bg-bg-secondary rounded-card p-5">
+          <h4 class="font-bold text-primary text-sm mb-2">Cooling-Off Periods</h4>
+          <p class="text-xs text-secondary">Many networks enforce waiting periods after an expert leaves a company before they can consult on it. Policies vary — some require 6 months, others 12+ months for senior executives.</p>
+        </div>
+        <div class="bg-bg-secondary rounded-card p-5">
+          <h4 class="font-bold text-primary text-sm mb-2">Call Monitoring & Audit Trails</h4>
+          <p class="text-xs text-secondary">Calls are typically recorded and transcribed. Some networks have real-time compliance monitoring. All interactions are logged for regulatory audit purposes.</p>
+        </div>
+        <div class="bg-bg-secondary rounded-card p-5">
+          <h4 class="font-bold text-primary text-sm mb-2">Regulatory History</h4>
+          <p class="text-xs text-secondary">The expert network industry was shaped by SEC enforcement actions (2010–2016). Today's compliance frameworks are substantially stronger as a result. See individual network profiles for regulatory details.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Choosing a Provider -->
+  <section id="choosing" class="py-20 px-6 bg-bg-secondary">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-3">How to Choose an Expert Network</h2>
+      <p class="text-secondary mb-10">There's no single "best" provider — it depends on what you need. Here's a framework:</p>
+
+      <div class="space-y-4 mb-12">
+        <div class="bg-white rounded-card p-5 shadow-card">
+          <h4 class="font-bold text-primary mb-1">If you value speed and white-glove service</h4>
+          <p class="text-sm text-secondary">Concierge-model providers like <a href="/networks/alphasights" class="text-accent hover:underline">AlphaSights</a> and <a href="/networks/glg" class="text-accent hover:underline">GLG</a> prioritize fast turnaround and dedicated project teams.</p>
+        </div>
+        <div class="bg-white rounded-card p-5 shadow-card">
+          <h4 class="font-bold text-primary mb-1">If you want reusable content, not just calls</h4>
+          <p class="text-sm text-secondary"><a href="/networks/third-bridge" class="text-accent hover:underline">Third Bridge</a> (Library + Maps) and <a href="/networks/alphasights" class="text-accent hover:underline">AlphaSights</a> (AlphaNow) lead in content-as-a-product.</p>
+        </div>
+        <div class="bg-white rounded-card p-5 shadow-card">
+          <h4 class="font-bold text-primary mb-1">If you want competitive pricing</h4>
+          <p class="text-sm text-secondary"><a href="/networks/guidepoint" class="text-accent hover:underline">Guidepoint</a> and <a href="/networks/dialectica" class="text-accent hover:underline">Dialectica</a> are known for pricing below GLG/AlphaSights while maintaining quality.</p>
+        </div>
+        <div class="bg-white rounded-card p-5 shadow-card">
+          <h4 class="font-bold text-primary mb-1">If you want AI-first research</h4>
+          <p class="text-sm text-secondary">All top players now have AI platforms. Compare them in detail: <a href="/networks/alphasights" class="text-accent hover:underline">AlphaGPT</a>, <a href="/networks/guidepoint" class="text-accent hover:underline">AskGP</a>, <a href="/networks/glg" class="text-accent hover:underline">Ask AI</a>, <a href="/networks/dialectica" class="text-accent hover:underline">Dialectica IQ</a>.</p>
+        </div>
+        <div class="bg-white rounded-card p-5 shadow-card">
+          <h4 class="font-bold text-primary mb-1">If you need Asia-Pacific coverage</h4>
+          <p class="text-sm text-secondary">Specialists like <a href="/networks/capvision" class="text-accent hover:underline">Capvision</a>, <a href="/networks/lynk" class="text-accent hover:underline">Lynk</a>, and <a href="/networks/visasq" class="text-accent hover:underline">VisasQ</a> have deeper regional networks than the global generalists.</p>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="/best-expert-networks" class="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white rounded-full font-semibold text-sm no-underline hover:bg-accent-hover transition-colors">
+          Best Expert Networks Ranked
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+        <a href="/glg-vs-alphasights" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary border border-border rounded-full font-semibold text-sm no-underline hover:bg-bg-secondary transition-colors">
+          GLG vs AlphaSights
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+        <a href="/expert-network-pricing" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary border border-border rounded-full font-semibold text-sm no-underline hover:bg-bg-secondary transition-colors">
+          Pricing Guide
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+        <a href="/compare" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary border border-border rounded-full font-semibold text-sm no-underline hover:bg-bg-secondary transition-colors">
+          Compare Side-by-Side
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Top Providers Quick Reference -->
+  <section class="py-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-8">Major Providers at a Glance</h2>
+      <div class="grid gap-3">
+        {topNetworks.map(n => (
+          <a href={`/networks/${n.data.slug}`} class="flex items-center gap-4 p-4 bg-bg-secondary rounded-card hover:shadow-card transition-shadow no-underline group">
+            {n.data.logo ? (
+              <img src={n.data.logo} alt="" width="40" height="40" class="w-10 h-10 rounded-lg object-cover flex-shrink-0" loading="lazy" />
+            ) : (
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold text-xs flex-shrink-0" style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}>
+                {n.data.shortName}
+              </div>
+            )}
+            <div class="min-w-0 flex-1">
+              <div class="text-sm font-bold text-primary group-hover:text-accent transition-colors">{n.data.name.split(' (')[0]}</div>
+              <div class="text-xs text-secondary truncate">Founded {n.data.founded} · {n.data.expertCount} experts · {n.data.pricingModel} pricing</div>
+            </div>
+            <svg class="w-4 h-4 text-tertiary flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        ))}
+      </div>
+      <div class="text-center mt-6">
+        <a href="/networks" class="text-accent text-sm font-medium hover:underline no-underline">View all {published.length} networks &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-20 px-6 bg-bg-secondary">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-8">Frequently Asked Questions</h2>
+
+      <div class="space-y-4">
+        <details class="bg-white rounded-card shadow-card overflow-hidden group">
+          <summary class="px-6 py-4 cursor-pointer font-semibold text-primary text-sm flex items-center justify-between">
+            What is an expert network?
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="transition-transform group-open:rotate-180 flex-shrink-0"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="px-6 pb-4 text-sm text-secondary">An expert network is a service that connects professionals who need specialized knowledge (investors, consultants, corporate strategists) with subject-matter experts for paid consultations, surveys, and research projects. The industry was founded in 1998 by GLG and now includes 33+ providers we track.</div>
+        </details>
+
+        <details class="bg-white rounded-card shadow-card overflow-hidden group">
+          <summary class="px-6 py-4 cursor-pointer font-semibold text-primary text-sm flex items-center justify-between">
+            How much does an expert network cost?
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="transition-transform group-open:rotate-180 flex-shrink-0"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="px-6 pb-4 text-sm text-secondary">Pricing varies significantly. Expert calls typically range from $500 to $1,800+ per hour depending on expert seniority and the network. Some providers use per-call pricing, others use credit-based subscriptions, and some offer flexible mixed models. See our <a href="/expert-network-pricing" class="text-accent hover:underline">complete pricing guide</a>.</div>
+        </details>
+
+        <details class="bg-white rounded-card shadow-card overflow-hidden group">
+          <summary class="px-6 py-4 cursor-pointer font-semibold text-primary text-sm flex items-center justify-between">
+            Are expert networks legal?
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="transition-transform group-open:rotate-180 flex-shrink-0"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="px-6 pb-4 text-sm text-secondary">Yes, expert networks are entirely legal. They operate under strict compliance frameworks designed to prevent the exchange of material non-public information (MNPI). After SEC enforcement actions in 2010–2016, the industry substantially strengthened its compliance infrastructure. Reputable providers have expert vetting, conflict screening, call monitoring, and audit trails.</div>
+        </details>
+
+        <details class="bg-white rounded-card shadow-card overflow-hidden group">
+          <summary class="px-6 py-4 cursor-pointer font-semibold text-primary text-sm flex items-center justify-between">
+            Who uses expert networks?
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="transition-transform group-open:rotate-180 flex-shrink-0"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="px-6 pb-4 text-sm text-secondary">Private equity firms, hedge funds, venture capital firms, management consultancies, investment banks, corporate strategy teams, and law firms. Anyone who needs to make high-stakes decisions informed by real industry expertise rather than desk research alone.</div>
+        </details>
+
+        <details class="bg-white rounded-card shadow-card overflow-hidden group">
+          <summary class="px-6 py-4 cursor-pointer font-semibold text-primary text-sm flex items-center justify-between">
+            What's the difference between GLG and AlphaSights?
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="transition-transform group-open:rotate-180 flex-shrink-0"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="px-6 pb-4 text-sm text-secondary">GLG is the industry pioneer (1998) with the broadest product suite and ~1.2M experts. AlphaSights (2008) is a faster-growing challenger known for speed and custom-sourcing. GLG is stronger in breadth and multi-format research; AlphaSights is known for high-touch service and rapid delivery. See our <a href="/glg-vs-alphasights" class="text-accent hover:underline">detailed comparison</a>.</div>
+        </details>
+
+        <details class="bg-white rounded-card shadow-card overflow-hidden group">
+          <summary class="px-6 py-4 cursor-pointer font-semibold text-primary text-sm flex items-center justify-between">
+            How do I become an expert on an expert network?
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="transition-transform group-open:rotate-180 flex-shrink-0"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="px-6 pb-4 text-sm text-secondary">Most networks recruit experts directly based on specific project needs. You can also apply through provider websites. Compensation for experts typically ranges from $200–$500+/hr depending on seniority and specialization. Networks look for professionals with deep, current industry knowledge in specific verticals.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-xl font-bold text-primary mb-4">Ready to explore?</h2>
+      <p class="text-secondary mb-8">Browse our independent directory of {published.length}+ expert networks, compare them side by side, or dive into our industry intelligence feed.</p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="/networks" class="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white rounded-full font-semibold text-sm no-underline hover:bg-accent-hover transition-colors">Browse All Networks</a>
+        <a href="/compare" class="inline-flex items-center gap-2 px-6 py-3 bg-bg-secondary text-primary rounded-full font-semibold text-sm no-underline hover:bg-border/40 transition-colors">Compare Networks</a>
+        <a href="/news" class="inline-flex items-center gap-2 px-6 py-3 bg-bg-secondary text-primary rounded-full font-semibold text-sm no-underline hover:bg-border/40 transition-colors">Industry News</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
