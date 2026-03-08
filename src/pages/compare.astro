@@ -1,12 +1,90 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ParticleHero from '../components/ParticleHero.astro';
-import CompareTable from '../components/CompareTable.astro';
+import { getCollection } from 'astro:content';
+import compareConfig from '../content/compare.json';
+
+const allNetworks = await getCollection('networks');
+const published = allNetworks.filter(n => n.data.published).sort((a, b) => a.data.priority - b.data.priority);
+
+// Default selected networks
+const defaultSlugs = compareConfig.networks as string[];
+const defaultNetworks = defaultSlugs
+  .map((slug: string) => published.find(n => n.data.slug === slug))
+  .filter(Boolean);
+
+// Presets
+const presets = compareConfig.presets as Record<string, string[]>;
+
+// All networks for the add-network picker
+const allNetworkList = published.map(n => ({
+  slug: n.data.slug,
+  name: n.data.name,
+  shortName: n.data.shortName,
+  logo: n.data.logo || '',
+  gradientFrom: n.data.gradientFrom,
+  gradientTo: n.data.gradientTo,
+}));
+
+// Sections config
+const sections = compareConfig.sections as any[];
+
+// Helper to resolve nested keys
+function resolve(data: any, key: string): any {
+  return key.split('.').reduce((obj, k) => obj?.[k], data);
+}
+
+// Badge color helpers
+const complianceColors: Record<string, string> = {
+  'Strong Compliance': 'bg-emerald-500/10 text-emerald-700',
+  'Standard Compliance': 'bg-slate-100 text-slate-600',
+  'Compliance Tools': 'bg-blue-500/10 text-blue-600',
+  'Limited Public Detail': 'bg-amber-500/10 text-amber-600',
+};
+const aiColors: Record<string, string> = {
+  'AI-Native': 'bg-violet-500/10 text-violet-700',
+  'AI Research': 'bg-blue-500/10 text-blue-600',
+  'AI Matching': 'bg-cyan-500/10 text-cyan-600',
+  'AI Moderation': 'bg-teal-500/10 text-teal-600',
+  'Limited AI Detail': 'bg-slate-100 text-slate-500',
+};
+const badgeColors: Record<string, string> = {
+  'Global Leader': 'bg-amber-500/10 text-amber-700',
+  'Major Provider': 'bg-blue-500/10 text-blue-700',
+  'Fast-Growing': 'bg-emerald-500/10 text-emerald-700',
+  'Asia Specialist': 'bg-rose-500/10 text-rose-700',
+  'Research Platform': 'bg-violet-500/10 text-violet-700',
+  'Technology-First': 'bg-cyan-500/10 text-cyan-700',
+  'Marketplace': 'bg-orange-500/10 text-orange-700',
+  'Boutique Specialist': 'bg-slate-100 text-slate-600',
+};
+const deliveryColors: Record<string, string> = {
+  'Concierge': 'bg-blue-500/10 text-blue-700',
+  'Hybrid': 'bg-violet-500/10 text-violet-600',
+  'Self-Serve': 'bg-emerald-500/10 text-emerald-700',
+  'Marketplace': 'bg-orange-500/10 text-orange-700',
+  'Platform-Led': 'bg-cyan-500/10 text-cyan-700',
+};
+const regionColors: Record<string, string> = {
+  'Global': 'bg-blue-500/10 text-blue-700',
+  'North America': 'bg-slate-100 text-slate-700',
+  'Europe': 'bg-indigo-500/10 text-indigo-700',
+  'Asia-Pacific': 'bg-rose-500/10 text-rose-700',
+  'Greater China': 'bg-red-500/10 text-red-700',
+  'India': 'bg-amber-500/10 text-amber-700',
+  'Emerging Markets': 'bg-teal-500/10 text-teal-700',
+};
+
+// Serialize all published network data for client-side use
+const networkDataMap: Record<string, any> = {};
+published.forEach(n => {
+  networkDataMap[n.data.slug] = n.data;
+});
 ---
 
 <BaseLayout
-  title="Compare Networks — Expert Networks Hub"
-  description="Side-by-side comparison of leading expert networks. Compare expert call capabilities, content libraries, AI matching, survey tools, and compliance features across top providers."
+  title="Compare Networks — ExpertNetworks.net"
+  description="Interactive side-by-side comparison of expert networks. Evaluate providers across commercial model, compliance, AI capabilities, content depth, and geographic coverage."
   jsonLd={{
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -16,12 +94,772 @@ import CompareTable from '../components/CompareTable.astro';
     ]
   }}
 >
-  <!-- Header with particle background -->
-  <ParticleHero minHeight="240px">
-    <div class="text-center">
-      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">Compare Networks</h1>
-      <p class="text-[#a1a1a6] mt-3 text-base md:text-lg">Side-by-side comparison of leading expert networks.</p>
+  <!-- Compact Hero -->
+  <ParticleHero minHeight="180px">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+      <div>
+        <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight text-white">Compare Networks</h1>
+        <p class="text-[#a1a1a6] text-sm mt-1.5 max-w-xl">Side-by-side evaluation across commercial model, compliance, AI capabilities, content, and geographic coverage.</p>
+      </div>
+      <div class="flex items-center gap-3 flex-shrink-0" style="pointer-events: auto;">
+        <span class="hidden sm:inline-flex items-center gap-1.5 text-[11px] text-[#86868b]">
+          <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Independent Research
+        </span>
+        <a href="/networks" class="inline-flex items-center gap-1.5 px-3 py-2 bg-white/[0.06] text-[#a1a1a6] text-sm font-medium rounded-lg no-underline hover:bg-white/[0.1] transition-colors border border-white/[0.08]">&larr; Directory</a>
+      </div>
     </div>
   </ParticleHero>
-  <CompareTable />
+
+  <!-- Sticky Control Bar -->
+  <div id="controlBar" class="sticky top-[52px] z-40 bg-white border-b border-border/40 shadow-sm">
+    <div class="max-w-site mx-auto px-4 md:px-6 py-3">
+      <!-- Provider chips -->
+      <div class="flex items-center gap-2 mb-2.5 overflow-x-auto scrollbar-none pb-1">
+        <span class="text-[10px] font-bold uppercase tracking-widest text-tertiary whitespace-nowrap mr-1">Comparing</span>
+        <div id="providerChips" class="flex items-center gap-1.5">
+          {defaultNetworks.map((n: any) => (
+            <div class="provider-chip flex items-center gap-1.5 px-2.5 py-1 bg-[#f5f5f7] rounded-lg border border-border/30 whitespace-nowrap" data-slug={n.data.slug}>
+              {n.data.logo ? (
+                <img src={n.data.logo} alt="" width="16" height="16" class="w-4 h-4 rounded object-contain" loading="lazy" />
+              ) : (
+                <div class="w-4 h-4 rounded flex items-center justify-center text-white text-[7px] font-bold" style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}>{n.data.shortName}</div>
+              )}
+              <span class="text-[12px] font-medium text-primary">{n.data.name.split(' (')[0].split(' / ')[0]}</span>
+              <button class="remove-provider ml-0.5 text-tertiary hover:text-red-500 transition-colors bg-transparent border-none cursor-pointer p-0" data-slug={n.data.slug} aria-label={`Remove ${n.data.name}`}>
+                <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+          ))}
+        </div>
+        <button id="addNetworkBtn" class="flex items-center gap-1 px-2.5 py-1 text-[12px] font-medium text-accent bg-accent/[0.06] rounded-lg border border-accent/20 hover:bg-accent/[0.1] transition-colors cursor-pointer whitespace-nowrap">
+          <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Add
+        </button>
+      </div>
+
+      <!-- Presets + toggles -->
+      <div class="flex items-center justify-between gap-3 flex-wrap">
+        <div class="flex items-center gap-1.5 overflow-x-auto scrollbar-none">
+          <span class="text-[10px] font-bold uppercase tracking-widest text-tertiary whitespace-nowrap mr-1">Presets</span>
+          <button class="preset-btn px-2.5 py-1 text-[11px] font-medium rounded-full border border-border/50 text-secondary hover:border-accent hover:text-accent transition-all whitespace-nowrap cursor-pointer bg-transparent" data-preset="leaders">Global Leaders</button>
+          <button class="preset-btn px-2.5 py-1 text-[11px] font-medium rounded-full border border-border/50 text-secondary hover:border-accent hover:text-accent transition-all whitespace-nowrap cursor-pointer bg-transparent" data-preset="consulting">Consulting Fit</button>
+          <button class="preset-btn px-2.5 py-1 text-[11px] font-medium rounded-full border border-border/50 text-secondary hover:border-accent hover:text-accent transition-all whitespace-nowrap cursor-pointer bg-transparent" data-preset="pe">PE / Hedge Funds</button>
+          <button class="preset-btn px-2.5 py-1 text-[11px] font-medium rounded-full border border-border/50 text-secondary hover:border-accent hover:text-accent transition-all whitespace-nowrap cursor-pointer bg-transparent" data-preset="enterprise">Enterprise</button>
+          <button class="preset-btn px-2.5 py-1 text-[11px] font-medium rounded-full border border-border/50 text-secondary hover:border-accent hover:text-accent transition-all whitespace-nowrap cursor-pointer bg-transparent" data-preset="asia">APAC Specialists</button>
+          <button class="preset-btn px-2.5 py-1 text-[11px] font-medium rounded-full border border-border/50 text-secondary hover:border-accent hover:text-accent transition-all whitespace-nowrap cursor-pointer bg-transparent" data-preset="ai">AI-Forward</button>
+          <button class="preset-btn px-2.5 py-1 text-[11px] font-medium rounded-full border border-border/50 text-secondary hover:border-accent hover:text-accent transition-all whitespace-nowrap cursor-pointer bg-transparent" data-preset="library">Library / Transcript</button>
+        </div>
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <label class="flex items-center gap-1.5 text-[11px] text-secondary cursor-pointer whitespace-nowrap">
+            <input type="checkbox" id="diffToggle" class="rounded border-border/60 text-accent focus:ring-accent/30" />
+            Differences only
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Network Modal -->
+  <div id="addNetworkModal" class="fixed inset-0 z-[200] hidden">
+    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" id="modalBackdrop"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden">
+      <div class="px-5 pt-5 pb-3 border-b border-border/30">
+        <div class="flex items-center justify-between">
+          <h3 class="text-[15px] font-semibold text-primary">Add Network to Comparison</h3>
+          <button id="closeModal" class="text-tertiary hover:text-primary transition-colors bg-transparent border-none cursor-pointer p-1">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <input id="networkSearch" type="text" placeholder="Search networks..." class="mt-3 w-full text-[13px] text-primary bg-[#f5f5f7] border border-border/30 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-accent/30" />
+      </div>
+      <div id="networkPickerList" class="max-h-72 overflow-y-auto p-2">
+        {allNetworkList.map(n => (
+          <button
+            class="network-pick-btn flex items-center gap-3 w-full px-3 py-2.5 text-left rounded-lg hover:bg-[#f5f5f7] transition-colors cursor-pointer bg-transparent border-none"
+            data-slug={n.slug}
+            data-name={n.name.toLowerCase()}
+          >
+            {n.logo ? (
+              <img src={n.logo} alt="" width="24" height="24" class="w-6 h-6 rounded-lg object-contain flex-shrink-0" loading="lazy" />
+            ) : (
+              <div class="w-6 h-6 rounded-lg flex items-center justify-center text-white text-[8px] font-bold flex-shrink-0" style={`background: linear-gradient(135deg, ${n.gradientFrom}, ${n.gradientTo})`}>{n.shortName}</div>
+            )}
+            <span class="text-[13px] font-medium text-primary">{n.name}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Executive Summary Cards -->
+  <section id="execSummary" class="py-5 px-4 md:px-6 bg-[#fafafa] border-b border-border/20">
+    <div class="max-w-site mx-auto">
+      <div class="flex items-center gap-2 mb-3">
+        <h2 class="text-[13px] font-bold uppercase tracking-wide text-tertiary">At a Glance</h2>
+      </div>
+      <div id="summaryCards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        {defaultNetworks.map((n: any) => {
+          const d = n.data;
+          const catBadge = d.categoryBadge || '';
+          const catClass = badgeColors[catBadge] || 'bg-slate-100 text-slate-600';
+          return (
+            <div class="summary-card bg-white rounded-xl border border-border/30 p-4 hover:shadow-sm transition-shadow" data-slug={d.slug}>
+              <div class="flex items-center gap-2.5 mb-2.5">
+                {d.logo ? (
+                  <img src={d.logo} alt="" width="28" height="28" class="w-7 h-7 rounded-lg object-contain flex-shrink-0" loading="lazy" />
+                ) : (
+                  <div class="w-7 h-7 rounded-lg flex items-center justify-center text-white text-[9px] font-bold flex-shrink-0" style={`background: linear-gradient(135deg, ${d.gradientFrom}, ${d.gradientTo})`}>{d.shortName}</div>
+                )}
+                <div class="min-w-0">
+                  <a href={`/networks/${d.slug}`} class="text-[14px] font-semibold text-primary hover:text-accent transition-colors no-underline block truncate">{d.name.split(' (')[0]}</a>
+                  {catBadge && <span class={`inline-block mt-0.5 px-1.5 py-0.5 text-[8px] font-semibold uppercase tracking-wider rounded ${catClass}`}>{catBadge}</span>}
+                </div>
+              </div>
+              <p class="text-[11.5px] text-secondary leading-relaxed line-clamp-2 mb-3">{d.description.slice(0, 120)}{d.description.length > 120 ? '...' : ''}</p>
+              <div class="grid grid-cols-2 gap-x-3 gap-y-1.5 text-[11px]">
+                <div><span class="text-tertiary">Model </span><span class="font-semibold text-primary">{d.deliveryModel || '—'}</span></div>
+                <div><span class="text-tertiary">Pricing </span><span class="font-semibold text-primary">{d.pricingModel || '—'}</span></div>
+                <div><span class="text-tertiary">AI </span><span class={`font-semibold ${d.aiBadge === 'AI-Native' ? 'text-violet-600' : d.aiBadge === 'AI Research' ? 'text-blue-600' : 'text-primary'}`}>{d.aiBadge || '—'}</span></div>
+                <div><span class="text-tertiary">Compliance </span><span class={`font-semibold ${d.complianceBadge === 'Strong Compliance' ? 'text-emerald-600' : 'text-primary'}`}>{d.complianceBadge === 'Strong Compliance' ? 'Strong' : d.complianceBadge === 'Standard Compliance' ? 'Standard' : d.complianceBadge || '—'}</span></div>
+                <div><span class="text-tertiary">Region </span><span class="font-semibold text-primary">{d.regionStrength || '—'}</span></div>
+                <div><span class="text-tertiary">Scale </span><span class="font-semibold text-primary">{d.expertCount || '—'}</span></div>
+              </div>
+              {d.bestFor && d.bestFor.length > 0 && (
+                <div class="mt-2.5 pt-2.5 border-t border-border/20">
+                  <div class="text-[10px] text-tertiary font-medium mb-1">Best for</div>
+                  <div class="flex flex-wrap gap-1">
+                    {d.bestFor.slice(0, 3).map((b: string) => (
+                      <span class="px-1.5 py-0.5 text-[9px] font-medium rounded bg-accent/[0.06] text-accent">{b}</span>
+                    ))}
+                    {d.bestFor.length > 3 && <span class="text-[9px] text-tertiary">+{d.bestFor.length - 3}</span>}
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- Scroll Progress -->
+  <div id="scrollProgress" class="hidden lg:block sticky top-[140px] z-30 bg-white/90 backdrop-blur border-b border-border/20">
+    <div class="max-w-site mx-auto px-6 flex items-center gap-1 py-1.5 overflow-x-auto scrollbar-none">
+      {sections.map((s: any) => (
+        <a href={`#section-${s.id}`} class="scroll-nav-link px-2.5 py-1 text-[11px] font-medium text-tertiary hover:text-accent rounded-md transition-colors whitespace-nowrap no-underline" data-section={s.id}>{s.name}</a>
+      ))}
+    </div>
+  </div>
+
+  <!-- Main Comparison Matrix -->
+  <section class="py-6 px-4 md:px-6">
+    <div class="max-w-site mx-auto">
+      {sections.map((section: any) => (
+        <div class="compare-section mb-6" id={`section-${section.id}`} data-section-id={section.id}>
+          <!-- Section header -->
+          <button class="section-toggle flex items-center gap-2 w-full text-left py-3 px-1 border-b-2 border-primary/10 hover:border-accent/30 transition-colors bg-transparent cursor-pointer group">
+            <svg class="w-4 h-4 text-tertiary group-hover:text-accent transition-colors section-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            <h3 class="text-[13px] font-bold uppercase tracking-wide text-primary">{section.name}</h3>
+            <span class="text-[11px] text-tertiary ml-auto">{section.rows.length} fields</span>
+          </button>
+
+          <!-- Section table -->
+          <div class="section-body overflow-x-auto mt-1">
+            <table class="w-full border-collapse">
+              <thead>
+                <tr>
+                  <th class="text-left text-[11px] font-semibold uppercase tracking-wide text-tertiary px-3 py-2.5 w-40 min-w-[140px] bg-white sticky left-0 z-10">Field</th>
+                  {defaultNetworks.map((n: any) => (
+                    <th class="text-left text-[11px] font-semibold text-secondary px-3 py-2.5 min-w-[140px] provider-col" data-slug={n.data.slug}>
+                      <div class="flex items-center gap-1.5">
+                        {n.data.logo ? (
+                          <img src={n.data.logo} alt="" width="16" height="16" class="w-4 h-4 rounded object-contain flex-shrink-0" loading="lazy" />
+                        ) : (
+                          <div class="w-4 h-4 rounded flex items-center justify-center text-white text-[6px] font-bold flex-shrink-0" style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}>{n.data.shortName}</div>
+                        )}
+                        <span class="truncate">{n.data.name.split(' (')[0].split(' / ')[0]}</span>
+                      </div>
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {section.rows.map((row: any) => {
+                  const values = defaultNetworks.map((n: any) => resolve(n.data, row.key));
+                  const allSame = values.every((v: any) => JSON.stringify(v) === JSON.stringify(values[0]));
+                  return (
+                    <tr class={`compare-row border-b border-border/10 hover:bg-[#fafafa] transition-colors ${allSame ? 'same-row' : 'diff-row'}`} data-same={allSame ? '1' : '0'}>
+                      <td class="px-3 py-3 text-[12px] font-medium text-primary bg-white sticky left-0 z-10">
+                        {row.label}
+                        {!allSame && <span class="ml-1 inline-block w-1.5 h-1.5 rounded-full bg-accent/60 align-middle" title="Values differ"></span>}
+                      </td>
+                      {defaultNetworks.map((n: any) => {
+                        const val = resolve(n.data, row.key);
+                        const type = row.type;
+                        return (
+                          <td class="px-3 py-3 text-[12px] provider-col" data-slug={n.data.slug}>
+                            {type === 'boolean' ? (
+                              val === true ? <span class="text-emerald-500 font-bold">&#10003;</span> :
+                              <span class="text-tertiary/40">—</span>
+                            ) : type === 'boolean-or-string' ? (
+                              val === true ? <span class="text-emerald-500 font-bold">&#10003;</span> :
+                              typeof val === 'string' ? <span class="text-emerald-600 font-medium text-[11px]">{val}</span> :
+                              <span class="text-tertiary/40">—</span>
+                            ) : type === 'graded' ? (
+                              val ? (
+                                <span class={`inline-block px-1.5 py-0.5 text-[10px] font-semibold rounded ${
+                                  row.key === 'complianceBadge' ? (complianceColors[val as string] || 'bg-slate-100 text-slate-600') :
+                                  row.key === 'aiBadge' ? (aiColors[val as string] || 'bg-slate-100 text-slate-600') :
+                                  'bg-slate-100 text-slate-600'
+                                }`}>{val}</span>
+                              ) : <span class="text-tertiary/40">—</span>
+                            ) : type === 'chip' ? (
+                              val ? (
+                                <span class={`inline-block px-1.5 py-0.5 text-[10px] font-semibold rounded ${
+                                  row.key === 'deliveryModel' ? (deliveryColors[val as string] || 'bg-slate-100 text-slate-600') :
+                                  row.key === 'regionStrength' ? (regionColors[val as string] || 'bg-slate-100 text-slate-600') :
+                                  row.key === 'categoryBadge' ? (badgeColors[val as string] || 'bg-slate-100 text-slate-600') :
+                                  'bg-slate-100 text-slate-600'
+                                }`}>{val}</span>
+                              ) : <span class="text-tertiary/40">—</span>
+                            ) : type === 'list' ? (
+                              Array.isArray(val) && val.length > 0 ? (
+                                <div class="flex flex-wrap gap-1">
+                                  {(val as string[]).slice(0, 3).map((item: string) => (
+                                    <span class="px-1.5 py-0.5 text-[9px] font-medium rounded bg-[#f5f5f7] text-secondary">{item.length > 28 ? item.slice(0, 25) + '...' : item}</span>
+                                  ))}
+                                  {val.length > 3 && <span class="text-[9px] text-tertiary">+{val.length - 3}</span>}
+                                </div>
+                              ) : <span class="text-tertiary/40">—</span>
+                            ) : (
+                              val != null && val !== '' ? (
+                                <span class="text-primary text-[12px]">{String(val)}</span>
+                              ) : <span class="text-tertiary/40">—</span>
+                            )}
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Key Differences Panel -->
+  <section id="insightsPanel" class="py-6 px-4 md:px-6 bg-[#fafafa] border-t border-border/20">
+    <div class="max-w-site mx-auto">
+      <h2 class="text-[13px] font-bold uppercase tracking-wide text-tertiary mb-4">Key Differences</h2>
+      <div id="insightCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+        <!-- Dynamically populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Next Steps -->
+  <section class="py-8 px-4 md:px-6 border-t border-border/20">
+    <div class="max-w-site mx-auto text-center">
+      <h2 class="text-lg font-bold text-primary mb-1.5">Explore Further</h2>
+      <p class="text-[13px] text-secondary mb-4">Dive into individual profiles or browse the full directory.</p>
+      <div class="flex items-center justify-center gap-3 flex-wrap">
+        <a href="/networks" class="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-white text-sm font-semibold rounded-lg no-underline hover:bg-accent/90 transition-colors">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Browse Directory
+        </a>
+        <a href="/" class="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-primary text-sm font-semibold rounded-lg no-underline hover:bg-[#f5f5f7] transition-colors border border-border/60">
+          &larr; Dashboard
+        </a>
+      </div>
+      <p class="text-[11px] text-tertiary mt-4">All data sourced from public materials. See individual profiles for methodology and confidence ratings.</p>
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+  .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+  .preset-btn.active {
+    border-color: #0071E3;
+    color: #0071E3;
+    background: rgba(0, 113, 227, 0.06);
+  }
+  .section-chevron {
+    transition: transform 0.2s ease;
+  }
+  .section-collapsed .section-chevron {
+    transform: rotate(-90deg);
+  }
+  .section-collapsed .section-body {
+    display: none;
+  }
+  .provider-col.highlight {
+    background: rgba(0, 113, 227, 0.03);
+  }
+  .compare-row.hidden-diff {
+    display: none;
+  }
+  .scroll-nav-link.active {
+    color: #0071E3;
+    background: rgba(0, 113, 227, 0.06);
+  }
+  @media (max-width: 768px) {
+    .compare-section table {
+      font-size: 11px;
+    }
+    .compare-section th,
+    .compare-section td {
+      min-width: 110px !important;
+      padding: 6px 8px !important;
+    }
+    .compare-section th:first-child,
+    .compare-section td:first-child {
+      min-width: 100px !important;
+    }
+  }
+</style>
+
+<script define:vars={{ networkDataMap, presets, sections, defaultSlugs, allNetworkList }}>
+  // ── State ──
+  let activeSlugs = [...defaultSlugs];
+  let activePreset = '';
+  let diffMode = false;
+
+  // ── Elements ──
+  const providerChips = document.getElementById('providerChips');
+  const addNetworkBtn = document.getElementById('addNetworkBtn');
+  const addNetworkModal = document.getElementById('addNetworkModal');
+  const closeModal = document.getElementById('closeModal');
+  const modalBackdrop = document.getElementById('modalBackdrop');
+  const networkSearch = document.getElementById('networkSearch');
+  const networkPickerList = document.getElementById('networkPickerList');
+  const diffToggle = document.getElementById('diffToggle');
+  const summaryCards = document.getElementById('summaryCards');
+  const insightCards = document.getElementById('insightCards');
+
+  // ── Helper: Resolve nested key ──
+  function resolve(data, key) {
+    return key.split('.').reduce((obj, k) => obj?.[k], data);
+  }
+
+  // ── Badge color maps ──
+  const complianceColors = {
+    'Strong Compliance': 'bg-emerald-500/10 text-emerald-700',
+    'Standard Compliance': 'bg-slate-100 text-slate-600',
+    'Compliance Tools': 'bg-blue-500/10 text-blue-600',
+    'Limited Public Detail': 'bg-amber-500/10 text-amber-600',
+  };
+  const aiColors = {
+    'AI-Native': 'bg-violet-500/10 text-violet-700',
+    'AI Research': 'bg-blue-500/10 text-blue-600',
+    'AI Matching': 'bg-cyan-500/10 text-cyan-600',
+    'AI Moderation': 'bg-teal-500/10 text-teal-600',
+    'Limited AI Detail': 'bg-slate-100 text-slate-500',
+  };
+  const badgeColorMap = {
+    'Global Leader': 'bg-amber-500/10 text-amber-700',
+    'Major Provider': 'bg-blue-500/10 text-blue-700',
+    'Fast-Growing': 'bg-emerald-500/10 text-emerald-700',
+    'Asia Specialist': 'bg-rose-500/10 text-rose-700',
+    'Research Platform': 'bg-violet-500/10 text-violet-700',
+    'Technology-First': 'bg-cyan-500/10 text-cyan-700',
+    'Marketplace': 'bg-orange-500/10 text-orange-700',
+    'Boutique Specialist': 'bg-slate-100 text-slate-600',
+  };
+  const deliveryColorMap = {
+    'Concierge': 'bg-blue-500/10 text-blue-700',
+    'Hybrid': 'bg-violet-500/10 text-violet-600',
+    'Self-Serve': 'bg-emerald-500/10 text-emerald-700',
+    'Marketplace': 'bg-orange-500/10 text-orange-700',
+    'Platform-Led': 'bg-cyan-500/10 text-cyan-700',
+  };
+  const regionColorMap = {
+    'Global': 'bg-blue-500/10 text-blue-700',
+    'North America': 'bg-slate-100 text-slate-700',
+    'Europe': 'bg-indigo-500/10 text-indigo-700',
+    'Asia-Pacific': 'bg-rose-500/10 text-rose-700',
+    'Greater China': 'bg-red-500/10 text-red-700',
+    'India': 'bg-amber-500/10 text-amber-700',
+    'Emerging Markets': 'bg-teal-500/10 text-teal-700',
+  };
+
+  // ── Render Functions ──
+
+  function renderChips() {
+    if (!providerChips) return;
+    providerChips.innerHTML = '';
+    activeSlugs.forEach(slug => {
+      const d = networkDataMap[slug];
+      if (!d) return;
+      const chip = document.createElement('div');
+      chip.className = 'provider-chip flex items-center gap-1.5 px-2.5 py-1 bg-[#f5f5f7] rounded-lg border border-border/30 whitespace-nowrap';
+      chip.dataset.slug = slug;
+      const displayName = d.name.split(' (')[0].split(' / ')[0];
+      chip.innerHTML = d.logo
+        ? `<img src="${d.logo}" alt="" width="16" height="16" class="w-4 h-4 rounded object-contain" loading="lazy" />`
+        : `<div class="w-4 h-4 rounded flex items-center justify-center text-white text-[7px] font-bold" style="background: linear-gradient(135deg, ${d.gradientFrom}, ${d.gradientTo})">${d.shortName}</div>`;
+      chip.innerHTML += `<span class="text-[12px] font-medium text-primary">${displayName}</span>`;
+      chip.innerHTML += `<button class="remove-provider ml-0.5 text-tertiary hover:text-red-500 transition-colors bg-transparent border-none cursor-pointer p-0" data-slug="${slug}" aria-label="Remove ${d.name}"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg></button>`;
+      providerChips.appendChild(chip);
+    });
+    // Bind remove buttons
+    providerChips.querySelectorAll('.remove-provider').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const slug = btn.dataset.slug;
+        if (activeSlugs.length <= 2) return; // minimum 2
+        activeSlugs = activeSlugs.filter(s => s !== slug);
+        rebuildComparison();
+      });
+    });
+  }
+
+  function renderSummaryCards() {
+    if (!summaryCards) return;
+    summaryCards.innerHTML = '';
+    activeSlugs.forEach(slug => {
+      const d = networkDataMap[slug];
+      if (!d) return;
+      const catBadge = d.categoryBadge || '';
+      const catClass = badgeColorMap[catBadge] || 'bg-slate-100 text-slate-600';
+      const card = document.createElement('div');
+      card.className = 'summary-card bg-white rounded-xl border border-border/30 p-4 hover:shadow-sm transition-shadow';
+      card.dataset.slug = slug;
+      const displayName = d.name.split(' (')[0];
+      const desc = d.description.length > 120 ? d.description.slice(0, 120) + '...' : d.description;
+      let bestForHtml = '';
+      if (d.bestFor && d.bestFor.length > 0) {
+        const pills = d.bestFor.slice(0, 3).map(b => `<span class="px-1.5 py-0.5 text-[9px] font-medium rounded bg-accent/[0.06] text-accent">${b}</span>`).join('');
+        const extra = d.bestFor.length > 3 ? `<span class="text-[9px] text-tertiary">+${d.bestFor.length - 3}</span>` : '';
+        bestForHtml = `<div class="mt-2.5 pt-2.5 border-t border-border/20"><div class="text-[10px] text-tertiary font-medium mb-1">Best for</div><div class="flex flex-wrap gap-1">${pills}${extra}</div></div>`;
+      }
+      const complianceLabel = d.complianceBadge === 'Strong Compliance' ? 'Strong' : d.complianceBadge === 'Standard Compliance' ? 'Standard' : d.complianceBadge || '—';
+      const complianceClass = d.complianceBadge === 'Strong Compliance' ? 'text-emerald-600' : 'text-primary';
+      const aiClass = d.aiBadge === 'AI-Native' ? 'text-violet-600' : d.aiBadge === 'AI Research' ? 'text-blue-600' : 'text-primary';
+      card.innerHTML = `
+        <div class="flex items-center gap-2.5 mb-2.5">
+          ${d.logo ? `<img src="${d.logo}" alt="" width="28" height="28" class="w-7 h-7 rounded-lg object-contain flex-shrink-0" loading="lazy" />` : `<div class="w-7 h-7 rounded-lg flex items-center justify-center text-white text-[9px] font-bold flex-shrink-0" style="background: linear-gradient(135deg, ${d.gradientFrom}, ${d.gradientTo})">${d.shortName}</div>`}
+          <div class="min-w-0">
+            <a href="/networks/${d.slug}" class="text-[14px] font-semibold text-primary hover:text-accent transition-colors no-underline block truncate">${displayName}</a>
+            ${catBadge ? `<span class="inline-block mt-0.5 px-1.5 py-0.5 text-[8px] font-semibold uppercase tracking-wider rounded ${catClass}">${catBadge}</span>` : ''}
+          </div>
+        </div>
+        <p class="text-[11.5px] text-secondary leading-relaxed line-clamp-2 mb-3">${desc}</p>
+        <div class="grid grid-cols-2 gap-x-3 gap-y-1.5 text-[11px]">
+          <div><span class="text-tertiary">Model </span><span class="font-semibold text-primary">${d.deliveryModel || '—'}</span></div>
+          <div><span class="text-tertiary">Pricing </span><span class="font-semibold text-primary">${d.pricingModel || '—'}</span></div>
+          <div><span class="text-tertiary">AI </span><span class="font-semibold ${aiClass}">${d.aiBadge || '—'}</span></div>
+          <div><span class="text-tertiary">Compliance </span><span class="font-semibold ${complianceClass}">${complianceLabel}</span></div>
+          <div><span class="text-tertiary">Region </span><span class="font-semibold text-primary">${d.regionStrength || '—'}</span></div>
+          <div><span class="text-tertiary">Scale </span><span class="font-semibold text-primary">${d.expertCount || '—'}</span></div>
+        </div>
+        ${bestForHtml}`;
+      summaryCards.appendChild(card);
+    });
+  }
+
+  function renderCellValue(val, type, key) {
+    if (type === 'boolean') {
+      return val === true
+        ? '<span class="text-emerald-500 font-bold">&#10003;</span>'
+        : '<span class="text-tertiary/40">—</span>';
+    }
+    if (type === 'boolean-or-string') {
+      if (val === true) return '<span class="text-emerald-500 font-bold">&#10003;</span>';
+      if (typeof val === 'string') return `<span class="text-emerald-600 font-medium text-[11px]">${val}</span>`;
+      return '<span class="text-tertiary/40">—</span>';
+    }
+    if (type === 'graded' && val) {
+      const colorMap = key === 'complianceBadge' ? complianceColors : key === 'aiBadge' ? aiColors : {};
+      const cls = colorMap[val] || 'bg-slate-100 text-slate-600';
+      return `<span class="inline-block px-1.5 py-0.5 text-[10px] font-semibold rounded ${cls}">${val}</span>`;
+    }
+    if (type === 'chip' && val) {
+      const colorMap = key === 'deliveryModel' ? deliveryColorMap : key === 'regionStrength' ? regionColorMap : key === 'categoryBadge' ? badgeColorMap : {};
+      const cls = colorMap[val] || 'bg-slate-100 text-slate-600';
+      return `<span class="inline-block px-1.5 py-0.5 text-[10px] font-semibold rounded ${cls}">${val}</span>`;
+    }
+    if (type === 'list' && Array.isArray(val) && val.length > 0) {
+      const items = val.slice(0, 3).map(item => {
+        const text = item.length > 28 ? item.slice(0, 25) + '...' : item;
+        return `<span class="px-1.5 py-0.5 text-[9px] font-medium rounded bg-[#f5f5f7] text-secondary">${text}</span>`;
+      }).join('');
+      const extra = val.length > 3 ? `<span class="text-[9px] text-tertiary">+${val.length - 3}</span>` : '';
+      return `<div class="flex flex-wrap gap-1">${items}${extra}</div>`;
+    }
+    if (val != null && val !== '') {
+      return `<span class="text-primary text-[12px]">${String(val)}</span>`;
+    }
+    return '<span class="text-tertiary/40">—</span>';
+  }
+
+  function renderMatrix() {
+    const container = document.querySelector('section.py-6 > .max-w-site');
+    if (!container) return;
+    container.innerHTML = '';
+
+    sections.forEach(section => {
+      const sectionEl = document.createElement('div');
+      sectionEl.className = 'compare-section mb-6';
+      sectionEl.id = `section-${section.id}`;
+      sectionEl.dataset.sectionId = section.id;
+
+      // Header
+      const toggleBtn = document.createElement('button');
+      toggleBtn.className = 'section-toggle flex items-center gap-2 w-full text-left py-3 px-1 border-b-2 border-primary/10 hover:border-accent/30 transition-colors bg-transparent cursor-pointer group';
+      toggleBtn.innerHTML = `
+        <svg class="w-4 h-4 text-tertiary group-hover:text-accent transition-colors section-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        <h3 class="text-[13px] font-bold uppercase tracking-wide text-primary">${section.name}</h3>
+        <span class="text-[11px] text-tertiary ml-auto">${section.rows.length} fields</span>`;
+      sectionEl.appendChild(toggleBtn);
+
+      // Table
+      const bodyDiv = document.createElement('div');
+      bodyDiv.className = 'section-body overflow-x-auto mt-1';
+      const table = document.createElement('table');
+      table.className = 'w-full border-collapse';
+
+      // Thead
+      const thead = document.createElement('thead');
+      let headHtml = '<tr><th class="text-left text-[11px] font-semibold uppercase tracking-wide text-tertiary px-3 py-2.5 w-40 min-w-[140px] bg-white sticky left-0 z-10">Field</th>';
+      activeSlugs.forEach(slug => {
+        const d = networkDataMap[slug];
+        if (!d) return;
+        const displayName = d.name.split(' (')[0].split(' / ')[0];
+        const icon = d.logo
+          ? `<img src="${d.logo}" alt="" width="16" height="16" class="w-4 h-4 rounded object-contain flex-shrink-0" loading="lazy" />`
+          : `<div class="w-4 h-4 rounded flex items-center justify-center text-white text-[6px] font-bold flex-shrink-0" style="background: linear-gradient(135deg, ${d.gradientFrom}, ${d.gradientTo})">${d.shortName}</div>`;
+        headHtml += `<th class="text-left text-[11px] font-semibold text-secondary px-3 py-2.5 min-w-[140px] provider-col" data-slug="${slug}"><div class="flex items-center gap-1.5">${icon}<span class="truncate">${displayName}</span></div></th>`;
+      });
+      headHtml += '</tr>';
+      thead.innerHTML = headHtml;
+      table.appendChild(thead);
+
+      // Tbody
+      const tbody = document.createElement('tbody');
+      section.rows.forEach(row => {
+        const values = activeSlugs.map(slug => resolve(networkDataMap[slug], row.key));
+        const allSame = values.every(v => JSON.stringify(v) === JSON.stringify(values[0]));
+        const tr = document.createElement('tr');
+        tr.className = `compare-row border-b border-border/10 hover:bg-[#fafafa] transition-colors ${allSame ? 'same-row' : 'diff-row'}`;
+        tr.dataset.same = allSame ? '1' : '0';
+        let rowHtml = `<td class="px-3 py-3 text-[12px] font-medium text-primary bg-white sticky left-0 z-10">${row.label}${!allSame ? '<span class="ml-1 inline-block w-1.5 h-1.5 rounded-full bg-accent/60 align-middle" title="Values differ"></span>' : ''}</td>`;
+        activeSlugs.forEach(slug => {
+          const val = resolve(networkDataMap[slug], row.key);
+          rowHtml += `<td class="px-3 py-3 text-[12px] provider-col" data-slug="${slug}">${renderCellValue(val, row.type, row.key)}</td>`;
+        });
+        tr.innerHTML = rowHtml;
+        tbody.appendChild(tr);
+      });
+      table.appendChild(tbody);
+      bodyDiv.appendChild(table);
+      sectionEl.appendChild(bodyDiv);
+
+      // Toggle behavior
+      toggleBtn.addEventListener('click', () => {
+        sectionEl.classList.toggle('section-collapsed');
+      });
+
+      container.appendChild(sectionEl);
+    });
+
+    applyDiffMode();
+  }
+
+  function renderInsights() {
+    if (!insightCards) return;
+    insightCards.innerHTML = '';
+
+    // Collect key differences
+    const diffs = [];
+    sections.forEach(section => {
+      section.rows.forEach(row => {
+        const values = activeSlugs.map(slug => resolve(networkDataMap[slug], row.key));
+        const allSame = values.every(v => JSON.stringify(v) === JSON.stringify(values[0]));
+        if (!allSame) {
+          diffs.push({ section: section.name, label: row.label, values: activeSlugs.map((slug, i) => ({ slug, name: networkDataMap[slug]?.name?.split(' (')[0] || slug, value: values[i] })) });
+        }
+      });
+    });
+
+    if (diffs.length === 0) {
+      insightCards.innerHTML = '<p class="text-[13px] text-tertiary col-span-full">All selected providers are similar across tracked fields.</p>';
+      return;
+    }
+
+    // Show top differences as cards
+    diffs.slice(0, 6).forEach(diff => {
+      const card = document.createElement('div');
+      card.className = 'bg-white rounded-xl border border-border/30 p-4';
+      let itemsHtml = diff.values.map(v => {
+        let displayVal = v.value;
+        if (displayVal === true) displayVal = '✓';
+        else if (displayVal === false || displayVal == null) displayVal = '—';
+        else if (Array.isArray(displayVal)) displayVal = displayVal.slice(0, 2).join(', ') + (displayVal.length > 2 ? '…' : '');
+        return `<div class="flex items-center justify-between text-[11px]"><span class="text-secondary">${v.name.split(' / ')[0]}</span><span class="font-medium text-primary">${displayVal}</span></div>`;
+      }).join('');
+      card.innerHTML = `
+        <div class="text-[10px] font-bold uppercase tracking-wider text-tertiary mb-1">${diff.section}</div>
+        <div class="text-[13px] font-semibold text-primary mb-2">${diff.label}</div>
+        <div class="space-y-1">${itemsHtml}</div>`;
+      insightCards.appendChild(card);
+    });
+
+    // Summary count
+    if (diffs.length > 6) {
+      const more = document.createElement('div');
+      more.className = 'bg-white rounded-xl border border-border/30 p-4 flex items-center justify-center';
+      more.innerHTML = `<span class="text-[13px] text-tertiary">+${diffs.length - 6} more differences across sections</span>`;
+      insightCards.appendChild(more);
+    }
+  }
+
+  function applyDiffMode() {
+    document.querySelectorAll('.compare-row').forEach(row => {
+      if (diffMode && row.dataset.same === '1') {
+        row.classList.add('hidden-diff');
+      } else {
+        row.classList.remove('hidden-diff');
+      }
+    });
+  }
+
+  function rebuildComparison() {
+    renderChips();
+    renderSummaryCards();
+    renderMatrix();
+    renderInsights();
+    updateScrollNav();
+  }
+
+  // ── Modal ──
+  function openModal() {
+    addNetworkModal?.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    if (networkSearch) networkSearch.value = '';
+    filterPicker('');
+    networkSearch?.focus();
+  }
+  function closeModalFn() {
+    addNetworkModal?.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+  addNetworkBtn?.addEventListener('click', openModal);
+  closeModal?.addEventListener('click', closeModalFn);
+  modalBackdrop?.addEventListener('click', closeModalFn);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModalFn(); });
+
+  function filterPicker(query) {
+    const lower = query.toLowerCase();
+    networkPickerList?.querySelectorAll('.network-pick-btn').forEach(btn => {
+      const name = btn.dataset.name || '';
+      const slug = btn.dataset.slug || '';
+      const isSelected = activeSlugs.includes(slug);
+      btn.style.display = (!query || name.includes(lower)) && !isSelected ? '' : 'none';
+    });
+  }
+  networkSearch?.addEventListener('input', (e) => filterPicker(e.target.value));
+
+  networkPickerList?.querySelectorAll('.network-pick-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const slug = btn.dataset.slug;
+      if (!slug || activeSlugs.includes(slug)) return;
+      if (activeSlugs.length >= 6) {
+        activeSlugs.shift(); // remove first if at max
+      }
+      activeSlugs.push(slug);
+      closeModalFn();
+      activePreset = '';
+      document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+      rebuildComparison();
+    });
+  });
+
+  // ── Presets ──
+  document.querySelectorAll('.preset-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const p = btn.dataset.preset || '';
+      if (activePreset === p) {
+        activePreset = '';
+        btn.classList.remove('active');
+        activeSlugs = [...defaultSlugs];
+      } else {
+        document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+        activePreset = p;
+        btn.classList.add('active');
+        if (presets[p]) {
+          activeSlugs = [...presets[p]];
+        }
+      }
+      rebuildComparison();
+    });
+  });
+
+  // ── Diff toggle ──
+  diffToggle?.addEventListener('change', () => {
+    diffMode = diffToggle.checked;
+    applyDiffMode();
+  });
+
+  // ── Remove provider (initial) ──
+  document.querySelectorAll('.remove-provider').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const slug = btn.dataset.slug;
+      if (activeSlugs.length <= 2) return;
+      activeSlugs = activeSlugs.filter(s => s !== slug);
+      rebuildComparison();
+    });
+  });
+
+  // ── Section toggles (initial) ──
+  document.querySelectorAll('.section-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.closest('.compare-section')?.classList.toggle('section-collapsed');
+    });
+  });
+
+  // ── Column hover ──
+  document.addEventListener('mouseover', (e) => {
+    const cell = e.target.closest('.provider-col');
+    if (!cell) return;
+    const slug = cell.dataset.slug;
+    if (!slug) return;
+    document.querySelectorAll(`.provider-col[data-slug="${slug}"]`).forEach(el => el.classList.add('highlight'));
+  });
+  document.addEventListener('mouseout', (e) => {
+    const cell = e.target.closest('.provider-col');
+    if (!cell) return;
+    const slug = cell.dataset.slug;
+    if (!slug) return;
+    document.querySelectorAll(`.provider-col[data-slug="${slug}"]`).forEach(el => el.classList.remove('highlight'));
+  });
+
+  // ── Scroll progress nav ──
+  function updateScrollNav() {
+    const links = document.querySelectorAll('.scroll-nav-link');
+    if (!links.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.dataset.sectionId;
+          links.forEach(l => l.classList.toggle('active', l.dataset.section === id));
+        }
+      });
+    }, { rootMargin: '-200px 0px -60% 0px' });
+
+    document.querySelectorAll('.compare-section').forEach(s => observer.observe(s));
+  }
+  updateScrollNav();
+</script>

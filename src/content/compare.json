@@ -1,5 +1,77 @@
 {
   "networks": ["glg", "alphasights", "third-bridge", "dialectica", "guidepoint", "alphasense-tegus"],
+  "presets": {
+    "leaders": ["glg", "alphasights", "third-bridge", "guidepoint", "dialectica", "alphasense-tegus"],
+    "consulting": ["glg", "alphasights", "guidepoint", "dialectica", "atheneum", "newtonx"],
+    "pe": ["alphasights", "third-bridge", "dialectica", "guidepoint", "glg", "stax"],
+    "enterprise": ["glg", "alphasense-tegus", "guidepoint", "newtonx", "third-bridge", "atheneum"],
+    "asia": ["capvision", "arches", "visasq", "lynk", "alphaexpert", "cg-consulting"],
+    "ai": ["alphasense-tegus", "techspert", "dialectica", "newtonx", "prosynth", "prosapient"],
+    "library": ["alphasense-tegus", "third-bridge", "glg", "guidepoint", "dialectica", "arches"]
+  },
+  "sections": [
+    {
+      "id": "core",
+      "name": "Core Offering",
+      "rows": [
+        { "label": "Expert Calls", "key": "comparison.expertCalls", "type": "boolean" },
+        { "label": "Surveys", "key": "comparison.surveys", "type": "boolean" },
+        { "label": "Content Library", "key": "comparison.contentLibrary", "type": "boolean-or-string" },
+        { "label": "AI Matching", "key": "comparison.aiMatching", "type": "boolean-or-string" },
+        { "label": "Compliance Tools", "key": "comparison.complianceTools", "type": "boolean" }
+      ]
+    },
+    {
+      "id": "commercial",
+      "name": "Commercial Model",
+      "rows": [
+        { "label": "Pricing Model", "key": "pricingModel", "type": "text" },
+        { "label": "Delivery Model", "key": "deliveryModel", "type": "chip" },
+        { "label": "Pricing Detail", "key": "pricingDetail", "type": "text" }
+      ]
+    },
+    {
+      "id": "scale",
+      "name": "Scale & Coverage",
+      "rows": [
+        { "label": "Claimed Scale", "key": "expertCount", "type": "text" },
+        { "label": "Scale Basis", "key": "expertCountLabel", "type": "text" },
+        { "label": "Employees", "key": "employeeCount", "type": "text" },
+        { "label": "Founded", "key": "founded", "type": "text" },
+        { "label": "Headquarters", "key": "headquarters", "type": "text" },
+        { "label": "Region Strength", "key": "regionStrength", "type": "chip" }
+      ]
+    },
+    {
+      "id": "compliance",
+      "name": "Compliance",
+      "rows": [
+        { "label": "Compliance Posture", "key": "complianceBadge", "type": "graded" },
+        { "label": "MNPI Policy", "key": "compliance.mnpiPolicy", "type": "text" },
+        { "label": "Expert Vetting", "key": "compliance.expertVetting", "type": "text" },
+        { "label": "Audit Trail", "key": "compliance.auditTrail", "type": "boolean" },
+        { "label": "Cooling-Off Period", "key": "compliance.coolingOffPeriod", "type": "text" }
+      ]
+    },
+    {
+      "id": "ai",
+      "name": "AI & Technology",
+      "rows": [
+        { "label": "AI Maturity", "key": "aiBadge", "type": "graded" },
+        { "label": "AI Capabilities", "key": "aiCapabilities", "type": "list" },
+        { "label": "Category", "key": "categoryBadge", "type": "chip" }
+      ]
+    },
+    {
+      "id": "fit",
+      "name": "User Fit",
+      "rows": [
+        { "label": "Best For", "key": "bestFor", "type": "list" },
+        { "label": "Key Differentiators", "key": "keyDifferentiators", "type": "list" },
+        { "label": "Services", "key": "services", "type": "list" }
+      ]
+    }
+  ],
   "features": [
     { "name": "Expert Calls", "key": "expertCalls" },
     { "name": "Content Library", "key": "contentLibrary" },
