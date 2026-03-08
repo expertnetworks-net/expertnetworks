@@ -439,10 +439,24 @@ published.forEach(n => {
       const slugs = fromUrl.split(',').filter(s => networkDataMap[s]);
       if (slugs.length >= 2) return slugs.slice(0, 6);
     }
+    // Support ?preset= from homepage links
+    const presetParam = params.get('preset');
+    if (presetParam && presets[presetParam]) {
+      return [...presets[presetParam]];
+    }
+    // Support ?add= to start with defaults plus one extra
+    const addParam = params.get('add');
+    if (addParam && networkDataMap[addParam]) {
+      const base = [...defaultSlugs];
+      if (!base.includes(addParam)) {
+        base.push(addParam);
+      }
+      return base.slice(0, 6);
+    }
     return [...defaultSlugs];
   }
   let activeSlugs = getInitialSlugs();
-  let activePreset = '';
+  let activePreset = new URLSearchParams(window.location.search).get('preset') || '';
   let diffMode = false;
 
   // Sync URL with current state (without reload)
@@ -872,8 +886,15 @@ published.forEach(n => {
   });
 
   // ── Initial rebuild if URL params differ from SSR defaults ──
-  const urlHasCustomSlugs = new URLSearchParams(window.location.search).has('networks');
+  const initParams = new URLSearchParams(window.location.search);
+  const urlHasCustomSlugs = initParams.has('networks') || initParams.has('preset') || initParams.has('add');
   if (urlHasCustomSlugs) {
+    // Highlight the active preset button if preset param was used
+    if (activePreset) {
+      document.querySelectorAll('.preset-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.preset === activePreset);
+      });
+    }
     rebuildComparison();
   } else {
     syncUrl();
