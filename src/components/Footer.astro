@@ -12,12 +12,9 @@ const networkCount = publishedNetworks.length;
   <!-- Subtle top gradient edge -->
   <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent"></div>
 
-  <!-- Interaction surface for particles -->
-  <div id="footerInteraction" class="absolute inset-0 z-[1]" style="cursor: default;" aria-hidden="true"></div>
-
   <!-- ═══ Main footer content ═══ -->
-  <div class="relative z-10 pt-16 pb-0 px-6" style="pointer-events: none;">
-    <div class="max-w-site mx-auto" style="pointer-events: auto;">
+  <div class="relative z-10 pt-16 pb-0 px-6">
+    <div class="max-w-site mx-auto">
 
       <!-- ─── 4-Column Grid ─── -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
@@ -77,7 +74,7 @@ const networkCount = publishedNetworks.length;
       </div>
 
       <!-- ─── Bottom Bar ─── -->
-      <div class="py-5 border-t border-white/[0.06] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+      <div class="mt-12 py-5 border-t border-white/[0.06] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
         <span class="text-[11px] text-white/25">&copy; 2026 ExpertNetworks.net</span>
         <span class="text-[11px] text-white/20">Independent information resource. Not affiliated with any expert network.</span>
       </div>
@@ -99,26 +96,27 @@ const networkCount = publishedNetworks.length;
 
 <script>
 (function() {
-  // ─── Footer Particle System (lightweight variant) ───
-  var PARTICLE_COUNT_DESKTOP = 45;
-  var PARTICLE_COUNT_TABLET = 28;
-  var PARTICLE_COUNT_MOBILE = 14;
-  var MAX_CONN_DIST = 120;
+  // ─── Footer Particle System ───
+  // Listens on the footer element itself (not a separate interaction layer)
+  // so pointer tracking works even when hovering over links and text.
+  var PARTICLE_COUNT_DESKTOP = 55;
+  var PARTICLE_COUNT_TABLET = 32;
+  var PARTICLE_COUNT_MOBILE = 16;
+  var MAX_CONN_DIST = 130;
   var MAX_CONN_DIST_SQ = MAX_CONN_DIST * MAX_CONN_DIST;
-  var LINE_OPACITY = 0.06;
-  var BASE_OPACITY = 0.25;
-  var DRIFT = 0.1;
-  var POINTER_RADIUS = 160;
+  var LINE_OPACITY = 0.07;
+  var BASE_OPACITY = 0.3;
+  var DRIFT = 0.12;
+  var POINTER_RADIUS = 200;
   var POINTER_RADIUS_SQ = POINTER_RADIUS * POINTER_RADIUS;
-  var REPULSION = 90;
-  var RECOVERY = 0.012;
-  var INTERP = 0.1;
+  var REPULSION = 120;
+  var RECOVERY = 0.014;
+  var INTERP = 0.08;
   var DPR_CAP = 2;
 
   var canvas = document.getElementById('footerCanvas');
   var footer = document.getElementById('siteFooter');
-  var interactionLayer = document.getElementById('footerInteraction');
-  if (!canvas || !footer || !interactionLayer) return;
+  if (!canvas || !footer) return;
   var ctx = canvas.getContext('2d');
   if (!ctx) return;
 
@@ -156,7 +154,7 @@ const networkCount = publishedNetworks.length;
       homeX: 0, homeY: 0,
       vx: (Math.random() - 0.5) * DRIFT,
       vy: (Math.random() - 0.5) * DRIFT,
-      size: 0.8 + Math.random() * 1,
+      size: 0.8 + Math.random() * 1.1,
       opacity: BASE_OPACITY * (0.4 + Math.random() * 0.6),
     };
   }
@@ -196,7 +194,7 @@ const networkCount = publishedNetworks.length;
     }
   }
 
-  // Pointer events
+  // ─── Pointer events — bound to the footer element directly ───
   function onPointerMove(e) {
     var rect = footer.getBoundingClientRect();
     pointer.x = e.clientX - rect.left;
@@ -222,12 +220,14 @@ const networkCount = publishedNetworks.length;
   }
   function onTouchEnd() { isPointerInside = false; }
 
-  interactionLayer.addEventListener('mousemove', onPointerMove, { passive: true });
-  interactionLayer.addEventListener('mouseleave', onPointerLeave, { passive: true });
-  interactionLayer.addEventListener('touchstart', onTouchStart, { passive: true });
-  interactionLayer.addEventListener('touchmove', onTouchMove, { passive: true });
-  interactionLayer.addEventListener('touchend', onTouchEnd, { passive: true });
-  interactionLayer.addEventListener('touchcancel', onTouchEnd, { passive: true });
+  // Listen on footer itself — events bubble up from links/text through the
+  // content div, so we always get pointer position regardless of what's hovered.
+  footer.addEventListener('mousemove', onPointerMove, { passive: true });
+  footer.addEventListener('mouseleave', onPointerLeave, { passive: true });
+  footer.addEventListener('touchstart', onTouchStart, { passive: true });
+  footer.addEventListener('touchmove', onTouchMove, { passive: true });
+  footer.addEventListener('touchend', onTouchEnd, { passive: true });
+  footer.addEventListener('touchcancel', onTouchEnd, { passive: true });
 
   // Visibility
   var observer = new IntersectionObserver(function(entries) {
@@ -257,19 +257,20 @@ const networkCount = publishedNetworks.length;
     var h = cachedH;
     ctx.clearRect(0, 0, w, h);
 
+    // Smooth pointer interpolation — slower decay when leaving for a gentle fade-out
     if (isPointerInside) {
       smoothPointer.x += (pointer.x - smoothPointer.x) * INTERP;
       smoothPointer.y += (pointer.y - smoothPointer.y) * INTERP;
     } else {
-      smoothPointer.x += (-9999 - smoothPointer.x) * 0.02;
-      smoothPointer.y += (-9999 - smoothPointer.y) * 0.02;
+      smoothPointer.x += (-9999 - smoothPointer.x) * 0.015;
+      smoothPointer.y += (-9999 - smoothPointer.y) * 0.015;
     }
 
     var spx = smoothPointer.x;
     var spy = smoothPointer.y;
 
     // Particles
-    ctx.fillStyle = 'rgb(160,160,170)';
+    ctx.fillStyle = 'rgb(160,165,175)';
     for (var i = 0; i < particles.length; i++) {
       var p = particles[i];
       p.x += p.vx * dt;
@@ -302,7 +303,7 @@ const networkCount = publishedNetworks.length;
     }
 
     // Connections
-    ctx.strokeStyle = 'rgb(160,160,170)';
+    ctx.strokeStyle = 'rgb(160,165,175)';
     ctx.lineWidth = 0.5;
     for (var i = 0; i < particles.length; i++) {
       for (var j = i + 1; j < particles.length; j++) {
@@ -315,6 +316,7 @@ const networkCount = publishedNetworks.length;
         var distAB = Math.sqrt(distSqAB);
         var lineFade = 1 - (distAB / MAX_CONN_DIST);
 
+        // Lines near pointer get suppressed (creates the "parting" effect)
         var stress = 1;
         var midX = (a.x + b.x) * 0.5;
         var midY = (a.y + b.y) * 0.5;
@@ -337,11 +339,11 @@ const networkCount = publishedNetworks.length;
     ctx.globalAlpha = 1;
   }
 
-  // Static fallback
+  // Static fallback for reduced motion
   function drawStatic() {
     resize();
     ctx.clearRect(0, 0, cachedW, cachedH);
-    ctx.fillStyle = 'rgb(160,160,170)';
+    ctx.fillStyle = 'rgb(160,165,175)';
     for (var i = 0; i < particles.length; i++) {
       var p = particles[i];
       ctx.globalAlpha = p.opacity * 0.6;
@@ -349,7 +351,7 @@ const networkCount = publishedNetworks.length;
       ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
       ctx.fill();
     }
-    ctx.strokeStyle = 'rgb(160,160,170)';
+    ctx.strokeStyle = 'rgb(160,165,175)';
     ctx.lineWidth = 0.5;
     for (var i = 0; i < particles.length; i++) {
       for (var j = i + 1; j < particles.length; j++) {
@@ -375,12 +377,12 @@ const networkCount = publishedNetworks.length;
   function cleanup() {
     if (animationId) { cancelAnimationFrame(animationId); animationId = null; }
     observer.disconnect();
-    interactionLayer.removeEventListener('mousemove', onPointerMove);
-    interactionLayer.removeEventListener('mouseleave', onPointerLeave);
-    interactionLayer.removeEventListener('touchstart', onTouchStart);
-    interactionLayer.removeEventListener('touchmove', onTouchMove);
-    interactionLayer.removeEventListener('touchend', onTouchEnd);
-    interactionLayer.removeEventListener('touchcancel', onTouchEnd);
+    footer.removeEventListener('mousemove', onPointerMove);
+    footer.removeEventListener('mouseleave', onPointerLeave);
+    footer.removeEventListener('touchstart', onTouchStart);
+    footer.removeEventListener('touchmove', onTouchMove);
+    footer.removeEventListener('touchend', onTouchEnd);
+    footer.removeEventListener('touchcancel', onTouchEnd);
     document.removeEventListener('visibilitychange', onVisibilityChange);
     window.removeEventListener('resize', debouncedResize);
     motionQuery.removeEventListener('change', onMotionChange);
