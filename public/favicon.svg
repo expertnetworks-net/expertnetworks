@@ -1,21 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0071E3"/>
-      <stop offset="100%" stop-color="#005BB5"/>
-    </linearGradient>
-  </defs>
-  <rect width="32" height="32" rx="7" fill="url(#bg)"/>
-  <!-- Network node dots -->
-  <circle cx="6" cy="6" r="1.2" fill="rgba(255,255,255,0.35)"/>
-  <circle cx="26" cy="6" r="1.2" fill="rgba(255,255,255,0.35)"/>
-  <circle cx="6" cy="26" r="1.2" fill="rgba(255,255,255,0.35)"/>
-  <circle cx="26" cy="26" r="1.2" fill="rgba(255,255,255,0.35)"/>
-  <!-- Connecting lines -->
-  <line x1="6" y1="6" x2="16" y2="16" stroke="rgba(255,255,255,0.15)" stroke-width="0.6"/>
-  <line x1="26" y1="6" x2="16" y2="16" stroke="rgba(255,255,255,0.15)" stroke-width="0.6"/>
-  <line x1="6" y1="26" x2="16" y2="16" stroke="rgba(255,255,255,0.15)" stroke-width="0.6"/>
-  <line x1="26" y1="26" x2="16" y2="16" stroke="rgba(255,255,255,0.15)" stroke-width="0.6"/>
-  <!-- EN monogram -->
-  <text x="16" y="18" text-anchor="middle" dominant-baseline="central" fill="white" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="13" letter-spacing="-0.5">EN</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Trefoil knot — three interlocking bands with center bullseye -->
+  <!-- Band 1 (bottom z): bottom-left lobe -->
+  <circle cx="32" cy="63" r="24" fill="none" stroke="white" stroke-width="20"
+    stroke-dasharray="100.5 50.3" stroke-dashoffset="137.8"/>
+  <circle cx="32" cy="63" r="24" fill="none" stroke="#0f172a" stroke-width="15.5"
+    stroke-dasharray="100.5 50.3" stroke-dashoffset="137.8"/>
+  <!-- Band 2 (middle z): bottom-right lobe -->
+  <circle cx="68" cy="63" r="24" fill="none" stroke="white" stroke-width="20"
+    stroke-dasharray="100.5 50.3" stroke-dashoffset="38"/>
+  <circle cx="68" cy="63" r="24" fill="none" stroke="#0f172a" stroke-width="15.5"
+    stroke-dasharray="100.5 50.3" stroke-dashoffset="38"/>
+  <!-- Band 3 (top z): top lobe -->
+  <circle cx="50" cy="32" r="24" fill="none" stroke="white" stroke-width="20"
+    stroke-dasharray="100.5 50.3" stroke-dashoffset="88"/>
+  <circle cx="50" cy="32" r="24" fill="none" stroke="#0f172a" stroke-width="15.5"
+    stroke-dasharray="100.5 50.3" stroke-dashoffset="88"/>
+  <!-- Weaving: BL over Top at upper-left crossing -->
+  <circle cx="32" cy="63" r="24" fill="none" stroke="white" stroke-width="20"
+    stroke-dasharray="13 138" stroke-dashoffset="49"/>
+  <circle cx="32" cy="63" r="24" fill="none" stroke="#0f172a" stroke-width="15.5"
+    stroke-dasharray="13 138" stroke-dashoffset="49"/>
+  <!-- Center bullseye -->
+  <circle cx="50" cy="53" r="11" fill="#0f172a"/>
+  <circle cx="50" cy="53" r="6" fill="white"/>
+  <circle cx="50" cy="53" r="2.8" fill="#0f172a"/>
 </svg>
