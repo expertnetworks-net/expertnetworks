@@ -8,17 +8,16 @@
   </defs>
   <rect width="1200" height="630" fill="url(#bg)"/>
 
-  <!-- Network node decoration -->
-  <circle cx="950" cy="150" r="3" fill="rgba(0,113,227,0.3)"/>
-  <circle cx="1020" cy="200" r="2.5" fill="rgba(0,113,227,0.25)"/>
-  <circle cx="1080" cy="130" r="2" fill="rgba(0,113,227,0.2)"/>
-  <circle cx="980" cy="250" r="2" fill="rgba(0,113,227,0.2)"/>
-  <circle cx="1050" cy="280" r="2.5" fill="rgba(0,113,227,0.25)"/>
-  <line x1="950" y1="150" x2="1020" y2="200" stroke="rgba(0,113,227,0.12)" stroke-width="1"/>
-  <line x1="1020" y1="200" x2="1080" y2="130" stroke="rgba(0,113,227,0.12)" stroke-width="1"/>
-  <line x1="1020" y1="200" x2="1050" y2="280" stroke="rgba(0,113,227,0.12)" stroke-width="1"/>
-  <line x1="950" y1="150" x2="980" y2="250" stroke="rgba(0,113,227,0.12)" stroke-width="1"/>
-  <line x1="980" y1="250" x2="1050" y2="280" stroke="rgba(0,113,227,0.12)" stroke-width="1"/>
+  <!-- Trefoil mark (top-right, decorative) -->
+  <g transform="translate(980, 180) scale(1.8)" opacity="0.12">
+    <circle cx="32" cy="63" r="24" fill="none" stroke="white" stroke-width="15.5" stroke-dasharray="100.5 50.3" stroke-dashoffset="137.8"/>
+    <circle cx="68" cy="63" r="24" fill="none" stroke="white" stroke-width="15.5" stroke-dasharray="100.5 50.3" stroke-dashoffset="38"/>
+    <circle cx="50" cy="32" r="24" fill="none" stroke="white" stroke-width="15.5" stroke-dasharray="100.5 50.3" stroke-dashoffset="88"/>
+    <circle cx="32" cy="63" r="24" fill="none" stroke="white" stroke-width="15.5" stroke-dasharray="13 138" stroke-dashoffset="49"/>
+    <circle cx="50" cy="53" r="11" fill="white"/>
+    <circle cx="50" cy="53" r="6" fill="#0f172a"/>
+    <circle cx="50" cy="53" r="2.8" fill="white"/>
+  </g>
 
   <!-- Brand -->
   <text x="100" y="240" font-family="system-ui, -apple-system, sans-serif" font-size="60" font-weight="800" fill="white">Expert<tspan fill="#0071E3">Networks</tspan>.net</text>
