@@ -1,0 +1,270 @@
+---
+interface NetworkData {
+  name: string;
+  shortName: string;
+  slug: string;
+  logo?: string;
+  gradientFrom: string;
+  gradientTo: string;
+  founded?: number;
+  headquarters?: string;
+  expertCount?: string;
+  expertCountLabel?: string;
+  employeeCount?: string;
+  pricingModel?: string;
+  pricingDetail?: string;
+  deliveryModel?: string;
+  categoryBadge?: string;
+  regionStrength?: string;
+  aiBadge?: string;
+  complianceBadge?: string;
+  services?: string[];
+  aiCapabilities?: string[];
+  keyDifferentiators?: string[];
+  bestFor?: string[];
+  description?: string;
+}
+
+interface Props {
+  a: { data: NetworkData };
+  b: { data: NetworkData };
+  verdict: string[];
+  backLink?: { href: string; label: string };
+}
+
+const { a, b, verdict, backLink = { href: '/compare', label: 'Compare All' } } = Astro.props;
+
+const comparisons = [
+  { label: 'Founded', va: String(a.data.founded || 'N/A'), vb: String(b.data.founded || 'N/A') },
+  { label: 'Headquarters', va: a.data.headquarters || 'N/A', vb: b.data.headquarters || 'N/A' },
+  { label: 'Expert Network Size', va: a.data.expertCount || 'N/A', vb: b.data.expertCount || 'N/A' },
+  { label: 'Employees', va: a.data.employeeCount || 'N/A', vb: b.data.employeeCount || 'N/A' },
+  { label: 'Pricing Model', va: a.data.pricingModel || 'N/A', vb: b.data.pricingModel || 'N/A' },
+  { label: 'Pricing Detail', va: a.data.pricingDetail || 'N/A', vb: b.data.pricingDetail || 'N/A' },
+  { label: 'Delivery Model', va: a.data.deliveryModel || 'N/A', vb: b.data.deliveryModel || 'N/A' },
+  { label: 'Category', va: a.data.categoryBadge || 'N/A', vb: b.data.categoryBadge || 'N/A' },
+  { label: 'Region Strength', va: a.data.regionStrength || 'N/A', vb: b.data.regionStrength || 'N/A' },
+  { label: 'AI Badge', va: a.data.aiBadge || 'N/A', vb: b.data.aiBadge || 'N/A' },
+  { label: 'Compliance', va: a.data.complianceBadge || 'N/A', vb: b.data.complianceBadge || 'N/A' },
+];
+
+const nameA = a.data.name.split(' (')[0];
+const nameB = b.data.name.split(' (')[0];
+const shortA = a.data.shortName || nameA.charAt(0);
+const shortB = b.data.shortName || nameB.charAt(0);
+---
+
+<!-- Visual Face-off -->
+<section class="py-12 px-6">
+  <div class="max-w-4xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-6">
+      <a href={`/networks/${a.data.slug}`} class="block no-underline group">
+        <div class="rounded-card p-6 text-center border-2 border-transparent hover:border-accent/30 transition-colors" style={`background: linear-gradient(135deg, ${a.data.gradientFrom}0f, ${a.data.gradientTo}0f)`}>
+          {a.data.logo ? (
+            <img src={a.data.logo} alt={`${nameA} logo`} width="64" height="64" class="w-16 h-16 rounded-xl object-cover mx-auto mb-4" loading="lazy" />
+          ) : (
+            <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white font-bold text-xl mx-auto mb-4" style={`background: linear-gradient(135deg, ${a.data.gradientFrom}, ${a.data.gradientTo})`}>{shortA}</div>
+          )}
+          <h2 class="text-xl font-bold text-primary mb-1 group-hover:text-accent transition-colors">{nameA}</h2>
+          <div class="mt-3 text-2xl font-extrabold text-primary">{a.data.expertCount || '—'}</div>
+          <div class="text-xs text-tertiary">experts · est. {a.data.founded || 'N/A'}</div>
+        </div>
+      </a>
+      <a href={`/networks/${b.data.slug}`} class="block no-underline group">
+        <div class="rounded-card p-6 text-center border-2 border-transparent hover:border-accent/30 transition-colors" style={`background: linear-gradient(135deg, ${b.data.gradientFrom}0f, ${b.data.gradientTo}0f)`}>
+          {b.data.logo ? (
+            <img src={b.data.logo} alt={`${nameB} logo`} width="64" height="64" class="w-16 h-16 rounded-xl object-cover mx-auto mb-4" loading="lazy" />
+          ) : (
+            <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white font-bold text-xl mx-auto mb-4" style={`background: linear-gradient(135deg, ${b.data.gradientFrom}, ${b.data.gradientTo})`}>{shortB}</div>
+          )}
+          <h2 class="text-xl font-bold text-primary mb-1 group-hover:text-accent transition-colors">{nameB}</h2>
+          <div class="mt-3 text-2xl font-extrabold text-primary">{b.data.expertCount || '—'}</div>
+          <div class="text-xs text-tertiary">experts · est. {b.data.founded || 'N/A'}</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Comparison Table -->
+<section class="py-12 px-6 bg-bg-secondary">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-2xl font-bold text-primary mb-6">Side-by-Side Comparison</h2>
+    <div class="bg-white rounded-card shadow-card overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-border/40">
+              <th class="text-left px-5 py-3 text-xs font-semibold text-tertiary uppercase tracking-wider w-1/3">Metric</th>
+              <th class="text-left px-5 py-3 text-xs font-semibold uppercase tracking-wider w-1/3" style={`color: ${a.data.gradientTo}`}>{nameA}</th>
+              <th class="text-left px-5 py-3 text-xs font-semibold uppercase tracking-wider w-1/3" style={`color: ${b.data.gradientTo}`}>{nameB}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisons.map((row, i) => (
+              <tr class={`${i % 2 === 0 ? 'bg-bg-secondary/30' : ''} border-b border-border/20`}>
+                <td class="px-5 py-3 font-medium text-primary text-xs">{row.label}</td>
+                <td class="px-5 py-3 text-secondary text-xs">{row.va}</td>
+                <td class="px-5 py-3 text-secondary text-xs">{row.vb}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Comparison -->
+<section class="py-16 px-6">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-2xl font-bold text-primary mb-8">Products & Services</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div>
+        <h3 class="font-bold text-primary mb-4 flex items-center gap-2">
+          <div class="w-6 h-6 rounded flex items-center justify-center text-white font-bold text-[9px]" style={`background: linear-gradient(135deg, ${a.data.gradientFrom}, ${a.data.gradientTo})`}>{shortA}</div>
+          {nameA} Services
+        </h3>
+        <ul class="space-y-2">
+          {(a.data.services || []).map((s: string) => (
+            <li class="flex items-center gap-2 text-sm text-secondary">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="text-accent-green flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+              {s}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-bold text-primary mb-4 flex items-center gap-2">
+          <div class="w-6 h-6 rounded flex items-center justify-center text-white font-bold text-[9px]" style={`background: linear-gradient(135deg, ${b.data.gradientFrom}, ${b.data.gradientTo})`}>{shortB}</div>
+          {nameB} Services
+        </h3>
+        <ul class="space-y-2">
+          {(b.data.services || []).map((s: string) => (
+            <li class="flex items-center gap-2 text-sm text-secondary">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="text-accent-green flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+              {s}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI Comparison -->
+{(a.data.aiCapabilities?.length || b.data.aiCapabilities?.length) && (
+  <section class="py-16 px-6 bg-bg-secondary">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-8">AI & Technology</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-card p-5 shadow-card">
+          <h3 class="font-bold text-primary mb-3">{nameA} AI Stack</h3>
+          <ul class="space-y-2">
+            {(a.data.aiCapabilities || []).map((c: string) => (
+              <li class="text-sm text-secondary flex items-start gap-2">
+                <span class="text-accent-orange mt-0.5">&#9679;</span>
+                {c}
+              </li>
+            ))}
+            {!(a.data.aiCapabilities?.length) && <li class="text-sm text-tertiary italic">Limited public information</li>}
+          </ul>
+        </div>
+        <div class="bg-white rounded-card p-5 shadow-card">
+          <h3 class="font-bold text-primary mb-3">{nameB} AI Stack</h3>
+          <ul class="space-y-2">
+            {(b.data.aiCapabilities || []).map((c: string) => (
+              <li class="text-sm text-secondary flex items-start gap-2">
+                <span class="text-accent-green mt-0.5">&#9679;</span>
+                {c}
+              </li>
+            ))}
+            {!(b.data.aiCapabilities?.length) && <li class="text-sm text-tertiary italic">Limited public information</li>}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+<!-- Key Differentiators -->
+{(a.data.keyDifferentiators?.length || b.data.keyDifferentiators?.length) && (
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-8">Key Differentiators</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="border border-border/60 rounded-card p-5">
+          <h3 class="font-bold text-primary mb-3">Why Choose {nameA}</h3>
+          <ul class="space-y-2">
+            {(a.data.keyDifferentiators || []).map((d: string) => (
+              <li class="text-sm text-secondary flex items-start gap-2">
+                <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="text-accent flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+                {d}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="border border-border/60 rounded-card p-5">
+          <h3 class="font-bold text-primary mb-3">Why Choose {nameB}</h3>
+          <ul class="space-y-2">
+            {(b.data.keyDifferentiators || []).map((d: string) => (
+              <li class="text-sm text-secondary flex items-start gap-2">
+                <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="text-accent flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+                {d}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+<!-- Best For -->
+{(a.data.bestFor?.length || b.data.bestFor?.length) && (
+  <section class="py-16 px-6 bg-bg-secondary">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-8">Best For</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-card p-5 shadow-card">
+          <h3 class="font-bold text-primary mb-3">{nameA} Is Best For</h3>
+          <ul class="space-y-2">
+            {(a.data.bestFor || []).map((bf: string) => (
+              <li class="text-sm text-secondary">&rarr; {bf}</li>
+            ))}
+          </ul>
+        </div>
+        <div class="bg-white rounded-card p-5 shadow-card">
+          <h3 class="font-bold text-primary mb-3">{nameB} Is Best For</h3>
+          <ul class="space-y-2">
+            {(b.data.bestFor || []).map((bf: string) => (
+              <li class="text-sm text-secondary">&rarr; {bf}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+<!-- Verdict -->
+<section class="py-16 px-6">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-2xl font-bold text-primary mb-6">The Bottom Line</h2>
+    <div class="prose prose-sm text-secondary leading-relaxed max-w-none space-y-4">
+      {verdict.map((p) => <p set:html={p} />)}
+    </div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="py-12 px-6 bg-bg-secondary">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-xl font-bold text-primary mb-6">Keep exploring</h2>
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a href={`/compare?networks=${a.data.slug},${b.data.slug}`} class="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white rounded-full font-semibold text-sm no-underline hover:bg-accent-hover transition-colors">Full Comparison Tool</a>
+      <a href="/best-expert-networks" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary border border-border rounded-full font-semibold text-sm no-underline hover:bg-bg-secondary transition-colors">Best Networks Ranked</a>
+      <a href="/expert-network-pricing" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary border border-border rounded-full font-semibold text-sm no-underline hover:bg-bg-secondary transition-colors">Pricing Guide</a>
+    </div>
+  </div>
+</section>

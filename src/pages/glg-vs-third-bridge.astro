@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import VsComparison from '../components/VsComparison.astro';
+import { getCollection } from 'astro:content';
+
+const allNetworks = await getCollection('networks');
+const a = allNetworks.find(n => n.data.slug === 'glg')!;
+const b = allNetworks.find(n => n.data.slug === 'third-bridge')!;
+
+const verdict = [
+  `<strong>GLG</strong> is the broadest platform in the expert network space. With ~1.2 million experts, multi-format research (calls, surveys, events, library, placements), and deep compliance infrastructure, GLG is the default for large institutions that need scale and breadth across every sector. The trade-off is cost — GLG is typically the most expensive option — and the platform's breadth can overwhelm teams with simpler needs.`,
+  `<strong>Third Bridge</strong> differentiates through content. Its Forum (pre-published interview transcripts) and Interviews product give research teams asynchronous access to expert insights without scheduling calls. For buy-side investors who want to scan industries quickly before committing to live consultations, Third Bridge's library-first model is distinctive. The trade-off: narrower service scope and a smaller expert network compared to GLG.`,
+  `Teams that prioritize breadth, scale, and multi-format research lean toward GLG. Teams that value pre-built content libraries and efficient desk research lean toward Third Bridge. Many institutional investors use both.`,
+];
+---
+
+<BaseLayout
+  title="GLG vs Third Bridge: Expert Network Comparison (2026) | ExpertNetworks.net"
+  description="Compare GLG and Third Bridge expert networks head-to-head. See pricing models, expert coverage, AI capabilities, content libraries, compliance, and which is better for your research workflow."
+  canonicalPath="/glg-vs-third-bridge"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "GLG vs Third Bridge: Expert Network Comparison (2026)",
+    "description": "Head-to-head comparison of GLG and Third Bridge expert networks across pricing, content, compliance, and services.",
+    "publisher": { "@type": "Organization", "name": "ExpertNetworks.net", "url": "https://expertnetworks.net" },
+    "datePublished": "2026-03-09",
+    "dateModified": "2026-03-09"
+  }}
+>
+  <section class="pt-32 pb-16 px-6 bg-gradient-to-b from-bg-secondary to-bg-primary">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex items-center gap-3 mb-6">
+        <a href="/compare" class="text-accent text-sm font-medium no-underline hover:underline">&larr; Compare All Networks</a>
+      </div>
+      <span class="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-semibold rounded-full mb-4 tracking-wide uppercase">Head-to-Head</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-primary mb-6 leading-tight">GLG vs Third Bridge</h1>
+      <p class="text-lg text-secondary max-w-3xl leading-relaxed">
+        Scale and breadth vs. content-first research. How the industry's largest expert network compares to the leading library-driven platform.
+      </p>
+    </div>
+  </section>
+
+  <VsComparison a={a} b={b} verdict={verdict} />
+</BaseLayout>
