@@ -153,34 +153,6 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
   <!-- MAIN LAYOUT: content + rail nav -->
   <div class="compare-layout max-w-[1400px] mx-auto px-4 md:px-6">
 
-    <!-- RAIL NAV (desktop only) -->
-    <nav id="railNav" class="rail-nav" aria-label="Compare sections">
-      <a href="#criticalDiff" class="rail-link is-active" data-rail="criticalDiff">
-        <span class="rail-indicator"></span>
-        Differences
-      </a>
-      <a href="#aiWorkflow" class="rail-link" data-rail="aiWorkflow">
-        <span class="rail-indicator"></span>
-        AI & Workflow
-      </a>
-      <a href="#commercial" class="rail-link" data-rail="commercial">
-        <span class="rail-indicator"></span>
-        Commercial
-      </a>
-      <a href="#compliance" class="rail-link" data-rail="compliance">
-        <span class="rail-indicator"></span>
-        Compliance
-      </a>
-      <a href="#fullMatrix" class="rail-link" data-rail="fullMatrix">
-        <span class="rail-indicator"></span>
-        Full matrix
-      </a>
-      <a href="#methodology" class="rail-link" data-rail="methodology">
-        <span class="rail-indicator"></span>
-        Methodology
-      </a>
-    </nav>
-
     <!-- MAIN CONTENT -->
     <div class="compare-main">
 
@@ -312,6 +284,34 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
       </section>
 
     </div><!-- .compare-main -->
+
+    <!-- RAIL NAV (desktop only, right side) -->
+    <nav id="railNav" class="rail-nav" aria-label="Compare sections">
+      <a href="#criticalDiff" class="rail-link is-active" data-rail="criticalDiff">
+        <span class="rail-indicator"></span>
+        Differences
+      </a>
+      <a href="#aiWorkflow" class="rail-link" data-rail="aiWorkflow">
+        <span class="rail-indicator"></span>
+        AI & Workflow
+      </a>
+      <a href="#commercial" class="rail-link" data-rail="commercial">
+        <span class="rail-indicator"></span>
+        Commercial
+      </a>
+      <a href="#compliance" class="rail-link" data-rail="compliance">
+        <span class="rail-indicator"></span>
+        Compliance
+      </a>
+      <a href="#fullMatrix" class="rail-link" data-rail="fullMatrix">
+        <span class="rail-indicator"></span>
+        Full matrix
+      </a>
+      <a href="#methodology" class="rail-link" data-rail="methodology">
+        <span class="rail-indicator"></span>
+        Methodology
+      </a>
+    </nav>
   </div><!-- .compare-layout -->
 
   <!-- FOOTER CTA -->
