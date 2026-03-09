@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import VsComparison from '../components/VsComparison.astro';
+import { getCollection } from 'astro:content';
+
+const allNetworks = await getCollection('networks');
+const a = allNetworks.find(n => n.data.slug === 'third-bridge')!;
+const b = allNetworks.find(n => n.data.slug === 'guidepoint')!;
+
+const verdict = [
+  `<strong>Third Bridge</strong> leads with content. Its Forum (pre-published interview transcripts) and Interviews product give research teams asynchronous access to expert insights at scale. For buy-side investors who want to scan industries before committing to live consultations, Third Bridge's library-first model is its core value proposition.`,
+  `<strong>Guidepoint</strong> leads with volume and flexibility. With one of the largest advisor networks in the industry and competitive per-call pricing, Guidepoint is the high-volume choice for teams that need many expert calls without annual commitments. Their flexible commercial model appeals to smaller funds and corporate strategy teams.`,
+  `Third Bridge is the better fit for content-driven research workflows. Guidepoint is the better fit for high-volume expert call programs on a budget. The two serve overlapping but distinct buyer profiles.`,
+];
+---
+
+<BaseLayout
+  title="Third Bridge vs Guidepoint: Expert Network Comparison (2026) | ExpertNetworks.net"
+  description="Compare Third Bridge and Guidepoint expert networks. Content library vs. high-volume expert access — pricing, coverage, compliance, and AI capabilities compared side by side."
+  canonicalPath="/third-bridge-vs-guidepoint"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Third Bridge vs Guidepoint: Expert Network Comparison (2026)",
+    "description": "Head-to-head comparison of Third Bridge and Guidepoint expert networks across pricing, content, compliance, and services.",
+    "publisher": { "@type": "Organization", "name": "ExpertNetworks.net", "url": "https://expertnetworks.net" },
+    "datePublished": "2026-03-09",
+    "dateModified": "2026-03-09"
+  }}
+>
+  <section class="pt-32 pb-16 px-6 bg-gradient-to-b from-bg-secondary to-bg-primary">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex items-center gap-3 mb-6">
+        <a href="/compare" class="text-accent text-sm font-medium no-underline hover:underline">&larr; Compare All Networks</a>
+      </div>
+      <span class="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-semibold rounded-full mb-4 tracking-wide uppercase">Head-to-Head</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-primary mb-6 leading-tight">Third Bridge vs Guidepoint</h1>
+      <p class="text-lg text-secondary max-w-3xl leading-relaxed">
+        Content library research vs. high-volume expert access. Two top-four expert networks optimized for different buyer priorities.
+      </p>
+    </div>
+  </section>
+
+  <VsComparison a={a} b={b} verdict={verdict} />
+</BaseLayout>

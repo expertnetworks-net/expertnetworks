@@ -44,6 +44,40 @@ const tocSections: {id: string; label: string}[] = [
   ...(relatedNews.length ? [{ id: 'related-news', label: 'News' }] : []),
 ];
 
+// Build FAQ entries from available data
+const shortName = d.name.split(' (')[0];
+const faqEntries: {question: string; answer: string}[] = [];
+if (d.pricingModel) {
+  faqEntries.push({
+    question: `What is ${shortName}'s pricing model?`,
+    answer: `${shortName} uses a ${d.pricingModel.toLowerCase()} pricing model.${d.pricingDetail ? ' ' + d.pricingDetail : ''}`,
+  });
+}
+if (d.expertCount) {
+  faqEntries.push({
+    question: `How many experts does ${shortName} have?`,
+    answer: `${shortName} has ${d.expertCount} ${d.expertCountLabel || 'experts'} in its network.`,
+  });
+}
+if (d.services?.length) {
+  faqEntries.push({
+    question: `What services does ${shortName} offer?`,
+    answer: `${shortName} offers ${d.services.slice(0, 5).join(', ')}${d.services.length > 5 ? ', and more' : ''}.`,
+  });
+}
+if (d.bestFor?.length) {
+  faqEntries.push({
+    question: `Who is ${shortName} best for?`,
+    answer: `${shortName} is best suited for ${d.bestFor.slice(0, 3).join(', ')}.`,
+  });
+}
+if (d.headquarters) {
+  faqEntries.push({
+    question: `Where is ${shortName} headquartered?`,
+    answer: `${shortName} is headquartered in ${d.headquarters}${d.founded ? ' and was founded in ' + d.founded : ''}.`,
+  });
+}
+
 // Confidence badge helper
 const conf = d.confidence || {};
 function badgeFor(field: string) {
@@ -56,20 +90,43 @@ function badgeFor(field: string) {
 ---
 
 <BaseLayout
-  title={`${d.name} Expert Network Review: Pricing, Compliance & Expert Coverage | ExpertNetworks.net`}
-  description={`${d.name} expert network profile: ${d.expertCount ? d.expertCount + ' experts, ' : ''}${d.pricingModel ? d.pricingModel.toLowerCase() + ' pricing, ' : ''}${d.headquarters ? d.headquarters + ', ' : ''}founded ${d.founded || 'N/A'}. Independent analysis of services, compliance, and AI capabilities.`}
+  title={`${d.name} Review (2026): Pricing, Compliance & Expert Coverage | ExpertNetworks.net`}
+  description={`${d.name} expert network review: ${d.expertCount ? d.expertCount + ' experts, ' : ''}${d.pricingModel ? d.pricingModel.toLowerCase() + ' pricing, ' : ''}${d.headquarters ? d.headquarters + ', ' : ''}founded ${d.founded || 'N/A'}. Independent analysis of services, compliance, and AI capabilities.`}
   ogType="article"
   canonicalPath={`/networks/${d.slug}`}
-  jsonLd={Object.fromEntries(Object.entries({
+  jsonLd={{
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": d.name,
-    "url": d.website || `https://expertnetworks.net/networks/${d.slug}`,
-    "description": d.description,
-    "foundingDate": d.founded ? String(d.founded) : undefined,
-    "address": d.headquarters ? { "@type": "PostalAddress", "addressLocality": d.headquarters } : undefined,
-    "numberOfEmployees": d.employeeCount ? { "@type": "QuantitativeValue", "value": d.employeeCount } : undefined,
-  }).filter(([_, v]) => v !== undefined))}
+    "@graph": [
+      Object.fromEntries(Object.entries({
+        "@type": "Organization",
+        "name": d.name,
+        "url": d.website || `https://expertnetworks.net/networks/${d.slug}`,
+        "description": d.description,
+        "foundingDate": d.founded ? String(d.founded) : undefined,
+        "address": d.headquarters ? { "@type": "PostalAddress", "addressLocality": d.headquarters } : undefined,
+        "numberOfEmployees": d.employeeCount ? { "@type": "QuantitativeValue", "value": d.employeeCount } : undefined,
+      }).filter(([_, v]) => v !== undefined)),
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://expertnetworks.net/" },
+          { "@type": "ListItem", "position": 2, "name": "Expert Networks", "item": "https://expertnetworks.net/networks" },
+          { "@type": "ListItem", "position": 3, "name": d.name, "item": `https://expertnetworks.net/networks/${d.slug}` }
+        ]
+      },
+      ...(faqEntries.length >= 2 ? [{
+        "@type": "FAQPage",
+        "mainEntity": faqEntries.map(faq => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
+          }
+        }))
+      }] : [])
+    ]
+  }}
 >
   <div class="flex min-h-screen">
 
@@ -702,6 +759,22 @@ function badgeFor(field: string) {
               </div>
             </div>
           )}
+
+          <!-- Compare with CTA -->
+          <div class="pt-6 border-t border-border/40">
+            <h2 class="text-sm font-bold text-primary uppercase tracking-wide mb-3">Compare {d.name.split(' (')[0]}</h2>
+            <div class="flex flex-wrap gap-2">
+              {published.filter(n => n.data.slug !== d.slug).slice(0, 5).map((rival) => (
+                <a href={`/compare?networks=${d.slug},${rival.data.slug}`} class="inline-flex items-center gap-1.5 px-3 py-2 text-[12px] font-medium text-secondary bg-bg-secondary rounded-lg no-underline hover:bg-accent/[0.06] hover:text-accent transition-colors border border-border/30">
+                  <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+                  vs {rival.data.shortName || rival.data.name.split(' (')[0]}
+                </a>
+              ))}
+            </div>
+            <a href={`/compare?add=${d.slug}`} class="inline-flex items-center gap-1 mt-2 text-[12px] text-accent font-medium no-underline hover:underline">
+              Full comparison with all providers &rarr;
+            </a>
+          </div>
 
           <!-- Website link -->
           {d.website && (

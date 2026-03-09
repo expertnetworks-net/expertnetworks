@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allNetworks = await getCollection('networks');
+const published = allNetworks.filter(n => n.data.published).sort((a, b) => a.data.priority - b.data.priority);
+
+// Filter networks strong for hedge funds
+const hfNetworks = published.filter(n => {
+  const industries = (n.data.industries || []).map((i: string) => i.toLowerCase());
+  const bestFor = (n.data.bestFor || []).map((b: string) => b.toLowerCase());
+  const all = [...industries, ...bestFor, (n.data.description || '').toLowerCase()].join(' ');
+  return all.includes('hedge fund') || all.includes('investment research') || all.includes('buy-side') || all.includes('asset manage') || all.includes('investor');
+});
+
+// Ensure top providers are included
+const topSlugs = ['glg', 'alphasights', 'third-bridge', 'guidepoint', 'dialectica', 'alphasense-tegus'];
+const topProviders = topSlugs.map(s => published.find(n => n.data.slug === s)).filter(Boolean);
+const combined = [...new Map([...topProviders, ...hfNetworks].map(n => [n!.data.slug, n])).values()];
+---
+
+<BaseLayout
+  title="Best Expert Networks for Hedge Funds (2026 Guide) | ExpertNetworks.net"
+  description="Guide to expert networks for hedge funds: which providers are best for investment research, sector deep-dives, and alpha generation. Compare GLG, AlphaSights, Third Bridge, and more for buy-side use cases."
+  canonicalPath="/expert-networks-for-hedge-funds"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Best Expert Networks for Hedge Funds (2026)",
+    "description": "Guide to choosing expert networks for hedge fund research, sector analysis, and investment due diligence.",
+    "publisher": { "@type": "Organization", "name": "ExpertNetworks.net", "url": "https://expertnetworks.net" },
+    "datePublished": "2026-03-09",
+    "dateModified": "2026-03-09"
+  }}
+>
+  <!-- Hero -->
+  <section class="pt-32 pb-16 px-6 bg-gradient-to-b from-bg-secondary to-bg-primary">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex items-center gap-3 mb-6">
+        <a href="/networks" class="text-accent text-sm font-medium no-underline hover:underline">&larr; All Networks</a>
+        <span class="text-tertiary text-sm">|</span>
+        <a href="/expert-networks-for-private-equity" class="text-accent text-sm font-medium no-underline hover:underline">Expert Networks for PE</a>
+      </div>
+      <span class="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-semibold rounded-full mb-4 tracking-wide uppercase">Industry Guide</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-primary mb-6 leading-tight">Expert Networks for Hedge Funds</h1>
+      <p class="text-lg text-secondary max-w-3xl leading-relaxed">
+        Which expert networks are best for buy-side investment research? A practical guide to choosing providers based on speed, content access, compliance infrastructure, and research workflow fit.
+      </p>
+    </div>
+  </section>
+
+  <!-- Editorial Content -->
+  <section class="py-12 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-6">How hedge funds use expert networks</h2>
+      <div class="space-y-4 text-[14px] leading-relaxed text-secondary">
+        <p>
+          Expert networks are a core part of the buy-side research toolkit. Hedge funds use them for sector deep-dives, management reference calls, supply chain checks, competitive intelligence, and pre-investment due diligence. The typical engagement is a 30–60 minute phone consultation with an industry practitioner — a former executive, domain specialist, or channel expert.
+        </p>
+        <p>
+          For hedge funds specifically, the key evaluation criteria are:
+        </p>
+        <ul class="space-y-2 ml-4">
+          <li><strong>Speed</strong> — Investment timelines are short. The best providers can source qualified experts within 24–48 hours.</li>
+          <li><strong>Compliance</strong> — SEC scrutiny of expert networks means compliance infrastructure (information barriers, personal trading restrictions, call monitoring) is non-negotiable for institutional funds.</li>
+          <li><strong>Content libraries</strong> — Pre-recorded transcripts and interview summaries let analysts scan sectors without scheduling live calls.</li>
+          <li><strong>AI and search</strong> — Newer platforms offer AI-powered expert matching, transcript search, and research synthesis tools.</li>
+          <li><strong>Expert quality</strong> — Sourcing matters. The best networks consistently deliver experts who are genuinely knowledgeable, not just willing to talk.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Provider Grid -->
+  <section class="py-12 px-6 bg-bg-secondary">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-8">Top providers for hedge fund research</h2>
+      <div class="space-y-4">
+        {combined.map((network) => (
+          <div class="bg-white rounded-card shadow-card p-5 flex flex-col sm:flex-row gap-4 items-start">
+            <div class="flex-shrink-0">
+              {network!.data.logo ? (
+                <img src={network!.data.logo} alt="" width="40" height="40" class="w-10 h-10 rounded-xl object-contain" loading="lazy" />
+              ) : (
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-xs" style={`background: linear-gradient(135deg, ${network!.data.gradientFrom}, ${network!.data.gradientTo})`}>{network!.data.shortName}</div>
+              )}
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 flex-wrap">
+                <a href={`/networks/${network!.data.slug}`} class="text-[15px] font-bold text-primary no-underline hover:text-accent transition-colors">{network!.data.name.split(' (')[0]}</a>
+                {network!.data.categoryBadge && (
+                  <span class="px-2 py-0.5 text-[10px] font-semibold rounded-full bg-accent/10 text-accent">{network!.data.categoryBadge}</span>
+                )}
+              </div>
+              <p class="text-[13px] text-secondary mt-1 line-clamp-2">{network!.data.description?.slice(0, 200)}...</p>
+              <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-[11px] text-tertiary">
+                {network!.data.expertCount && <span>Experts: {network!.data.expertCount}</span>}
+                {network!.data.pricingModel && <span>Pricing: {network!.data.pricingModel}</span>}
+                {network!.data.complianceBadge && <span>Compliance: {network!.data.complianceBadge}</span>}
+              </div>
+              <div class="flex gap-2 mt-3">
+                <a href={`/networks/${network!.data.slug}`} class="text-[12px] font-medium text-accent no-underline hover:underline">Full profile &rarr;</a>
+                <a href={`/compare?add=${network!.data.slug}`} class="text-[12px] font-medium text-secondary no-underline hover:text-accent hover:underline">Add to comparison</a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Compliance note -->
+  <section class="py-12 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-6">Compliance considerations for hedge funds</h2>
+      <div class="space-y-4 text-[14px] leading-relaxed text-secondary">
+        <p>
+          Regulatory scrutiny of expert network usage by hedge funds has intensified since the insider trading cases of 2010–2014. Today's institutional buyers expect providers to maintain robust compliance infrastructure including:
+        </p>
+        <ul class="space-y-2 ml-4">
+          <li>Personal trading restrictions and blackout periods for experts</li>
+          <li>Information barrier policies and MNPI screening</li>
+          <li>Call monitoring and recording capabilities</li>
+          <li>Expert vetting and conflict-of-interest checks</li>
+          <li>Audit trails and compliance reporting</li>
+        </ul>
+        <p>
+          All major providers (GLG, AlphaSights, Third Bridge, Guidepoint) now offer strong compliance tooling, but the depth and rigor varies. See our <a href="/compare" class="text-accent hover:underline">comparison tool</a> to evaluate compliance posture across providers.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related -->
+  <section class="py-12 px-6 bg-bg-secondary">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-xl font-bold text-primary mb-6">Related guides</h2>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="/expert-networks-for-private-equity" class="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white rounded-full font-semibold text-sm no-underline hover:bg-accent-hover transition-colors">Expert Networks for PE</a>
+        <a href="/expert-networks-for-consulting" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary border border-border rounded-full font-semibold text-sm no-underline hover:bg-bg-secondary transition-colors">Expert Networks for Consulting</a>
+        <a href="/compare" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary border border-border rounded-full font-semibold text-sm no-underline hover:bg-bg-secondary transition-colors">Compare Providers</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

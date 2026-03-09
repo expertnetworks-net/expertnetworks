@@ -13,8 +13,8 @@ interface Props {
 }
 
 const {
-  title = 'Expert Network Directory & Industry Intelligence | ExpertNetworks.net',
-  description = 'Compare 33+ expert networks across pricing, compliance, expert coverage, AI capabilities, and market positioning. Independent profiles, side-by-side analysis, and industry news — free, no sign-ups.',
+  title = 'Expert Network Companies: Compare Providers, Pricing & Reviews (2026) | ExpertNetworks.net',
+  description = 'Independent expert network directory. Compare 33+ providers including GLG, AlphaSights, Third Bridge, Guidepoint, and Dialectica across pricing, compliance, AI capabilities, and expert coverage. Free, no sign-up required.',
   ogImage = '/og-default.png',
   ogType = 'website',
   canonicalPath,
@@ -32,7 +32,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="description" content={description} />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <meta name="theme-color" content="#1D1D1F" />
   <title>{title}</title>
 
@@ -86,7 +86,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
     "url": "https://expertnetworks.net",
     "logo": "https://expertnetworks.net/favicon-512.png",
     "description": "Independent expert network directory and industry intelligence resource.",
-    "sameAs": []
+    "sameAs": ["https://www.linkedin.com/company/expertnetworks-net/"]
   })} is:inline />
 </head>
 <body>

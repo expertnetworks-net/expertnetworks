@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allNetworks = await getCollection('networks');
+const published = allNetworks.filter(n => n.data.published).sort((a, b) => a.data.priority - b.data.priority);
+
+// Filter networks strong for consulting
+const consultingNetworks = published.filter(n => {
+  const industries = (n.data.industries || []).map((i: string) => i.toLowerCase());
+  const bestFor = (n.data.bestFor || []).map((b: string) => b.toLowerCase());
+  const all = [...industries, ...bestFor, (n.data.description || '').toLowerCase()].join(' ');
+  return all.includes('consult') || all.includes('strategy') || all.includes('corporate') || all.includes('management');
+});
+
+const topSlugs = ['glg', 'alphasights', 'guidepoint', 'atheneum', 'dialectica', 'third-bridge'];
+const topProviders = topSlugs.map(s => published.find(n => n.data.slug === s)).filter(Boolean);
+const combined = [...new Map([...topProviders, ...consultingNetworks].map(n => [n!.data.slug, n])).values()];
+---
+
+<BaseLayout
+  title="Best Expert Networks for Consulting Firms (2026 Guide) | ExpertNetworks.net"
+  description="Guide to expert networks for management consulting firms: which providers are best for client engagements, market sizing, competitive analysis, and industry deep-dives. Compare GLG, AlphaSights, Guidepoint, Atheneum, and more."
+  canonicalPath="/expert-networks-for-consulting"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Best Expert Networks for Consulting Firms (2026)",
+    "description": "Guide to choosing expert networks for management consulting engagements, market analysis, and industry research.",
+    "publisher": { "@type": "Organization", "name": "ExpertNetworks.net", "url": "https://expertnetworks.net" },
+    "datePublished": "2026-03-09",
+    "dateModified": "2026-03-09"
+  }}
+>
+  <!-- Hero -->
+  <section class="pt-32 pb-16 px-6 bg-gradient-to-b from-bg-secondary to-bg-primary">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex items-center gap-3 mb-6">
+        <a href="/networks" class="text-accent text-sm font-medium no-underline hover:underline">&larr; All Networks</a>
+        <span class="text-tertiary text-sm">|</span>
+        <a href="/expert-networks-for-private-equity" class="text-accent text-sm font-medium no-underline hover:underline">Expert Networks for PE</a>
+      </div>
+      <span class="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-semibold rounded-full mb-4 tracking-wide uppercase">Industry Guide</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-primary mb-6 leading-tight">Expert Networks for Consulting Firms</h1>
+      <p class="text-lg text-secondary max-w-3xl leading-relaxed">
+        How management consultancies use expert networks — and which providers are best suited for client engagements, market sizing, competitive analysis, and industry research.
+      </p>
+    </div>
+  </section>
+
+  <!-- Editorial Content -->
+  <section class="py-12 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-6">How consulting firms use expert networks</h2>
+      <div class="space-y-4 text-[14px] leading-relaxed text-secondary">
+        <p>
+          Management consulting firms are among the largest buyers of expert network services. Unlike investors who use experts primarily for due diligence, consultancies integrate expert calls across the full engagement lifecycle — from proposal development and market sizing through to recommendation validation and implementation support.
+        </p>
+        <p>
+          Key requirements for consulting teams include:
+        </p>
+        <ul class="space-y-2 ml-4">
+          <li><strong>Volume and breadth</strong> — Large strategy firms may run hundreds of expert calls per month across dozens of concurrent engagements.</li>
+          <li><strong>Global coverage</strong> — Client engagements span geographies. Providers with strong international expert networks are essential.</li>
+          <li><strong>Industry depth</strong> — Consultancies need experts across every sector, from healthcare and technology to industrials and consumer goods.</li>
+          <li><strong>Surveys</strong> — Quantitative expert surveys complement qualitative calls for market sizing and hypothesis validation.</li>
+          <li><strong>Cost management</strong> — At high volumes, per-call costs matter. Enterprise pricing and annual agreements are common.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Provider Grid -->
+  <section class="py-12 px-6 bg-bg-secondary">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-8">Top providers for consulting firms</h2>
+      <div class="space-y-4">
+        {combined.map((network) => (
+          <div class="bg-white rounded-card shadow-card p-5 flex flex-col sm:flex-row gap-4 items-start">
+            <div class="flex-shrink-0">
+              {network!.data.logo ? (
+                <img src={network!.data.logo} alt="" width="40" height="40" class="w-10 h-10 rounded-xl object-contain" loading="lazy" />
+              ) : (
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-xs" style={`background: linear-gradient(135deg, ${network!.data.gradientFrom}, ${network!.data.gradientTo})`}>{network!.data.shortName}</div>
+              )}
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 flex-wrap">
+                <a href={`/networks/${network!.data.slug}`} class="text-[15px] font-bold text-primary no-underline hover:text-accent transition-colors">{network!.data.name.split(' (')[0]}</a>
+                {network!.data.categoryBadge && (
+                  <span class="px-2 py-0.5 text-[10px] font-semibold rounded-full bg-accent/10 text-accent">{network!.data.categoryBadge}</span>
+                )}
+              </div>
+              <p class="text-[13px] text-secondary mt-1 line-clamp-2">{network!.data.description?.slice(0, 200)}...</p>
+              <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-[11px] text-tertiary">
+                {network!.data.expertCount && <span>Experts: {network!.data.expertCount}</span>}
+                {network!.data.pricingModel && <span>Pricing: {network!.data.pricingModel}</span>}
+                {network!.data.deliveryModel && <span>Model: {network!.data.deliveryModel}</span>}
+              </div>
+              <div class="flex gap-2 mt-3">
+                <a href={`/networks/${network!.data.slug}`} class="text-[12px] font-medium text-accent no-underline hover:underline">Full profile &rarr;</a>
+                <a href={`/compare?add=${network!.data.slug}`} class="text-[12px] font-medium text-secondary no-underline hover:text-accent hover:underline">Add to comparison</a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Consulting-specific considerations -->
+  <section class="py-12 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-primary mb-6">Choosing the right provider for your firm</h2>
+      <div class="space-y-4 text-[14px] leading-relaxed text-secondary">
+        <p>
+          The right expert network for a consulting firm depends on firm size, engagement mix, and research workflow:
+        </p>
+        <ul class="space-y-2 ml-4">
+          <li><strong>Large strategy firms (MBB, Big Four)</strong> typically use GLG as a primary provider for breadth and scale, supplemented by AlphaSights for speed-sensitive work and specialized providers for niche sectors.</li>
+          <li><strong>Mid-tier firms</strong> often prefer Guidepoint or Atheneum for competitive pricing and flexible engagement models without large annual commitments.</li>
+          <li><strong>Boutique consultancies</strong> benefit from per-project pricing and may find value in newer technology-first platforms that offer lower cost per call.</li>
+        </ul>
+        <p>
+          Many consulting firms maintain relationships with 2–3 expert network providers to balance coverage, cost, and service quality. Use our <a href="/compare" class="text-accent hover:underline">comparison tool</a> to evaluate providers side by side.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related -->
+  <section class="py-12 px-6 bg-bg-secondary">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-xl font-bold text-primary mb-6">Related guides</h2>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="/expert-networks-for-private-equity" class="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white rounded-full font-semibold text-sm no-underline hover:bg-accent-hover transition-colors">Expert Networks for PE</a>
+        <a href="/expert-networks-for-hedge-funds" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary border border-border rounded-full font-semibold text-sm no-underline hover:bg-bg-secondary transition-colors">Expert Networks for Hedge Funds</a>
+        <a href="/compare" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary border border-border rounded-full font-semibold text-sm no-underline hover:bg-bg-secondary transition-colors">Compare Providers</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
