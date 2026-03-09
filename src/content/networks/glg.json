@@ -63,7 +63,7 @@
     "expertVetting": "Conflict-management and confidential-information controls with annual expert compliance training",
     "coolingOffPeriod": "Controls designed to reduce conflict and confidential-information risk (specific public-company cooling-off rules not publicly documented in detail)",
     "auditTrail": true,
-    "regulatoryHistory": "No major public regulatory action against GLG's expert-network business was identified. The broader expert-network sector was heavily scrutinized during the insider-trading enforcement wave of the early 2010s, and GLG's compliance posture appears to have been a significant reason it was often viewed as a safer incumbent."
+    "regulatoryHistory": "No major public regulatory action has been taken directly against GLG as an entity. However, GLG was investigated by the SEC in 2004 in connection with insider-trading allegations, and a GLG network member (Dr. Sidney Gilman) was involved in the high-profile Martoma/SAC Capital insider-trading case — the SEC acknowledged that both parties had circumvented GLG's compliance procedures, and GLG itself was not charged. The broader expert-network sector was heavily scrutinized during the insider-trading enforcement wave of the early 2010s, and GLG's compliance posture appears to have been a significant reason it was often viewed as a safer incumbent."
   },
   "featured": true,
   "priority": 1,
@@ -107,7 +107,7 @@
       },
       {
         "year": "2023",
-        "event": "GLG Library reaches 20,000+ transcripts and content items, with ~500 new pieces per month"
+        "event": "GLG Library reaches 20,000+ transcripts and content items (including 15,000+ transcripts specifically), with ~500 new pieces per month; Library content made available via FactSet and Bloomberg"
       },
       {
         "year": "2025",
@@ -174,7 +174,7 @@
       "Confidential-information safeguards",
       "Proprietary compliance systems and technologies"
     ],
-    "regulatoryContext": "No major public regulatory action against GLG's expert-network business was identified in this review. However, the broader expert-network sector was heavily scrutinized during the insider-trading enforcement wave of the early 2010s, and GLG's compliance posture appears to have been a significant reason it was often viewed as a safer incumbent in that period."
+    "regulatoryContext": "No major public regulatory action has been taken directly against GLG as an entity. GLG was investigated by the SEC in 2004 regarding insider-trading allegations, and a GLG network member (Dr. Sidney Gilman) was involved in the Martoma/SAC Capital insider-trading case — the SEC acknowledged that both parties had circumvented GLG's compliance procedures, and GLG itself was not charged. The broader expert-network sector was heavily scrutinized during the early 2010s insider-trading enforcement wave, and GLG's compliance posture appears to have been a significant reason it was often viewed as a safer incumbent."
   },
   "clientFit": {
     "narrative": "GLG is especially well suited for users who need both custom primary research and reusable content infrastructure. Its multi-format product stack and large network make it a strong choice across buy-side, consulting, legal, and enterprise use cases.",
@@ -193,7 +193,7 @@
     "Strong compliance positioning and auditable infrastructure",
     "Multi-format product stack well beyond basic expert calls",
     "Increasingly capable AI-assisted research workflow via myGLG",
-    "Growing reusable content library (20,000+ items, ~500/month)"
+    "Growing reusable content library (20,000+ items as of Oct 2023, ~500 new/month)"
   ],
   "caveats": [
     "Public pricing is not transparent — no listed rates",
@@ -206,10 +206,10 @@
     "Founded in 1998 — one of the oldest expert networks in operation",
     "Approximately 1.2 million professionals in the network",
     "LinkedIn company size band: 1,001–5,000 employees",
-    "GLG Library had 20,000+ transcripts/content items in 2023, adding ~500 per month",
+    "GLG Library had 20,000+ transcripts and content items as of October 2023 relaunch (15,000+ transcripts specifically, per the September 2023 FactSet announcement, with ~500 new items per month)",
     "Library content made available through FactSet partnership",
     "Redesigned myGLG launched in 2025 with AI-assisted features",
-    "GLG for Experts mobile app launched in 2025 — first of its kind in expert networks",
+    "GLG for Experts mobile app launched in September 2025 with AI-suggested responses (rated 4.6 on Google Play)",
     "Expanded NYC HQ to 96K SF at One Grand Central Place (2025)",
     "Opened expanded Dubai DIFC office in January 2025"
   ],
