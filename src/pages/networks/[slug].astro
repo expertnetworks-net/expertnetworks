@@ -41,6 +41,8 @@ const tocSections: {id: string; label: string}[] = [
   ...(d.caveats?.length ? [{ id: 'watch-outs', label: 'Watch-outs' }] : []),
   ...(isRich ? [{ id: 'deep-dive', label: 'Deep Dive' }] : []),
   ...(d.industries?.length && isRich ? [{ id: 'industries', label: 'Industries' }] : []),
+  ...(d.confidence && Object.keys(d.confidence).length > 0 ? [{ id: 'confidence-legend', label: 'Confidence' }] : []),
+  ...(isRich ? [{ id: 'methodology', label: 'Methodology' }] : []),
   ...(relatedNews.length ? [{ id: 'related-news', label: 'News' }] : []),
 ];
 
@@ -640,7 +642,7 @@ function badgeFor(field: string) {
 
                 <!-- 9. Confidence Legend -->
                 {d.confidence && Object.keys(d.confidence).length > 0 && (
-                  <details class="group bg-bg-secondary rounded-xl overflow-hidden">
+                  <details id="confidence-legend" class="group bg-bg-secondary rounded-xl overflow-hidden scroll-mt-20">
                     <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] active:bg-black/[0.06] transition-colors">
                       <div class="flex items-center gap-2.5">
                         <span class="w-7 h-7 rounded-lg bg-accent/10 text-accent flex items-center justify-center text-sm flex-shrink-0">9</span>
@@ -685,7 +687,7 @@ function badgeFor(field: string) {
                 )}
 
                 <!-- 10. How We Researched This -->
-                <details class="group bg-bg-secondary rounded-xl overflow-hidden">
+                <details id="methodology" class="group bg-bg-secondary rounded-xl overflow-hidden scroll-mt-20">
                   <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] active:bg-black/[0.06] transition-colors">
                     <div class="flex items-center gap-2.5">
                       <span class="w-7 h-7 rounded-lg bg-accent/10 text-accent flex items-center justify-center text-sm flex-shrink-0">10</span>
@@ -883,25 +885,25 @@ function badgeFor(field: string) {
                 {d.pricingModel && (
                   <div>
                     <div class="text-tertiary">Pricing</div>
-                    <div class="text-primary font-medium">{d.pricingModel}</div>
+                    <div class="text-primary font-medium flex items-center gap-1">{d.pricingModel}<Fragment set:html={badgeFor('pricingModel')} /></div>
                   </div>
                 )}
                 {d.expertCount && (
                   <div>
                     <div class="text-tertiary">Experts</div>
-                    <div class="text-primary font-medium">{d.expertCount}</div>
+                    <div class="text-primary font-medium flex items-center gap-1">{d.expertCount}<Fragment set:html={badgeFor('expertCount')} /></div>
                   </div>
                 )}
                 {d.headquarters && (
                   <div>
                     <div class="text-tertiary">HQ</div>
-                    <div class="text-primary font-medium">{d.headquarters}</div>
+                    <div class="text-primary font-medium flex items-center gap-1">{d.headquarters}<Fragment set:html={badgeFor('headquarters')} /></div>
                   </div>
                 )}
                 {d.founded && (
                   <div>
                     <div class="text-tertiary">Founded</div>
-                    <div class="text-primary font-medium">{d.founded}</div>
+                    <div class="text-primary font-medium flex items-center gap-1">{d.founded}<Fragment set:html={badgeFor('founded')} /></div>
                   </div>
                 )}
               </div>

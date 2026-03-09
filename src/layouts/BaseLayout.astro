@@ -90,7 +90,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
   })} is:inline />
 </head>
 <body>
-  <Header />
+  <Header pathname={Astro.url.pathname} />
   <main id="main-content">
     <slot />
   </main>
