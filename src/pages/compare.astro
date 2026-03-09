@@ -162,10 +162,6 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
         <span class="rail-indicator"></span>
         Differences
       </a>
-      <a href="#providerFit" class="rail-link" data-rail="providerFit">
-        <span class="rail-indicator"></span>
-        Provider fit
-      </a>
       <a href="#aiWorkflow" class="rail-link" data-rail="aiWorkflow">
         <span class="rail-indicator"></span>
         AI & Workflow
@@ -210,15 +206,6 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
           Show more buying factors
         </button>
-      </section>
-
-      <!-- PROVIDER FIT -->
-      <section id="providerFit" class="compare-section">
-        <div class="section-header">
-          <h2 class="text-[20px] font-bold text-primary">Provider fit</h2>
-          <p class="text-[13px] text-secondary mt-1">When is each provider a strong or weak fit?</p>
-        </div>
-        <div id="providerFitCards" class="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-3" set:html={initialRender.providerCardsHtml}></div>
       </section>
 
       <!-- AI & WORKFLOW -->
