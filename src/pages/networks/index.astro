@@ -83,15 +83,22 @@ const directoryEntries = networks.map((network, index) => {
 ---
 
 <BaseLayout
-  title={`${networks.length} Expert Network Providers: Directory With Pricing & Compliance | ExpertNetworks.net`}
-  description={`Browse ${networks.length} expert network providers with independent profiles, pricing models, compliance frameworks, and expert pool sizes. Filter by use case, delivery model, region, and AI capabilities.`}
+  title={`Expert Network Companies: ${networks.length} Providers Compared (2026) | ExpertNetworks.net`}
+  description={`Browse and compare ${networks.length} expert network companies including GLG, AlphaSights, Third Bridge, and Guidepoint. Independent profiles with pricing models, compliance ratings, expert coverage, and AI capabilities.`}
+  canonicalPath="/networks"
   jsonLd={{
     "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Expert Networks Directory",
-    "description": `Browse ${networks.length} expert network providers with independent profiles.`,
+    "@type": "ItemList",
+    "name": "Expert Network Companies Directory",
+    "description": `Independent directory of ${networks.length} expert network providers with pricing, compliance, and capability data.`,
     "url": "https://expertnetworks.net/networks",
-    "isPartOf": { "@type": "WebSite", "name": "ExpertNetworks.net", "url": "https://expertnetworks.net" }
+    "numberOfItems": networks.length,
+    "itemListElement": networks.slice(0, 10).map((n, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "name": n.data.name,
+      "url": `https://expertnetworks.net/networks/${n.data.slug}`
+    }))
   }}
 >
   <!-- Hero -->

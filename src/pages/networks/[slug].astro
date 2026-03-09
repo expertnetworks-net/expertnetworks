@@ -56,20 +56,32 @@ function badgeFor(field: string) {
 ---
 
 <BaseLayout
-  title={`${d.name} Expert Network Review: Pricing, Compliance & Expert Coverage | ExpertNetworks.net`}
-  description={`${d.name} expert network profile: ${d.expertCount ? d.expertCount + ' experts, ' : ''}${d.pricingModel ? d.pricingModel.toLowerCase() + ' pricing, ' : ''}${d.headquarters ? d.headquarters + ', ' : ''}founded ${d.founded || 'N/A'}. Independent analysis of services, compliance, and AI capabilities.`}
+  title={`${d.name} Review (2026): Pricing, Compliance & Expert Coverage | ExpertNetworks.net`}
+  description={`${d.name} expert network review: ${d.expertCount ? d.expertCount + ' experts, ' : ''}${d.pricingModel ? d.pricingModel.toLowerCase() + ' pricing, ' : ''}${d.headquarters ? d.headquarters + ', ' : ''}founded ${d.founded || 'N/A'}. Independent analysis of services, compliance, and AI capabilities.`}
   ogType="article"
   canonicalPath={`/networks/${d.slug}`}
-  jsonLd={Object.fromEntries(Object.entries({
+  jsonLd={{
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": d.name,
-    "url": d.website || `https://expertnetworks.net/networks/${d.slug}`,
-    "description": d.description,
-    "foundingDate": d.founded ? String(d.founded) : undefined,
-    "address": d.headquarters ? { "@type": "PostalAddress", "addressLocality": d.headquarters } : undefined,
-    "numberOfEmployees": d.employeeCount ? { "@type": "QuantitativeValue", "value": d.employeeCount } : undefined,
-  }).filter(([_, v]) => v !== undefined))}
+    "@graph": [
+      Object.fromEntries(Object.entries({
+        "@type": "Organization",
+        "name": d.name,
+        "url": d.website || `https://expertnetworks.net/networks/${d.slug}`,
+        "description": d.description,
+        "foundingDate": d.founded ? String(d.founded) : undefined,
+        "address": d.headquarters ? { "@type": "PostalAddress", "addressLocality": d.headquarters } : undefined,
+        "numberOfEmployees": d.employeeCount ? { "@type": "QuantitativeValue", "value": d.employeeCount } : undefined,
+      }).filter(([_, v]) => v !== undefined)),
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://expertnetworks.net/" },
+          { "@type": "ListItem", "position": 2, "name": "Expert Networks", "item": "https://expertnetworks.net/networks" },
+          { "@type": "ListItem", "position": 3, "name": d.name, "item": `https://expertnetworks.net/networks/${d.slug}` }
+        ]
+      }
+    ]
+  }}
 >
   <div class="flex min-h-screen">
 
