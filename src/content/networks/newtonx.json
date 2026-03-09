@@ -37,16 +37,16 @@
   "pricingModel": "Per-project",
   "pricingDetail": "Per-project / custom engagement pricing",
   "keyDifferentiators": [
-    "Knowledge Graph indexes 1.1B+ professional records for sourcing (not a standing network — this is a search index size, not experts under contract)",
+    "Knowledge Graph indexes 1.1B+ professional records for custom sourcing per project",
     "100% expert verification guarantee (company-stated)",
     "AI-moderated research at scale",
     "Hybrid quant + qual methodology"
   ],
   "bestFor": [
-    "Corporate Strategy",
-    "Market Research Teams",
-    "Management Consulting",
-    "Investment Research"
+    "Corporate strategy teams needing verified B2B survey research",
+    "Market research teams seeking hard-to-reach professional respondents",
+    "Management consultants needing quantitative expert data at scale",
+    "Investment research teams requiring custom-recruited niche experts"
   ],
   "compliance": {
     "mnpiPolicy": "AI-powered compliance monitoring scans expert interactions for restricted information; SOC 2 certified",
@@ -202,7 +202,7 @@
     "Series B led by Marbruck Investments with support from UBS O'Connor-backed Level One Fund, Gaingels, and Heliad Partners",
     "Revenue reached approximately $38.5 million in 2023 with 200+ employees",
     "Claims to be the only expert network guaranteeing 100% identity and expertise verification of every respondent",
-    "Named clients include Microsoft, Salesforce, Pinterest, TikTok, The Wall Street Journal, and Coinbase",
+    "Publicly confirmed clients include McKinsey, Salesforce, Google Cloud, Microsoft, Pinterest, and Figma (verified via published case studies and press releases); also partnered with Fortune Analytics for CFO survey products",
     "All three co-founders had consulting or tech backgrounds: Chastel and Eder from McKinsey, Ketan from healthcare tech"
   ],
   "sourceNotes": [
@@ -213,7 +213,9 @@
     "GetLatka — 2023 revenue ($38.5M) and team size data",
     "NewtonX Trust Center (trust.newtonx.com) — SOC 2, GDPR, and security controls",
     "ESOMAR Directory — membership verification",
-    "Greenbook — GRIT report partnership and AI research coverage"
+    "Greenbook — GRIT report partnership and AI research coverage",
+    "The 1.1B+ Knowledge Graph figure represents a search index of professional records, not a standing expert network; NewtonX custom-recruits per project from this index",
+    "GetLatka revenue figure ($38.5M) is from a single self-reported data source and may not reflect current financials"
   ],
   "whyChoose": [
     "AI-verified expert insights",

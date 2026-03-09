@@ -684,6 +684,30 @@ function badgeFor(field: string) {
                   </details>
                 )}
 
+                <!-- 10. How We Researched This -->
+                <details class="group bg-bg-secondary rounded-xl overflow-hidden">
+                  <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] active:bg-black/[0.06] transition-colors">
+                    <div class="flex items-center gap-2.5">
+                      <span class="w-7 h-7 rounded-lg bg-accent/10 text-accent flex items-center justify-center text-sm flex-shrink-0">10</span>
+                      <span class="font-semibold text-sm text-primary">How We Researched This</span>
+                    </div>
+                    <svg class="w-4 h-4 text-tertiary transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                  </summary>
+                  <div class="px-5 pb-5 text-xs text-secondary space-y-3">
+                    <p>This profile was researched and written by the ExpertNetworks.net editorial team using a multi-source methodology:</p>
+                    <ol class="list-decimal list-inside space-y-1.5 text-tertiary">
+                      <li><strong class="text-secondary">Primary sources:</strong> Company website, press releases, SEC/regulatory filings, and official announcements</li>
+                      <li><strong class="text-secondary">Third-party verification:</strong> Industry reports (Integrity Research, Inex One), news coverage (TechCrunch, Bloomberg, FT), and data aggregators (PitchBook, Tracxn, Crunchbase)</li>
+                      <li><strong class="text-secondary">Cross-referencing:</strong> Claims were checked against multiple independent sources where possible; single-source claims are flagged</li>
+                      <li><strong class="text-secondary">Confidence grading:</strong> Each data point is rated as Verified, Positioning (company-claimed), or Inference (estimated from indirect evidence)</li>
+                    </ol>
+                    <p class="text-tertiary">We do not accept payment from any expert network for inclusion or favorable coverage. If you spot an error, contact us with the correction and source.</p>
+                    {d.lastUpdated && (
+                      <p class="text-[10px] text-tertiary/70 pt-1 border-t border-border">Last fact-checked: {d.lastUpdated}</p>
+                    )}
+                  </div>
+                </details>
+
               </div>
             </div>
           )}

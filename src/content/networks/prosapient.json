@@ -11,7 +11,7 @@
   "headquarters": "London, UK",
   "employeeCount": "200+",
   "expertCount": "50K+",
-  "description": "Technology-first expert network offering an AI-powered self-serve platform for expert consultations, surveys, and transcripts, with a focus on efficiency, speed, and transparency.",
+  "description": "proSapient is a London-headquartered expert network founded in 2017 that positions itself as a technology-first alternative to traditional expert networks. The firm offers an AI-powered self-serve platform where clients can source experts, schedule calls, and access transcripts with minimal manual intervention. With a network of 50,000+ experts and 200+ employees, proSapient targets consulting firms, private equity, and venture capital teams that value speed, platform transparency, and competitive pricing over the white-glove service model of larger incumbents.",
   "services": [
     "Expert Calls",
     "Surveys",
@@ -38,16 +38,17 @@
   "pricingModel": "Per-call",
   "pricingDetail": "Per-call / subscription",
   "keyDifferentiators": [
-    "Technology-first platform with AI-powered matching",
-    "Self-serve model for faster expert access",
-    "Transparent pricing and process",
-    "High-accuracy AI transcription"
+    "Hybrid network + aggregator: functions as both an expert network and a multi-vendor management platform",
+    "Free transcripts with 4-hour turnaround (hybrid AI + human review, 99% claimed accuracy)",
+    "Self-serve platform with integrated compliance scanning and MNPI flagging in transcripts",
+    "Unified scheduling, compliance, transcript library, and project management in one interface",
+    "Tech Nation Future Fifty 2025 and FT1000 fastest-growing European businesses"
   ],
   "bestFor": [
-    "Consulting Firms",
-    "Private Equity",
-    "Venture Capital",
-    "Mid-Market Research Teams"
+    "Consulting firms seeking a self-serve expert sourcing platform",
+    "Private equity teams needing fast, transparent expert access",
+    "Venture capital firms conducting market validation research",
+    "Mid-market research teams valuing speed and platform efficiency"
   ],
   "compliance": {
     "mnpiPolicy": "Platform-integrated compliance checks with automated screening workflows",
@@ -174,12 +175,13 @@
     ]
   },
   "strengths": [
-    "AI-first platform built from the ground up with machine learning at the core",
+    "Technology-forward platform with integrated AI matching, scheduling, transcription, and compliance in one interface",
     "Fast expert matching and scheduling — turnaround measured in hours",
     "Self-serve model gives clients direct control over expert sourcing",
     "High-accuracy AI transcription (99%) with searchable transcript library",
     "Transparent pricing compared to incumbent expert networks",
-    "Rapid growth trajectory — FT1000, Tech Nation Future Fifty recognition",
+    "Rapid growth trajectory — FT1000 top 100, Tech Nation Future Fifty 2025, ISO 27001 certified",
+    "Dual network + aggregator model allows managing multiple expert networks through one platform",
     "Clean regulatory record"
   ],
   "caveats": [
@@ -191,7 +193,7 @@
     "Kyiv-based technical team may raise business continuity questions for some clients"
   ],
   "notableFacts": [
-    "Founded in 2017 as an AI-first expert network built from the ground up on machine learning technology (company positioning — other networks including NewtonX, founded 2016, make similar claims)",
+    "Founded in 2017 as a technology-first expert network with machine learning at its core",
     "Co-founded by Margo Polishchuk (expert network background) and Jordan Shlosberg (former client)",
     "Raised $10M Series A led by Smedvig Capital with participation from Guy Hands",
     "Valued at $84.4M as of 2022",
@@ -199,7 +201,7 @@
     "Named among Financial Times FT1000 fastest-growing businesses in Europe",
     "Recognized as a Future Fifty company by Tech Nation",
     "ISO 27001 certified for information security management",
-    "Offices in London, Toronto, Raleigh, and Lisbon with technical development in Kyiv",
+    "Offices in London (HQ), Lisbon, and Raleigh, with engineering team in Kyiv; Barcelona and Toronto offices closed",
     "AI transcription claims 99% accuracy through combined AI and human review"
   ],
   "sourceNotes": [
@@ -209,7 +211,11 @@
     "GetLatka used for revenue and client count data (2024)",
     "Inex One and ExpertNetworkCalls.com used for independent third-party profile information",
     "Financial Times FT1000 and Tech Nation Future Fifty used for growth recognition verification",
-    "Tracxn used for funding round details and investor information"
+    "Tracxn used for funding round details and investor information",
+    "Revenue figures vary across sources ($35M–$55.8M depending on source and whether gross or net); treat as estimates",
+    "Post-Series A funding rounds (2022 at reduced valuation, 2023 bridge at 16% interest) suggest financial trajectory uncertainty",
+    "proSapient's 'AI-first' positioning is shared by several competitors; the claim is company marketing rather than an independent distinction",
+    "The hybrid network + aggregator model is genuinely unusual but creates potential conflicts of interest noted by competitors"
   ],
   "whyChoose": [
     "AI-first platform speed",

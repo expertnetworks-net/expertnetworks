@@ -13,7 +13,7 @@
   "employeeCountSource": "Tracxn / Getlatka (Jan 2026)",
   "expertCount": "1M (claimed)",
   "expertCountLabel": "Pre-qualified experts (AlphaSense marketing claim; not independently verified)",
-  "description": "AI market intelligence platform combining proprietary search technology with 500M+ premium business documents, the Tegus Expert Transcript Library (240K+ transcripts, growing 8,000+/month, acquired for $930M in 2024), live expert calls, AI Interviewer-led Channel Checks across 350+ tickers, and structured financial data via Canalyst. Surpassed $500M ARR in October 2025 with 6,500+ enterprise customers including 88% of the S&P 100.",
+  "description": "AlphaSense is an AI-powered market intelligence platform that entered the expert network space through its $930 million acquisition of Tegus in 2024. The combined platform integrates 500M+ premium business documents, the Tegus Expert Transcript Library (240K+ transcripts), live expert calls, AI Interviewer-led Channel Checks, and structured financial data via Canalyst. With over 6,500 enterprise customers and $500M+ in ARR as of late 2025, AlphaSense is the largest player by revenue in the expert intelligence category, though its expert network is still being integrated post-acquisition.",
   "services": [
     "Expert Calls",
     "Expert Insights (Tegus Transcript Library)",
@@ -244,7 +244,7 @@
   },
   "strengths": [
     "Largest integrated content library in the category (500M+ documents + 240K+ expert transcripts growing 8K+/month)",
-    "AI Agent Interviewer is a genuine first-mover product — no competitor offers autonomous AI-led expert calls at this scale",
+    "AI Agent Interviewer offers autonomous AI-led expert calls — an early-mover capability not yet widely replicated at this scale",
     "Strong revenue trajectory: $200M ARR (Apr 2024) → $400M (Mar 2025) → $500M (Oct 2025)",
     "Deep institutional customer base (88% of S&P 100, 80% of top global banks, all 20 largest pharma companies)",
     "Unified quantitative and qualitative research in one platform reduces tool fragmentation",
@@ -272,7 +272,9 @@
     "Enterprise Intelligence deals grew 185% in 2025",
     "Opening new global headquarters at Hudson Yards, NYC in early 2026",
     "GenAI query usage growing 33% quarter-over-quarter as of late 2025",
-    "AlphaSights filed trademark infringement lawsuit against AlphaSense in January 2025 (SDNY)"
+    "AlphaSights filed trademark infringement lawsuit against AlphaSense in January 2025 (SDNY)",
+    "Confirmed clients/partners include System1 (published case study with named CFO), Citi (content partner and investor), Goldman Sachs (content partner and lead Series C investor), JPMorgan (confirmed customer)",
+    "Strategic investors in Series C include Morgan Stanley, Bank of America, Barclays, Wells Fargo, and AllianceBernstein — these are confirmed financial relationships but may reflect investor status rather than product usage"
   ],
   "sourceNotes": [
     "Funding history and valuation from Tracxn, Crunchbase, and AlphaSense press releases via PR Newswire",
