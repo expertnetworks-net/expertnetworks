@@ -10,7 +10,7 @@
   "founded": 2003,
   "headquarters": "New York, NY",
   "employeeCount": "1,700+",
-  "employeeCountSource": "Employees (company website, updated from earlier 1,700+ figure; third-party estimates from CompWorth/Getlatka suggest ~4,300–4,500 which may include contractors or advisors)",
+  "employeeCountSource": "Employees (company website, updated from earlier 1,600+ figure; third-party estimates from CompWorth/Getlatka suggest ~4,300–4,500 which may include contractors or advisors)",
   "expertCount": "1.75M+",
   "expertCountLabel": "Guidepoint Advisors",
   "description": "Guidepoint is a research enablement platform and one of the largest expert networks globally, founded in 2003 by Albert Sebag. Originally launched as Clinical Advisors to match cancer patients with clinical trials, the firm pivoted to the broader expert-network model and now connects more than 5,000 client organizations with 1.75 million+ advisors across 150+ industries. Guidepoint differentiates through breadth of coverage, flexible pricing, healthcare data products (Qsight), and its 2025 launch of Guidepoint360 — an AI-powered platform merging expert knowledge with generative AI via its AskGP interface.",
@@ -242,7 +242,7 @@
     "General Counsel Catherine Smith is former SEC Division of Enforcement Senior Counsel",
     "Chief Technology and AI Officer: Kaushik Deka",
     "Pune, India technology center for platform development",
-    "AI Moderation can conduct autonomous expert interviews 24/7 without live client — unique among Big Five"
+    "AI Moderation can conduct autonomous expert interviews 24/7 without live client (AlphaSense launched a comparable product in Aug 2025)"
   ],
   "sourceNotes": [
     "Guidepoint official website (guidepoint.com) used as primary source for products, services, and company positioning",
