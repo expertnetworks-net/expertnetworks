@@ -17,8 +17,6 @@ export function bootComparePage(dataset: CompareDataset) {
   const diffToggle = document.getElementById('diffToggle') as HTMLInputElement | null;
   const notesToggle = document.getElementById('notesToggle') as HTMLInputElement | null;
 
-  const recommendationCards = document.getElementById('recommendationCards');
-  const cautionBanner = document.getElementById('cautionBanner');
   const criticalPrimaryTable = document.getElementById('criticalPrimaryTable');
   const criticalExpandedTable = document.getElementById('criticalExpandedTable');
   const criticalExpandedWrapper = document.getElementById('criticalExpandedWrapper');
@@ -84,7 +82,7 @@ export function bootComparePage(dataset: CompareDataset) {
   let diffMode = Boolean(diffToggle?.checked);
   let showEvidenceNotes = Boolean(notesToggle?.checked);
   let expandedVisible = false;
-  let sectionObserver: IntersectionObserver | null = null;
+  let railObserver: IntersectionObserver | null = null;
 
   /* ---------- URL sync ---------- */
 
@@ -166,14 +164,12 @@ export function bootComparePage(dataset: CompareDataset) {
     if (heroDirectoryBtn) heroDirectoryBtn.href = view.directoryHref;
     if (browseDirectoryBtn) browseDirectoryBtn.href = view.directoryHref;
 
-    /* Shortlist */
-    if (recommendationCards) recommendationCards.innerHTML = view.recommendationHtml;
-    if (cautionBanner) cautionBanner.innerHTML = view.cautionHtml;
+    /* Critical differences */
     if (criticalPrimaryTable) criticalPrimaryTable.innerHTML = view.criticalPrimaryHtml;
     if (criticalExpandedTable) criticalExpandedTable.innerHTML = view.criticalExpandedHtml;
     if (providerFitCards) providerFitCards.innerHTML = view.providerCardsHtml;
 
-    /* Deep dive tabs */
+    /* Section tables */
     if (aiTabContent) aiTabContent.innerHTML = view.aiTabHtml;
     if (commercialTabContent) commercialTabContent.innerHTML = view.commercialTabHtml;
     if (complianceTabContent) complianceTabContent.innerHTML = view.complianceTabHtml;
@@ -187,24 +183,27 @@ export function bootComparePage(dataset: CompareDataset) {
     filterPicker(networkSearch?.value || '');
   }
 
-  /* ---------- Section nav observer ---------- */
+  /* ---------- Rail nav observer ---------- */
 
-  function updateSectionNav() {
-    const links = Array.from(document.querySelectorAll<HTMLElement>('.section-anchor-link'));
-    if (sectionObserver) {
-      sectionObserver.disconnect();
-      sectionObserver = null;
+  function updateRailNav() {
+    const railLinks = Array.from(document.querySelectorAll<HTMLElement>('.rail-link'));
+    if (!railLinks.length) return;
+
+    if (railObserver) {
+      railObserver.disconnect();
+      railObserver = null;
     }
-    sectionObserver = new IntersectionObserver((entries) => {
+
+    railObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        links.forEach((link) => link.classList.toggle('is-active', link.dataset.section === entry.target.id));
+        railLinks.forEach((link) => link.classList.toggle('is-active', link.dataset.rail === entry.target.id));
       });
-    }, { rootMargin: '-180px 0px -62% 0px' });
+    }, { rootMargin: '-140px 0px -60% 0px' });
 
-    ['startHere', 'shortlistDecision', 'deepDive', 'methodology'].forEach((id) => {
+    ['criticalDiff', 'providerFit', 'aiWorkflow', 'commercial', 'compliance', 'fullMatrix', 'methodology'].forEach((id) => {
       const element = document.getElementById(id);
-      if (element) sectionObserver?.observe(element);
+      if (element) railObserver?.observe(element);
     });
   }
 
@@ -278,17 +277,6 @@ export function bootComparePage(dataset: CompareDataset) {
     }
   });
 
-  /* Tab switching */
-  document.querySelectorAll<HTMLElement>('.tab-btn').forEach((button) => {
-    button.addEventListener('click', () => {
-      const tab = button.dataset.tab;
-      document.querySelectorAll<HTMLElement>('.tab-btn').forEach((b) => b.classList.toggle('is-active', b === button));
-      document.querySelectorAll<HTMLElement>('.tab-panel').forEach((panel) => {
-        panel.classList.toggle('hidden', panel.dataset.tabPanel !== tab);
-      });
-    });
-  });
-
   /* Column highlighting */
   document.addEventListener('mouseover', (event) => {
     const cell = (event.target as HTMLElement).closest<HTMLElement>('.provider-col');
@@ -310,5 +298,5 @@ export function bootComparePage(dataset: CompareDataset) {
 
   /* ---------- Init ---------- */
   render();
-  updateSectionNav();
+  updateRailNav();
 }

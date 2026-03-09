@@ -91,15 +91,6 @@ const aiBadgeColors: Record<string, string> = {
 
 const importanceOrder: Record<string, number> = { major: 0, moderate: 1, minor: 2 };
 
-const aiTaxonomyDescriptions: Record<string, string> = {
-  'AI for expert sourcing': 'Matching, ranking, search, or staffing support that helps identify or route relevant experts.',
-  'AI for content interrogation': 'Question-answering, retrieval, or generated synthesis across transcript and research libraries.',
-  'AI for workflow automation': 'Repeatable or semi-autonomous workflows that reduce manual orchestration in research execution.',
-  'AI for compliance / risk control': 'AI-assisted scanning, guardrails, or risk monitoring related to compliance workflows.',
-  'AI for primary research capture': 'AI-led interview intake, channel checks, or structured primary-research capture workflows.',
-  'AI product surface': 'Named product interfaces or branded AI modules publicly visible in the market.',
-};
-
 function escapeHtml(value = ''): string {
   return String(value)
     .replaceAll('&', '&amp;')
@@ -351,160 +342,6 @@ function renderComparisonTable(entries: any[], dataset: CompareDataset, activeSl
   return `<div class="table-shell"><table class="compare-table"><thead><tr><th class="compare-head sticky-col text-left">Field</th>${activeSlugs.map((slug) => renderProviderHeaderCell(dataset, slug)).join('')}</tr></thead><tbody>${rowsHtml}</tbody></table></div>`;
 }
 
-/* ---------- Scoring ---------- */
-
-function scoreSimpleValue(value: any): number {
-  if (Array.isArray(value)) {
-    const label = value[0];
-    if (label === 'Publicly documented') return 4;
-    if (label === 'Publicly indicated') return 3;
-    if (label === 'Limited public evidence') return 1;
-    return 0;
-  }
-  if (value === true) return 3;
-  if (value === false || value == null || value === '') return 0;
-  if (typeof value === 'string') return 1;
-  return 1;
-}
-
-function scoreInsightFit(dataset: CompareDataset, activeSlugs: string[], rowMap: Record<string, any>, insight: any, slug: string): number {
-  let score = 0;
-  const rankIndex = Array.isArray(insight.ranking) ? insight.ranking.indexOf(slug) : -1;
-  if (rankIndex >= 0) score += 100 - (rankIndex * 8);
-
-  for (const rowId of insight.rows || []) {
-    const entry = rowMap[rowId];
-    if (!entry) continue;
-    score += scoreSimpleValue(getCellValue(dataset, slug, entry.row));
-  }
-
-  const providerType = getProviderType(dataset, slug);
-  const substituteType = getSubstituteType(dataset, slug);
-  const data = dataset.networkDataMap[slug];
-
-  if (insight.id === 'fast-expert-calls') {
-    if (data?.deliveryModel === 'Concierge') score += 10;
-    if (data?.deliveryModel === 'Hybrid') score += 5;
-    if (substituteType === 'Adjacent platform') score -= 10;
-  }
-  if (insight.id === 'transcript-led-research' || insight.id === 'source-cited-synthesis') {
-    if (data?.comparison?.contentLibrary) score += 8;
-    if (providerType === 'Research Platform') score += 6;
-  }
-  if (insight.id === 'workflow-automation') {
-    const agents = dataset.enriched[slug]?.ai?.agents?.[0];
-    if (agents === 'Publicly documented') score += 10;
-    if (agents === 'Publicly indicated') score += 6;
-    if (providerType === 'Research Platform') score += 5;
-  }
-  if (insight.id === 'direct-network-breadth') {
-    if (substituteType === 'Direct peer') score += 12;
-    if (substituteType === 'Hybrid peer') score += 7;
-    if (substituteType === 'Adjacent platform') score -= 8;
-    if (data?.regionStrength === 'Global') score += 4;
-  }
-
-  if (!activeSlugs.includes(slug)) return -Infinity;
-  return score;
-}
-
-function summarizeRowValue(dataset: CompareDataset, slug: string, entry: any): string {
-  const value = getCellValue(dataset, slug, entry.row);
-  if (entry.row.type === 'capability' && Array.isArray(value)) return value[0];
-  if (entry.row.type === 'list' && Array.isArray(value)) return value[0] || 'Not publicly clear';
-  if (value === true) return 'Yes';
-  if (value === false || value == null || value === '') return 'Not publicly clear';
-  return String(value);
-}
-
-/* ---------- Data builders ---------- */
-
-function buildExplainableInsightItems(dataset: CompareDataset, activeSlugs: string[], rowMap: Record<string, any>) {
-  return dataset.explainableInsights
-    .map((insight) => {
-      const winner = activeSlugs
-        .map((slug) => ({ slug, score: scoreInsightFit(dataset, activeSlugs, rowMap, insight, slug) }))
-        .sort((left, right) => right.score - left.score)[0]?.slug;
-      if (!winner || !dataset.networkDataMap[winner]) return null;
-      return {
-        ...insight,
-        winner,
-        winnerName: shortName(dataset, winner),
-        confidenceNote: getConfidenceMeta(dataset, winner).note,
-        rowsDriven: (insight.rows || []).map((id: string) => rowMap[id]).filter(Boolean),
-        lastReviewed: formatDateLabel(dataset.networkDataMap[winner]?.lastUpdated),
-      };
-    })
-    .filter(Boolean);
-}
-
-function buildCautionMessage(dataset: CompareDataset, activeSlugs: string[]): string {
-  const adjacent = activeSlugs.find((slug) => getSubstituteType(dataset, slug) === 'Adjacent platform');
-  if (adjacent) {
-    return `${shortName(dataset, adjacent)} is directionally useful for transcript-led and AI-heavy workflows, but it is not a one-for-one substitute for a high-touch expert network on every dimension.`;
-  }
-  const lowConfidenceProvider = activeSlugs.find((slug) => getConfidenceMeta(dataset, slug).label === 'Low');
-  if (lowConfidenceProvider) {
-    return `${shortName(dataset, lowConfidenceProvider)} has more limited public evidence across the fields tracked here, so workflow and AI comparisons should be treated directionally.`;
-  }
-  const pricingModels = new Set(activeSlugs.map((slug) => dataset.networkDataMap[slug]?.pricingModel).filter(Boolean));
-  if (pricingModels.size > 1) {
-    return 'Pricing structures vary materially across these providers, so the commercial view is indicative rather than perfectly standardized.';
-  }
-  return dataset.comparisonNote;
-}
-
-/* ---------- Rendering: recommendation cards ---------- */
-
-function renderRecommendationHtml(dataset: CompareDataset, activeSlugs: string[], rowMap: Record<string, any>): string {
-  const items = buildExplainableInsightItems(dataset, activeSlugs, rowMap).slice(0, 5);
-  if (items.length === 0) return '<div class="empty-panel">No recommendations available for the current selection.</div>';
-
-  return items.map((item: any) => {
-    const providerType = getProviderType(dataset, item.winner);
-    const substituteType = getSubstituteType(dataset, item.winner);
-    const rowsHtml = item.rowsDriven
-      .slice(0, 4)
-      .map((entry: any) => `<li class="text-[11px] leading-relaxed text-secondary"><strong class="font-semibold text-primary">${escapeHtml(entry.row.label)}:</strong> ${escapeHtml(summarizeRowValue(dataset, item.winner, entry))}</li>`)
-      .join('');
-
-    return `<article class="rounded-2xl border border-border/30 bg-white p-5 shadow-sm">
-      <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-tertiary">${escapeHtml(item.label)}</div>
-      <div class="mt-3 flex items-start gap-3">
-        <div class="flex items-center gap-2.5 min-w-0 flex-1">
-          ${renderIcon(dataset, item.winner, 'large')}
-          <div class="min-w-0">
-            <div class="text-[17px] font-semibold text-primary truncate">${escapeHtml(item.winnerName)}</div>
-            <div class="mt-1.5 flex flex-wrap gap-1.5">
-              <span class="inline-flex rounded-full border px-2 py-1 text-[10px] font-semibold ${providerTypeColors[providerType] || 'bg-slate-100 text-slate-700 border-slate-200/80'}">${escapeHtml(providerType)}</span>
-              <span class="inline-flex rounded-full border px-2 py-1 text-[10px] font-semibold ${getSubstituteClass(substituteType)}">${escapeHtml(substituteType)}</span>
-            </div>
-          </div>
-        </div>
-        <span class="confidence-chip shrink-0 ${getConfidenceClass(item.confidence)}">${escapeHtml(item.confidence)}</span>
-      </div>
-      <p class="mt-3 text-[12px] leading-relaxed text-secondary">${escapeHtml(item.evidenceStrength)}</p>
-      <details class="rec-expander mt-3">
-        <summary class="flex items-center gap-1.5 text-[11px] font-medium text-accent cursor-pointer">
-          <svg class="w-3 h-3 rec-chevron transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
-          Why this recommendation
-        </summary>
-        <div class="mt-2 pt-3 border-t border-border/20">
-          <ul class="space-y-1.5">${rowsHtml}</ul>
-          <div class="mt-3 rounded-xl bg-[#fafafa] px-3 py-2.5">
-            <div class="text-[10px] font-bold uppercase tracking-[0.12em] text-tertiary">Caveat</div>
-            <p class="mt-1 text-[11px] leading-relaxed text-secondary">${escapeHtml(item.caveat)}</p>
-          </div>
-        </div>
-      </details>
-    </article>`;
-  }).join('');
-}
-
-function renderCautionHtml(dataset: CompareDataset, activeSlugs: string[]): string {
-  return `<div class="rounded-xl border border-amber-200/60 bg-amber-50 px-4 py-3 text-[12px] leading-relaxed text-amber-900"><strong class="font-semibold">Biggest caution:</strong> ${escapeHtml(buildCautionMessage(dataset, activeSlugs))}</div>`;
-}
-
 /* ---------- Rendering: provider cards ---------- */
 
 function renderProviderCardsHtml(dataset: CompareDataset, activeSlugs: string[]): string {
@@ -697,8 +534,6 @@ export function buildCompareRender(activeSlugs: string[], dataset: CompareDatase
         </button>
       </div>`;
     }).join(''),
-    recommendationHtml: renderRecommendationHtml(dataset, activeSlugs, rowMap),
-    cautionHtml: renderCautionHtml(dataset, activeSlugs),
     criticalPrimaryHtml: renderComparisonTable(criticalPrimaryEntries, dataset, activeSlugs, tableOptions),
     criticalExpandedHtml: renderComparisonTable(criticalExpandedEntries, dataset, activeSlugs, tableOptions),
     providerCardsHtml: renderProviderCardsHtml(dataset, activeSlugs),
