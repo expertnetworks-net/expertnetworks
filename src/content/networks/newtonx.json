@@ -10,7 +10,8 @@
   "founded": 2016,
   "headquarters": "New York, NY",
   "employeeCount": "200+",
-  "expertCount": "1.1B+ searchable",
+  "expertCount": "Custom-recruited per project",
+  "expertCountLabel": "NewtonX custom-recruits experts per project via its Knowledge Graph (which indexes 1.1B+ professional records). This is a search index size, not a standing expert network.",
   "description": "AI-powered B2B research platform using a proprietary Knowledge Graph to find and verify professionals across 1.1 billion candidates for surveys, interviews, and custom research projects.",
   "services": [
     "Expert Calls",
@@ -36,8 +37,8 @@
   "pricingModel": "Per-project",
   "pricingDetail": "Per-project / custom engagement pricing",
   "keyDifferentiators": [
-    "Knowledge Graph scanning 1.1B professionals",
-    "100% expert verification guarantee",
+    "Knowledge Graph indexes 1.1B+ professional records for sourcing (not a standing network — this is a search index size, not experts under contract)",
+    "100% expert verification guarantee (company-stated)",
     "AI-moderated research at scale",
     "Hybrid quant + qual methodology"
   ],
@@ -176,7 +177,7 @@
     ]
   },
   "strengths": [
-    "Knowledge Graph scans 1.1 billion professionals — roughly 1,000x larger than traditional expert network databases",
+    "Knowledge Graph indexes 1.1 billion professional records for on-demand sourcing — this is a search index, not a standing expert database, and is not directly comparable to competitors' network size claims",
     "100% expert verification with two-step identity and subject matter checks eliminates respondent fraud",
     "Unique hybrid positioning spanning expert networks, market research, and AI analytics",
     "AI-moderated research delivers qualitative depth at quantitative scale and speed",

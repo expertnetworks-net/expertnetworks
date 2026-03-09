@@ -68,10 +68,10 @@
     "surveys": true,
     "complianceTools": true
   },
-  "lastUpdated": "2026-03-07",
-  "overview": "Atheneum is a global insights platform founded in 2010 in Berlin, Germany, by former management consultants Ammad Ahmad, Mathias Wengeler, and serial entrepreneur Michael Brehm. The company operates as a Research-as-a-Service (RaaS) provider, connecting leading investment funds, strategy consulting firms, and corporations with a curated network of over one million industry experts worldwide. With European roots and a strong initial presence in Germany, Atheneum has expanded to 11+ offices across the Americas, Europe, the Middle East, and Asia-Pacific, with U.S. headquarters in New York.\n\nAtheneum differentiates itself through its proprietary technology stack, including the machine-learning-powered Athena One cloud platform and the newer AI-powered ATLAS platform, which automate expert matching, enable real-time availability tracking, and streamline the entire research lifecycle. Through a strategic partnership with Nikkei Inc., Atheneum co-launched NIKKEI SEEKS, providing access to 500,000+ Japan-based experts for cross-border research.\n\nIn 2021, Atheneum secured $150 million in growth equity funding led by Guidepost Growth Equity, valuing the company at approximately $300 million. The company reports revenue of approximately $95 million and serves around 500 large enterprise clients. In 2024, Jim Owens was appointed CEO succeeding co-founder Mathias Wengeler, and Mark Gerson was named CTO to lead AI platform development.",
+  "lastUpdated": "2026-03-09",
+  "overview": "Atheneum is a global insights platform founded in 2010 in Berlin, Germany, by former management consultants Ammad Ahmad, Mathias Wengeler, and serial entrepreneur Michael Brehm. The company operates as a Research-as-a-Service (RaaS) provider, connecting leading investment funds, strategy consulting firms, and corporations with a curated network of over one million industry experts worldwide. With European roots and a strong initial presence in Germany, Atheneum has expanded to 11+ offices across the Americas, Europe, the Middle East, and Asia-Pacific, with U.S. headquarters in New York.\n\nAtheneum differentiates itself through its proprietary technology stack, including the machine-learning-powered Athena One cloud platform and the newer AI-powered ATLAS platform, which automate expert matching, enable real-time availability tracking, and streamline the entire research lifecycle. Through a strategic partnership with Nikkei Inc., Atheneum co-launched NIKKEI SEEKS, providing access to 500,000+ Japan-based experts for cross-border research.\n\nIn 2021, Atheneum secured $150 million in growth equity funding led by Guidepost Growth Equity; third-party sources estimate the implied post-money valuation at approximately $300 million, though the company has not publicly confirmed a figure. Third-party data aggregators estimate revenue at approximately $95 million, consistent with the company's reported ~80% year-over-year growth in 2021 from a $50M+ base; Atheneum has not disclosed audited revenue figures. The company serves around 500 large enterprise clients. In April 2023, Jim Owens was appointed CEO succeeding co-founder Mathias Wengeler, and in 2024 Mark Gerson was named CTO to lead AI platform development.",
   "history": {
-    "narrative": "Atheneum was born from a gap identified by co-founders Ammad Ahmad and Mathias Wengeler, both former management consultants who recognized that the professional services industry needed a faster, more technology-enabled way to access expert insights. Michael Brehm, a serial entrepreneur and founder of Redstone VC, joined as co-founder and investor. The company launched in Berlin in 2010 and built a strong regional presence in Germany and Central Europe before expanding globally. The 2021 $150M growth equity round from Guidepost Growth Equity was transformational, enabling heavy investment in technology, geographic expansion, and talent. Co-founder Wengeler served as CEO until 2024, when Jim Owens took over leadership.",
+    "narrative": "Atheneum was born from a gap identified by co-founders Ammad Ahmad and Mathias Wengeler, both former management consultants who recognized that the professional services industry needed a faster, more technology-enabled way to access expert insights. Michael Brehm, a serial entrepreneur and founder of Redstone VC, joined as co-founder and investor. The company launched in Berlin in 2010 and built a strong regional presence in Germany and Central Europe before expanding globally. The 2021 $150M growth equity round from Guidepost Growth Equity was transformational, enabling heavy investment in technology, geographic expansion, and talent. Co-founder Wengeler served as CEO until April 2023, when Jim Owens took over leadership.",
     "timeline": [
       {
         "year": "2010",
@@ -95,11 +95,15 @@
       },
       {
         "year": "2021",
-        "event": "Raised $150M in growth equity from Guidepost Growth Equity at ~$300M valuation; grew nearly 80% year-over-year"
+        "event": "Raised $150M in growth equity from Guidepost Growth Equity (third-party estimated valuation ~$300M; not company-confirmed); grew nearly 80% year-over-year"
+      },
+      {
+        "year": "2023",
+        "event": "Jim Owens appointed CEO (April 2023), succeeding co-founder Mathias Wengeler"
       },
       {
         "year": "2024",
-        "event": "Appointed Jim Owens as CEO; Mark Gerson as CTO; opened offices in Ho Chi Minh City and Tianjin"
+        "event": "Mark Gerson appointed CTO to lead AI platform development; opened offices in Ho Chi Minh City and Tianjin"
       },
       {
         "year": "2025",
@@ -178,7 +182,7 @@
     "Comprehensive Research-as-a-Service model combining calls, surveys, and custom research",
     "Multilingual support with consultations and reports in 40+ languages",
     "Large expert network of 1 million+ advisors across diverse industries",
-    "Strong financial backing: $150M growth equity round, ~$95M estimated revenue"
+    "Strong financial backing: $150M growth equity round; revenue estimated at ~$95M by third-party aggregators"
   ],
   "caveats": [
     "Some independent reports of delayed payments to expert consultants, though Trustpilot score is 4.7/5.0 from 10,000+ expert reviews",
@@ -195,10 +199,10 @@
     "The 2021 $150M funding round dwarfed all prior raises combined; founders retained majority ownership",
     "Partnered with Seton Hall University's Stillman School of Business for an annual Future of Leadership Survey",
     "Hub mobile app enables 33% faster expert onboarding than web registration",
-    "CEO Jim Owens is a US Navy veteran who served as a Nuclear Submarine Officer before his corporate career",
-    "CTO Mark Gerson previously co-founded Chime Advisors, a machine-driven expert network",
+    "CEO Jim Owens (appointed April 2023) is a US Navy veteran who served as a Nuclear Submarine Officer before his corporate career",
+    "CTO Mark Gerson (not related to GLG co-founder Mark Gerson) previously co-founded Chime Advisors, a machine-driven expert network",
     "Promoted 129 team members in January 2025, indicating substantial organizational scale",
-    "Enterprise value estimated at $600–900M as of recent reporting periods"
+    "2021 $150M investment gave Guidepost a minority stake; valuation was not publicly disclosed (some third-party estimates suggest ~$300M at time of investment)"
   ],
   "sourceNotes": [
     "Atheneum official website (atheneum.ai) — company overview, services, digital products, and leadership pages",

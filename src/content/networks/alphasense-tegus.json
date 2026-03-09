@@ -311,6 +311,12 @@
     "services": "verified",
     "compliance": "verified",
     "description": "verified",
-    "aiCapabilities": "verified"
+    "aiCapabilities": "verified",
+    "overview": "verified",
+    "history": "verified",
+    "servicesDetailed": "verified",
+    "aiPlatform": "verified",
+    "complianceExtended": "verified",
+    "clientFit": "inference"
   }
 }

@@ -9,8 +9,8 @@
   "type": "Expert Network",
   "founded": 2003,
   "headquarters": "New York, NY",
-  "employeeCount": "1,600+",
-  "employeeCountSource": "Employees (company claim; some estimates to ~4,500)",
+  "employeeCount": "1,700+",
+  "employeeCountSource": "Employees (company website, updated from earlier 1,600+ figure; third-party estimates from CompWorth/Getlatka suggest ~4,300–4,500 which may include contractors or advisors)",
   "expertCount": "1.75M+",
   "expertCountLabel": "Guidepoint Advisors",
   "description": "Guidepoint is a research enablement platform and one of the largest expert networks globally, founded in 2003 by Albert Sebag. Originally launched as Clinical Advisors to match cancer patients with clinical trials, the firm pivoted to the broader expert-network model and now connects more than 5,000 client organizations with 1.75 million+ advisors across 150+ industries. Guidepoint differentiates through breadth of coverage, flexible pricing, healthcare data products (Qsight), and its 2025 launch of Guidepoint360 — an AI-powered platform merging expert knowledge with generative AI via its AskGP interface.",
@@ -81,7 +81,7 @@
     "complianceTools": true
   },
   "lastUpdated": "2026-03-06",
-  "overview": "Guidepoint is one of the largest expert networks globally, connecting more than 5,000 client organizations with 1.75 million+ advisors across 150+ industries and 500+ subsectors. The firm operates as a research enablement platform — providing not just expert access but also healthcare data intelligence (Qsight), content libraries (Guidepoint Insights with 65,000+ transcripts), live events (1,500+ per month), and since October 2025, the Guidepoint360 AI platform with its AskGP conversational research assistant. Guidepoint is privately held and founder-led by Albert Sebag, who serves as CEO. The company has grown from ~800 employees in 2020 to 1,600+ today across 19 global offices.",
+  "overview": "Guidepoint is one of the largest expert networks globally, connecting more than 5,000 client organizations with 1.75 million+ advisors across 150+ industries and 500+ subsectors. The firm operates as a research enablement platform — providing not just expert access but also healthcare data intelligence (Qsight), content libraries (Guidepoint Insights with 65,000+ transcripts), live events (1,500+ per month), and since October 2025, the Guidepoint360 AI platform with its AskGP conversational research assistant. Guidepoint is privately held and founder-led by Albert Sebag, who serves as CEO. The company has grown from ~800 employees in 2020 to 1,700+ today across 19 global offices.",
   "history": {
     "narrative": "Guidepoint was founded in 2003 by Albert Sebag, an organic chemist turned patent attorney. Sebag earned his Ph.D. in Organic Chemistry from Northeastern University (with research at MIT) and his J.D. from Boston College Law School. He began as a patent litigator at Kenyon & Kenyon advising generic pharma companies, then founded Clinical Advisors to match cancer patients with clinical trials. As the model expanded into broader healthcare and other industries, the company rebranded to Guidepoint Global in 2007. Through organic growth and three acquisitions — Vista Research (2009, from Standard & Poor's, giving Guidepoint Asia presence), Innosquared (2015, European expert network), and Quanton Data Analytics (2016, alternative data, foundation for Qsight) — Guidepoint has become one of the 'Big Five' expert networks.",
     "timeline": [
@@ -135,7 +135,7 @@
       },
       {
         "year": "2025–2026",
-        "event": "Expands to 1,600+ employees, 19 offices, 1.75M+ advisors, 5,000+ clients; launches Guidepoint360 mobile app"
+        "event": "Expands to 1,700+ employees, 19 offices, 1.75M+ advisors, 5,000+ clients; launches Guidepoint360 mobile app"
       }
     ]
   },
@@ -158,7 +158,7 @@
     },
     {
       "name": "AI Moderation",
-      "description": "An AI-powered capability that conducts expert interviews autonomously — without a live client present. AI runs structured interviews with consistent prompts and can run dozens simultaneously, 24/7. This produces 'AI-Guided' transcripts for the Insights library. Guidepoint claims 'thousands of interviews' facilitated for early-adopter clients. A major differentiator: no other Big Five network publicly offers fully autonomous AI-conducted expert interviews at scale."
+      "description": "An AI-powered capability that conducts expert interviews autonomously — without a live client present. AI runs structured interviews with consistent prompts and can run dozens simultaneously, 24/7. This produces 'AI-Guided' transcripts for the Insights library. Guidepoint claims 'thousands of interviews' facilitated for early-adopter clients. Note: AlphaSense launched a comparable AI Agent Interviewer product in August 2025, so Guidepoint is no longer the only major provider offering autonomous AI-conducted expert interviews."
     },
     {
       "name": "Guidepoint360 / AskGP",
@@ -214,13 +214,13 @@
     "Guidepoint360 + AskGP represent significant AI investment (Oct 2025 launch)",
     "Content library of 65,000+ transcripts and audio recordings",
     "1,500+ live events hosted per month",
-    "19 global offices; rapid expansion from 800 employees (2020) to 1,600+ (2025)",
+    "19 global offices; rapid expansion from 800 employees (2020) to 1,700+ (2025)",
     "Founder-led with Albert Sebag as CEO since founding in 2003"
   ],
   "caveats": [
     "Less analyst-led curation than Third Bridge — Guidepoint operates more as an access platform",
     "AI capabilities (Guidepoint360) are very new (Oct 2025) and may not be fully mature",
-    "Employee count is confusing: company says 1,600+, some third-party sources estimate ~4,500 — discrepancy unexplained",
+    "Employee count discrepancy: company website says 1,700+, but third-party sources (CompWorth, Getlatka) estimate ~4,300–4,500 — the gap may reflect contractor or advisor inclusion in third-party counts",
     "Less brand cachet among premium buy-side clients compared to GLG or AlphaSights",
     "Qsight is healthcare-specific — may create unevenness in depth across verticals",
     "Content library (65,000+ transcripts) is large but less differentiated than Third Bridge's analyst-curated Library"
@@ -242,12 +242,12 @@
     "General Counsel Catherine Smith is former SEC Division of Enforcement Senior Counsel",
     "Chief Technology and AI Officer: Kaushik Deka",
     "Pune, India technology center for platform development",
-    "AI Moderation can conduct autonomous expert interviews 24/7 without live client — unique among Big Five"
+    "AI Moderation can conduct autonomous expert interviews 24/7 without live client (AlphaSense launched a comparable product in Aug 2025)"
   ],
   "sourceNotes": [
     "Guidepoint official website (guidepoint.com) used as primary source for products, services, and company positioning",
     "Wikipedia entry used for founding story (Clinical Advisors origin), rebranding history, and acquisition timeline",
-    "Employee count: company says '1,600+ employees' — Getlatka estimates ~4,500; discrepancy may reflect contractor inclusion or different counting methodology",
+    "Employee count: company says '1,700+ employees' — Getlatka estimates ~4,500; discrepancy may reflect contractor inclusion or different counting methodology",
     "Advisor count of '1.75M+' is from company website (updated from earlier 1.5M+ figure); adds 20,000+ per month per company claims",
     "Revenue estimates vary widely ($200M–$460M depending on source) — Guidepoint is privately held with no public financial filings identified; Inex One estimated 'north of $200M' in 2021",
     "Acquisition timeline corrected: Vista Research was acquired in 2009 (from Standard & Poor's), not 2024; Quanton Data Analytics acquired 2016",
@@ -276,6 +276,12 @@
     "employeeCount": "verified",
     "pricingModel": "inference",
     "services": "verified",
-    "compliance": "positioning"
+    "compliance": "positioning",
+    "overview": "verified",
+    "history": "verified",
+    "servicesDetailed": "verified",
+    "aiPlatform": "positioning",
+    "complianceExtended": "verified",
+    "clientFit": "inference"
   }
 }
