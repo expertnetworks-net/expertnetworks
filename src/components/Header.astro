@@ -194,12 +194,16 @@ function isActive(href: string): boolean {
               pathname === `/networks/${n.data.slug}` || pathname === `/networks/${n.data.slug}/` ? 'drawer-nav-active' : '',
             ]}
           >
-            <div
-              class="w-6 h-6 rounded-md flex items-center justify-center text-white font-semibold text-[9px] flex-shrink-0"
-              style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}
-            >
-              {n.data.shortName}
-            </div>
+            {n.data.logo ? (
+              <img src={n.data.logo} alt="" width="24" height="24" class="w-6 h-6 rounded-md object-contain flex-shrink-0 bg-white/10" loading="lazy" />
+            ) : (
+              <div
+                class="w-6 h-6 rounded-md flex items-center justify-center text-white font-semibold text-[9px] flex-shrink-0"
+                style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}
+              >
+                {n.data.shortName}
+              </div>
+            )}
             <span class="text-[13px] font-medium truncate">{n.data.name.split(' (')[0]}</span>
             <svg class="w-3 h-3 ml-auto flex-shrink-0 opacity-30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
           </a>
