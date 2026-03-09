@@ -163,11 +163,17 @@ export function bootComparePage(dataset: CompareDataset) {
   /* ---------- Render ---------- */
 
   function render() {
-    const view = buildCompareRender(activeSlugs, dataset, {
-      diffMode,
-      highConfidenceOnly: false,
-      showEvidenceNotes,
-    });
+    let view;
+    try {
+      view = buildCompareRender(activeSlugs, dataset, {
+        diffMode,
+        highConfidenceOnly: false,
+        showEvidenceNotes,
+      });
+    } catch (err) {
+      console.error('[compare] render failed:', err);
+      return;
+    }
 
     /* Brief fade on content cards */
     const cards = document.querySelectorAll<HTMLElement>('.compare-main .compare-card');
