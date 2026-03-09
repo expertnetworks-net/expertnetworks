@@ -28,6 +28,7 @@ export function bootComparePage(dataset: CompareDataset) {
   const matrixContent = document.getElementById('matrixContent');
 
   const selectionReviewedBadge = document.getElementById('selectionReviewedBadge');
+  const providerCount = document.getElementById('providerCount');
   const heroDirectoryBtn = document.getElementById('heroDirectoryBtn') as HTMLAnchorElement | null;
   const browseDirectoryBtn = document.getElementById('browseDirectoryBtn') as HTMLAnchorElement | null;
 
@@ -155,12 +156,22 @@ export function bootComparePage(dataset: CompareDataset) {
       showEvidenceNotes,
     });
 
+    /* Brief fade on content cards */
+    const cards = document.querySelectorAll<HTMLElement>('.compare-main .compare-card');
+    cards.forEach((card) => card.classList.add('is-updating'));
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        cards.forEach((card) => card.classList.remove('is-updating'));
+      });
+    });
+
     /* Control bar */
     if (providerChips) providerChips.innerHTML = view.chipsHtml;
     bindChipEvents();
 
     /* Metadata */
     if (selectionReviewedBadge) selectionReviewedBadge.textContent = `Selection reviewed: ${view.latestReviewedLabel}`;
+    if (providerCount) providerCount.textContent = `${activeSlugs.length}/6`;
     if (heroDirectoryBtn) heroDirectoryBtn.href = view.directoryHref;
     if (browseDirectoryBtn) browseDirectoryBtn.href = view.directoryHref;
 

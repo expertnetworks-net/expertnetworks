@@ -261,7 +261,7 @@ function renderComparisonTable(entries: any[], dataset: CompareDataset, activeSl
       return left.row.label.localeCompare(right.row.label);
     });
 
-  if (filtered.length === 0) return '<div class="empty-panel">No rows match the current filters.</div>';
+  if (filtered.length === 0) return `<div class="empty-panel">${options.diffOnly ? 'All rows in this section are identical across the selected providers. Try adding a different provider to surface differences.' : 'No rows match the current filters.'}</div>`;
 
   const rowsHtml = filtered.map((entry) => {
     const same = isSameRow(dataset, activeSlugs, entry.row);
