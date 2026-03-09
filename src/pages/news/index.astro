@@ -384,9 +384,9 @@ const topTrends = Object.entries(trendCounts).sort((a, b) => b[1] - a[1]).slice(
       </div>
     </div>
   </section>
-</BaseLayout>
 
-<script type="application/json" id="newsClientData" is:inline>{JSON.stringify(articleClientData)}</script>
+  <script type="application/json" id="newsClientData" set:html={JSON.stringify(articleClientData)}></script>
+</BaseLayout>
 
 <script>
   // @ts-nocheck
