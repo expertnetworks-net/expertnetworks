@@ -159,11 +159,9 @@ export function bootComparePage(dataset: CompareDataset) {
     /* Brief fade on content cards */
     const cards = document.querySelectorAll<HTMLElement>('.compare-main .compare-card');
     cards.forEach((card) => card.classList.add('is-updating'));
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        cards.forEach((card) => card.classList.remove('is-updating'));
-      });
-    });
+    setTimeout(() => {
+      cards.forEach((card) => card.classList.remove('is-updating'));
+    }, 60);
 
     /* Control bar */
     if (providerChips) providerChips.innerHTML = view.chipsHtml;
