@@ -1,0 +1,25 @@
+{
+  "title": "GLG Achieves ISO 27001 Certification",
+  "slug": "glg-iso-27001-certification",
+  "date": "2026-01-28",
+  "source": "GLG",
+  "category": "Compliance",
+  "categoryColor": "#FF375F",
+  "gradientFrom": "#7f1d1d",
+  "gradientTo": "#ef4444",
+  "summary": "GLG announced it achieved ISO/IEC 27001:2022 certification, the widely used information-security management standard. The certification, obtained on December 2, 2025 and audited by A-LIGN, validates the security controls protecting client, expert, and employee data across GLG's core services.",
+  "sourceUrl": "https://glginsights.com/news/category/news/glg-updates/",
+  "relatedNetworks": [
+    "glg"
+  ],
+  "published": true,
+  "sourceType": "Press Release",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "Security and compliance posture are increasingly central in vendor evaluation, especially for enterprise and regulated workflows. ISO 27001 is a meaningful trust signal for expert network buyers.",
+  "impactTags": [
+    "Compliance",
+    "Information Security",
+    "Enterprise Trust"
+  ]
+}
