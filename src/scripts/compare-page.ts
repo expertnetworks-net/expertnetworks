@@ -34,27 +34,34 @@ export function bootComparePage(dataset: CompareDataset) {
 
   /* ---------- State ---------- */
 
+  function validSlugs(slugs: string[]): string[] {
+    return slugs.filter((slug) => dataset.networkDataMap[slug]);
+  }
+
   function getInitialSlugs(): string[] {
     const params = new URLSearchParams(window.location.search);
     const fromUrl = params.get('networks');
     if (fromUrl) {
       const slugs = [...new Set(fromUrl.split(','))].filter((slug) => dataset.networkDataMap[slug]);
       if (slugs.length === 1) {
-        const base = [...dataset.defaultSlugs];
+        const base = validSlugs([...dataset.defaultSlugs]);
         if (!base.includes(slugs[0])) base.push(slugs[0]);
         return base.slice(0, 6);
       }
       if (slugs.length >= 2) return slugs.slice(0, 6);
     }
     const presetParam = params.get('preset');
-    if (presetParam && dataset.presets[presetParam]) return [...dataset.presets[presetParam]];
+    if (presetParam && dataset.presets[presetParam]) {
+      const presetSlugs = validSlugs([...dataset.presets[presetParam]]);
+      if (presetSlugs.length >= 2) return presetSlugs;
+    }
     const addParam = params.get('add');
     if (addParam && dataset.networkDataMap[addParam]) {
-      const base = [...dataset.defaultSlugs];
+      const base = validSlugs([...dataset.defaultSlugs]);
       if (!base.includes(addParam)) base.push(addParam);
       return base.slice(0, 6);
     }
-    return [...dataset.defaultSlugs];
+    return validSlugs([...dataset.defaultSlugs]);
   }
 
   function getInitialPreset(): string {
@@ -116,17 +123,23 @@ export function bootComparePage(dataset: CompareDataset) {
     });
   }
 
+  let modalSavedScrollY = 0;
   function openModal() {
+    modalSavedScrollY = window.scrollY;
     addNetworkModal?.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('overlay-open');
+    document.body.style.top = `-${modalSavedScrollY}px`;
     if (networkSearch) networkSearch.value = '';
     filterPicker('');
-    networkSearch?.focus();
+    /* Delay focus to prevent iOS keyboard shifting layout during animation */
+    setTimeout(() => networkSearch?.focus(), 100);
   }
 
   function closeModal() {
     addNetworkModal?.classList.add('hidden');
-    document.body.style.overflow = '';
+    document.body.classList.remove('overlay-open');
+    document.body.style.top = '';
+    window.scrollTo(0, modalSavedScrollY);
   }
 
   /* ---------- Chip events ---------- */
@@ -188,6 +201,7 @@ export function bootComparePage(dataset: CompareDataset) {
     renderGoalStates();
 
     syncUrl();
+    bindTableScrollFade();
     if (!addNetworkModal?.classList.contains('hidden')) {
       filterPicker(networkSearch?.value || '');
     }
@@ -292,6 +306,7 @@ export function bootComparePage(dataset: CompareDataset) {
     expandedVisible = !expandedVisible;
     criticalExpandedWrapper?.classList.toggle('hidden', !expandedVisible);
     if (showMoreBtn) {
+      showMoreBtn.setAttribute('aria-expanded', String(expandedVisible));
       showMoreBtn.innerHTML = expandedVisible
         ? '<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 15-6-6-6 6"/></svg> Show fewer factors'
         : '<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg> Show more buying factors';
@@ -314,6 +329,19 @@ export function bootComparePage(dataset: CompareDataset) {
     }
   });
 
+  /* ---------- Table scroll fade ---------- */
+
+  function bindTableScrollFade() {
+    document.querySelectorAll<HTMLElement>('.table-shell').forEach((shell) => {
+      const checkEnd = () => {
+        const atEnd = shell.scrollLeft + shell.clientWidth >= shell.scrollWidth - 4;
+        shell.classList.toggle('scrolled-end', atEnd);
+      };
+      shell.addEventListener('scroll', checkEnd, { passive: true });
+      checkEnd();
+    });
+  }
+
   /* ---------- Init ---------- */
   const needsClientRender = !arraysEqual(activeSlugs, dataset.defaultSlugs) || diffMode || showEvidenceNotes;
   if (needsClientRender) {
@@ -324,4 +352,5 @@ export function bootComparePage(dataset: CompareDataset) {
     syncUrl();
   }
   updateRailNav();
+  bindTableScrollFade();
 }

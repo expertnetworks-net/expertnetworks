@@ -174,7 +174,7 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
         <div id="criticalExpandedWrapper" class="hidden mt-3 compare-card">
           <div id="criticalExpandedTable" set:html={initialRender.criticalExpandedHtml}></div>
         </div>
-        <button id="showMoreBtn" type="button" class="mt-3 inline-flex items-center gap-1.5 text-[12px] font-medium text-accent cursor-pointer bg-transparent border-none px-2 py-1 -ml-2 rounded-lg hover:bg-accent/[0.06] transition-colors">
+        <button id="showMoreBtn" type="button" aria-expanded="false" class="mt-3 inline-flex items-center gap-1.5 text-[12px] font-medium text-accent cursor-pointer bg-transparent border-none px-2 py-1 -ml-2 rounded-lg hover:bg-accent/[0.06] transition-colors">
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
           Show more buying factors
         </button>
@@ -600,6 +600,17 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
   /* Tables */
   .table-shell {
     overflow-x: auto;
+    position: relative;
+  }
+  @media (max-width: 1024px) {
+    .table-shell {
+      -webkit-mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
+      mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
+    }
+    .table-shell.scrolled-end {
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
   }
   /* Standalone table-shell (outside compare-card) keeps its own border */
   .table-shell:not(.compare-card .table-shell) {
@@ -674,10 +685,170 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
   }
 
   @media (max-width: 768px) {
-    .compare-table th,
-    .compare-table td { padding: 8px 8px; }
-    .row-label { min-width: 120px; }
-    .compare-section { padding: 18px 0; }
+    .compare-section { padding: 14px 0; }
+    .compare-section .section-header h2 { font-size: 15px; }
+  }
+
+  /* ── Mobile card layout: transform table into stacked iOS-style cards ── */
+  @media (max-width: 640px) {
+    .table-shell {
+      overflow-x: visible;
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
+    .table-shell:not(.compare-card .table-shell) {
+      border: none;
+      border-radius: 0;
+    }
+    .compare-table {
+      display: block;
+      min-width: unset;
+      background: transparent;
+    }
+    .compare-table thead {
+      display: none;
+    }
+    .compare-table tbody {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .compare-table tr,
+    .compare-table tr.zebra-row {
+      display: block;
+      background: rgba(255, 255, 255, 0.85);
+      -webkit-backdrop-filter: blur(20px) saturate(1.8);
+      backdrop-filter: blur(20px) saturate(1.8);
+      border-radius: 14px;
+      border: 1px solid rgba(210, 210, 215, 0.35);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04), 0 0 0 0.5px rgba(0, 0, 0, 0.03);
+      overflow: hidden;
+    }
+    .compare-table tr.zebra-row td,
+    .compare-table tr.zebra-row .sticky-col {
+      background: transparent;
+      box-shadow: none;
+    }
+    .compare-table td,
+    .compare-table th {
+      display: block;
+      border-bottom: 1px solid rgba(210, 210, 215, 0.18);
+      padding: 10px 14px;
+    }
+    .compare-table td:last-child {
+      border-bottom: none;
+    }
+    .compare-table td.sticky-col {
+      position: static;
+      box-shadow: none;
+      background: rgba(245, 245, 247, 0.65);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(210, 210, 215, 0.3);
+    }
+    .compare-table .provider-col {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 14px;
+    }
+    .compare-table .provider-col::before {
+      content: attr(data-label);
+      font-size: 11px;
+      font-weight: 600;
+      color: #6e6e73;
+      min-width: 72px;
+      flex-shrink: 0;
+      padding-top: 2px;
+      line-height: 1.4;
+    }
+    .compare-table .provider-col.highlight {
+      background: rgba(0, 113, 227, 0.04);
+    }
+    .row-label {
+      min-width: unset;
+    }
+    .row-name {
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .row-note {
+      font-size: 10px;
+    }
+    .compare-card {
+      border-radius: 14px;
+      border: none;
+      background: transparent;
+      box-shadow: none;
+      overflow: visible;
+    }
+    .compare-section {
+      padding: 12px 0;
+      scroll-margin-top: 110px;
+    }
+    .empty-panel {
+      border-radius: 14px;
+      padding: 14px;
+      font-size: 12px;
+    }
+    .data-pill {
+      font-size: 10px;
+      padding: 3px 7px;
+    }
+    .importance-pill {
+      font-size: 7px;
+      padding: 1px 5px;
+    }
+    .caveat-banner {
+      font-size: 10px;
+      padding: 5px 8px;
+      border-radius: 10px;
+    }
+  }
+
+  /* ── iOS-safe modal positioning on mobile ── */
+  @media (max-width: 640px) {
+    #addNetworkModal .absolute.top-1\/2 {
+      top: auto;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      max-width: 100%;
+      max-height: 80vh;
+      transform: none;
+      border-radius: 20px 20px 0 0;
+    }
+  }
+
+  /* ── Touch-friendly tap targets ── */
+  .goal-pill {
+    min-height: 36px;
+  }
+  .toggle-label {
+    min-height: 32px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .toggle-label:active {
+    opacity: 0.7;
+    transform: scale(0.97);
+  }
+  .goal-pill:active,
+  .compare-hero-link:active,
+  .compare-hero-primary:active {
+    opacity: 0.7;
+    transform: scale(0.97);
+  }
+
+  /* ── Provider chips: better mobile scroll ── */
+  @media (max-width: 640px) {
+    .chip-scroll-row {
+      -webkit-overflow-scrolling: touch;
+    }
+    #controlBar .flex.flex-col {
+      gap: 6px;
+    }
   }
 </style>
 
