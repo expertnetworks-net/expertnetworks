@@ -139,12 +139,6 @@ function getSubstituteClass(substituteType: string): string {
   return substituteColors[substituteType] || 'bg-slate-100 text-slate-700 border-slate-200/80';
 }
 
-function getImportanceClass(level: string): string {
-  if (level === 'major') return 'importance-pill importance-major';
-  if (level === 'moderate') return 'importance-pill importance-moderate';
-  return 'importance-pill importance-minor';
-}
-
 function evidenceDotClass(evidence: string): string {
   if (evidence === 'Verified') return 'ev-verified';
   if (evidence === 'Company-Stated') return 'ev-stated';

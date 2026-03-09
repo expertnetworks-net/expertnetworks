@@ -174,7 +174,7 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
         <div id="criticalExpandedWrapper" class="hidden mt-3 compare-card">
           <div id="criticalExpandedTable" set:html={initialRender.criticalExpandedHtml}></div>
         </div>
-        <button id="showMoreBtn" type="button" class="mt-3 inline-flex items-center gap-1.5 text-[12px] font-medium text-accent cursor-pointer bg-transparent border-none px-2 py-1 -ml-2 rounded-lg hover:bg-accent/[0.06] transition-colors">
+        <button id="showMoreBtn" type="button" aria-expanded="false" class="mt-3 inline-flex items-center gap-1.5 text-[12px] font-medium text-accent cursor-pointer bg-transparent border-none px-2 py-1 -ml-2 rounded-lg hover:bg-accent/[0.06] transition-colors">
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
           Show more buying factors
         </button>
@@ -600,6 +600,17 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
   /* Tables */
   .table-shell {
     overflow-x: auto;
+    position: relative;
+  }
+  @media (max-width: 1024px) {
+    .table-shell {
+      -webkit-mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
+      mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
+    }
+    .table-shell.scrolled-end {
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
   }
   /* Standalone table-shell (outside compare-card) keeps its own border */
   .table-shell:not(.compare-card .table-shell) {
