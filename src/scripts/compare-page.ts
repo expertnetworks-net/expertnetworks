@@ -131,7 +131,9 @@ export function bootComparePage(dataset: CompareDataset) {
   /* ---------- Chip events ---------- */
 
   function bindChipEvents() {
+    const atMinimum = activeSlugs.length <= 2;
     providerChips?.querySelectorAll<HTMLElement>('.remove-provider').forEach((button) => {
+      button.style.display = atMinimum ? 'none' : '';
       button.addEventListener('click', (event) => {
         event.stopPropagation();
         const slug = button.dataset.slug;
@@ -204,6 +206,17 @@ export function bootComparePage(dataset: CompareDataset) {
       const element = document.getElementById(id);
       if (element) railObserver?.observe(element);
     });
+
+    /* Auto-open collapsed <details> when clicking a rail link */
+    document.querySelectorAll<HTMLAnchorElement>('.rail-link').forEach((link) => {
+      link.addEventListener('click', () => {
+        const targetId = link.dataset.rail;
+        if (!targetId) return;
+        const section = document.getElementById(targetId);
+        const details = section?.querySelector('details');
+        if (details && !details.open) details.open = true;
+      });
+    });
   }
 
   /* ---------- Event bindings ---------- */
@@ -213,7 +226,7 @@ export function bootComparePage(dataset: CompareDataset) {
   closeModalButton?.addEventListener('click', closeModal);
   modalBackdrop?.addEventListener('click', closeModal);
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') closeModal();
+    if (event.key === 'Escape' && !addNetworkModal?.classList.contains('hidden')) closeModal();
   });
 
   networkSearch?.addEventListener('input', (event) => {
