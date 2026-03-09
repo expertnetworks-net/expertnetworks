@@ -123,17 +123,23 @@ export function bootComparePage(dataset: CompareDataset) {
     });
   }
 
+  let modalSavedScrollY = 0;
   function openModal() {
+    modalSavedScrollY = window.scrollY;
     addNetworkModal?.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('overlay-open');
+    document.body.style.top = `-${modalSavedScrollY}px`;
     if (networkSearch) networkSearch.value = '';
     filterPicker('');
-    networkSearch?.focus();
+    /* Delay focus to prevent iOS keyboard shifting layout during animation */
+    setTimeout(() => networkSearch?.focus(), 100);
   }
 
   function closeModal() {
     addNetworkModal?.classList.add('hidden');
-    document.body.style.overflow = '';
+    document.body.classList.remove('overlay-open');
+    document.body.style.top = '';
+    window.scrollTo(0, modalSavedScrollY);
   }
 
   /* ---------- Chip events ---------- */

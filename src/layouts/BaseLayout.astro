@@ -30,7 +30,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="description" content={description} />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#1D1D1F" />
@@ -121,8 +121,10 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
       }, { passive: true });
     }
 
-    // FIX: Reset body overflow on page load to prevent "stuck loading" after
+    // FIX: Reset body state on page load to prevent "stuck" scroll lock after
     // navigating away while an overlay (search, menu, sidebar) was open.
+    document.body.classList.remove('overlay-open');
+    document.body.style.top = '';
     document.body.style.overflow = '';
   </script>
 </body>

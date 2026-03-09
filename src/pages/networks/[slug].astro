@@ -92,7 +92,7 @@ function badgeFor(field: string) {
             <a
               href={`/networks/${n.data.slug}`}
               class:list={[
-                'sidebar-item flex items-center gap-3 px-3 py-[10px] no-underline transition-colors duration-150',
+                'sidebar-item flex items-center gap-3 px-3 py-3 no-underline transition-colors duration-150',
                 n.data.slug === d.slug ? 'bg-accent text-white' : 'text-primary hover:bg-black/[0.04]',
                 i > 0 ? 'border-t border-black/[0.06]' : '',
               ]}
@@ -131,7 +131,7 @@ function badgeFor(field: string) {
             <a
               href={`/networks/${n.data.slug}`}
               class:list={[
-                'sidebar-item flex items-center gap-3 px-3 py-[10px] no-underline transition-colors duration-150',
+                'sidebar-item flex items-center gap-3 px-3 py-3 no-underline transition-colors duration-150',
                 n.data.slug === d.slug ? 'bg-accent text-white' : 'text-primary hover:bg-black/[0.04]',
                 i > 0 ? 'border-t border-black/[0.06]' : '',
               ]}
@@ -168,7 +168,8 @@ function badgeFor(field: string) {
     <!-- Mobile sidebar toggle -->
     <button
       id="sidebarToggle"
-      class="lg:hidden fixed bottom-6 left-6 z-[70] w-12 h-12 bg-accent text-white rounded-full shadow-lg flex items-center justify-center hover:bg-accent-hover transition-all active:scale-95"
+      class="lg:hidden fixed z-[70] w-12 h-12 bg-accent text-white rounded-full shadow-lg flex items-center justify-center hover:bg-accent-hover transition-all active:scale-95"
+      style="bottom: calc(24px + env(safe-area-inset-bottom)); left: 24px;"
       aria-label="Browse networks"
     >
       <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -178,7 +179,7 @@ function badgeFor(field: string) {
     <div id="sidebarBackdrop" class="lg:hidden fixed inset-0 bg-black/30 backdrop-blur-sm z-[70] hidden opacity-0 transition-opacity duration-300"></div>
 
     <!-- Mobile slide-out sidebar -->
-    <aside id="mobileSidebar" class="lg:hidden fixed top-0 left-0 z-[80] w-[320px] max-w-[85vw] h-full bg-bg-secondary/95 backdrop-blur-xl -translate-x-full transition-transform duration-300 ease-out overflow-y-auto shadow-2xl">
+    <aside id="mobileSidebar" class="lg:hidden fixed top-0 left-0 z-[80] w-[320px] max-w-[85vw] h-full bg-bg-secondary/95 backdrop-blur-xl -translate-x-full transition-transform duration-300 ease-out overflow-y-auto shadow-2xl" style="padding-bottom: env(safe-area-inset-bottom);">
       <div class="h-[52px] min-h-[52px] flex items-center justify-between px-4 border-b border-border/40">
         <a href="/" class="font-bold text-[15px] tracking-tight text-primary no-underline">
           Expert<span class="text-accent">Networks</span>
@@ -198,7 +199,7 @@ function badgeFor(field: string) {
         <div class="bg-white rounded-[10px] shadow-[0_0_0_0.5px_rgba(0,0,0,0.04),0_1px_3px_rgba(0,0,0,0.06)] overflow-hidden" id="mobileFeaturedList">
           {featured.map((n, i) => (
             <a href={`/networks/${n.data.slug}`}
-              class:list={['sidebar-item flex items-center gap-3 px-3 py-[10px] no-underline transition-colors duration-150', n.data.slug === d.slug ? 'bg-accent text-white' : 'text-primary hover:bg-black/[0.04]', i > 0 ? 'border-t border-black/[0.06]' : '']}
+              class:list={['sidebar-item flex items-center gap-3 px-3 py-3 no-underline transition-colors duration-150', n.data.slug === d.slug ? 'bg-accent text-white' : 'text-primary hover:bg-black/[0.04]', i > 0 ? 'border-t border-black/[0.06]' : '']}
               data-name={n.data.name.toLowerCase()}>
               {n.data.logo ? (
                 <img src={n.data.logo} alt={n.data.name} width="32" height="32" class:list={['w-8 h-8 rounded-lg object-contain flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']} loading="lazy" />
@@ -219,7 +220,7 @@ function badgeFor(field: string) {
         <div class="bg-white rounded-[10px] shadow-[0_0_0_0.5px_rgba(0,0,0,0.04),0_1px_3px_rgba(0,0,0,0.06)] overflow-hidden" id="mobileAllList">
           {others.map((n, i) => (
             <a href={`/networks/${n.data.slug}`}
-              class:list={['sidebar-item flex items-center gap-3 px-3 py-[10px] no-underline transition-colors duration-150', n.data.slug === d.slug ? 'bg-accent text-white' : 'text-primary hover:bg-black/[0.04]', i > 0 ? 'border-t border-black/[0.06]' : '']}
+              class:list={['sidebar-item flex items-center gap-3 px-3 py-3 no-underline transition-colors duration-150', n.data.slug === d.slug ? 'bg-accent text-white' : 'text-primary hover:bg-black/[0.04]', i > 0 ? 'border-t border-black/[0.06]' : '']}
               data-name={n.data.name.toLowerCase()}>
               {n.data.logo ? (
                 <img src={n.data.logo} alt={n.data.name} width="32" height="32" class:list={['w-8 h-8 rounded-lg object-contain flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']} loading="lazy" />
@@ -241,7 +242,7 @@ function badgeFor(field: string) {
     <!-- MAIN CONTENT                                 -->
     <!-- ============================================ -->
     <main class="flex-1 min-w-0 pt-[52px]">
-      <section class="py-10 lg:py-14 px-6">
+      <section class="py-6 sm:py-10 lg:py-14 px-4 sm:px-6">
         <div class="max-w-4xl mx-auto xl:max-w-none xl:grid xl:grid-cols-[minmax(0,740px)_180px] xl:gap-8 xl:justify-center">
         <div>
 
@@ -255,16 +256,16 @@ function badgeFor(field: string) {
           <!-- ============================== -->
 
           <!-- Header -->
-          <div id="profile-summary" class="flex items-start gap-4 mb-6 scroll-mt-20">
+          <div id="profile-summary" class="flex items-start gap-3 sm:gap-4 mb-6 scroll-mt-20">
             {d.logo ? (
-              <img src={d.logo} alt={d.name} width="64" height="64" class="w-16 h-16 rounded-2xl object-contain flex-shrink-0" loading="lazy" />
+              <img src={d.logo} alt={d.name} width="64" height="64" class="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl object-contain flex-shrink-0" loading="lazy" />
             ) : (
-              <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-white font-bold text-2xl flex-shrink-0" style={`background: linear-gradient(135deg, ${d.gradientFrom}, ${d.gradientTo})`}>
+              <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center text-white font-bold text-xl sm:text-2xl flex-shrink-0" style={`background: linear-gradient(135deg, ${d.gradientFrom}, ${d.gradientTo})`}>
                 {d.shortName}
               </div>
             )}
             <div>
-              <h1 class="text-3xl font-extrabold text-primary leading-tight">{d.name}</h1>
+              <h1 class="text-2xl sm:text-3xl font-extrabold text-primary leading-tight">{d.name}</h1>
               <div class="text-secondary text-sm mt-1 flex flex-wrap items-center gap-x-1.5">
                 <span>{d.type}</span>
                 {d.founded && <span>&middot; Founded {d.founded}</span>}
@@ -391,7 +392,7 @@ function badgeFor(field: string) {
                 <!-- 1. Overview -->
                 {d.overview && (
                   <details class="group bg-bg-secondary rounded-xl overflow-hidden">
-                    <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] transition-colors">
+                    <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] active:bg-black/[0.06] transition-colors">
                       <div class="flex items-center gap-2.5">
                         <span class="w-7 h-7 rounded-lg bg-accent/10 text-accent flex items-center justify-center text-sm flex-shrink-0">1</span>
                         <span class="font-semibold text-sm text-primary">Overview</span>
@@ -405,7 +406,7 @@ function badgeFor(field: string) {
                 <!-- 2. History -->
                 {d.history && (
                   <details class="group bg-bg-secondary rounded-xl overflow-hidden">
-                    <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] transition-colors">
+                    <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] active:bg-black/[0.06] transition-colors">
                       <div class="flex items-center gap-2.5">
                         <span class="w-7 h-7 rounded-lg bg-accent/10 text-accent flex items-center justify-center text-sm flex-shrink-0">2</span>
                         <span class="font-semibold text-sm text-primary">History</span>
@@ -432,7 +433,7 @@ function badgeFor(field: string) {
                 <!-- 3. Services Detail -->
                 {d.servicesDetailed && d.servicesDetailed.length > 0 && (
                   <details class="group bg-bg-secondary rounded-xl overflow-hidden">
-                    <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] transition-colors">
+                    <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] active:bg-black/[0.06] transition-colors">
                       <div class="flex items-center gap-2.5">
                         <span class="w-7 h-7 rounded-lg bg-accent/10 text-accent flex items-center justify-center text-sm flex-shrink-0">3</span>
                         <span class="font-semibold text-sm text-primary">Services in Detail</span>
@@ -453,7 +454,7 @@ function badgeFor(field: string) {
                 <!-- 4. AI & Platform -->
                 {d.aiPlatform && (
                   <details class="group bg-bg-secondary rounded-xl overflow-hidden">
-                    <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] transition-colors">
+                    <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] active:bg-black/[0.06] transition-colors">
                       <div class="flex items-center gap-2.5">
                         <span class="w-7 h-7 rounded-lg bg-accent/10 text-accent flex items-center justify-center text-sm flex-shrink-0">4</span>
                         <span class="font-semibold text-sm text-primary">AI & Platform</span>
@@ -479,7 +480,7 @@ function badgeFor(field: string) {
                 <!-- 5. Compliance (extended) -->
                 {d.complianceExtended && (
                   <details class="group bg-bg-secondary rounded-xl overflow-hidden">
-                    <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] transition-colors">
+                    <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] active:bg-black/[0.06] transition-colors">
                       <div class="flex items-center gap-2.5">
                         <span class="w-7 h-7 rounded-lg bg-accent/10 text-accent flex items-center justify-center text-sm flex-shrink-0">5</span>
                         <span class="font-semibold text-sm text-primary">Compliance</span>
@@ -511,7 +512,7 @@ function badgeFor(field: string) {
                 <!-- 6. Client Fit -->
                 {d.clientFit && (
                   <details class="group bg-bg-secondary rounded-xl overflow-hidden">
-                    <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] transition-colors">
+                    <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] active:bg-black/[0.06] transition-colors">
                       <div class="flex items-center gap-2.5">
                         <span class="w-7 h-7 rounded-lg bg-accent/10 text-accent flex items-center justify-center text-sm flex-shrink-0">6</span>
                         <span class="font-semibold text-sm text-primary">Client Fit</span>
@@ -537,7 +538,7 @@ function badgeFor(field: string) {
                 <!-- 7. Notable Facts -->
                 {d.notableFacts && d.notableFacts.length > 0 && (
                   <details class="group bg-bg-secondary rounded-xl overflow-hidden">
-                    <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] transition-colors">
+                    <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] active:bg-black/[0.06] transition-colors">
                       <div class="flex items-center gap-2.5">
                         <span class="w-7 h-7 rounded-lg bg-accent/10 text-accent flex items-center justify-center text-sm flex-shrink-0">7</span>
                         <span class="font-semibold text-sm text-primary">Notable Facts</span>
@@ -560,7 +561,7 @@ function badgeFor(field: string) {
                 <!-- 8. Source Notes -->
                 {d.sourceNotes && d.sourceNotes.length > 0 && (
                   <details class="group bg-bg-secondary rounded-xl overflow-hidden">
-                    <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] transition-colors">
+                    <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] active:bg-black/[0.06] transition-colors">
                       <div class="flex items-center gap-2.5">
                         <span class="w-7 h-7 rounded-lg bg-accent/10 text-accent flex items-center justify-center text-sm flex-shrink-0">8</span>
                         <span class="font-semibold text-sm text-primary">Source Notes & Methodology</span>
@@ -812,14 +813,17 @@ function badgeFor(field: string) {
     const mobileSidebar = document.getElementById('mobileSidebar');
     const closeBtn = document.getElementById('closeSidebar');
 
+    let savedScrollY = 0;
     function openMobile() {
+      savedScrollY = window.scrollY;
       backdrop?.classList.remove('hidden');
       requestAnimationFrame(() => {
         backdrop?.classList.add('opacity-100');
         backdrop?.classList.remove('opacity-0');
         mobileSidebar?.classList.remove('-translate-x-full');
       });
-      document.body.style.overflow = 'hidden';
+      document.body.classList.add('overlay-open');
+      document.body.style.top = `-${savedScrollY}px`;
     }
 
     function closeMobile() {
@@ -827,7 +831,9 @@ function badgeFor(field: string) {
       backdrop?.classList.add('opacity-0');
       mobileSidebar?.classList.add('-translate-x-full');
       setTimeout(() => backdrop?.classList.add('hidden'), 300);
-      document.body.style.overflow = '';
+      document.body.classList.remove('overlay-open');
+      document.body.style.top = '';
+      window.scrollTo(0, savedScrollY);
     }
 
     toggle?.addEventListener('click', openMobile);
