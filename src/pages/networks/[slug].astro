@@ -638,6 +638,52 @@ function badgeFor(field: string) {
                   </details>
                 )}
 
+                <!-- 9. Confidence Legend -->
+                {d.confidence && Object.keys(d.confidence).length > 0 && (
+                  <details class="group bg-bg-secondary rounded-xl overflow-hidden">
+                    <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] active:bg-black/[0.06] transition-colors">
+                      <div class="flex items-center gap-2.5">
+                        <span class="w-7 h-7 rounded-lg bg-accent/10 text-accent flex items-center justify-center text-sm flex-shrink-0">9</span>
+                        <span class="font-semibold text-sm text-primary">Data Confidence Ratings</span>
+                      </div>
+                      <svg class="w-4 h-4 text-tertiary transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                    </summary>
+                    <div class="px-5 pb-5">
+                      <p class="text-xs text-tertiary mb-3">Each data point in this profile is graded for source confidence. Here's what each badge means:</p>
+                      <div class="space-y-2">
+                        <div class="flex items-start gap-2.5">
+                          <span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-semibold rounded bg-emerald-100 text-emerald-700 flex-shrink-0">Verified</span>
+                          <span class="text-xs text-secondary">Confirmed by official company disclosures, regulatory filings, or multiple independent sources.</span>
+                        </div>
+                        <div class="flex items-start gap-2.5">
+                          <span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-semibold rounded bg-amber-100 text-amber-700 flex-shrink-0">Positioning</span>
+                          <span class="text-xs text-secondary">Based on company marketing claims or self-reported data that could not be independently verified.</span>
+                        </div>
+                        <div class="flex items-start gap-2.5">
+                          <span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-semibold rounded bg-blue-100 text-blue-700 flex-shrink-0">Inference</span>
+                          <span class="text-xs text-secondary">Estimated or inferred from indirect evidence, third-party aggregators, or industry context.</span>
+                        </div>
+                        <div class="flex items-start gap-2.5">
+                          <span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-semibold rounded bg-blue-100 text-blue-700 flex-shrink-0">Partially Unverifiable</span>
+                          <span class="text-xs text-secondary">Some aspects verified but full claim cannot be independently confirmed (e.g., private company financials from third-party estimates).</span>
+                        </div>
+                      </div>
+                      {Object.keys(d.confidence).length > 0 && (
+                        <div class="mt-4 pt-3 border-t border-border">
+                          <p class="text-[10px] uppercase tracking-wider font-semibold text-tertiary mb-2">This profile's ratings</p>
+                          <div class="flex flex-wrap gap-1.5">
+                            {Object.entries(d.confidence).map(([field, level]: [string, unknown]) => (
+                              <span class={`inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-medium rounded ${level === 'verified' ? 'bg-emerald-50 text-emerald-600' : level === 'positioning' ? 'bg-amber-50 text-amber-600' : 'bg-blue-50 text-blue-600'}`}>
+                                {field}: {level as string}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </details>
+                )}
+
               </div>
             </div>
           )}

@@ -238,6 +238,12 @@
     "employeeCount": "partially-unverifiable",
     "pricingModel": "inference",
     "services": "verified",
-    "compliance": "verified"
+    "compliance": "verified",
+    "overview": "verified",
+    "history": "verified",
+    "servicesDetailed": "positioning",
+    "aiPlatform": "positioning",
+    "complianceExtended": "verified",
+    "clientFit": "inference"
   }
 }

@@ -263,6 +263,12 @@
     "pricingModel": "inference",
     "services": "verified",
     "compliance": "verified",
-    "founderBackgrounds": "partially-unverifiable"
+    "founderBackgrounds": "partially-unverifiable",
+    "overview": "verified",
+    "history": "verified",
+    "servicesDetailed": "verified",
+    "aiPlatform": "positioning",
+    "complianceExtended": "verified",
+    "clientFit": "inference"
   }
 }
