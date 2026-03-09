@@ -262,7 +262,7 @@ function renderComparisonTable(entries: any[], dataset: CompareDataset, activeSl
     const sectionMeta = options.showSection ? `<span class="summary-pill">${escapeHtml(entry.sectionName)}</span>` : '';
     const sameMeta = !same ? '<span class="inline-flex h-1.5 w-1.5 rounded-full bg-accent/70 flex-shrink-0"></span>' : '';
     const note = options.showNotes && entry.row.description ? `<div class="row-note">${escapeHtml(entry.row.description)}</div>` : '';
-    const cells = activeSlugs.map((slug) => `<td class="provider-col" data-slug="${escapeHtml(slug)}">${renderCellValue(dataset, slug, entry.row, Boolean(options.showNotes))}</td>`).join('');
+    const cells = activeSlugs.map((slug) => `<td class="provider-col" data-slug="${escapeHtml(slug)}" data-label="${escapeHtml(shortName(dataset, slug))}">${renderCellValue(dataset, slug, entry.row, Boolean(options.showNotes))}</td>`).join('');
     const zebraClass = index % 2 === 1 ? ' class="zebra-row"' : '';
     return `<tr${zebraClass}><td class="sticky-col"><div class="row-label"><div class="row-name">${sameMeta}${escapeHtml(entry.row.label)}</div>${sectionMeta ? `<div class="row-meta">${sectionMeta}</div>` : ''}${note}</div></td>${cells}</tr>`;
   }).join('');
