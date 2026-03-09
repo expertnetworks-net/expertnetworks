@@ -1,18 +1,33 @@
 ---
 import { getCollection } from 'astro:content';
 
+const { pathname = '/' } = Astro.props;
+
 const allNetworks = await getCollection('networks');
 const publishedNetworks = allNetworks.filter(n => n.data.published);
 const top10 = [...publishedNetworks]
   .sort((a, b) => a.data.priority - b.data.priority)
   .slice(0, 10);
+
+// Determine page type for contextual sidebar blocks
+const pageType = pathname === '/' ? 'home'
+  : pathname.startsWith('/compare') ? 'compare'
+  : pathname.startsWith('/networks/') && pathname !== '/networks/' ? 'profile'
+  : pathname === '/networks/' || pathname === '/networks' ? 'directory'
+  : pathname.startsWith('/news') ? 'news'
+  : 'default';
+
+// Active path matching
+function isActive(href: string): boolean {
+  if (href === '/') return pathname === '/';
+  return pathname.startsWith(href);
+}
 ---
 <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[300] focus:bg-accent focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm focus:font-semibold">Skip to main content</a>
 <nav class="fixed top-0 left-0 right-0 z-50 bg-[rgba(251,251,253,0.72)] backdrop-blur-xl border-b border-border/40 transition-colors duration-300">
   <div class="max-w-site mx-auto px-6 h-[52px] flex items-center justify-between">
     <div class="flex items-center gap-4">
-      <!-- Hamburger menu button -->
-      <button id="menuBtn" class="flex items-center justify-center gap-1.5 text-secondary hover:text-primary active:text-primary active:scale-95 transition-all cursor-pointer min-w-[44px] min-h-[44px]" aria-label="Open menu">
+      <button id="menuBtn" class="flex items-center justify-center gap-1.5 text-secondary hover:text-primary active:text-primary active:scale-95 transition-all cursor-pointer min-w-[44px] min-h-[44px]" aria-label="Open menu" aria-expanded="false" aria-controls="menuDrawer">
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         <span class="text-sm font-medium hidden sm:inline">Menu</span>
       </button>
@@ -22,11 +37,11 @@ const top10 = [...publishedNetworks]
       </a>
     </div>
     <ul class="hidden md:flex gap-8 list-none">
-      <li><a href="/what-is-an-expert-network" class="text-secondary no-underline text-sm font-medium hover:text-primary transition-colors">What's an Expert Network?</a></li>
-      <li><a href="/networks" class="text-secondary no-underline text-sm font-medium hover:text-primary transition-colors">Networks</a></li>
-      <li><a href="/news" class="text-secondary no-underline text-sm font-medium hover:text-primary transition-colors">News</a></li>
-      <li><a href="/compare" class="text-secondary no-underline text-sm font-medium hover:text-primary transition-colors">Compare</a></li>
-      <li><a href="/about" class="text-secondary no-underline text-sm font-medium hover:text-primary transition-colors">About</a></li>
+      <li><a href="/what-is-an-expert-network" class:list={["no-underline text-sm font-medium transition-colors", isActive('/what-is-an-expert-network') ? 'text-primary' : 'text-secondary hover:text-primary']}>What's an Expert Network?</a></li>
+      <li><a href="/networks" class:list={["no-underline text-sm font-medium transition-colors", isActive('/networks') ? 'text-primary' : 'text-secondary hover:text-primary']}>Networks</a></li>
+      <li><a href="/news" class:list={["no-underline text-sm font-medium transition-colors", isActive('/news') ? 'text-primary' : 'text-secondary hover:text-primary']}>News</a></li>
+      <li><a href="/compare" class:list={["no-underline text-sm font-medium transition-colors", isActive('/compare') ? 'text-primary' : 'text-secondary hover:text-primary']}>Compare</a></li>
+      <li><a href="/about" class:list={["no-underline text-sm font-medium transition-colors", isActive('/about') ? 'text-primary' : 'text-secondary hover:text-primary']}>About</a></li>
     </ul>
     <div class="flex items-center gap-3">
     <a href="https://www.linkedin.com/company/expertnetworks-net/" target="_blank" rel="noopener noreferrer" class="text-secondary hover:text-accent transition-colors" aria-label="LinkedIn">
@@ -42,107 +57,221 @@ const top10 = [...publishedNetworks]
 </nav>
 
 <!-- Menu backdrop -->
-<div id="menuBackdrop" class="fixed inset-0 bg-black/30 backdrop-blur-sm z-[90] hidden opacity-0 transition-opacity duration-300"></div>
+<div id="menuBackdrop" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[90] hidden opacity-0 transition-opacity duration-300"></div>
 
-<!-- Slide-out navigation drawer -->
-<aside id="menuDrawer" class="fixed top-0 left-0 z-[100] w-[320px] max-w-[85vw] h-full bg-bg-secondary/95 backdrop-blur-xl -translate-x-full transition-transform duration-300 ease-out overflow-y-auto shadow-2xl sidebar-panel">
+<!-- V2 Glass Navigation Drawer -->
+<aside id="menuDrawer" role="dialog" aria-label="Navigation" aria-hidden="true" class="fixed top-0 left-0 z-[100] w-[340px] max-w-[88vw] h-full drawer-glass -translate-x-full transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] flex flex-col" data-page-type={pageType}>
 
-  <!-- Drawer header -->
-  <div class="h-[52px] min-h-[52px] flex items-center justify-between px-5 border-b border-border/40">
-    <a href="/" class="flex items-center gap-1.5 font-bold text-[15px] tracking-tight text-primary no-underline">
-      <svg class="w-[18px] h-[18px] flex-shrink-0 opacity-80" viewBox="0 0 2048 2048" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M 1493 1721.15 L 1290 1721.17 L 1285 1719.35 L 1228 1716.77 L 1166 1707.92 L 1100 1692.5 L 1057.24 1679 L 1000 1654.83 L 933.33 1617 L 871 1570.28 L 825 1526.61 L 789.79 1489 L 745.39 1429 L 716.92 1383 L 687.97 1325 L 672.75 1288 L 657.1 1239 L 640 1159.34 L 615.79 1199 L 566.83 1288 L 502.98 1409 L 474.75 1467 L 485 1469.51 L 575 1472.05 L 580 1473.92 L 707 1474.77 L 739.53 1518 L 766.02 1549 L 816 1598.85 L 878 1647.62 L 933.02 1683 L 965 1699.96 L 965 1703 L 915 1708.2 L 910 1710.22 L 893 1710.42 L 888 1712.42 L 869 1712.57 L 864 1714.6 L 807 1717.17 L 802 1719.06 L 763 1719.34 L 757 1721.2 L 556 1721.19 L 551 1719.37 L 505 1719.05 L 500 1717.15 L 432 1714.6 L 427 1712.65 L 405 1712.34 L 387 1707.81 L 368.51 1692 L 331 1636.83 L 288.93 1566 L 233.5 1455 L 224.57 1430 L 224.63 1423 L 229.28 1409 L 374.98 1133 L 430.12 1036 L 461.5 989 L 510.23 927 L 562 875.27 L 618 830.45 L 671 797.29 L 722 772.91 L 762 757.34 L 833 737.41 L 899 726.41 L 921 726.02 L 927 724.11 L 1002 724.11 L 1045 728.54 L 1116 744.02 L 1172.17 763 L 1159.11 736 L 1123.59 676 L 1081.77 610 L 1022 521.85 L 1017.07 526 L 1001.77 548 L 938.79 648 L 925 666.3 L 902 666.82 L 853 673.46 L 802 684.48 L 756 697.74 L 691 722.31 L 638 748.84 L 602.97 770 L 606.6 758 L 664 645.42 L 758.78 480 L 791.87 427 L 838.68 358 L 857.49 337 L 867 331.98 L 906 326.98 L 941 326.62 L 946 324.82 L 1095 324.8 L 1101 326.63 L 1160 329.25 L 1178 333.73 L 1186 338.92 L 1210 369.71 L 1260.89 445 L 1368.85 619 L 1415.46 708 L 1444.09 785 L 1461.81 856 L 1468.49 896 L 1470.97 935 L 1472.94 941 L 1472.92 1024 L 1470.91 1029 L 1468.51 1066 L 1459.65 1117 L 1446.32 1166 L 1422.08 1230 L 1399.55 1275 L 1379.77 1308 L 1350.9 1348 L 1326.35 1377 L 1294 1409.32 L 1258.66 1438 L 1220 1463.71 L 1218.53 1467 L 1266 1469.89 L 1271 1471.87 L 1299 1472.1 L 1304 1473.98 L 1343 1474.26 L 1472 1473.91 L 1478 1472.03 L 1559 1469.53 L 1571.04 1467 L 1543.04 1409 L 1468.63 1269 L 1490.26 1217 L 1503.52 1177 L 1521.42 1101 L 1530.16 1030 L 1530.3 957 L 1528.18 946 L 1528.32 931 L 1530 929.32 L 1540.83 941 L 1591.07 1011 L 1646.36 1095 L 1673.39 1140 L 1752.43 1285 L 1812.46 1405 L 1821.47 1429 L 1812.13 1458 L 1768.16 1546 L 1748 1581.77 L 1721.46 1626 L 1677.48 1692 L 1671 1698.7 L 1653 1709.78 L 1643 1712.37 L 1595 1714.85 L 1590 1716.76 L 1553 1717.14 L 1548 1719.03 L 1498 1719.36 L 1493 1721.15 Z M 1042.02 1372 L 1087 1363.76 L 1128 1347.73 L 1154.93 1332 L 1173 1318.4 L 1193 1300.52 L 1207.54 1284 L 1232.19 1248 L 1252.23 1203 L 1258.74 1179 L 1263.2 1150 L 1263.36 1109 L 1254.31 1063 L 1238.84 1023 L 1216.42 985 L 1186 950.27 L 1148 921.13 L 1108 900.95 L 1080.69 892 L 1058 887.45 L 1006 885.36 L 965.02 892 L 927 905.36 L 905 916.47 L 878 934.55 L 845.31 965 L 816.2 1005 L 796.01 1048 L 787.23 1079 L 782.81 1106 L 782.73 1149 L 787.08 1178 L 793.76 1203 L 816 1252.33 L 836.59 1282 L 851.35 1299 L 871 1316.51 L 903 1339.3 L 952 1361.49 L 990 1370.42 L 1009 1372.55 L 1042.02 1372 Z M 1041 1260.06 L 1006 1260.14 L 985 1255.58 L 955.44 1242 L 940 1230.97 L 922.85 1214 L 911 1197.51 L 897.42 1168 L 892.96 1148 L 892.91 1108 L 895.35 1098 L 904.08 1072 L 917.74 1049 L 935 1029.47 L 958 1013.42 L 976 1004.47 L 1001 997.67 L 1025 995.49 L 1057 1000.13 L 1075 1006.89 L 1102 1022.72 L 1126 1046.72 L 1134.84 1060 L 1144 1078.29 L 1153.03 1112 L 1153.1 1143 L 1148.53 1166 L 1135 1197.55 L 1124 1213 L 1107 1230.14 L 1090.53 1242 L 1061 1255.57 L 1041 1260.06 Z"/></svg>
-      Expert<span class="text-accent">Networks</span>
-    </a>
-    <button id="menuClose" class="w-8 h-8 rounded-full bg-black/[0.06] flex items-center justify-center text-tertiary hover:bg-black/[0.1] transition-colors">
-      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-  </div>
-
-  <!-- Main navigation -->
-  <div class="px-3 pt-4 pb-1">
-    <div class="text-[11px] font-semibold uppercase tracking-wider text-tertiary px-3 mb-1">Navigate</div>
-    <div class="bg-white rounded-[10px] shadow-[0_0_0_0.5px_rgba(0,0,0,0.04),0_1px_3px_rgba(0,0,0,0.06)] overflow-hidden">
-      <a href="/" class="flex items-center gap-3 px-4 py-3 no-underline text-primary hover:bg-black/[0.04] active:bg-black/[0.08] transition-colors">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        <span class="text-[13px] font-medium">Home</span>
+  <!-- A. DRAWER HEADER -->
+  <div class="flex-shrink-0 px-5 pt-[max(16px,env(safe-area-inset-top))] pb-3">
+    <div class="flex items-center justify-between mb-4">
+      <a href="/" class="flex items-center gap-2 no-underline group">
+        <svg class="w-[18px] h-[18px] flex-shrink-0 text-white/80" viewBox="0 0 2048 2048" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M 1493 1721.15 L 1290 1721.17 L 1285 1719.35 L 1228 1716.77 L 1166 1707.92 L 1100 1692.5 L 1057.24 1679 L 1000 1654.83 L 933.33 1617 L 871 1570.28 L 825 1526.61 L 789.79 1489 L 745.39 1429 L 716.92 1383 L 687.97 1325 L 672.75 1288 L 657.1 1239 L 640 1159.34 L 615.79 1199 L 566.83 1288 L 502.98 1409 L 474.75 1467 L 485 1469.51 L 575 1472.05 L 580 1473.92 L 707 1474.77 L 739.53 1518 L 766.02 1549 L 816 1598.85 L 878 1647.62 L 933.02 1683 L 965 1699.96 L 965 1703 L 915 1708.2 L 910 1710.22 L 893 1710.42 L 888 1712.42 L 869 1712.57 L 864 1714.6 L 807 1717.17 L 802 1719.06 L 763 1719.34 L 757 1721.2 L 556 1721.19 L 551 1719.37 L 505 1719.05 L 500 1717.15 L 432 1714.6 L 427 1712.65 L 405 1712.34 L 387 1707.81 L 368.51 1692 L 331 1636.83 L 288.93 1566 L 233.5 1455 L 224.57 1430 L 224.63 1423 L 229.28 1409 L 374.98 1133 L 430.12 1036 L 461.5 989 L 510.23 927 L 562 875.27 L 618 830.45 L 671 797.29 L 722 772.91 L 762 757.34 L 833 737.41 L 899 726.41 L 921 726.02 L 927 724.11 L 1002 724.11 L 1045 728.54 L 1116 744.02 L 1172.17 763 L 1159.11 736 L 1123.59 676 L 1081.77 610 L 1022 521.85 L 1017.07 526 L 1001.77 548 L 938.79 648 L 925 666.3 L 902 666.82 L 853 673.46 L 802 684.48 L 756 697.74 L 691 722.31 L 638 748.84 L 602.97 770 L 606.6 758 L 664 645.42 L 758.78 480 L 791.87 427 L 838.68 358 L 857.49 337 L 867 331.98 L 906 326.98 L 941 326.62 L 946 324.82 L 1095 324.8 L 1101 326.63 L 1160 329.25 L 1178 333.73 L 1186 338.92 L 1210 369.71 L 1260.89 445 L 1368.85 619 L 1415.46 708 L 1444.09 785 L 1461.81 856 L 1468.49 896 L 1470.97 935 L 1472.94 941 L 1472.92 1024 L 1470.91 1029 L 1468.51 1066 L 1459.65 1117 L 1446.32 1166 L 1422.08 1230 L 1399.55 1275 L 1379.77 1308 L 1350.9 1348 L 1326.35 1377 L 1294 1409.32 L 1258.66 1438 L 1220 1463.71 L 1218.53 1467 L 1266 1469.89 L 1271 1471.87 L 1299 1472.1 L 1304 1473.98 L 1343 1474.26 L 1472 1473.91 L 1478 1472.03 L 1559 1469.53 L 1571.04 1467 L 1543.04 1409 L 1468.63 1269 L 1490.26 1217 L 1503.52 1177 L 1521.42 1101 L 1530.16 1030 L 1530.3 957 L 1528.18 946 L 1528.32 931 L 1530 929.32 L 1540.83 941 L 1591.07 1011 L 1646.36 1095 L 1673.39 1140 L 1752.43 1285 L 1812.46 1405 L 1821.47 1429 L 1812.13 1458 L 1768.16 1546 L 1748 1581.77 L 1721.46 1626 L 1677.48 1692 L 1671 1698.7 L 1653 1709.78 L 1643 1712.37 L 1595 1714.85 L 1590 1716.76 L 1553 1717.14 L 1548 1719.03 L 1498 1719.36 L 1493 1721.15 Z M 1042.02 1372 L 1087 1363.76 L 1128 1347.73 L 1154.93 1332 L 1173 1318.4 L 1193 1300.52 L 1207.54 1284 L 1232.19 1248 L 1252.23 1203 L 1258.74 1179 L 1263.2 1150 L 1263.36 1109 L 1254.31 1063 L 1238.84 1023 L 1216.42 985 L 1186 950.27 L 1148 921.13 L 1108 900.95 L 1080.69 892 L 1058 887.45 L 1006 885.36 L 965.02 892 L 927 905.36 L 905 916.47 L 878 934.55 L 845.31 965 L 816.2 1005 L 796.01 1048 L 787.23 1079 L 782.81 1106 L 782.73 1149 L 787.08 1178 L 793.76 1203 L 816 1252.33 L 836.59 1282 L 851.35 1299 L 871 1316.51 L 903 1339.3 L 952 1361.49 L 990 1370.42 L 1009 1372.55 L 1042.02 1372 Z M 1041 1260.06 L 1006 1260.14 L 985 1255.58 L 955.44 1242 L 940 1230.97 L 922.85 1214 L 911 1197.51 L 897.42 1168 L 892.96 1148 L 892.91 1108 L 895.35 1098 L 904.08 1072 L 917.74 1049 L 935 1029.47 L 958 1013.42 L 976 1004.47 L 1001 997.67 L 1025 995.49 L 1057 1000.13 L 1075 1006.89 L 1102 1022.72 L 1126 1046.72 L 1134.84 1060 L 1144 1078.29 L 1153.03 1112 L 1153.1 1143 L 1148.53 1166 L 1135 1197.55 L 1124 1213 L 1107 1230.14 L 1090.53 1242 L 1061 1255.57 L 1041 1260.06 Z"/></svg>
+        <div>
+          <span class="text-[15px] font-bold tracking-tight text-white/90">Expert<span class="text-[#4DA3FF]">Networks</span></span>
+          <div class="text-[10px] text-white/32 font-medium tracking-wide">Independent research</div>
+        </div>
       </a>
-      <a href="/what-is-an-expert-network" class="flex items-center gap-3 px-4 py-[11px] no-underline text-primary hover:bg-black/[0.04] transition-colors border-t border-black/[0.06]">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        <span class="text-[13px] font-medium">What's an Expert Network?</span>
-      </a>
-      <a href="/networks" class="flex items-center gap-3 px-4 py-[11px] no-underline text-primary hover:bg-black/[0.04] transition-colors border-t border-black/[0.06]">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-        <span class="text-[13px] font-medium">All Networks</span>
-        <span class="ml-auto text-[11px] text-tertiary">{publishedNetworks.length}</span>
-      </a>
-      <a href="/news" class="flex items-center gap-3 px-4 py-[11px] no-underline text-primary hover:bg-black/[0.04] transition-colors border-t border-black/[0.06]">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0a2 2 0 01-2-2v-9c0-1.1.9-2 2-2h2"/></svg>
-        <span class="text-[13px] font-medium">Industry News</span>
-      </a>
-      <a href="/compare" class="flex items-center gap-3 px-4 py-[11px] no-underline text-primary hover:bg-black/[0.04] transition-colors border-t border-black/[0.06]">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-        <span class="text-[13px] font-medium">Compare Networks</span>
-      </a>
+      <button id="menuClose" class="w-8 h-8 rounded-full bg-white/[0.08] flex items-center justify-center text-white/50 hover:bg-white/[0.14] hover:text-white/70 transition-all cursor-pointer" aria-label="Close menu">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
     </div>
+
+    <!-- B. SEARCH BLOCK -->
+    <button id="drawerSearchBtn" class="w-full drawer-search-trigger flex items-center gap-2.5 px-3.5 py-2.5 cursor-pointer text-left">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span class="text-[13px]">Search providers, pricing, news...</span>
+      <kbd class="ml-auto text-[10px] bg-white/[0.06] px-1.5 py-0.5 rounded text-white/30 border border-white/[0.08]">/</kbd>
+    </button>
   </div>
 
-  <!-- Top Networks (expandable) -->
-  <div class="px-3 pt-4 pb-1">
-    <button id="networksToggle" class="w-full flex items-center justify-between text-[11px] font-semibold uppercase tracking-wider text-tertiary px-3 mb-1 cursor-pointer hover:text-secondary transition-colors">
-      <span>Top Networks</span>
-      <svg id="networksChevron" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="transition-transform duration-200"><polyline points="6 9 12 15 18 9"/></svg>
-    </button>
-    <div id="networksList" class="bg-white rounded-[10px] shadow-[0_0_0_0.5px_rgba(0,0,0,0.04),0_1px_3px_rgba(0,0,0,0.06)] overflow-hidden">
-      {top10.map((n, i) => (
-        <a
-          href={`/networks/${n.data.slug}`}
-          class:list={[
-            'flex items-center gap-3 px-3 py-3 no-underline text-primary hover:bg-black/[0.04] active:bg-black/[0.08] transition-colors',
-            i > 0 ? 'border-t border-black/[0.06]' : '',
-          ]}
-        >
-          <div
-            class="w-7 h-7 rounded-md flex items-center justify-center text-white font-semibold text-[10px] flex-shrink-0"
-            style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}
-          >
-            {n.data.shortName}
-          </div>
+  <!-- Scrollable content area -->
+  <div class="flex-1 overflow-y-auto sidebar-panel px-4 pb-6">
+
+    <!-- C. PRIMARY NAVIGATION -->
+    <div class="mb-5">
+      <div class="drawer-label px-2 mb-2">Navigate</div>
+      <nav aria-label="Primary navigation">
+        <a href="/what-is-an-expert-network" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/what-is-an-expert-network') && 'drawer-nav-active']}>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           <div class="min-w-0">
-            <div class="text-[13px] font-medium truncate">{n.data.name.split(' (')[0]}</div>
+            <div class="text-[13px] font-medium">Start Here</div>
+            <div class="text-[11px] opacity-50">What is an expert network?</div>
           </div>
-          <svg class="w-3.5 h-3.5 ml-auto flex-shrink-0 text-tertiary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
-      ))}
+        <a href="/compare" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/compare') && 'drawer-nav-active']}>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          <div class="min-w-0">
+            <div class="text-[13px] font-medium">Compare Providers</div>
+            <div class="text-[11px] opacity-50">Side-by-side with presets</div>
+          </div>
+        </a>
+        <a href="/networks" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/networks') && !pathname.startsWith('/networks/') && 'drawer-nav-active']}>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          <div class="min-w-0">
+            <div class="text-[13px] font-medium">Browse Networks</div>
+            <div class="text-[11px] opacity-50">{publishedNetworks.length} providers tracked</div>
+          </div>
+        </a>
+        <a href="/expert-network-pricing" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/expert-network-pricing') && 'drawer-nav-active']}>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          <div class="min-w-0">
+            <div class="text-[13px] font-medium">Pricing Guide</div>
+            <div class="text-[11px] opacity-50">Rates, models & benchmarks</div>
+          </div>
+        </a>
+        <a href="/news" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/news') && 'drawer-nav-active']}>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0a2 2 0 01-2-2v-9c0-1.1.9-2 2-2h2"/></svg>
+          <div class="min-w-0">
+            <div class="text-[13px] font-medium">Industry News</div>
+            <div class="text-[11px] opacity-50">Signals & intelligence</div>
+          </div>
+        </a>
+        <a href="/best-expert-networks" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/best-expert-networks') && 'drawer-nav-active']}>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <div class="min-w-0">
+            <div class="text-[13px] font-medium">Best Networks Ranked</div>
+            <div class="text-[11px] opacity-50">Independent rankings</div>
+          </div>
+        </a>
+        <a href="/verification" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/verification') && 'drawer-nav-active']}>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <div class="min-w-0">
+            <div class="text-[13px] font-medium">Methodology</div>
+            <div class="text-[11px] opacity-50">How we verify claims</div>
+          </div>
+        </a>
+      </nav>
+    </div>
+
+    <!-- D. BUYER PATHWAYS -->
+    <div class="mb-5">
+      <button id="pathwaysToggle" class="w-full flex items-center justify-between drawer-label px-2 mb-2 cursor-pointer hover:text-white/50 transition-colors">
+        <span>Buyer Pathways</span>
+        <svg id="pathwaysChevron" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="transition-transform duration-200"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div id="pathwaysList" class="drawer-card overflow-hidden">
+        <a href="/expert-networks-for-consulting" class="flex items-center gap-2.5 px-3.5 py-2.5 no-underline drawer-provider-item">
+          <span class="text-[13px]">Consulting Teams</span>
+          <svg class="w-3 h-3 ml-auto flex-shrink-0 opacity-30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+        <a href="/expert-networks-for-private-equity" class="flex items-center gap-2.5 px-3.5 py-2.5 no-underline drawer-provider-item border-t drawer-divider">
+          <span class="text-[13px]">Private Equity & Hedge Funds</span>
+          <svg class="w-3 h-3 ml-auto flex-shrink-0 opacity-30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+        <a href="/compare?preset=enterprise" class="flex items-center gap-2.5 px-3.5 py-2.5 no-underline drawer-provider-item border-t drawer-divider">
+          <span class="text-[13px]">Enterprise Strategy</span>
+          <svg class="w-3 h-3 ml-auto flex-shrink-0 opacity-30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+        <a href="/compare?preset=library" class="flex items-center gap-2.5 px-3.5 py-2.5 no-underline drawer-provider-item border-t drawer-divider">
+          <span class="text-[13px]">Transcript-Led Research</span>
+          <svg class="w-3 h-3 ml-auto flex-shrink-0 opacity-30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+        <a href="/compare?preset=aiResearch" class="flex items-center gap-2.5 px-3.5 py-2.5 no-underline drawer-provider-item border-t drawer-divider">
+          <span class="text-[13px]">AI-Forward Research</span>
+          <svg class="w-3 h-3 ml-auto flex-shrink-0 opacity-30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+        <a href="/what-is-an-expert-network" class="flex items-center gap-2.5 px-3.5 py-2.5 no-underline drawer-provider-item border-t drawer-divider">
+          <span class="text-[13px]">First-Time Buyer</span>
+          <svg class="w-3 h-3 ml-auto flex-shrink-0 opacity-30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- E. FEATURED PROVIDERS -->
+    <div class="mb-5">
+      <button id="networksToggle" class="w-full flex items-center justify-between drawer-label px-2 mb-2 cursor-pointer hover:text-white/50 transition-colors">
+        <span>Featured Providers</span>
+        <svg id="networksChevron" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="transition-transform duration-200"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div id="networksList" class="drawer-card overflow-hidden">
+        {top10.map((n, i) => (
+          <a
+            href={`/networks/${n.data.slug}`}
+            class:list={[
+              'flex items-center gap-2.5 px-3 py-2.5 no-underline drawer-provider-item',
+              i > 0 ? 'border-t drawer-divider' : '',
+              pathname === `/networks/${n.data.slug}` || pathname === `/networks/${n.data.slug}/` ? 'drawer-nav-active' : '',
+            ]}
+          >
+            <div
+              class="w-6 h-6 rounded-md flex items-center justify-center text-white font-semibold text-[9px] flex-shrink-0"
+              style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}
+            >
+              {n.data.shortName}
+            </div>
+            <span class="text-[13px] font-medium truncate">{n.data.name.split(' (')[0]}</span>
+            <svg class="w-3 h-3 ml-auto flex-shrink-0 opacity-30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        ))}
+      </div>
+      <a href="/networks" class="flex items-center gap-1.5 px-2 mt-2 no-underline text-[11px] font-medium drawer-trust-link hover:text-white/60">
+        View all {publishedNetworks.length} providers
+        <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+    </div>
+
+    <!-- F. CONTEXTUAL BLOCKS -->
+    <!-- Homepage context -->
+    {pageType === 'home' && (
+      <div class="mb-5">
+        <div class="drawer-label px-2 mb-2">Quick Actions</div>
+        <div class="drawer-card p-3 space-y-2">
+          <a href="/compare" class="flex items-center gap-2 px-2.5 py-2 rounded-lg no-underline drawer-nav-item text-[12px] font-medium">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="opacity-60"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            Compare top providers
+          </a>
+          <a href="/expert-network-pricing" class="flex items-center gap-2 px-2.5 py-2 rounded-lg no-underline drawer-nav-item text-[12px] font-medium">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="opacity-60"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            See pricing benchmarks
+          </a>
+          <a href="/news" class="flex items-center gap-2 px-2.5 py-2 rounded-lg no-underline drawer-nav-item text-[12px] font-medium">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="opacity-60"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0a2 2 0 01-2-2v-9c0-1.1.9-2 2-2h2"/></svg>
+            Latest intelligence
+          </a>
+        </div>
+      </div>
+    )}
+
+    <!-- Compare page context -->
+    {pageType === 'compare' && (
+      <div class="mb-5">
+        <div class="drawer-label px-2 mb-2">Compare Presets</div>
+        <div class="drawer-card overflow-hidden">
+          <a href="/compare?preset=leaders" class="flex items-center gap-2.5 px-3.5 py-2.5 no-underline drawer-provider-item text-[12px]">Global Leaders</a>
+          <a href="/compare?preset=pe" class="flex items-center gap-2.5 px-3.5 py-2.5 no-underline drawer-provider-item border-t drawer-divider text-[12px]">PE / Hedge Funds</a>
+          <a href="/compare?preset=consulting" class="flex items-center gap-2.5 px-3.5 py-2.5 no-underline drawer-provider-item border-t drawer-divider text-[12px]">Consulting Fit</a>
+          <a href="/compare?preset=library" class="flex items-center gap-2.5 px-3.5 py-2.5 no-underline drawer-provider-item border-t drawer-divider text-[12px]">Transcript Leaders</a>
+          <a href="/compare?preset=aiResearch" class="flex items-center gap-2.5 px-3.5 py-2.5 no-underline drawer-provider-item border-t drawer-divider text-[12px]">AI Research</a>
+          <a href="/compare?preset=asia" class="flex items-center gap-2.5 px-3.5 py-2.5 no-underline drawer-provider-item border-t drawer-divider text-[12px]">APAC Specialists</a>
+        </div>
+      </div>
+    )}
+
+    <!-- Profile page context -->
+    {pageType === 'profile' && (
+      <div class="mb-5">
+        <div class="drawer-label px-2 mb-2">On This Page</div>
+        <div class="drawer-card p-3 space-y-1" id="drawerProfileToc">
+          <div class="text-[11px] text-white/40 italic">Loading page sections...</div>
+        </div>
+      </div>
+    )}
+
+    <!-- G. TRUST FOOTER -->
+    <div class="pt-3 border-t drawer-divider">
+      <div class="flex flex-wrap gap-x-4 gap-y-1.5 px-1">
+        <a href="/about" class="no-underline text-[11px] drawer-trust-link">About</a>
+        <a href="/sources" class="no-underline text-[11px] drawer-trust-link">Sources</a>
+        <a href="/verification" class="no-underline text-[11px] drawer-trust-link">Verification</a>
+        <a href="/disclaimer" class="no-underline text-[11px] drawer-trust-link">Disclaimer</a>
+        <a href="/privacy" class="no-underline text-[11px] drawer-trust-link">Privacy</a>
+      </div>
+      <div class="mt-3 px-1 text-[10px] text-white/20">
+        Independent research. No paid placements.
+      </div>
     </div>
   </div>
-
-  <!-- Resources (expandable) -->
-  <div class="px-3 pt-4 pb-1">
-    <button id="resourcesToggle" class="w-full flex items-center justify-between text-[11px] font-semibold uppercase tracking-wider text-tertiary px-3 mb-1 cursor-pointer hover:text-secondary transition-colors">
-      <span>Resources</span>
-      <svg id="resourcesChevron" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="transition-transform duration-200"><polyline points="6 9 12 15 18 9"/></svg>
-    </button>
-    <div id="resourcesList" class="bg-white rounded-[10px] shadow-[0_0_0_0.5px_rgba(0,0,0,0.04),0_1px_3px_rgba(0,0,0,0.06)] overflow-hidden">
-      <a href="/about" class="flex items-center gap-3 px-4 py-3 no-underline text-primary hover:bg-black/[0.04] active:bg-black/[0.08] transition-colors">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-        <span class="text-[13px] font-medium">About</span>
-      </a>
-      <a href="/sources" class="flex items-center gap-3 px-4 py-[11px] no-underline text-primary hover:bg-black/[0.04] transition-colors border-t border-black/[0.06]">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        <span class="text-[13px] font-medium">Sources & Methodology</span>
-      </a>
-      <a href="/disclaimer" class="flex items-center gap-3 px-4 py-[11px] no-underline text-primary hover:bg-black/[0.04] transition-colors border-t border-black/[0.06]">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <span class="text-[13px] font-medium">Disclaimer</span>
-      </a>
-      <a href="/privacy" class="flex items-center gap-3 px-4 py-[11px] no-underline text-primary hover:bg-black/[0.04] transition-colors border-t border-black/[0.06]">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-        <span class="text-[13px] font-medium">Privacy</span>
-      </a>
-    </div>
-  </div>
-
-  <div class="h-8"></div>
 </aside>
 
 <!-- Search overlay -->
@@ -174,6 +303,7 @@ const top10 = [...publishedNetworks]
 <script is:inline define:vars={{ searchNetworks: publishedNetworks.map(n => ({ slug: n.data.slug, name: n.data.name.split(' (')[0], logo: n.data.logo || null, shortName: n.data.shortName, gradientFrom: n.data.gradientFrom, gradientTo: n.data.gradientTo, expertCount: n.data.expertCount, pricingModel: n.data.pricingModel })) }}>
   // Search functionality
   const searchTrigger = document.getElementById('searchTrigger');
+  const drawerSearchBtn = document.getElementById('drawerSearchBtn');
   const searchOverlay = document.getElementById('searchOverlay');
   const searchBackdrop = document.getElementById('searchBackdrop');
   const searchInput = document.getElementById('headerSearchInput');
@@ -194,9 +324,9 @@ const top10 = [...publishedNetworks]
   }
 
   function openSearch() {
+    closeMenu();
     searchOverlay?.classList.remove('hidden');
     lockScroll();
-    /* Delay focus to prevent iOS keyboard shifting layout during animation */
     setTimeout(() => searchInput?.focus(), 100);
   }
 
@@ -257,13 +387,13 @@ const top10 = [...publishedNetworks]
   }
 
   searchTrigger?.addEventListener('click', openSearch);
+  drawerSearchBtn?.addEventListener('click', openSearch);
   searchBackdrop?.addEventListener('click', closeSearch);
   searchInput?.addEventListener('input', (e) => {
     const input = e.target;
     if (input instanceof HTMLInputElement) renderResults(input.value);
   });
 
-  // Close search overlay when clicking a result link (prevents stuck overflow:hidden)
   searchList?.addEventListener('click', (e) => {
     const target = e.target;
     if (target instanceof Element && (target instanceof HTMLAnchorElement || target.closest('a'))) {
@@ -282,14 +412,20 @@ const top10 = [...publishedNetworks]
       menuBackdrop?.classList.add('opacity-100');
       menuBackdrop?.classList.remove('opacity-0');
       menuDrawer?.classList.remove('-translate-x-full');
+      menuDrawer?.setAttribute('aria-hidden', 'false');
+      menuBtn?.setAttribute('aria-expanded', 'true');
     });
     lockScroll();
+    // Focus first focusable element in drawer
+    setTimeout(() => menuClose?.focus(), 300);
   }
 
   function closeMenu() {
     menuBackdrop?.classList.remove('opacity-100');
     menuBackdrop?.classList.add('opacity-0');
     menuDrawer?.classList.add('-translate-x-full');
+    menuDrawer?.setAttribute('aria-hidden', 'true');
+    menuBtn?.setAttribute('aria-expanded', 'false');
     setTimeout(() => menuBackdrop?.classList.add('hidden'), 300);
     unlockScroll();
   }
@@ -298,7 +434,6 @@ const top10 = [...publishedNetworks]
   menuBackdrop?.addEventListener('click', closeMenu);
   menuClose?.addEventListener('click', closeMenu);
 
-  // Close menu when clicking any navigation link inside the drawer
   menuDrawer?.addEventListener('click', (e) => {
     const link = e.target instanceof HTMLAnchorElement ? e.target : e.target?.closest?.('a');
     if (link && link.href) {
@@ -307,34 +442,76 @@ const top10 = [...publishedNetworks]
   });
 
   // Expandable submenu toggles
-  function setupToggle(btnId, listId, chevronId) {
+  function setupToggle(btnId, listId, chevronId, startOpen) {
     const btn = document.getElementById(btnId);
     const list = document.getElementById(listId);
     const chevron = document.getElementById(chevronId);
     if (!btn || !list || !chevron) return;
 
-    btn.addEventListener('click', () => {
-      const isOpen = list.style.maxHeight !== '0px';
+    let isOpen = startOpen;
+
+    function render() {
       if (isOpen) {
-        list.style.maxHeight = '0px';
-        list.style.opacity = '0';
-        chevron.style.transform = 'rotate(-90deg)';
-      } else {
         list.style.maxHeight = list.scrollHeight + 'px';
         list.style.opacity = '1';
         chevron.style.transform = 'rotate(0deg)';
+      } else {
+        list.style.maxHeight = '0px';
+        list.style.opacity = '0';
+        chevron.style.transform = 'rotate(-90deg)';
       }
+    }
+
+    btn.addEventListener('click', () => {
+      isOpen = !isOpen;
+      render();
+      try { localStorage.setItem('drawer_' + btnId, isOpen ? '1' : '0'); } catch(e) {}
     });
 
-    // Start open
-    list.style.maxHeight = list.scrollHeight + 'px';
-    list.style.opacity = '1';
+    // Restore from localStorage
+    try {
+      const saved = localStorage.getItem('drawer_' + btnId);
+      if (saved !== null) isOpen = saved === '1';
+    } catch(e) {}
+
     list.style.transition = 'max-height 0.3s ease, opacity 0.2s ease';
     list.style.overflow = 'hidden';
+    render();
   }
 
-  setupToggle('networksToggle', 'networksList', 'networksChevron');
-  setupToggle('resourcesToggle', 'resourcesList', 'resourcesChevron');
+  setupToggle('networksToggle', 'networksList', 'networksChevron', true);
+  setupToggle('pathwaysToggle', 'pathwaysList', 'pathwaysChevron', true);
+
+  // Profile page: populate TOC from page sections
+  const drawerToc = document.getElementById('drawerProfileToc');
+  if (drawerToc && menuDrawer?.dataset.pageType === 'profile') {
+    const tocLinks = document.querySelectorAll('[data-toc-id]');
+    if (tocLinks.length > 0) {
+      drawerToc.innerHTML = '';
+      tocLinks.forEach(el => {
+        const id = el.getAttribute('data-toc-id');
+        const label = el.getAttribute('data-toc-label') || el.textContent?.trim() || id;
+        const a = document.createElement('a');
+        a.href = '#' + id;
+        a.className = 'flex items-center gap-2 px-2 py-1.5 rounded-md no-underline drawer-nav-item text-[12px]';
+        a.textContent = label;
+        drawerToc.appendChild(a);
+      });
+    } else {
+      // Fallback: use the page's existing sidebar TOC if present
+      const sidebarLinks = document.querySelectorAll('.sidebar-toc a, [class*="sticky"] nav a[href^="#"]');
+      if (sidebarLinks.length > 0) {
+        drawerToc.innerHTML = '';
+        sidebarLinks.forEach(el => {
+          const a = document.createElement('a');
+          a.href = el.getAttribute('href') || '#';
+          a.className = 'flex items-center gap-2 px-2 py-1.5 rounded-md no-underline drawer-nav-item text-[12px]';
+          a.textContent = el.textContent?.trim() || '';
+          drawerToc.appendChild(a);
+        });
+      }
+    }
+  }
 
   // Keyboard shortcuts
   document.addEventListener('keydown', (e) => {
