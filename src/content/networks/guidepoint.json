@@ -41,7 +41,7 @@
     "Legal / Professional Services"
   ],
   "pricingModel": "Flexible",
-  "pricingDetail": "Per-call and subscription options; known for competitive pricing vs. peers",
+  "pricingDetail": "Per-call and subscription options; enterprise pricing negotiated individually. Third-party benchmarks suggest rates around ~$1,200/hr.",
   "keyDifferentiators": [
     "Very large advisor network (1.75M+ across 150+ industries)",
     "Healthcare data specialization via Qsight",
@@ -66,7 +66,7 @@
     "regulatoryHistory": "Guidepoint has never been charged with wrongdoing. However, its name appeared in several insider trading cases (Dr. Yves Benhamou, Winifred Jiau) where individual consultants were charged — in each case, the individuals deliberately circumvented Guidepoint's compliance controls. Per Integrity Research: 'Guidepoint's compliance procedures protected it from accusations of wrongdoing.' General Counsel Catherine Smith is a former SEC Division of Enforcement Senior Counsel."
   },
   "featured": true,
-  "priority": 4,
+  "priority": 5,
   "published": true,
   "categoryBadge": "Major Provider",
   "deliveryModel": "Hybrid",
@@ -276,6 +276,7 @@
     "expertCount": "positioning",
     "employeeCount": "verified",
     "pricingModel": "inference",
+    "pricingDetail": "inference",
     "services": "verified",
     "compliance": "positioning",
     "overview": "verified",

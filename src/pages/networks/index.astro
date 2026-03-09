@@ -436,6 +436,8 @@ const directoryEntries = networks.map((network, index) => {
       </div>
     </div>
   </div>
+
+  <script type="application/json" id="directoryData" set:html={JSON.stringify(directoryEntries)}></script>
 </BaseLayout>
 
 <style>
@@ -453,8 +455,6 @@ const directoryEntries = networks.map((network, index) => {
     background: rgba(0, 113, 227, 0.04);
   }
 </style>
-
-<script type="application/json" id="directoryData" is:inline>{JSON.stringify(directoryEntries)}</script>
 
 <script>
   // @ts-nocheck

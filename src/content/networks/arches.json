@@ -32,7 +32,7 @@
     "Consumer"
   ],
   "pricingModel": "Per-call",
-  "pricingDetail": "Per-call pricing; claims ~20% more cost-efficient than global networks",
+  "pricingDetail": "Per-call pricing; positioned as cost-efficient vs. larger global networks",
   "keyDifferentiators": [
     "Deep Asia-Pacific coverage with local recruiting capability across Japan, SEA, China, and India",
     "Bloomberg Terminal-integrated Expert Transcript Library",
@@ -199,6 +199,7 @@
     "expertCount": "verified",
     "employeeCount": "verified",
     "pricingModel": "verified",
+    "pricingDetail": "positioning",
     "services": "verified",
     "compliance": "positioning",
     "overview": "verified",

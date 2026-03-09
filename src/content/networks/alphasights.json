@@ -40,7 +40,7 @@
     "Technology / TMT"
   ],
   "pricingModel": "Per-call",
-  "pricingDetail": "Per-interaction pricing (~$700–$1,800/hr client-side depending on expert seniority)",
+  "pricingDetail": "Per-interaction pricing; enterprise rates negotiated individually. Third-party benchmarks suggest rates in the ~$1,350/hr range.",
   "keyDifferentiators": [
     "Speed of expert delivery — often within hours",
     "Custom-sourcing model (fresh recruitment per project, not static database)",
@@ -211,7 +211,7 @@
     "Founder-led (both Co-CEOs since 2008) with strong institutional culture"
   ],
   "caveats": [
-    "Per-call pricing can be expensive for high-volume users (~$700–$1,800/hr client-side depending on expert seniority)",
+    "Per-call pricing can be expensive for high-volume users",
     "Less emphasis on pre-built transcript libraries than some competitors (e.g., Third Bridge Forum)",
     "Content library (AlphaNow) is newer and smaller than GLG Library",
     "Primarily qualitative — lacks broker research, company documents, news feeds, or sentiment analysis",
@@ -263,6 +263,7 @@
     "expertCount": "positioning",
     "employeeCount": "verified",
     "pricingModel": "inference",
+    "pricingDetail": "inference",
     "services": "verified",
     "compliance": "verified",
     "overview": "verified",
