@@ -5,8 +5,6 @@ export type CompareDataset = {
   sections: any[];
   enriched: Record<string, any>;
   substituteTypes: Record<string, string>;
-  explainableInsights: any[];
-  comparisonNote: string;
 };
 
 export type CompareRenderOptions = {
@@ -161,13 +159,9 @@ function capabilityPillClass(value: string): string {
   return 'bg-slate-100 text-slate-600';
 }
 
-function renderIcon(dataset: CompareDataset, slug: string, size: 'small' | 'large' = 'small'): string {
+function renderIcon(dataset: CompareDataset, slug: string): string {
   const data = dataset.networkDataMap[slug];
   if (!data) return '';
-  if (size === 'large') {
-    if (data.logo) return `<img src="${escapeHtml(data.logo)}" alt="" width="36" height="36" class="w-9 h-9 rounded-xl object-contain flex-shrink-0" loading="lazy" />`;
-    return `<div class="w-9 h-9 rounded-xl flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0" style="background:linear-gradient(135deg,${escapeHtml(data.gradientFrom)},${escapeHtml(data.gradientTo)})">${escapeHtml(data.shortName)}</div>`;
-  }
   if (data.logo) return `<img src="${escapeHtml(data.logo)}" alt="" width="16" height="16" class="w-4 h-4 rounded object-contain flex-shrink-0" loading="lazy" />`;
   return `<div class="w-4 h-4 rounded flex items-center justify-center text-white text-[6px] font-bold flex-shrink-0" style="background:linear-gradient(135deg,${escapeHtml(data.gradientFrom)},${escapeHtml(data.gradientTo)})">${escapeHtml(data.shortName)}</div>`;
 }
@@ -293,13 +287,10 @@ export function projectCompareNetwork(data: any) {
     gradientFrom: data.gradientFrom,
     gradientTo: data.gradientTo,
     type: data.type,
-    description: data.description,
     pricingModel: data.pricingModel || '',
     pricingDetail: data.pricingDetail || '',
     bestFor: data.bestFor || [],
     keyDifferentiators: data.keyDifferentiators || [],
-    whyChoose: data.whyChoose || [],
-    whenNotIdeal: data.whenNotIdeal || [],
     regionStrength: data.regionStrength || '',
     expertCount: data.expertCount || '',
     expertCountLabel: data.expertCountLabel || '',

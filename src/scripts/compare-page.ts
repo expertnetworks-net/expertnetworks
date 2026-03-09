@@ -177,7 +177,9 @@ export function bootComparePage(dataset: CompareDataset) {
     renderGoalStates();
 
     syncUrl();
-    filterPicker(networkSearch?.value || '');
+    if (!addNetworkModal?.classList.contains('hidden')) {
+      filterPicker(networkSearch?.value || '');
+    }
   }
 
   /* ---------- Rail nav observer ---------- */
@@ -274,26 +276,30 @@ export function bootComparePage(dataset: CompareDataset) {
     }
   });
 
-  /* Column highlighting */
+  /* Column highlighting — track current slug to avoid flicker */
+  let highlightedSlug: string | null = null;
+
   document.addEventListener('mouseover', (event) => {
     const cell = (event.target as HTMLElement).closest<HTMLElement>('.provider-col');
-    const slug = cell?.dataset.slug;
-    if (!slug) return;
-    document.querySelectorAll<HTMLElement>(`.provider-col[data-slug="${slug}"]`).forEach((element) => {
-      element.classList.add('highlight');
-    });
-  });
-
-  document.addEventListener('mouseout', (event) => {
-    const cell = (event.target as HTMLElement).closest<HTMLElement>('.provider-col');
-    const slug = cell?.dataset.slug;
-    if (!slug) return;
-    document.querySelectorAll<HTMLElement>(`.provider-col[data-slug="${slug}"]`).forEach((element) => {
-      element.classList.remove('highlight');
-    });
+    const slug = cell?.dataset.slug || null;
+    if (slug === highlightedSlug) return;
+    if (highlightedSlug) {
+      document.querySelectorAll<HTMLElement>(`.provider-col[data-slug="${CSS.escape(highlightedSlug)}"]`).forEach((el) => el.classList.remove('highlight'));
+    }
+    highlightedSlug = slug;
+    if (slug) {
+      document.querySelectorAll<HTMLElement>(`.provider-col[data-slug="${CSS.escape(slug)}"]`).forEach((el) => el.classList.add('highlight'));
+    }
   });
 
   /* ---------- Init ---------- */
-  render();
+  const needsClientRender = !arraysEqual(activeSlugs, dataset.defaultSlugs) || diffMode || showEvidenceNotes;
+  if (needsClientRender) {
+    render();
+  } else {
+    bindChipEvents();
+    renderGoalStates();
+    syncUrl();
+  }
   updateRailNav();
 }
