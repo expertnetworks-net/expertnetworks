@@ -21,8 +21,6 @@ export function bootComparePage(dataset: CompareDataset) {
   const criticalExpandedTable = document.getElementById('criticalExpandedTable');
   const criticalExpandedWrapper = document.getElementById('criticalExpandedWrapper');
   const showMoreBtn = document.getElementById('showMoreBtn');
-  const providerFitCards = document.getElementById('providerFitCards');
-
   const aiTabContent = document.getElementById('aiTabContent');
   const commercialTabContent = document.getElementById('commercialTabContent');
   const complianceTabContent = document.getElementById('complianceTabContent');
@@ -167,7 +165,6 @@ export function bootComparePage(dataset: CompareDataset) {
     /* Critical differences */
     if (criticalPrimaryTable) criticalPrimaryTable.innerHTML = view.criticalPrimaryHtml;
     if (criticalExpandedTable) criticalExpandedTable.innerHTML = view.criticalExpandedHtml;
-    if (providerFitCards) providerFitCards.innerHTML = view.providerCardsHtml;
 
     /* Section tables */
     if (aiTabContent) aiTabContent.innerHTML = view.aiTabHtml;
@@ -201,7 +198,7 @@ export function bootComparePage(dataset: CompareDataset) {
       });
     }, { rootMargin: '-140px 0px -60% 0px' });
 
-    ['criticalDiff', 'providerFit', 'aiWorkflow', 'commercial', 'compliance', 'fullMatrix', 'methodology'].forEach((id) => {
+    ['criticalDiff', 'aiWorkflow', 'commercial', 'compliance', 'fullMatrix', 'methodology'].forEach((id) => {
       const element = document.getElementById(id);
       if (element) railObserver?.observe(element);
     });

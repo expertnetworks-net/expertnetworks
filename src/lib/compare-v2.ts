@@ -141,12 +141,6 @@ function getSubstituteClass(substituteType: string): string {
   return substituteColors[substituteType] || 'bg-slate-100 text-slate-700 border-slate-200/80';
 }
 
-function getConfidenceClass(level: string): string {
-  if (level === 'High') return 'confidence-pill-high';
-  if (level === 'Medium') return 'confidence-pill-medium';
-  return 'confidence-pill-low';
-}
-
 function getImportanceClass(level: string): string {
   if (level === 'major') return 'importance-pill importance-major';
   if (level === 'moderate') return 'importance-pill importance-moderate';
@@ -176,60 +170,6 @@ function renderIcon(dataset: CompareDataset, slug: string, size: 'small' | 'larg
   }
   if (data.logo) return `<img src="${escapeHtml(data.logo)}" alt="" width="16" height="16" class="w-4 h-4 rounded object-contain flex-shrink-0" loading="lazy" />`;
   return `<div class="w-4 h-4 rounded flex items-center justify-center text-white text-[6px] font-bold flex-shrink-0" style="background:linear-gradient(135deg,${escapeHtml(data.gradientFrom)},${escapeHtml(data.gradientTo)})">${escapeHtml(data.shortName)}</div>`;
-}
-
-function getEvidenceCounts(dataset: CompareDataset, slug: string) {
-  const counts = { Verified: 0, 'Company-Stated': 0, Inferred: 0, Estimated: 0 };
-  const data = dataset.enriched[slug];
-  if (!data) return counts;
-  ['scaleEvidence', 'employeeEvidence'].forEach((field) => {
-    const evidence = data[field];
-    if (evidence && counts[evidence as keyof typeof counts] !== undefined) counts[evidence as keyof typeof counts] += 1;
-  });
-  Object.values(data.ai || {}).forEach((value: any) => {
-    if (Array.isArray(value) && value[1] && counts[value[1] as keyof typeof counts] !== undefined) counts[value[1] as keyof typeof counts] += 1;
-  });
-  return counts;
-}
-
-function getConfidenceMeta(dataset: CompareDataset, slug: string) {
-  const counts = getEvidenceCounts(dataset, slug);
-  const supported = counts.Verified + counts['Company-Stated'];
-  const soft = counts.Inferred + counts.Estimated;
-  const substituteType = getSubstituteType(dataset, slug);
-  let label = 'Low';
-  if (supported >= 6 && soft <= 2) label = 'High';
-  else if (supported >= 3) label = 'Medium';
-  if (substituteType === 'Adjacent platform' && label === 'High') label = 'Medium';
-
-  let note = 'Several compared fields depend on limited public evidence or editorial inference.';
-  if (label === 'High') note = 'Most compared fields have direct public support, though pricing and AI maturity still need caution.';
-  if (label === 'Medium') note = 'Core workflow fit is visible, but some commercial or AI comparisons remain partly inferential.';
-  if (substituteType === 'Adjacent platform') note = 'High on platform visibility, lower on one-for-one comparability versus concierge expert networks.';
-  return { label, note, counts };
-}
-
-function getPositioningLine(dataset: CompareDataset, slug: string): string {
-  const data = dataset.networkDataMap[slug];
-  if (!data) return 'Provider profile not found.';
-  if (Array.isArray(data.keyDifferentiators) && data.keyDifferentiators.length > 0) return data.keyDifferentiators[0];
-  if (Array.isArray(data.whyChoose) && data.whyChoose.length > 0) return data.whyChoose[0];
-  return data.description.length > 120 ? `${data.description.slice(0, 117)}...` : data.description;
-}
-
-function getNotIdeal(dataset: CompareDataset, slug: string): string {
-  const data = dataset.networkDataMap[slug];
-  if (Array.isArray(data?.whenNotIdeal) && data.whenNotIdeal.length > 0) return data.whenNotIdeal[0];
-  if (dataset.enriched[slug]?.weakness) return dataset.enriched[slug].weakness;
-  return 'Needs closer diligence for fit.';
-}
-
-function getClosestAlternatives(dataset: CompareDataset, activeSlugs: string[], slug: string): string[] {
-  const sameSubstituteType = activeSlugs.filter((candidate) => candidate !== slug && getSubstituteType(dataset, candidate) === getSubstituteType(dataset, slug));
-  if (sameSubstituteType.length > 0) return sameSubstituteType.slice(0, 2);
-  const sameDeliveryModel = activeSlugs.filter((candidate) => candidate !== slug && dataset.networkDataMap[candidate]?.deliveryModel === dataset.networkDataMap[slug]?.deliveryModel);
-  if (sameDeliveryModel.length > 0) return sameDeliveryModel.slice(0, 2);
-  return activeSlugs.filter((candidate) => candidate !== slug).slice(0, 2);
 }
 
 function getCellValue(dataset: CompareDataset, slug: string, row: any): any {
@@ -340,55 +280,6 @@ function renderComparisonTable(entries: any[], dataset: CompareDataset, activeSl
   }).join('');
 
   return `<div class="table-shell"><table class="compare-table"><thead><tr><th class="compare-head sticky-col text-left">Field</th>${activeSlugs.map((slug) => renderProviderHeaderCell(dataset, slug)).join('')}</tr></thead><tbody>${rowsHtml}</tbody></table></div>`;
-}
-
-/* ---------- Rendering: provider cards ---------- */
-
-function renderProviderCardsHtml(dataset: CompareDataset, activeSlugs: string[]): string {
-  return activeSlugs.map((slug) => {
-    const data = dataset.networkDataMap[slug];
-    const providerType = getProviderType(dataset, slug);
-    const substituteType = getSubstituteType(dataset, slug);
-    const confidenceMeta = getConfidenceMeta(dataset, slug);
-    const alternatives = getClosestAlternatives(dataset, activeSlugs, slug);
-    const alternativesHtml = alternatives.length > 0
-      ? alternatives.map((alt) => `<span class="inline-flex rounded-full bg-[#f5f5f7] px-2 py-1 text-[10px] font-medium text-primary">${escapeHtml(shortName(dataset, alt))}</span>`).join('')
-      : '<span class="text-[10px] text-tertiary">No close alternative in current selection</span>';
-
-    return `<article class="rounded-2xl border border-border/30 bg-white p-4 shadow-sm">
-      <div class="flex items-start gap-3">
-        <div class="flex items-center gap-2.5 min-w-0 flex-1">
-          ${renderIcon(dataset, slug, 'large')}
-          <div class="min-w-0">
-            <div class="text-[15px] font-semibold text-primary truncate">${escapeHtml(shortName(dataset, slug))}</div>
-            <div class="mt-1 flex flex-wrap gap-1.5">
-              <span class="inline-flex rounded-full border px-2 py-1 text-[10px] font-semibold ${providerTypeColors[providerType] || 'bg-slate-100 text-slate-700 border-slate-200/80'}">${escapeHtml(providerType)}</span>
-              <span class="inline-flex rounded-full border px-2 py-1 text-[10px] font-semibold ${getSubstituteClass(substituteType)}">${escapeHtml(substituteType)}</span>
-            </div>
-          </div>
-        </div>
-        <span class="confidence-chip shrink-0 ${getConfidenceClass(confidenceMeta.label)}">${escapeHtml(confidenceMeta.label)}</span>
-      </div>
-      <div class="mt-4 grid gap-3 sm:grid-cols-2">
-        <div>
-          <div class="text-[10px] font-bold uppercase tracking-[0.14em] text-tertiary">Best for</div>
-          <p class="mt-1 text-[12px] leading-relaxed text-primary">${escapeHtml(data.bestFor?.[0] || 'Not publicly clear')}</p>
-        </div>
-        <div>
-          <div class="text-[10px] font-bold uppercase tracking-[0.14em] text-tertiary">Not ideal for</div>
-          <p class="mt-1 text-[12px] leading-relaxed text-primary">${escapeHtml(getNotIdeal(dataset, slug))}</p>
-        </div>
-      </div>
-      <div class="mt-3">
-        <div class="text-[10px] font-bold uppercase tracking-[0.14em] text-tertiary">Closest alternatives</div>
-        <div class="mt-1.5 flex flex-wrap gap-1.5">${alternativesHtml}</div>
-      </div>
-      <p class="mt-3 text-[12px] leading-relaxed text-secondary italic">${escapeHtml(getPositioningLine(dataset, slug))}</p>
-      <a href="/networks/${escapeHtml(slug)}" class="mt-3 inline-flex items-center gap-1 text-[12px] font-medium text-accent no-underline hover:underline">
-        View profile <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
-      </a>
-    </article>`;
-  }).join('');
 }
 
 /* ---------- Export: projectCompareNetwork ---------- */
@@ -536,7 +427,6 @@ export function buildCompareRender(activeSlugs: string[], dataset: CompareDatase
     }).join(''),
     criticalPrimaryHtml: renderComparisonTable(criticalPrimaryEntries, dataset, activeSlugs, tableOptions),
     criticalExpandedHtml: renderComparisonTable(criticalExpandedEntries, dataset, activeSlugs, tableOptions),
-    providerCardsHtml: renderProviderCardsHtml(dataset, activeSlugs),
     aiTabHtml: renderComparisonTable(aiEntries, dataset, activeSlugs, tableOptions),
     commercialTabHtml: renderComparisonTable(commercialTabEntries, dataset, activeSlugs, tableOptions),
     complianceTabHtml: renderComparisonTable(complianceTabEntries, dataset, activeSlugs, tableOptions),
