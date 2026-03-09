@@ -83,15 +83,22 @@ const directoryEntries = networks.map((network, index) => {
 ---
 
 <BaseLayout
-  title={`${networks.length} Expert Network Providers: Directory With Pricing & Compliance | ExpertNetworks.net`}
-  description={`Browse ${networks.length} expert network providers with independent profiles, pricing models, compliance frameworks, and expert pool sizes. Filter by use case, delivery model, region, and AI capabilities.`}
+  title={`Expert Network Companies: ${networks.length} Providers Compared (2026) | ExpertNetworks.net`}
+  description={`Browse and compare ${networks.length} expert network companies including GLG, AlphaSights, Third Bridge, and Guidepoint. Independent profiles with pricing models, compliance ratings, expert coverage, and AI capabilities.`}
+  canonicalPath="/networks"
   jsonLd={{
     "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Expert Networks Directory",
-    "description": `Browse ${networks.length} expert network providers with independent profiles.`,
+    "@type": "ItemList",
+    "name": "Expert Network Companies Directory",
+    "description": `Independent directory of ${networks.length} expert network providers with pricing, compliance, and capability data.`,
     "url": "https://expertnetworks.net/networks",
-    "isPartOf": { "@type": "WebSite", "name": "ExpertNetworks.net", "url": "https://expertnetworks.net" }
+    "numberOfItems": networks.length,
+    "itemListElement": networks.slice(0, 10).map((n, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "name": n.data.name,
+      "url": `https://expertnetworks.net/networks/${n.data.slug}`
+    }))
   }}
 >
   <!-- Hero -->
@@ -392,6 +399,24 @@ const directoryEntries = networks.map((network, index) => {
 
         <!-- List view (rendered client-side on demand) -->
         <div id="networkList" class="hidden space-y-1.5"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDITORIAL CONTENT -->
+  <section class="py-10 px-4 md:px-6 border-t border-border/20 bg-white">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-xl font-bold text-primary mb-4">About expert network companies</h2>
+      <div class="space-y-4 text-[14px] leading-relaxed text-secondary">
+        <p>
+          Expert networks connect investors, consultants, and corporate teams with subject-matter experts for paid consultations. The industry has grown from a handful of providers in the early 2000s to more than {networks.length} tracked companies in 2026, spanning global leaders, regional specialists, technology-first platforms, and boutique research firms.
+        </p>
+        <p>
+          The market is led by four major providers: <a href="/networks/glg" class="text-accent hover:underline">GLG</a> (the largest by expert count and revenue), <a href="/networks/alphasights" class="text-accent hover:underline">AlphaSights</a> (known for fast turnaround and project management), <a href="/networks/third-bridge" class="text-accent hover:underline">Third Bridge</a> (differentiated by its Forum and Interviews content library), and <a href="/networks/guidepoint" class="text-accent hover:underline">Guidepoint</a> (offering flexible, high-volume expert access). Together they serve the majority of institutional investors and management consulting firms globally.
+        </p>
+        <p>
+          Key trends shaping the industry in 2026 include AI-powered expert matching and transcript search, increased regulatory scrutiny around compliance and information barriers, consolidation through M&A (including the AlphaSense–Tegus merger), and the rise of self-service marketplace models that challenge traditional managed-service approaches. Use the filters above to explore providers by pricing model, geography, compliance posture, and AI capabilities, or <a href="/compare" class="text-accent hover:underline">compare providers side-by-side</a>.
+        </p>
       </div>
     </div>
   </section>

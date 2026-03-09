@@ -41,8 +41,9 @@ const descriptors: Record<string, string> = {
 ---
 
 <BaseLayout
-  title="Expert Networks Hub | Compare Expert Network Providers, Pricing, Compliance & AI Tools"
-  description="Independent research on expert networks. Compare providers by pricing model, compliance posture, AI capabilities, transcript access, and service model."
+  title="Best Expert Networks (2026): Compare 33 Providers — Pricing, Compliance, AI"
+  description="Compare 33 expert network companies side-by-side. Independent profiles of GLG, AlphaSights, Third Bridge, Guidepoint, Dialectica, and 28 more — with pricing models, compliance ratings, AI capabilities, and expert coverage. Free, no sign-up."
+  canonicalPath="/"
   jsonLd={{
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -64,8 +65,8 @@ const descriptors: Record<string, string> = {
     <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 50% 40%, transparent 30%, rgba(13,13,15,0.55) 100%);"></div>
     <div class="relative z-10 pt-[76px] pb-10 md:pt-[92px] md:pb-14 lg:pt-[108px] lg:pb-16 px-4 md:px-6" id="heroContent">
       <div class="max-w-site mx-auto text-center">
-        <h1 id="heroTitle" class="text-3xl md:text-4xl lg:text-[2.75rem] xl:text-5xl font-extrabold tracking-tight text-white leading-tight" aria-label="Compare expert networks the way serious buyers actually evaluate them">
-          <span id="heroTitleText"></span><span id="heroTitleCursor" class="inline-block w-[3px] h-[0.85em] bg-white/70 align-middle ml-0.5 animate-[heroBlink_0.53s_steps(2)_infinite]"></span>
+        <h1 id="heroTitle" class="text-3xl md:text-4xl lg:text-[2.75rem] xl:text-5xl font-extrabold tracking-tight text-white leading-tight">
+          <span id="heroTitleText">Compare expert networks the way serious buyers actually evaluate them</span><span id="heroTitleCursor" class="inline-block w-[3px] h-[0.85em] bg-white/70 align-middle ml-0.5 animate-[heroBlink_0.53s_steps(2)_infinite]" style="display:none;"></span>
         </h1>
         <p id="heroSubtext" class="text-[#a1a1a6] text-sm md:text-base mt-4 leading-relaxed max-w-2xl mx-auto opacity-0 transition-opacity duration-700">
           Independent research on expert networks across pricing model, compliance posture, AI capabilities, transcript access, geography, and service model.
@@ -118,6 +119,10 @@ const descriptors: Record<string, string> = {
       if (micro) micro.style.opacity = '1';
       return;
     }
+
+    // Clear server-rendered text for typewriter effect; cursor becomes visible
+    textEl.textContent = '';
+    cursorEl.style.display = '';
 
     let i = 0;
     function typeNext() {
