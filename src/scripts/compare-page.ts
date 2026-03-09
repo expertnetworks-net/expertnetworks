@@ -28,6 +28,7 @@ export function bootComparePage(dataset: CompareDataset) {
   const matrixContent = document.getElementById('matrixContent');
 
   const selectionReviewedBadge = document.getElementById('selectionReviewedBadge');
+  const providerCount = document.getElementById('providerCount');
   const heroDirectoryBtn = document.getElementById('heroDirectoryBtn') as HTMLAnchorElement | null;
   const browseDirectoryBtn = document.getElementById('browseDirectoryBtn') as HTMLAnchorElement | null;
 
@@ -37,7 +38,7 @@ export function bootComparePage(dataset: CompareDataset) {
     const params = new URLSearchParams(window.location.search);
     const fromUrl = params.get('networks');
     if (fromUrl) {
-      const slugs = fromUrl.split(',').filter((slug) => dataset.networkDataMap[slug]);
+      const slugs = [...new Set(fromUrl.split(','))].filter((slug) => dataset.networkDataMap[slug]);
       if (slugs.length === 1) {
         const base = [...dataset.defaultSlugs];
         if (!base.includes(slugs[0])) base.push(slugs[0]);
@@ -131,7 +132,9 @@ export function bootComparePage(dataset: CompareDataset) {
   /* ---------- Chip events ---------- */
 
   function bindChipEvents() {
+    const atMinimum = activeSlugs.length <= 2;
     providerChips?.querySelectorAll<HTMLElement>('.remove-provider').forEach((button) => {
+      button.style.display = atMinimum ? 'none' : '';
       button.addEventListener('click', (event) => {
         event.stopPropagation();
         const slug = button.dataset.slug;
@@ -153,12 +156,20 @@ export function bootComparePage(dataset: CompareDataset) {
       showEvidenceNotes,
     });
 
+    /* Brief fade on content cards */
+    const cards = document.querySelectorAll<HTMLElement>('.compare-main .compare-card');
+    cards.forEach((card) => card.classList.add('is-updating'));
+    setTimeout(() => {
+      cards.forEach((card) => card.classList.remove('is-updating'));
+    }, 60);
+
     /* Control bar */
     if (providerChips) providerChips.innerHTML = view.chipsHtml;
     bindChipEvents();
 
     /* Metadata */
     if (selectionReviewedBadge) selectionReviewedBadge.textContent = `Selection reviewed: ${view.latestReviewedLabel}`;
+    if (providerCount) providerCount.textContent = `${activeSlugs.length}/6`;
     if (heroDirectoryBtn) heroDirectoryBtn.href = view.directoryHref;
     if (browseDirectoryBtn) browseDirectoryBtn.href = view.directoryHref;
 
@@ -204,6 +215,17 @@ export function bootComparePage(dataset: CompareDataset) {
       const element = document.getElementById(id);
       if (element) railObserver?.observe(element);
     });
+
+    /* Auto-open collapsed <details> when clicking a rail link */
+    document.querySelectorAll<HTMLAnchorElement>('.rail-link').forEach((link) => {
+      link.addEventListener('click', () => {
+        const targetId = link.dataset.rail;
+        if (!targetId) return;
+        const section = document.getElementById(targetId);
+        const details = section?.querySelector('details');
+        if (details && !details.open) details.open = true;
+      });
+    });
   }
 
   /* ---------- Event bindings ---------- */
@@ -213,7 +235,7 @@ export function bootComparePage(dataset: CompareDataset) {
   closeModalButton?.addEventListener('click', closeModal);
   modalBackdrop?.addEventListener('click', closeModal);
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') closeModal();
+    if (event.key === 'Escape' && !addNetworkModal?.classList.contains('hidden')) closeModal();
   });
 
   networkSearch?.addEventListener('input', (event) => {
