@@ -76,7 +76,7 @@ published.forEach(n => {
                 {i + 1}
               </div>
               {n.data.logo ? (
-                <img src={n.data.logo} alt="" width="48" height="48" class="w-12 h-12 rounded-lg object-cover flex-shrink-0" loading="lazy" />
+                <img src={n.data.logo} alt={`${n.data.name.split(' (')[0]} logo`} width="48" height="48" class="w-12 h-12 rounded-lg object-cover flex-shrink-0" loading="lazy" />
               ) : (
                 <div class="w-12 h-12 rounded-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0" style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}>
                   {n.data.shortName}

@@ -152,7 +152,7 @@ const topTrends = Object.entries(trendCounts).sort((a, b) => b[1] - a[1]).slice(
               <div class={`bg-white rounded-card shadow-card hover:shadow-card-hover transition-shadow p-5 flex flex-col ${isHero ? 'md:col-span-2 lg:col-span-2' : ''}`}>
                 <div class="flex items-center gap-2 mb-3">
                   {logoSrc ? (
-                    <img src={logoSrc} alt="" width="20" height="20" class="w-5 h-5 rounded object-cover" loading="lazy" />
+                    <img src={logoSrc} alt={networkMap[primarySlug] || ''} width="20" height="20" class="w-5 h-5 rounded object-cover" loading="lazy" />
                   ) : (
                     <div class="w-5 h-5 rounded flex items-center justify-center" style={`background: ${article.data.gradientFrom || '#1a365d'}`}>
                       <div class="w-1.5 h-1.5 rounded-full bg-white/60"></div>
@@ -163,7 +163,13 @@ const topTrends = Object.entries(trendCounts).sort((a, b) => b[1] - a[1]).slice(
                   )}
                   <span class="text-[11px] text-tertiary ml-auto">{formattedDate}</span>
                 </div>
-                <h3 class={`font-bold text-primary leading-snug mb-2 ${isHero ? 'text-[16px]' : 'text-[14px]'}`}>{article.data.title}</h3>
+                {article.data.sourceUrl ? (
+                  <a href={article.data.sourceUrl} target="_blank" rel="noopener noreferrer" class="no-underline">
+                    <h3 class={`font-bold text-primary leading-snug mb-2 hover:text-accent transition-colors ${isHero ? 'text-[16px]' : 'text-[14px]'}`}>{article.data.title}</h3>
+                  </a>
+                ) : (
+                  <h3 class={`font-bold text-primary leading-snug mb-2 ${isHero ? 'text-[16px]' : 'text-[14px]'}`}>{article.data.title}</h3>
+                )}
                 <p class="text-[13px] text-secondary leading-relaxed mb-3 flex-1">{article.data.summary}</p>
                 {article.data.whyItMatters && (
                   <div class="bg-accent/5 rounded-lg px-3 py-2 mb-3">
@@ -315,7 +321,11 @@ const topTrends = Object.entries(trendCounts).sort((a, b) => b[1] - a[1]).slice(
                   {sig === 'major' && (
                     <span class="inline-block w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0"></span>
                   )}
-                  <span class={`text-[14px] font-semibold text-primary leading-snug ${sig === 'major' ? 'font-bold' : ''}`}>{article.data.title}</span>
+                  {article.data.sourceUrl ? (
+                    <a href={article.data.sourceUrl} target="_blank" rel="noopener noreferrer" class={`text-[14px] font-semibold text-primary leading-snug no-underline hover:text-accent transition-colors ${sig === 'major' ? 'font-bold' : ''}`}>{article.data.title}</a>
+                  ) : (
+                    <span class={`text-[14px] font-semibold text-primary leading-snug ${sig === 'major' ? 'font-bold' : ''}`}>{article.data.title}</span>
+                  )}
                 </div>
                 {sig !== 'brief' && (
                   <p class="text-[13px] text-secondary leading-relaxed mb-2">{article.data.summary}</p>
