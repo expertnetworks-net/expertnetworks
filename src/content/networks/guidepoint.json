@@ -41,7 +41,7 @@
     "Legal / Professional Services"
   ],
   "pricingModel": "Flexible",
-  "pricingDetail": "Per-call and subscription options; known for competitive pricing vs. peers",
+  "pricingDetail": "Per-call and subscription options; enterprise pricing negotiated individually. Third-party benchmarks suggest rates around ~$1,200/hr.",
   "keyDifferentiators": [
     "Very large advisor network (1.75M+ across 150+ industries)",
     "Healthcare data specialization via Qsight",
@@ -276,6 +276,7 @@
     "expertCount": "positioning",
     "employeeCount": "verified",
     "pricingModel": "inference",
+    "pricingDetail": "inference",
     "services": "verified",
     "compliance": "positioning",
     "overview": "verified",

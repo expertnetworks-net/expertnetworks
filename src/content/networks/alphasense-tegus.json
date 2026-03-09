@@ -43,7 +43,7 @@
     "Legal"
   ],
   "pricingModel": "Subscription",
-  "pricingDetail": "$10K–$20K per seat annually (annual contracts)",
+  "pricingDetail": "Subscription-based platform access; annual contracts. Seat pricing varies by package and is typically negotiated.",
   "keyDifferentiators": [
     "AI-first platform with agentic research workflows",
     "Tegus transcript library ($930M acquisition, 240K+ transcripts, 8K+/month growth)",
@@ -232,7 +232,7 @@
     "regulatoryContext": "No major public regulatory actions against AlphaSense or its expert network operations were identified. AlphaSights filed a trademark infringement lawsuit against AlphaSense in January 2025 (SDNY), but this is a branding dispute, not a compliance issue. AlphaSense acquired Tegus's compliance infrastructure in the July 2024 acquisition and has integrated it into a unified framework."
   },
   "clientFit": {
-    "narrative": "AlphaSense is best suited for organizations that need both document-level market intelligence and expert-sourced primary research in a single platform. Its strength is in combining quantitative financial data with qualitative expert content and AI-powered synthesis, making it especially powerful for buy-side research workflows. The platform is priced at $10K–$20K per seat annually, positioning it for mid-to-large enterprise budgets.",
+    "narrative": "AlphaSense is best suited for organizations that need both document-level market intelligence and expert-sourced primary research in a single platform. Its strength is in combining quantitative financial data with qualitative expert content and AI-powered synthesis, making it especially powerful for buy-side research workflows. The platform uses subscription-based pricing with annual contracts, positioning it for mid-to-large enterprise budgets.",
     "segments": [
       "Hedge funds and asset managers doing company and thematic diligence",
       "Private equity and venture capital teams across sourcing, diligence, and portfolio monitoring",
@@ -254,7 +254,7 @@
     "Expert network capabilities are inherited from Tegus acquisition (July 2024) — integration of Tegus, Sentieo, BamSEC, Canalyst, and Carousel into one platform is complex; post-acquisition layoffs occurred Nov 2024",
     "Claims 1M pre-qualified experts, but this is a marketing figure not independently verified; the expert network is newer than incumbents like GLG (25+ years) or AlphaSights",
     "Emphasis on historical transcripts over tailored live expert conversations — PE firms may find expert insights don't fully align with current needs",
-    "Subscription pricing ($10K–$20K/seat) may be expensive for smaller firms or one-off research needs",
+    "Subscription pricing may be expensive for smaller firms or one-off research needs",
     "The platform's breadth (documents + experts + financial data + AI agents) can create a steep learning curve",
     "Channel Checks covers 20+ subsectors — narrower than traditional expert networks that serve any sector on demand",
     "Rapid feature velocity means the product experience changes frequently; some users may find this disorienting"

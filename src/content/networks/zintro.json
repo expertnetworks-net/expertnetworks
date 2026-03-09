@@ -33,7 +33,7 @@
     "Private Equity"
   ],
   "pricingModel": "Platform fee",
-  "pricingDetail": "Transparent pricing: expert fees (~$200/hr) + Zintro margin ($300-$400/call) vs. ~$1,000 industry standard",
+  "pricingDetail": "Marketplace model with visible expert fees plus platform margin. Positioned as lower-cost alternative to concierge networks.",
   "keyDifferentiators": [
     "Self-service + full-service dual model at 30-75% lower cost",
     "Complete price transparency — itemized expert fees and Zintro margins",
@@ -206,6 +206,7 @@
     "expertCount": "positioning",
     "employeeCount": "partially-unverifiable",
     "pricingModel": "verified",
+    "pricingDetail": "positioning",
     "services": "verified",
     "compliance": "positioning",
     "overview": "verified",
