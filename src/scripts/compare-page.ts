@@ -37,7 +37,7 @@ export function bootComparePage(dataset: CompareDataset) {
     const params = new URLSearchParams(window.location.search);
     const fromUrl = params.get('networks');
     if (fromUrl) {
-      const slugs = fromUrl.split(',').filter((slug) => dataset.networkDataMap[slug]);
+      const slugs = [...new Set(fromUrl.split(','))].filter((slug) => dataset.networkDataMap[slug]);
       if (slugs.length === 1) {
         const base = [...dataset.defaultSlugs];
         if (!base.includes(slugs[0])) base.push(slugs[0]);

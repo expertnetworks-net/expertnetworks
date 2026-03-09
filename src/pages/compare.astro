@@ -83,7 +83,7 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
   <div id="controlBar" class="sticky top-[52px] z-40 bg-white/95 backdrop-blur border-b border-border/40 shadow-sm">
     <div class="max-w-[1400px] mx-auto px-4 md:px-6 py-3">
       <div class="flex flex-col gap-2.5">
-        <div class="flex items-center gap-2 overflow-x-auto scrollbar-none pb-1">
+        <div class="chip-scroll-row flex items-center gap-2 overflow-x-auto scrollbar-none pb-1">
           <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-tertiary whitespace-nowrap mr-1">Comparing</span>
           <div id="providerChips" class="flex items-center gap-1.5" set:html={initialRender.chipsHtml}></div>
           <button id="addNetworkBtn" class="inline-flex items-center gap-1 px-2.5 py-1 text-[12px] font-medium text-accent bg-accent/[0.07] rounded-xl border border-accent/20 hover:bg-accent/[0.1] transition-colors cursor-pointer whitespace-nowrap">
@@ -330,6 +330,17 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
 <style>
   .scrollbar-none::-webkit-scrollbar { display: none; }
   .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+  .chip-scroll-row {
+    position: relative;
+    -webkit-mask-image: linear-gradient(to right, black calc(100% - 32px), transparent 100%);
+    mask-image: linear-gradient(to right, black calc(100% - 32px), transparent 100%);
+  }
+  @media (min-width: 768px) {
+    .chip-scroll-row {
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
+  }
 
   /* Hero */
   .compare-hero-badge {
@@ -465,6 +476,7 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
   .compare-section {
     padding: 24px 0;
     border-bottom: 1px solid rgba(210, 210, 215, 0.25);
+    scroll-margin-top: 140px;
   }
   .compare-section:first-child {
     padding-top: 16px;
@@ -544,6 +556,7 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
     vertical-align: top;
   }
   .provider-col.highlight { background: rgba(0, 113, 227, 0.03); }
+  .compare-head.provider-col.highlight { background: rgba(0, 113, 227, 0.08); }
   .compare-table tr:last-child td,
   .compare-table tr:last-child th { border-bottom: none; }
   .compare-head {
