@@ -11,7 +11,7 @@
   "headquarters": "Berlin, Germany",
   "employeeCount": "400+",
   "expertCount": "1M+",
-  "description": "Global Research-as-a-Service platform connecting investment funds, consulting firms, and corporations with over one million industry experts through AI-powered matching and multilingual support across 40+ languages.",
+  "description": "Atheneum is a Berlin-founded Research-as-a-Service platform connecting investment funds, consulting firms, and corporations with over one million industry experts across 40+ languages. Founded in 2010 by former management consultants, the firm has grown to 400+ employees across 11 offices and differentiates through its Athena One AI matching platform and a Nikkei partnership providing access to 500,000+ Japan-based experts. Third-party sources estimate revenue at approximately $95 million, backed by a $150 million growth equity round from Guidepost Growth Equity in 2021.",
   "services": [
     "Expert Calls",
     "Surveys",
@@ -42,10 +42,10 @@
     "Research-as-a-Service model"
   ],
   "bestFor": [
-    "Consulting Firms",
-    "European PE",
-    "Corporate Strategy",
-    "Japan Market Research"
+    "Consulting firms needing multilingual, multi-geography expert access",
+    "European private equity teams conducting cross-border diligence",
+    "Corporate strategy teams requiring global primary research at scale",
+    "Japan-focused research through the Nikkei Seeks partnership"
   ],
   "compliance": {
     "mnpiPolicy": "GDPR-native compliance framework with designated Data Protection Officer; automated screening integrated into platform",
@@ -212,7 +212,9 @@
     "Expert Opportunities (expertopportunities.com) — independent review with strengths and criticisms",
     "Trustpilot — expert satisfaction ratings (4.7/5.0 from 10,000+ reviews)",
     "Atheneum privacy policy — GDPR compliance, DPO role, and data handling practices",
-    "Atheneum press releases — Jim Owens CEO appointment and NIKKEI SEEKS launch"
+    "Atheneum press releases — Jim Owens CEO appointment and NIKKEI SEEKS launch",
+    "Revenue (~$95M) and valuation (~$300M) are third-party estimates, not company-disclosed figures",
+    "No individual clients are publicly named; Atheneum claims ~500 enterprise clients without identifying them"
   ],
   "whyChoose": [
     "European GDPR-native compliance",
