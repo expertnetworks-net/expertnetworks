@@ -240,7 +240,7 @@ function renderCellValue(dataset: CompareDataset, slug: string, row: any, showNo
 }
 
 function renderProviderHeaderCell(dataset: CompareDataset, slug: string): string {
-  return `<th class="compare-head text-left min-w-[150px] provider-col" data-slug="${escapeHtml(slug)}"><div class="flex items-center gap-2">${renderIcon(dataset, slug)}<span>${escapeHtml(shortName(dataset, slug))}</span></div></th>`;
+  return `<th class="compare-head text-left min-w-[120px] provider-col" data-slug="${escapeHtml(slug)}"><div class="flex items-center gap-2">${renderIcon(dataset, slug)}<span>${escapeHtml(shortName(dataset, slug))}</span></div></th>`;
 }
 
 function renderComparisonTable(entries: any[], dataset: CompareDataset, activeSlugs: string[], options: {
@@ -263,14 +263,14 @@ function renderComparisonTable(entries: any[], dataset: CompareDataset, activeSl
 
   if (filtered.length === 0) return `<div class="empty-panel">${options.diffOnly ? 'All rows in this section are identical across the selected providers. Try adding a different provider to surface differences.' : 'No rows match the current filters.'}</div>`;
 
-  const rowsHtml = filtered.map((entry) => {
+  const rowsHtml = filtered.map((entry, index) => {
     const same = isSameRow(dataset, activeSlugs, entry.row);
     const sectionMeta = options.showSection ? `<span class="summary-pill">${escapeHtml(entry.sectionName)}</span>` : '';
-    const importanceMeta = options.showImportance ? `<span class="${getImportanceClass(entry.row.importance)}">${escapeHtml(entry.row.importance)}</span>` : '';
-    const sameMeta = !same ? '<span class="inline-flex h-2 w-2 rounded-full bg-accent/70"></span>' : '';
-    const note = entry.row.description ? `<div class="row-note">${escapeHtml(entry.row.description)}</div>` : '';
+    const sameMeta = !same ? '<span class="inline-flex h-1.5 w-1.5 rounded-full bg-accent/70 flex-shrink-0"></span>' : '';
+    const note = options.showNotes && entry.row.description ? `<div class="row-note">${escapeHtml(entry.row.description)}</div>` : '';
     const cells = activeSlugs.map((slug) => `<td class="provider-col" data-slug="${escapeHtml(slug)}">${renderCellValue(dataset, slug, entry.row, Boolean(options.showNotes))}</td>`).join('');
-    return `<tr><td class="sticky-col"><div class="row-label"><div class="row-name">${escapeHtml(entry.row.label)}</div><div class="row-meta">${sectionMeta}${importanceMeta}${sameMeta}</div>${note}</div></td>${cells}</tr>`;
+    const zebraClass = index % 2 === 1 ? ' class="zebra-row"' : '';
+    return `<tr${zebraClass}><td class="sticky-col"><div class="row-label"><div class="row-name">${sameMeta}${escapeHtml(entry.row.label)}</div>${sectionMeta ? `<div class="row-meta">${sectionMeta}</div>` : ''}${note}</div></td>${cells}</tr>`;
   }).join('');
 
   return `<div class="table-shell"><table class="compare-table"><thead><tr><th class="compare-head sticky-col text-left">Field</th>${activeSlugs.map((slug) => renderProviderHeaderCell(dataset, slug)).join('')}</tr></thead><tbody>${rowsHtml}</tbody></table></div>`;
