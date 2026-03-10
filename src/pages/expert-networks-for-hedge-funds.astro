@@ -25,12 +25,24 @@ const combined = [...new Map([...topProviders, ...hfNetworks].map(n => [n!.data.
   canonicalPath="/expert-networks-for-hedge-funds"
   jsonLd={{
     "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Best Expert Networks for Hedge Funds (2026)",
-    "description": "Guide to choosing expert networks for hedge fund research, sector analysis, and investment due diligence.",
-    "publisher": { "@type": "Organization", "name": "ExpertNetworks.net", "url": "https://expertnetworks.net" },
-    "datePublished": "2026-03-09",
-    "dateModified": "2026-03-09"
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://expertnetworks.net/" },
+          { "@type": "ListItem", "position": 2, "name": "Networks", "item": "https://expertnetworks.net/networks" },
+          { "@type": "ListItem", "position": 3, "name": "Expert Networks for Hedge Funds" }
+        ]
+      },
+      {
+        "@type": "Article",
+        "headline": "Best Expert Networks for Hedge Funds (2026)",
+        "description": "Guide to choosing expert networks for hedge fund research, sector analysis, and investment due diligence.",
+        "publisher": { "@type": "Organization", "name": "ExpertNetworks.net", "url": "https://expertnetworks.net" },
+        "datePublished": "2026-03-09",
+        "dateModified": "2026-03-09"
+      }
+    ]
   }}
 >
   <!-- Hero -->

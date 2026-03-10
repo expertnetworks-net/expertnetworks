@@ -72,16 +72,37 @@ const sections = [
   canonicalPath="/expert-network-pricing"
   jsonLd={{
     "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Expert Network Pricing Guide 2026",
-    "description": "Independent guide to expert network pricing — honest ranges, models, and negotiation advice across 33+ providers",
-    "publisher": {
-      "@type": "Organization",
-      "name": "ExpertNetworks.net",
-      "url": "https://expertnetworks.net"
-    },
-    "datePublished": "2026-03-08",
-    "dateModified": "2026-03-09"
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://expertnetworks.net/" },
+          { "@type": "ListItem", "position": 2, "name": "Pricing Guide" }
+        ]
+      },
+      {
+        "@type": "Article",
+        "headline": "Expert Network Pricing Guide 2026",
+        "description": "Independent guide to expert network pricing — honest ranges, models, and negotiation advice across 33+ providers",
+        "publisher": {
+          "@type": "Organization",
+          "name": "ExpertNetworks.net",
+          "url": "https://expertnetworks.net"
+        },
+        "datePublished": "2026-03-08",
+        "dateModified": "2026-03-09"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Why is expert network pricing so opaque?", "acceptedAnswer": { "@type": "Answer", "text": "Most major networks are B2B enterprises that negotiate custom pricing per client based on volume, commitment, and service level. There's no incentive for them to publish fixed rates because pricing flexibility is a competitive advantage." } },
+          { "@type": "Question", "name": "What is a normal expert call cost?", "acceptedAnswer": { "@type": "Answer", "text": "Based on publicly available benchmarks, standard expert calls typically land in the $700–$1,500/hr range on the client side. Third-party comparison platforms like Inex One publicly benchmark major networks around $1,000–$1,350/hr." } },
+          { "@type": "Question", "name": "What does the expert actually get paid?", "acceptedAnswer": { "@type": "Answer", "text": "Expert compensation typically ranges from $200–$500+/hr depending on seniority and domain scarcity. The network keeps the difference to cover sourcing, compliance screening, project management, scheduling, and platform infrastructure." } },
+          { "@type": "Question", "name": "Are subscriptions cheaper than per-call?", "acceptedAnswer": { "@type": "Answer", "text": "It depends on volume. Subscriptions generally offer a lower effective per-call rate for high-volume users (100+ calls/year) and may bundle library/content access. For low-volume users, per-call or pay-as-you-go is typically more cost-effective." } },
+          { "@type": "Question", "name": "Can smaller teams negotiate?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, but with less leverage. Smaller teams can still negotiate by offering multi-year commitments, starting with a trial period, or bundling services. Using multiple providers also creates competitive pressure." } }
+        ]
+      }
+    ]
   }}
 >
 
