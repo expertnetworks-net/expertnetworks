@@ -484,6 +484,16 @@ const topTrends = Object.entries(trendCounts).sort((a, b) => b[1] - a[1]).slice(
     const hasFilters = cat || net || st || timeRange || sig;
     clearBtn?.classList.toggle('hidden', !hasFilters);
 
+    // Sync filters to URL for refresh/sharing
+    const params = new URLSearchParams();
+    if (cat) params.set('category', cat);
+    if (net) params.set('network', net);
+    if (st) params.set('sourceType', st);
+    if (timeRange) params.set('time', timeRange);
+    if (sig) params.set('significance', sig);
+    const qs = params.toString();
+    window.history.replaceState({}, '', qs ? `?${qs}` : window.location.pathname);
+
     // Update filter summary
     updateFilterSummary(cat, net, st, timeRange, sig);
 
