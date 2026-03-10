@@ -89,6 +89,41 @@ function badgeFor(field: string) {
   if (level === 'positioning') return '<span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-semibold rounded bg-amber-100 text-amber-700 ml-1.5">Positioning</span>';
   return '<span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-semibold rounded bg-blue-100 text-blue-700 ml-1.5">Inference</span>';
 }
+
+// Alternative and comparison pages that exist
+const altPages: Record<string, string> = {
+  'glg': '/glg-alternatives',
+  'alphasights': '/alphasights-alternatives',
+  'third-bridge': '/third-bridge-alternatives',
+};
+
+const vsPages: Record<string, {href: string; label: string}[]> = {
+  'glg': [
+    { href: '/glg-vs-alphasights', label: 'GLG vs AlphaSights' },
+    { href: '/glg-vs-third-bridge', label: 'GLG vs Third Bridge' },
+    { href: '/glg-vs-guidepoint', label: 'GLG vs Guidepoint' },
+  ],
+  'alphasights': [
+    { href: '/glg-vs-alphasights', label: 'GLG vs AlphaSights' },
+    { href: '/alphasights-vs-third-bridge', label: 'AlphaSights vs Third Bridge' },
+    { href: '/alphasights-vs-dialectica', label: 'AlphaSights vs Dialectica' },
+  ],
+  'third-bridge': [
+    { href: '/glg-vs-third-bridge', label: 'GLG vs Third Bridge' },
+    { href: '/alphasights-vs-third-bridge', label: 'AlphaSights vs Third Bridge' },
+    { href: '/third-bridge-vs-guidepoint', label: 'Third Bridge vs Guidepoint' },
+  ],
+  'guidepoint': [
+    { href: '/glg-vs-guidepoint', label: 'GLG vs Guidepoint' },
+    { href: '/third-bridge-vs-guidepoint', label: 'Third Bridge vs Guidepoint' },
+  ],
+  'dialectica': [
+    { href: '/alphasights-vs-dialectica', label: 'AlphaSights vs Dialectica' },
+  ],
+};
+
+const hasAltPage = altPages[d.slug];
+const hasVsPages = vsPages[d.slug] || [];
 ---
 
 <BaseLayout
@@ -1045,4 +1080,20 @@ function badgeFor(field: string) {
       if (sections.length > 0) setActive(sections[0].id);
     }
   </script>
+{(hasAltPage || hasVsPages.length > 0) && (
+  <section class="py-12 px-6 bg-bg-secondary border-t border-border/30">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-xl font-bold text-primary mb-6">Compare {shortName}</h2>
+      <div class="flex flex-wrap gap-3">
+        {hasAltPage && (
+          <a href={hasAltPage} class="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-primary border border-border/50 rounded-full font-semibold text-sm no-underline hover:bg-border/30 transition-colors">{shortName} Alternatives →</a>
+        )}
+        {hasVsPages.map(vs => (
+          <a href={vs.href} class="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-primary border border-border/50 rounded-full font-semibold text-sm no-underline hover:bg-border/30 transition-colors">{vs.label}</a>
+        ))}
+        <a href={`/compare?networks=${d.slug}`} class="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-white rounded-full font-semibold text-sm no-underline hover:bg-accent-hover transition-colors">Full Comparison Tool</a>
+      </div>
+    </div>
+  </section>
+)}
 </BaseLayout>
