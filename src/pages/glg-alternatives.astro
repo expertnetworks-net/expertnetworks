@@ -14,14 +14,27 @@ const alternatives = published.filter(n => n.data.slug !== 'glg').slice(0, 10);
   title="GLG Alternatives (2026): 10 Expert Networks to Consider | ExpertNetworks.net"
   description="Looking for alternatives to GLG? Compare 10 expert network providers including AlphaSights, Third Bridge, Guidepoint, and Dialectica — with pricing, compliance, AI capabilities, and expert coverage."
   canonicalPath="/glg-alternatives"
+  ogType="article"
   jsonLd={{
     "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "GLG Alternatives: 10 Expert Networks to Consider (2026)",
-    "description": "Comprehensive guide to expert network alternatives to GLG, including pricing, capabilities, and best-fit use cases.",
-    "publisher": { "@type": "Organization", "name": "ExpertNetworks.net", "url": "https://expertnetworks.net" },
-    "datePublished": "2026-03-09",
-    "dateModified": "2026-03-09"
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://expertnetworks.net/" },
+          { "@type": "ListItem", "position": 2, "name": "Networks", "item": "https://expertnetworks.net/networks" },
+          { "@type": "ListItem", "position": 3, "name": "GLG Alternatives" }
+        ]
+      },
+      {
+        "@type": "Article",
+        "headline": "GLG Alternatives: 10 Expert Networks to Consider (2026)",
+        "description": "Comprehensive guide to expert network alternatives to GLG, including pricing, capabilities, and best-fit use cases.",
+        "publisher": { "@type": "Organization", "name": "ExpertNetworks.net", "url": "https://expertnetworks.net" },
+        "datePublished": "2026-03-09",
+        "dateModified": "2026-03-09"
+      }
+    ]
   }}
 >
   <!-- Hero -->

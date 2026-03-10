@@ -18,14 +18,27 @@ const verdict = [
   title="AlphaSights vs Third Bridge: Expert Network Comparison (2026) | ExpertNetworks.net"
   description="Compare AlphaSights and Third Bridge expert networks. Speed-focused managed service vs. content library-led research platform — pricing, AI, compliance, and expert coverage compared."
   canonicalPath="/alphasights-vs-third-bridge"
+  ogType="article"
   jsonLd={{
     "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "AlphaSights vs Third Bridge: Expert Network Comparison (2026)",
-    "description": "Head-to-head comparison of AlphaSights and Third Bridge expert networks across pricing, content, AI, and services.",
-    "publisher": { "@type": "Organization", "name": "ExpertNetworks.net", "url": "https://expertnetworks.net" },
-    "datePublished": "2026-03-09",
-    "dateModified": "2026-03-09"
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://expertnetworks.net/" },
+          { "@type": "ListItem", "position": 2, "name": "Compare", "item": "https://expertnetworks.net/compare" },
+          { "@type": "ListItem", "position": 3, "name": "AlphaSights vs Third Bridge" }
+        ]
+      },
+      {
+        "@type": "Article",
+        "headline": "AlphaSights vs Third Bridge: Expert Network Comparison (2026)",
+        "description": "Head-to-head comparison of AlphaSights and Third Bridge expert networks across pricing, content, AI, and services.",
+        "publisher": { "@type": "Organization", "name": "ExpertNetworks.net", "url": "https://expertnetworks.net" },
+        "datePublished": "2026-03-09",
+        "dateModified": "2026-03-09"
+      }
+    ]
   }}
 >
   <section class="pt-32 pb-16 px-6 bg-gradient-to-b from-bg-secondary to-bg-primary">

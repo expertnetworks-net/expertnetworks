@@ -22,14 +22,27 @@ const combined = [...new Map([...topProviders, ...consultingNetworks].map(n => [
   title="Best Expert Networks for Consulting Firms (2026 Guide) | ExpertNetworks.net"
   description="Guide to expert networks for management consulting firms: which providers are best for client engagements, market sizing, competitive analysis, and industry deep-dives. Compare GLG, AlphaSights, Guidepoint, Atheneum, and more."
   canonicalPath="/expert-networks-for-consulting"
+  ogType="article"
   jsonLd={{
     "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Best Expert Networks for Consulting Firms (2026)",
-    "description": "Guide to choosing expert networks for management consulting engagements, market analysis, and industry research.",
-    "publisher": { "@type": "Organization", "name": "ExpertNetworks.net", "url": "https://expertnetworks.net" },
-    "datePublished": "2026-03-09",
-    "dateModified": "2026-03-09"
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://expertnetworks.net/" },
+          { "@type": "ListItem", "position": 2, "name": "Networks", "item": "https://expertnetworks.net/networks" },
+          { "@type": "ListItem", "position": 3, "name": "Expert Networks for Consulting" }
+        ]
+      },
+      {
+        "@type": "Article",
+        "headline": "Best Expert Networks for Consulting Firms (2026)",
+        "description": "Guide to choosing expert networks for management consulting engagements, market analysis, and industry research.",
+        "publisher": { "@type": "Organization", "name": "ExpertNetworks.net", "url": "https://expertnetworks.net" },
+        "datePublished": "2026-03-09",
+        "dateModified": "2026-03-09"
+      }
+    ]
   }}
 >
   <!-- Hero -->

@@ -52,6 +52,54 @@ const nameA = a.data.name.split(' (')[0];
 const nameB = b.data.name.split(' (')[0];
 const shortA = a.data.shortName || nameA.charAt(0);
 const shortB = b.data.shortName || nameB.charAt(0);
+
+// Related pages lookup
+const relatedPages: Record<string, { comparisons: { href: string; label: string }[]; alternatives?: string }> = {
+  'glg': {
+    comparisons: [
+      { href: '/glg-vs-alphasights', label: 'GLG vs AlphaSights' },
+      { href: '/glg-vs-third-bridge', label: 'GLG vs Third Bridge' },
+      { href: '/glg-vs-guidepoint', label: 'GLG vs Guidepoint' },
+    ],
+    alternatives: '/glg-alternatives',
+  },
+  'alphasights': {
+    comparisons: [
+      { href: '/glg-vs-alphasights', label: 'GLG vs AlphaSights' },
+      { href: '/alphasights-vs-third-bridge', label: 'AlphaSights vs Third Bridge' },
+      { href: '/alphasights-vs-dialectica', label: 'AlphaSights vs Dialectica' },
+    ],
+    alternatives: '/alphasights-alternatives',
+  },
+  'third-bridge': {
+    comparisons: [
+      { href: '/glg-vs-third-bridge', label: 'GLG vs Third Bridge' },
+      { href: '/alphasights-vs-third-bridge', label: 'AlphaSights vs Third Bridge' },
+      { href: '/third-bridge-vs-guidepoint', label: 'Third Bridge vs Guidepoint' },
+    ],
+    alternatives: '/third-bridge-alternatives',
+  },
+  'guidepoint': {
+    comparisons: [
+      { href: '/glg-vs-guidepoint', label: 'GLG vs Guidepoint' },
+      { href: '/third-bridge-vs-guidepoint', label: 'Third Bridge vs Guidepoint' },
+    ],
+  },
+  'dialectica': {
+    comparisons: [
+      { href: '/alphasights-vs-dialectica', label: 'AlphaSights vs Dialectica' },
+    ],
+  },
+};
+
+// Get related for both networks, exclude current page
+const currentPath = `/${a.data.slug}-vs-${b.data.slug}`;
+const altPath = `/${b.data.slug}-vs-${a.data.slug}`;
+const relA = relatedPages[a.data.slug];
+const relB = relatedPages[b.data.slug];
+const linksA = relA?.comparisons.filter(c => c.href !== currentPath && c.href !== altPath) || [];
+const linksB = relB?.comparisons.filter(c => c.href !== currentPath && c.href !== altPath) || [];
+const hasRelated = linksA.length > 0 || linksB.length > 0 || relA?.alternatives || relB?.alternatives;
 ---
 
 <!-- Visual Face-off -->
@@ -256,6 +304,41 @@ const shortB = b.data.shortName || nameB.charAt(0);
     </div>
   </div>
 </section>
+
+<!-- Related Comparisons -->
+{hasRelated && (
+  <section class="py-12 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-xl font-bold text-primary mb-6">Related Comparisons</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <h3 class="text-sm font-semibold text-tertiary uppercase tracking-wider mb-3">{nameA}</h3>
+          <div class="space-y-2">
+            <a href={`/networks/${a.data.slug}`} class="block text-sm text-accent no-underline hover:underline">{nameA} Profile &rarr;</a>
+            {linksA.map(link => (
+              <a href={link.href} class="block text-sm text-accent no-underline hover:underline">{link.label} &rarr;</a>
+            ))}
+            {relA?.alternatives && (
+              <a href={relA.alternatives} class="block text-sm text-accent no-underline hover:underline">{nameA} Alternatives &rarr;</a>
+            )}
+          </div>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold text-tertiary uppercase tracking-wider mb-3">{nameB}</h3>
+          <div class="space-y-2">
+            <a href={`/networks/${b.data.slug}`} class="block text-sm text-accent no-underline hover:underline">{nameB} Profile &rarr;</a>
+            {linksB.map(link => (
+              <a href={link.href} class="block text-sm text-accent no-underline hover:underline">{link.label} &rarr;</a>
+            ))}
+            {relB?.alternatives && (
+              <a href={relB.alternatives} class="block text-sm text-accent no-underline hover:underline">{nameB} Alternatives &rarr;</a>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
 
 <!-- Related -->
 <section class="py-12 px-6 bg-bg-secondary">
