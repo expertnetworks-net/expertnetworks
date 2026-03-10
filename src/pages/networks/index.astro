@@ -190,7 +190,7 @@ const directoryEntries = networks.map((network, index) => {
       <!-- Filter Sidebar -->
       <aside class="w-full lg:w-56 flex-shrink-0">
         <!-- Mobile filter toggle -->
-        <button id="mobileFilterToggle" class="lg:hidden flex items-center justify-between w-full px-4 py-3 bg-white rounded-xl border border-border/60 text-sm font-medium text-primary mb-3 cursor-pointer active:bg-[#f5f5f7] transition-colors min-h-[48px]">
+        <button id="mobileFilterToggle" class="lg:hidden flex items-center justify-between w-full px-4 py-3 bg-white rounded-xl border border-border/60 text-sm font-medium text-primary mb-3 cursor-pointer active:bg-[#f5f5f7] transition-colors min-h-[48px]" aria-expanded="false" aria-controls="filterPanel">
           <span class="flex items-center gap-2">
             <svg class="w-4 h-4 text-tertiary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
             Filters
@@ -798,6 +798,7 @@ const directoryEntries = networks.map((network, index) => {
   mobileFilterToggle?.addEventListener('click', () => {
     const isHidden = filterPanel?.classList.contains('hidden');
     filterPanel?.classList.toggle('hidden', !isHidden);
+    mobileFilterToggle.setAttribute('aria-expanded', String(isHidden));
     const chevron = mobileFilterToggle.querySelector('.filter-chevron');
     if (chevron) {
       (chevron as HTMLElement).style.transform = isHidden ? 'rotate(180deg)' : '';

@@ -127,6 +127,7 @@ export function bootComparePage(dataset: CompareDataset) {
   function openModal() {
     modalSavedScrollY = window.scrollY;
     addNetworkModal?.classList.remove('hidden');
+    addNetworkModal?.setAttribute('aria-hidden', 'false');
     document.body.classList.add('overlay-open');
     document.body.style.top = `-${modalSavedScrollY}px`;
     if (networkSearch) networkSearch.value = '';
@@ -137,6 +138,7 @@ export function bootComparePage(dataset: CompareDataset) {
 
   function closeModal() {
     addNetworkModal?.classList.add('hidden');
+    addNetworkModal?.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('overlay-open');
     document.body.style.top = '';
     window.scrollTo(0, modalSavedScrollY);

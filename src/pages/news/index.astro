@@ -105,7 +105,7 @@ const topTrends = Object.entries(trendCounts).sort((a, b) => b[1] - a[1]).slice(
         <span class="text-lg font-extrabold text-primary">{articles.length}</span>
         <span class="text-[11px] text-tertiary uppercase tracking-wide font-semibold">Signals</span>
       </div>
-      <div class="h-4 w-px bg-bg-secondary"></div>
+      <div class="h-4 w-px bg-bg-secondary hidden md:block"></div>
       <div class="flex items-center gap-1.5">
         <span class="w-2 h-2 rounded-full bg-accent"></span>
         <span class="text-[12px] font-semibold text-primary">{majorCount}</span>
@@ -264,10 +264,10 @@ const topTrends = Object.entries(trendCounts).sort((a, b) => b[1] - a[1]).slice(
 
         <!-- View toggle -->
         <div class="flex items-center gap-0.5 bg-white border border-border rounded-lg p-0.5 ml-auto">
-          <button id="viewFeed" class="view-btn px-2.5 py-1 text-[12px] font-semibold rounded-md transition-colors bg-accent text-white border-none cursor-pointer" title="Feed View">
+          <button id="viewFeed" class="view-btn px-2.5 py-1 text-[12px] font-semibold rounded-md transition-colors bg-accent text-white border-none cursor-pointer" title="Feed View" aria-pressed="true">
             <svg class="w-3.5 h-3.5 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
           </button>
-          <button id="viewSignals" class="view-btn px-2.5 py-1 text-[12px] font-semibold rounded-md transition-colors text-secondary border-none cursor-pointer" title="Signals View">
+          <button id="viewSignals" class="view-btn px-2.5 py-1 text-[12px] font-semibold rounded-md transition-colors text-secondary border-none cursor-pointer" title="Signals View" aria-pressed="false">
             <svg class="w-3.5 h-3.5 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
           </button>
         </div>
@@ -589,15 +589,19 @@ const topTrends = Object.entries(trendCounts).sort((a, b) => b[1] - a[1]).slice(
       signalsView?.classList.add('hidden');
       viewFeedBtn?.classList.add('bg-accent', 'text-white');
       viewFeedBtn?.classList.remove('text-secondary');
+      viewFeedBtn?.setAttribute('aria-pressed', 'true');
       viewSignalsBtn?.classList.remove('bg-accent', 'text-white');
       viewSignalsBtn?.classList.add('text-secondary');
+      viewSignalsBtn?.setAttribute('aria-pressed', 'false');
     } else {
       feedView?.classList.add('hidden');
       signalsView?.classList.remove('hidden');
       viewSignalsBtn?.classList.add('bg-accent', 'text-white');
       viewSignalsBtn?.classList.remove('text-secondary');
+      viewSignalsBtn?.setAttribute('aria-pressed', 'true');
       viewFeedBtn?.classList.remove('bg-accent', 'text-white');
       viewFeedBtn?.classList.add('text-secondary');
+      viewFeedBtn?.setAttribute('aria-pressed', 'false');
       // Render signals from currently visible items
       const visibleItems = Array.from(items).filter(i => i.style.display !== 'none');
       renderSignalsView(visibleItems);
