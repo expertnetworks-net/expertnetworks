@@ -1,5 +1,5 @@
 {
-  "networks": ["glg", "alphasights", "third-bridge", "guidepoint", "dialectica", "alphasense-tegus"],
+  "networks": ["glg", "alphasights", "third-bridge", "guidepoint", "dialectica"],
   "presets": {
     "leaders": ["glg", "alphasights", "third-bridge", "guidepoint", "dialectica", "alphasense-tegus"],
     "consulting": ["glg", "alphasights", "guidepoint", "dialectica", "atheneum", "newtonx"],

@@ -14,9 +14,6 @@ export function bootComparePage(dataset: CompareDataset) {
   const modalBackdrop = document.getElementById('modalBackdrop');
   const networkSearch = document.getElementById('networkSearch') as HTMLInputElement | null;
   const networkPickerList = document.getElementById('networkPickerList');
-  const diffToggle = document.getElementById('diffToggle') as HTMLInputElement | null;
-  const notesToggle = document.getElementById('notesToggle') as HTMLInputElement | null;
-
   const criticalPrimaryTable = document.getElementById('criticalPrimaryTable');
   const criticalExpandedTable = document.getElementById('criticalExpandedTable');
   const criticalExpandedWrapper = document.getElementById('criticalExpandedWrapper');
@@ -27,7 +24,6 @@ export function bootComparePage(dataset: CompareDataset) {
   const matrixSummary = document.getElementById('matrixSummary');
   const matrixContent = document.getElementById('matrixContent');
 
-  const selectionReviewedBadge = document.getElementById('selectionReviewedBadge');
   const providerCount = document.getElementById('providerCount');
   const heroDirectoryBtn = document.getElementById('heroDirectoryBtn') as HTMLAnchorElement | null;
   const browseDirectoryBtn = document.getElementById('browseDirectoryBtn') as HTMLAnchorElement | null;
@@ -46,9 +42,9 @@ export function bootComparePage(dataset: CompareDataset) {
       if (slugs.length === 1) {
         const base = validSlugs([...dataset.defaultSlugs]);
         if (!base.includes(slugs[0])) base.push(slugs[0]);
-        return base.slice(0, 6);
+        return base.slice(0, 5);
       }
-      if (slugs.length >= 2) return slugs.slice(0, 6);
+      if (slugs.length >= 2) return slugs.slice(0, 5);
     }
     const presetParam = params.get('preset');
     if (presetParam && dataset.presets[presetParam]) {
@@ -59,7 +55,7 @@ export function bootComparePage(dataset: CompareDataset) {
     if (addParam && dataset.networkDataMap[addParam]) {
       const base = validSlugs([...dataset.defaultSlugs]);
       if (!base.includes(addParam)) base.push(addParam);
-      return base.slice(0, 6);
+      return base.slice(0, 5);
     }
     return validSlugs([...dataset.defaultSlugs]);
   }
@@ -85,8 +81,8 @@ export function bootComparePage(dataset: CompareDataset) {
   let activeSlugs = getInitialSlugs();
   let activePreset = getInitialPreset();
   let activeGoal = getInitialGoal();
-  let diffMode = Boolean(diffToggle?.checked);
-  let showEvidenceNotes = Boolean(notesToggle?.checked);
+  let diffMode = false;
+  let showEvidenceNotes = false;
   let expandedVisible = false;
   let railObserver: IntersectionObserver | null = null;
 
@@ -189,8 +185,7 @@ export function bootComparePage(dataset: CompareDataset) {
     bindChipEvents();
 
     /* Metadata */
-    if (selectionReviewedBadge) selectionReviewedBadge.textContent = `Selection reviewed: ${view.latestReviewedLabel}`;
-    if (providerCount) providerCount.textContent = `${activeSlugs.length}/6`;
+    if (providerCount) providerCount.textContent = `${activeSlugs.length}/5`;
     if (heroDirectoryBtn) heroDirectoryBtn.href = view.directoryHref;
     if (browseDirectoryBtn) browseDirectoryBtn.href = view.directoryHref;
 
@@ -268,7 +263,7 @@ export function bootComparePage(dataset: CompareDataset) {
     button.addEventListener('click', () => {
       const slug = button.dataset.slug;
       if (!slug || activeSlugs.includes(slug)) return;
-      if (activeSlugs.length >= 6) activeSlugs.shift();
+      if (activeSlugs.length >= 5) activeSlugs.shift();
       activeSlugs.push(slug);
       activePreset = '';
       activeGoal = '';
@@ -292,21 +287,10 @@ export function bootComparePage(dataset: CompareDataset) {
       } else {
         activeGoal = goalId || '';
         activePreset = preset;
-        activeSlugs = [...dataset.presets[preset]];
+        activeSlugs = [...dataset.presets[preset]].slice(0, 5);
       }
       render();
     });
-  });
-
-  /* Toggles */
-  diffToggle?.addEventListener('change', () => {
-    diffMode = Boolean(diffToggle.checked);
-    render();
-  });
-
-  notesToggle?.addEventListener('change', () => {
-    showEvidenceNotes = Boolean(notesToggle.checked);
-    render();
   });
 
   /* Show more / fewer critical differences */
@@ -351,7 +335,7 @@ export function bootComparePage(dataset: CompareDataset) {
   }
 
   /* ---------- Init ---------- */
-  const needsClientRender = !arraysEqual(activeSlugs, dataset.defaultSlugs) || diffMode || showEvidenceNotes;
+  const needsClientRender = !arraysEqual(activeSlugs, dataset.defaultSlugs);
   if (needsClientRender) {
     render();
   } else {
