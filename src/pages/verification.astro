@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
   title="Verification Framework — ExpertNetworks.net"
-  description="How ExpertNetworks.net labels and classifies the confidence level of data across network profiles. Understand the difference between verified, positioning, inference, and partially-unverifiable claims."
+  description="How ExpertNetworks.net labels and classifies the confidence level of data across network profiles. Understand the difference between verified, positioned, inferred, and estimated claims."
   canonicalPath="/verification"
   jsonLd={{
     '@context': 'https://schema.org',
@@ -47,7 +47,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="border border-border rounded-sm p-4">
             <div class="flex items-center gap-2 mb-2">
               <span class="inline-block w-2.5 h-2.5 rounded-full bg-accent"></span>
-              <span class="text-sm font-bold text-primary">Positioning</span>
+              <span class="text-sm font-bold text-primary">Positioned</span>
             </div>
             <p class="text-sm text-secondary leading-relaxed m-0">Sourced from the company's own materials — website copy, press releases, marketing collateral, or executive statements. The claim may be accurate, but it originates from the company itself and has not been independently corroborated.</p>
             <p class="text-xs text-tertiary mt-2 m-0">Examples: expert count from company website, compliance policies from marketing materials, service descriptions from product pages.</p>
@@ -56,7 +56,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="border border-border rounded-sm p-4">
             <div class="flex items-center gap-2 mb-2">
               <span class="inline-block w-2.5 h-2.5 rounded-full bg-accent-orange"></span>
-              <span class="text-sm font-bold text-primary">Inference</span>
+              <span class="text-sm font-bold text-primary">Inferred</span>
             </div>
             <p class="text-sm text-secondary leading-relaxed m-0">Derived from indirect evidence, industry context, or pattern analysis rather than a direct source. We make reasonable deductions based on available information but flag these clearly so you know the basis is interpretive.</p>
             <p class="text-xs text-tertiary mt-2 m-0">Examples: pricing model estimated from job postings and industry norms, geographic coverage inferred from office locations and hiring patterns.</p>
@@ -65,23 +65,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="border border-border rounded-sm p-4">
             <div class="flex items-center gap-2 mb-2">
               <span class="inline-block w-2.5 h-2.5 rounded-full bg-accent-purple"></span>
-              <span class="text-sm font-bold text-primary">Partially Unverifiable</span>
+              <span class="text-sm font-bold text-primary">Estimated</span>
             </div>
-            <p class="text-sm text-secondary leading-relaxed m-0">The claim cannot be fully confirmed or denied through publicly available information. This often applies to internal processes, proprietary technology details, or compliance practices that are not disclosed in sufficient detail to assess.</p>
-            <p class="text-xs text-tertiary mt-2 m-0">Examples: internal vetting procedures, proprietary AI matching accuracy, specific compliance audit results.</p>
+            <p class="text-sm text-secondary leading-relaxed m-0">Approximate figures or claims that cannot be fully confirmed through publicly available information. This applies to data points where we provide a reasonable estimate based on partial evidence, as well as internal processes or proprietary details that are not disclosed in sufficient detail to verify.</p>
+            <p class="text-xs text-tertiary mt-2 m-0">Examples: estimated expert counts from partial data, internal vetting procedures, proprietary AI matching accuracy, approximate employee numbers.</p>
           </div>
         </div>
 
         <h2 class="text-lg font-bold text-primary">How Labels Are Assigned</h2>
-        <p>Confidence labels are assigned per field, not per profile. A single network profile may have its founding year marked as <strong>verified</strong>, its expert count as <strong>positioning</strong>, and its pricing model as <strong>inference</strong> — because each data point has a different evidence basis.</p>
+        <p>Confidence labels are assigned per field, not per profile. A single network profile may have its founding year marked as <strong>verified</strong>, its expert count as <strong>positioned</strong>, and its pricing model as <strong>inferred</strong> — because each data point has a different evidence basis.</p>
         <p>We review and update labels when new sources become available. If a previously inferred claim is later confirmed by a third-party report, we upgrade it to verified.</p>
 
         <h2 class="text-lg font-bold text-primary">What This Means for You</h2>
         <ul class="list-disc pl-5 space-y-1 text-sm">
           <li><strong>Verified</strong> data can be cited with confidence in research and due diligence.</li>
-          <li><strong>Positioning</strong> data is useful but should be understood as the company's own framing.</li>
-          <li><strong>Inference</strong> data provides directional insight but warrants additional validation for high-stakes decisions.</li>
-          <li><strong>Partially unverifiable</strong> data is included for completeness but should not be relied upon without further investigation.</li>
+          <li><strong>Positioned</strong> data is useful but should be understood as the company's own framing.</li>
+          <li><strong>Inferred</strong> data provides directional insight but warrants additional validation for high-stakes decisions.</li>
+          <li><strong>Estimated</strong> data is included for completeness but should not be relied upon without further investigation.</li>
         </ul>
 
         <h2 class="text-lg font-bold text-primary">Relationship to Sources & Methodology</h2>

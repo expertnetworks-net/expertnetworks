@@ -25,8 +25,29 @@ export function bootComparePage(dataset: CompareDataset) {
   const matrixContent = document.getElementById('matrixContent');
 
   const providerCount = document.getElementById('providerCount');
-  const heroDirectoryBtn = document.getElementById('heroDirectoryBtn') as HTMLAnchorElement | null;
   const browseDirectoryBtn = document.getElementById('browseDirectoryBtn') as HTMLAnchorElement | null;
+
+  /* ---------- Toast ---------- */
+
+  function showToast(message: string) {
+    const existing = document.getElementById('compareToast');
+    if (existing) existing.remove();
+    const toast = document.createElement('div');
+    toast.id = 'compareToast';
+    toast.textContent = message;
+    Object.assign(toast.style, {
+      position: 'fixed', bottom: '24px', left: '50%', transform: 'translateX(-50%)',
+      background: '#1d1d1f', color: '#fff', padding: '10px 20px', borderRadius: '12px',
+      fontSize: '13px', fontWeight: '500', zIndex: '9999', opacity: '0',
+      transition: 'opacity 0.2s ease', pointerEvents: 'none', whiteSpace: 'nowrap',
+    });
+    document.body.appendChild(toast);
+    requestAnimationFrame(() => { toast.style.opacity = '1'; });
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      setTimeout(() => toast.remove(), 200);
+    }, 2500);
+  }
 
   /* ---------- State ---------- */
 
@@ -119,6 +140,23 @@ export function bootComparePage(dataset: CompareDataset) {
     });
   }
 
+  /* ---------- Focus trap ---------- */
+
+  function trapFocus(event: KeyboardEvent) {
+    if (event.key !== 'Tab' || !addNetworkModal) return;
+    const focusable = addNetworkModal.querySelectorAll<HTMLElement>(
+      'button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    );
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey) {
+      if (document.activeElement === first) { event.preventDefault(); last.focus(); }
+    } else {
+      if (document.activeElement === last) { event.preventDefault(); first.focus(); }
+    }
+  }
+
   let modalSavedScrollY = 0;
   function openModal() {
     modalSavedScrollY = window.scrollY;
@@ -128,6 +166,7 @@ export function bootComparePage(dataset: CompareDataset) {
     document.body.style.top = `-${modalSavedScrollY}px`;
     if (networkSearch) networkSearch.value = '';
     filterPicker('');
+    document.addEventListener('keydown', trapFocus);
     /* Delay focus to prevent iOS keyboard shifting layout during animation */
     setTimeout(() => networkSearch?.focus(), 100);
   }
@@ -137,7 +176,9 @@ export function bootComparePage(dataset: CompareDataset) {
     addNetworkModal?.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('overlay-open');
     document.body.style.top = '';
+    document.removeEventListener('keydown', trapFocus);
     window.scrollTo(0, modalSavedScrollY);
+    addNetworkBtn?.focus();
   }
 
   /* ---------- Chip events ---------- */
@@ -186,7 +227,6 @@ export function bootComparePage(dataset: CompareDataset) {
 
     /* Metadata */
     if (providerCount) providerCount.textContent = `${activeSlugs.length}/5`;
-    if (heroDirectoryBtn) heroDirectoryBtn.href = view.directoryHref;
     if (browseDirectoryBtn) browseDirectoryBtn.href = view.directoryHref;
 
     /* Critical differences */
@@ -263,7 +303,11 @@ export function bootComparePage(dataset: CompareDataset) {
     button.addEventListener('click', () => {
       const slug = button.dataset.slug;
       if (!slug || activeSlugs.includes(slug)) return;
-      if (activeSlugs.length >= 5) activeSlugs.shift();
+      if (activeSlugs.length >= 5) {
+        const removedSlug = activeSlugs.shift()!;
+        const removedName = dataset.networkDataMap[removedSlug]?.name || removedSlug;
+        showToast(`Removed ${removedName} to stay within 5-provider limit`);
+      }
       activeSlugs.push(slug);
       activePreset = '';
       activeGoal = '';

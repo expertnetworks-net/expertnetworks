@@ -59,7 +59,7 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
       <div class="max-w-2xl">
         <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-white">Compare Expert Networks</h1>
         <p class="text-[#b4b4bc] text-sm mt-2 max-w-xl leading-relaxed">
-          Open source comparison of pricing, compliance, AI capabilities, features, expert calls, surveys, and service model across 33+ expert network providers.
+          Independent comparison of pricing, compliance, AI capabilities, features, expert calls, surveys, and service model across 33+ expert network providers.
         </p>
         <p class="text-[#86868b] text-xs mt-3">No paywalls. No sign-up required. No paid placements.</p>
       </div>
@@ -79,7 +79,7 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
         <div class="chip-scroll-row flex-1 min-w-0 overflow-x-auto scrollbar-none">
           <div id="providerChips" class="flex items-center gap-2" set:html={initialRender.chipsHtml}></div>
         </div>
-        <button id="addNetworkBtn" class="inline-flex items-center gap-1.5 px-3.5 py-2 text-[13px] font-semibold text-accent bg-accent/[0.07] rounded-xl border border-accent/20 hover:bg-accent/[0.12] transition-colors cursor-pointer whitespace-nowrap flex-shrink-0">
+        <button id="addNetworkBtn" aria-haspopup="dialog" class="inline-flex items-center gap-1.5 px-3.5 py-2 text-[13px] font-semibold text-accent bg-accent/[0.07] rounded-xl border border-accent/20 hover:bg-accent/[0.12] transition-colors cursor-pointer whitespace-nowrap flex-shrink-0">
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           Add
           <span id="providerCount" class="text-[11px] text-accent/60 font-normal">{defaultSlugs.length}/5</span>
@@ -122,9 +122,16 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
       <div class="flex flex-wrap items-center gap-x-3 gap-y-2.5">
         <span class="text-[12px] font-bold uppercase tracking-[0.12em] text-primary whitespace-nowrap">Quick filter</span>
         <div class="flex gap-2 overflow-x-auto scrollbar-none pb-1 md:flex-wrap md:overflow-visible md:pb-0" id="goalSelector">
-          {compareGoals.map((goal) => (
-            <button class="goal-pill" data-goal={goal.id} data-preset={goal.preset} type="button">{goal.label}</button>
-          ))}
+          {compareGoals.map((goal) => {
+            const presetSlugs = presets[goal.preset] || [];
+            const presetNames = presetSlugs
+              .slice(0, 5)
+              .map((slug: string) => networkDataMap[slug]?.name || slug)
+              .join(', ');
+            return (
+              <button class="goal-pill" data-goal={goal.id} data-preset={goal.preset} type="button" title={presetNames}>{goal.label}</button>
+            );
+          })}
         </div>
       </div>
       <p class="mt-2.5 text-[10px] leading-relaxed text-tertiary">{comparisonNote}</p>
@@ -712,9 +719,7 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
     .compare-table tr,
     .compare-table tr.zebra-row {
       display: block;
-      background: rgba(255, 255, 255, 0.85);
-      -webkit-backdrop-filter: blur(20px) saturate(1.8);
-      backdrop-filter: blur(20px) saturate(1.8);
+      background: rgba(255, 255, 255, 0.95);
       border-radius: 14px;
       border: 1px solid rgba(210, 210, 215, 0.35);
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04), 0 0 0 0.5px rgba(0, 0, 0, 0.03);

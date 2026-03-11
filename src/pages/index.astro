@@ -827,6 +827,9 @@ const descriptors: Record<string, string> = {
                 <span>{formattedDate}</span>
                 <span>&middot;</span>
                 <span>{article.data.sourceType || article.data.source}</span>
+                {article.data.sourceUrl && (
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-tertiary ml-auto flex-shrink-0"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                )}
               </div>
             </a>
           );
@@ -836,7 +839,7 @@ const descriptors: Record<string, string> = {
   </section>
 
   <!-- ═══ 8. How this site works — methodology / trust ═══ -->
-  <section class="py-12 md:py-16 px-4 md:px-6 bg-bg-secondary">
+  <section class="py-12 md:py-16 px-4 md:px-6 bg-white border-t border-border/20">
     <div class="max-w-4xl mx-auto">
       <h2 class="text-xl md:text-2xl font-bold text-primary mb-4">How this site works</h2>
       <p class="text-sm text-secondary leading-relaxed mb-6">This site is an independent public-source research resource covering expert networks, related research platforms, and industry developments. Provider data may reflect a mix of verified company statements, public reporting, and clearly labeled editorial inferences.</p>
