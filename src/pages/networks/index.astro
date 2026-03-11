@@ -828,6 +828,9 @@ const directoryEntries = networks.map((network, index) => {
     activePreset = '';
     document.querySelectorAll('.preset-btn').forEach(button => button.classList.remove('active'));
     applyFilters();
+    const url = new URL(window.location.href);
+    if (heroSearch.value) { url.searchParams.set('q', heroSearch.value); } else { url.searchParams.delete('q'); }
+    window.history.replaceState({}, '', url.toString());
   });
   [filterType, filterPricing, filterHq, filterDelivery, filterRegionStrength, sortBy].forEach(input => input?.addEventListener('change', applyFilters));
   [capAI, capCompliance, capSurveys, capLibrary].forEach(input => input?.addEventListener('change', applyFilters));
@@ -853,6 +856,10 @@ const directoryEntries = networks.map((network, index) => {
     });
     updateCompareTray();
   });
+
+  /* Populate search from URL ?q= parameter */
+  const urlQ = new URLSearchParams(window.location.search).get('q');
+  if (urlQ && heroSearch) { heroSearch.value = urlQ; }
 
   restoreFromUrl();
   setView('grid');

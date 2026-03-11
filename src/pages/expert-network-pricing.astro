@@ -44,12 +44,12 @@ function confidenceColor(level: string) {
 }
 
 /* ── Pre-compute confidence for each provider ── */
-const providerConfidence = published.map(n => {
+const providerConfidenceMap = new Map(published.map(n => {
   const conf = n.data.confidence as Record<string, string> | undefined;
   const modelConf = conf?.pricingModel || '';
   const detailConf = conf?.pricingDetail || modelConf || '';
-  return { label: confidenceLabel(detailConf), color: confidenceColor(detailConf) };
-});
+  return [n.data.slug, { label: confidenceLabel(detailConf), color: confidenceColor(detailConf) }] as const;
+}));
 
 /* ── Section TOC ── */
 const sections = [
@@ -124,6 +124,7 @@ const sections = [
       <p class="text-[15px] sm:text-base text-white/65 max-w-2xl leading-relaxed mb-7">
         An independent, fact-checked breakdown of what expert calls actually cost — pricing models, market ranges, cost drivers, and negotiation advice across {published.length} providers. Honest about what's public and what isn't.
       </p>
+      <p class="text-[11px] text-white/40 mb-4">Last reviewed: March 9, 2026</p>
 
       <!-- Summary chips -->
       <div class="flex flex-wrap gap-2.5 mb-7">
@@ -381,7 +382,7 @@ const sections = [
                         </td>
                         <td class="px-4 py-3 text-xs text-secondary max-w-xs hidden sm:table-cell leading-relaxed">{n.data.pricingDetail || 'Contact provider for pricing details'}</td>
                         <td class="px-4 py-3 text-center">
-                          <span class={`inline-block text-[10px] px-2 py-0.5 rounded font-semibold whitespace-nowrap ${providerConfidence[i].color}`}>{providerConfidence[i].label}</span>
+                          {(() => { const c = providerConfidenceMap.get(n.data.slug) || { label: 'Not disclosed', color: 'bg-gray-100 text-gray-600' }; return <span class={`inline-block text-[10px] px-2 py-0.5 rounded font-semibold whitespace-nowrap ${c.color}`}>{c.label}</span>; })()}
                         </td>
                       </tr>
                   ))}
@@ -508,6 +509,18 @@ const sections = [
           </div>
         </section>
 
+        <!-- Mid-page CTA -->
+        <div class="mb-14 flex items-center gap-4 p-4 rounded-xl bg-accent/[0.04] border border-accent/15">
+          <div class="flex-1">
+            <p class="text-sm font-semibold text-primary mb-0.5">Ready to compare?</p>
+            <p class="text-[11px] text-secondary">See how providers stack up on pricing, compliance, and AI side by side.</p>
+          </div>
+          <a href="/compare" class="inline-flex items-center gap-1.5 px-4 py-2 bg-accent text-white rounded-lg font-semibold text-xs no-underline hover:bg-accent-hover transition-colors whitespace-nowrap flex-shrink-0">
+            Compare providers
+            <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+
         <!-- ═══ 10. FAQ ═══ -->
         <section id="faq" class="scroll-mt-20 mb-14">
           <h2 class="text-2xl font-extrabold text-primary mb-6">Frequently Asked Questions</h2>
@@ -538,8 +551,8 @@ const sections = [
         </section>
 
         <!-- ═══ CTA ═══ -->
-        <section class="mb-8 p-6 rounded-card bg-bg-secondary border border-border/40 text-center">
-          <h2 class="text-lg font-bold text-primary mb-3">Compare providers in detail</h2>
+        <section class="mb-8 p-8 rounded-card bg-gradient-to-br from-[#f0f4ff] to-[#f8f5ff] border border-accent/15 text-center">
+          <h2 class="text-xl font-bold text-primary mb-3">Compare providers in detail</h2>
           <div class="flex flex-wrap gap-3 justify-center">
             <a href="/compare" class="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-white rounded-full font-semibold text-sm no-underline hover:bg-accent-hover transition-colors">Side-by-Side Comparison</a>
             <a href="/networks" class="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-primary rounded-full font-semibold text-sm no-underline hover:bg-border/30 transition-colors border border-border/50">All {published.length} Networks</a>

@@ -6,6 +6,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   title="Privacy Policy — ExpertNetworks.net"
   description="Privacy policy for ExpertNetworks.net. We do not collect personal information, use tracking cookies, or require sign-ups."
   canonicalPath="/privacy"
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': 'https://expertnetworks.net/' },
+      { '@type': 'ListItem', 'position': 2, 'name': 'Privacy Policy' }
+    ]
+  }}
 >
   <section class="pt-32 pb-24 px-6">
     <div class="max-w-3xl mx-auto">
@@ -26,8 +34,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <h2 class="text-lg font-bold text-primary">Cookies</h2>
         <p>This site does not use tracking cookies, advertising cookies, or analytics scripts that track individual users.</p>
 
+        <h2 class="text-lg font-bold text-primary">Local Storage</h2>
+        <p>This site uses your browser's localStorage to remember UI preferences such as navigation state. This data is stored entirely on your device and is never transmitted to our servers or any third party.</p>
+
         <h2 class="text-lg font-bold text-primary">Third-Party Services</h2>
-        <p>This site uses Google Fonts for typography, which may result in your browser making requests to Google's servers. We do not use any other third-party analytics, advertising, or tracking services.</p>
+        <p>This site uses Google Fonts for typography. When you visit our site, your browser loads fonts from Google's servers, which means Google receives your IP address and standard browser metadata for this request. We do not use any other third-party analytics, advertising, or tracking services.</p>
 
         <h2 class="text-lg font-bold text-primary">External Links</h2>
         <p>When you click a link to an external website (such as an expert network's homepage or a news source), you are subject to that site's privacy policy. We encourage you to review their privacy practices.</p>
