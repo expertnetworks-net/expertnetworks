@@ -1,6 +1,6 @@
 # Architecture
 
-Last verified against the codebase: March 8, 2026
+Last verified against the codebase: June 16, 2026
 
 ## System Summary
 
@@ -310,10 +310,13 @@ GitHub Actions mirrors that same flow in `.github/workflows/verify.yml`.
 
 - `output: 'static'`
 - `site: 'https://expertnetworks.net'`
-- Tailwind integration
 - sitemap integration
 
+Tailwind CSS v3 is processed through PostCSS (`postcss.config.mjs` with `tailwindcss` and `autoprefixer`); the `@tailwind` directives live in `src/styles/global.css`, which `BaseLayout.astro` imports. The deprecated `@astrojs/tailwind` integration was removed during the Astro 6 upgrade.
+
 The resulting `dist/` output is appropriate for static hosts such as Cloudflare Pages.
+
+`public/_headers` ships security headers (CSP, HSTS, X-Frame-Options, Permissions-Policy, Cross-Origin-Opener-Policy) and long-lived caching for fingerprinted `/_astro/*` assets. Cloudflare Pages applies this file automatically; it has no effect during local `astro build`.
 
 The repo is currently connected to GitHub Actions and Cloudflare Pages.
 

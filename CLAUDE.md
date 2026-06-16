@@ -2,15 +2,18 @@
 
 Repository guidance for AI-assisted edits.
 
-Last verified against the codebase: March 8, 2026
+Last verified against the codebase: June 16, 2026
 
 ## Repo Truths
 
 - This is a static Astro site for [https://expertnetworks.net](https://expertnetworks.net).
+- Built on Astro 6 with Tailwind CSS v3 processed through PostCSS (`postcss.config.mjs`). There is no `@astrojs/tailwind` integration; `@tailwind` directives live in `src/styles/global.css`.
+- `z` (Zod) is imported from `zod` in `src/content.config.ts`, not from `astro:content`.
 - The repo itself is the CMS.
 - Content lives in JSON under `src/content/`.
 - There is no admin panel, no API surface, and no runtime content-editing workflow in the current repo.
 - The codebase does not currently use React components or React islands.
+- `public/_headers` defines production security headers and asset caching for Cloudflare Pages. Keep its CSP in sync if you add external scripts, styles, fonts, or embeds.
 
 Do not invent features that are not implemented.
 
