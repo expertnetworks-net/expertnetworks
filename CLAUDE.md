@@ -99,15 +99,23 @@ npm run build
 npm run check
 npm run verify:links
 npm run verify
+npm audit --audit-level=high
 ```
 
-Use `npm run verify` as the default pre-merge check.
+Use `npm run verify` as the default pre-merge check. Requires Node >=22.12.0 (Astro 6 engine requirement); CI runs on Node 22.
+
+## CI
+
+- `.github/workflows/verify.yml` runs on every push and pull request: `npm ci`, build, link verification, `astro check`, and `npm audit --audit-level=high`.
+- The audit step fails CI on any new high-severity advisory. Keep `npm audit` clean; if a fix requires a major dependency bump, test it on a branch with a full `npm run verify` before merging.
 
 ## Deployment Context
 
 - GitHub default branch is `main`.
 - Cloudflare Pages preview branch is `main`.
 - Cloudflare Pages production branch is currently `claude/expert-network-sources-6oGs1` and should still be verified directly before assuming a push will update the live site.
+- Cloudflare Pages must build on Node >=22.12.0 (set `NODE_VERSION=22` in the Pages environment if needed).
+- `public/_headers` is applied by Cloudflare Pages for security headers and asset caching.
 - The site is static and should stay static unless there is an explicit architecture change.
 
 ## Editing Guidance For AI Agents
