@@ -320,7 +320,7 @@ The resulting `dist/` output is appropriate for static hosts such as Cloudflare 
 
 The repo is currently connected to GitHub Actions and Cloudflare Pages.
 
-Last verified operational state on March 8, 2026:
+Last verified operational state on June 16, 2026:
 
 - GitHub default branch: `main`
 - Cloudflare Pages preview branch: `main`

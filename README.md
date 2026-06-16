@@ -25,7 +25,7 @@ The goal is not to act as a broker or recommend a single vendor. The goal is to 
 
 ## What The Site Currently Includes
 
-As verified in the current codebase on March 8, 2026, the site includes:
+As verified in the current codebase on June 16, 2026, the site includes:
 
 - 33 published provider profiles in `src/content/networks/`
 - 63 published news signals in `src/content/news/`
@@ -129,7 +129,7 @@ This file defines:
 
 ## Local Development
 
-Recommended local baseline: Node 20, to match the GitHub Actions workflow.
+Recommended local baseline: Node 22 (>=22.12.0), to match the GitHub Actions workflow and the Astro 6 engine requirement.
 
 Install and run:
 
@@ -183,18 +183,19 @@ The site is built as static output in `dist/` and is suitable for static hosting
 
 This repository is currently wired to GitHub and Cloudflare Pages. The exact production branch should always be confirmed in Cloudflare Pages settings before assuming which branch push will update the live site.
 
-Last verified operational state on March 8, 2026:
+Last verified operational state on June 16, 2026:
 
 - GitHub default branch: `main`
 - Cloudflare Pages preview branch: `main`
 - Cloudflare Pages production branch: `claude/expert-network-sources-6oGs1`
 
-The repo also includes a GitHub Actions workflow at `.github/workflows/verify.yml` that runs:
+The repo also includes a GitHub Actions workflow at `.github/workflows/verify.yml` (Node 22) that runs:
 
 - `npm ci`
 - `npm run build`
 - `npm run verify:links`
 - `npm run check`
+- `npm audit --audit-level=high`
 
 ## Contribution Guidance
 
@@ -255,7 +256,7 @@ The current repository state is a static-only public site.
 - Query-string-specific compare selections still finalize client-side after load because the site is static and query params are not available at build time.
 - The repo acts as the CMS.
 - The compare, directory, news, and profile experiences all run on top of build-time JSON content plus page-local JavaScript.
-- The docs and config in this repo were audited against the actual codebase on March 8, 2026.
+- The docs and config in this repo were audited against the actual codebase on June 16, 2026.
 
 ## License And Attribution
 

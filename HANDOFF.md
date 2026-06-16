@@ -1,6 +1,6 @@
 # Handoff
 
-Last verified against the repository: March 8, 2026
+Last verified against the repository: June 16, 2026
 
 ## Project Snapshot
 
@@ -9,11 +9,19 @@ ExpertNetworks.net is a static Astro site that publishes expert network research
 Current verified scope:
 
 - 33 published provider profiles
-- 52 published news signals
+- 63 published news signals
 - compare page with 6 default providers, 14 presets, 13 buyer pathways, explainable insights, and layered compare views
 - public editorial pages for methodology, verification, privacy, disclaimer, and category guides
 
 There is no admin panel, no API layer, and no runtime editing workflow in the current codebase.
+
+### Build toolchain
+
+- Astro 6 (`output: 'static'`), which requires Node >=22.12.0 — CI runs on Node 22.
+- Tailwind CSS v3 via PostCSS (`postcss.config.mjs`); no `@astrojs/tailwind` integration. The `@tailwind` directives live in `src/styles/global.css`.
+- `z` (Zod) is imported from `zod` in `src/content.config.ts`.
+- `public/_headers` carries Cloudflare Pages security headers (CSP, HSTS, etc.) and asset caching.
+- `npm audit` is clean (0 vulnerabilities); CI fails on any new high-severity advisory.
 
 ## The Files That Matter Most
 
@@ -51,7 +59,9 @@ There is no admin panel, no API layer, and no runtime editing workflow in the cu
 - `scripts/verify-dist-links.mjs`
 - `.github/workflows/verify.yml`
 - `astro.config.mjs`
+- `postcss.config.mjs`
 - `public/robots.txt`
+- `public/_headers`
 
 ## How To Safely Update Content
 
@@ -180,7 +190,7 @@ If compare changed, also do a quick browser pass on `/compare` covering:
 
 This project is deployed as a static site.
 
-Current operational reality, verified on March 8, 2026:
+Current operational reality, verified on June 16, 2026:
 
 - GitHub default branch is `main`
 - Cloudflare Pages preview branch is `main`
