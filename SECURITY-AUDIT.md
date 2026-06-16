@@ -14,7 +14,7 @@ There is no server, API, or runtime backend. That fact frames the security model
 | Check | Command | Result |
 |---|---|---|
 | Production build | `npm run build` | ✅ 58 pages built |
-| Internal links | `npm run verify:links` | ✅ 0 broken across 8,923 refs / 58 files |
+| Internal links | `npm run verify:links` | ✅ 0 broken across 8,937 refs / 58 files |
 | Type / template check | `npm run check` | ✅ 0 errors, 0 warnings, 0 hints |
 | Dependency audit | `npm audit` | ✅ **0 vulnerabilities** (was 17) |
 | Full gate | `npm run verify` | ✅ Pass end-to-end |
@@ -22,7 +22,7 @@ There is no server, API, or runtime backend. That fact frames the security model
 
 ### Content integrity (not covered by the build — verified separately)
 - 33 network files: no duplicate slugs, filename === slug everywhere.
-- 57 news files: all `relatedNetworks` resolve to real provider slugs.
+- 63 news files: all `relatedNetworks` resolve to real provider slugs.
 - `compare.json` presets, buyer pathways, and roster: all slug refs valid.
 - News dates: none invalid, none future-dated past 2026-06-16.
 - Required directory fields (`categoryBadge`, `lastUpdated`, `website`): complete on all 33.

@@ -1,0 +1,25 @@
+{
+  "title": "Guidepoint Launches MCP Server on Anthropic's Claude for Research Workflows",
+  "slug": "guidepoint-mcp-claude-2026",
+  "date": "2026-05-05",
+  "source": "PR Newswire",
+  "category": "AI",
+  "categoryColor": "#248A3D",
+  "gradientFrom": "#064e3b",
+  "gradientTo": "#059669",
+  "summary": "Guidepoint launched a Model Context Protocol (MCP) server integrated with Anthropic's Claude, letting research teams pull from Guidepoint's library of 100,000+ expert interview transcripts directly inside AI-enabled research workflows. The release is part of Guidepoint's broader push to embed expert content into the AI tools clients already use.",
+  "sourceUrl": "https://www.prnewswire.com/news-releases/guidepoint-launches-mcp-on-claude-embedding-trusted-expert-insights-into-ai-powered-research-workflows-302763175.html",
+  "relatedNetworks": [
+    "guidepoint"
+  ],
+  "published": true,
+  "sourceType": "Press Release",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "MCP servers are quickly becoming the standard integration layer for expert networks — Third Bridge, Guidepoint, and others are shipping them within months of each other, making AI-tool interoperability a near-term competitive baseline.",
+  "impactTags": [
+    "MCP",
+    "AI Integration",
+    "Content Distribution"
+  ]
+}
