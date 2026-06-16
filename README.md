@@ -63,9 +63,9 @@ This repository is intentionally transparent about its limitations. Public-sourc
 
 ## Tech Stack
 
-- Astro 5
-- Tailwind CSS 3
-- Astro Content Collections with Zod validation in `src/content.config.ts`
+- Astro 6
+- Tailwind CSS 3, processed via PostCSS (`postcss.config.mjs`); the `@tailwind` directives live in `src/styles/global.css`
+- Astro Content Collections with Zod validation in `src/content.config.ts` (`z` imported from `zod`)
 - `@astrojs/sitemap` for sitemap generation
 - plain browser JavaScript for interactive UI features, with compare logic shared in `src/lib/compare-v2.ts` and `src/scripts/compare-page.ts`
 
