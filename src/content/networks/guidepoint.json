@@ -80,7 +80,7 @@
     "surveys": true,
     "complianceTools": true
   },
-  "lastUpdated": "2026-03-06",
+  "lastUpdated": "2026-06-16",
   "overview": "Guidepoint is one of the largest expert networks globally, connecting more than 5,000 client organizations with 1.75 million+ advisors across 150+ industries and 500+ subsectors. The firm operates as a research enablement platform — providing not just expert access but also healthcare data intelligence (Qsight), content libraries (Guidepoint Insights with 65,000+ transcripts), live events (1,500+ per month), and since October 2025, the Guidepoint360 AI platform with its AskGP conversational research assistant. Guidepoint is privately held and founder-led by Albert Sebag, who serves as CEO. The company has grown from ~800 employees in 2020 to 1,700+ today across 19 global offices.",
   "history": {
     "narrative": "Guidepoint was founded in 2003 by Albert Sebag, an organic chemist turned patent attorney. Sebag earned his Ph.D. in Organic Chemistry from Northeastern University (with research at MIT) and his J.D. from Boston College Law School. He began as a patent litigator at Kenyon & Kenyon advising generic pharma companies, then founded Clinical Advisors to match cancer patients with clinical trials. As the model expanded into broader healthcare and other industries, the company rebranded to Guidepoint Global in 2007. Through organic growth and three acquisitions — Vista Research (2009, from Standard & Poor's, giving Guidepoint Asia presence), Innosquared (2015, European expert network), and Quanton Data Analytics (2016, alternative data, foundation for Qsight) — Guidepoint has become one of the 'Big Five' expert networks.",
@@ -136,6 +136,10 @@
       {
         "year": "2025–2026",
         "event": "Expands to 1,700+ employees, 19 offices, 1.75M+ advisors, 5,000+ clients; launches Guidepoint360 mobile app"
+      },
+      {
+        "year": "2026",
+        "event": "Launches MCP server on Anthropic's Claude exposing 100,000+ expert transcripts (May 2026); repositions globally from 'expert network' to AI-powered access to real-time expert insights (May 2026)"
       }
     ]
   },

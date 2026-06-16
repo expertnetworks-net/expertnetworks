@@ -80,7 +80,7 @@
     "surveys": true,
     "complianceTools": true
   },
-  "lastUpdated": "2026-03-06",
+  "lastUpdated": "2026-06-16",
   "overview": "GLG is one of the foundational companies in the expert-network / insight-network category. It connects clients with professionals who provide first-hand industry knowledge through calls, surveys, events, qualitative sessions, transcript content, and broader managed research formats. GLG's current positioning is no longer just 'find an expert for a call' — it is closer to a broader insight workflow spanning sourcing, live interaction, content reuse, and AI-assisted synthesis.",
   "history": {
     "narrative": "GLG was founded in 1998 by Mark Gerson and Thomas Lehrman. According to GLG's official history, it began as a publishing company focused on sector-specific reports for investors and evolved into a business model centered on access to professionals with direct domain experience. GLG expanded internationally early, opening its first office outside the U.S. in London, and later built additional practice areas and increasingly sophisticated compliance systems as the expert-network industry matured. GLG's own language and former IPO filings both support the claim that it pioneered the category.",
@@ -116,6 +116,10 @@
       {
         "year": "2025",
         "event": "Expands NYC HQ to 96K SF across two floors at One Grand Central Place; opens expanded Dubai DIFC office"
+      },
+      {
+        "year": "2026",
+        "event": "Relaunches myGLG client platform with agentic AI tools (May 2026); Expert Content Library reaches Bloomberg Terminal clients via the ASKB conversational AI interface in beta"
       }
     ]
   },
@@ -213,7 +217,7 @@
     "Library content distributed through FactSet partnership; expert transcripts also available via Bloomberg Terminal (announced July 2023)",
     "2008 strategic alliance with Credit Suisse gave CS analysts direct GLG network access (documented in Harvard Business School case study)",
     "No individual clients publicly named despite disclosing 2,700+ client count in filings — all case studies are anonymized",
-    "Redesigned myGLG launched in 2025 with AI-assisted features",
+    "Redesigned myGLG launched in 2025 with AI-assisted features; relaunched in May 2026 with agentic AI tools",
     "GLG for Experts mobile app launched in September 2025 with AI-suggested responses (rated 4.6 on Google Play)",
     "Expanded NYC HQ to 96K SF at One Grand Central Place (2025)",
     "Opened expanded Dubai DIFC office in January 2025"

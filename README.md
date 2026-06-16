@@ -28,7 +28,7 @@ The goal is not to act as a broker or recommend a single vendor. The goal is to 
 As verified in the current codebase on March 8, 2026, the site includes:
 
 - 33 published provider profiles in `src/content/networks/`
-- 52 published news signals in `src/content/news/`
+- 63 published news signals in `src/content/news/`
 - a compare experience with 6 default providers, 14 presets, 13 buyer pathways, explainable insights, and layered comparison views
 - a network directory with search, filters, sort, compare selection, and grid/list views
 - individual profile pages with shared summary structure and optional deep-dive sections

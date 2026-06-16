@@ -81,7 +81,7 @@
     "surveys": true,
     "complianceTools": true
   },
-  "lastUpdated": "2026-03-07",
+  "lastUpdated": "2026-06-16",
   "overview": "AlphaSense is an AI-powered market intelligence platform that combines proprietary search technology, generative AI workflows, and one of the largest collections of business content in the industry. Founded in 2011 by Jack Kokko and Raj Neervannan, the platform started as an AI search engine for financial documents and has evolved into a comprehensive research platform spanning document search, expert content, financial data, and autonomous AI research agents. The $930M acquisition of Tegus in July 2024 added a major expert transcript library and expert call services, making AlphaSense a direct competitor in the expert network space alongside its core document intelligence business.",
   "history": {
     "narrative": "AlphaSense was founded in 2011 by Jack Kokko (CEO) and Raj Neervannan (CTO), who met at Wharton. Kokko, originally from Oulu, Finland, conceived the idea while working as an investment banking analyst at Morgan Stanley, frustrated by the manual process of searching through thousands of PDFs. The company launched as an AI-powered search engine for financial research documents and grew through acquisitions (Stream in 2021, Sentieo in 2022) and organic growth, raising over $1.4B across multiple rounds. The transformative moment came in June 2024 with the $930M acquisition of Tegus (which also brought BamSEC and Canalyst), making AlphaSense a combined document intelligence and expert network platform. Notably, AlphaSense had previously sued both Sentieo and Tegus before acquiring them.",
@@ -157,6 +157,10 @@
       {
         "year": "2026",
         "event": "Opening global headquarters at Hudson Yards, New York City"
+      },
+      {
+        "year": "2026",
+        "event": "Raises $350M at a $7.5B valuation (June 2026), led by Vitruvian Partners with Accenture Ventures and J.P. Morgan Asset Management; surpasses $600M ARR in Q1 2026"
       }
     ]
   },
