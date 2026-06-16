@@ -81,7 +81,7 @@ if (d.headquarters) {
 }
 
 // Confidence badge helper
-const conf = d.confidence || {};
+const conf: Record<string, string> = d.confidence || {};
 function badgeFor(field: string) {
   const level = conf[field];
   if (!level) return '';

@@ -1,5 +1,7 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
+// Import zod directly; Astro 6 deprecated the `z` re-export from astro:content.
+import { z } from 'zod';
 
 const networks = defineCollection({
   loader: glob({ pattern: '**/*.json', base: './src/content/networks' }),
@@ -105,7 +107,7 @@ const networks = defineCollection({
     sourceNotes: z.array(z.string()).default([]),
 
     // Confidence badges per field
-    confidence: z.record(z.enum(['verified', 'positioning', 'inference', 'partially-unverifiable'])).optional(),
+    confidence: z.record(z.string(), z.enum(['verified', 'positioning', 'inference', 'partially-unverifiable'])).optional(),
 
     // Why choose / when not ideal chips
     whyChoose: z.array(z.string()).default([]),
