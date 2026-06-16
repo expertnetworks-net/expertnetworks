@@ -451,7 +451,7 @@ const directoryEntries = networks.map((network, index) => {
     </div>
   </div>
 
-  <script type="application/json" id="directoryData" set:html={JSON.stringify(directoryEntries)}></script>
+  <script is:inline type="application/json" id="directoryData" set:html={JSON.stringify(directoryEntries)}></script>
 </BaseLayout>
 
 <style>

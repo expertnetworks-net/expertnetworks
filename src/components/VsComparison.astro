@@ -32,7 +32,7 @@ interface Props {
   backLink?: { href: string; label: string };
 }
 
-const { a, b, verdict, backLink = { href: '/compare', label: 'Compare All' } } = Astro.props;
+const { a, b, verdict } = Astro.props;
 
 const comparisons = [
   { label: 'Founded', va: String(a.data.founded || 'N/A'), vb: String(b.data.founded || 'N/A') },
