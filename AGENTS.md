@@ -9,7 +9,7 @@ Keep it short. Put details in `docs/`.
 - A static Astro site for <https://expertnetworks.net>.
 - The repository is the CMS. Content is JSON in `src/content/`.
 - There is no server, no API, no database, no admin panel, and no React.
-- A push to the production branch deploys the live site. See `docs/DEPLOYMENT.md`.
+- A push or merge to `main` deploys the live site through Cloudflare Pages. See `docs/DEPLOYMENT.md`.
 
 ## Terms
 
@@ -18,13 +18,13 @@ Keep it short. Put details in `docs/`.
 | provider | A company that the site profiles. This is the only term for the entity in the docs. |
 | network | The name for a provider in code and URLs: `src/content/networks/`, `relatedNetworks`, `/networks`. |
 | slug | The identifier of a provider or news item. It is the `slug` field and the file name without `.json`. |
-| production branch | The Git branch that Cloudflare Pages deploys to the live site. It is not `main`. |
+| production branch | `main`. Cloudflare Pages deploys it to the live site. |
 
 ## Rules
 
 1. `src/content.config.ts` is the source of truth for content shape. Change the schema before you add a field.
 2. Do not write a fact that you did not read in a public source in this session. See `docs/CONTENT-GUIDE.md`.
-3. Do not push to the production branch without the explicit approval of the owner. Get approval for each deploy.
+3. Do not push or merge to `main` without the explicit approval of the owner. Get approval for each deploy.
 4. Run `npm run verify` after each change to code or content.
 5. Run `node .github/scripts/check-slugs.mjs` after each change in `src/content/`.
 6. Describe only what the code does now. Do not describe the site as SSR, API-driven, or CMS-backed.
@@ -41,6 +41,7 @@ Each fact has one owner. Read the owner before you work on that topic.
 | `README.md` | Purpose of the project, quick start, links. For human readers. |
 | `AGENTS.md` | Agent rules, terms, repository map, commands, pitfalls. Shared by all agent tools. |
 | `CLAUDE.md` | Imports `AGENTS.md`. Adds only Claude-specific notes (orchestrator role). |
+| `docs/ROADMAP.md` | Goals, phases, decisions, and the research behind them. |
 | `docs/AGENT-WORKFLOW.md` | Multi-agent model: orchestrator, Codex worker roles, task specs, worktrees, swarm scripts, merge gates, image generation. |
 | `docs/ARCHITECTURE.md` | Build pipeline, page and component responsibilities, client scripts, compare page design. |
 | `docs/CONTENT-GUIDE.md` | Sourcing rule, schema field reference, procedures for providers, news items, and compare config. |
@@ -107,7 +108,7 @@ The required Node version is in `package.json` (`engines`). `.node-version` sele
 
 ## Pitfalls
 
-1. **A push to `main` does not deploy.** The production branch is a different branch. See `docs/DEPLOYMENT.md`.
+1. **A push to `main` deploys.** Work on `agent/<id>` or feature branches. Only the `/deploy` procedure touches `main`. See `docs/DEPLOYMENT.md`.
 2. **A build can pass with a wrong slug.** The schema does not check `relatedNetworks` or `src/content/compare.json` references. Run the slug check.
 3. **A build can pass with a broken UI.** Browser scripts find elements by `id`, class, and `data-*` attributes. If you rename one, update each selector that uses it.
 4. **The compare page has three code files and one config file.** Keep `src/pages/compare.astro`, `src/lib/compare-v2.ts`, `src/scripts/compare-page.ts`, and `src/content/compare.json` aligned. Put render logic in `src/lib/compare-v2.ts` only.

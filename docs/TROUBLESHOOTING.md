@@ -179,13 +179,13 @@ Do these checks in `npm run dev` or `npm run preview`. No automated test does th
 
 ### The live site did not change after a push
 
-- Cause: the push went to `main` or to a feature branch. Only the production branch deploys.
+- Cause: the push went to a feature or agent branch. Only `main` deploys.
 - Correction: read [`DEPLOYMENT.md`](DEPLOYMENT.md), sections 1 and 5.
 
 ### The local build passes, but the Cloudflare Pages build fails
 
 - On a feature branch: this is a known open issue. See [`DEPLOYMENT.md`](DEPLOYMENT.md), section 8.1.
-- On the production branch, examine these causes:
+- On `main`, examine these causes:
   1. The Node version. See [`DEPLOYMENT.md`](DEPLOYMENT.md), section 3.
   2. A file name with different letter case.
   3. A file that is not committed. Run `git status`.

@@ -5,7 +5,7 @@ set -u
 
 ROOT="$(git rev-parse --show-toplevel)" || exit 1
 cd "$ROOT"
-PROD_BRANCH="claude/expert-network-sources-6oGs1"          # Cloudflare Pages production branch. See docs/DEPLOYMENT.md
+PROD_BRANCH="main"                                          # Cloudflare Pages production branch. See docs/DEPLOYMENT.md
 BASE="${SWARM_BASE:-origin/$PROD_BRANCH}"                   # where agent branches start
 MAX_PAR="${SWARM_MAX_PAR:-3}"                               # parallel workers (16 GB MacBook Air: keep <= 3)
 WT_DIR="${SWARM_WT_DIR:-$HOME/.cache/expertnetworks/worktrees}"   # outside the repo so astro check ignores it

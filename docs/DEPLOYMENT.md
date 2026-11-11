@@ -9,21 +9,14 @@ Cloudflare settings are not in the repository. Verify them in the Cloudflare Pag
 
 | Branch | Role |
 |---|---|
-| `main` | GitHub default branch. Target of pull requests. **Not** the live site. |
-| `claude/expert-network-sources-6oGs1` | Cloudflare Pages production branch. A push to this branch deploys <https://expertnetworks.net>. |
+| `main` | Production branch and GitHub default branch. A push or merge to `main` deploys <https://expertnetworks.net>. |
+| `integration/<date>` | Where the orchestrator merges agent branches before a deploy. See `AGENT-WORKFLOW.md`. |
+| `agent/<task-id>` | One branch for each agent task. Created by `scripts/agents/swarm.sh`. |
 | Other branches | Feature branches. Cloudflare Pages makes a preview build for each push. See section 8.1. |
 
-Current state: `main` is behind the production branch.
-The production branch contains commits that `main` does not have.
-To correct this, open a pull request from the production branch into `main` and merge it.
-Until then, start each feature branch from the production branch, not from `main`.
+Rule: every branch starts from `main`. Nothing reaches `main` without the gate, a review, and the owner's approval.
 
-Show the commits that `main` does not have:
-
-```bash
-git fetch origin
-git log --oneline origin/main..origin/claude/expert-network-sources-6oGs1
-```
+History: until 2026-11-11 the production branch was `claude/expert-network-sources-6oGs1` and `main` was stale. Both were merged into `main` on that date (merge commit `1adf0b0`). The old branch is frozen; do not push to it.
 
 ## 2. Hosting
 
@@ -90,12 +83,12 @@ In the commands below, `<feature>` is the feature branch and `<sha>` is the merg
    node .github/scripts/check-slugs.mjs
    ```
 
-3. Update the local production branch.
+3. Update the local `main`.
 
    ```bash
    git fetch origin
-   git checkout claude/expert-network-sources-6oGs1
-   git pull --ff-only origin claude/expert-network-sources-6oGs1
+   git checkout main
+   git pull --ff-only origin main
    ```
 
 4. Merge the feature branch with a merge commit.
@@ -109,7 +102,7 @@ In the commands below, `<feature>` is the feature branch and `<sha>` is the merg
 6. Push. This step starts the production deploy.
 
    ```bash
-   git push origin claude/expert-network-sources-6oGs1
+   git push origin main
    ```
 
 7. Get the merge commit hash.
@@ -149,9 +142,9 @@ In the commands below, `<feature>` is the feature branch and `<sha>` is the merg
 ## 6. Rollback
 
 1. Get the approval of the owner.
-2. On the production branch, revert the merge commit: `git revert -m 1 <sha>`.
+2. On `main`, revert the merge commit: `git revert -m 1 <sha>`.
 3. Run `npm run verify`.
-4. Push the production branch.
+4. Push `main`.
 5. Do steps 8 to 12 of the deploy procedure.
 
 The Cloudflare Pages dashboard can also roll back to an earlier deployment. Only the owner has access.
@@ -182,7 +175,7 @@ Procedure when CI fails only at the audit step:
 3. Run `npm run verify`.
 4. If advisories remain, a major update or an `overrides` entry in `package.json` is necessary. Tell the owner.
 
-Note: Dependabot opens pull requests against the default branch, `main`. Because `main` is behind the production branch (section 1), correct that first. If you do not, Dependabot updates an old `package.json`.
+Note: Dependabot opens pull requests against `main`. Merging one is a deploy: follow section 5.
 
 ## 8. Known open issues
 
@@ -197,11 +190,7 @@ Note: Dependabot opens pull requests against the default branch, `main`. Because
 
 Only the owner has dashboard access.
 
-### 8.2 `main` is behind the production branch
-
-See section 1.
-
-### 8.3 Stale remote branches
+### 8.2 Stale remote branches
 
 These remote branches are from March 2026. They are candidates for deletion.
 Do not delete a branch without the approval of the owner.
@@ -213,29 +202,27 @@ Do not delete a branch without the approval of the owner.
 | `claude/fix-mobile-ui-bugs-a3Y2x` |
 | `claude/portfolio-docs-a3Y2x` |
 | `claude/study-expertnetworks-gD9NZ` |
+| `claude/fix-compare-networks-4VuOG` |
+| `claude/expert-network-sources-6oGs1` (former production branch, merged into `main`) |
 
 Before deletion, show the commits of a branch that the production branch does not have:
 
 ```bash
-git log --oneline origin/claude/expert-network-sources-6oGs1..origin/<branch>
+git log --oneline origin/main..origin/<branch>
 ```
-
-### 8.4 The production branch has an automatic name
-
-The production branch name `claude/expert-network-sources-6oGs1` looks like a feature branch.
-This causes wrong assumptions. A possible correction is to make `main` the production branch in Cloudflare Pages.
-This is a decision for the owner. If it changes, update section 1 and the `deploy` skill.
 
 ## 9. Accounts and services
 
-Verified on 2026-11-11.
+Verified on 2026-11-11. Hosting is Cloudflare only. Do not add another host.
 
-| Service | Used by this project | Notes |
+| Service | Status | Notes |
 |---|---|---|
-| GitHub `expertnetworks-net/expertnetworks` | Yes | Source of truth. Local `gh` must be signed in as `expertnetworks-net` (`gh auth switch -u expertnetworks-net`). |
-| Cloudflare Pages + DNS + Web Analytics | Yes | Hosting and analytics. Settings live in the dashboard, not in the repository. |
-| Vercel | No | The owner's Vercel team has no project for this site. Do not add one. |
-| Supabase | No | The site has no database. Adding one is an architecture change (see `AGENTS.md` rule 7). |
-| Codex CLI | Yes, for agent workers | See `AGENT-WORKFLOW.md`. Not part of the build. |
+| GitHub `expertnetworks-net/expertnetworks` | In use | Source of truth. Public repository, so Actions, code scanning, secret scanning, and push protection are free. Local `gh` must be signed in as `expertnetworks-net` (`gh auth switch -u expertnetworks-net`). |
+| Cloudflare Pages, DNS, Web Analytics | In use | Hosting, CDN, and analytics. Settings live in the dashboard, not in the repository. Free plan. |
+| Supabase | Planned, not in use | Organization exists, no project yet. Purpose and rules: `ROADMAP.md`, phase 2. Until a project exists, the site has no database. |
+| Codex CLI and Codex Cloud | In use for agent work | Workers. See `AGENT-WORKFLOW.md`. Not part of the build. |
+| Claude (chat and Claude Code) | In use for agent work | Orchestrator. Not part of the build. |
+
+Budget rule: no paid service beyond the owner's Claude and ChatGPT subscriptions. Every new service must have a free tier that covers current traffic, or the owner's written approval.
 
 Older repositories (`Expert-Networks.net`, `Experts-Portal---V1.0`) are archived. `dialectica-expert-network` is a separate private prototype. None of them deploy this site.

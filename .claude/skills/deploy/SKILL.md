@@ -1,6 +1,6 @@
 ---
 name: deploy
-description: Deploy a verified feature branch to the live site expertnetworks.net by merging it into the Cloudflare Pages production branch. Only the owner starts this skill, with /deploy.
+description: Deploy a verified feature branch to the live site expertnetworks.net by merging it into `main`, the Cloudflare Pages production branch. Only the owner starts this skill, with /deploy.
 argument-hint: "[feature branch]"
 disable-model-invocation: true
 ---
@@ -9,7 +9,7 @@ disable-model-invocation: true
 
 Feature branch: $ARGUMENTS (if empty, use the current branch)
 
-The procedure, the production branch name, and the known issues are in `docs/DEPLOYMENT.md`. Read sections 1, 5, and 8 first. Use the branch name from section 1. This skill is the checklist.
+The procedure and the known issues are in `docs/DEPLOYMENT.md`. Read sections 1, 5, and 8 first. The production branch is `main`. This skill is the checklist.
 
 ## Approval
 
@@ -23,9 +23,9 @@ A deploy changes the live site.
 ## Procedure
 
 1. Do steps 1 and 2 of `docs/DEPLOYMENT.md`, section 5 (clean tree, all checks). Stop if a check fails.
-2. Do step 3 (update the local production branch).
+2. Do step 3 (update the local `main`).
 3. Show the owner the commits to deploy:
-   `git log --oneline <production branch>..<feature branch>`
+   `git log --oneline main..<feature branch>`
 4. Ask the owner: "Deploy these commits to the live site?" Continue only after a "yes".
 5. Do steps 4 to 7 (merge with `--no-ff`, verify again if necessary, push, get the commit hash).
 6. Do step 8 (check runs). Wait until `Cloudflare Pages` and `verify` are complete on the merge commit.
@@ -41,5 +41,5 @@ A deploy changes the live site.
 ## Limits
 
 - Do not use `git push --force`.
-- Do not push to a branch other than the production branch and the feature branch.
+- Do not push to a branch other than `main` and the feature branch.
 - Do not delete branches.

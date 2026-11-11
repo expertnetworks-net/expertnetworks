@@ -25,11 +25,11 @@ task spec ──> swarm run ──> worktree agent/<id> ──> codex exec (role
 ```
 
 1. **Spec.** `scripts/agents/swarm.sh new <id> <role>` copies `.agents/tasks/_TEMPLATE.md`. Fill Goal, Scope, Acceptance criteria. Parallel tasks must have disjoint Scopes.
-2. **Run.** `swarm.sh run <id>` creates worktree `$SWARM_WT_DIR/<id>` on branch `agent/<id>` from the production branch, links `node_modules`, and runs Codex with `.agents/roles/_common.md` + the role prompt + the spec.
+2. **Run.** `swarm.sh run <id>` creates worktree `$SWARM_WT_DIR/<id>` on branch `agent/<id>` from `origin/main`, links `node_modules`, and runs Codex with `.agents/roles/_common.md` + the role prompt + the spec.
 3. **Report.** Codex ends with JSON that matches `.agents/schemas/result.schema.json`. The script writes it to `.agents/runs/<id>/result.json` and commits the worktree changes if `status` is `done` or `partial`.
-4. **Review.** `swarm.sh review <id>` runs `codex exec review --base <production branch>` in the worktree. Output: `.agents/runs/<id>/review.md`.
+4. **Review.** `swarm.sh review <id>` runs `codex exec review --base origin/main` in the worktree. Output: `.agents/runs/<id>/review.md`.
 5. **Gate.** `swarm.sh gate <id>` runs `gate.sh` in the worktree.
-6. **Integrate.** `swarm.sh integrate <id>...` merges agent branches with `--no-ff` into `integration/<date>` and runs the gate. It refuses the production branch.
+6. **Integrate.** `swarm.sh integrate <id>...` merges agent branches with `--no-ff` into `integration/<date>` and runs the gate. It refuses `main`.
 7. **Deploy.** The owner runs `/deploy integration/<date>`. See `DEPLOYMENT.md` section 5.
 8. **Clean.** `swarm.sh clean <id>` or `clean --all` removes worktrees and deletes merged agent branches.
 
@@ -53,7 +53,7 @@ All roles get network access in the sandbox (`sandbox_workspace_write.network_ac
 | `swarm.sh new <id> [role]` | Create `.agents/tasks/<id>.md` from the template. |
 | `swarm.sh run <id\|file>` | Run one task in its worktree. Blocks until Codex ends. |
 | `swarm.sh fanout <id>...` | Run several tasks in parallel, at most `SWARM_MAX_PAR` at a time. Prints status at the end. |
-| `swarm.sh review <id> [base]` | Codex code review of `agent/<id>` against the production branch. |
+| `swarm.sh review <id> [base]` | Codex code review of `agent/<id>` against `origin/main`. |
 | `swarm.sh gate <id> [--quick]` | Run the merge gate inside the task's worktree. |
 | `swarm.sh integrate <id>...` | Merge agent branches into `integration/<date>` and run the gate. |
 | `swarm.sh status` | One line per task: role, report status, commits ahead, summary. |
@@ -66,7 +66,7 @@ All roles get network access in the sandbox (`sandbox_workspace_write.network_ac
 | Variable | Default | Meaning |
 |---|---|---|
 | `SWARM_MAX_PAR` | `3` | Parallel Codex workers. 3 is the safe limit on the 16 GB MacBook Air. |
-| `SWARM_BASE` | `origin/<production branch>` | Start point of new agent branches. |
+| `SWARM_BASE` | `origin/main` | Start point of new agent branches. |
 | `SWARM_WT_DIR` | `~/.cache/expertnetworks/worktrees` | Worktree location. Outside the repo so `astro check` and Astro do not scan it. |
 | `CODEX_MODEL` | Codex default (`~/.codex/config.toml`) | Model for workers. |
 | `CODEX_EFFORT` | Codex default | `model_reasoning_effort` for workers. Use `low` for monitor, `high` for builder and reviewer. |

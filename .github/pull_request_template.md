@@ -16,7 +16,7 @@
 
 ## Deploy note
 
-<!-- A merge into `main` does not deploy the live site. Procedure: docs/DEPLOYMENT.md -->
+<!-- A merge into `main` deploys the live site. Owner approval required. Procedure: docs/DEPLOYMENT.md -->
 
 - Production deploy necessary after merge: yes / no
 - Changes `public/_headers`: yes / no

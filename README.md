@@ -33,7 +33,7 @@ The site is static. The repository is the publishing system.
 
 1. Content is JSON in `src/content/`.
 2. `npm run build` validates the content and writes HTML to `dist/`.
-3. Cloudflare Pages builds and serves the production branch.
+3. Cloudflare Pages builds and serves `main`.
 
 There is no server, no API, no database, and no admin panel.
 No environment variables are necessary.
@@ -60,6 +60,7 @@ npm run verify
 | Read this | To learn |
 |---|---|
 | [`AGENTS.md`](AGENTS.md) | Rules, repository map, commands, and pitfalls. Written for AI agents (Codex and Claude). Useful for all contributors. |
+| [`docs/ROADMAP.md`](docs/ROADMAP.md) | Where the project is going, and why. |
 | [`docs/AGENT-WORKFLOW.md`](docs/AGENT-WORKFLOW.md) | How the orchestrator and Codex workers split, run, review, and merge work. |
 | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | How the build, the pages, and the browser scripts work. |
 | [`docs/CONTENT-GUIDE.md`](docs/CONTENT-GUIDE.md) | How to add or update a provider, a news item, or the compare config. Field reference. Sourcing rule. |
@@ -68,7 +69,7 @@ npm run verify
 | [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md) | Symptoms and corrections. |
 | [`docs/archive/`](docs/archive/README.md) | Historical files. Not maintained. |
 
-Important: a push to `main` does not update the live site. Read [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) before you deploy.
+Important: a push to `main` updates the live site. Read [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) before you deploy.
 
 ## Contributions
 

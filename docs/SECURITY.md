@@ -24,7 +24,7 @@ The remaining risks are:
 
 1. **Supply chain.** A compromised or vulnerable npm package can affect the build output or a developer machine.
 2. **Content integrity.** A wrong or invented fact about a real company. See the sourcing rule in [`CONTENT-GUIDE.md`](CONTENT-GUIDE.md).
-3. **Unintended deploy.** A push to the production branch publishes immediately. See [`DEPLOYMENT.md`](DEPLOYMENT.md).
+3. **Unintended deploy.** A push to `main` publishes immediately. See [`DEPLOYMENT.md`](DEPLOYMENT.md).
 4. **Header regression.** A change to `public/_headers` can weaken the CSP or block a necessary resource.
 
 ## 2. Headers and CSP
