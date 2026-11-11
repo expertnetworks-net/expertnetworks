@@ -153,7 +153,22 @@ Order matters: facts first, then gates, then structure, then polish. Each line i
 - No page over 400 lines; no inline styles outside tokens.
 - A stranger can clone, build, and contribute from the README alone.
 
-## 7. References
+## 7. Editorial focus: AI in expert networks
+
+Decided by the owner on 2026-11-11. This is the site's main differentiator: an evidence-graded record of what each provider really does with AI.
+
+| Piece | What it is | Status |
+|---|---|---|
+| `ai` collection | One record per provider: eleven capabilities (transcript library, AI search, AI summaries, AI-moderated calls, expert matching, MCP server, API, integrations, agents, services for AI labs, data policy), each with status, evidence rank, dates, and sources; plus a claimed / evidenced / gaps reality check. | Schema task `ai-schema`; 19 audit tasks `ai-<slug>` |
+| Derived label | Documented, Reported, Claimed, Announced, No public evidence. Computed from status and evidence, never hand-written. | In `ai-schema` |
+| Profile section | "AI capabilities" on each profile reads the record. | After the profile redesign |
+| `/ai/` hub | State of AI in expert networks: capability matrix across providers, MCP and API tracker, transcript-library comparison (size, date, access, distribution), timeline of launches, glossary. | Next |
+| Guides | What an MCP server changes for a research buyer; how to evaluate a transcript library; AI-moderated calls: what is automated and what is not; questions to ask a provider about model training on your calls. | Next |
+| Cadence | AI records re-checked monthly; launches added to news within a week. | Scheduled swarm run |
+
+Wording rule: the site reports what was claimed, what was found, and the gap. It never says a provider bluffs. See `CONTENT-GUIDE.md`.
+
+## 8. References
 
 - Cemri et al. *Why Do Multi-Agent LLM Systems Fail?* https://arxiv.org/abs/2503.13657
 - Anthropic. *How we built our multi-agent research system.* https://www.anthropic.com/engineering/multi-agent-research-system
