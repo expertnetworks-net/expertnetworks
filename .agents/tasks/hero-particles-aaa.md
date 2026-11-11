@@ -38,6 +38,7 @@ Workbench intensity gets 1, 2 (half the sparks) and 6 only.
 - src/components/home/
 - src/pages/index.astro
 - src/styles/fx.css
+- public/images/cosmos/
 - docs/DESIGN.md
 - docs/ARCHITECTURE.md
 
