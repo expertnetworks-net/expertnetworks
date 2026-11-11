@@ -14,3 +14,4 @@ plan.md
 node_modules
 .agents/runs/
 .raw/
+.agents/refs/
