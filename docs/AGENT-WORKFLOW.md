@@ -7,7 +7,7 @@ Rules that bind every agent are in `AGENTS.md`. Deploy rules are in `DEPLOYMENT.
 
 | Layer | Who | Does | Does not |
 |---|---|---|---|
-| Owner | Repository owner (`expertnetworks-net`) | Sets goals. Approves each deploy. | — |
+| Owner | Project owner (anonymous) | Sets goals. Approves each deploy. | — |
 | Orchestrator | Claude (Opus / Fable) in chat or Claude Code | Plans, writes task specs, dispatches, reads reports, reviews, integrates. | Large edits that a worker can do. Deploy without approval. |
 | Workers | Codex CLI (`codex exec`), one process per task | Build, review, test, verify facts, monitor, design. | Commit, push, merge, deploy, edit outside Scope. |
 | Gate | `scripts/agents/gate.sh` + CI | Decides if a branch can merge. | — |
@@ -25,9 +25,9 @@ task spec ──> swarm run ──> worktree agent/<id> ──> codex exec (role
 ```
 
 1. **Spec.** `scripts/agents/swarm.sh new <id> <role>` copies `.agents/tasks/_TEMPLATE.md`. Fill Goal, Scope, Acceptance criteria. Parallel tasks must have disjoint Scopes.
-2. **Run.** `swarm.sh run <id>` creates worktree `$SWARM_WT_DIR/<id>` on branch `agent/<id>` from `origin/main`, links `node_modules`, and runs Codex with `.agents/roles/_common.md` + the role prompt + the spec.
-3. **Report.** Codex ends with JSON that matches `.agents/schemas/result.schema.json`. The script writes it to `.agents/runs/<id>/result.json` and commits the worktree changes if `status` is `done` or `partial`.
-4. **Review.** `swarm.sh review <id>` runs `codex exec review --base origin/main` in the worktree. Output: `.agents/runs/<id>/review.md`.
+2. **Run.** `swarm.sh run <id>` checks `depends_on`, then creates worktree `$SWARM_WT_DIR/<id>` on branch `agent/<id>` from `origin/main`, clones `node_modules` into it (APFS clone; each worktree needs its own because Astro caches inside `node_modules/.astro`), and runs Codex with `.agents/roles/_common.md` + the role prompt + the spec.
+3. **Report.** Codex ends with JSON that matches `.agents/schemas/result.schema.json`. The script writes it to `.agents/runs/<id>/result.json` and commits the worktree changes if `status` is `done` or `partial` **and** every changed file is inside Scope. Files outside Scope block the commit (`scope_violations.txt`).
+4. **Review.** `swarm.sh claude-review <id>` (cross-vendor, for Codex-written work) and `swarm.sh review <id>` (Codex). Outputs: `.agents/runs/<id>/review-claude.md`, `review-codex.md`. A `VERDICT: BLOCK` or any legal-risk finding becomes a follow-up task spec before merge.
 5. **Gate.** `swarm.sh gate <id>` runs `gate.sh` in the worktree.
 6. **Integrate.** `swarm.sh integrate <id>...` merges agent branches with `--no-ff` into `integration/<date>` and runs the gate. It refuses `main`.
 7. **Deploy.** The owner runs `/deploy integration/<date>`. See `DEPLOYMENT.md` section 5.
@@ -53,7 +53,8 @@ All roles get network access in the sandbox (`sandbox_workspace_write.network_ac
 | `swarm.sh new <id> [role]` | Create `.agents/tasks/<id>.md` from the template. |
 | `swarm.sh run <id\|file>` | Run one task in its worktree. Blocks until Codex ends. |
 | `swarm.sh fanout <id>...` | Run several tasks in parallel, at most `SWARM_MAX_PAR` at a time. Prints status at the end. |
-| `swarm.sh review <id> [base]` | Codex code review of `agent/<id>` against `origin/main`. |
+| `swarm.sh review <id> [base]` | Codex code review (`codex exec review --base`) of `agent/<id>`. Output: `review-codex.md`. |
+| `swarm.sh claude-review <id> [base]` | Cross-vendor review by Claude Code (`claude -p`, read-only tools). Ends with `VERDICT: MERGE` or `VERDICT: BLOCK`. Output: `review-claude.md`. |
 | `swarm.sh gate <id> [--quick]` | Run the merge gate inside the task's worktree. |
 | `swarm.sh integrate <id>...` | Merge agent branches into `integration/<date>` and run the gate. |
 | `swarm.sh status` | One line per task: role, report status, commits ahead, summary. |
@@ -67,6 +68,8 @@ All roles get network access in the sandbox (`sandbox_workspace_write.network_ac
 |---|---|---|
 | `SWARM_MAX_PAR` | `3` | Parallel Codex workers. 3 is the safe limit on the 16 GB MacBook Air. |
 | `SWARM_BASE` | `origin/main` | Start point of new agent branches. |
+| `SWARM_TIMEOUT` | `1800` | Seconds before a worker is killed. |
+| `SWARM_SKIP_DEPS` | `0` | `1` skips the `depends_on` check. |
 | `SWARM_WT_DIR` | `~/.cache/expertnetworks/worktrees` | Worktree location. Outside the repo so `astro check` and Astro do not scan it. |
 | `CODEX_MODEL` | Codex default (`~/.codex/config.toml`) | Model for workers. |
 | `CODEX_EFFORT` | Codex default | `model_reasoning_effort` for workers. Use `low` for monitor, `high` for builder and reviewer. |
@@ -125,3 +128,18 @@ Cloudflare Pages Free allows 500 builds per month. Every pushed branch triggers 
 - Do not push `agent/*` branches. They stay local; `integrate` combines them.
 - Push `integration/*` branches only when a preview URL is needed.
 - Codex Cloud PR branches count too: batch small changes into one task.
+
+## 12. Known pitfalls of the tooling
+
+Found while testing the swarm on 2026-11-11. Each one is fixed in `swarm.sh` or guarded by `gate.sh`.
+
+| Pitfall | Guard |
+|---|---|
+| Editing a script from a Linux VM or with `sed -i` can drop its executable bit. | `gate.sh` step "agent scripts executable". Fix: `chmod 755 scripts/agents/*.sh .githooks/*`. |
+| A shared `node_modules` symlink breaks the sandbox (Vite writes its cache outside the writable worktree) and parallel builds. | Per-worktree APFS clone. |
+| `codex exec review` rejects a custom prompt together with `--base`. | `swarm.sh review` passes no prompt; Codex reads `AGENTS.md`. |
+| `claude -p --allowedTools A B C "prompt"` treats the prompt as another tool name. | Prompt goes through stdin. |
+| `claude -p --permission-mode plan` returns only a plan stub. | Normal mode; the read-only tool allowlist denies everything else. |
+| Rewriting `swarm.sh` while a `fanout` is running makes bash execute the new file from an old byte offset. | Do not edit `swarm.sh` while a fanout runs. |
+| The Claude Code login on the Mac expires (warning seen: ends by 2026-11-14). | For unattended runs use `claude setup-token` (subscription token, no API cost). |
+

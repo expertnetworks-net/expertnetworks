@@ -116,11 +116,12 @@ cmd_fanout() {
 cmd_review() {  # Codex review of an agent branch
   local id="${1:-}"; [ -n "$id" ] || die "usage: review <id> [base]"
   local wt="$WT_DIR/$id" base="${2:-$BASE}"; [ -d "$wt" ] || die "no worktree for $id"
+  base="$(git rev-parse --verify "$base^{commit}")" || die "bad base"   # pass a SHA: codex may resolve a bare 'main' to a remote ref
   mkdir -p "$RUNS/$id"
   echo "[$(ts)] codex review agent/$id vs $base"
   # shellcheck disable=SC2086
-  (cd "$wt" && with_timeout codex exec review --base "$base" $MODEL_ARGS -o "$RUNS/$id/review-codex.md" \
-    "Review against AGENTS.md rules and the task spec in .agents/runs/$id/task.md. Report only real defects, most severe first." ) > "$RUNS/$id/review-codex.log" 2>&1
+  # codex exec review cannot take a custom prompt together with --base; it reads AGENTS.md itself.
+  (cd "$wt" && with_timeout codex exec review --base "$base" $MODEL_ARGS -o "$RUNS/$id/review-codex.md") > "$RUNS/$id/review-codex.log" 2>&1
   cat "$RUNS/$id/review-codex.md" 2>/dev/null || tail -20 "$RUNS/$id/review-codex.log"
 }
 
@@ -130,10 +131,18 @@ cmd_claude_review() {  # cross-vendor review: Claude Code (subscription login) r
   command -v claude >/dev/null || die "claude CLI not found"
   mkdir -p "$RUNS/$id"
   echo "[$(ts)] claude review agent/$id vs $base"
-  (cd "$wt" && git diff "$base"...HEAD > "$RUNS/$id/diff.patch"
-   with_timeout claude -p --permission-mode plan --allowedTools "Read Grep Glob Bash(git diff:*) Bash(git log:*)" \
-     "You review a diff written by another AI model. Read AGENTS.md and the task spec at $RUNS/$id/task.md. The diff is $RUNS/$id/diff.patch (base $base). Report only real defects (correctness, scope, unsourced facts, security, missing doc updates), most severe first, each with file, line, and a concrete failure. End with one line: VERDICT: MERGE or VERDICT: BLOCK." \
-  ) > "$RUNS/$id/review-claude.md" 2> "$RUNS/$id/review-claude.log"
+  (cd "$wt" && git diff "$base"...HEAD) > "$RUNS/$id/diff.patch"
+  cat > "$RUNS/$id/review-claude.prompt" <<PROMPT
+You review a diff written by another AI model (Codex). Read AGENTS.md and the task spec at $RUNS/$id/task.md.
+The diff is in $RUNS/$id/diff.patch (base: $base). You may read any file in the repository.
+Report only real defects: correctness, scope violations, unsourced or legally risky claims, security, missing doc updates.
+Most severe first; each with file, line, and a concrete failure. No style nits.
+End with exactly one line: VERDICT: MERGE or VERDICT: BLOCK
+PROMPT
+  # Prompt goes through stdin: --allowedTools is variadic and would swallow a positional prompt.
+  # No plan mode: in -p it returns only a plan stub. Read-only comes from the tool allowlist (other tools are denied in -p).
+  (cd "$wt" && with_timeout claude -p --add-dir "$RUNS/$id" --allowedTools Read Grep Glob < "$RUNS/$id/review-claude.prompt") \
+    > "$RUNS/$id/review-claude.md" 2> "$RUNS/$id/review-claude.log"
   cat "$RUNS/$id/review-claude.md"
 }
 

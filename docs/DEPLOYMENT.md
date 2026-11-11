@@ -217,9 +217,10 @@ Verified on 2026-11-11. Hosting is Cloudflare only. Do not add another host.
 
 | Service | Status | Notes |
 |---|---|---|
-| GitHub `expertnetworks-net/expertnetworks` | In use | Source of truth. Public repository, so Actions, code scanning, secret scanning, and push protection are free. Local `gh` must be signed in as `expertnetworks-net` (`gh auth switch -u expertnetworks-net`). |
+| GitHub `expertnetworks-net/expertnetworks` | In use | Source of truth. Public repository, so Actions, code scanning, secret scanning, and push protection are free. The repository belongs to the `expertnetworks-net` GitHub organization; members are private. |
 | Cloudflare Pages, DNS, Web Analytics | In use | Hosting, CDN, and analytics. Settings live in the dashboard, not in the repository. Free plan. |
 | Supabase | Planned, not in use | Organization exists, no project yet. Purpose and rules: `ROADMAP.md`, phase 2. Until a project exists, the site has no database. |
+| Cloudflare tooling for agents | In use | Codex: Cloudflare MCP (`https://mcp.cloudflare.com/mcp`), **read-only** OAuth. Claude Code: `cloudflare@cloudflare` plugin. Mac: `cf` CLI (OAuth, broad scopes) for the orchestrator only; any change to production resources needs owner approval. Global skills from `cloudflare/skills`. |
 | Codex CLI and Codex Cloud | In use for agent work | Workers. See `AGENT-WORKFLOW.md`. Not part of the build. |
 | Claude (chat and Claude Code) | In use for agent work | Orchestrator. Not part of the build. |
 

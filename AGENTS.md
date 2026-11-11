@@ -22,7 +22,7 @@ Keep it short. Put details in `docs/`.
 
 ## Rules
 
-0. **The project is anonymous.** Never write a personal name, personal email, employer, or location of the owner in code, content, docs, commit messages, or PRs. Commits use the repository-local identity (`expertnetworks-net`, GitHub noreply email). `scripts/agents/gate.sh` enforces this.
+0. **The project is anonymous.** Never write a personal name, personal email, employer, or location of the owner in code, content, docs, commit messages, or PRs. Commits use the repository-local identity `ExpertNetworks.net Editors <editors@expertnetworks.net>`. Merge locally and push; do not merge in the GitHub web UI (it records the merger's personal identity). `scripts/agents/identity-check.sh`, the git hooks, `gate.sh`, and the `Anonymity` CI workflow enforce this.
 
 1. `src/content.config.ts` is the source of truth for content shape. Change the schema before you add a field.
 2. Do not write a fact that you did not read in a public source in this session. See `docs/CONTENT-GUIDE.md`.
