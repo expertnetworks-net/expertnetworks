@@ -8,7 +8,7 @@ Every page of ExpertNetworks.net can be read in English or Spanish. English stay
 
 # Context
 - Base: `integration/design`. Astro 7 static site, content collections `networks`, `news`, `ai` (`src/content.config.ts`).
-- Other tasks own the homepage right now: do NOT edit `src/pages/index.astro`, `src/components/home/**`, `src/components/ParticleHero.astro`. The Spanish home (`/es/`) is a later task; for now `/es/` may render a minimal Spanish landing that links to the Spanish sections, built only from files in your scope.
+- Root pages are in scope so they can take a `lang` prop; keep English output byte-identical in meaning. Other tasks own the homepage right now: do NOT edit `src/pages/index.astro`, `src/components/home/**`, `src/components/ParticleHero.astro`. The Spanish home (`/es/`) is a later task; for now `/es/` may render a minimal Spanish landing that links to the Spanish sections, built only from files in your scope.
 - Read `AGENTS.md`, `docs/ARCHITECTURE.md`, `docs/DESIGN.md`, `docs/CONTENT-GUIDE.md` (evidence labels, AI capability records, legal wording rule) before starting.
 
 # Build
@@ -48,6 +48,33 @@ Every page of ExpertNetworks.net can be read in English or Spanish. English stay
 - scripts/agents/gate.sh
 - docs/ARCHITECTURE.md
 - docs/CONTENT-GUIDE.md
+- src/pages/404.astro
+- src/pages/about.astro
+- src/pages/alphasights-alternatives.astro
+- src/pages/alphasights-vs-dialectica.astro
+- src/pages/alphasights-vs-third-bridge.astro
+- src/pages/best-expert-networks.astro
+- src/pages/disclaimer.astro
+- src/pages/expert-network-pricing.astro
+- src/pages/expert-networks-for-consulting.astro
+- src/pages/expert-networks-for-hedge-funds.astro
+- src/pages/expert-networks-for-private-equity.astro
+- src/pages/glg-alternatives.astro
+- src/pages/glg-vs-alphasights.astro
+- src/pages/glg-vs-guidepoint.astro
+- src/pages/glg-vs-third-bridge.astro
+- src/pages/llms.txt.ts
+- src/pages/privacy.astro
+- src/pages/search-index.json.ts
+- src/pages/sources.astro
+- src/pages/third-bridge-alternatives.astro
+- src/pages/third-bridge-vs-guidepoint.astro
+- src/pages/verification.astro
+- src/pages/what-is-an-expert-network.astro
+- src/pages/news/
+- src/components/Breadcrumbs.astro
+- src/content/news/
+- public/robots.txt
 
 # Acceptance criteria
 - [ ] `/es/...` exists for every section listed in Build 6 and renders Spanish chrome; English URLs unchanged (no redirects added for English)

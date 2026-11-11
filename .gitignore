@@ -13,3 +13,4 @@ plan.md
 # Agent swarm
 node_modules
 .agents/runs/
+.raw/
