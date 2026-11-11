@@ -82,7 +82,8 @@
     "expertCalls": true,
     "contentLibrary": "Expert Insights (Tegus Library)",
     "aiMatching": false,
-    "complianceTools": true
+    "complianceTools": true,
+    "surveys": null
   },
   "lastUpdated": "2026-11-11",
   "overview": "AlphaSense is an AI-powered market intelligence platform that combines proprietary search technology, generative AI workflows, business documents, expert content, and financial data. Founded in 2011 by Jack Kokko and Raj Neervannan, the platform started as a search engine for financial research documents and expanded through acquisitions including Stream, Sentieo, and Tegus. The $930M Tegus acquisition closed in July 2024 and brought expert research, BamSEC, and Canalyst into the group. AlphaSense now offers both human-led and AI-led expert calls alongside its document intelligence platform.",
@@ -406,5 +407,6 @@
     "regionStrength": "inference",
     "complianceBadge": "inference",
     "aiBadge": "inference"
-  }
+  },
+  "employeeCount": "Not disclosed"
 }

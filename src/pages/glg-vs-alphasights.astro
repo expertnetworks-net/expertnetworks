@@ -8,15 +8,16 @@ const glg = allNetworks.find(n => n.data.slug === 'glg')!;
 const alpha = allNetworks.find(n => n.data.slug === 'alphasights')!;
 
 const verdict = [
-  `<strong>GLG</strong> is the industry's broadest platform. If you need multi-format research (calls + surveys + events + library + placements), global coverage across nearly every sector, and the most established compliance infrastructure in the space, GLG is the default choice for large institutional buyers. The trade-off: it's typically the most expensive option, and the breadth of the platform can feel heavy for teams that just need fast expert calls.`,
-  `<strong>AlphaSights</strong> positions itself as the speed and service leader. If your team operates under time pressure (PE deal diligence, fast-moving hedge fund research), AlphaSights' custom-sourcing model and high-touch project management are a core part of their value proposition. Their AI investment (AlphaGPT, AlphaGraph) is aggressive, and the firm has maintained a 70% CAGR since founding. The trade-off: narrower product suite than GLG, and the per-call pricing model can add up for high-volume users.`,
-  `Some research teams use both — GLG for breadth and AlphaSights for speed. They're complementary more than they are substitutes.`,
+  glg.data.description,
+  glg.data.pricingDetail || 'Not disclosed',
+  alpha.data.description,
+  alpha.data.pricingDetail || 'Not disclosed',
 ];
 ---
 
 <BaseLayout
   title="GLG vs AlphaSights: Complete Comparison (2026) | ExpertNetworks.net"
-  description="Head-to-head comparison of GLG and AlphaSights — the two largest expert networks. Compare pricing, expert coverage, AI capabilities, compliance, services, and which is right for your team."
+  description="Head-to-head comparison of GLG and AlphaSights. Compare pricing, expert coverage, AI capabilities, compliance, services, and which is right for your team."
   canonicalPath="/glg-vs-alphasights"
   ogType="article"
   jsonLd={{
@@ -56,7 +57,7 @@ const verdict = [
         GLG vs AlphaSights
       </h1>
       <p class="text-lg text-secondary max-w-3xl leading-relaxed">
-        The industry pioneer vs. the fastest-growing challenger. Here's how they actually compare on the things that matter — pricing, speed, AI, compliance, and product depth.
+        Compare their published profiles across pricing, AI, compliance, and services.
       </p>
     </div>
   </section>

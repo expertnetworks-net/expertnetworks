@@ -44,7 +44,8 @@
   "compliance": {
     "mnpiPolicy": "Lynk says experts must not discuss confidential or material non-public information, or speak on behalf of their current employer.",
     "expertVetting": "Lynk describes background database searches, reference checks, mandatory training and assessments.",
-    "auditTrail": true
+    "auditTrail": true,
+    "coolingOffPeriod": "Not disclosed"
   },
   "featured": false,
   "priority": 28,
@@ -52,8 +53,6 @@
   "categoryBadge": "Technology-First",
   "deliveryModel": "Hybrid",
   "regionStrength": "Global",
-  "complianceBadge": "Compliance Tools",
-  "aiBadge": "AI Matching",
   "lastUpdated": "2026-11-11",
   "overview": "Lynk is an expert network founded in 2015. In a GPCA interview, Peggy Choi identified Evan Xiao Han and Jennifer Li as fellow founders and described her prior work at Silver Lake and TPG.\n\nLynk currently presents itself as a consulting and market research solution, offering expert interviews, surveys and project support. Its website reports 800,000+ experts, consultants and talents. It combines a Client Solutions team with independent consultants and industry specialists, offering unbundled services or full-project engagements.\n\nIn September 2021, Lynk announced that investment from UBS brought total funding to $35 million. This is a historical funding figure, not a current valuation or funding total.",
   "history": {
@@ -200,5 +199,12 @@
     "whenNotIdeal": "inference"
   },
   "employeeCountSource": "Lynk press release, January 27, 2021; not a current headcount",
-  "expertCountLabel": "Experts, consultants and talents"
+  "expertCountLabel": "Experts, consultants and talents",
+  "comparison": {
+    "expertCalls": null,
+    "surveys": null,
+    "contentLibrary": null,
+    "complianceTools": null
+  },
+  "headquarters": "Not disclosed"
 }

@@ -47,12 +47,12 @@
   "compliance": {
     "mnpiPolicy": "Atheneum’s April 2026 expert terms prohibit engagements involving material non-public information, confidentiality breaches, or conflicts of interest, and require experts to report compliance concerns.",
     "expertVetting": "Atheneum says experts are pre-screened and subject to identity verification and client feedback. Its expert terms permit identity and background checks and require accurate credentials and necessary employer approvals.",
-    "auditTrail": false
+    "auditTrail": false,
+    "coolingOffPeriod": "Not disclosed"
   },
   "featured": false,
   "priority": 10,
   "published": true,
-  "categoryBadge": "Research Platform",
   "deliveryModel": "Hybrid",
   "regionStrength": "Global",
   "complianceBadge": "Limited Public Detail",
@@ -263,5 +263,6 @@
     "whenNotIdeal": "inference",
     "expertCount": "positioning",
     "expertCountLabel": "positioning"
-  }
+  },
+  "employeeCount": "Not disclosed"
 }

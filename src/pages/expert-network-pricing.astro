@@ -9,7 +9,7 @@ const published = allNetworks.filter(n => n.data.published).sort((a, b) => a.dat
 /* ── Group by pricing model ── */
 const pricingGroups: Record<string, typeof published> = {};
 published.forEach(n => {
-  const model = n.data.pricingModel || 'Unknown';
+  const model = n.data.pricingModel || 'Not disclosed';
   if (!pricingGroups[model]) pricingGroups[model] = [];
   pricingGroups[model].push(n);
 });
@@ -99,7 +99,7 @@ const sections = [
         "@type": "FAQPage",
         "mainEntity": [
           { "@type": "Question", "name": "Why is expert network pricing so opaque?", "acceptedAnswer": { "@type": "Answer", "text": "Most major networks are B2B enterprises that negotiate custom pricing per client based on volume, commitment, and service level. There's no incentive for them to publish fixed rates because pricing flexibility is a competitive advantage." } },
-          { "@type": "Question", "name": "What is a normal expert call cost?", "acceptedAnswer": { "@type": "Answer", "text": "Based on publicly available benchmarks, standard expert calls typically land in the $700–$1,500/hr range on the client side. Third-party comparison platforms like Inex One publicly benchmark major networks around $1,000–$1,350/hr." } },
+          { "@type": "Question", "name": "What is a normal expert call cost?", "acceptedAnswer": { "@type": "Answer", "text": "Based on publicly available benchmarks, standard expert calls typically land in the $700–$1,500/hr range on the client side." } },
           { "@type": "Question", "name": "What does the expert actually get paid?", "acceptedAnswer": { "@type": "Answer", "text": "Expert compensation typically ranges from $200–$500+/hr depending on seniority and domain scarcity. The network keeps the difference to cover sourcing, compliance screening, project management, scheduling, and platform infrastructure." } },
           { "@type": "Question", "name": "Are subscriptions cheaper than per-call?", "acceptedAnswer": { "@type": "Answer", "text": "It depends on volume. Subscriptions generally offer a lower effective per-call rate for high-volume users (100+ calls/year) and may bundle library/content access. For low-volume users, per-call or pay-as-you-go is typically more cost-effective." } },
           { "@type": "Question", "name": "Can smaller teams negotiate?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, but with less leverage. Smaller teams can still negotiate by offering multi-year commitments, starting with a trial period, or bundling services. Using multiple providers also creates competitive pressure." } }
@@ -215,7 +215,7 @@ const sections = [
 
           <!-- Methodology note -->
           <div class="mt-5 p-4 rounded-sm bg-bg-secondary border border-border/30 text-xs text-secondary leading-relaxed">
-            <strong class="text-primary">Methodology note:</strong> Ranges above reflect publicly available data, third-party comparison benchmarks (notably Inex One), provider marketing materials, and market reporting. Most major expert networks do not publish a universal public rate card. Enterprise pricing is almost always negotiated based on volume, commitment, and workflow. This page is transparent about the difference between what is publicly knowable and what is inferred.
+            <strong class="text-primary">Methodology note:</strong> Ranges above reflect publicly available data, third-party comparison benchmarks, provider marketing materials, and market reporting. Most major expert networks do not publish a universal public rate card. Enterprise pricing is almost always negotiated based on volume, commitment, and workflow. This page is transparent about the difference between what is publicly knowable and what is inferred.
           </div>
         </section>
 
@@ -308,7 +308,7 @@ const sections = [
             <!-- Standard calls -->
             <div class="rounded-card border border-border/50 bg-white p-5 shadow-card">
               <h3 class="text-sm font-bold text-primary mb-2">Standard Expert Call Range</h3>
-              <p class="text-[13px] text-secondary leading-relaxed mb-3">Third-party comparison platforms (notably Inex One) publicly benchmark major networks in the ~$1,000–$1,350/hr range for standard calls. The broader market including smaller and specialty networks spans roughly $700–$1,500+. Calls involving C-suite executives, scarce expertise, or urgent timelines can exceed these ranges significantly.</p>
+              <p class="text-[13px] text-secondary leading-relaxed mb-3">The broader market including smaller and specialty networks spans roughly $700–$1,500+. Calls involving C-suite executives, scarce expertise, or urgent timelines can exceed these ranges significantly.</p>
               <div class="flex flex-wrap gap-2">
                 <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-amber-100 text-amber-800">Third-party benchmark</span>
                 <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-gray-100 text-gray-600">Enterprise pricing is negotiated</span>
@@ -331,7 +331,7 @@ const sections = [
             <!-- Public vs negotiated -->
             <div class="rounded-card border border-border/50 bg-white p-5 shadow-card">
               <h3 class="text-sm font-bold text-primary mb-2">Public Pricing vs. Negotiated Pricing</h3>
-              <p class="text-[13px] text-secondary leading-relaxed mb-3">Very few major expert networks publish a clean public rate card. The exceptions tend to be self-service or marketplace models (e.g., Maven publicly advertises calls starting at $150 / 30 min). For most large concierge networks — GLG, AlphaSights, Third Bridge, Guidepoint, Dialectica — enterprise pricing is custom-negotiated based on volume, commitment, and service level.</p>
+              <p class="text-[13px] text-secondary leading-relaxed mb-3">Very few major expert networks publish a clean public rate card. The exceptions tend to be self-service or marketplace models (e.g., Maven publicly advertises calls starting at $150 / 30 min). Confirm current prices, commitments, and service levels directly with shortlisted providers.</p>
               <p class="text-[13px] text-secondary leading-relaxed">This does not mean pricing is unknowable. Third-party aggregators, buyer communities, and comparison platforms provide useful benchmarks. But treating any single number as a universal "list price" for these networks would be misleading.</p>
             </div>
 
@@ -380,9 +380,9 @@ const sections = [
                           </a>
                         </td>
                         <td class="px-4 py-3">
-                          <span class="text-[11px] px-2 py-0.5 rounded-full bg-bg-secondary font-medium text-secondary whitespace-nowrap">{modelMeta[n.data.pricingModel || '']?.label || n.data.pricingModel}</span>
+                          <span class="text-[11px] px-2 py-0.5 rounded-full bg-bg-secondary font-medium text-secondary whitespace-nowrap">{modelMeta[n.data.pricingModel || '']?.label || n.data.pricingModel || 'Not disclosed'}</span>
                         </td>
-                        <td class="px-4 py-3 text-xs text-secondary max-w-xs hidden sm:table-cell leading-relaxed">{n.data.pricingDetail || 'Contact provider for pricing details'}</td>
+                        <td class="px-4 py-3 text-xs text-secondary max-w-xs hidden sm:table-cell leading-relaxed">{n.data.pricingDetail || 'Not disclosed'}</td>
                         <td class="px-4 py-3 text-center">
                           {(() => { const c = providerConfidenceMap.get(n.data.slug) || { label: 'Not disclosed', color: 'bg-gray-100 text-gray-600' }; return <span class={`inline-block text-[10px] px-2 py-0.5 rounded font-semibold whitespace-nowrap ${c.color}`}>{c.label}</span>; })()}
                         </td>
@@ -430,9 +430,9 @@ const sections = [
             {[
               { type: 'Occasional User (1–10 calls/year)', rec: 'Per-call', detail: 'Don\'t commit to annual minimums or credit packages. Use self-serve platforms or pay-as-you-go models. Maven and marketplace-style providers often suit this profile. Avoid subscription traps.' },
               { type: 'Consulting Team (50–200+ calls/year)', rec: 'Per-call or credit-based', detail: 'Negotiate volume-based per-call rates or explore credit packages. You have enough volume to get meaningful discounts but want flexibility across projects. Multi-provider setups are common.' },
-              { type: 'PE / Hedge Fund', rec: 'Credit-based or mixed', detail: 'High-volume, high-urgency, compliance-heavy. Credit-based models with annual commits often make sense. Value the compliance wrapper and speed. Third Bridge and GLG are common choices in this segment.' },
+              { type: 'PE / Hedge Fund', rec: 'Credit-based or mixed', detail: 'High-volume, high-urgency, compliance-heavy. Credit-based models with annual commits often make sense. Value the compliance wrapper and speed. ' },
               { type: 'Corporate Strategy / Market Intelligence', rec: 'Subscription or mixed', detail: 'If you also use transcript libraries and survey tools, subscription models that bundle content with calls can lower effective per-insight cost. Evaluate total platform value, not just call pricing.' },
-              { type: 'Transcript / Library-Heavy User', rec: 'Subscription', detail: 'If most of your value comes from existing transcripts and research content rather than live calls, subscription platforms (AlphaSense/Tegus, Third Bridge Forum) are likely more cost-effective than per-call models.' },
+              { type: 'Transcript / Library-Heavy User', rec: 'Subscription', detail: 'If most of your value comes from existing transcripts and research content rather than live calls, compare subscription and per-call quotes against your expected usage.' },
               { type: 'Survey-Heavy User', rec: 'Per-project or platform', detail: 'Survey pricing is typically per-respondent and per-project. Some networks offer dedicated survey capabilities; others partner with survey platforms. Compare on a per-complete basis.' },
             ].map(item => (
               <div class="rounded-card border border-border/50 bg-white p-5 shadow-card">
@@ -530,7 +530,7 @@ const sections = [
           <div class="space-y-3" id="faqContainer">
             {[
               { q: 'Why is expert network pricing so opaque?', a: 'Most major networks are B2B enterprises that negotiate custom pricing per client based on volume, commitment, and service level. There\'s no incentive for them to publish fixed rates because pricing flexibility is a competitive advantage. This is normal in B2B professional services — think management consulting, not SaaS.' },
-              { q: 'What is a "normal" expert call cost?', a: 'Based on publicly available benchmarks, standard expert calls typically land in the $700–$1,500/hr range on the client side. Third-party comparison platforms like Inex One publicly benchmark major networks around $1,000–$1,350/hr. However, calls with very senior or scarce experts can exceed this range significantly, and self-serve platforms can be cheaper.' },
+              { q: 'What is a "normal" expert call cost?', a: 'Based on publicly available benchmarks, standard expert calls typically land in the $700–$1,500/hr range on the client side. However, calls with very senior or scarce experts can exceed this range significantly, and self-serve platforms can be cheaper.' },
               { q: 'What does the expert actually get paid?', a: 'Expert compensation typically ranges from $200–$500+/hr depending on seniority and domain scarcity. The network keeps the difference to cover sourcing, compliance screening, project management, scheduling, and platform infrastructure.' },
               { q: 'Are subscriptions cheaper than per-call?', a: 'It depends on volume. Subscriptions generally offer a lower effective per-call rate for high-volume users (100+ calls/year) and may bundle library/content access. For low-volume users, per-call or pay-as-you-go is typically more cost-effective because you\'re not paying for access you don\'t use.' },
               { q: 'Are transcript libraries worth it?', a: 'If your workflow involves reviewing existing expert insights — not just live calls — then library access can be very cost-effective. A single subscription seat can give access to thousands of transcripts. But evaluate the library\'s coverage of your sectors and topics before committing.' },

@@ -23,15 +23,15 @@ published.forEach(n => {
 
 <BaseLayout
   progress
-  title="Best Expert Networks in 2026: Top 15 Providers Ranked | ExpertNetworks.net"
-  description="Independently ranked list of the best expert networks in 2026. Compare GLG, AlphaSights, Third Bridge, Guidepoint, Dialectica, and 28+ more across pricing, compliance, expert coverage, and AI capabilities."
+  title="Expert Networks in 2026: Provider Shortlist | ExpertNetworks.net"
+  description="Editorial shortlist of expert networks in 2026. Compare GLG, AlphaSights, Third Bridge, Guidepoint, Dialectica, and 28+ more across pricing, compliance, expert coverage, and AI capabilities."
   canonicalPath="/best-expert-networks"
   ogType="article"
   jsonLd={{
     "@context": "https://schema.org",
     "@type": "ItemList",
     "name": "Best Expert Networks 2026",
-    "description": "Independently ranked expert network providers",
+    "description": "Editorial provider shortlist",
     "numberOfItems": ranked.length,
     "itemListElement": ranked.map((n, i) => ({
       "@type": "ListItem",
@@ -52,7 +52,7 @@ published.forEach(n => {
         Best Expert Networks in 2026
       </h1>
       <p class="text-step-1 text-secondary max-w-measure">
-        An independent ranking of {published.length} expert network providers based on scale, product breadth, compliance strength, AI investment, and market positioning. No affiliations, no sponsored placements.
+        A directory of {published.length} providers with profile-backed information on services, pricing, scale, and buyer fit. No affiliations, no sponsored placements.
       </p>
     </div>
   </section>
@@ -61,7 +61,7 @@ published.forEach(n => {
   <section class="py-6 px-4 sm:px-6 border-b border-border/40">
     <div class="max-w-4xl mx-auto">
       <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-blue-800">
-        <strong>How we rank:</strong> Priority is based on a combination of expert network size, global reach, product breadth, compliance maturity, AI investment, and market share. Rankings reflect an editorial assessment and should not be taken as definitive industry standings. This is based on publicly available information — not a paid ranking. See our <a href="/sources/" class="text-accent-text underline underline-offset-2">methodology</a>.
+        <strong>How to use this list:</strong> Providers appear in the directory’s editorial order. The order is not a ranking of compliance, price, research quality, or market share. Compare the profile evidence against your requirements. See our <a href="/sources/" class="text-accent-text underline underline-offset-2">methodology</a>.
       </div>
     </div>
   </section>
@@ -69,7 +69,7 @@ published.forEach(n => {
   <!-- Top 15 Ranked List -->
   <section class="py-section-sm px-4 sm:px-6">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-step-3 font-bold text-primary mb-8">Top {ranked.length} Expert Networks</h2>
+      <h2 class="text-step-3 font-bold text-primary mb-8">Provider shortlist</h2>
       <div class="space-y-4">
         {ranked.map((n, i) => (
           <a href={`/networks/${n.data.slug}/`} class="block no-underline group">
@@ -93,13 +93,13 @@ published.forEach(n => {
                 </div>
                 <p class="text-[13px] leading-relaxed text-secondary mb-2 line-clamp-2">{n.data.description.slice(0, 180)}...</p>
                 <div class="flex flex-wrap gap-3 text-[11px] text-tertiary">
-                  <span>Founded {n.data.founded}</span>
+                  <span>Founded {n.data.founded || 'Not disclosed'}</span>
                   <span>·</span>
-                  <span>{n.data.expertCount} experts</span>
+                  <span>{n.data.expertCount || 'Not disclosed'} experts</span>
                   <span>·</span>
-                  <span>{n.data.pricingModel} pricing</span>
+                  <span>{n.data.pricingModel || 'Not disclosed'} pricing</span>
                   <span>·</span>
-                  <span>{n.data.headquarters?.split(',')[0]}</span>
+                  <span>{n.data.headquarters?.split(',')[0] || 'Not disclosed'}</span>
                 </div>
               </div>
               <svg class="w-5 h-5 text-tertiary flex-shrink-0 mt-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>

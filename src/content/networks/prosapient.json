@@ -44,7 +44,9 @@
   ],
   "compliance": {
     "mnpiPolicy": "For AIMI engagements, proSapient says experts complete training covering MNPI, confidentiality and conflicts before engagement.",
-    "expertVetting": "The company describes expert screening, identity and work-experience verification, and human oversight for AIMI projects."
+    "expertVetting": "The company describes expert screening, identity and work-experience verification, and human oversight for AIMI projects.",
+    "auditTrail": null,
+    "coolingOffPeriod": "Not disclosed"
   },
   "featured": false,
   "priority": 8,
@@ -207,5 +209,9 @@
     "aiBadge": "positioning",
     "comparison": "positioning"
   },
-  "employeeCountSource": "2025 group accounts, filed at Companies House on 29 September 2026"
+  "employeeCountSource": "2025 group accounts, filed at Companies House on 29 September 2026",
+  "pricingModel": "Not disclosed",
+  "pricingDetail": "Not disclosed",
+  "expertCount": "Not disclosed",
+  "expertCountLabel": "Not disclosed"
 }

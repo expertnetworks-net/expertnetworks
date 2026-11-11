@@ -43,7 +43,9 @@
   ],
   "compliance": {
     "expertVetting": "Techspert says it checks identity, professional credentials, sanctions and regulatory history.",
-    "auditTrail": true
+    "auditTrail": true,
+    "mnpiPolicy": "Not disclosed",
+    "coolingOffPeriod": "Not disclosed"
   },
   "featured": false,
   "priority": 11,
@@ -51,7 +53,6 @@
   "categoryBadge": "Technology-First",
   "deliveryModel": "Platform-Led",
   "regionStrength": "Europe",
-  "complianceBadge": "Compliance Tools",
   "aiBadge": "AI-Native",
   "lastUpdated": "2026-11-11",
   "overview": "Techspert is an AI-powered expert network and primary research platform focused on healthcare and life sciences. Its company history dates its founding in Cambridge to 2016. The current site lists Cambridge as its HQ and London, Houston and Santiago as other offices.\n\nTechspert reports over 25 million contactable healthcare experts, distinct from its 400,000-plus engaged experts. Its research services include interviews and surveys, supported by project managers and analysis tools. The company also offers healthcare specialists for AI model training and evaluation.\n\nOn 24 February 2026, Palatine Growth Credit announced £5 million in funding for hiring and AI research and market intelligence development. Hiring around 20 people during 2026 was a plan, not a confirmed completed expansion.",
@@ -214,5 +215,14 @@
     "history": "verified",
     "pricingDetail": "partially-unverifiable",
     "caveats": "partially-unverifiable"
-  }
+  },
+  "comparison": {
+    "expertCalls": null,
+    "surveys": null,
+    "contentLibrary": null,
+    "complianceTools": null
+  },
+  "pricingModel": "Not disclosed",
+  "expertCountLabel": "Not disclosed",
+  "employeeCount": "Not disclosed"
 }

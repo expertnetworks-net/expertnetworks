@@ -8,15 +8,16 @@ const a = allNetworks.find(n => n.data.slug === 'glg')!;
 const b = allNetworks.find(n => n.data.slug === 'guidepoint')!;
 
 const verdict = [
-  `<strong>GLG</strong> is the broadest, most established platform in the expert network industry. With ~1.2 million experts, multi-format research products (calls, surveys, events, library, placements, integrated insights), and institutional-grade compliance, GLG serves as the default for large consulting firms, investment banks, and enterprise research teams. The trade-off is price — GLG is typically the most expensive provider — and contract structures that favor large-volume commitments.`,
-  `<strong>Guidepoint</strong> competes on flexibility and volume. With one of the largest advisor networks and flexible pricing (per-call and subscription options), Guidepoint appeals to teams that want high-frequency expert access without the annual commitments or premium pricing of GLG. Guidepoint's commercial model is particularly attractive for mid-market PE firms, smaller hedge funds, and corporate strategy groups.`,
-  `GLG is the right choice for institutions that need a full-stack research platform with maximum breadth. Guidepoint is the right choice for teams that prioritize cost-efficiency and flexible access on a per-project basis. Some firms use GLG for strategic research and Guidepoint for high-volume supplementary calls.`,
+  a.data.description,
+  a.data.pricingDetail || 'Not disclosed',
+  b.data.description,
+  b.data.pricingDetail || 'Not disclosed',
 ];
 ---
 
 <BaseLayout
   title="GLG vs Guidepoint: Expert Network Comparison (2026) | ExpertNetworks.net"
-  description="Compare GLG and Guidepoint expert networks head-to-head. Full-stack research platform vs. flexible high-volume access — pricing, expert coverage, compliance, and AI compared."
+  description="Compare GLG and Guidepoint expert networks head-to-head. Pricing, expert coverage, compliance, and AI compared."
   canonicalPath="/glg-vs-guidepoint"
   ogType="article"
   jsonLd={{
@@ -49,7 +50,7 @@ const verdict = [
       <span class="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-semibold rounded-full mb-4 tracking-wide uppercase">Head-to-Head</span>
       <h1 class="text-4xl md:text-5xl font-extrabold text-primary mb-6 leading-tight">GLG vs Guidepoint</h1>
       <p class="text-lg text-secondary max-w-3xl leading-relaxed">
-        The industry's broadest research platform vs. the flexible high-volume alternative. How scale and breadth compare against cost-efficiency and accessibility.
+        Compare the profile evidence on services, pricing, scale, and buyer fit.
       </p>
     </div>
   </section>

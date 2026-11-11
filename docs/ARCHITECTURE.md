@@ -146,6 +146,10 @@ The compare page has the most state. It is the page that is easiest to break.
 Rule: all HTML for the compare tables comes from `src/lib/compare-v2.ts`.
 The same function runs at build time and in the browser. Thus the two outputs cannot differ.
 
+Unknown values (missing, `null`, blank text, or empty lists) render as muted “Not disclosed”. Booleans distinguish `true` (Yes), `false` (No), and unknown. The directory preserves these states in its dataset and only includes supported capabilities in filters and totals. See [CONTENT-GUIDE.md](CONTENT-GUIDE.md#unknown-values) for the content rule.
+
+Provider type, pricing, AI capability lists, scale, and caveats come from the collection. Granular compare-only AI assessments remain in `enriched`; `null` explicitly means no supported assessment. `.github/scripts/check-content-integrity.mjs` imports the shared renderer and checks cells for every default, preset, and manually selectable provider; it also checks capability implications for badges and presets.
+
 ### 6.2 Behavior
 
 - The build renders the default providers (`networks` in `compare.json`).
@@ -153,7 +157,7 @@ The same function runs at build time and in the browser. Thus the two outputs ca
 - The maximum number of providers in one comparison is 5. This limit is in `src/scripts/compare-page.ts`.
 - If the user adds a sixth provider, the script removes the first provider and shows a message.
 - The minimum number of providers is 2. The script does not remove a provider below this number.
-- Known defect: a `?preset=<name>` URL does not apply the limit of 5. The presets in `compare.json` have 6 slugs, thus such a URL shows 6 providers.
+- Known defect: a `?preset=<name>` URL does not apply the limit of 5. Some presets in `compare.json` exceed 5 slugs, so their URLs can show more than 5 providers.
 - The script writes the current selection to the URL with `history.replaceState`.
 
 | Query parameter | Effect |
@@ -177,7 +181,7 @@ These items exist, but the page does not use them now. Do not describe them as f
 
 | Item | Status |
 |---|---|
-| `buyerPathwayGroups`, `explainableInsights`, `presetMeta` in `compare.json` | No code reads these keys. |
+| `presetMeta` in `compare.json` | No code reads these keys. |
 | `diffMode` ("Differences only") in `compare-v2.ts` and `compare-page.ts` | The renderer supports it. No control changes it. Its value is always `false`. |
 | `highConfidenceOnly` in `compare-v2.ts` | The renderer supports it. The controller always sends `false`. |
 | `critical` in the rows of `compare.json` | No code reads this field. |

@@ -35,17 +35,17 @@ interface Props {
 const { a, b, verdict } = Astro.props;
 
 const comparisons = [
-  { label: 'Founded', va: String(a.data.founded || 'N/A'), vb: String(b.data.founded || 'N/A') },
-  { label: 'Headquarters', va: a.data.headquarters || 'N/A', vb: b.data.headquarters || 'N/A' },
-  { label: 'Expert Network Size', va: a.data.expertCount || 'N/A', vb: b.data.expertCount || 'N/A' },
-  { label: 'Employees', va: a.data.employeeCount || 'N/A', vb: b.data.employeeCount || 'N/A' },
-  { label: 'Pricing Model', va: a.data.pricingModel || 'N/A', vb: b.data.pricingModel || 'N/A' },
-  { label: 'Pricing Detail', va: a.data.pricingDetail || 'N/A', vb: b.data.pricingDetail || 'N/A' },
-  { label: 'Delivery Model', va: a.data.deliveryModel || 'N/A', vb: b.data.deliveryModel || 'N/A' },
-  { label: 'Category', va: a.data.categoryBadge || 'N/A', vb: b.data.categoryBadge || 'N/A' },
-  { label: 'Region Strength', va: a.data.regionStrength || 'N/A', vb: b.data.regionStrength || 'N/A' },
-  { label: 'AI Badge', va: a.data.aiBadge || 'N/A', vb: b.data.aiBadge || 'N/A' },
-  { label: 'Compliance', va: a.data.complianceBadge || 'N/A', vb: b.data.complianceBadge || 'N/A' },
+  { label: 'Founded', va: String(a.data.founded || 'Not disclosed'), vb: String(b.data.founded || 'Not disclosed') },
+  { label: 'Headquarters', va: a.data.headquarters || 'Not disclosed', vb: b.data.headquarters || 'Not disclosed' },
+  { label: 'Expert Network Size', va: a.data.expertCount || 'Not disclosed', vb: b.data.expertCount || 'Not disclosed' },
+  { label: 'Employees', va: a.data.employeeCount || 'Not disclosed', vb: b.data.employeeCount || 'Not disclosed' },
+  { label: 'Pricing Model', va: a.data.pricingModel || 'Not disclosed', vb: b.data.pricingModel || 'Not disclosed' },
+  { label: 'Pricing Detail', va: a.data.pricingDetail || 'Not disclosed', vb: b.data.pricingDetail || 'Not disclosed' },
+  { label: 'Delivery Model', va: a.data.deliveryModel || 'Not disclosed', vb: b.data.deliveryModel || 'Not disclosed' },
+  { label: 'Category', va: a.data.categoryBadge || 'Not disclosed', vb: b.data.categoryBadge || 'Not disclosed' },
+  { label: 'Region Strength', va: a.data.regionStrength || 'Not disclosed', vb: b.data.regionStrength || 'Not disclosed' },
+  { label: 'AI Badge', va: a.data.aiBadge || 'Not disclosed', vb: b.data.aiBadge || 'Not disclosed' },
+  { label: 'Compliance', va: a.data.complianceBadge || 'Not disclosed', vb: b.data.complianceBadge || 'Not disclosed' },
 ];
 
 const nameA = a.data.name.split(' (')[0];
@@ -122,8 +122,8 @@ const diffCount = comparisons.filter(row => row.va !== row.vb).length;
             )}
             <h2 class="text-[22px] font-bold tracking-tight text-primary mt-4 group-hover:text-[#0066cc] transition-colors">{name}</h2>
             {n.categoryBadge && <p class="text-[13px] text-secondary mt-0.5">{n.categoryBadge}</p>}
-            <div class="mt-4 text-[26px] leading-tight font-extrabold tracking-tight text-primary">{n.expertCount || '—'}</div>
-            <div class="text-[13px] text-secondary mt-0.5">experts · est. {n.founded || 'N/A'}</div>
+            <div class="mt-4 text-[26px] leading-tight font-extrabold tracking-tight text-primary">{n.expertCount || 'Not disclosed'}</div>
+            <div class="text-[13px] text-secondary mt-0.5">experts · est. {n.founded || 'Not disclosed'}</div>
             <span class="vs-profile-link">View profile <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
           </a>
         </Fragment>
@@ -168,8 +168,8 @@ const diffCount = comparisons.filter(row => row.va !== row.vb).length;
                     {row.label}
                     {!differs && <span class="vs-same">Same</span>}
                   </th>
-                  <td>{row.va}</td>
-                  <td>{row.vb}</td>
+                  <td class:list={{ 'text-secondary': row.va === 'Not disclosed' }}>{row.va}</td>
+                  <td class:list={{ 'text-secondary': row.vb === 'Not disclosed' }}>{row.vb}</td>
                 </tr>
               );
             })}
@@ -310,7 +310,7 @@ const diffCount = comparisons.filter(row => row.va !== row.vb).length;
     <p class="text-[14px] text-secondary mb-6">Open both providers in the interactive comparison, or widen the shortlist.</p>
     <div class="flex flex-wrap gap-3 justify-center">
       <a href={`/compare/?networks=${a.data.slug},${b.data.slug}`} class="vs-btn vs-btn-primary">Full Comparison Tool</a>
-      <a href="/best-expert-networks/" class="vs-btn vs-btn-secondary">Best Networks Ranked</a>
+      <a href="/best-expert-networks/" class="vs-btn vs-btn-secondary">Provider Shortlist</a>
       <a href="/expert-network-pricing/" class="vs-btn vs-btn-secondary">Pricing Guide</a>
     </div>
   </div>
@@ -348,6 +348,7 @@ const diffCount = comparisons.filter(row => row.va !== row.vb).length;
   .vs-table tr.is-diff td { color: #1d1d1f; font-weight: 500; }
   .vs-table tr.is-diff th { box-shadow: inset 3px 0 0 #0071e3; }
   .vs-table tr.is-same td { color: #6e6e73; }
+  .vs-table tr td.text-secondary { color: #6e6e73; font-weight: 400; }
   .vs-same { display: inline-flex; margin-left: 8px; padding: 1px 7px; font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #6e6e73; background: #f0f0f3; border-radius: 999px; vertical-align: middle; }
   .vs-diff-key { display: inline-block; width: 3px; height: 12px; margin-left: 6px; border-radius: 2px; background: #0071e3; vertical-align: -1px; }
   @media (max-width: 639px) { .vs-table th, .vs-table td { padding: 12px 14px; font-size: 14px; } }

@@ -3,21 +3,18 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { buildCompareRender, projectCompareNetwork, hasCapability } from '../../src/lib/compare-v2.ts';
 
-const resolve = (data, key) => key.split('.').reduce((value, part) => value?.[part], data);
 const blank = (value) => value == null || (typeof value === 'string' && !value.trim());
-const supported = (value) => value === true || (typeof value === 'string' && !!value.trim());
+const supported = hasCapability;
 
-function missingCell(value, type) {
-  // The renderer deliberately uses a dash for false. It is an explicit negative,
-  // not a missing fact. Missing booleans are still errors, even with Zod defaults.
-  if (type === 'boolean') return typeof value !== 'boolean';
-  if (type === 'boolean-or-string') return value !== false && !supported(value);
-  if (type === 'capability' || type === 'list') {
-    return !Array.isArray(value) || !value.length || value.some(blank);
-  }
-  if (type === 'product-names') return blank(value) || !String(value).split(',').some((item) => item.trim());
-  return blank(value) || (Array.isArray(value) && !value.length);
+// Validate the HTML contract, not the presence of a public claim. Missing, null,
+// and explicit unknown values must render readable text, never a blank or dash.
+export function matrixHoles(html) {
+  return [...html.matchAll(/<td\b([^>]*)>([\s\S]*?)<\/td>/g)].filter(([, , content]) => {
+    const text = content.replace(/<[^>]*>/g, '').replace(/&(?:nbsp|ndash|mdash);/g, ' ').trim();
+    return !text || /^[–—-]$/.test(text);
+  });
 }
 
 export function checkContentIntegrity(providers, compare, now = new Date()) {
@@ -28,7 +25,8 @@ export function checkContentIntegrity(providers, compare, now = new Date()) {
 
   for (const data of published) {
     // Unguarded identity/description output in profile and directory templates.
-    // expertCount is also unguarded in both profile sidebar provider lists.
+    // expertCount is unguarded in the current profile sidebar; an explicit
+    // "Not disclosed" string is valid until the separate profile rebuild adds guards.
     for (const field of ['name', 'shortName', 'slug', 'type', 'description', 'gradientFrom', 'gradientTo', 'expertCount', 'lastUpdated']) {
       if (blank(data[field])) report(data, field, 'missing value rendered without a guard on provider pages');
     }
@@ -59,23 +57,28 @@ export function checkContentIntegrity(providers, compare, now = new Date()) {
     }
   }
 
-  const selected = new Set([...compare.networks, ...Object.values(compare.presets).flat()]);
-  for (const slug of selected) {
-    const data = bySlug.get(slug);
-    if (!data) {
-      problems.push(`${slug}: compare: not a published provider`);
-      continue;
-    }
-    for (const section of compare.sections) {
-      for (const row of section.rows) {
-        // These special rows compute their values rather than resolving key.
-        if (row.id === 'substituteType' || row.type === 'substitute-type') continue;
-        const key = row.id === 'bestFitBuyer' ? 'bestFor' : row.id === 'lastReviewed' ? 'lastUpdated' : row.key;
-        const source = row.source === 'enriched' ? compare.enriched?.[slug] : data;
-        const value = resolve(source, key);
-        if (missingCell(value, row.type)) {
-          report(data, `${row.source === 'enriched' ? 'compare.enriched.' : ''}${key}`, `missing matrix value (${section.id}/${row.id}; compare defaults or presets)`);
-        }
+  const dataset = {
+    networkDataMap: Object.fromEntries(published.map((data) => [data.slug, projectCompareNetwork(data)])),
+    defaultSlugs: compare.networks,
+    presets: compare.presets,
+    sections: compare.sections,
+    enriched: compare.enriched,
+    substituteTypes: compare.substituteTypes,
+  };
+  const selections = { defaults: compare.networks, ...compare.presets };
+  // Every published provider can be selected manually, including those outside presets.
+  for (const data of published) selections[`provider:${data.slug}`] = [data.slug];
+  for (const [selection, slugs] of Object.entries(selections)) {
+    const valid = slugs.filter((slug) => {
+      if (bySlug.has(slug)) return true;
+      problems.push(`${slug}: compare: not a published provider (${selection})`);
+      return false;
+    });
+    if (!valid.length) continue;
+    for (const [section, html] of Object.entries(buildCompareRender(valid, dataset))) {
+      if (typeof html !== 'string' || !section.endsWith('Html')) continue;
+      for (const [, attributes] of matrixHoles(html)) {
+        problems.push(`${selection}: ${section}: empty matrix cell (${attributes.trim()})`);
       }
     }
   }
@@ -104,7 +107,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.ar
       for (const problem of problems) console.error(`- ${problem}`);
       process.exitCode = 1;
     } else {
-      console.log('Content integrity passed: provider pages, compare matrix, dates, capability presets and badges.');
+      console.log('Content integrity passed: required fields, rendered compare cells, dates, capability presets and badges.');
     }
   } catch (error) {
     console.error(`Content integrity check failed: ${error.message}`);

@@ -573,8 +573,8 @@ const topProviders = published.slice(0, 6);
                         <span class="text-xs font-semibold">{n.data.name.split(' (')[0]}</span>
                       </a>
                     </td>
-                    <td class="px-5 py-3 text-xs text-secondary">{n.data.founded}</td>
-                    <td class="px-5 py-3 text-xs text-secondary">{n.data.pricingModel}</td>
+                    <td class="px-5 py-3 text-xs text-secondary">{n.data.founded || 'Not disclosed'}</td>
+                    <td class="px-5 py-3 text-xs text-secondary">{n.data.pricingModel || 'Not disclosed'}</td>
                     <td class="px-5 py-3 text-xs text-secondary max-w-[200px] truncate">{knownFor}</td>
                   </tr>
                 );

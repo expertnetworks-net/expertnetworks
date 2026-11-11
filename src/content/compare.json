@@ -6,8 +6,8 @@
     "pe": ["alphasights", "third-bridge", "dialectica", "guidepoint", "glg", "stax"],
     "enterprise": ["glg", "alphasense-tegus", "guidepoint", "newtonx", "third-bridge", "atheneum"],
     "asia": ["capvision", "arches", "visasq", "lynk", "alphaexpert", "cg-consulting"],
-    "library": ["alphasense-tegus", "third-bridge", "glg", "guidepoint", "dialectica", "arches"],
-    "aiMatching": ["alphasights", "guidepoint", "alphasense-tegus", "dialectica", "newtonx", "techspert"],
+    "library": ["alphasense-tegus", "third-bridge", "glg", "guidepoint", "dialectica"],
+    "aiMatching": ["alphasights", "guidepoint", "newtonx"],
     "aiResearch": ["alphasense-tegus", "third-bridge", "glg", "dialectica", "guidepoint", "alphasights"],
     "agentic": ["alphasense-tegus", "dialectica", "third-bridge", "glg", "alphasights", "guidepoint"],
     "fastCalls": ["alphasights", "glg", "dialectica", "guidepoint", "atheneum", "prosapient"],
@@ -17,20 +17,20 @@
     "naPlatform": ["alphasense-tegus", "third-bridge", "glg", "guidepoint", "newtonx", "alphasights"]
   },
   "presetMeta": {
-    "leaders": { "label": "Global Leaders", "description": "Largest expert networks by scale and market reach" },
-    "consulting": { "label": "Consulting Fit", "description": "Best suited for management consulting and advisory firms" },
-    "pe": { "label": "PE / Hedge Funds", "description": "Optimized for private equity and hedge fund workflows" },
-    "enterprise": { "label": "Enterprise", "description": "Suited for large corporate strategy and procurement teams" },
-    "asia": { "label": "APAC Specialists", "description": "Providers with strong Asia-Pacific coverage" },
-    "library": { "label": "Transcript Leaders", "description": "Strongest transcript and content library capabilities" },
-    "aiMatching": { "label": "AI Matching", "description": "Leaders in AI-powered expert identification and matching" },
-    "aiResearch": { "label": "AI Research", "description": "Most advanced AI-powered research and content tools" },
-    "agentic": { "label": "Agentic Workflows", "description": "Providers with autonomous AI research capabilities" },
-    "fastCalls": { "label": "Fast Expert Calls", "description": "Speed-sensitive, concierge-heavy sourcing workflows" },
-    "healthcare": { "label": "Healthcare Focus", "description": "Providers with stronger life-sciences and healthcare fit" },
-    "europeMarkets": { "label": "Europe / Emerging Markets", "description": "Providers with stronger Europe and emerging-market positioning" },
-    "publicMarkets": { "label": "Hedge Funds / Public Markets", "description": "Fit for public-market workflows and reusable content research" },
-    "naPlatform": { "label": "North America Platform-Led", "description": "Platform-led and content-heavy North America workflows" }
+    "leaders": { "label": "Provider overview", "description": "Starting selection for comparison; confirm fit using the profile evidence." },
+    "consulting": { "label": "Consulting Fit", "description": "Starting selection for comparison; confirm fit using the profile evidence." },
+    "pe": { "label": "PE / Hedge Funds", "description": "Starting selection for comparison; confirm fit using the profile evidence." },
+    "enterprise": { "label": "Enterprise", "description": "Starting selection for comparison; confirm fit using the profile evidence." },
+    "asia": { "label": "APAC Specialists", "description": "Starting selection for comparison; confirm fit using the profile evidence." },
+    "library": { "label": "Transcript research", "description": "Starting selection for comparison; confirm fit using the profile evidence." },
+    "aiMatching": { "label": "AI Matching", "description": "Starting selection for comparison; confirm fit using the profile evidence." },
+    "aiResearch": { "label": "AI Research", "description": "Starting selection for comparison; confirm fit using the profile evidence." },
+    "agentic": { "label": "Agentic Workflows", "description": "Starting selection for comparison; confirm fit using the profile evidence." },
+    "fastCalls": { "label": "Fast Expert Calls", "description": "Starting selection for comparison; confirm fit using the profile evidence." },
+    "healthcare": { "label": "Healthcare Focus", "description": "Starting selection for comparison; confirm fit using the profile evidence." },
+    "europeMarkets": { "label": "Europe / Emerging Markets", "description": "Starting selection for comparison; confirm fit using the profile evidence." },
+    "publicMarkets": { "label": "Hedge Funds / Public Markets", "description": "Starting selection for comparison; confirm fit using the profile evidence." },
+    "naPlatform": { "label": "North America Platform-Led", "description": "Starting selection for comparison; confirm fit using the profile evidence." }
   },
   "comparisonNote": "Some providers on this page are direct expert-network peers, while others are hybrid or platform-led research products. Not every provider is a one-for-one substitute on every dimension. Pricing, scale, AI maturity, and compliance workflows vary by contract, region, and client type. Public product visibility also does not always equal production maturity.",
   "substituteTypes": {
@@ -49,196 +49,12 @@
     "ai": "Public product visibility does not always prove production maturity or broad customer availability. Features may be limited release, pilot, or adjacent workflow tooling.",
     "compliance": "Public compliance positioning is not a substitute for legal, procurement, or internal compliance review."
   },
-  "buyerPathwayGroups": [
-    {
-      "id": "buyerType",
-      "label": "By buyer type",
-      "items": [
-        {
-          "id": "consulting",
-          "label": "Consulting",
-          "preset": "consulting",
-          "providers": ["alphasights", "glg", "guidepoint"],
-          "confidence": "High",
-          "reason": "Broad functional coverage, fast sourcing, and high-touch service fit consulting project cycles well.",
-          "caveat": "Transcript-led platforms help with desk research, but they are not one-for-one substitutes for project-team sourcing."
-        },
-        {
-          "id": "private-equity",
-          "label": "Private Equity",
-          "preset": "pe",
-          "providers": ["alphasights", "third-bridge", "dialectica"],
-          "confidence": "High",
-          "reason": "These providers are strongest on time-sensitive diligence, sector coverage, and sponsor-oriented workflows.",
-          "caveat": "Platform-led research tools can complement PE work, but they do not replace concierge expert sourcing in every case."
-        },
-        {
-          "id": "public-markets",
-          "label": "Hedge Funds / Public Markets",
-          "preset": "publicMarkets",
-          "providers": ["alphasense-tegus", "third-bridge", "glg"],
-          "confidence": "Medium",
-          "reason": "Reusable content, transcript search, and source-cited synthesis matter more in repeat public-markets workflows.",
-          "caveat": "AlphaSense / Tegus is especially strong for transcript-led research, but it is an adjacent platform rather than a pure high-touch expert network."
-        },
-        {
-          "id": "enterprise-strategy",
-          "label": "Enterprise Strategy / Corp Dev",
-          "preset": "enterprise",
-          "providers": ["glg", "guidepoint", "alphasense-tegus"],
-          "confidence": "Medium",
-          "reason": "These options balance enterprise procurement fit, broad category coverage, and reusable research workflows.",
-          "caveat": "Enterprise requirements vary widely by procurement, compliance, and existing data-stack integration."
-        }
-      ]
-    },
-    {
-      "id": "workflow",
-      "label": "By workflow need",
-      "items": [
-        {
-          "id": "fast-calls",
-          "label": "Fast expert calls",
-          "preset": "fastCalls",
-          "providers": ["alphasights", "glg", "dialectica"],
-          "confidence": "High",
-          "reason": "Best fit for teams prioritizing fast briefing, custom sourcing, and concierge execution over self-serve depth.",
-          "caveat": "Turnaround speed is partly company-stated and varies by sector, geography, and compliance review."
-        },
-        {
-          "id": "transcript-research",
-          "label": "Transcript-led research",
-          "preset": "library",
-          "providers": ["alphasense-tegus", "third-bridge", "glg"],
-          "confidence": "Medium",
-          "reason": "Prioritizes reusable transcript libraries, cross-document search, and content interrogation workflows.",
-          "caveat": "Transcript depth and library structure are not standardized across providers."
-        },
-        {
-          "id": "ai-sourcing",
-          "label": "AI-supported sourcing",
-          "preset": "aiMatching",
-          "providers": ["alphasights", "guidepoint", "dialectica"],
-          "confidence": "Medium",
-          "reason": "These providers have stronger public evidence of AI-assisted matching, search, or staffing support.",
-          "caveat": "Public claims about matching AI do not always reveal real-world precision, staffing logic, or customer reach."
-        },
-        {
-          "id": "ai-synthesis",
-          "label": "AI-supported synthesis",
-          "preset": "aiResearch",
-          "providers": ["alphasense-tegus", "third-bridge", "glg"],
-          "confidence": "Medium",
-          "reason": "Best fit where source-cited synthesis, content retrieval, and reusable research output matter most.",
-          "caveat": "Source-cited outputs differ in depth, freshness, and document coverage."
-        },
-        {
-          "id": "agentic",
-          "label": "Agentic / automated workflows",
-          "preset": "agentic",
-          "providers": ["alphasense-tegus", "dialectica", "third-bridge"],
-          "confidence": "Low",
-          "reason": "These vendors have the strongest public positioning around autonomous or semi-autonomous research workflows.",
-          "caveat": "Agentic maturity is especially uneven, partly public, and often not fully testable from outside customer environments."
-        }
-      ]
-    },
-    {
-      "id": "regionSpecialization",
-      "label": "By region or specialization",
-      "items": [
-        {
-          "id": "apac",
-          "label": "APAC-heavy",
-          "preset": "asia",
-          "providers": ["capvision", "arches", "visasq"],
-          "confidence": "Medium",
-          "reason": "Useful when local coverage in Asia-Pacific matters more than matching global-leader scale.",
-          "caveat": "APAC specialists are not direct substitutes for every global multi-region workflow."
-        },
-        {
-          "id": "healthcare",
-          "label": "Healthcare / life sciences",
-          "preset": "healthcare",
-          "providers": ["guidepoint", "glg", "alphasights"],
-          "confidence": "Medium",
-          "reason": "Guidepoint's Qsight and broad advisor base, plus GLG and AlphaSights breadth, make this a practical healthcare shortlist.",
-          "caveat": "Depth varies by therapeutic area, geography, and whether you need calls, surveys, or reusable content."
-        },
-        {
-          "id": "europe-em",
-          "label": "Europe / emerging markets",
-          "preset": "europeMarkets",
-          "providers": ["dialectica", "atheneum", "alphasights"],
-          "confidence": "Medium",
-          "reason": "These providers are more directionally useful when Europe or emerging-market coverage matters.",
-          "caveat": "Regional strength does not automatically imply category leadership across all workflows."
-        },
-        {
-          "id": "na-platform",
-          "label": "North America platform-led research",
-          "preset": "naPlatform",
-          "providers": ["alphasense-tegus", "third-bridge", "glg"],
-          "confidence": "Medium",
-          "reason": "Useful for North America-heavy workflows where content reuse and AI interrogation matter.",
-          "caveat": "Platform-led products still differ materially from concierge expert networks."
-        }
-      ]
-    }
-  ],
-  "explainableInsights": [
-    {
-      "id": "fast-expert-calls",
-      "label": "Best for fast expert calls",
-      "ranking": ["alphasights", "glg", "dialectica", "guidepoint", "atheneum", "prosapient"],
-      "confidence": "High",
-      "evidenceStrength": "Public workflow positioning plus editorial synthesis",
-      "caveat": "Turnaround speed varies by project complexity, sector, and compliance review.",
-      "rows": ["expertCalls", "deliveryModel", "bestFor", "weakness"]
-    },
-    {
-      "id": "transcript-led-research",
-      "label": "Best for transcript-led research",
-      "ranking": ["alphasense-tegus", "third-bridge", "glg", "guidepoint", "dialectica", "arches"],
-      "confidence": "Medium",
-      "evidenceStrength": "Public product materials and library positioning",
-      "caveat": "Library depth, freshness, and access terms are not standardized across providers.",
-      "rows": ["contentLibrary", "libraryQA", "sourceCitedSynthesis", "officialAIProducts"]
-    },
-    {
-      "id": "source-cited-synthesis",
-      "label": "Strongest public evidence of source-cited synthesis",
-      "ranking": ["alphasense-tegus", "third-bridge", "glg", "guidepoint", "dialectica"],
-      "confidence": "Medium",
-      "evidenceStrength": "Mix of verified product visibility and company-stated workflow materials",
-      "caveat": "Public visibility does not guarantee breadth of rollout or consistency across customers.",
-      "rows": ["sourceCitedSynthesis", "libraryQA", "officialAIProducts"]
-    },
-    {
-      "id": "workflow-automation",
-      "label": "Strongest public evidence of workflow automation",
-      "ranking": ["alphasense-tegus", "dialectica", "third-bridge", "glg", "alphasights"],
-      "confidence": "Low",
-      "evidenceStrength": "Partly public product detail, partly editorial inference",
-      "caveat": "Agentic workflow claims are among the least standardized and least testable categories on this page.",
-      "rows": ["workflowAgents", "officialAIProducts", "aiInterviewing"]
-    },
-    {
-      "id": "direct-network-breadth",
-      "label": "Strongest direct expert-network breadth",
-      "ranking": ["glg", "guidepoint", "alphasights", "third-bridge", "dialectica"],
-      "confidence": "Medium",
-      "evidenceStrength": "Public scale claims, coverage positioning, and editorial synthesis",
-      "caveat": "Expert counts are not standardized and should not be treated as apples-to-apples.",
-      "rows": ["providerType", "claimedScale", "bestFor", "geographyStrength"]
-    }
-  ],
   "sections": [
     {
       "id": "core",
       "name": "Core Offering",
       "rows": [
-        { "id": "providerType", "label": "Provider Type", "key": "providerType", "source": "enriched", "type": "chip-provider", "importance": "major", "critical": true, "confidenceView": "high" },
+        { "id": "providerType", "label": "Provider Type", "key": "type", "type": "chip-provider", "importance": "major", "critical": true, "confidenceView": "high" },
         { "id": "expertCalls", "label": "Expert Calls", "key": "comparison.expertCalls", "type": "boolean", "importance": "major", "critical": true, "confidenceView": "high" },
         { "id": "surveys", "label": "Surveys", "key": "comparison.surveys", "type": "boolean", "importance": "minor", "critical": false, "confidenceView": "high" },
         { "id": "contentLibrary", "label": "Content Library", "key": "comparison.contentLibrary", "type": "boolean-or-string", "importance": "major", "critical": true, "confidenceView": "mixed" },
@@ -250,13 +66,13 @@
       "id": "ai",
       "name": "AI & Workflow Stack",
       "rows": [
-        { "id": "expertMatching", "label": "Expert Matching / Search", "key": "ai.matchingAI", "source": "enriched", "type": "capability", "description": "Public evidence of AI-assisted expert discovery, ranking, or matching", "importance": "major", "critical": true, "confidenceView": "mixed", "taxonomy": "AI for expert sourcing" },
+        { "id": "expertMatching", "label": "Expert Matching / Search", "key": "comparison.aiMatching", "type": "boolean-or-string", "description": "Public evidence of AI-assisted expert discovery, ranking, or matching", "importance": "major", "critical": true, "confidenceView": "mixed", "taxonomy": "AI for expert sourcing" },
         { "id": "libraryQA", "label": "Transcript / Library Q&A", "key": "ai.libraryQA", "source": "enriched", "type": "capability", "description": "Public evidence of AI search or Q&A across transcript and content libraries", "importance": "major", "critical": true, "confidenceView": "mixed", "taxonomy": "AI for content interrogation" },
         { "id": "sourceCitedSynthesis", "label": "Source-Cited Synthesis", "key": "ai.synthesis", "source": "enriched", "type": "capability", "description": "Public evidence of generated answers or synthesis tied back to underlying sources", "importance": "major", "critical": true, "confidenceView": "mixed", "taxonomy": "AI for content interrogation" },
         { "id": "workflowAgents", "label": "Workflow Automation / Agents", "key": "ai.agents", "source": "enriched", "type": "capability", "description": "Public evidence of repeatable or semi-autonomous research workflow automation", "importance": "major", "critical": true, "confidenceView": "low", "taxonomy": "AI for workflow automation" },
         { "id": "aiInterviewing", "label": "AI Interviewing / Capture", "key": "ai.interviewing", "source": "enriched", "type": "capability", "description": "Public evidence of AI-led interview intake, channel checks, or primary-research capture", "importance": "moderate", "critical": false, "confidenceView": "low", "taxonomy": "AI for primary research capture" },
         { "id": "complianceAI", "label": "Compliance / Risk AI", "key": "ai.complianceAI", "source": "enriched", "type": "capability", "description": "Public evidence of AI-assisted transcript scanning, risk profiling, or guardrails", "importance": "moderate", "critical": false, "confidenceView": "mixed", "taxonomy": "AI for compliance / risk control" },
-        { "id": "officialAIProducts", "label": "Official AI Products", "key": "officialAIProducts", "source": "enriched", "type": "product-names", "importance": "moderate", "critical": false, "confidenceView": "high", "taxonomy": "AI product surface" }
+        { "id": "officialAIProducts", "label": "AI Capabilities", "key": "aiCapabilities", "type": "list", "importance": "moderate", "critical": false, "confidenceView": "high", "taxonomy": "AI product surface" }
       ]
     },
     {
@@ -296,25 +112,20 @@
       "rows": [
         { "id": "bestFor", "label": "Best For", "key": "bestFor", "type": "list", "importance": "major", "critical": true, "confidenceView": "mixed" },
         { "id": "keyDifferentiators", "label": "Key Differentiators", "key": "keyDifferentiators", "type": "list", "importance": "moderate", "critical": true, "confidenceView": "mixed" },
-        { "id": "weakness", "label": "Weakness / Tradeoff", "key": "weakness", "source": "enriched", "type": "text-italic", "importance": "major", "critical": true, "confidenceView": "mixed" },
+        { "id": "weakness", "label": "Caveats / Tradeoffs", "key": "caveats", "type": "list", "importance": "major", "critical": true, "confidenceView": "mixed" },
         { "id": "category", "label": "Category", "key": "categoryBadge", "type": "chip", "importance": "minor", "critical": false, "confidenceView": "high" }
       ]
     }
   ],
   "enriched": {
     "glg": {
-      "providerType": "Pure-Play Expert Network",
-      "officialAIProducts": "myGLG, Ask AI, GLG Library",
-      "weakness": "Higher cost structure; AI platform modernization still catching up to AI-native competitors",
-      "scaleEvidence": "Company-Stated",
-      "employeeEvidence": "Estimated",
       "ai": {
-        "matchingAI": ["Publicly indicated", "Company-Stated", "myGLG platform"],
-        "libraryQA": ["Publicly indicated", "Company-Stated", "Ask AI cross-transcript search"],
-        "synthesis": ["Limited public evidence", "Company-Stated", "Cross-transcript synthesis in myGLG"],
-        "agents": ["Not publicly clear", "Inferred"],
-        "interviewing": ["Not publicly clear", "Inferred"],
-        "complianceAI": ["Not publicly clear", "Inferred"]
+        "matchingAI": null,
+        "libraryQA": null,
+        "synthesis": null,
+        "agents": null,
+        "interviewing": null,
+        "complianceAI": null
       }
     },
     "alphasights": {
@@ -348,63 +159,43 @@
       }
     },
     "alphasense-tegus": {
-      "providerType": "Research Platform",
-      "officialAIProducts": "Generative Search, Deep Research, AI Agent Interviewer, Workflow Agents, Generative Grid",
-      "weakness": "Not a pure expert network — platform-led model may not suit all use cases; higher minimum commitment",
-      "scaleEvidence": "Company-Stated",
-      "employeeEvidence": "Estimated",
       "ai": {
-        "matchingAI": ["Publicly indicated", "Company-Stated", "Semantic search, Smart Synonyms"],
-        "libraryQA": ["Publicly documented", "Verified", "Generative Search across 500M+ premium documents"],
-        "synthesis": ["Publicly documented", "Verified", "Source-cited answers across Tegus transcripts and filings"],
-        "agents": ["Publicly documented", "Verified", "Deep Research agent + Workflow Agents + Generative Grid"],
-        "interviewing": ["Publicly indicated", "Verified", "AI Agent Interviewer for Channel Checks"],
-        "complianceAI": ["Publicly indicated", "Company-Stated", "AI-powered transcript scanning + human review"]
+        "matchingAI": null,
+        "libraryQA": null,
+        "synthesis": null,
+        "agents": null,
+        "interviewing": null,
+        "complianceAI": null
       }
     },
     "guidepoint": {
-      "providerType": "Pure-Play Expert Network",
-      "officialAIProducts": "AskGP, Guidepoint360, Guidepoint Insights, Qsight",
-      "weakness": "AI capabilities still maturing; less content depth than transcript-first competitors",
-      "scaleEvidence": "Company-Stated",
-      "employeeEvidence": "Company-Stated",
       "ai": {
-        "matchingAI": ["Publicly indicated", "Company-Stated", "AI-powered scheduling and matching"],
-        "libraryQA": ["Publicly indicated", "Company-Stated", "AskGP conversational AI research assistant"],
-        "synthesis": ["Limited public evidence", "Company-Stated", "Via AskGP platform"],
-        "agents": ["Not publicly clear", "Inferred"],
-        "interviewing": ["Not publicly clear", "Inferred"],
-        "complianceAI": ["Not publicly clear", "Inferred"]
+        "matchingAI": null,
+        "libraryQA": null,
+        "synthesis": null,
+        "agents": null,
+        "interviewing": null,
+        "complianceAI": null
       }
     },
     "dialectica": {
-      "providerType": "Hybrid Expert Network",
-      "officialAIProducts": "Dialectica IQ, Origin",
-      "weakness": "Smaller scale than established leaders; Origin deal-sourcing platform less proven at scale",
-      "scaleEvidence": "Company-Stated",
-      "employeeEvidence": "Company-Stated",
       "ai": {
-        "matchingAI": ["Publicly indicated", "Company-Stated", "AI-assisted expert matching"],
-        "libraryQA": ["Publicly indicated", "Company-Stated", "Dialectica IQ knowledge graph (80M+ records)"],
-        "synthesis": ["Limited public evidence", "Company-Stated", "Via IQ platform"],
-        "agents": ["Publicly indicated", "Company-Stated", "Proprietary AI agents (50+ GenAI tools)"],
-        "interviewing": ["Not publicly clear", "Inferred"],
-        "complianceAI": ["Publicly indicated", "Company-Stated", "Automated compliance monitoring"]
+        "matchingAI": null,
+        "libraryQA": null,
+        "synthesis": null,
+        "agents": null,
+        "interviewing": null,
+        "complianceAI": null
       }
     },
     "atheneum": {
-      "providerType": "Pure-Play Expert Network",
-      "officialAIProducts": "Not publicly detailed",
-      "weakness": "Less AI-differentiated than tech-forward competitors; less content depth",
-      "scaleEvidence": "Company-Stated",
-      "employeeEvidence": "Estimated",
       "ai": {
-        "matchingAI": ["Publicly indicated", "Inferred"],
-        "libraryQA": ["Limited public evidence", "Inferred"],
-        "synthesis": ["Not publicly clear", "Inferred"],
-        "agents": ["Not publicly clear", "Inferred"],
-        "interviewing": ["Not publicly clear", "Inferred"],
-        "complianceAI": ["Not publicly clear", "Inferred"]
+        "matchingAI": null,
+        "libraryQA": null,
+        "synthesis": null,
+        "agents": null,
+        "interviewing": null,
+        "complianceAI": null
       }
     },
     "newtonx": {
@@ -423,48 +214,33 @@
       }
     },
     "stax": {
-      "providerType": "Boutique Specialist",
-      "officialAIProducts": "Not publicly detailed",
-      "weakness": "Smaller scale; consulting-origin model less suited for high-volume call programs",
-      "scaleEvidence": "Inferred",
-      "employeeEvidence": "Estimated",
       "ai": {
-        "matchingAI": ["Limited public evidence", "Inferred"],
-        "libraryQA": ["Not publicly clear", "Inferred"],
-        "synthesis": ["Not publicly clear", "Inferred"],
-        "agents": ["Not publicly clear", "Inferred"],
-        "interviewing": ["Not publicly clear", "Inferred"],
-        "complianceAI": ["Not publicly clear", "Inferred"]
+        "matchingAI": null,
+        "libraryQA": null,
+        "synthesis": null,
+        "agents": null,
+        "interviewing": null,
+        "complianceAI": null
       }
     },
     "capvision": {
-      "providerType": "Asia Specialist Network",
-      "officialAIProducts": "Capvision Platform",
-      "weakness": "Primarily Asia-focused; less global coverage than market leaders",
-      "scaleEvidence": "Company-Stated",
-      "employeeEvidence": "Estimated",
       "ai": {
-        "matchingAI": ["Publicly indicated", "Inferred"],
-        "libraryQA": ["Limited public evidence", "Inferred"],
-        "synthesis": ["Not publicly clear", "Inferred"],
-        "agents": ["Not publicly clear", "Inferred"],
-        "interviewing": ["Not publicly clear", "Inferred"],
-        "complianceAI": ["Not publicly clear", "Inferred"]
+        "matchingAI": null,
+        "libraryQA": null,
+        "synthesis": null,
+        "agents": null,
+        "interviewing": null,
+        "complianceAI": null
       }
     },
     "arches": {
-      "providerType": "Regional Expert Network",
-      "officialAIProducts": "Not publicly detailed",
-      "weakness": "Regional focus; smaller network scale than global leaders",
-      "scaleEvidence": "Company-Stated",
-      "employeeEvidence": "Estimated",
       "ai": {
-        "matchingAI": ["Publicly indicated", "Inferred"],
-        "libraryQA": ["Publicly indicated", "Inferred", "Content platform"],
-        "synthesis": ["Not publicly clear", "Inferred"],
-        "agents": ["Not publicly clear", "Inferred"],
-        "interviewing": ["Not publicly clear", "Inferred"],
-        "complianceAI": ["Not publicly clear", "Inferred"]
+        "matchingAI": null,
+        "libraryQA": null,
+        "synthesis": null,
+        "agents": null,
+        "interviewing": null,
+        "complianceAI": null
       }
     },
     "visasq": {
@@ -483,18 +259,13 @@
       }
     },
     "lynk": {
-      "providerType": "Asia Specialist Network",
-      "officialAIProducts": "Lynk Platform",
-      "weakness": "Asia-focused; smaller global footprint than established leaders",
-      "scaleEvidence": "Company-Stated",
-      "employeeEvidence": "Estimated",
       "ai": {
-        "matchingAI": ["Publicly indicated", "Inferred"],
-        "libraryQA": ["Limited public evidence", "Inferred"],
-        "synthesis": ["Not publicly clear", "Inferred"],
-        "agents": ["Not publicly clear", "Inferred"],
-        "interviewing": ["Not publicly clear", "Inferred"],
-        "complianceAI": ["Not publicly clear", "Inferred"]
+        "matchingAI": null,
+        "libraryQA": null,
+        "synthesis": null,
+        "agents": null,
+        "interviewing": null,
+        "complianceAI": null
       }
     },
     "alphaexpert": {
@@ -528,18 +299,13 @@
       }
     },
     "techspert": {
-      "providerType": "Technology-First Network",
-      "officialAIProducts": "Techspert AI Platform",
-      "weakness": "Technology-focused; less established track record than market leaders",
-      "scaleEvidence": "Company-Stated",
-      "employeeEvidence": "Estimated",
       "ai": {
-        "matchingAI": ["Publicly documented", "Company-Stated", "AI-native expert identification"],
-        "libraryQA": ["Limited public evidence", "Inferred"],
-        "synthesis": ["Not publicly clear", "Inferred"],
-        "agents": ["Not publicly clear", "Inferred"],
-        "interviewing": ["Not publicly clear", "Inferred"],
-        "complianceAI": ["Not publicly clear", "Inferred"]
+        "matchingAI": null,
+        "libraryQA": null,
+        "synthesis": null,
+        "agents": null,
+        "interviewing": null,
+        "complianceAI": null
       }
     },
     "prosynth": {
@@ -558,18 +324,13 @@
       }
     },
     "prosapient": {
-      "providerType": "Pure-Play Expert Network",
-      "officialAIProducts": "Prosapient Platform",
-      "weakness": "Smaller scale than market leaders; newer entrant",
-      "scaleEvidence": "Company-Stated",
-      "employeeEvidence": "Estimated",
       "ai": {
-        "matchingAI": ["Publicly indicated", "Inferred"],
-        "libraryQA": ["Limited public evidence", "Inferred"],
-        "synthesis": ["Not publicly clear", "Inferred"],
-        "agents": ["Not publicly clear", "Inferred"],
-        "interviewing": ["Not publicly clear", "Inferred"],
-        "complianceAI": ["Not publicly clear", "Inferred"]
+        "matchingAI": null,
+        "libraryQA": null,
+        "synthesis": null,
+        "agents": null,
+        "interviewing": null,
+        "complianceAI": null
       }
     }
   }
