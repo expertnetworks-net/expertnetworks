@@ -49,16 +49,17 @@ Workflow: `.github/workflows/verify.yml`. It runs on each push and each pull req
 | Step | Command |
 |---|---|
 | Install | `npm ci` |
+| Slug check | `node .github/scripts/check-slugs.mjs` |
 | Build | `npm run build` |
 | Link check | `npm run verify:links` |
 | Type check | `npm run check` |
 | Security audit | `npm audit --audit-level=high` |
 
-- The first four steps are the same as `npm ci` followed by `npm run verify`.
+- The build, link check, and type check are the same as `npm run verify`.
 - The audit step fails on each advisory of severity high or critical. See section 7.
 - A new run on the same branch cancels the run that is in progress.
 - The workflow token has read-only access to repository contents.
-- CI does not run `.github/scripts/check-slugs.mjs`. Run it locally after content changes.
+- The slug check fails on broken content references before the build runs.
 
 ## 5. Deploy procedure
 
