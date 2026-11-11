@@ -45,7 +45,7 @@
     "Legal / Regulatory"
   ],
   "pricingModel": "Mixed",
-  "pricingDetail": "Per-call / project / subscription",
+  "pricingDetail": "GLG's 2021 S-1 describes time-based and consumption-based subscriptions, plus standalone projects with defined deliverables. Current standalone per-call purchasing is unconfirmed in the sources reviewed.",
   "keyDifferentiators": [
     "Category pioneer with 25+ years in expert-network workflows",
     "Very large global network and broad functional coverage",
@@ -64,9 +64,8 @@
   "compliance": {
     "mnpiPolicy": "Strong compliance positioning with structured, auditable, and transparent interaction model",
     "expertVetting": "Conflict-management and confidential-information controls with annual expert compliance training",
-    "coolingOffPeriod": "Controls designed to reduce conflict and confidential-information risk (specific public-company cooling-off rules not publicly documented in detail)",
     "auditTrail": true,
-    "regulatoryHistory": "No major public regulatory action has been taken directly against GLG as an entity. However, GLG was investigated by the SEC in 2004 in connection with insider-trading allegations, and a GLG network member (Dr. Sidney Gilman) was involved in the high-profile Martoma/SAC Capital insider-trading case — the SEC acknowledged that both parties had circumvented GLG's compliance procedures, and GLG itself was not charged. The broader expert-network sector was heavily scrutinized during the insider-trading enforcement wave of the early 2010s, and GLG's compliance posture appears to have been a significant reason it was often viewed as a safer incumbent."
+    "regulatoryHistory": "The SEC's November 20, 2012 complaint in CR Intrinsic Investors, LLC et al. named CR Intrinsic, Mathew Martoma, and Dr. Sidney Gilman as defendants. GLG was not a defendant in that specific complaint."
   },
   "featured": true,
   "priority": 1,
@@ -97,16 +96,12 @@
         "event": "Expands from report publishing into direct expert access workflows"
       },
       {
-        "year": "2004",
+        "year": "2003",
         "event": "Opens London office and broadens practice areas internationally"
       },
       {
         "year": "Mid-2000s",
         "event": "Builds major compliance systems as the category professionalizes"
-      },
-      {
-        "year": "2010s",
-        "event": "Survives industry scrutiny during insider-trading enforcement wave; compliance posture strengthens brand"
       },
       {
         "year": "2023",
@@ -192,14 +187,14 @@
   "complianceExtended": {
     "narrative": "GLG publicly emphasizes that it has helped establish compliance norms for the expert-network category and describes its model as structured, auditable, and transparent. Its public materials refer to proprietary compliance systems and technologies, annual expert training, and controls designed to reduce conflict and confidential-information risk.",
     "highlights": [
-      "Strong compliance reputation and industry-leading positioning",
+      "GLG positions compliance as a competitive differentiator",
       "Structured, auditable, and transparent interaction framework",
       "Annual expert compliance training",
       "Conflict-management controls",
       "Confidential-information safeguards",
       "Proprietary compliance systems and technologies"
     ],
-    "regulatoryContext": "No major public regulatory action has been taken directly against GLG as an entity. GLG was investigated by the SEC in 2004 regarding insider-trading allegations, and a GLG network member (Dr. Sidney Gilman) was involved in the Martoma/SAC Capital insider-trading case — the SEC acknowledged that both parties had circumvented GLG's compliance procedures, and GLG itself was not charged. The broader expert-network sector was heavily scrutinized during the early 2010s insider-trading enforcement wave, and GLG's compliance posture appears to have been a significant reason it was often viewed as a safer incumbent."
+    "regulatoryContext": "In its November 2012 CR Intrinsic/Martoma/Gilman complaint, the SEC alleged that Martoma and Gilman concealed the true topics of their consultations from the expert network firm. This was an allegation in the complaint, which did not name GLG as a defendant."
   },
   "clientFit": {
     "narrative": "GLG is especially well suited for users who need both custom primary research and reusable content infrastructure. Its multi-format product stack and large network make it a strong choice across buy-side, consulting, legal, and enterprise use cases.",
@@ -219,16 +214,13 @@
     "Multi-format product stack well beyond basic expert calls",
     "Increasingly capable AI-assisted research workflow via myGLG",
     "Growing reusable content library (20,000+ items as of Oct 2023, ~500 new/month)",
-    "Content distributed via Bloomberg Terminal and FactSet — broadest distribution reach of any expert network",
-    "Global office footprint with dedicated teams in NYC, London, Dubai, Austin, Bengaluru, and multiple Asian cities",
-    "Serves 2,700+ client organizations across hedge funds, PE, consulting, law firms, and corporates — the broadest client base in the industry"
+    "Content distributed via Bloomberg Terminal and FactSet",
+    "Global office footprint including New York, London, Dubai, Austin, Gurugram, and Mumbai",
+    "Reported more than 2,700 subscription clients as of June 30, 2021, in its 2021 S-1"
   ],
   "caveats": [
-    "Public pricing is not transparent — no listed rates",
     "'Largest' and 'best-in-class' are partly market-positioning claims, not independently benchmarked",
-    "Some workflow sophistication is evident, but the public site leaves important operational details abstract",
-    "Employee count is not pinned down precisely in official public materials",
-    "May be overbuilt for very small one-off research needs"
+    "Employee count is not pinned down precisely in official public materials"
   ],
   "notableFacts": [
     "Founded in 1998 — one of the oldest expert networks in operation",
@@ -237,7 +229,6 @@
     "GLG Library had 20,000+ transcripts and content items as of October 2023 relaunch (15,000+ transcripts specifically, per the September 2023 FactSet announcement, with ~500 new items per month)",
     "Library content distributed through FactSet partnership; expert transcripts also available via Bloomberg Terminal (announced July 2023)",
     "2008 strategic alliance with Credit Suisse gave CS analysts direct GLG network access (documented in Harvard Business School case study)",
-    "No individual clients publicly named despite disclosing 2,700+ client count in filings — all case studies are anonymized",
     "Redesigned myGLG launched in 2025 with AI-assisted features; relaunched in May 2026 with agentic AI tools",
     "GLG for Experts mobile app launched in September 2025 with AI-suggested responses (rated 4.6 on Google Play)",
     "Expanded NYC HQ to 96K SF at One Grand Central Place (2025)",
@@ -246,11 +237,17 @@
   "sourceNotes": [
     "Official GLG website (glginsights.com) used as primary source for product, history, and compliance claims",
     "LinkedIn used for company-size band and headquarters confirmation",
-    "External legal and industry sources used for sector-context language on compliance and regulatory history",
+    "Regulatory history narrowed to the SEC's November 20, 2012 complaint, including the named defendants and the concealment allegation in paragraph 30: https://www.sec.gov/files/litigation/complaints/2012/comp-pr2012-237.pdf. The unsupported 2004 SEC-investigation claim and general exoneration language were removed.",
     "Unsupported operational specifics removed or softened from previous version",
     "FactSet partnership and Library stats sourced from GLG press releases and public announcements",
     "Employee count changed from '2,500+' to LinkedIn band '1,001–5,000' due to insufficient primary-source documentation for the previous figure",
-    "November 2026 refresh: San Francisco office, MCP connector, AI-Moderated Calls, and GLG Frontier sourced from GLG press releases on glg.com/news (March 25, July 22, August 6, and October 15, 2026). GLG's homepage did not state expert, employee, or office counts when checked, so those fields are unchanged."
+    "November 2026 refresh: San Francisco office, MCP connector, AI-Moderated Calls, and GLG Frontier sourced from GLG press releases on glg.com/news (March 25, July 22, August 6, and October 15, 2026). GLG's homepage did not state expert, employee, or office counts when checked, so those fields are unchanged.",
+    "2026-11-11 targeted verification covers London opening, regulatory wording, cooling-off evidence, commercial arrangements, distribution channels, office locations, and the historical client count. Other profile claims retain their prior sourcing; lastUpdated is not a claim that every field was reverified in this pass.",
+    "London's 2003 opening verified against GLG's official history: https://glginsights.com/gerson-lehrman-group. Removed the unsupported timeline claim that compliance strengthened the brand during industry scrutiny.",
+    "GLG's compliance framework describes annual training, conflict screening, and client oversight tools, but the reviewed page does not establish a specific cooling-off period; that field is omitted: https://glg.com/compliance.",
+    "Commercial arrangements and the June 30, 2021 subscription-client count verified against the October 18, 2021 S-1; these are historical disclosures, not confirmation of current purchasing terms or client totals: https://www.sec.gov/Archives/edgar/data/1661123/000119312521301055/d161028ds1.htm.",
+    "Office examples checked against https://glg.com/about/contact-locations; Bengaluru was not listed and was removed. Distribution through Bloomberg and FactSet checked against https://glg.com/how-we-help/expert-content/library; unsupported distribution and client-base superlatives were removed.",
+    "Removed the unsubstantiated claim that no individual clients are publicly named, along with unsupported judgments about relative pricing, pricing opacity, and suitability for small one-off projects."
   ],
   "whyChoose": [
     "Network breadth",
@@ -258,24 +255,21 @@
     "Content library depth",
     "Multi-format research"
   ],
-  "whenNotIdeal": [
-    "Not the cheapest option",
-    "Overbuilt for small one-off needs",
-    "No transparent public pricing"
-  ],
+  "whenNotIdeal": [],
   "confidence": {
     "founded": "verified",
     "headquarters": "verified",
     "expertCount": "positioning",
     "employeeCount": "verified",
     "pricingModel": "inference",
+    "pricingDetail": "partially-unverifiable",
     "services": "verified",
     "compliance": "positioning",
     "overview": "verified",
     "history": "verified",
     "servicesDetailed": "verified",
     "aiPlatform": "positioning",
-    "complianceExtended": "verified",
+    "complianceExtended": "positioning",
     "clientFit": "inference"
   }
 }
