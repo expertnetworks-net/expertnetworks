@@ -65,7 +65,7 @@ check_deps() {  # every depends_on task must be merged into BASE (or the integra
 
 scope_violations() {  # $1=task file $2=worktree -> changed paths outside Scope
   local tf="$1" wt="$2" f s ok
-  (cd "$wt" && git status --porcelain | cut -c4- | sed 's/.* -> //') | while read -r f; do
+  (cd "$wt" && git status --porcelain --untracked-files=all | cut -c4- | sed 's/.* -> //') | while read -r f; do
     [ -z "$f" ] && continue; ok=0
     for s in $(scope "$tf"); do case "$f" in "$s"|"$s"*|"${s%/}"/*) ok=1;; esac; done
     [ $ok -eq 1 ] || echo "$f"
