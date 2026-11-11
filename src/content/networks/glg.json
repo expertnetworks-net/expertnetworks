@@ -65,7 +65,7 @@
     "mnpiPolicy": "Strong compliance positioning with structured, auditable, and transparent interaction model",
     "expertVetting": "Conflict-management and confidential-information controls with annual expert compliance training",
     "auditTrail": true,
-    "regulatoryHistory": "The SEC's November 20, 2012 complaint in CR Intrinsic Investors, LLC et al. named CR Intrinsic, Mathew Martoma, and Dr. Sidney Gilman as defendants. GLG was not a defendant in that specific complaint."
+    "regulatoryHistory": "The SEC's 2012 complaint against CR Intrinsic Investors, Mathew Martoma, and Dr. Sidney Gilman refers to an unnamed expert network firm. The complaint does not identify that firm as GLG."
   },
   "featured": true,
   "priority": 1,
@@ -194,7 +194,7 @@
       "Confidential-information safeguards",
       "Proprietary compliance systems and technologies"
     ],
-    "regulatoryContext": "In its November 2012 CR Intrinsic/Martoma/Gilman complaint, the SEC alleged that Martoma and Gilman concealed the true topics of their consultations from the expert network firm. This was an allegation in the complaint, which did not name GLG as a defendant."
+    "regulatoryContext": "Paragraph 30 of the SEC's 2012 CR Intrinsic/Martoma/Gilman complaint alleges that Martoma and Gilman hid their consultation topics from an unnamed expert network firm. The complaint does not identify the firm as GLG, so this allegation is not attributed to GLG here."
   },
   "clientFit": {
     "narrative": "GLG is especially well suited for users who need both custom primary research and reusable content infrastructure. Its multi-format product stack and large network make it a strong choice across buy-side, consulting, legal, and enterprise use cases.",
@@ -237,16 +237,17 @@
   "sourceNotes": [
     "Official GLG website (glginsights.com) used as primary source for product, history, and compliance claims",
     "LinkedIn used for company-size band and headquarters confirmation",
-    "Regulatory history narrowed to the SEC's November 20, 2012 complaint, including the named defendants and the concealment allegation in paragraph 30: https://www.sec.gov/files/litigation/complaints/2012/comp-pr2012-237.pdf. The unsupported 2004 SEC-investigation claim and general exoneration language were removed.",
+    "2026-11-11 SEC complaint check: paragraph 30 contains the concealment allegation, but the complaint does not name the expert network firm or identify it as GLG. It is not evidence attributing that allegation to GLG: https://www.sec.gov/files/litigation/complaints/2012/comp-pr2012-237.pdf.",
     "Unsupported operational specifics removed or softened from previous version",
     "FactSet partnership and Library stats sourced from GLG press releases and public announcements",
     "Employee count changed from '2,500+' to LinkedIn band '1,001–5,000' due to insufficient primary-source documentation for the previous figure",
     "November 2026 refresh: San Francisco office, MCP connector, AI-Moderated Calls, and GLG Frontier sourced from GLG press releases on glg.com/news (March 25, July 22, August 6, and October 15, 2026). GLG's homepage did not state expert, employee, or office counts when checked, so those fields are unchanged.",
     "2026-11-11 targeted verification covers London opening, regulatory wording, cooling-off evidence, commercial arrangements, distribution channels, office locations, and the historical client count. Other profile claims retain their prior sourcing; lastUpdated is not a claim that every field was reverified in this pass.",
     "London's 2003 opening verified against GLG's official history: https://glginsights.com/gerson-lehrman-group. Removed the unsupported timeline claim that compliance strengthened the brand during industry scrutiny.",
-    "GLG's compliance framework describes annual training, conflict screening, and client oversight tools, but the reviewed page does not establish a specific cooling-off period; that field is omitted: https://glg.com/compliance.",
+    "2026-11-11 compliance page check confirms annual training, conflict screening, and client oversight tools. The page does not establish a specific cooling-off period; that field is omitted: https://glg.com/compliance.",
     "Commercial arrangements and the June 30, 2021 subscription-client count verified against the October 18, 2021 S-1; these are historical disclosures, not confirmation of current purchasing terms or client totals: https://www.sec.gov/Archives/edgar/data/1661123/000119312521301055/d161028ds1.htm.",
-    "Office examples checked against https://glg.com/about/contact-locations; Bengaluru was not listed and was removed. Distribution through Bloomberg and FactSet checked against https://glg.com/how-we-help/expert-content/library; unsupported distribution and client-base superlatives were removed.",
+    "2026-11-11 office page check confirms the listed New York, London, Dubai, Austin, Gurugram, and Mumbai offices: https://glg.com/about/contact-locations. The Library page confirms Bloomberg and FactSet distribution: https://glg.com/how-we-help/expert-content/library.",
+    "History is partially unverifiable: the mid-2000s compliance-systems milestone remains unsourced. The verified label has been removed; other history claims retain their prior sourcing.",
     "Removed the unsubstantiated claim that no individual clients are publicly named, along with unsupported judgments about relative pricing, pricing opacity, and suitability for small one-off projects."
   ],
   "whyChoose": [
@@ -266,7 +267,7 @@
     "services": "verified",
     "compliance": "positioning",
     "overview": "verified",
-    "history": "verified",
+    "history": "partially-unverifiable",
     "servicesDetailed": "verified",
     "aiPlatform": "positioning",
     "complianceExtended": "positioning",
