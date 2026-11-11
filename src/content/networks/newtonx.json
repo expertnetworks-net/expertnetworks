@@ -25,7 +25,9 @@
     "AI-powered expert verification",
     "ML-based matching",
     "AI-moderated interviews",
-    "Synthetic data (NXAD)"
+    "Synthetic data (NXAD)",
+    "Synthetic Personas (client-specific B2B simulations)",
+    "Isaac conversational research agent in NewtonX Hub"
   ],
   "industries": [
     "Technology",
@@ -69,7 +71,7 @@
     "surveys": true,
     "complianceTools": true
   },
-  "lastUpdated": "2026-03-07",
+  "lastUpdated": "2026-11-11",
   "overview": "NewtonX is an AI-driven B2B research company founded in 2016 by former McKinsey consultants Germain Chastel and Sascha Eder, along with CTO Anuja Ketan. Headquartered in New York City, NewtonX differentiates itself from traditional expert networks by combining AI-powered expert sourcing with rigorous verification, enabling clients to access insights from a pool of over 1.1 billion professionals across 140 industries. The company's proprietary Knowledge Graph — a machine-learning-powered multi-query search engine — dynamically identifies and engages hard-to-reach niche experts, while a two-step verification process ensures 100% of respondents are qualified.\n\nNewtonX occupies a unique position at the intersection of expert networks, market research, and AI-driven analytics. Unlike traditional expert networks that rely on fixed databases, NewtonX custom-recruits experts for each project, supporting methodologies ranging from 10-person virtual panels to 10,000-person quantitative surveys, as well as qualitative interviews and AI-moderated research. The company serves Fortune 500 enterprises, top management consulting firms, and financial institutions, with named clients including Microsoft, Salesforce, Pinterest, TikTok, and The Wall Street Journal.\n\nNewtonX has raised $47 million in venture funding through its Series B round and generated approximately $38.5 million in revenue as of 2023. The company has expanded its capabilities with synthetic data (NXAD), AI-moderated interviews, and the NewtonX Hub platform. Its designation as the official B2B research partner for the 2024 GRIT Business & Innovation Report underscores its growing industry credibility.",
   "history": {
     "narrative": "NewtonX was founded in 2016 by Germain Chastel (CEO) and Sascha Eder (COO), both former McKinsey consultants, alongside CTO Anuja Ketan. Chastel, a Harvard Business School graduate and former McKinsey partner, envisioned leveraging AI to create the best on-demand B2B knowledge access platform. The company raised a $3M seed round in 2018 followed by a $12M Series A in 2019 led by Two Sigma Ventures. Tragically, co-founder Germain Chastel passed away unexpectedly in April 2021 at age 36. Sascha Eder assumed leadership, and the company closed a $32M Series B later that year. Under Eder's continued leadership, NewtonX has expanded into AI-moderated research, synthetic data, and the NewtonX Hub platform.",
@@ -109,6 +111,10 @@
       {
         "year": "2025",
         "event": "Launched NewtonX Hub platform for centralized research management"
+      },
+      {
+        "year": "2026",
+        "event": "Launches B2B Synthetic Personas built on identity-verified professional data (June 23); unveils next-generation NewtonX Hub with the Isaac conversational research agent (September 29)"
       }
     ]
   },
@@ -148,7 +154,9 @@
       "NXAD synthetic data generation grounded in verified B2B responses",
       "NewtonX Hub: centralized platform for recruitment, fieldwork, analysis, and visualization",
       "Hub Researcher: AI tool for accelerating data-to-insight workflows",
-      "AI-powered compliance scanning of expert calls, emails, and surveys"
+      "AI-powered compliance scanning of expert calls, emails, and surveys",
+      "Synthetic Personas: custom AI simulations combining client research with identity-verified professional data, with reflection checks and citation tracing (June 2026)",
+      "Next-generation NewtonX Hub: self-serve primary research, Synthetic Personas, analysis, and reporting in one platform, with the Isaac conversational research agent (September 2026)"
     ]
   },
   "complianceExtended": {
@@ -215,7 +223,8 @@
     "ESOMAR Directory — membership verification",
     "Greenbook — GRIT report partnership and AI research coverage",
     "The 1.1B+ Knowledge Graph figure represents a search index of professional records, not a standing expert network; NewtonX custom-recruits per project from this index",
-    "GetLatka revenue figure ($38.5M) is from a single self-reported data source and may not reflect current financials"
+    "GetLatka revenue figure ($38.5M) is from a single self-reported data source and may not reflect current financials",
+    "November 2026 refresh: Synthetic Personas and next-generation Hub sourced from NewtonX press releases (June 23 and September 29, 2026). Headcount and revenue figures were not re-verified in this pass."
   ],
   "whyChoose": [
     "AI-verified expert insights",

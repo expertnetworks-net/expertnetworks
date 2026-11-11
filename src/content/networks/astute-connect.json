@@ -55,7 +55,7 @@
   "regionStrength": "India",
   "complianceBadge": "Standard Compliance",
   "aiBadge": "AI Matching",
-  "lastUpdated": "2026-03-07",
+  "lastUpdated": "2026-11-11",
   "overview": "Astute Connect is an India-based expert network that launched in 2020 as a division of Astute Analytica and Report Ocean, market research firms with established data analytics capabilities. Headquartered in New Delhi, the company connects businesses with industry experts for one-on-one consultations and custom recruitment, leveraging its parent company's data analytics expertise to enhance expert matching.\n\nThe company claims to serve 500+ global clients across 100+ countries, with AI-powered matching algorithms that analyze client requirements and connect them with the most relevant experts. Astute Connect differentiates through its integration of traditional expert network services with data analytics capabilities inherited from its parent company.\n\nAs an organically grown, unfunded company, Astute Connect competes primarily on cost efficiency and regional expertise rather than technology or scale.",
   "history": {
     "narrative": "Astute Connect emerged from the Astute Analytica ecosystem, a market research and analytics firm based in India. The company was established around 2020 as a natural extension of Astute Analytica's existing research capabilities, adding expert network services to complement its data analytics and market research offerings. The company has grown organically without external funding.",
@@ -71,6 +71,10 @@
       {
         "year": "2024",
         "event": "Enhanced AI-powered expert matching; published industry analysis valuing expert network market at $2.52B"
+      },
+      {
+        "year": "2026",
+        "event": "Announced expanded expert engagement services for consulting, investment, and corporate strategy clients (January 12)"
       }
     ]
   },
@@ -135,7 +139,8 @@
     "Astute Connect official website (astuteconnect.com) — company overview and services",
     "Yahoo Finance — Astute Connect vision and industry sizing articles",
     "Tracxn — company profile and funding status",
-    "INEX ONE Expert Network Directory — Astute Connect profile"
+    "INEX ONE Expert Network Directory — Astute Connect profile",
+    "November 2026 refresh: January 12, 2026 GlobeNewswire release describes \"a network of over 4 million experts across 100+ countries\" and 500+ clients. The 4 million figure is far above the 75K+ previously listed here and is not independently verified, so the expert count field is left unchanged pending corroboration."
   ],
   "whyChoose": [
     "Cost-effective pricing",

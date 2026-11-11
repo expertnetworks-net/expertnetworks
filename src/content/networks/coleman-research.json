@@ -9,7 +9,7 @@
   "founded": 2003,
   "headquarters": "New York, NY",
   "employeeCount": "600+ (combined with VisasQ)",
-  "expertCount": "650K+ (combined with VisasQ)",
+  "expertCount": "800K+ (combined with VisasQ)",
   "description": "One of the original expert network pioneers, founded in 2003 and now operating as VISASQ/COLEMAN after its $102M acquisition by Japan's VisasQ in 2021. Provides expert consultations, custom research, and survey services with a global footprint spanning 7 offices.",
   "services": [
     "Expert Calls",
@@ -22,7 +22,8 @@
   "aiCapabilities": [
     "Technology-enhanced matching",
     "Integrated VisasQ platform capabilities",
-    "Multilingual expert search"
+    "Multilingual expert search",
+    "AI Scout client-facing expert matching (profiles in under five minutes)"
   ],
   "industries": [
     "Financial Services",
@@ -58,7 +59,7 @@
   "regionStrength": "North America",
   "complianceBadge": "Strong Compliance",
   "aiBadge": "Limited AI Detail",
-  "lastUpdated": "2026-03-07",
+  "lastUpdated": "2026-11-11",
   "overview": "Coleman Research is one of the expert network industry's true pioneers, founded in 2003 by Kevin Coleman — just a few years after GLG helped create the category. For nearly two decades, Coleman built a reputation for white-glove service, strong compliance, and deep relationships across financial services and healthcare.\n\nIn August 2021, Tokyo-based VisasQ shocked the industry by acquiring Coleman for $102 million — remarkable because Coleman had more than twice VisasQ's revenue at the time, with a transaction volume exceeding $43 million. The combined entity now operates as VISASQ/COLEMAN, with 650,000+ experts globally, 600+ employees, and 7 offices spanning New York, Raleigh, Boston, San Francisco, Los Angeles, London, and Hong Kong.\n\nThe merger created a unique cross-border platform: Coleman's deep US and European client relationships combined with VisasQ's dominant position in Japan (175,000+ experts) and Asia. The combined entity serves 1,000+ clients and is positioned as a bridge between Western and Asian expert networks — a significant advantage as global investment flows increasingly involve Asia-Pacific markets.",
   "history": {
     "narrative": "Kevin Coleman founded Coleman Research in 2003, drawing on his experience at Multex, a financial information service that launched during the dot-com era. Coleman recognized that investors needed more direct access to industry experts than traditional research channels provided. The company grew steadily from its base in New York, building offices across the US and expanding internationally.\n\nThe transformative moment came in August 2021 when Japan's VisasQ announced it would acquire Coleman for $102 million (JPY 11.2 billion). The deal was striking: Coleman had revenues of $43.8 million — more than double VisasQ's own revenue. VisasQ valued Coleman at roughly 2.3x revenue. Kevin Coleman remained as CEO and joined the VisasQ board.\n\nPost-acquisition, however, macroeconomic headwinds hit hard. A prolonged slowdown in the US M&A market caused Coleman's revenue to fall short of expectations, leading VisasQ to record a JPY 14.6 billion goodwill write-off in April 2024. Despite this, the combined entity continued integrating operations, rebranding as VISASQ/COLEMAN in January 2023 and expanding to 650,000+ experts globally.",
@@ -94,6 +95,14 @@
       {
         "year": "2024 (November)",
         "event": "Combined entity reached 650,000+ experts globally with 600+ employees"
+      },
+      {
+        "year": "2026 (March)",
+        "event": "VISASQ/COLEMAN launched AI Scout, opening its AI expert-matching engine directly to clients"
+      },
+      {
+        "year": "2026 (August)",
+        "event": "VISASQ/COLEMAN opened a Bogotá, Colombia expert recruitment office to support the U.S. business; combined network reported at over 800,000 experts across 190 countries"
       }
     ]
   },
@@ -206,7 +215,8 @@
     "Expert Opportunities — Coleman Research review with expert/consultant perspective and pricing details",
     "Crunchbase — Kevin Coleman founder profile and background",
     "Traders Magazine — Coleman Exchange platform launch details",
-    "CB Insights — company profile and leadership information"
+    "CB Insights — company profile and leadership information",
+    "November 2026 refresh: AI Scout and Bogotá office sourced from VISASQ/COLEMAN press releases (March 11 and August 3, 2026). Combined expert count updated to 800K+ per the August release; narrative passages citing 650,000+ reflect the November 2024 figure. Employee count was not re-verified."
   ],
   "whyChoose": [
     "20+ year track record",

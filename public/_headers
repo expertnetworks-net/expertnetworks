@@ -8,20 +8,29 @@
 #   use inline style attributes. There is no server and no user input, so the
 #   XSS surface is minimal; this locks down everything else (objects, frames,
 #   base-uri, form targets) while permitting the resources the site actually uses.
-# - Google Fonts: stylesheet from fonts.googleapis.com, font files from fonts.gstatic.com.
+# - Fonts: Inter is self-hosted (bundled into /_astro from @fontsource-variable/inter),
+#   so style-src and font-src need no third-party font origins.
+# - Speculation Rules are an inline <script type="speculationrules"> in BaseLayout and are
+#   covered by script-src 'unsafe-inline'; they only target same-origin links.
 # - Cloudflare Web Analytics: the dashboard injects beacon.min.js from
 #   static.cloudflareinsights.com, which reports to cloudflareinsights.com. Both
 #   must stay allowed or analytics are silently dropped.
 # - img-src allows https: and data: to cover favicons, OG images, and any remote logos.
 
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://cloudflareinsights.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; connect-src 'self' https://cloudflareinsights.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
   Cross-Origin-Opener-Policy: same-origin
+
+# The pages.dev hostname serves a copy of the site. Keep it out of search indexes.
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+https://:version.:project.pages.dev/*
+  X-Robots-Tag: noindex
 
 # Fingerprinted build assets are immutable — cache aggressively.
 /_astro/*

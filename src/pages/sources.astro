@@ -3,6 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
+  progress
+  themeColor="#0a0a0c"
   title="Sources & Methodology — ExpertNetworks.net"
   description="How ExpertNetworks.net gathers, weighs, labels, and updates information across provider profiles, pricing pages, and industry news. Public-source research with clear labeling."
   canonicalPath="/sources"
@@ -17,7 +19,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 >
 
   <!-- ═══ 1. HERO ═══ -->
-  <section class="relative overflow-hidden bg-[#0a0a0c]" id="sourcesHero">
+  <section data-nav-tone="dark" class="dark-surface relative overflow-hidden bg-[#0a0a0c]" id="sourcesHero">
     <!-- Grid texture -->
     <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
     <!-- Radial glows -->
@@ -37,25 +39,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="relative z-10 pt-[100px] pb-16 md:pt-[120px] md:pb-20 lg:pt-[140px] lg:pb-24 px-6">
       <div class="max-w-site mx-auto">
         <div class="max-w-2xl">
-          <a href="/" class="inline-flex items-center gap-1 text-[#6e8aaf] text-sm font-medium no-underline mb-5 hover:text-white/70 transition-colors">
+          <a href="/" class="inline-flex items-center gap-1 min-h-[44px] text-[#8fb0d9] text-sm font-medium no-underline mb-2 hover:text-white transition-colors">
             &larr; Home
           </a>
-          <div class="inline-flex items-center gap-2 mb-5 opacity-0 src-fade-up src-delay-1">
+          <div class="inline-flex items-center gap-2 mb-5 src-fade-up src-delay-1">
             <span class="w-8 h-px bg-[rgba(0,113,227,0.5)]"></span>
             <span class="text-[11px] font-semibold tracking-[0.15em] uppercase text-[#6e8aaf]">Research standards</span>
           </div>
-          <h1 class="text-[2rem] md:text-[2.75rem] lg:text-[3rem] font-extrabold text-white leading-[1.12] tracking-tight mb-4 opacity-0 src-fade-up src-delay-2">
+          <h1 class="text-[2rem] md:text-[2.75rem] lg:text-[3rem] font-extrabold text-white leading-[1.12] tracking-tight mb-4 src-fade-up src-delay-2">
             Sources & Methodology
           </h1>
-          <p class="text-[#9a9aa0] text-base md:text-lg leading-relaxed mb-6 max-w-xl opacity-0 src-fade-up src-delay-3">
+          <p class="text-[#9a9aa0] text-base md:text-lg leading-relaxed mb-6 max-w-xl src-fade-up src-delay-3">
             How ExpertNetworks.net gathers, weighs, labels, and updates information across provider profiles, pricing pages, and industry news.
           </p>
-          <p class="text-[#6e6e73] text-sm mb-7 opacity-0 src-fade-up src-delay-3">
+          <p class="text-[#8e8e93] text-sm mb-7 src-fade-up src-delay-3">
             Public-source research. Clear labeling. Corrections over ego.
           </p>
 
           <!-- Trust pills -->
-          <div class="flex flex-wrap gap-2 opacity-0 src-fade-up src-delay-4">
+          <div class="flex flex-wrap gap-2 src-fade-up src-delay-4">
             <span class="inline-flex items-center px-3 py-1.5 rounded-full text-[11px] font-semibold text-[#6e8aaf] bg-[rgba(0,113,227,0.08)] border border-[rgba(0,113,227,0.12)]">Public-source only</span>
             <span class="inline-flex items-center px-3 py-1.5 rounded-full text-[11px] font-semibold text-[#6e8aaf] bg-[rgba(0,113,227,0.08)] border border-[rgba(0,113,227,0.12)]">No paid placement</span>
             <span class="inline-flex items-center px-3 py-1.5 rounded-full text-[11px] font-semibold text-[#6e8aaf] bg-[rgba(0,113,227,0.08)] border border-[rgba(0,113,227,0.12)]">Claims labeled</span>
@@ -70,7 +72,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 
   <!-- ═══ 2. WHAT THIS PAGE COVERS ═══ -->
-  <section class="relative bg-[#0d0d10] py-16 md:py-20 px-6">
+  <section data-nav-tone="dark" class="dark-surface relative bg-[#0d0d10] py-16 md:py-20 px-6">
     <div class="max-w-site mx-auto">
       <div class="max-w-3xl mx-auto fade-in">
         <div class="rounded-2xl p-7 md:p-8 border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.02)]" style="backdrop-filter: blur(8px);">
@@ -86,7 +88,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 
   <!-- ═══ 3. HOW WE GATHER AND WEIGH INFORMATION ═══ -->
-  <section class="relative bg-[#0b0b0e] py-20 md:py-24 px-6">
+  <section data-nav-tone="dark" class="dark-surface relative bg-[#0b0b0e] py-20 md:py-24 px-6">
     <div class="max-w-site mx-auto">
       <div class="max-w-3xl mx-auto">
         <h2 class="text-2xl md:text-3xl font-bold text-white mb-4 fade-in">How we gather and weigh information</h2>
@@ -103,7 +105,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               </div>
               <h3 class="text-[14px] font-bold text-white">Primary sources</h3>
             </div>
-            <p class="text-[#6e6e73] text-[13px] leading-relaxed">
+            <p class="text-[#8e8e93] text-[13px] leading-relaxed">
               Company websites, official product pages, regulatory filings, public records.
             </p>
           </div>
@@ -115,7 +117,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               </div>
               <h3 class="text-[14px] font-bold text-white">Independent reporting</h3>
             </div>
-            <p class="text-[#6e6e73] text-[13px] leading-relaxed">
+            <p class="text-[#8e8e93] text-[13px] leading-relaxed">
               Reputable journalism, trade reporting, public interviews, analyst coverage.
             </p>
           </div>
@@ -127,7 +129,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               </div>
               <h3 class="text-[14px] font-bold text-white">Company-originated</h3>
             </div>
-            <p class="text-[#6e6e73] text-[13px] leading-relaxed">
+            <p class="text-[#8e8e93] text-[13px] leading-relaxed">
               Press releases, investor updates, marketing materials, sponsored content.
             </p>
           </div>
@@ -139,13 +141,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               </div>
               <h3 class="text-[14px] font-bold text-white">Editorial synthesis</h3>
             </div>
-            <p class="text-[#6e6e73] text-[13px] leading-relaxed">
+            <p class="text-[#8e8e93] text-[13px] leading-relaxed">
               Comparative analysis and clearly labeled inferences drawn from public evidence.
             </p>
           </div>
         </div>
 
-        <p class="text-[#6e6e73] text-[13px] leading-relaxed mt-6 fade-in">
+        <p class="text-[#8e8e93] text-[13px] leading-relaxed mt-6 fade-in">
           In general, official disclosures, current product materials, and independently reported facts are weighted more heavily than promotional content or unattributed summaries.
         </p>
       </div>
@@ -155,7 +157,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 
   <!-- ═══ 4. WHAT WE TRACK ═══ -->
-  <section class="relative bg-[#0d0d10] py-20 md:py-24 px-6">
+  <section data-nav-tone="dark" class="dark-surface relative bg-[#0d0d10] py-20 md:py-24 px-6">
     <div class="max-w-site mx-auto">
       <div class="max-w-3xl mx-auto">
         <h2 class="text-2xl md:text-3xl font-bold text-white mb-3 fade-in">What we track</h2>
@@ -220,19 +222,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 
   <!-- ═══ 5. CLAIM LABELS ═══ -->
-  <section class="relative bg-[#0a0a0c] py-20 md:py-24 px-6 overflow-hidden">
+  <section data-nav-tone="dark" class="dark-surface relative bg-[#0a0a0c] py-20 md:py-24 px-6 overflow-hidden">
     <div class="absolute inset-0 opacity-[0.02]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 40px 40px;"></div>
 
     <div class="max-w-site mx-auto relative">
       <div class="max-w-3xl mx-auto">
         <div class="inline-flex items-center gap-2 mb-4 fade-in">
           <span class="w-8 h-px bg-[rgba(0,113,227,0.4)]"></span>
-          <span class="text-[10px] font-semibold tracking-[0.18em] uppercase text-[#5a7a9e]">Evidence standards</span>
+          <span class="text-[10px] font-semibold tracking-[0.18em] uppercase text-[#7d9bc0]">Evidence standards</span>
           <span class="w-8 h-px bg-[rgba(0,113,227,0.4)]"></span>
         </div>
         <h2 class="text-2xl md:text-3xl font-bold text-white mb-3 fade-in">How claims are labeled</h2>
         <p class="text-[#9a9aa0] text-[14px] leading-relaxed mb-10 fade-in">
-          Every factual claim in a network profile is assigned one of four labels. This system matches the site's <a href="/verification" class="text-[#5ba4e6] hover:underline">verification framework</a>.
+          Every factual claim in a network profile is assigned one of four labels. This system matches the site's <a href="/verification/" class="text-[#5ba4e6] hover:underline">verification framework</a>.
         </p>
 
         <div class="grid sm:grid-cols-2 gap-4">
@@ -245,7 +247,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <p class="text-[#9a9aa0] text-[13px] leading-relaxed mb-2">
               Directly supported by primary public sources or multiple credible sources.
             </p>
-            <p class="text-[#4a4a52] text-[11px] leading-relaxed">
+            <p class="text-[#86868b] text-[12px] leading-relaxed">
               E.g., founding year from incorporation records, headquarters from regulatory filings.
             </p>
           </div>
@@ -259,7 +261,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <p class="text-[#9a9aa0] text-[13px] leading-relaxed mb-2">
               Company-originated claim or marketing framing, presented as such.
             </p>
-            <p class="text-[#4a4a52] text-[11px] leading-relaxed">
+            <p class="text-[#86868b] text-[12px] leading-relaxed">
               E.g., expert count from company website, service descriptions from product pages.
             </p>
           </div>
@@ -273,7 +275,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <p class="text-[#9a9aa0] text-[13px] leading-relaxed mb-2">
               Editorial conclusion drawn from available public evidence.
             </p>
-            <p class="text-[#4a4a52] text-[11px] leading-relaxed">
+            <p class="text-[#86868b] text-[12px] leading-relaxed">
               E.g., pricing model estimated from job postings, geographic scope from office locations.
             </p>
           </div>
@@ -287,13 +289,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <p class="text-[#9a9aa0] text-[13px] leading-relaxed mb-2">
               Approximate figure used when definitions vary or precise disclosure is unavailable.
             </p>
-            <p class="text-[#4a4a52] text-[11px] leading-relaxed">
+            <p class="text-[#86868b] text-[12px] leading-relaxed">
               E.g., employee count from LinkedIn, expert network market size from analyst reports.
             </p>
           </div>
         </div>
 
-        <p class="text-[#6e6e73] text-[13px] leading-relaxed mt-6 fade-in">
+        <p class="text-[#8e8e93] text-[13px] leading-relaxed mt-6 fade-in">
           Labels are assigned per field, not per profile. A single network may have its founding year marked as verified, its expert count as positioned, and its pricing model as inferred — because each data point has a different evidence basis.
         </p>
       </div>
@@ -303,7 +305,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 
   <!-- ═══ 6. NUMBERS NEED CONTEXT ═══ -->
-  <section class="relative bg-[#0d0d10] py-20 md:py-24 px-6">
+  <section data-nav-tone="dark" class="dark-surface relative bg-[#0d0d10] py-20 md:py-24 px-6">
     <div class="max-w-site mx-auto">
       <div class="max-w-3xl mx-auto">
         <h2 class="text-xl md:text-2xl font-bold text-white mb-4 fade-in">Expert counts, employee counts, and other approximate figures</h2>
@@ -316,19 +318,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="rounded-2xl p-6 border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.02)]">
             <h3 class="text-[13px] font-bold text-[#9a9aa0] uppercase tracking-wide mb-4">Common issues</h3>
             <ul class="space-y-2.5">
-              <li class="flex items-start gap-2.5 text-[#6e6e73] text-[13px] leading-relaxed">
+              <li class="flex items-start gap-2.5 text-[#8e8e93] text-[13px] leading-relaxed">
                 <span class="w-1 h-1 rounded-full bg-[rgba(255,159,10,0.5)] mt-2 shrink-0"></span>
                 Different definitions of "expert" across providers
               </li>
-              <li class="flex items-start gap-2.5 text-[#6e6e73] text-[13px] leading-relaxed">
+              <li class="flex items-start gap-2.5 text-[#8e8e93] text-[13px] leading-relaxed">
                 <span class="w-1 h-1 rounded-full bg-[rgba(255,159,10,0.5)] mt-2 shrink-0"></span>
                 Self-reporting without standardized methodology
               </li>
-              <li class="flex items-start gap-2.5 text-[#6e6e73] text-[13px] leading-relaxed">
+              <li class="flex items-start gap-2.5 text-[#8e8e93] text-[13px] leading-relaxed">
                 <span class="w-1 h-1 rounded-full bg-[rgba(255,159,10,0.5)] mt-2 shrink-0"></span>
                 Stale or infrequently updated figures
               </li>
-              <li class="flex items-start gap-2.5 text-[#6e6e73] text-[13px] leading-relaxed">
+              <li class="flex items-start gap-2.5 text-[#8e8e93] text-[13px] leading-relaxed">
                 <span class="w-1 h-1 rounded-full bg-[rgba(255,159,10,0.5)] mt-2 shrink-0"></span>
                 Conflicting estimates across third-party databases
               </li>
@@ -359,7 +361,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
         </div>
 
-        <p class="text-[#6e6e73] text-[13px] leading-relaxed mt-6 fade-in">
+        <p class="text-[#8e8e93] text-[13px] leading-relaxed mt-6 fade-in">
           Where exact comparability is not possible, figures are treated as directional unless otherwise noted.
         </p>
       </div>
@@ -369,7 +371,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 
   <!-- ═══ 7. NEWS CURATION AND SOURCE DISCLOSURE ═══ -->
-  <section class="relative bg-[#0b0b0e] py-20 md:py-24 px-6">
+  <section data-nav-tone="dark" class="dark-surface relative bg-[#0b0b0e] py-20 md:py-24 px-6">
     <div class="max-w-site mx-auto">
       <div class="max-w-3xl mx-auto">
         <h2 class="text-xl md:text-2xl font-bold text-white mb-4 fade-in">News curation and source disclosure</h2>
@@ -403,7 +405,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 
   <!-- ═══ 8. WHAT WE EXCLUDE ═══ -->
-  <section class="relative bg-[#0d0d10] py-16 md:py-20 px-6">
+  <section data-nav-tone="dark" class="dark-surface relative bg-[#0d0d10] py-16 md:py-20 px-6">
     <div class="max-w-site mx-auto">
       <div class="max-w-3xl mx-auto fade-in">
         <h2 class="text-xl md:text-2xl font-bold text-white mb-4">What we exclude</h2>
@@ -417,7 +419,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 
   <!-- ═══ 9. INCLUSION CRITERIA ═══ -->
-  <section class="relative bg-[#0b0b0e] py-16 md:py-20 px-6">
+  <section data-nav-tone="dark" class="dark-surface relative bg-[#0b0b0e] py-16 md:py-20 px-6">
     <div class="max-w-site mx-auto">
       <div class="max-w-3xl mx-auto fade-in">
         <h2 class="text-xl md:text-2xl font-bold text-white mb-4">Inclusion criteria</h2>
@@ -456,12 +458,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 
   <!-- ═══ 10. CORRECTIONS AND REVISIONS ═══ -->
-  <section class="relative bg-[#0d0d10] py-20 md:py-24 px-6">
+  <section data-nav-tone="dark" class="dark-surface relative bg-[#0d0d10] py-20 md:py-24 px-6">
     <div class="max-w-site mx-auto">
       <div class="max-w-3xl mx-auto fade-in">
         <div class="rounded-2xl p-8 md:p-10 border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.02)]" style="backdrop-filter: blur(8px);">
           <h2 class="text-xl md:text-2xl font-bold text-white mb-2">Corrections and revisions</h2>
-          <p class="text-[#6e6e73] text-[13px] mb-6">How factual errors are handled.</p>
+          <p class="text-[#8e8e93] text-[13px] mb-6">How factual errors are handled.</p>
 
           <p class="text-[#9a9aa0] text-[14px] leading-[1.75] mb-6">
             If you identify a factual error, contact us with supporting public evidence. Corrections are reviewed against publicly available documentation, not against marketing preference. Material inaccuracies are revised clearly, with an updated timestamp. Accuracy matters more than speed.
@@ -470,15 +472,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="grid sm:grid-cols-3 gap-4 pt-6 border-t border-[rgba(255,255,255,0.04)]">
             <div class="text-center">
               <div class="text-[12px] font-bold text-[#5ba4e6] mb-1">Evidence over assertion</div>
-              <div class="text-[11px] text-[#4a4a52]">Claims require sources</div>
+              <div class="text-[12px] text-[#86868b]">Claims require sources</div>
             </div>
             <div class="text-center">
               <div class="text-[12px] font-bold text-[#5ba4e6] mb-1">Clarity over convenience</div>
-              <div class="text-[11px] text-[#4a4a52]">Accuracy trumps flattery</div>
+              <div class="text-[12px] text-[#86868b]">Accuracy trumps flattery</div>
             </div>
             <div class="text-center">
               <div class="text-[12px] font-bold text-[#5ba4e6] mb-1">Revision over defensiveness</div>
-              <div class="text-[11px] text-[#4a4a52]">When wrong, we correct</div>
+              <div class="text-[12px] text-[#86868b]">When wrong, we correct</div>
             </div>
           </div>
         </div>
@@ -489,14 +491,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 
   <!-- ═══ 11. LIMITATIONS ═══ -->
-  <section class="relative bg-[#0b0b0e] py-16 md:py-20 px-6">
+  <section data-nav-tone="dark" class="dark-surface relative bg-[#0b0b0e] py-16 md:py-20 px-6">
     <div class="max-w-site mx-auto">
       <div class="max-w-3xl mx-auto fade-in">
         <h2 class="text-xl md:text-2xl font-bold text-white mb-4">Limitations</h2>
         <p class="text-[#9a9aa0] text-[14px] leading-[1.75]">
           This directory is a curated and expanding subset of the market, not a complete census. Coverage depth varies by provider, and some fields are easier to verify than others. Where data is partial, approximate, or inconsistent across sources, the aim is to label that uncertainty rather than hide it.
         </p>
-        <p class="text-[#4a4a52] text-[11px] mt-6">Last updated: March 2026</p>
+        <p class="text-[#86868b] text-[12px] mt-6">Last updated: March 2026</p>
       </div>
     </div>
     <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.04)] to-transparent"></div>
@@ -504,20 +506,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 
   <!-- ═══ 12. CLOSING CTA ═══ -->
-  <section class="relative bg-[#0a0a0c] py-16 md:py-20 px-6">
+  <section data-nav-tone="dark" class="dark-surface relative bg-[#0a0a0c] py-16 md:py-20 px-6">
     <div class="max-w-site mx-auto text-center fade-in">
       <h2 class="text-xl md:text-2xl font-bold text-white mb-3">Questions, corrections, or sourced feedback?</h2>
       <p class="text-[#9a9aa0] text-[14px] mb-7">Help improve the public record.</p>
 
       <div class="flex flex-wrap justify-center gap-3">
-        <a href="mailto:hollow.baton-0p@icloud.com" class="inline-flex items-center gap-1.5 px-6 py-2.5 bg-accent text-white text-sm font-semibold rounded-lg no-underline hover:bg-accent-hover transition-colors">
+        <a href="mailto:hollow.baton-0p@icloud.com" class="inline-flex items-center gap-1.5 min-h-[44px] px-6 py-2.5 bg-accent text-white text-sm font-semibold rounded-lg no-underline hover:bg-accent-hover transition-colors">
           Contact
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
-        <a href="/verification" class="inline-flex items-center gap-1.5 px-6 py-2.5 bg-[rgba(255,255,255,0.06)] text-[#c5c5ca] text-sm font-semibold rounded-lg no-underline hover:bg-[rgba(255,255,255,0.1)] transition-colors border border-[rgba(255,255,255,0.06)]">
+        <a href="/verification/" class="inline-flex items-center gap-1.5 min-h-[44px] px-6 py-2.5 bg-[rgba(255,255,255,0.06)] text-[#c5c5ca] text-sm font-semibold rounded-lg no-underline hover:bg-[rgba(255,255,255,0.1)] transition-colors border border-[rgba(255,255,255,0.06)]">
           Verification framework
         </a>
-        <a href="/networks" class="inline-flex items-center gap-1.5 px-6 py-2.5 bg-[rgba(255,255,255,0.06)] text-[#c5c5ca] text-sm font-semibold rounded-lg no-underline hover:bg-[rgba(255,255,255,0.1)] transition-colors border border-[rgba(255,255,255,0.06)]">
+        <a href="/networks/" class="inline-flex items-center gap-1.5 min-h-[44px] px-6 py-2.5 bg-[rgba(255,255,255,0.06)] text-[#c5c5ca] text-sm font-semibold rounded-lg no-underline hover:bg-[rgba(255,255,255,0.1)] transition-colors border border-[rgba(255,255,255,0.06)]">
           Browse networks
         </a>
       </div>
@@ -528,20 +530,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 
 <style>
-  /* ─── Hero fade-up animations ─── */
-  .src-fade-up {
-    transform: translateY(24px);
-    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* ─── Hero entrance: CSS only, content is visible in the HTML on first paint ─── */
+  @keyframes srcRise {
+    from { opacity: 0; transform: translateY(14px); }
   }
-  .src-fade-up.is-visible {
-    opacity: 1;
-    transform: translateY(0);
+  @media (prefers-reduced-motion: no-preference) {
+    .src-fade-up { animation: srcRise 0.6s var(--ease-out) both; }
+    .src-delay-1 { animation-delay: 0.02s; }
+    .src-delay-2 { animation-delay: 0.08s; }
+    .src-delay-3 { animation-delay: 0.14s; }
+    .src-delay-4 { animation-delay: 0.2s; }
   }
-  .src-delay-1 { transition-delay: 0.1s; }
-  .src-delay-2 { transition-delay: 0.25s; }
-  .src-delay-3 { transition-delay: 0.4s; }
-  .src-delay-4 { transition-delay: 0.6s; }
 
   /* ─── Subtle pulse for hero logo ─── */
   .src-hero-logo {
@@ -553,80 +552,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .src-fade-up {
-      opacity: 1;
-      transform: none;
-      transition: none;
-    }
     .src-hero-logo {
       animation: none;
     }
   }
 </style>
-
-<script>
-  // @ts-nocheck
-// ─── Hero fade-up reveal ───
-(function() {
-  var items = document.querySelectorAll('.src-fade-up');
-  if (!items.length) return;
-
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    items.forEach(function(el) { el.classList.add('is-visible'); });
-    return;
-  }
-
-  setTimeout(function() {
-    items.forEach(function(el) { el.classList.add('is-visible'); });
-  }, 100);
-})();
-</script>
-
-<!-- Nav dark mode — matches About page pattern -->
-<script>
-  // @ts-nocheck
-(function() {
-  var nav = document.querySelector('nav');
-  var heroSection = document.getElementById('sourcesHero');
-  if (!nav || !heroSection) return;
-
-  var brandLink = nav.querySelector('a[href="/"]');
-  var menuBtn = nav.querySelector('#menuBtn');
-  var navLinks = nav.querySelectorAll('ul a');
-  var searchBtn = nav.querySelector('#searchTrigger');
-  var linkedinLink = nav.querySelector('a[aria-label="LinkedIn"]');
-
-  var isDark = false;
-
-  function setDarkNav() {
-    if (isDark) return;
-    isDark = true;
-    nav.style.background = 'rgba(10,10,12,0.85)';
-    nav.style.borderBottomColor = 'rgba(255,255,255,0.06)';
-    if (brandLink) { brandLink.style.color = '#fff'; }
-    if (menuBtn) { menuBtn.style.color = '#a1a1a6'; }
-    navLinks.forEach(function(l) { l.style.color = '#a1a1a6'; });
-    if (searchBtn) { searchBtn.style.background = 'rgba(255,255,255,0.08)'; searchBtn.style.color = '#a1a1a6'; }
-    if (linkedinLink) { linkedinLink.style.color = '#a1a1a6'; }
-  }
-
-  function setLightNav() {
-    if (!isDark) return;
-    isDark = false;
-    nav.style.background = '';
-    nav.style.borderBottomColor = '';
-    if (brandLink) { brandLink.style.color = ''; }
-    if (menuBtn) { menuBtn.style.color = ''; }
-    navLinks.forEach(function(l) { l.style.color = ''; });
-    if (searchBtn) { searchBtn.style.background = ''; searchBtn.style.color = ''; }
-    if (linkedinLink) { linkedinLink.style.color = ''; }
-  }
-
-  // Entire page is dark — keep nav dark always
-  setDarkNav();
-
-  window.addEventListener('scroll', function() {
-    setDarkNav();
-  }, { passive: true });
-})();
-</script>

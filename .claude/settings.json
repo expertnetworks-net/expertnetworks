@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(npm run build)",
+      "Bash(npm run check)",
+      "Bash(npm run verify)",
+      "Bash(npm run verify:links)",
+      "Bash(npm audit)",
+      "Bash(npm audit --audit-level=high)",
+      "Bash(node .github/scripts/check-slugs.mjs)",
+      "Bash(git status *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(gh api repos/expertnetworks-net/expertnetworks/commits/*)",
+      "Bash(gh api repos/expertnetworks-net/expertnetworks/branches *)",
+      "Bash(gh api repos/expertnetworks-net/expertnetworks/pulls *)"
+    ],
+    "deny": [
+      "Bash(gh api * -X *)",
+      "Bash(gh api * --method *)",
+      "Bash(gh api * -f *)",
+      "Bash(gh api * -F *)",
+      "Bash(gh api * --field *)",
+      "Bash(gh api * --raw-field *)",
+      "Bash(gh api * --input *)"
+    ]
+  }
+}

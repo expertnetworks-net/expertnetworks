@@ -2,17 +2,110 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─────────────────────────────────────────────────────────────
+   Inter (self-hosted variable font, latin + latin-ext subsets).
+   Files come from the @fontsource-variable/inter package and are
+   fingerprinted into /_astro by the build. The family keeps the
+   name "Inter" so existing font stacks need no changes.
+   ───────────────────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('@fontsource-variable/inter/files/inter-latin-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('@fontsource-variable/inter/files/inter-latin-ext-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* Metric-matched fallback so the swap from the system font causes no layout shift. */
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial');
+  ascent-override: 90.44%;
+  descent-override: 22.52%;
+  line-gap-override: 0%;
+  size-adjust: 107.12%;
+}
+
 @layer base {
+  :root {
+    color-scheme: light;
+
+    /* Motion */
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+    --dur-fast: 150ms;
+    --dur-base: 240ms;
+    --dur-slow: 480ms;
+
+    /* Fluid type scale (min at 360px, max at 1280px viewports) */
+    --step--1: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+    --step-0: clamp(0.9375rem, 0.91rem + 0.11vw, 1rem);
+    --step-1: clamp(1.0625rem, 1.01rem + 0.22vw, 1.1875rem);
+    --step-2: clamp(1.25rem, 1.15rem + 0.43vw, 1.5rem);
+    --step-3: clamp(1.5rem, 1.3rem + 0.87vw, 2rem);
+    --step-4: clamp(1.875rem, 1.53rem + 1.52vw, 2.75rem);
+    --step-5: clamp(2.25rem, 1.66rem + 2.61vw, 3.75rem);
+
+    /* Fluid section spacing */
+    --space-section: clamp(3.5rem, 2.5rem + 4.5vw, 6.5rem);
+    --space-section-sm: clamp(2.5rem, 2rem + 2.5vw, 4rem);
+
+    /* Elevation (layered, low-contrast) */
+    --shadow-xs: 0 1px 2px rgba(17, 17, 26, 0.05);
+    --shadow-card: 0 0 0 1px rgba(17, 17, 26, 0.04), 0 1px 2px rgba(17, 17, 26, 0.04), 0 4px 16px -2px rgba(17, 17, 26, 0.06);
+    --shadow-card-hover: 0 0 0 1px rgba(17, 17, 26, 0.05), 0 2px 4px rgba(17, 17, 26, 0.04), 0 14px 36px -6px rgba(17, 17, 26, 0.14);
+    --shadow-elevated: 0 0 0 1px rgba(17, 17, 26, 0.05), 0 8px 20px -4px rgba(17, 17, 26, 0.1), 0 28px 64px -12px rgba(17, 17, 26, 0.22);
+
+    /* Focus */
+    --focus-ring: #0071E3;
+    --nav-h: 52px;
+  }
+
   html {
-    scroll-behavior: smooth;
     font-size: 16px;
     -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-padding-top: calc(var(--nav-h) + 20px);
+    font-optical-sizing: auto;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
   }
   body {
-    @apply font-sans text-primary leading-relaxed antialiased;
+    @apply font-sans text-primary leading-relaxed antialiased bg-bg-primary;
     padding-top: env(safe-area-inset-top);
     padding-left: env(safe-area-inset-left);
     padding-right: env(safe-area-inset-right);
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+  }
+  h1, h2 {
+    letter-spacing: -0.022em;
+  }
+  p, li, blockquote, dd, figcaption {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: rgba(0, 113, 227, 0.2);
+    color: inherit;
+  }
+  .dark-surface ::selection,
+  footer ::selection {
+    background: rgba(77, 163, 255, 0.36);
+    color: #fff;
   }
 
   /* Global touch improvements */
@@ -20,14 +113,21 @@
     -webkit-tap-highlight-color: transparent;
   }
 
-  /* Global focus-visible ring for keyboard users */
+  /* Consistent focus ring for keyboard users. Dark surfaces (heroes, drawer,
+     footer) switch to a lighter blue so the ring keeps 3:1 contrast. */
   :focus-visible {
-    outline: 2px solid rgba(0, 113, 227, 0.5);
+    outline: 2px solid var(--focus-ring);
     outline-offset: 2px;
-    border-radius: 4px;
   }
   :focus:not(:focus-visible) {
     outline: none;
+  }
+  .dark-surface,
+  #particleHero,
+  #menuDrawer,
+  #siteFooter,
+  .site-nav[data-tone="dark"] {
+    --focus-ring: #6CB4FF;
   }
 
   /* Prevent iOS scroll bounce when modals are open */
@@ -40,25 +140,375 @@
     right: 0;
     bottom: 0;
   }
+
+  /* ─── Cross-document view transitions (pure CSS, no client router) ───
+     Every navigation is still a full page load, so inline scripts run as
+     before. Names reserved here: `site-header`. Network logos use
+     `net-<slug>` (set on the directory and profile pages). */
+  @view-transition {
+    navigation: auto;
+  }
+  ::view-transition-old(root) {
+    animation: vt-fade-out 160ms var(--ease-in-out) both;
+  }
+  ::view-transition-new(root) {
+    animation: vt-fade-in 280ms var(--ease-out) both;
+  }
+  ::view-transition-group(site-header) {
+    animation-duration: 240ms;
+    animation-timing-function: var(--ease-out);
+    z-index: 10;
+  }
+  @keyframes vt-fade-out {
+    to { opacity: 0; transform: translateY(-6px); }
+  }
+  @keyframes vt-fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+  }
+
+  /* ─── Reduced motion: one switch for everything ─── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-delay: 0s !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      transition-delay: 0s !important;
+      scroll-behavior: auto !important;
+    }
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+      animation: none !important;
+    }
+  }
 }
 
 @layer components {
-  /* Fade-in scroll animations */
+  /* ─── Site header ───
+     Colours are driven by custom properties so the dark tone (over dark
+     heroes) and the scrolled state are pure CSS. `data-tone` and
+     `data-scrolled` are set by the script in Header.astro. Before that
+     script runs, pages whose first section is dark get the dark tone via
+     :has(), so there is no light flash on first paint. */
+  .site-nav {
+    --nav-bg: rgba(251, 251, 253, 0);
+    --nav-border: rgba(210, 210, 215, 0);
+    --nav-fg: #1D1D1F;
+    --nav-muted: #5F5F65;
+    --nav-chip: rgba(0, 0, 0, 0.05);
+    --nav-chip-hover: rgba(0, 0, 0, 0.08);
+    --nav-kbd-bg: #fff;
+    --nav-kbd-border: #D2D2D7;
+    --nav-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    view-transition-name: site-header;
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--nav-border);
+    box-shadow: var(--nav-shadow);
+    color: var(--nav-fg);
+    transition: background-color var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
+  }
+  .site-nav[data-scrolled] {
+    --nav-bg: rgba(251, 251, 253, 0.78);
+    --nav-border: rgba(210, 210, 215, 0.55);
+    --nav-shadow: 0 8px 24px -16px rgba(17, 17, 26, 0.18);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+  }
+  .site-nav[data-tone="dark"],
+  html:has(main > [data-nav-tone="dark"]:first-child) .site-nav:not([data-tone]) {
+    --nav-fg: #F5F5F7;
+    --nav-muted: #B4B4BA;
+    --nav-chip: rgba(255, 255, 255, 0.09);
+    --nav-chip-hover: rgba(255, 255, 255, 0.15);
+    --nav-kbd-bg: rgba(255, 255, 255, 0.08);
+    --nav-kbd-border: rgba(255, 255, 255, 0.16);
+  }
+  .site-nav[data-tone="dark"][data-scrolled] {
+    --nav-bg: rgba(13, 13, 15, 0.72);
+    --nav-border: rgba(255, 255, 255, 0.08);
+    --nav-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .site-nav[data-scrolled] { --nav-bg: rgba(251, 251, 253, 0.97); }
+    .site-nav[data-tone="dark"][data-scrolled] { --nav-bg: rgba(13, 13, 15, 0.96); }
+  }
+  .nav-brand { color: var(--nav-fg); }
+  .nav-brand-accent { color: #0071E3; }
+  .site-nav[data-tone="dark"] .nav-brand-accent,
+  html:has(main > [data-nav-tone="dark"]:first-child) .site-nav:not([data-tone]) .nav-brand-accent {
+    color: #4DA3FF;
+  }
+  .nav-muted {
+    color: var(--nav-muted);
+    transition: color var(--dur-fast) ease, background-color var(--dur-fast) ease, transform var(--dur-fast) ease;
+  }
+  .nav-muted:hover { color: var(--nav-fg); }
+  .nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: 44px;
+    padding: 0 12px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    color: var(--nav-muted);
+    transition: color var(--dur-fast) ease;
+  }
+  .nav-link::before {
+    content: '';
+    position: absolute;
+    inset: 7px 0;
+    z-index: -1;
+    border-radius: 8px;
+    background: var(--nav-chip);
+    opacity: 0;
+    transition: opacity var(--dur-fast) ease;
+  }
+  .nav-link:hover { color: var(--nav-fg); }
+  .nav-link:hover::before { opacity: 1; }
+  .nav-link[aria-current="page"] { color: var(--nav-fg); }
+  .nav-link[aria-current="page"]::after {
+    content: '';
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 4px;
+    height: 2px;
+    border-radius: 2px;
+    background: #0071E3;
+  }
+  .site-nav[data-tone="dark"] .nav-link[aria-current="page"]::after,
+  html:has(main > [data-nav-tone="dark"]:first-child) .site-nav:not([data-tone]) .nav-link[aria-current="page"]::after {
+    background: #4DA3FF;
+  }
+  .nav-search {
+    background: var(--nav-chip);
+    color: var(--nav-muted);
+    transition: background-color var(--dur-fast) ease, color var(--dur-fast) ease, transform var(--dur-fast) ease;
+  }
+  .nav-search:hover {
+    background: var(--nav-chip-hover);
+    color: var(--nav-fg);
+  }
+  .nav-kbd {
+    background: var(--nav-kbd-bg);
+    border: 1px solid var(--nav-kbd-border);
+    color: var(--nav-muted);
+  }
+
+  /* Search overlay entrance */
+  @keyframes overlay-in {
+    from { opacity: 0; }
+  }
+  @keyframes panel-in {
+    from { opacity: 0; transform: translateY(-8px) scale(0.985); }
+  }
+  #searchOverlay:not(.hidden) #searchBackdrop { animation: overlay-in var(--dur-base) ease both; }
+  #searchOverlay:not(.hidden) .search-panel { animation: panel-in var(--dur-base) var(--ease-out) both; }
+  .search-result[data-active="true"] { background: #F5F5F7; }
+
+  /* ─── Scroll progress (long editorial pages) ─── */
+  .scroll-progress {
+    position: fixed;
+    /* Sits on the header's bottom hairline, above the header itself. */
+    top: calc(var(--nav-h) - 1px);
+    left: 0;
+    right: 0;
+    height: 2px;
+    z-index: 51;
+    pointer-events: none;
+    transform-origin: 0 50%;
+    transform: scaleX(var(--scroll-progress, 0));
+    background: linear-gradient(90deg, #0071E3, #4DA3FF);
+  }
+  @keyframes scroll-progress-grow {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+  @supports (animation-timeline: scroll()) {
+    .scroll-progress {
+      animation: scroll-progress-grow linear both;
+    }
+    /* Separate rule: see the note on `.fade-in` about the minifier. */
+    :root .scroll-progress {
+      animation-timeline: scroll(root block);
+    }
+  }
+
+  /* ─── Shared UI primitives ─── */
+  .eyebrow {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #5F5F65;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0 1.375rem;
+    border-radius: 999px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color var(--dur-fast) ease, border-color var(--dur-fast) ease, color var(--dur-fast) ease, transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
+  }
+  .btn:active { transform: scale(0.975); }
+  .btn svg { flex-shrink: 0; transition: transform var(--dur-base) var(--ease-out); }
+  .btn:hover svg.btn-arrow { transform: translateX(3px); }
+  .btn-primary {
+    background: #0071E3;
+    color: #fff;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.18) inset, 0 6px 18px -6px rgba(0, 113, 227, 0.55);
+  }
+  .btn-primary:hover { background: #0068D1; }
+  .btn-secondary {
+    background: #fff;
+    color: #1D1D1F;
+    box-shadow: inset 0 0 0 1px #D2D2D7;
+  }
+  .btn-secondary:hover { background: #F5F5F7; }
+  .btn-ghost-dark {
+    background: rgba(255, 255, 255, 0.08);
+    color: #F5F5F7;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  }
+  .btn-ghost-dark:hover { background: rgba(255, 255, 255, 0.14); }
+
+  /* Card with a subtle pointer-follow spotlight. --mx/--my are set by the
+     delegated pointer handler in BaseLayout (fine pointers only). */
+  .card-spot {
+    position: relative;
+    isolation: isolate;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: var(--shadow-card);
+    transition: box-shadow var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out);
+  }
+  .card-spot::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgba(0, 113, 227, 0.09), transparent 62%);
+    transition: opacity var(--dur-base) ease;
+  }
+  @media (hover: hover) {
+    .card-spot:hover {
+      box-shadow: var(--shadow-card-hover);
+      transform: translateY(-2px);
+    }
+    .card-spot:hover::before { opacity: 1; }
+  }
+  .card-spot:active { transform: translateY(0) scale(0.995); }
+  .card-spot-dark {
+    background: #17171A;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  }
+  .card-spot-dark::before {
+    background: radial-gradient(480px circle at var(--mx, 50%) var(--my, 0%), rgba(77, 163, 255, 0.16), transparent 62%);
+  }
+  @media (hover: hover) {
+    .card-spot-dark:hover { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16), 0 20px 48px -20px rgba(0, 0, 0, 0.6); }
+  }
+
+  /* Light page header used by guide pages (rankings, alternatives, buyer guides). */
+  .guide-hero {
+    position: relative;
+    background:
+      radial-gradient(60% 90% at 85% 0%, rgba(0, 113, 227, 0.07), transparent 70%),
+      linear-gradient(to bottom, #F5F5F7, #FBFBFD);
+    border-bottom: 1px solid rgba(210, 210, 215, 0.5);
+  }
+
+  /* ─── Editorial typography ───
+     `.measure` caps line length for long-form copy; `.editorial` gives
+     hand-written article pages a consistent vertical rhythm. */
+  .measure { max-width: 68ch; }
+  .editorial {
+    font-size: var(--step-0);
+    line-height: 1.7;
+    color: #424245;
+  }
+  .editorial > * + * { margin-top: 1.15em; }
+  .editorial h1 {
+    font-size: var(--step-4);
+    line-height: 1.08;
+    font-weight: 700;
+    letter-spacing: -0.028em;
+    color: #1D1D1F;
+  }
+  .editorial h2 {
+    font-size: var(--step-2);
+    line-height: 1.2;
+    font-weight: 700;
+    color: #1D1D1F;
+    margin-top: 2.4em;
+    scroll-margin-top: calc(var(--nav-h) + 24px);
+  }
+  .editorial h3 {
+    font-size: var(--step-1);
+    line-height: 1.3;
+    font-weight: 600;
+    color: #1D1D1F;
+    margin-top: 1.8em;
+  }
+  .editorial h2 + *, .editorial h3 + * { margin-top: 0.7em; }
+  .editorial p, .editorial ul, .editorial ol { max-width: 68ch; }
+  .editorial ul { list-style: disc; padding-left: 1.25em; }
+  .editorial ol { list-style: decimal; padding-left: 1.25em; }
+  .editorial li + li { margin-top: 0.45em; }
+  .editorial li::marker { color: #86868B; }
+  .editorial strong { color: #1D1D1F; font-weight: 600; }
+  .editorial a:not(.btn) {
+    color: #0066CC;
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 102, 204, 0.3);
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    transition: text-decoration-color var(--dur-fast) ease;
+  }
+  .editorial a:not(.btn):hover { text-decoration-color: currentColor; }
+  .editorial .lede {
+    font-size: var(--step-1);
+    line-height: 1.55;
+    color: #5F5F65;
+  }
+  .editorial .meta {
+    font-size: 0.8125rem;
+    color: #6E6E73;
+  }
+
+  /* ─── Scroll reveals ───
+     Baseline: `.fade-in` is hidden until the IntersectionObserver in
+     BaseLayout adds `.visible`. Where scroll-driven animations are supported
+     the same class is driven by `animation-timeline: view()` instead (no JS,
+     runs off the main thread). Content already in the viewport at load is
+     shown immediately in both modes. */
   .fade-in {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    translate: 0 24px;
+    transition: opacity var(--dur-slow) var(--ease-out), translate 0.7s var(--ease-out);
   }
   .fade-in.visible {
     opacity: 1;
-    transform: translateY(0);
+    translate: 0 0;
   }
-  @media (prefers-reduced-motion: reduce) {
-    .fade-in {
-      opacity: 1;
-      transform: none;
-      transition: none;
-    }
+  /* Reveal uses `translate`, so it composes with hover transforms on cards. */
+  .card-spot.fade-in {
+    transition: opacity var(--dur-slow) var(--ease-out), translate 0.7s var(--ease-out), box-shadow var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out);
   }
   .stagger-1 { transition-delay: 0.05s; }
   .stagger-2 { transition-delay: 0.1s; }
@@ -68,6 +518,44 @@
   .stagger-6 { transition-delay: 0.3s; }
   .stagger-7 { transition-delay: 0.35s; }
   .stagger-8 { transition-delay: 0.4s; }
+
+  @keyframes reveal-up {
+    from { opacity: 0; translate: 0 24px; }
+    to { opacity: 1; translate: 0 0; }
+  }
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .fade-in,
+      .fade-in.visible {
+        opacity: 1;
+        translate: none;
+        transition-delay: 0s;
+        animation: reveal-up linear both;
+      }
+      /* Kept in a separate rule on purpose: the CSS minifier folds
+         animation-timeline into the `animation` shorthand when they share a
+         rule, and browsers reject that shorthand form. */
+      :root .fade-in {
+        animation-timeline: view();
+        animation-range: cover 0% cover 18%;
+      }
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in {
+      opacity: 1;
+      translate: none;
+      transition: none;
+      animation: none;
+    }
+  }
+  @media print {
+    .fade-in {
+      opacity: 1 !important;
+      translate: none !important;
+      animation: none !important;
+    }
+  }
 
   /* iOS-style sidebar scrollbar */
   .sidebar-panel {

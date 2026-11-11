@@ -2,6 +2,8 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+// Self-hosted Inter (variable). Preloaded so the first paint uses the real font.
+import interLatinUrl from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
 
 interface Props {
   title?: string;
@@ -10,6 +12,10 @@ interface Props {
   ogType?: 'website' | 'article';
   canonicalPath?: string;
   jsonLd?: Record<string, any>;
+  /** Show the reading-progress bar under the header (long editorial pages). */
+  progress?: boolean;
+  /** Browser UI colour. Pages that open on a dark hero should pass '#0d0d0f'. */
+  themeColor?: string;
 }
 
 const {
@@ -19,10 +25,15 @@ const {
   ogType = 'website',
   canonicalPath,
   jsonLd,
+  progress = false,
+  themeColor = '#FBFBFD',
 } = Astro.props;
 
 const siteUrl = 'https://expertnetworks.net';
-const canonicalUrl = canonicalPath ? `${siteUrl}${canonicalPath}` : new URL(Astro.url.pathname, siteUrl).href;
+// Pages are served at the trailing-slash URL; the other form is a 308 redirect.
+// The canonical URL must be the served form.
+const withSlash = (path: string) => (path.endsWith('/') ? path : `${path}/`);
+const canonicalUrl = `${siteUrl}${withSlash(canonicalPath ?? Astro.url.pathname)}`;
 const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 ---
 
@@ -33,7 +44,8 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="description" content={description} />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-  <meta name="theme-color" content="#1D1D1F" />
+  <meta name="theme-color" content={themeColor} />
+  <meta name="color-scheme" content="light" />
   <title>{title}</title>
 
   <!-- Canonical URL -->
@@ -57,10 +69,8 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImageUrl} />
 
-  <!-- Fonts (optimized loading) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Font: self-hosted Inter variable (no third-party font origin) -->
+  <link rel="preload" href={interLatinUrl} as="font" type="font/woff2" crossorigin />
 
   <!-- Favicons -->
   <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -88,36 +98,71 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
     "description": "Independent expert network directory and industry intelligence resource.",
     "sameAs": ["https://www.linkedin.com/company/expertnetworks-net/"]
   })} is:inline />
+
+  <!-- Speculation Rules: prefetch same-origin links on hover/pointer-down intent,
+       prerender on moderate eagerness. Browsers without support ignore this. -->
+  <script type="speculationrules" is:inline set:html={JSON.stringify({
+    prefetch: [{
+      where: { and: [{ href_matches: '/*' }, { not: { selector_matches: '[rel~=nofollow], [download], [target=_blank], [data-no-speculate]' } }] },
+      eagerness: 'moderate',
+    }],
+    prerender: [{
+      where: { and: [{ href_matches: '/*' }, { not: { selector_matches: '[rel~=nofollow], [download], [target=_blank], [data-no-speculate]' } }] },
+      eagerness: 'moderate',
+    }],
+  })} />
 </head>
 <body>
   <Header pathname={Astro.url.pathname} />
+  {progress && <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>}
   <main id="main-content">
     <slot />
   </main>
   <Footer />
   <script>
-    // Intersection observer for fade-in animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    // Scroll reveals. Where CSS scroll-driven animations are supported the
+    // `.fade-in` class is animated by `animation-timeline: view()` (see
+    // global.css) and this observer is only a harmless no-op fallback.
+    const reveals = document.querySelectorAll('.fade-in');
+    if (reveals.length) {
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        reveals.forEach(el => observer.observe(el));
+      } else {
+        reveals.forEach(el => el.classList.add('visible'));
+      }
+    }
 
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    // Nav background on scroll (only on pages with hero)
-    const scrollHint = document.getElementById('scrollHint');
-    const hero = document.getElementById('hero');
-    if (scrollHint && hero) {
+    // Reading progress fallback for browsers without scroll() timelines.
+    const progressBar = document.getElementById('scrollProgress');
+    if (progressBar && !(window.CSS && CSS.supports('animation-timeline: scroll()'))) {
+      let ticking = false;
+      const update = () => {
+        ticking = false;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        progressBar.style.setProperty('--scroll-progress', max > 0 ? String(Math.min(1, window.scrollY / max)) : '0');
+      };
       window.addEventListener('scroll', () => {
-        const opacity = Math.max(0, 1 - (window.scrollY / (hero.offsetHeight * 0.3)));
-        scrollHint.style.opacity = String(opacity);
-        const nav = document.querySelector('nav');
-        if (nav) {
-          (nav as HTMLElement).style.background = window.scrollY > 50 ? 'rgba(251, 251, 253, 0.92)' : 'rgba(251, 251, 253, 0.72)';
-        }
+        if (!ticking) { ticking = true; requestAnimationFrame(update); }
+      }, { passive: true });
+      update();
+    }
+
+    // Pointer-follow spotlight for `.card-spot` (mouse/pen only, delegated).
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      document.addEventListener('pointermove', (e) => {
+        const card = e.target instanceof Element ? e.target.closest('.card-spot') : null;
+        if (!(card instanceof HTMLElement)) return;
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mx', `${e.clientX - rect.left}px`);
+        card.style.setProperty('--my', `${e.clientY - rect.top}px`);
       }, { passive: true });
     }
 
