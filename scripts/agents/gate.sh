@@ -14,6 +14,7 @@ step() {
 step "build + links + astro check" npm run verify --silent
 step "agent scripts executable" sh -c 'for f in scripts/agents/*.sh .githooks/*; do [ -x "$f" ] || { echo "not executable: $f (chmod 755)"; exit 1; }; done'
 step "slug check" node .github/scripts/check-slugs.mjs
+step "content integrity" node .github/scripts/check-content-integrity.mjs
 step "anonymity (identity + private terms)" scripts/agents/identity-check.sh range "$(git merge-base HEAD origin/main 2>/dev/null || echo HEAD~1)..HEAD"
 [ "${1:-}" = "--quick" ] || step "npm audit (high)" npm audit --audit-level=high
 
