@@ -1,0 +1,25 @@
+{
+  "title": "Inex One Details Fake-Expert Ring Using Verified LinkedIn Profiles",
+  "slug": "inex-one-expert-network-fraud-2026",
+  "date": "2026-10-06",
+  "source": "Inex One",
+  "category": "Compliance",
+  "categoryColor": "#FF375F",
+  "gradientFrom": "#7f1d1d",
+  "gradientTo": "#ef4444",
+  "summary": "Inex One CEO Max Friberg described uncovering a group of computer-science undergraduates posing as senior alumni of leading technology companies in order to be recruited as paid experts. According to the post, the LinkedIn accounts were verified with government IDs, had been rewritten within the preceding weeks, and in several cases claimed 30+ years of experience. The article outlines three fraud types — real people using ChatGPT to answer questions outside their knowledge, real people using someone else's identity, and fully fabricated personas — and says that where imposters are spotted, clients pay nothing and the imposter is blocked.",
+  "sourceUrl": "https://inex.one/blog/expert-network-fraudsters-revealed",
+  "relatedNetworks": [
+    "inex-one"
+  ],
+  "published": true,
+  "sourceType": "Industry Report",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "Expert identity fraud is becoming more sophisticated as generative AI lowers the cost of faking a credible profile, putting expert vetting — long treated as back-office hygiene — at the center of network quality claims.",
+  "impactTags": [
+    "Expert Fraud",
+    "Vetting",
+    "Identity Verification"
+  ]
+}

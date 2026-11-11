@@ -1,0 +1,26 @@
+{
+  "title": "GLG Launches GLG Frontier, a Dedicated Practice Supplying Expert Judgment to AI Labs",
+  "slug": "glg-frontier-ai-labs-2026",
+  "date": "2026-10-15",
+  "source": "GLG (Press Release)",
+  "category": "Product",
+  "categoryColor": "#30D158",
+  "gradientFrom": "#14532d",
+  "gradientTo": "#22c55e",
+  "summary": "GLG announced GLG Frontier, a practice that gives AI labs and model developers verified expertise and structured data for evaluating, fine-tuning, stress-testing, and benchmarking models. Grady Gardner, previously General Manager and Chief Revenue Officer at Braintrust, was named General Manager. GLG says its experts can help design evaluations, build benchmarks, and red-team systems rather than only annotate outputs, and cites work on drug policy, mental health, nuclear risks, biosafety, and extreme weather forecasting in which it assembled multidisciplinary expert panels within hours. Engagements range from targeted expert projects to sustained multi-month programs.",
+  "sourceUrl": "https://glg.com/news/the-human-edge-in-ai-glg-frontier-powers-ai-labs-with-critical-expert-judgment",
+  "relatedNetworks": [
+    "glg"
+  ],
+  "published": true,
+  "sourceType": "Press Release",
+  "significance": "major",
+  "featured": true,
+  "whyItMatters": "The largest incumbent expert network is formally entering the AI model-evaluation and training-data market — the segment where newer entrants pitch expert access to foundation-model labs — opening a client category beyond investors, consultants, and corporates.",
+  "impactTags": [
+    "AI Labs",
+    "Model Evaluation",
+    "New Practice",
+    "Leadership"
+  ]
+}

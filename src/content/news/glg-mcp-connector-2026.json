@@ -1,0 +1,25 @@
+{
+  "title": "GLG Launches MCP Connector for Expert Research Inside Client AI Tools",
+  "slug": "glg-mcp-connector-2026",
+  "date": "2026-07-22",
+  "source": "GLG (Press Release)",
+  "category": "AI",
+  "categoryColor": "#248A3D",
+  "gradientFrom": "#064e3b",
+  "gradientTo": "#059669",
+  "summary": "GLG launched a Model Context Protocol (MCP) connector that lets clients query their full project call history and named expert perspectives from the Expert Content Library inside the AI tools they already use. GLG says an agent can build research angles from conversational input, start primary research, surface new experts, and synthesize insights, with every output traceable to specific expert conversations or content. Compliance officers retain full control over what enters users' AI tools; features roll out on an ongoing basis ahead of a planned global release.",
+  "sourceUrl": "https://glg.com/news/glg-launches-mcp-connector-advances-frontier-of-expert-research",
+  "relatedNetworks": [
+    "glg"
+  ],
+  "published": true,
+  "sourceType": "Press Release",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "With GLG joining Third Bridge and Guidepoint, the three largest transcript-library owners now all ship MCP connectors — and GLG's version extends beyond library retrieval to a client's own call history and initiating new primary research.",
+  "impactTags": [
+    "MCP",
+    "AI Integration",
+    "Compliance Controls"
+  ]
+}

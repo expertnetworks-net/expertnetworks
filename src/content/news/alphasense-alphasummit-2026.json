@@ -1,0 +1,25 @@
+{
+  "title": "AlphaSummit 2026: AlphaSense Unveils Channel Check Intelligence and Showcases AI Interviewer",
+  "slug": "alphasense-alphasummit-2026",
+  "date": "2026-10-13",
+  "source": "AlphaSense (Product Article)",
+  "category": "Product",
+  "categoryColor": "#30D158",
+  "gradientFrom": "#14532d",
+  "gradientTo": "#22c55e",
+  "summary": "AlphaSense's recap of AlphaSummit 2026 highlighted Channel Check Intelligence, which turns expert conversations into a verdict-first read covering 750+ tickers, refreshed daily, with each claim traceable to the expert and transcript it came from. The company also demonstrated its AI Interviewer, which it says can run up to 10x the expert calls without adding time or headcount, expanded its knowledge graph to supply chain relationships, and previewed SuperAnalyst MCP and forthcoming SuperAnalyst Apps.",
+  "sourceUrl": "https://www.alpha-sense.com/resources/product-articles/alphasummit-2026-product-announcements/",
+  "relatedNetworks": [
+    "alphasense-tegus"
+  ],
+  "published": true,
+  "sourceType": "Product Update",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "AlphaSense is productizing expert conversations into continuously refreshed, ticker-level signals — moving expert content from searchable transcripts toward a structured data product.",
+  "impactTags": [
+    "Channel Checks",
+    "AI Interviewer",
+    "Product Launch"
+  ]
+}

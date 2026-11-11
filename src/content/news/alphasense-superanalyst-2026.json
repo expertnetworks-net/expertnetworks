@@ -1,0 +1,25 @@
+{
+  "title": "AlphaSense Introduces SuperAnalyst, an Always-On Agent That Can Source and Conduct Expert Calls",
+  "slug": "alphasense-superanalyst-2026",
+  "date": "2026-06-03",
+  "source": "AlphaSense (Press Release)",
+  "category": "AI",
+  "categoryColor": "#248A3D",
+  "gradientFrom": "#064e3b",
+  "gradientTo": "#059669",
+  "summary": "AlphaSense announced SuperAnalyst, an always-on AI agent that runs multi-step financial and strategic workflows across the AlphaSense platform. Capabilities described in the release include monitoring filings, earnings, expert transcripts, and research around the clock; autonomously identifying experts and conducting expert calls; retaining project history across sessions; and producing Excel models, Word memos, PowerPoint decks, and source-linked reports. At launch it was available to select enterprise customers through an early access program, with availability expanding progressively.",
+  "sourceUrl": "https://www.alpha-sense.com/press/alphasense-introduces-superanalyst-the-always-on-ai-execution-layer-for-decision-grade-intelligence/",
+  "relatedNetworks": [
+    "alphasense-tegus"
+  ],
+  "published": true,
+  "sourceType": "Press Release",
+  "significance": "major",
+  "featured": false,
+  "whyItMatters": "SuperAnalyst folds expert identification and interviewing into an autonomous agent workflow, positioning primary research as one step an AI system can initiate rather than a separately procured service.",
+  "impactTags": [
+    "AI Agents",
+    "Expert Calls",
+    "Workflow Automation"
+  ]
+}

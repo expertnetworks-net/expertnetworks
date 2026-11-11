@@ -1,0 +1,25 @@
+{
+  "title": "GLG Enhances AI-Moderated Calls: Autonomous Expert Interviews in 10 Languages",
+  "slug": "glg-ai-moderated-calls-2026",
+  "date": "2026-08-06",
+  "source": "GLG (Press Release)",
+  "category": "AI",
+  "categoryColor": "#248A3D",
+  "gradientFrom": "#064e3b",
+  "gradientTo": "#059669",
+  "summary": "GLG released an enhanced AI-Moderated Calls offering in which an AI Moderator conducts structured expert interviews autonomously in 10 languages: English, Spanish, French, Italian, Portuguese, German, Russian, Japanese, Korean, and Mandarin. The moderator follows client discussion guides, probes with follow-up questions, and can collect multiple-choice, scale, and matrix responses exportable to Excel. Calls need no calendar coordination and can run simultaneously across time zones; transcripts can be synthesized in one click with outputs traceable to named experts and timestamps. GLG says clients report cutting time-to-insight to hours.",
+  "sourceUrl": "https://glg.com/news/glgs-ai-moderated-calls-unlock-expert-insights-at-new-speed-and-scale",
+  "relatedNetworks": [
+    "glg"
+  ],
+  "published": true,
+  "sourceType": "Press Release",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "AI-moderated interviewing is now offered by GLG, Guidepoint, AlphaSense/Tegus, NewtonX, and proSapient — shifting part of the expert-call market from scheduled one-to-one conversations to asynchronous, parallel interviews at scale.",
+  "impactTags": [
+    "AI Moderation",
+    "Multilingual",
+    "Expert Calls"
+  ]
+}

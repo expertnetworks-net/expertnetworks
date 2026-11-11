@@ -1,0 +1,27 @@
+{
+  "title": "Ethos Raises $22.75M Series A Led by a16z for AI-Native Expert Network",
+  "slug": "ethos-22-75m-series-a-a16z-2026",
+  "date": "2026-05-06",
+  "source": "TechCrunch",
+  "category": "Funding",
+  "categoryColor": "#FF375F",
+  "gradientFrom": "#7f1d1d",
+  "gradientTo": "#ef4444",
+  "summary": "London-based Ethos, founded in 2024 by James Lo (ex-McKinsey and SoftBank) and Daniel Mankowitz (ex-DeepMind), raised a $22.75 million Series A led by a16z with participation from General Catalyst, XTX Markets, Evantic Capital, and Common Magic. The eight-person company uses voice-powered onboarding for experts and AI matching of natural-language client queries, and told TechCrunch that about 35,000 people join its network each week. Ethos takes 30% or more as a per-project fee and says it is on track for eight-figure annualized revenue. TechCrunch named GLG, Third Bridge, AlphaSights, and LinkedIn as competitors.",
+  "sourceUrl": "https://techcrunch.com/2026/05/06/ethos-raises-22-75m-from-a16z-for-its-expert-network-with-voice-onboarding/",
+  "relatedNetworks": [
+    "glg",
+    "third-bridge",
+    "alphasights"
+  ],
+  "published": true,
+  "sourceType": "News Coverage",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "Top-tier venture capital is funding AI-native challengers that match on skills and capabilities rather than job titles, and that count foundation-model labs alongside hedge funds and PE firms as clients.",
+  "impactTags": [
+    "Venture Funding",
+    "AI-Native",
+    "New Entrant"
+  ]
+}
