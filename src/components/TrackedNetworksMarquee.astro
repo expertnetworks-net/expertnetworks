@@ -27,9 +27,9 @@ const descriptors: Record<string, string> = {
 };
 ---
 
-<section class="py-4 sm:py-5 px-4 sm:px-6 border-b border-border/40" id="marqueeSection">
+<section class="py-5 sm:py-6 px-4 sm:px-6 border-b border-border/50 bg-white" id="marqueeSection" aria-labelledby="marqueeHeading">
   <div class="max-w-site mx-auto">
-    <div class="text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-tertiary mb-2.5 sm:mb-3">Networks Covered</div>
+    <h2 id="marqueeHeading" class="eyebrow mb-3">Networks Covered</h2>
 
     <!-- Desktop: JS-powered infinite marquee -->
     <div class="marquee-wrap relative hidden sm:block overflow-hidden" id="marqueeWrap" aria-label="Expert networks covered">
@@ -41,7 +41,7 @@ const descriptors: Record<string, string> = {
           return (
             <a
               href={`/networks/${n.data.slug}`}
-              class="marquee-item flex-shrink-0 flex items-center gap-2 px-3 py-2 rounded-lg border border-border/50 bg-white hover:border-accent/40 hover:shadow-sm transition-all group no-underline"
+              class="marquee-item flex-shrink-0 flex items-center gap-2 px-3.5 min-h-[44px] rounded-full border border-border/60 bg-white hover:border-accent/50 hover:shadow-xs transition-all group no-underline"
               title={n.data.name.split(' (')[0]}
               draggable="false"
               data-slug={n.data.slug}
@@ -56,11 +56,11 @@ const descriptors: Record<string, string> = {
                 alt={n.data.name.split(' (')[0]}
                 width="24"
                 height="24"
-                class="w-6 h-6 rounded object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all pointer-events-none"
+                class="w-6 h-6 rounded-md object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all pointer-events-none"
                 loading="lazy"
                 draggable="false"
               />
-              <span class="text-[12px] font-medium text-tertiary group-hover:text-primary transition-colors whitespace-nowrap pointer-events-none">
+              <span class="text-[13px] font-medium text-secondary group-hover:text-primary transition-colors whitespace-nowrap pointer-events-none">
                 {displayName}
               </span>
             </a>
@@ -75,7 +75,7 @@ const descriptors: Record<string, string> = {
         {tracked.map((n) => (
           <a
             href={`/networks/${n.data.slug}`}
-            class="flex-shrink-0 flex items-center gap-1.5 px-2.5 py-2.5 rounded-lg border border-border/50 bg-white active:bg-bg-secondary transition-colors no-underline min-h-[44px]"
+            class="flex-shrink-0 flex items-center gap-2 px-3.5 rounded-full border border-border/60 bg-white active:bg-bg-secondary transition-colors no-underline min-h-[44px]"
           >
             <img
               src={n.data.logo}
@@ -85,7 +85,7 @@ const descriptors: Record<string, string> = {
               class="w-5 h-5 rounded object-cover"
               loading="lazy"
             />
-            <span class="text-[11px] font-medium text-secondary whitespace-nowrap">
+            <span class="text-[13px] font-medium text-secondary whitespace-nowrap">
               {n.data.name.split(' (')[0].split(' / ')[0]}
             </span>
           </a>
@@ -107,8 +107,8 @@ const descriptors: Record<string, string> = {
   <p id="hcDesc" class="text-[11px] text-secondary leading-relaxed mb-1.5"></p>
   <p id="hcBestFor" class="text-[11px] text-tertiary mb-3"><span class="font-medium text-secondary">Best for:</span> <span id="hcBestForText"></span></p>
   <div class="flex gap-3 pt-2 border-t border-border/30">
-    <a id="hcProfile" href="#" class="text-[11px] font-semibold text-accent no-underline hover:underline">View profile</a>
-    <a id="hcCompare" href="#" class="text-[11px] font-semibold text-secondary no-underline hover:text-accent hover:underline">Add to compare</a>
+    <a id="hcProfile" href="#" class="text-[12px] font-semibold text-accent-text no-underline hover:underline">View profile</a>
+    <a id="hcCompare" href="#" class="text-[12px] font-semibold text-secondary no-underline hover:text-accent-text hover:underline">Add to compare</a>
   </div>
 </div>
 
@@ -127,9 +127,9 @@ const descriptors: Record<string, string> = {
     width: 260px;
     background: white;
     border: 1px solid rgba(210, 210, 215, 0.5);
-    border-radius: 12px;
-    padding: 14px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: var(--shadow-elevated);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.15s ease;

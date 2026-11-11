@@ -9,6 +9,8 @@ const topProviders = published.slice(0, 6);
 ---
 
 <BaseLayout
+  progress
+  themeColor="#0d0d0f"
   title="What Is an Expert Network? Definition, Pricing, Compliance & How to Choose (2026) | ExpertNetworks.net"
   description="An expert network connects investors, consultants, and corporate teams with industry experts for paid calls, surveys, and research. Learn how they work, what they cost, how compliance works, and how to choose the right provider."
   canonicalPath="/what-is-an-expert-network"
@@ -72,10 +74,10 @@ const topProviders = published.slice(0, 6);
   <!-- Hero + Quick Cards with Particle Effect -->
   <ParticleHero minHeight="520px">
     <div class="max-w-4xl mx-auto">
-      <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-5 leading-tight">
+      <h1 class="text-step-5 font-bold tracking-[-0.035em] text-white mb-5">
         What Is an Expert Network?
       </h1>
-      <p class="text-lg text-white/70 max-w-3xl leading-relaxed mb-4">
+      <p class="text-step-1 text-white/75 max-w-measure mb-5">
         An expert network is a firm that connects investors, consultants, and corporate teams with industry experts for paid calls, surveys, and research. This guide explains how expert networks work, what they cost, how compliance works, and how to choose the right provider.
       </p>
       <div class="bg-white/10 border border-white/20 rounded-lg px-5 py-3 inline-block backdrop-blur-sm">
@@ -105,28 +107,28 @@ const topProviders = published.slice(0, 6);
   </ParticleHero>
 
   <!-- Sticky sub-nav -->
-  <nav class="sticky top-[52px] z-40 bg-bg-primary/90 backdrop-blur-lg border-b border-border/40">
+  <nav class="sticky top-[52px] z-40 bg-bg-primary/85 backdrop-blur-xl border-b border-border/50" aria-label="On this page">
     <div class="max-w-4xl mx-auto px-6 overflow-x-auto scrollbar-hide">
-      <div class="flex gap-1 py-2 text-xs min-w-max">
-        <a href="#definition" class="px-3 py-1.5 rounded-full text-secondary hover:bg-accent/10 hover:text-accent transition-colors no-underline font-medium">Definition</a>
-        <a href="#how-it-works" class="px-3 py-1.5 rounded-full text-secondary hover:bg-accent/10 hover:text-accent transition-colors no-underline font-medium">How it works</a>
-        <a href="#who-uses" class="px-3 py-1.5 rounded-full text-secondary hover:bg-accent/10 hover:text-accent transition-colors no-underline font-medium">Who uses them</a>
-        <a href="#services" class="px-3 py-1.5 rounded-full text-secondary hover:bg-accent/10 hover:text-accent transition-colors no-underline font-medium">Services</a>
-        <a href="#pricing" class="px-3 py-1.5 rounded-full text-secondary hover:bg-accent/10 hover:text-accent transition-colors no-underline font-medium">Pricing</a>
-        <a href="#compliance" class="px-3 py-1.5 rounded-full text-secondary hover:bg-accent/10 hover:text-accent transition-colors no-underline font-medium">Compliance</a>
-        <a href="#alternatives" class="px-3 py-1.5 rounded-full text-secondary hover:bg-accent/10 hover:text-accent transition-colors no-underline font-medium">vs Alternatives</a>
-        <a href="#choosing" class="px-3 py-1.5 rounded-full text-secondary hover:bg-accent/10 hover:text-accent transition-colors no-underline font-medium">How to choose</a>
-        <a href="#providers" class="px-3 py-1.5 rounded-full text-secondary hover:bg-accent/10 hover:text-accent transition-colors no-underline font-medium">Top providers</a>
-        <a href="#faq" class="px-3 py-1.5 rounded-full text-secondary hover:bg-accent/10 hover:text-accent transition-colors no-underline font-medium">FAQ</a>
+      <div class="flex gap-1 text-[13px] min-w-max">
+        <a href="#definition" class="inline-flex items-center px-3 min-h-[44px] rounded-full text-secondary hover:text-accent-text transition-colors no-underline font-medium">Definition</a>
+        <a href="#how-it-works" class="inline-flex items-center px-3 min-h-[44px] rounded-full text-secondary hover:text-accent-text transition-colors no-underline font-medium">How it works</a>
+        <a href="#who-uses" class="inline-flex items-center px-3 min-h-[44px] rounded-full text-secondary hover:text-accent-text transition-colors no-underline font-medium">Who uses them</a>
+        <a href="#services" class="inline-flex items-center px-3 min-h-[44px] rounded-full text-secondary hover:text-accent-text transition-colors no-underline font-medium">Services</a>
+        <a href="#pricing" class="inline-flex items-center px-3 min-h-[44px] rounded-full text-secondary hover:text-accent-text transition-colors no-underline font-medium">Pricing</a>
+        <a href="#compliance" class="inline-flex items-center px-3 min-h-[44px] rounded-full text-secondary hover:text-accent-text transition-colors no-underline font-medium">Compliance</a>
+        <a href="#alternatives" class="inline-flex items-center px-3 min-h-[44px] rounded-full text-secondary hover:text-accent-text transition-colors no-underline font-medium">vs Alternatives</a>
+        <a href="#choosing" class="inline-flex items-center px-3 min-h-[44px] rounded-full text-secondary hover:text-accent-text transition-colors no-underline font-medium">How to choose</a>
+        <a href="#providers" class="inline-flex items-center px-3 min-h-[44px] rounded-full text-secondary hover:text-accent-text transition-colors no-underline font-medium">Top providers</a>
+        <a href="#faq" class="inline-flex items-center px-3 min-h-[44px] rounded-full text-secondary hover:text-accent-text transition-colors no-underline font-medium">FAQ</a>
       </div>
     </div>
   </nav>
 
   <!-- 1. Definition -->
-  <section id="definition" class="py-16 px-6">
+  <section id="definition" class="py-section-sm px-4 sm:px-6">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl font-bold text-primary mb-6">Definition</h2>
-      <div class="text-secondary leading-relaxed space-y-4 max-w-none">
+      <h2 class="text-step-3 font-bold text-primary mb-6">Definition</h2>
+      <div class="text-step-0 leading-[1.7] text-secondary space-y-4 max-w-measure">
         <p>An <strong class="text-primary">expert network</strong> is a research service that connects organizations that need specialized knowledge with people who have direct experience in a relevant industry, company, product, or function.</p>
         <p>Typical clients include private equity firms, hedge funds, management consultancies, corporate strategy teams, banks, and law firms. Typical experts include former executives, operators, buyers, competitors, regulators, clinicians, engineers, and other professionals with practical domain knowledge.</p>
         <p>Expert networks are most useful when public sources are not enough and a team needs fast, decision-relevant context from people who have actually worked in the space.</p>
@@ -139,9 +141,9 @@ const topProviders = published.slice(0, 6);
   </section>
 
   <!-- 2. When to use / When not to use -->
-  <section class="py-16 px-6 bg-bg-secondary">
+  <section class="py-section-sm px-4 sm:px-6 bg-bg-secondary">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl font-bold text-primary mb-8">When an expert network is useful</h2>
+      <h2 class="text-step-3 font-bold text-primary mb-8">When an expert network is useful</h2>
       <p class="text-secondary mb-6">Expert networks are most valuable when a team needs informed judgment quickly, especially in areas where public information is incomplete, outdated, or too generic.</p>
 
       <div class="grid md:grid-cols-2 gap-6">
@@ -169,7 +171,7 @@ const topProviders = published.slice(0, 6);
               The decision has real financial or strategic weight
             </li>
           </ul>
-          <p class="text-xs text-secondary mt-4 italic">Common use cases: commercial due diligence, market entry decisions, competitive benchmarking, product landscape mapping, vendor evaluation, channel checks, portfolio company work, litigation and regulatory context.</p>
+          <p class="text-[13px] leading-relaxed text-secondary mt-4 italic">Common use cases: commercial due diligence, market entry decisions, competitive benchmarking, product landscape mapping, vendor evaluation, channel checks, portfolio company work, litigation and regulatory context.</p>
         </div>
 
         <!-- Don't use -->
@@ -210,9 +212,9 @@ const topProviders = published.slice(0, 6);
   </section>
 
   <!-- 3. How it works -->
-  <section id="how-it-works" class="py-16 px-6">
+  <section id="how-it-works" class="py-section-sm px-4 sm:px-6">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl font-bold text-primary mb-8">How an expert network engagement works</h2>
+      <h2 class="text-step-3 font-bold text-primary mb-8">How an expert network engagement works</h2>
 
       <div class="space-y-0">
         <div class="flex gap-4">
@@ -275,15 +277,15 @@ const topProviders = published.slice(0, 6);
         <div class="grid grid-cols-3 gap-4 text-sm">
           <div>
             <div class="font-bold text-primary">Same day – 48h</div>
-            <div class="text-xs text-secondary">Urgent projects</div>
+            <div class="text-[13px] leading-relaxed text-secondary">Urgent projects</div>
           </div>
           <div>
             <div class="font-bold text-primary">1–3 business days</div>
-            <div class="text-xs text-secondary">Standard projects</div>
+            <div class="text-[13px] leading-relaxed text-secondary">Standard projects</div>
           </div>
           <div>
             <div class="font-bold text-primary">Longer</div>
-            <div class="text-xs text-secondary">Niche / hard-to-source</div>
+            <div class="text-[13px] leading-relaxed text-secondary">Niche / hard-to-source</div>
           </div>
         </div>
       </div>
@@ -291,45 +293,45 @@ const topProviders = published.slice(0, 6);
   </section>
 
   <!-- 4. Who uses them -->
-  <section id="who-uses" class="py-16 px-6 bg-bg-secondary">
+  <section id="who-uses" class="py-section-sm px-4 sm:px-6 bg-bg-secondary">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl font-bold text-primary mb-3">Who uses expert networks and why</h2>
+      <h2 class="text-step-3 font-bold text-primary mb-3">Who uses expert networks and why</h2>
       <p class="text-secondary text-sm mb-8">Organizations making high-stakes decisions under time pressure where public information is not enough.</p>
 
       <div class="grid md:grid-cols-2 gap-4">
         <div class="bg-white rounded-card p-5 shadow-card">
-          <h3 class="font-bold text-primary text-sm mb-2">Private equity / venture capital</h3>
-          <p class="text-xs text-secondary">Commercial diligence, market mapping, portfolio support, and management referencing.</p>
-          <a href="/expert-networks-for-private-equity" class="text-accent text-xs font-medium mt-2 inline-block hover:underline no-underline">PE buyer's guide &rarr;</a>
+          <h3 class="font-semibold text-primary text-[15px] mb-2">Private equity / venture capital</h3>
+          <p class="text-[13px] leading-relaxed text-secondary">Commercial diligence, market mapping, portfolio support, and management referencing.</p>
+          <a href="/expert-networks-for-private-equity" class="text-accent-text text-[13px] font-medium inline-flex items-center min-h-[44px] hover:underline no-underline">PE buyer's guide &rarr;</a>
         </div>
         <div class="bg-white rounded-card p-5 shadow-card">
-          <h3 class="font-bold text-primary text-sm mb-2">Hedge funds / asset managers</h3>
-          <p class="text-xs text-secondary">Channel checks, thesis validation, competitive intelligence, and sector understanding.</p>
+          <h3 class="font-semibold text-primary text-[15px] mb-2">Hedge funds / asset managers</h3>
+          <p class="text-[13px] leading-relaxed text-secondary">Channel checks, thesis validation, competitive intelligence, and sector understanding.</p>
         </div>
         <div class="bg-white rounded-card p-5 shadow-card">
-          <h3 class="font-bold text-primary text-sm mb-2">Management consultancies</h3>
-          <p class="text-xs text-secondary">Accelerate learning in niche markets, test hypotheses, and support client engagements.</p>
+          <h3 class="font-semibold text-primary text-[15px] mb-2">Management consultancies</h3>
+          <p class="text-[13px] leading-relaxed text-secondary">Accelerate learning in niche markets, test hypotheses, and support client engagements.</p>
         </div>
         <div class="bg-white rounded-card p-5 shadow-card">
-          <h3 class="font-bold text-primary text-sm mb-2">Corporate strategy / innovation teams</h3>
-          <p class="text-xs text-secondary">Market entry, competitor analysis, supplier intelligence, and M&A evaluation.</p>
+          <h3 class="font-semibold text-primary text-[15px] mb-2">Corporate strategy / innovation teams</h3>
+          <p class="text-[13px] leading-relaxed text-secondary">Market entry, competitor analysis, supplier intelligence, and M&A evaluation.</p>
         </div>
         <div class="bg-white rounded-card p-5 shadow-card">
-          <h3 class="font-bold text-primary text-sm mb-2">Banks</h3>
-          <p class="text-xs text-secondary">Industry context, sector expertise, deal origination support, and fairness opinion work.</p>
+          <h3 class="font-semibold text-primary text-[15px] mb-2">Banks</h3>
+          <p class="text-[13px] leading-relaxed text-secondary">Industry context, sector expertise, deal origination support, and fairness opinion work.</p>
         </div>
         <div class="bg-white rounded-card p-5 shadow-card">
-          <h3 class="font-bold text-primary text-sm mb-2">Law firms</h3>
-          <p class="text-xs text-secondary">Expert witnesses, industry context for litigation, and regulatory understanding.</p>
+          <h3 class="font-semibold text-primary text-[15px] mb-2">Law firms</h3>
+          <p class="text-[13px] leading-relaxed text-secondary">Expert witnesses, industry context for litigation, and regulatory understanding.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- 5. Services -->
-  <section id="services" class="py-16 px-6">
+  <section id="services" class="py-section-sm px-4 sm:px-6">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl font-bold text-primary mb-3">What expert networks actually sell</h2>
+      <h2 class="text-step-3 font-bold text-primary mb-3">What expert networks actually sell</h2>
       <p class="text-secondary text-sm mb-8">The category is broader than "calls." Here is what the modern product stack looks like.</p>
 
       <div class="bg-white rounded-card shadow-card overflow-hidden">
@@ -382,10 +384,10 @@ const topProviders = published.slice(0, 6);
   </section>
 
   <!-- 6. Pricing -->
-  <section id="pricing" class="py-16 px-6 bg-bg-secondary">
+  <section id="pricing" class="py-section-sm px-4 sm:px-6 bg-bg-secondary">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl font-bold text-primary mb-6">How much do expert networks cost?</h2>
-      <div class="text-secondary leading-relaxed space-y-4 mb-8">
+      <h2 class="text-step-3 font-bold text-primary mb-6">How much do expert networks cost?</h2>
+      <div class="text-step-0 leading-[1.7] text-secondary space-y-4 max-w-measure mb-8">
         <p>Pricing varies by provider, expert seniority, urgency, and service format. The most common models are:</p>
         <ul class="list-disc pl-5 space-y-1 text-sm">
           <li><strong class="text-primary">Per-call pricing:</strong> you pay for each completed consultation</li>
@@ -398,11 +400,11 @@ const topProviders = published.slice(0, 6);
       <div class="grid md:grid-cols-2 gap-4 mb-4">
         <div class="bg-white rounded-card p-5 shadow-card text-center">
           <div class="text-2xl font-extrabold text-primary">~$500–$1,800+</div>
-          <div class="text-xs text-secondary mt-1">per hour, client-side (market estimate)</div>
+          <div class="text-[13px] leading-relaxed text-secondary mt-1">per hour, client-side (market estimate)</div>
         </div>
         <div class="bg-white rounded-card p-5 shadow-card text-center">
           <div class="text-2xl font-extrabold text-primary">~$200–$500+</div>
-          <div class="text-xs text-secondary mt-1">per hour, expert compensation (reported range)</div>
+          <div class="text-[13px] leading-relaxed text-secondary mt-1">per hour, expert compensation (reported range)</div>
         </div>
       </div>
       <p class="text-xs text-tertiary mb-8">These are approximate market estimates based on public sources and industry reporting. Actual rates vary materially by provider, expert seniority, geography, and contract structure.</p>
@@ -411,16 +413,16 @@ const topProviders = published.slice(0, 6);
         <p class="text-sm text-blue-800"><strong>What matters most</strong> is not the sticker price, but the total cost of getting the right answer fast and compliantly.</p>
       </div>
 
-      <a href="/expert-network-pricing" class="inline-flex items-center gap-2 text-accent text-sm font-semibold no-underline hover:underline">
+      <a href="/expert-network-pricing" class="inline-flex items-center gap-2 min-h-[44px] text-accent-text text-sm font-semibold no-underline hover:underline">
         See the full pricing guide &rarr;
       </a>
     </div>
   </section>
 
   <!-- 7. Compliance -->
-  <section id="compliance" class="py-16 px-6">
+  <section id="compliance" class="py-section-sm px-4 sm:px-6">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl font-bold text-primary mb-3">Compliance: what serious buyers should understand</h2>
+      <h2 class="text-step-3 font-bold text-primary mb-3">Compliance: what serious buyers should understand</h2>
       <p class="text-secondary mb-8">Expert networks operate in a legitimate but highly sensitive area. The central issue is not whether expert networks are legal; it is whether the interaction is structured to prevent the sharing of material non-public information.</p>
 
       <div class="bg-amber-50 border border-amber-200 rounded-card p-5 mb-8">
@@ -434,42 +436,42 @@ const topProviders = published.slice(0, 6);
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="text-accent-green flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
               <div class="text-sm font-medium text-primary">Expert identity verification</div>
-              <p class="text-xs text-secondary mt-0.5">Background checks and employment verification before engagement</p>
+              <p class="text-[13px] leading-relaxed text-secondary mt-0.5">Background checks and employment verification before engagement</p>
             </div>
           </div>
           <div class="flex items-start gap-2.5 bg-bg-secondary rounded-lg p-4">
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="text-accent-green flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
               <div class="text-sm font-medium text-primary">Employment and conflict checks</div>
-              <p class="text-xs text-secondary mt-0.5">Screening for current-employer conflicts and restricted topics</p>
+              <p class="text-[13px] leading-relaxed text-secondary mt-0.5">Screening for current-employer conflicts and restricted topics</p>
             </div>
           </div>
           <div class="flex items-start gap-2.5 bg-bg-secondary rounded-lg p-4">
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="text-accent-green flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
               <div class="text-sm font-medium text-primary">Restrictions on recent employees</div>
-              <p class="text-xs text-secondary mt-0.5">Policies limiting when recently departed employees can consult on their former employer (varies by provider)</p>
+              <p class="text-[13px] leading-relaxed text-secondary mt-0.5">Policies limiting when recently departed employees can consult on their former employer (varies by provider)</p>
             </div>
           </div>
           <div class="flex items-start gap-2.5 bg-bg-secondary rounded-lg p-4">
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="text-accent-green flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
               <div class="text-sm font-medium text-primary">Interaction logging and documentation</div>
-              <p class="text-xs text-secondary mt-0.5">Compliance attestations, call logs, and in many cases recordings or transcripts (practices vary by provider and jurisdiction)</p>
+              <p class="text-[13px] leading-relaxed text-secondary mt-0.5">Compliance attestations, call logs, and in many cases recordings or transcripts (practices vary by provider and jurisdiction)</p>
             </div>
           </div>
           <div class="flex items-start gap-2.5 bg-bg-secondary rounded-lg p-4">
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="text-accent-green flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
               <div class="text-sm font-medium text-primary">Clear client guidance</div>
-              <p class="text-xs text-secondary mt-0.5">Instructions on prohibited topics and escalation paths when risk issues appear</p>
+              <p class="text-[13px] leading-relaxed text-secondary mt-0.5">Instructions on prohibited topics and escalation paths when risk issues appear</p>
             </div>
           </div>
           <div class="flex items-start gap-2.5 bg-bg-secondary rounded-lg p-4">
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="text-accent-green flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
               <div class="text-sm font-medium text-primary">Restricted-topic rules</div>
-              <p class="text-xs text-secondary mt-0.5">Clear boundaries on what experts can and cannot discuss</p>
+              <p class="text-[13px] leading-relaxed text-secondary mt-0.5">Clear boundaries on what experts can and cannot discuss</p>
             </div>
           </div>
         </div>
@@ -478,57 +480,57 @@ const topProviders = published.slice(0, 6);
   </section>
 
   <!-- 8. Expert networks vs alternatives -->
-  <section id="alternatives" class="py-16 px-6 bg-bg-secondary">
+  <section id="alternatives" class="py-section-sm px-4 sm:px-6 bg-bg-secondary">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl font-bold text-primary mb-8">Expert networks vs other research options</h2>
+      <h2 class="text-step-3 font-bold text-primary mb-8">Expert networks vs other research options</h2>
 
       <div class="space-y-4">
         <div class="bg-white rounded-card p-5 shadow-card">
-          <h3 class="font-bold text-primary text-sm mb-2">Expert networks vs consulting firms</h3>
-          <p class="text-xs text-secondary">Expert networks give you targeted external expertise quickly. Consulting firms deliver broader analysis, project management, and synthesized recommendations. Expert networks are faster and more targeted; consulting firms are more comprehensive.</p>
+          <h3 class="font-semibold text-primary text-[15px] mb-2">Expert networks vs consulting firms</h3>
+          <p class="text-[13px] leading-relaxed text-secondary">Expert networks give you targeted external expertise quickly. Consulting firms deliver broader analysis, project management, and synthesized recommendations. Expert networks are faster and more targeted; consulting firms are more comprehensive.</p>
         </div>
         <div class="bg-white rounded-card p-5 shadow-card">
-          <h3 class="font-bold text-primary text-sm mb-2">Expert networks vs market research firms</h3>
-          <p class="text-xs text-secondary">Expert networks are stronger for direct practitioner access. Market research firms are stronger for structured survey programs and broader research studies with statistically representative samples.</p>
+          <h3 class="font-semibold text-primary text-[15px] mb-2">Expert networks vs market research firms</h3>
+          <p class="text-[13px] leading-relaxed text-secondary">Expert networks are stronger for direct practitioner access. Market research firms are stronger for structured survey programs and broader research studies with statistically representative samples.</p>
         </div>
         <div class="bg-white rounded-card p-5 shadow-card">
-          <h3 class="font-bold text-primary text-sm mb-2">Expert networks vs desk research</h3>
-          <p class="text-xs text-secondary">Desk research is cheaper and lower risk, but often too generic for high-stakes decisions. Expert calls provide nuance, context, and current practitioner perspective that published reports cannot.</p>
+          <h3 class="font-semibold text-primary text-[15px] mb-2">Expert networks vs desk research</h3>
+          <p class="text-[13px] leading-relaxed text-secondary">Desk research is cheaper and lower risk, but often too generic for high-stakes decisions. Expert calls provide nuance, context, and current practitioner perspective that published reports cannot.</p>
         </div>
         <div class="bg-white rounded-card p-5 shadow-card">
-          <h3 class="font-bold text-primary text-sm mb-2">Expert networks vs internal contacts</h3>
-          <p class="text-xs text-secondary">Internal contacts may be free, but often lack breadth, objectivity, and compliance controls. Expert networks provide structured, compliant access to a wider range of perspectives.</p>
+          <h3 class="font-semibold text-primary text-[15px] mb-2">Expert networks vs internal contacts</h3>
+          <p class="text-[13px] leading-relaxed text-secondary">Internal contacts may be free, but often lack breadth, objectivity, and compliance controls. Expert networks provide structured, compliant access to a wider range of perspectives.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- 9. How to choose a provider -->
-  <section id="choosing" class="py-16 px-6">
+  <section id="choosing" class="py-section-sm px-4 sm:px-6">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl font-bold text-primary mb-3">How to choose the right expert network</h2>
+      <h2 class="text-step-3 font-bold text-primary mb-3">How to choose the right expert network</h2>
       <p class="text-secondary text-sm mb-8">There is no single best provider for every use case. The right choice depends on speed, geography, service model, content depth, compliance posture, and budget.</p>
 
       <div class="grid md:grid-cols-2 gap-4 mb-8">
         <div class="border border-border/60 rounded-card p-5">
-          <h3 class="font-bold text-primary text-sm mb-2">Choose for speed and full-service execution</h3>
-          <p class="text-xs text-secondary">Look for providers known for strong project teams and fast sourcing. Concierge-model networks prioritize turnaround.</p>
+          <h3 class="font-semibold text-primary text-[15px] mb-2">Choose for speed and full-service execution</h3>
+          <p class="text-[13px] leading-relaxed text-secondary">Look for providers known for strong project teams and fast sourcing. Concierge-model networks prioritize turnaround.</p>
         </div>
         <div class="border border-border/60 rounded-card p-5">
-          <h3 class="font-bold text-primary text-sm mb-2">Choose for reusable content</h3>
-          <p class="text-xs text-secondary">Look for providers with meaningful transcript libraries and research products that you can access without commissioning new calls.</p>
+          <h3 class="font-semibold text-primary text-[15px] mb-2">Choose for reusable content</h3>
+          <p class="text-[13px] leading-relaxed text-secondary">Look for providers with meaningful transcript libraries and research products that you can access without commissioning new calls.</p>
         </div>
         <div class="border border-border/60 rounded-card p-5">
-          <h3 class="font-bold text-primary text-sm mb-2">Choose for budget flexibility</h3>
-          <p class="text-xs text-secondary">Look for providers with more flexible commercial models, especially if you are not ready for a large annual commitment.</p>
+          <h3 class="font-semibold text-primary text-[15px] mb-2">Choose for budget flexibility</h3>
+          <p class="text-[13px] leading-relaxed text-secondary">Look for providers with more flexible commercial models, especially if you are not ready for a large annual commitment.</p>
         </div>
         <div class="border border-border/60 rounded-card p-5">
-          <h3 class="font-bold text-primary text-sm mb-2">Choose for regional specialization</h3>
-          <p class="text-xs text-secondary">Look for stronger local depth where geography matters. Some providers specialize in Asia-Pacific, emerging markets, or specific industries.</p>
+          <h3 class="font-semibold text-primary text-[15px] mb-2">Choose for regional specialization</h3>
+          <p class="text-[13px] leading-relaxed text-secondary">Look for stronger local depth where geography matters. Some providers specialize in Asia-Pacific, emerging markets, or specific industries.</p>
         </div>
         <div class="border border-border/60 rounded-card p-5">
-          <h3 class="font-bold text-primary text-sm mb-2">Choose for platform-led workflows</h3>
-          <p class="text-xs text-secondary">Look for providers with mature AI and content discovery tools if your team values self-serve research alongside managed calls.</p>
+          <h3 class="font-semibold text-primary text-[15px] mb-2">Choose for platform-led workflows</h3>
+          <p class="text-[13px] leading-relaxed text-secondary">Look for providers with mature AI and content discovery tools if your team values self-serve research alongside managed calls.</p>
         </div>
         <div class="border border-border/60 rounded-card p-5 bg-bg-secondary/30 border-dashed">
           <p class="text-xs text-tertiary italic">These are directional buying criteria, not universal rankings. For provider-specific details, see each profile.</p>
@@ -536,17 +538,17 @@ const topProviders = published.slice(0, 6);
       </div>
 
       <div class="flex flex-wrap gap-3">
-        <a href="/compare" class="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-white rounded-full font-semibold text-sm no-underline hover:bg-accent-hover transition-colors">Compare providers side by side</a>
-        <a href="/expert-network-pricing" class="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-primary border border-border rounded-full font-semibold text-sm no-underline hover:bg-bg-secondary transition-colors">See pricing models</a>
-        <a href="/networks" class="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-primary border border-border rounded-full font-semibold text-sm no-underline hover:bg-bg-secondary transition-colors">Browse all networks</a>
+        <a href="/compare" class="btn btn-primary">Compare providers side by side</a>
+        <a href="/expert-network-pricing" class="btn btn-secondary">See pricing models</a>
+        <a href="/networks" class="btn btn-secondary">Browse all networks</a>
       </div>
     </div>
   </section>
 
   <!-- 10. Major providers at a glance -->
-  <section id="providers" class="py-16 px-6 bg-bg-secondary">
+  <section id="providers" class="py-section-sm px-4 sm:px-6 bg-bg-secondary">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl font-bold text-primary mb-6">Major providers at a glance</h2>
+      <h2 class="text-step-3 font-bold text-primary mb-6">Major providers at a glance</h2>
       <div class="bg-white rounded-card shadow-card overflow-hidden">
         <div class="overflow-x-auto">
           <table class="w-full text-sm">
@@ -564,7 +566,7 @@ const topProviders = published.slice(0, 6);
                 return (
                   <tr class={`border-b border-border/20 ${i % 2 !== 0 ? 'bg-bg-secondary/20' : ''}`}>
                     <td class="px-5 py-3">
-                      <a href={`/networks/${n.data.slug}`} class="flex items-center gap-2 no-underline text-primary hover:text-accent transition-colors">
+                      <a href={`/networks/${n.data.slug}`} class="flex items-center gap-2 max-lg:min-h-[44px] no-underline text-primary hover:text-accent-text transition-colors">
                         <div class="w-6 h-6 rounded flex items-center justify-center text-white font-bold text-[7px] flex-shrink-0" style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}>
                           {n.data.shortName}
                         </div>
@@ -581,14 +583,14 @@ const topProviders = published.slice(0, 6);
           </table>
         </div>
       </div>
-      <p class="text-xs text-tertiary mt-4">For provider-specific details, pricing, and current product mix, see each profile. <a href="/best-expert-networks" class="text-accent hover:underline no-underline">Full ranked list &rarr;</a></p>
+      <p class="text-xs text-tertiary mt-4">For provider-specific details, pricing, and current product mix, see each profile. <a href="/best-expert-networks" class="text-accent-text hover:underline no-underline">Full ranked list &rarr;</a></p>
     </div>
   </section>
 
   <!-- 11. FAQ -->
-  <section id="faq" class="py-16 px-6">
+  <section id="faq" class="py-section-sm px-4 sm:px-6">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl font-bold text-primary mb-8">Frequently Asked Questions</h2>
+      <h2 class="text-step-3 font-bold text-primary mb-8">Frequently Asked Questions</h2>
 
       <div class="space-y-3">
         <details class="bg-bg-secondary rounded-card overflow-hidden group">
@@ -612,7 +614,7 @@ const topProviders = published.slice(0, 6);
             How much do expert networks cost?
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="transition-transform group-open:rotate-180 flex-shrink-0"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
-          <div class="px-6 pb-4 text-sm text-secondary">Based on market estimates, expert calls generally range from roughly $500 to $1,800+ per hour on the client side, though rates vary widely. Pricing depends on expert seniority, sourcing difficulty, urgency, and provider. Common models include per-call, credit-based subscriptions, and hybrid enterprise contracts. See our <a href="/expert-network-pricing" class="text-accent hover:underline">pricing guide</a> for details.</div>
+          <div class="px-6 pb-4 text-sm text-secondary">Based on market estimates, expert calls generally range from roughly $500 to $1,800+ per hour on the client side, though rates vary widely. Pricing depends on expert seniority, sourcing difficulty, urgency, and provider. Common models include per-call, credit-based subscriptions, and hybrid enterprise contracts. See our <a href="/expert-network-pricing" class="text-accent-text hover:underline">pricing guide</a> for details.</div>
         </details>
 
         <details class="bg-bg-secondary rounded-card overflow-hidden group">
@@ -636,7 +638,7 @@ const topProviders = published.slice(0, 6);
             How do I choose the right provider?
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="transition-transform group-open:rotate-180 flex-shrink-0"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
-          <div class="px-6 pb-4 text-sm text-secondary">It depends on your priorities: speed, geography, service model, content depth, compliance posture, and budget. Many research teams work with more than one provider. See our <a href="/compare" class="text-accent hover:underline">comparison tool</a> or <a href="/best-expert-networks" class="text-accent hover:underline">ranked list</a>.</div>
+          <div class="px-6 pb-4 text-sm text-secondary">It depends on your priorities: speed, geography, service model, content depth, compliance posture, and budget. Many research teams work with more than one provider. See our <a href="/compare" class="text-accent-text hover:underline">comparison tool</a> or <a href="/best-expert-networks" class="text-accent-text hover:underline">ranked list</a>.</div>
         </details>
 
         <details class="bg-bg-secondary rounded-card overflow-hidden group">
@@ -651,7 +653,7 @@ const topProviders = published.slice(0, 6);
   </section>
 
   <!-- 12. Next steps CTA -->
-  <section class="py-16 px-6 bg-bg-secondary">
+  <section class="py-section-sm px-4 sm:px-6 bg-bg-secondary">
     <div class="max-w-3xl mx-auto">
       <h2 class="text-xl font-bold text-primary mb-3">Next steps</h2>
       <p class="text-sm text-secondary mb-8">Use the directory if you want to compare firms. Use the pricing guide if you want to understand cost. Use the compare page if you already have a shortlist.</p>
