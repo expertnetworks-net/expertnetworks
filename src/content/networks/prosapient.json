@@ -49,7 +49,7 @@
   "featured": false,
   "priority": 8,
   "published": true,
-  "categoryBadge": "Technology-First",
+  "categoryBadge": "Research Platform",
   "deliveryModel": "Hybrid",
   "complianceBadge": "Compliance Tools",
   "aiBadge": "AI Matching",
@@ -72,10 +72,6 @@
       {
         "year": "2021",
         "event": "Smedvig Capital announces a $10 million Series A on 18 January, with Guy Hands and 24 Haymarket participating."
-      },
-      {
-        "year": "2026",
-        "event": "Companies House records Keith Wallington joining the board on 31 March, as Christopher Potts leaves."
       },
       {
         "year": "2026",
@@ -161,24 +157,23 @@
   "notableFacts": [
     "A $10 million Series A was announced by Smedvig Capital in January 2021.",
     "The 2025 group accounts report average employment of 274.",
-    "The company currently lists Peter Davio as Chief Technology Officer.",
+    "The company’s About page lists Peter Davio as Chief Technology Officer.",
     "Companies House records a London registered-office change in September 2026."
   ],
   "sourceNotes": [
-    "https://www.prosapient.com/ — Accessed 2026-11-11. Company-described live calls, client services, platform workflows and messaging.",
-    "https://www.prosapient.com/about — Accessed 2026-11-11. Founding, founders’ backgrounds, leadership and current office list; Toronto closure removed. Recognition claims were not independently verified and have been omitted.",
+    "https://www.prosapient.com/ — Accessed 2026-11-11. Company-described live calls, client services, platform workflows and messaging. Research Platform is an editorial category inferred from these documented research workflows, not a ranking of technology leadership.",
+    "https://www.prosapient.com/about — Accessed 2026-11-11. Founding, founders’ backgrounds, leadership (including Peter Davio as Chief Technology Officer) and current office list; Toronto closure removed. Recognition claims were not independently verified and have been omitted.",
     "https://medium.com/smedvig-venture-capital/smedvig-capital-lead-10m-series-a-investment-in-prosapient-eb4da14e4615 — Accessed 2026-11-11. Investor announcement dated 18 January 2021; corrects the previous Series A year. Investor reported 100+ clients at that date; the profile no longer presents this as a 2024 or current count. Unsubstantiated seed-round timing, later valuation and bridge-financing claims removed.",
     "https://www.prosapient.com/technology — Accessed 2026-11-11. Company-stated scheduling, calendar integration, messaging, summaries and transcript performance.",
-    "https://www.prosapient.com/technology/search-ai — Accessed 2026-11-11. Company-described matching, associate involvement and internal database search. Does not substantiate a current multi-vendor management offering or 50,000+ expert count; those claims removed.",
+    "https://www.prosapient.com/technology/search-ai — Accessed 2026-11-11. Company-described matching, associate involvement and internal database search; supports the AI Matching badge as company positioning, not an independently tested performance claim. Does not substantiate a current multi-vendor management offering or 50,000+ expert count; those claims removed.",
     "https://www.prosapient.com/technology/transcripts — Accessed 2026-11-11. Company claims: free transcripts, 99% accuracy, typical four-hour delivery, summaries and 48-language AI translations. Compliance approval precedes library inclusion; the page does not establish manual MNPI review of every transcript.",
     "https://www.prosapient.com/compliance — Accessed 2026-11-11. Company-described screening, training, automated checks and GDPR practices. Full audit trails, flagged-case-only manual review, ISO certification scope and a clean regulatory record were not substantiated; those claims removed.",
     "https://www.prosapient.com/platform/survey — Accessed 2026-11-11. Company-described survey audiences, methods, external-tool support and GenAI Survey Builder.",
     "https://www.prosapient.com/technology/long-term-engagements — Accessed 2026-11-11. Company-described advisor and specialist engagements and fixed release fee; does not establish standardized call pricing or subscription terms.",
     "https://www.prosapient.com/technology/aimi — Accessed 2026-11-11. Company-described managed interviews, panel recruitment, human screening and expert obligations.",
     "https://www.prosapient.com/blog/accelerate-your-primary-research-in-the-age-of-ai — Accessed 2026-11-11. Dated 21 April 2026; discusses AIMI and respondent supply to Strella, Listen Labs and Outset. This is not a verified product-launch date.",
-    "https://www.linkedin.com/posts/prosapient_prosapient-ai-hiring-activity-7399025578634342401-5HVq — Accessed 2026-11-11. Company announcement of Peter Davio joining as CTO; relative page timestamps do not establish an exact appointment date.",
     "https://find-and-update.company-information.service.gov.uk/company/10704431/filing-history — Accessed 2026-11-11. Records 29 September 2026 filing of 2025 accounts and 21 September 2026 London registered-office move.",
-    "https://find-and-update.company-information.service.gov.uk/company/10704431/filing-history/MzU0ODE5NjUxOGFkaXF6a2N4/document?format=pdf&download=0 — Accessed 2026-11-11. 2025 group accounts, strategic report page 1: turnover £41,126,699 (2024 £33,051,989), profit £1,271,534 (2024 loss £635,635), average employees 274. Replaces unsourced dollar revenue estimate. Web document redirect failed; read the indexed linked PDF and downloaded this exact URL, visually checking report pages 1–2. The directors also report London and Toronto lease arrangements in 2026; definitive Canadian lease was not executed at report approval, so no completed expansion claim is made.",
+    "https://find-and-update.company-information.service.gov.uk/company/10704431/filing-history/MzU0ODE5NjUxOGFkaXF6a2N4/document?format=pdf&download=0 — Accessed 2026-11-11. 2025 group accounts, strategic report page 1: turnover £41,126,699 (2024 £33,051,989), profit £1,271,534 (2024 loss £635,635), average employees 274. Replaces unsourced dollar revenue estimate. Web document redirect failed; downloaded this exact URL and visually checked report pages 1–2. The directors also report London and Toronto lease arrangements in 2026; definitive Canadian lease was not executed at report approval, so no completed expansion claim is made.",
     "https://find-and-update.company-information.service.gov.uk/company/10704431/filing-history/MzUwNTYwNjk2N2FkaXF6a2N4/document?download=0&format=pdf — Accessed 2026-11-11. February 2026 SH01 read by downloading the exact URL and extracting its text after the web redirect failed. It records cash allotments of A ordinary shares on 6 February; it does not establish a material new institutional funding round, so no such claim is added."
   ],
   "whyChoose": [
@@ -208,6 +203,8 @@
     "strengths": "positioning",
     "bestFor": "inference",
     "deliveryModel": "inference",
+    "categoryBadge": "inference",
+    "aiBadge": "positioning",
     "comparison": "positioning"
   },
   "employeeCountSource": "2025 group accounts, filed at Companies House on 29 September 2026"
