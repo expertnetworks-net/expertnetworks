@@ -103,3 +103,8 @@ Found while testing the swarm on 2026-11-11. Each one is fixed in `swarm.sh` or 
 | `claude -p --permission-mode plan` returns only a plan stub. | Normal mode; the read-only tool allowlist denies everything else. |
 | Rewriting `swarm.sh` while a `fanout` is running makes bash execute the new file from an old byte offset. | Do not edit `swarm.sh` while a fanout runs. |
 | The Claude Code login on the Mac expires (warning seen: ends by 2026-11-14). | For unattended runs use `claude setup-token` (subscription token, no API cost). |
+| Killing a running `codex exec` triggers the auto-retry; a second `fanout` on the same id then reuses the worktree and two runs write to it. | Let the retry finish or `swarm.sh clean <id>` first; never start a second run of a live id. |
+| The scope check used `git status --porcelain`, which reports a new directory as one entry, so files inside new folders looked out of scope (or were skipped). | `--untracked-files=all` (fixed 2026-11-11). |
+| Plain `.ts` scripts with no `import`/`export` are global scripts; after a merge two of them declaring `root`/`x`/`frame` break `astro check`. | Start every page script with `export {};` or an import. |
+| Parallel tasks that each create the same shared component (e.g. `GuideHero.astro`) conflict at integration. | Name one task the owner of a shared component, or prefix per-task components. |
+| A loop like `git merge ... | tail` hides the merge exit code and keeps going after a conflict. | Test the merge command itself in the `if`, never through a pipe. |
