@@ -7,3 +7,4 @@ dist/
 drafts/
 *.log
 plan.md
+.claude/worktrees/
