@@ -2,170 +2,158 @@
   "name": "Ridgetop Research",
   "shortName": "RR",
   "slug": "ridgetop-research",
-  "website": "https://ridgetopresearch.com",
+  "website": "https://www.ridgetopresearch.com/",
   "gradientFrom": "#1a2e05",
   "gradientTo": "#65a30d",
   "type": "Expert Network",
-  "founded": 2018,
-  "headquarters": "San Francisco, CA",
-  "employeeCount": "60+",
-  "expertCount": "25K+",
-  "description": "Technology sector specialist expert network focused on SaaS, cloud infrastructure, and growth equity due diligence, serving PE firms and growth investors with deep tech expertise and benchmarking capabilities.",
+  "founded": 2008,
+  "headquarters": "New York, NY",
+  "employeeCount": "Not disclosed",
+  "employeeCountSource": "No headcount published on the official website; conflicting LinkedIn size indicators (reviewed 2026-11-11).",
+  "expertCount": "350,000+",
+  "expertCountLabel": "Experts in network (company-stated; accessed 2026-11-11)",
+  "description": "Primary research firm serving institutional investment firms through custom expert recruiting and surveys. Ridgetop says its recruiting teams source experts across sectors worldwide.",
   "services": [
     "Expert Calls",
-    "Tech DD",
-    "SaaS Benchmarking",
-    "Competitive Analysis"
+    "Surveys",
+    "Panels",
+    "Call Chaperoning"
   ],
-  "aiCapabilities": [
-    "SaaS metrics benchmarking engine",
-    "AI-powered tech expert matching",
-    "Competitive landscape analysis tools"
-  ],
+  "aiCapabilities": [],
   "industries": [
-    "Technology",
-    "SaaS",
-    "Cloud Infrastructure",
-    "Cybersecurity"
+    "Cross-sector"
   ],
-  "pricingModel": "Per-call",
+  "pricingModel": "Not disclosed",
   "keyDifferentiators": [
-    "Technology sector specialization with SaaS depth",
-    "SaaS benchmarking capabilities for PE due diligence",
-    "Growth equity due diligence focus with tech-native expertise"
+    "Company-described dedicated analyst pods",
+    "Company-described project-specific expert recruiting",
+    "Company-described ACA call chaperoning"
   ],
   "bestFor": [
-    "Technology Sector",
-    "SaaS Research",
-    "Growth Equity"
+    "Institutional Investment Research",
+    "Custom Expert Recruiting",
+    "Survey Research"
   ],
   "compliance": {
-    "mnpiPolicy": "Tech sector-specific MNPI protocols with pre-IPO and venture-backed company safeguards",
-    "expertVetting": "Technical credential verification with non-compete and NDA conflict screening",
-    "auditTrail": true,
-    "regulatoryHistory": "Clean regulatory record"
+    "mnpiPolicy": "Ridgetop says its ACA chaperone service flags potential MNPI during consultations.",
+    "expertVetting": "Ridgetop says consultants undergo conflicts screening, documentation, and training before introduction.",
+    "auditTrail": null
   },
   "featured": false,
   "priority": 31,
   "published": true,
-  "categoryBadge": "Boutique Specialist",
   "deliveryModel": "Concierge",
-  "regionStrength": "North America",
-  "complianceBadge": "Standard Compliance",
-  "lastUpdated": "2026-03-07",
-  "overview": "Ridgetop Research is a San Francisco-based expert network specializing exclusively in the technology sector. Founded in 2018, the company focuses on SaaS, cloud infrastructure, cybersecurity, and growth-stage technology companies, serving PE firms and growth equity investors with deep tech-native expertise.\n\nThe company's SaaS benchmarking capabilities differentiate it from generalist networks — Ridgetop can provide not just expert calls but also data-driven comparisons of SaaS metrics (ARR growth, net retention, CAC/LTV, churn) across portfolio companies and acquisition targets. San Francisco headquarters provides natural proximity to the technology ecosystem.",
+  "regionStrength": "Global",
+  "complianceBadge": "Compliance Tools",
+  "aiBadge": "Limited AI Detail",
+  "comparison": {
+    "expertCalls": true,
+    "contentLibrary": null,
+    "aiMatching": null,
+    "surveys": true,
+    "complianceTools": true
+  },
+  "lastUpdated": "2026-11-11",
+  "overview": "Ridgetop Research is a New York-based primary research firm founded in 2008. It serves institutional investment firms through expert consultations and surveys.\n\nThe company says dedicated analyst pods recruit experts for individual mandates across sectors worldwide. Its public offer includes a client compliance portal and call chaperoning with ACA.",
   "history": {
-    "narrative": "Ridgetop Research was founded in 2018 in San Francisco to serve the growing demand for technology-specialized expert network services from PE and growth equity investors.",
+    "narrative": "Ridgetop Research dates its founding to 2008 and identifies Chip Emery as its founder and current CEO. BBB's business profile also records 2008 as the business start year.",
     "timeline": [
       {
-        "year": "2018",
-        "event": "Founded in San Francisco with technology sector focus"
-      },
-      {
-        "year": "2019-2022",
-        "event": "Built SaaS benchmarking engine and tech-focused expert network"
-      },
-      {
-        "year": "2023-2025",
-        "event": "Expanded cloud infrastructure and cybersecurity coverage"
+        "year": "2008",
+        "event": "Ridgetop Research founded; its website identifies Chip Emery as the founder."
       }
     ]
   },
   "servicesDetailed": [
     {
       "name": "Expert Consultations",
-      "description": "One-on-one consultations with technology executives, SaaS operators, cloud architects, and cybersecurity specialists for investment due diligence."
+      "description": "Ridgetop says its recruiting analysts source experts for each client's research mandates across sectors."
     },
     {
-      "name": "SaaS Benchmarking",
-      "description": "Data-driven benchmarking of SaaS metrics including ARR growth, net retention, CAC/LTV ratios, and churn rates across companies and subsectors."
+      "name": "Surveys & Panels",
+      "description": "Ridgetop describes questionnaire design, sampling, programming, and data delivery through online, telephone, and mobile channels, with Consumer, B2B, and Healthcare panels."
     },
     {
-      "name": "Technology Due Diligence",
-      "description": "Expert-supported due diligence for technology investments, evaluating product-market fit, technology architecture, competitive moats, and growth potential."
-    },
-    {
-      "name": "Competitive Landscape Analysis",
-      "description": "Technology sector competitive mapping combining expert insights with market data analysis."
+      "name": "Call Chaperoning",
+      "description": "Ridgetop says its ACA partnership offers two levels of call chaperoning, including observation, minutes, and risk flags, with additional attestations and disclosure checks in the second tier."
     }
   ],
-  "aiPlatform": {
-    "narrative": "Ridgetop combines AI-powered tech expert matching with its SaaS benchmarking engine for data-augmented due diligence.",
-    "features": [
-      "SaaS metrics benchmarking engine",
-      "AI-powered tech expert matching",
-      "Competitive landscape analysis tools",
-      "Pre-IPO company conflict detection"
+  "complianceExtended": {
+    "narrative": "Ridgetop describes a compliance workflow adapted to each client's requirements. These procedures are company-stated and have not been independently assessed here.",
+    "highlights": [
+      "Consultant conflicts screening and training",
+      "Client compliance portal for review workflows",
+      "Client-specific documentation and approvals",
+      "ACA chaperoning with minutes and MNPI risk flags"
     ]
   },
-  "complianceExtended": {
-    "narrative": "Tech sector-specific compliance with safeguards for pre-IPO and venture-backed companies.",
-    "highlights": [
-      "Pre-IPO company MNPI safeguards",
-      "Non-compete and NDA conflict screening",
-      "Technical credential verification",
-      "Audit trail for all interactions"
-    ],
-    "regulatoryContext": "Technology due diligence involves pre-IPO companies, venture-backed startups, and public cloud/SaaS companies. Clean regulatory record."
-  },
   "clientFit": {
-    "narrative": "Ideal for PE firms and growth investors focused on technology sector investments.",
+    "narrative": "Ridgetop positions its custom recruiting and surveys for institutional investment firms.",
     "segments": [
-      "Growth equity investors evaluating SaaS and cloud companies",
-      "PE firms conducting technology due diligence",
-      "Tech-focused hedge funds researching public cloud/SaaS companies",
-      "Corporate development teams in the technology sector"
+      "Institutional investors seeking expert consultations",
+      "Investment research teams commissioning surveys"
     ]
   },
   "strengths": [
-    "Technology-only focus enables deeper SaaS and cloud expertise",
-    "SaaS benchmarking provides data-driven due diligence augmentation",
-    "San Francisco location provides proximity to tech ecosystem",
-    "Growth equity focus aligns with PE technology investment workflows"
+    "Company-described dedicated recruiting teams",
+    "Company-described sourcing across sectors worldwide",
+    "Company-described survey and panel services",
+    "Company-described client compliance workflows and chaperoning"
   ],
   "caveats": [
-    "No coverage outside technology sector",
-    "Smaller expert database than generalist networks",
-    "Limited public information about funding",
-    "Less suitable for non-tech research"
+    "Pricing is not disclosed on the reviewed official page.",
+    "AI expert matching and SaaS benchmarking were not substantiated by the reviewed public sources.",
+    "Current headcount and a comprehensive interaction audit trail could not be established."
   ],
   "notableFacts": [
-    "SaaS benchmarking engine compares metrics across companies and subsectors",
-    "Technology-only specialization from founding",
-    "San Francisco headquarters in the heart of the tech ecosystem"
+    "Founded in 2008, according to the official site and BBB business profile",
+    "Company lists offices in New York and Charlotte",
+    "Company reports 350,000+ experts in its network (accessed 2026-11-11)"
   ],
   "sourceNotes": [
-    "Ridgetop Research website",
-    "Expert network industry directories"
+    "Ridgetop Research official website — https://www.ridgetopresearch.com/ — accessed 2026-11-11. Supports the 2008 founding, New York and Charlotte offices, and company-stated network size, cross-sector recruiting pods, surveys, panels, compliance portal, consultant screening and training, and ACA chaperoning. Concierge delivery is an editorial classification based on dedicated recruiting teams; Global reflects the company's worldwide sourcing description. The page does not substantiate the former technology-only, SaaS benchmarking, AI matching, technical credential/NDA screening, pre-IPO safeguards, pricing, headcount, comprehensive audit-trail, or clean-regulatory-record claims. A search for material developments during 2025-11-11–2026-11-11 located no qualifying dated primary or reputable announcement; current offerings are undated and are not presented as recent launches.",
+    "Ridgetop Research company LinkedIn page — https://www.linkedin.com/company/ridgetop-research — accessed 2026-11-11. Corroborates 2008, New York headquarters, custom recruiting, surveys, and panels. Lists a company-size band of 11–50 while displaying 75 associated employee profiles; neither establishes current headcount, so employeeCount remains Not disclosed.",
+    "BBB business profile — https://www.bbb.org/us/ny/new-york/profile/data-analytics/ridgetop-research-llc-0121-117927/ — accessed 2026-11-11. Records a 2008 business start and incorporation, a New York address, and primary research and online surveys for institutional investment firms. BBB accreditation or ratings are not used to infer regulatory history."
   ],
   "whyChoose": [
-    "SaaS/tech depth",
-    "Benchmarking capabilities",
-    "Growth equity focus",
-    "SF tech ecosystem access"
+    "Custom expert recruiting",
+    "Dedicated analyst pods",
+    "Surveys and panels",
+    "Company-described chaperoning"
   ],
   "whenNotIdeal": [
-    "Non-tech research",
-    "Need broad sector coverage",
-    "Want large expert pools",
-    "European/Asian market focus"
+    "Need published pricing",
+    "Need publicly documented AI features",
+    "Need a documented SaaS benchmarking product"
   ],
   "confidence": {
-    "founded": "partially-unverifiable",
+    "type": "verified",
+    "founded": "verified",
     "headquarters": "verified",
     "expertCount": "positioning",
     "employeeCount": "partially-unverifiable",
-    "pricingModel": "verified",
+    "description": "positioning",
+    "pricingModel": "partially-unverifiable",
     "services": "positioning",
+    "aiCapabilities": "partially-unverifiable",
+    "industries": "positioning",
+    "keyDifferentiators": "positioning",
+    "bestFor": "inference",
+    "deliveryModel": "inference",
+    "regionStrength": "positioning",
+    "complianceBadge": "positioning",
+    "aiBadge": "partially-unverifiable",
+    "comparison": "positioning",
     "compliance": "positioning",
     "overview": "positioning",
-    "history": "inference",
+    "history": "positioning",
     "servicesDetailed": "positioning",
-    "aiPlatform": "positioning",
     "complianceExtended": "positioning",
-    "clientFit": "inference",
+    "clientFit": "positioning",
     "strengths": "positioning",
-    "caveats": "inference",
-    "notableFacts": "positioning"
+    "caveats": "partially-unverifiable",
+    "notableFacts": "positioning",
+    "whyChoose": "positioning",
+    "whenNotIdeal": "inference"
   }
 }
