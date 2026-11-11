@@ -98,7 +98,62 @@ Criteria: pause risk, security surface, one vendor vs two, SQL features needed. 
 ### 5.2 AI training crawlers
 Allow (more model familiarity, possibly more citations) or block (protect original data). Search and Agent stay allowed either way.
 
-## 6. References
+## 6. Site audit (2026-11-11) and execution plan
+
+Method: read of the code, the built `dist/`, and the live site at desktop, 800 px, and 375 px. Re-run the numbers before acting; do not copy them into other docs.
+
+### 6.1 Findings
+
+| Area | Finding | Evidence |
+|---|---|---|
+| Content accuracy | The one profile audited claim by claim (GLG) had 9 unsupported or overstated claims while labeled "Verified". Assume the others are similar until checked. | `.agents/runs/verify-glg/` |
+| Content freshness | 22 of 33 profiles were last updated in March 2026. News cadence is uneven (21 items in Feb 2026, 1 in Nov 2026). | `lastUpdated` fields; news `date` fields |
+| Trust signals | "Verified" badges are not backed by a per-claim source list or date visible to the reader. No public editorial policy or corrections channel. The criteria for "Featured" providers and compare defaults are not documented. | Profile pages; `/verification` |
+| Code structure | 5 components for 32 pages. Four pages are 850–1,400 lines with inline styles and scripts. | `wc -l src/pages` |
+| Page weight | `/news/` HTML is ~380 KB, `/compare/` ~290 KB, `/networks/` ~250 KB (all items inlined, plus JSON blobs). | `dist/` |
+| UI polish | Header collides with the logo around 800 px. Mobile home hero leaves a blank first screen while the entrance animation runs. 15 images without `alt` on a profile page; 4 touch targets under 32 px. | Live site |
+| Quality gates | No browser tests, no accessibility check, no performance budget. A selector rename can break a page with a green build. | `package.json`, CI |
+| Open source | No `LICENSE`, `CONTRIBUTING.md`, `SECURITY.md`, or issue templates. Code and content need separate licenses. | Repo root |
+| Measurement | No Search Console or Bing Webmaster data; AI-citation visibility not tracked. | — |
+
+### 6.2 Plan
+
+Order matters: facts first, then gates, then structure, then polish. Each line is one or more task specs; parallel width is 3.
+
+**Wave 1 — Truth (week 1).** Highest value and highest legal risk.
+- Verifier swarm over the remaining 32 profiles: one `verifier` task each, then one `builder` fix task, then cross-vendor review. Any regulatory or legal claim without a primary source is removed, not hedged.
+- Replace the single "Verified" badge with per-section confidence plus a visible "Sources and last checked" block generated from `sourceNotes`.
+- Publish `/editorial-policy` (independence, no paid placement, how Featured and compare defaults are chosen, corrections) and a corrections contact that does not identify the owner.
+
+**Wave 2 — Gates (week 1–2).** So later refactors cannot break the site silently.
+- Playwright smoke tests for `/`, `/compare/`, `/networks/`, one profile, `/news/` (selectors used by `src/scripts/` must exist; filters and compare work).
+- `axe` accessibility check and Lighthouse CI budget (performance, accessibility, SEO ≥ 95) in CI.
+- Content lint: every profile has `lastUpdated` within 120 days or a "stale" label; every news item has a reachable source URL.
+
+**Wave 3 — Structure (week 2–3).**
+- Extract components from the four large pages (profile sections, cards, tables, filters). Move inline `<style>` into tokens in `global.css` / Tailwind config. One page per task; `compare` stays in one worker.
+- Paginate or lazy-load `/news/` and `/networks/` lists; target < 100 KB HTML per page.
+- CSP without `'unsafe-inline'` (Astro CSP hashes) once inline scripts are modules.
+
+**Wave 4 — Polish (week 3–4).**
+- Header breakpoints (collapse nav below ~1,000 px), mobile hero without blank first screen, `alt` text, 44 px touch targets, focus states, reduced-motion.
+- Design system page (`/styleguide`, noindex) so workers and reviewers share one reference.
+- Open Graph images per profile and per news item, generated at build time.
+
+**Wave 5 — Open source and growth (week 4+).**
+- `LICENSE` (code: MIT or Apache-2.0; content and data: CC BY 4.0 — owner decision), `CONTRIBUTING.md`, `SECURITY.md`, issue and PR templates, a public data export (`/data/providers.json`) with a changelog.
+- Search Console and Bing verification through DNS; monthly AI-citation probe.
+- Weekly news batch and monthly profile re-verification as scheduled swarm runs.
+- Data layer (phase 2 above) only when corrections or alerts need it.
+
+### 6.3 Definition of "professional" for this project
+
+- Every published claim has a source a reader can open, and a date.
+- CI blocks a deploy on broken UI, accessibility regressions, slow pages, broken slugs, or a non-anonymous commit.
+- No page over 400 lines; no inline styles outside tokens.
+- A stranger can clone, build, and contribute from the README alone.
+
+## 7. References
 
 - Cemri et al. *Why Do Multi-Agent LLM Systems Fail?* https://arxiv.org/abs/2503.13657
 - Anthropic. *How we built our multi-agent research system.* https://www.anthropic.com/engineering/multi-agent-research-system
