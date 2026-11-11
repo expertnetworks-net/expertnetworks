@@ -43,6 +43,7 @@ Each fact has one owner. Read the owner before you work on that topic.
 | `README.md` | Purpose of the project, quick start, links. For human readers. |
 | `AGENTS.md` | Agent rules, terms, repository map, commands, pitfalls. Shared by all agent tools. |
 | `CLAUDE.md` | Imports `AGENTS.md`. Adds only Claude-specific notes (orchestrator role). |
+| `docs/DESIGN.md` | Visual direction, evidence-label system, page anatomy, component rules. Binding for any UI task. |
 | `docs/ROADMAP.md` | Goals, phases, decisions, and the research behind them. |
 | `docs/AGENT-WORKFLOW.md` | Reference for the multi-agent model: roles, task specs, worktrees, swarm commands, configuration, operating surfaces. |
 | `docs/ORCHESTRATION-PLAYBOOK.md` | Techniques that worked or failed here, review rules, measurement, tooling pitfalls, experiment log. |
