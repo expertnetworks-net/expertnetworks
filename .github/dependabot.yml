@@ -1,0 +1,28 @@
+# Weekly dependency updates.
+# Reason: CI fails on any high-severity `npm audit` advisory, and advisories
+# accumulate without code changes. See docs/DEPLOYMENT.md.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    groups:
+      # One pull request for all minor and patch updates.
+      # Major updates arrive as separate pull requests.
+      npm-minor-patch:
+        update-types:
+          - minor
+          - patch
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    groups:
+      github-actions:
+        patterns:
+          - "*"

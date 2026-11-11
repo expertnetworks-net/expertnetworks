@@ -4,14 +4,15 @@ import { getCollection } from 'astro:content';
 const allNetworks = await getCollection('networks');
 const publishedNetworks = allNetworks.filter(n => n.data.published);
 const networkCount = publishedNetworks.length;
+const year = new Date().getFullYear();
 ---
 
-<footer class="relative overflow-hidden bg-[#111113]" id="siteFooter">
+<footer class="dark-surface relative overflow-hidden bg-[#111113]" id="siteFooter">
   <!-- Subtle top gradient edge -->
-  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent"></div>
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.12] to-transparent"></div>
 
   <!-- ═══ Main footer content ═══ -->
-  <div class="relative z-10 pt-16 pb-0 px-6">
+  <div class="relative z-10 pt-16 md:pt-20 pb-0 px-4 sm:px-6">
     <div class="max-w-site mx-auto">
 
       <!-- ─── 4-Column Grid ─── -->
@@ -19,21 +20,21 @@ const networkCount = publishedNetworks.length;
 
         <!-- Column 1: Brand + Trust -->
         <div class="lg:col-span-1 md:col-span-2 lg:pr-4">
-          <a href="/" class="inline-flex items-center gap-2 mb-4 group">
+          <a href="/" class="inline-flex items-center gap-2 mb-4 min-h-[44px] no-underline" aria-label="ExpertNetworks home">
             <svg class="w-6 h-6 flex-shrink-0 text-white/60" viewBox="0 0 2048 2048" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M 1493 1721.15 L 1290 1721.17 L 1285 1719.35 L 1228 1716.77 L 1166 1707.92 L 1100 1692.5 L 1057.24 1679 L 1000 1654.83 L 933.33 1617 L 871 1570.28 L 825 1526.61 L 789.79 1489 L 745.39 1429 L 716.92 1383 L 687.97 1325 L 672.75 1288 L 657.1 1239 L 640 1159.34 L 615.79 1199 L 566.83 1288 L 502.98 1409 L 474.75 1467 L 485 1469.51 L 575 1472.05 L 580 1473.92 L 707 1474.77 L 739.53 1518 L 766.02 1549 L 816 1598.85 L 878 1647.62 L 933.02 1683 L 965 1699.96 L 965 1703 L 915 1708.2 L 910 1710.22 L 893 1710.42 L 888 1712.42 L 869 1712.57 L 864 1714.6 L 807 1717.17 L 802 1719.06 L 763 1719.34 L 757 1721.2 L 556 1721.19 L 551 1719.37 L 505 1719.05 L 500 1717.15 L 432 1714.6 L 427 1712.65 L 405 1712.34 L 387 1707.81 L 368.51 1692 L 331 1636.83 L 288.93 1566 L 233.5 1455 L 224.57 1430 L 224.63 1423 L 229.28 1409 L 374.98 1133 L 430.12 1036 L 461.5 989 L 510.23 927 L 562 875.27 L 618 830.45 L 671 797.29 L 722 772.91 L 762 757.34 L 833 737.41 L 899 726.41 L 921 726.02 L 927 724.11 L 1002 724.11 L 1045 728.54 L 1116 744.02 L 1172.17 763 L 1159.11 736 L 1123.59 676 L 1081.77 610 L 1022 521.85 L 1017.07 526 L 1001.77 548 L 938.79 648 L 925 666.3 L 902 666.82 L 853 673.46 L 802 684.48 L 756 697.74 L 691 722.31 L 638 748.84 L 602.97 770 L 606.6 758 L 664 645.42 L 758.78 480 L 791.87 427 L 838.68 358 L 857.49 337 L 867 331.98 L 906 326.98 L 941 326.62 L 946 324.82 L 1095 324.8 L 1101 326.63 L 1160 329.25 L 1178 333.73 L 1186 338.92 L 1210 369.71 L 1260.89 445 L 1368.85 619 L 1415.46 708 L 1444.09 785 L 1461.81 856 L 1468.49 896 L 1470.97 935 L 1472.94 941 L 1472.92 1024 L 1470.91 1029 L 1468.51 1066 L 1459.65 1117 L 1446.32 1166 L 1422.08 1230 L 1399.55 1275 L 1379.77 1308 L 1350.9 1348 L 1326.35 1377 L 1294 1409.32 L 1258.66 1438 L 1220 1463.71 L 1218.53 1467 L 1266 1469.89 L 1271 1471.87 L 1299 1472.1 L 1304 1473.98 L 1343 1474.26 L 1472 1473.91 L 1478 1472.03 L 1559 1469.53 L 1571.04 1467 L 1543.04 1409 L 1468.63 1269 L 1490.26 1217 L 1503.52 1177 L 1521.42 1101 L 1530.16 1030 L 1530.3 957 L 1528.18 946 L 1528.32 931 L 1530 929.32 L 1540.83 941 L 1591.07 1011 L 1646.36 1095 L 1673.39 1140 L 1752.43 1285 L 1812.46 1405 L 1821.47 1429 L 1812.13 1458 L 1768.16 1546 L 1748 1581.77 L 1721.46 1626 L 1677.48 1692 L 1671 1698.7 L 1653 1709.78 L 1643 1712.37 L 1595 1714.85 L 1590 1716.76 L 1553 1717.14 L 1548 1719.03 L 1498 1719.36 L 1493 1721.15 Z M 1042.02 1372 L 1087 1363.76 L 1128 1347.73 L 1154.93 1332 L 1173 1318.4 L 1193 1300.52 L 1207.54 1284 L 1232.19 1248 L 1252.23 1203 L 1258.74 1179 L 1263.2 1150 L 1263.36 1109 L 1254.31 1063 L 1238.84 1023 L 1216.42 985 L 1186 950.27 L 1148 921.13 L 1108 900.95 L 1080.69 892 L 1058 887.45 L 1006 885.36 L 965.02 892 L 927 905.36 L 905 916.47 L 878 934.55 L 845.31 965 L 816.2 1005 L 796.01 1048 L 787.23 1079 L 782.81 1106 L 782.73 1149 L 787.08 1178 L 793.76 1203 L 816 1252.33 L 836.59 1282 L 851.35 1299 L 871 1316.51 L 903 1339.3 L 952 1361.49 L 990 1370.42 L 1009 1372.55 L 1042.02 1372 Z M 1041 1260.06 L 1006 1260.14 L 985 1255.58 L 955.44 1242 L 940 1230.97 L 922.85 1214 L 911 1197.51 L 897.42 1168 L 892.96 1148 L 892.91 1108 L 895.35 1098 L 904.08 1072 L 917.74 1049 L 935 1029.47 L 958 1013.42 L 976 1004.47 L 1001 997.67 L 1025 995.49 L 1057 1000.13 L 1075 1006.89 L 1102 1022.72 L 1126 1046.72 L 1134.84 1060 L 1144 1078.29 L 1153.03 1112 L 1153.1 1143 L 1148.53 1166 L 1135 1197.55 L 1124 1213 L 1107 1230.14 L 1090.53 1242 L 1061 1255.57 L 1041 1260.06 Z"/></svg>
-            <span class="text-[22px] font-bold text-white tracking-tight">Expert<span class="text-accent">Networks</span></span>
+            <span class="text-[22px] font-bold text-white tracking-tight">Expert<span class="text-[#4DA3FF]">Networks</span></span>
           </a>
-          <p class="text-[13px] text-white/40 leading-[1.7] mb-5 max-w-[360px]">
+          <p class="text-[14px] text-white/60 leading-[1.7] mb-4 max-w-[360px]">
             Compare providers and review pricing, compliance, content access, expert coverage, and AI capabilities across {networkCount} tracked networks. Built from public-source research.
           </p>
           <!-- Quick actions -->
-          <div class="flex items-center gap-3 mb-4">
-            <a href="/compare" class="text-[12px] font-medium text-white/35 hover:text-white/70 transition-colors no-underline">Compare providers &rarr;</a>
-            <span class="text-white/15">|</span>
-            <a href="/networks" class="text-[12px] font-medium text-white/35 hover:text-white/70 transition-colors no-underline">Browse all &rarr;</a>
+          <div class="flex items-center gap-3 mb-2">
+            <a href="/compare/" class="inline-flex items-center min-h-[44px] text-[13px] font-medium text-white/70 hover:text-white transition-colors no-underline">Compare providers &rarr;</a>
+            <span class="text-white/20" aria-hidden="true">|</span>
+            <a href="/networks/" class="inline-flex items-center min-h-[44px] text-[13px] font-medium text-white/70 hover:text-white transition-colors no-underline">Browse all &rarr;</a>
           </div>
           <!-- LinkedIn -->
-          <a href="https://www.linkedin.com/company/expertnetworks-net/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-white/40 hover:text-white/70 transition-colors" aria-label="Follow us on LinkedIn">
+          <a href="https://www.linkedin.com/company/expertnetworks-net/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 min-h-[44px] text-white/60 hover:text-white transition-colors no-underline" aria-label="Follow us on LinkedIn">
             <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             <span class="text-[13px]">LinkedIn</span>
           </a>
@@ -41,54 +42,56 @@ const networkCount = publishedNetworks.length;
 
         <!-- Column 2: Explore -->
         <div>
-          <h4 class="footer-heading">Explore</h4>
+          <h3 class="footer-heading">Explore</h3>
           <nav class="flex flex-col gap-0.5" aria-label="Explore links">
-            <a href="/networks" class="footer-link">All Networks</a>
-            <a href="/compare" class="footer-link">Compare Networks</a>
-            <a href="/news" class="footer-link">Industry News</a>
-            <a href="/best-expert-networks" class="footer-link">Best Expert Networks</a>
-            <a href="/expert-network-pricing" class="footer-link">Pricing Guide</a>
-            <a href="/what-is-an-expert-network" class="footer-link">What Is an Expert Network?</a>
-            <a href="/expert-networks-for-private-equity" class="footer-link">Expert Networks for PE</a>
-            <a href="/glg-vs-alphasights" class="footer-link">GLG vs AlphaSights</a>
-            <a href="/glg-vs-third-bridge" class="footer-link">GLG vs Third Bridge</a>
-            <a href="/alphasights-vs-third-bridge" class="footer-link">AlphaSights vs Third Bridge</a>
-            <a href="/about" class="footer-link">About</a>
+            <a href="/networks/" class="footer-link">All Networks</a>
+            <a href="/compare/" class="footer-link">Compare Networks</a>
+            <a href="/news/" class="footer-link">Industry News</a>
+            <a href="/best-expert-networks/" class="footer-link">Best Expert Networks</a>
+            <a href="/expert-network-pricing/" class="footer-link">Pricing Guide</a>
+            <a href="/what-is-an-expert-network/" class="footer-link">What Is an Expert Network?</a>
+            <a href="/expert-networks-for-private-equity/" class="footer-link">Expert Networks for PE</a>
+            <a href="/expert-networks-for-consulting/" class="footer-link">Expert Networks for Consulting</a>
+            <a href="/expert-networks-for-hedge-funds/" class="footer-link">Expert Networks for Hedge Funds</a>
+            <a href="/glg-vs-alphasights/" class="footer-link">GLG vs AlphaSights</a>
+            <a href="/glg-vs-third-bridge/" class="footer-link">GLG vs Third Bridge</a>
+            <a href="/alphasights-vs-third-bridge/" class="footer-link">AlphaSights vs Third Bridge</a>
+            <a href="/about/" class="footer-link">About</a>
           </nav>
         </div>
 
         <!-- Column 3: Research Standards -->
         <div>
-          <h4 class="footer-heading">Research Standards</h4>
+          <h3 class="footer-heading">Research Standards</h3>
           <nav class="flex flex-col gap-0.5" aria-label="Research standards links">
-            <a href="/sources" class="footer-link">Sources &amp; Methodology</a>
-            <a href="/verification" class="footer-link">Verification Framework</a>
-            <a href="/disclaimer" class="footer-link">Disclaimer</a>
-            <a href="/privacy" class="footer-link">Privacy</a>
+            <a href="/sources/" class="footer-link">Sources &amp; Methodology</a>
+            <a href="/verification/" class="footer-link">Verification Framework</a>
+            <a href="/disclaimer/" class="footer-link">Disclaimer</a>
+            <a href="/privacy/" class="footer-link">Privacy</a>
           </nav>
-          <p class="mt-4 text-[11px] text-white/25 leading-[1.65] max-w-[240px]">
+          <p class="mt-4 text-[12px] text-white/50 leading-[1.65] max-w-[260px]">
             Every profile and news item is based on publicly available materials and labeled where claims are verified, positioned, or inferred.
           </p>
         </div>
 
         <!-- Column 4: Leading Profiles -->
         <div>
-          <h4 class="footer-heading">Leading Profiles</h4>
+          <h3 class="footer-heading">Leading Profiles</h3>
           <nav class="flex flex-col gap-0.5" aria-label="Leading network profiles">
-            <a href="/networks/glg" class="footer-link">GLG</a>
-            <a href="/networks/alphasights" class="footer-link">AlphaSights</a>
-            <a href="/networks/third-bridge" class="footer-link">Third Bridge</a>
-            <a href="/networks/guidepoint" class="footer-link">Guidepoint</a>
-            <a href="/networks/dialectica" class="footer-link">Dialectica</a>
-            <a href="/networks/alphasense-tegus" class="footer-link">AlphaSense / Tegus</a>
+            <a href="/networks/glg/" class="footer-link">GLG</a>
+            <a href="/networks/alphasights/" class="footer-link">AlphaSights</a>
+            <a href="/networks/third-bridge/" class="footer-link">Third Bridge</a>
+            <a href="/networks/guidepoint/" class="footer-link">Guidepoint</a>
+            <a href="/networks/dialectica/" class="footer-link">Dialectica</a>
+            <a href="/networks/alphasense-tegus/" class="footer-link">AlphaSense / Tegus</a>
           </nav>
         </div>
       </div>
 
       <!-- ─── Bottom Bar ─── -->
-      <div class="mt-12 py-5 border-t border-white/[0.06] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-        <span class="text-[11px] text-white/25">&copy; 2026 ExpertNetworks.net</span>
-        <span class="text-[11px] text-white/20">Independent information resource. Not affiliated with any expert network.</span>
+      <div class="mt-12 py-6 border-t border-white/[0.08] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
+        <span class="text-[12px] text-white/50">&copy; {year} ExpertNetworks.net</span>
+        <span class="text-[12px] text-white/50">Independent information resource. Not affiliated with any expert network.</span>
       </div>
     </div>
   </div>
@@ -96,13 +99,19 @@ const networkCount = publishedNetworks.length;
 
 <style>
   .footer-heading {
-    @apply text-[11px] font-semibold uppercase tracking-[0.12em] text-white/50 mb-4;
+    @apply text-[11px] font-semibold uppercase tracking-[0.12em] text-white/55 mb-3;
   }
+  /* 44px rows on touch layouts, tighter on desktop where a pointer is precise. */
   .footer-link {
-    @apply block text-[13px] text-white/40 no-underline py-1.5 transition-colors duration-150;
+    @apply flex items-center min-h-[44px] text-[14px] text-white/65 no-underline transition-colors duration-150;
+  }
+  @media (min-width: 1024px) {
+    .footer-link {
+      @apply min-h-0 py-1.5 text-[13px];
+    }
   }
   .footer-link:hover {
-    @apply text-white/80;
+    @apply text-white;
   }
 </style>
 

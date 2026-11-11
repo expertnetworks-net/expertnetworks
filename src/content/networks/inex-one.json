@@ -67,7 +67,7 @@
     "surveys": false,
     "complianceTools": true
   },
-  "lastUpdated": "2026-03-07",
+  "lastUpdated": "2026-11-11",
   "overview": "INEX ONE is the leading expert network marketplace — a SaaS platform that aggregates 170+ expert networks and survey providers into a single interface. Founded in 2018 in Stockholm by a team of ex-McKinsey consultants and tech entrepreneurs, the platform enables consulting firms, private equity teams, asset managers, and corporations to centralize expert call management, survey projects, and knowledge repositories across multiple expert network providers.\n\nRather than competing with expert networks, INEX ONE sits on top of them as an orchestration layer. Clients use the platform to send project briefs to multiple networks simultaneously, track expert interactions, manage compliance workflows, and analyze spend across providers. This meta-platform model gives buyers visibility into which networks perform best for specific topics and geographies, enabling data-driven vendor management.\n\nINEX ONE has grown rapidly, reaching 104M SEK (~$10M) in annual revenue by end of 2024 and an estimated ~$25M in 2025 — all on just $3M in seed funding. The platform now serves 8,000+ individual users across 700+ companies, including 7 of the top-10 global strategy consulting firms, 4 of the top-10 PE firms, and 8 of the top-10 market research firms. With a 90 NPS score (Q4 2025) and a #134 ranking on the Financial Times' Europe's Fastest-Growing Companies list (>1,100% revenue growth), INEX ONE has established itself as the industry's leading independent marketplace. The company also publishes the definitive annual Expert Network Market Sizing report, valued at $2.5B+ for 2024.",
   "history": {
     "narrative": "INEX ONE was founded in 2018 by four co-founders: Max Friberg and Filip Gruvstad (both ex-McKinsey consultants) along with Josefine Vinberg and Mehdi Rejraji (both from tech backgrounds). Max Friberg had previously co-founded Previro, a Swedish expert network in 2016, which he sold to Workvi when starting INEX ONE (Workvi later sold Previro to Danish Knowledge Gate in late 2019). The founding team identified a fragmentation problem — corporate buyers were juggling relationships with multiple networks, each with its own portal, compliance process, and invoicing system. Friberg described leaving McKinsey as 'like jumping off a bullet train.'\n\nThe company raised a $3M seed round in August 2021, attracting a remarkable roster of investors including senior partners from McKinsey, BCG, Oliver Wyman, and Kearney, plus PE firms Advent International, Triton Partners, Accent Capital, and Curitas Ventures. Board members included Richard Thornton (former CCO and deputy CEO at Cint), Bradford Brown and Ajay Gupta (both McKinsey Senior Partner emeriti). The diversity of investors from across the consulting and PE ecosystem validated the platform's neutral marketplace positioning.\n\nSince then, INEX ONE has scaled to serve 8,000+ users across 700+ companies from offices in Stockholm, New York, Paris, Raleigh, and Singapore. The company has achieved 100%+ annual revenue growth every year since founding, reaching an estimated ~$25M in 2025 on just $3M in total funding — making it one of the most capital-efficient companies in the expert network industry. The legal entity is AB Leverache (Swedish corporation).",
@@ -95,6 +95,10 @@
       {
         "year": "2025",
         "event": "Ranked #136 on Financial Times' Europe's Fastest-Growing Companies list"
+      },
+      {
+        "year": "2026",
+        "event": "Updated market sizing estimates the industry at ~$3B in 2025 (February); launched card-based self-serve plan at $500 per project with access to more than 30 expert networks (October 19)"
       }
     ]
   },
@@ -221,7 +225,8 @@
     "INEX ONE Compliance blog — Three Lines of Defense framework",
     "INEX ONE AI info page — transcription and LLM chat feature details",
     "Unleashed Podcast Ep. 426 — Max Friberg interview on founding story",
-    "The Org — INEX ONE org chart and leadership profiles"
+    "The Org — INEX ONE org chart and leadership profiles",
+    "November 2026 refresh: self-serve plan sourced from Inex One press release via CNW (October 19, 2026), which also states \"more than 8,000 clients\"; market-size estimate from inex.one/blog/expert-network-market-size (updated February 9, 2026). Headcount and revenue figures were not re-verified."
   ],
   "whyChoose": [
     "Centralize multi-network access",

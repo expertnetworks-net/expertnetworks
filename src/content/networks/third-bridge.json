@@ -27,7 +27,9 @@
     "AI-generated call summaries and transcripts",
     "Open distribution via Anthropic/Claude, Aiera, Hebbia, Portrait Analytics, Finster AI",
     "Personalized alerts and watchlists",
-    "Maps visual value-chain intelligence"
+    "Maps visual value-chain intelligence",
+    "Expert Commentary with AI review of submissions for MNPI",
+    "Library access via Bloomberg ASKB (beta) and the Third Bridge MCP"
   ],
   "industries": [
     "Private Equity",
@@ -77,7 +79,7 @@
     "surveys": true,
     "complianceTools": true
   },
-  "lastUpdated": "2026-03-06",
+  "lastUpdated": "2026-11-11",
   "overview": "Third Bridge is an analyst-led expert network that differentiates from access-model competitors (like GLG, AlphaSights, and Guidepoint) through in-house analyst moderation of its core Connections product. This produces structured, comparable transcripts that become reusable content in the Library. The firm was originally founded as Cognolink in 2007 by three former Bain & Company consultants and rebranded to Third Bridge in 2015. The name comes from a wooden bridge in Botswana's Okavango Delta — the third bridge travelers cross before entering unexplored territory, symbolizing discovery through local knowledge. Third Bridge serves 1,000+ clients across PE, hedge funds, consulting, and corporate strategy, with 12 offices across four continents and an increasingly open AI distribution strategy for its content.",
   "history": {
     "narrative": "Third Bridge was founded in 2007 as Cognolink by Emmanuel Tahar (CEO), Joshua Maxey, and Rodolphe De Hemptinne — all former Bain & Company consultants. Bain was reportedly an early client. Lacking a pre-built expert database, Cognolink pioneered custom-sourcing experts directly for live projects. The firm was one of the first to successfully challenge GLG's market dominance, growing in tandem with AlphaSights. In 2015, the company rebranded from Cognolink to Third Bridge, taking the name of one of its business units. The firm has grown to GBP 215 million in revenue (FY2023) with a 46% five-year revenue CAGR, backed by PE investors Astorg and IK Partners, while founders retain majority ownership.",
@@ -125,6 +127,14 @@
       {
         "year": "2025",
         "event": "Launches AI distribution partnerships with Anthropic/Claude, Aiera, Hebbia, Portrait Analytics, Finster AI, Samaya AI, Rogo"
+      },
+      {
+        "year": "2026",
+        "event": "Launches a Model Context Protocol (MCP) — a platform-agnostic intelligence layer exposing 100,000+ expert transcripts to LLMs and financial AI platforms (March 2026)"
+      },
+      {
+        "year": "Apr 2026",
+        "event": "Launches Expert Commentary, adding peer-reviewed expert perspectives to interview takeaways (April 2); becomes first expert insight provider in the beta of Bloomberg's ASKB conversational AI interface (April 16)"
       }
     ]
   },
@@ -163,7 +173,9 @@
       "Personalized alerts and watchlists based on user interests",
       "Maps: visual value-chain intelligence covering 100,000+ companies",
       "Data Feeds API for programmatic content access",
-      "Investment in Aiera alongside content integration partnership"
+      "Investment in Aiera alongside content integration partnership",
+      "Expert Commentary: peer-reviewed perspectives from additional experts layered onto analyst-led interview takeaways; submissions AI-reviewed for MNPI and verified by sector analysts (April 2026)",
+      "Library of 100,000+ interview transcripts available in Bloomberg's ASKB beta with source attribution (April 2026)"
     ]
   },
   "complianceExtended": {
@@ -234,7 +246,8 @@
     "Pricing information from Inex One comparison page (competitor source — bias noted) and expert review sites",
     "Leadership departure note (2022) sourced from industry reporting; context not fully available",
     "No Mosaic acquisition by Third Bridge was identified — the Mosaic/Stream acquisition was by AlphaSense in 2021",
-    "No individual clients are publicly named; all case studies use anonymized descriptions (e.g., 'a global private equity firm')"
+    "No individual clients are publicly named; all case studies use anonymized descriptions (e.g., 'a global private equity firm')",
+    "November 2026 refresh: Expert Commentary and Bloomberg ASKB sourced from Third Bridge press releases (April 2 and April 16, 2026). Company \"About\" page re-checked: still states over 1.5 million experts, over 1,500 employees, 12 offices on four continents, and Library coverage of over 65,000 companies."
   ],
   "whyChoose": [
     "Analyst-led quality",

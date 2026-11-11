@@ -1,0 +1,25 @@
+{
+  "title": "Tegus by AlphaSense Adds AI-Led Expert Calls Conducted by an AI Interviewer Agent",
+  "slug": "alphasense-ai-led-expert-calls-2026",
+  "date": "2026-02-24",
+  "source": "AlphaSense (Product Article)",
+  "category": "AI",
+  "categoryColor": "#248A3D",
+  "gradientFrom": "#064e3b",
+  "gradientTo": "#059669",
+  "summary": "Tegus by AlphaSense added AI-Led Expert Calls to its service offering. An AI Interviewer Agent, informed by AlphaSense's content, conducts calls on the client's behalf with experts the client selects; each transcript goes through the same compliance review as traditional expert calls, and approved transcripts with synthesized takeaways are delivered in approximately 24 hours. AlphaSense says the service uses the same expert network and sourcing as Tegus Expert Call Services, without call markups, and can run at any hour, seven days a week.",
+  "sourceUrl": "https://www.alpha-sense.com/resources/product-articles/ai-led-expert-calls",
+  "relatedNetworks": [
+    "alphasense-tegus"
+  ],
+  "published": true,
+  "sourceType": "Product Update",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "AlphaSense extended its AI interviewer from channel checks to client-directed expert calls months before GLG's enhanced AI-Moderated Calls release, making autonomous interviewing a standard feature among the largest providers in 2026.",
+  "impactTags": [
+    "AI Interviewer",
+    "Expert Calls",
+    "Tegus"
+  ]
+}

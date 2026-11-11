@@ -1,0 +1,25 @@
+{
+  "title": "Guidepoint Library Becomes a Governed Source in Gemini Enterprise for Financial Services",
+  "slug": "guidepoint-gemini-enterprise-2026",
+  "date": "2026-08-26",
+  "source": "Guidepoint (Press Release)",
+  "category": "Partnerships",
+  "categoryColor": "#5AC8FA",
+  "gradientFrom": "#164e63",
+  "gradientTo": "#06b6d4",
+  "summary": "Guidepoint announced that a Guidepoint MCP connector brings its vetted expert insight into Google Cloud's Gemini Enterprise for Financial Services, making the Guidepoint Library available as a governed source for diligence, market-mapping, and thesis-development workflows. The release describes the Library as 120,000+ curated expert transcripts and primary research drawn from a network of more than two million advisors. Guidepoint CTO and Chief AI Officer Kaushik Deka and Google Cloud Vice President Satish Thomas were quoted.",
+  "sourceUrl": "https://www.guidepoint.com/pressreleases/guidepoint-accelerates-enterprise-ai-transformation-with-gemini-enterprise-for-financial-services/",
+  "relatedNetworks": [
+    "guidepoint"
+  ],
+  "published": true,
+  "sourceType": "Press Release",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "Guidepoint's expert content is now reachable from Claude, Perplexity, and Gemini Enterprise, and the stated library size moved from 100,000+ to 120,000+ transcripts in roughly five months.",
+  "impactTags": [
+    "MCP",
+    "Google Cloud",
+    "Financial Services"
+  ]
+}

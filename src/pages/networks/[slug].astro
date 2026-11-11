@@ -44,6 +44,7 @@ const tocSections: {id: string; label: string}[] = [
   ...(d.confidence && Object.keys(d.confidence).length > 0 ? [{ id: 'confidence-legend', label: 'Confidence' }] : []),
   ...(isRich ? [{ id: 'methodology', label: 'Methodology' }] : []),
   ...(relatedNews.length ? [{ id: 'related-news', label: 'News' }] : []),
+  { id: 'compare', label: 'Compare' },
 ];
 
 // Build FAQ entries from available data
@@ -80,45 +81,85 @@ if (d.headquarters) {
   });
 }
 
-// Confidence badge helper
-const conf = d.confidence || {};
-function badgeFor(field: string) {
+// Confidence badge helpers. Output is an HTML string so the same badge can sit in headings, stats and the legend.
+const conf: Record<string, string> = d.confidence || {};
+const confidenceMeta: Record<string, { label: string; cls: string; tip: string; icon: string }> = {
+  verified: {
+    label: 'Verified',
+    cls: 'pf-conf-verified',
+    tip: 'Confirmed by official company disclosures, regulatory filings, or multiple independent sources.',
+    icon: '<path d="M20 6 9 17l-5-5"/>',
+  },
+  positioning: {
+    label: 'Positioning',
+    cls: 'pf-conf-positioning',
+    tip: 'Company marketing claim or self-reported data that could not be independently verified.',
+    icon: '<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/>',
+  },
+  inference: {
+    label: 'Inference',
+    cls: 'pf-conf-inference',
+    tip: 'Estimated or inferred from indirect evidence, third-party aggregators, or industry context.',
+    icon: '<path d="M3 12c2.5-4 5-4 7.5 0s5 4 7.5 0"/><path d="M3 18c2.5-4 5-4 7.5 0s5 4 7.5 0" opacity=".45"/>',
+  },
+  'partially-unverifiable': {
+    label: 'Partially unverifiable',
+    cls: 'pf-conf-partial',
+    tip: 'Some aspects verified, but the full claim cannot be independently confirmed.',
+    icon: '<circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor" stroke="none"/>',
+  },
+};
+function confidenceBadge(level: string, extraClass = '') {
+  const meta = confidenceMeta[level] || confidenceMeta.inference;
+  return `<span class="pf-conf ${meta.cls}${extraClass ? ' ' + extraClass : ''}" title="${meta.tip}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${meta.icon}</svg>${meta.label}<span class="sr-only"> confidence</span></span>`;
+}
+function badgeFor(field: string, extraClass = '') {
   const level = conf[field];
   if (!level) return '';
-  if (level === 'verified') return '<span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-semibold rounded bg-emerald-100 text-emerald-700 ml-1.5">Verified</span>';
-  if (level === 'positioning') return '<span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-semibold rounded bg-amber-100 text-amber-700 ml-1.5">Positioning</span>';
-  return '<span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-semibold rounded bg-blue-100 text-blue-700 ml-1.5">Inference</span>';
+  return confidenceBadge(level, extraClass);
+}
+const fieldLabels: Record<string, string> = {
+  aiCapabilities: 'AI capabilities',
+  aiPlatform: 'AI & platform',
+  complianceExtended: 'Compliance (detailed)',
+  servicesDetailed: 'Services in detail',
+  headquarters: 'Headquarters',
+};
+function fieldLabel(field: string) {
+  if (fieldLabels[field]) return fieldLabels[field];
+  const words = field.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();
+  return words.charAt(0).toUpperCase() + words.slice(1);
 }
 
 // Alternative and comparison pages that exist
 const altPages: Record<string, string> = {
-  'glg': '/glg-alternatives',
-  'alphasights': '/alphasights-alternatives',
-  'third-bridge': '/third-bridge-alternatives',
+  'glg': '/glg-alternatives/',
+  'alphasights': '/alphasights-alternatives/',
+  'third-bridge': '/third-bridge-alternatives/',
 };
 
 const vsPages: Record<string, {href: string; label: string}[]> = {
   'glg': [
-    { href: '/glg-vs-alphasights', label: 'GLG vs AlphaSights' },
-    { href: '/glg-vs-third-bridge', label: 'GLG vs Third Bridge' },
-    { href: '/glg-vs-guidepoint', label: 'GLG vs Guidepoint' },
+    { href: '/glg-vs-alphasights/', label: 'GLG vs AlphaSights' },
+    { href: '/glg-vs-third-bridge/', label: 'GLG vs Third Bridge' },
+    { href: '/glg-vs-guidepoint/', label: 'GLG vs Guidepoint' },
   ],
   'alphasights': [
-    { href: '/glg-vs-alphasights', label: 'GLG vs AlphaSights' },
-    { href: '/alphasights-vs-third-bridge', label: 'AlphaSights vs Third Bridge' },
-    { href: '/alphasights-vs-dialectica', label: 'AlphaSights vs Dialectica' },
+    { href: '/glg-vs-alphasights/', label: 'GLG vs AlphaSights' },
+    { href: '/alphasights-vs-third-bridge/', label: 'AlphaSights vs Third Bridge' },
+    { href: '/alphasights-vs-dialectica/', label: 'AlphaSights vs Dialectica' },
   ],
   'third-bridge': [
-    { href: '/glg-vs-third-bridge', label: 'GLG vs Third Bridge' },
-    { href: '/alphasights-vs-third-bridge', label: 'AlphaSights vs Third Bridge' },
-    { href: '/third-bridge-vs-guidepoint', label: 'Third Bridge vs Guidepoint' },
+    { href: '/glg-vs-third-bridge/', label: 'GLG vs Third Bridge' },
+    { href: '/alphasights-vs-third-bridge/', label: 'AlphaSights vs Third Bridge' },
+    { href: '/third-bridge-vs-guidepoint/', label: 'Third Bridge vs Guidepoint' },
   ],
   'guidepoint': [
-    { href: '/glg-vs-guidepoint', label: 'GLG vs Guidepoint' },
-    { href: '/third-bridge-vs-guidepoint', label: 'Third Bridge vs Guidepoint' },
+    { href: '/glg-vs-guidepoint/', label: 'GLG vs Guidepoint' },
+    { href: '/third-bridge-vs-guidepoint/', label: 'Third Bridge vs Guidepoint' },
   ],
   'dialectica': [
-    { href: '/alphasights-vs-dialectica', label: 'AlphaSights vs Dialectica' },
+    { href: '/alphasights-vs-dialectica/', label: 'AlphaSights vs Dialectica' },
   ],
 };
 
@@ -130,14 +171,14 @@ const hasVsPages = vsPages[d.slug] || [];
   title={`${d.name} Review (2026): Pricing, Compliance & Expert Coverage | ExpertNetworks.net`}
   description={`${d.name} expert network review: ${d.expertCount ? d.expertCount + ' experts, ' : ''}${d.pricingModel ? d.pricingModel.toLowerCase() + ' pricing, ' : ''}${d.headquarters ? d.headquarters + ', ' : ''}founded ${d.founded || 'N/A'}. Independent analysis of services, compliance, and AI capabilities.`}
   ogType="article"
-  canonicalPath={`/networks/${d.slug}`}
+  canonicalPath={`/networks/${d.slug}/`}
   jsonLd={{
     "@context": "https://schema.org",
     "@graph": [
       Object.fromEntries(Object.entries({
         "@type": "Organization",
         "name": d.name,
-        "url": d.website || `https://expertnetworks.net/networks/${d.slug}`,
+        "url": d.website || `https://expertnetworks.net/networks/${d.slug}/`,
         "description": d.description,
         "foundingDate": d.founded ? String(d.founded) : undefined,
         "address": d.headquarters ? { "@type": "PostalAddress", "addressLocality": d.headquarters } : undefined,
@@ -148,7 +189,7 @@ const hasVsPages = vsPages[d.slug] || [];
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://expertnetworks.net/" },
           { "@type": "ListItem", "position": 2, "name": "Expert Networks", "item": "https://expertnetworks.net/networks" },
-          { "@type": "ListItem", "position": 3, "name": d.name, "item": `https://expertnetworks.net/networks/${d.slug}` }
+          { "@type": "ListItem", "position": 3, "name": d.name, "item": `https://expertnetworks.net/networks/${d.slug}/` }
         ]
       },
       ...(faqEntries.length >= 2 ? [{
@@ -174,23 +215,23 @@ const hasVsPages = vsPages[d.slug] || [];
       <div class="px-3 pt-4 pb-2">
         <div class="sidebar-search flex items-center gap-2 px-3 py-[7px] bg-black/[0.04] rounded-[10px] text-tertiary text-[13px]">
           <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" placeholder="Search networks" id="sidebarSearch" aria-label="Search networks" class="bg-transparent border-none outline-none text-primary text-[13px] w-full placeholder:text-tertiary" />
+          <input type="text" placeholder="Search networks" id="sidebarSearch" aria-label="Search networks" class="bg-transparent border-none outline-none text-primary text-[13px] w-full placeholder:text-secondary" />
         </div>
       </div>
 
       <!-- Featured Section -->
       <div class="px-3 pt-3 pb-1">
-        <div class="text-[11px] font-semibold uppercase tracking-wider text-tertiary px-3 mb-1">Featured</div>
+        <div class="text-[11px] font-semibold uppercase tracking-wider text-secondary px-3 mb-1">Featured</div>
         <div class="bg-white rounded-[10px] shadow-[0_0_0_0.5px_rgba(0,0,0,0.04),0_1px_3px_rgba(0,0,0,0.06)] overflow-hidden" id="featuredList">
           {featured.map((n, i) => (
             <a
-              href={`/networks/${n.data.slug}`}
+              href={`/networks/${n.data.slug}/`}
               class:list={[
                 'sidebar-item flex items-center gap-3 px-3 py-3 no-underline transition-colors duration-150',
                 n.data.slug === d.slug ? 'bg-accent text-white' : 'text-primary hover:bg-black/[0.04]',
                 i > 0 ? 'border-t border-black/[0.06]' : '',
               ]}
-              data-name={n.data.name.toLowerCase()}
+              data-name={n.data.name.toLowerCase()} aria-current={n.data.slug === d.slug ? 'page' : undefined}
             >
               {n.data.logo ? (
                 <img src={n.data.logo} alt={n.data.name} width="32" height="32" class:list={['w-8 h-8 rounded-lg object-contain flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']} loading="lazy" />
@@ -207,7 +248,7 @@ const hasVsPages = vsPages[d.slug] || [];
               )}
               <div class="min-w-0">
                 <div class:list={['text-[13px] font-medium truncate', n.data.slug === d.slug ? 'text-white' : 'text-primary']}>{n.data.name.split(' (')[0]}</div>
-                <div class:list={['text-[11px] truncate', n.data.slug === d.slug ? 'text-white/70' : 'text-tertiary']}>{n.data.expertCount} experts</div>
+                <div class:list={['text-[11px] truncate', n.data.slug === d.slug ? 'text-white/80' : 'text-secondary']}>{n.data.expertCount} experts</div>
               </div>
               {n.data.slug === d.slug && (
                 <svg class="w-4 h-4 ml-auto flex-shrink-0 text-white/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
@@ -219,17 +260,17 @@ const hasVsPages = vsPages[d.slug] || [];
 
       <!-- All Networks Section -->
       <div class="px-3 pt-4 pb-1">
-        <div class="text-[11px] font-semibold uppercase tracking-wider text-tertiary px-3 mb-1">All Networks</div>
+        <div class="text-[11px] font-semibold uppercase tracking-wider text-secondary px-3 mb-1">All Networks</div>
         <div class="bg-white rounded-[10px] shadow-[0_0_0_0.5px_rgba(0,0,0,0.04),0_1px_3px_rgba(0,0,0,0.06)] overflow-hidden" id="allList">
           {others.map((n, i) => (
             <a
-              href={`/networks/${n.data.slug}`}
+              href={`/networks/${n.data.slug}/`}
               class:list={[
                 'sidebar-item flex items-center gap-3 px-3 py-3 no-underline transition-colors duration-150',
                 n.data.slug === d.slug ? 'bg-accent text-white' : 'text-primary hover:bg-black/[0.04]',
                 i > 0 ? 'border-t border-black/[0.06]' : '',
               ]}
-              data-name={n.data.name.toLowerCase()}
+              data-name={n.data.name.toLowerCase()} aria-current={n.data.slug === d.slug ? 'page' : undefined}
             >
               {n.data.logo ? (
                 <img src={n.data.logo} alt={n.data.name} width="32" height="32" class:list={['w-8 h-8 rounded-lg object-contain flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']} loading="lazy" />
@@ -246,7 +287,7 @@ const hasVsPages = vsPages[d.slug] || [];
               )}
               <div class="min-w-0">
                 <div class:list={['text-[13px] font-medium truncate', n.data.slug === d.slug ? 'text-white' : 'text-primary']}>{n.data.name.split(' (')[0]}</div>
-                <div class:list={['text-[11px] truncate', n.data.slug === d.slug ? 'text-white/70' : 'text-tertiary']}>{n.data.type}</div>
+                <div class:list={['text-[11px] truncate', n.data.slug === d.slug ? 'text-white/80' : 'text-secondary']}>{n.data.type}</div>
               </div>
               {n.data.slug === d.slug && (
                 <svg class="w-4 h-4 ml-auto flex-shrink-0 text-white/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
@@ -259,42 +300,32 @@ const hasVsPages = vsPages[d.slug] || [];
       <div class="h-6 flex-shrink-0"></div>
     </aside>
 
-    <!-- Mobile sidebar toggle -->
-    <button
-      id="sidebarToggle"
-      class="lg:hidden fixed z-[70] w-12 h-12 bg-accent text-white rounded-full shadow-lg flex items-center justify-center hover:bg-accent-hover transition-all active:scale-95"
-      style="bottom: calc(24px + env(safe-area-inset-bottom)); left: 24px;"
-      aria-label="Browse networks"
-    >
-      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    </button>
-
     <!-- Mobile backdrop -->
     <div id="sidebarBackdrop" class="lg:hidden fixed inset-0 bg-black/30 backdrop-blur-sm z-[70] hidden opacity-0 transition-opacity duration-300"></div>
 
     <!-- Mobile slide-out sidebar -->
-    <aside id="mobileSidebar" class="lg:hidden fixed top-0 left-0 z-[80] w-[320px] max-w-[85vw] h-full bg-bg-secondary/95 backdrop-blur-xl -translate-x-full transition-transform duration-300 ease-out overflow-y-auto shadow-2xl" style="padding-bottom: env(safe-area-inset-bottom);">
+    <aside id="mobileSidebar" role="dialog" aria-modal="true" aria-label="Browse networks" class="lg:hidden fixed top-0 left-0 z-[80] w-[320px] max-w-[85vw] h-full bg-bg-secondary/95 backdrop-blur-xl -translate-x-full transition-transform duration-300 ease-out overflow-y-auto shadow-2xl" style="padding-bottom: env(safe-area-inset-bottom);">
       <div class="h-[52px] min-h-[52px] flex items-center justify-between px-4 border-b border-border/40">
         <a href="/" class="font-bold text-[15px] tracking-tight text-primary no-underline">
           Expert<span class="text-accent">Networks</span>
         </a>
-        <button id="closeSidebar" aria-label="Close sidebar" class="w-8 h-8 rounded-full bg-black/[0.06] flex items-center justify-center text-tertiary">
+        <button id="closeSidebar" type="button" aria-label="Close network list" class="w-11 h-11 -mr-2 rounded-full hover:bg-black/[0.06] flex items-center justify-center text-secondary">
           <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
       </div>
       <div class="px-3 pt-4 pb-2">
         <div class="flex items-center gap-2 px-3 py-[7px] bg-black/[0.04] rounded-[10px] text-tertiary text-[13px]">
           <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" placeholder="Search networks" id="mobileSearch" aria-label="Search networks" class="bg-transparent border-none outline-none text-primary text-[13px] w-full placeholder:text-tertiary" />
+          <input type="text" placeholder="Search networks" id="mobileSearch" aria-label="Search networks" class="bg-transparent border-none outline-none text-primary text-[13px] w-full placeholder:text-secondary" />
         </div>
       </div>
       <div class="px-3 pt-3 pb-1">
-        <div class="text-[11px] font-semibold uppercase tracking-wider text-tertiary px-3 mb-1">Featured</div>
+        <div class="text-[11px] font-semibold uppercase tracking-wider text-secondary px-3 mb-1">Featured</div>
         <div class="bg-white rounded-[10px] shadow-[0_0_0_0.5px_rgba(0,0,0,0.04),0_1px_3px_rgba(0,0,0,0.06)] overflow-hidden" id="mobileFeaturedList">
           {featured.map((n, i) => (
-            <a href={`/networks/${n.data.slug}`}
+            <a href={`/networks/${n.data.slug}/`}
               class:list={['sidebar-item flex items-center gap-3 px-3 py-3 no-underline transition-colors duration-150', n.data.slug === d.slug ? 'bg-accent text-white' : 'text-primary hover:bg-black/[0.04]', i > 0 ? 'border-t border-black/[0.06]' : '']}
-              data-name={n.data.name.toLowerCase()}>
+              data-name={n.data.name.toLowerCase()} aria-current={n.data.slug === d.slug ? 'page' : undefined}>
               {n.data.logo ? (
                 <img src={n.data.logo} alt={n.data.name} width="32" height="32" class:list={['w-8 h-8 rounded-lg object-contain flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']} loading="lazy" />
               ) : (
@@ -303,19 +334,19 @@ const hasVsPages = vsPages[d.slug] || [];
               )}
               <div class="min-w-0">
                 <div class:list={['text-[13px] font-medium truncate', n.data.slug === d.slug ? 'text-white' : 'text-primary']}>{n.data.name.split(' (')[0]}</div>
-                <div class:list={['text-[11px] truncate', n.data.slug === d.slug ? 'text-white/70' : 'text-tertiary']}>{n.data.expertCount} experts</div>
+                <div class:list={['text-[11px] truncate', n.data.slug === d.slug ? 'text-white/80' : 'text-secondary']}>{n.data.expertCount} experts</div>
               </div>
             </a>
           ))}
         </div>
       </div>
       <div class="px-3 pt-4 pb-6">
-        <div class="text-[11px] font-semibold uppercase tracking-wider text-tertiary px-3 mb-1">All Networks</div>
+        <div class="text-[11px] font-semibold uppercase tracking-wider text-secondary px-3 mb-1">All Networks</div>
         <div class="bg-white rounded-[10px] shadow-[0_0_0_0.5px_rgba(0,0,0,0.04),0_1px_3px_rgba(0,0,0,0.06)] overflow-hidden" id="mobileAllList">
           {others.map((n, i) => (
-            <a href={`/networks/${n.data.slug}`}
+            <a href={`/networks/${n.data.slug}/`}
               class:list={['sidebar-item flex items-center gap-3 px-3 py-3 no-underline transition-colors duration-150', n.data.slug === d.slug ? 'bg-accent text-white' : 'text-primary hover:bg-black/[0.04]', i > 0 ? 'border-t border-black/[0.06]' : '']}
-              data-name={n.data.name.toLowerCase()}>
+              data-name={n.data.name.toLowerCase()} aria-current={n.data.slug === d.slug ? 'page' : undefined}>
               {n.data.logo ? (
                 <img src={n.data.logo} alt={n.data.name} width="32" height="32" class:list={['w-8 h-8 rounded-lg object-contain flex-shrink-0', n.data.slug === d.slug ? 'ring-2 ring-white/30' : '']} loading="lazy" />
               ) : (
@@ -324,7 +355,7 @@ const hasVsPages = vsPages[d.slug] || [];
               )}
               <div class="min-w-0">
                 <div class:list={['text-[13px] font-medium truncate', n.data.slug === d.slug ? 'text-white' : 'text-primary']}>{n.data.name.split(' (')[0]}</div>
-                <div class:list={['text-[11px] truncate', n.data.slug === d.slug ? 'text-white/70' : 'text-tertiary']}>{n.data.type}</div>
+                <div class:list={['text-[11px] truncate', n.data.slug === d.slug ? 'text-white/80' : 'text-secondary']}>{n.data.type}</div>
               </div>
             </a>
           ))}
@@ -336,417 +367,382 @@ const hasVsPages = vsPages[d.slug] || [];
     <!-- MAIN CONTENT                                 -->
     <!-- ============================================ -->
     <main class="flex-1 min-w-0 pt-[52px]">
-      <section class="py-6 sm:py-10 lg:py-14 px-4 sm:px-6">
-        <div class="max-w-4xl mx-auto xl:max-w-none xl:grid xl:grid-cols-[minmax(0,740px)_180px] xl:gap-8 xl:justify-center">
-        <div>
 
-          <!-- Back link (mobile) -->
-          <a href="/networks" class="lg:hidden inline-flex items-center gap-1 text-accent text-sm font-medium no-underline mb-8 hover:underline">
-            &larr; All Networks
-          </a>
+      <!-- HERO -->
+      <header id="profile-summary" class="pf-hero" style={`--pf-a: ${d.gradientFrom}; --pf-b: ${d.gradientTo}`}>
+        <div class="pf-wrap">
+          <nav aria-label="Breadcrumb" class="pf-crumbs">
+            <a href="/networks/">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+              All networks
+            </a>
+          </nav>
 
-          <!-- ============================== -->
-          <!-- LAYER 1: Always-visible summary -->
-          <!-- ============================== -->
-
-          <!-- Header -->
-          <div id="profile-summary" class="flex items-start gap-3 sm:gap-4 mb-6 scroll-mt-20">
+          <div class="flex items-start gap-4 sm:gap-5">
             {d.logo ? (
-              <img src={d.logo} alt={d.name} width="64" height="64" class="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl object-contain flex-shrink-0" loading="lazy" />
+              <img src={d.logo} alt={`${shortName} logo`} width="80" height="80" class="pf-logo" loading="eager" decoding="async" style={`view-transition-name: net-${d.slug}`} />
             ) : (
-              <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center text-white font-bold text-xl sm:text-2xl flex-shrink-0" style={`background: linear-gradient(135deg, ${d.gradientFrom}, ${d.gradientTo})`}>
+              <div class="pf-logo pf-logo-fallback" aria-hidden="true" style={`background: linear-gradient(135deg, ${d.gradientFrom}, ${d.gradientTo}); view-transition-name: net-${d.slug}`}>
                 {d.shortName}
               </div>
             )}
-            <div>
-              <h1 class="text-2xl sm:text-3xl font-extrabold text-primary leading-tight">{d.name}</h1>
-              <div class="text-secondary text-sm mt-1 flex flex-wrap items-center gap-x-1.5">
-                <span>{d.type}</span>
-                {d.founded && <span>&middot; Founded {d.founded}</span>}
-                {d.headquarters && <span>&middot; {d.headquarters}</span>}
+            <div class="min-w-0 flex-1">
+              <div class="flex flex-wrap items-center gap-x-2 gap-y-1.5 mb-1.5">
+                {d.categoryBadge && <span class="pf-category">{d.categoryBadge}</span>}
+                <span class="text-[13px] font-medium text-secondary">{d.type}</span>
               </div>
-              {d.confidence?.founded && <Fragment set:html={badgeFor('founded')} />}
+              <h1 class="pf-title">{d.name}</h1>
             </div>
           </div>
 
-          <!-- Description -->
-          <p class="text-[15px] text-secondary leading-relaxed mb-8">{d.description}</p>
+          <dl class="pf-meta">
+            {d.founded && (
+              <div><dt>Founded</dt><dd>{d.founded}<Fragment set:html={badgeFor('founded')} /></dd></div>
+            )}
+            {d.headquarters && (
+              <div><dt>Headquarters</dt><dd>{d.headquarters}<Fragment set:html={badgeFor('headquarters')} /></dd></div>
+            )}
+            {d.regionStrength && (
+              <div><dt>Region strength</dt><dd>{d.regionStrength}</dd></div>
+            )}
+            {d.deliveryModel && (
+              <div><dt>Delivery</dt><dd>{d.deliveryModel}</dd></div>
+            )}
+          </dl>
 
-          <!-- Why choose chips -->
+          <p class="pf-lead">{d.description}</p>
+
           {d.whyChoose && d.whyChoose.length > 0 && (
-            <div class="flex flex-wrap gap-2 mb-6">
+            <ul class="flex flex-wrap gap-2 mt-5 p-0 list-none" aria-label="Why choose this provider">
               {d.whyChoose.map((chip: string) => (
-                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-full bg-accent/10 text-accent">
-                  <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <li class="pf-why">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
                   {chip}
-                </span>
+                </li>
               ))}
-            </div>
+            </ul>
           )}
 
-          <!-- Stats -->
-          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
-            {d.expertCount && (
-              <div class="bg-bg-secondary rounded-xl p-4 text-center">
-                <div class="text-xl font-bold text-primary">{d.expertCount}</div>
-                <div class="text-[11px] text-tertiary mt-0.5">{d.expertCountLabel || 'Experts'}</div>
-                <Fragment set:html={badgeFor('expertCount')} />
-              </div>
-            )}
-            {d.employeeCount && (
-              <div class="bg-bg-secondary rounded-xl p-4 text-center">
-                <div class="text-xl font-bold text-primary">{d.employeeCount}</div>
-                <div class="text-[11px] text-tertiary mt-0.5">{d.employeeCountSource || 'Employees'}</div>
-                <Fragment set:html={badgeFor('employeeCount')} />
-              </div>
-            )}
-            {d.pricingModel && (
-              <div class="bg-bg-secondary rounded-xl p-4 text-center">
-                <div class="text-xl font-bold text-primary">{d.pricingModel}</div>
-                <div class="text-[11px] text-tertiary mt-0.5">{d.pricingDetail || 'Pricing'}</div>
-                <Fragment set:html={badgeFor('pricingModel')} />
-              </div>
+          <div class="flex flex-wrap gap-2.5 mt-6">
+            <a href={`/compare/?add=${d.slug}`} class="pf-btn pf-btn-primary">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="4" width="7" height="16" rx="1.5"/><rect x="14" y="4" width="7" height="16" rx="1.5"/></svg>
+              Compare {shortName}
+            </a>
+            {d.website && (
+              <a href={d.website} target="_blank" rel="noopener noreferrer" class="pf-btn pf-btn-secondary">
+                Visit website
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+                <span class="sr-only">(opens in a new tab)</span>
+              </a>
             )}
           </div>
 
-          <!-- Services chips -->
-          <div id="services" class="mb-6 scroll-mt-20">
-            <h2 class="text-sm font-bold text-primary uppercase tracking-wide mb-2">Services</h2>
-            <div class="flex flex-wrap gap-2">
+          <!-- Key facts -->
+          {(d.expertCount || d.employeeCount || d.pricingModel) && (
+            <dl class="pf-stats">
+              {d.expertCount && (
+                <div class="pf-stat">
+                  <dt>{d.expertCountLabel || 'Experts'}</dt>
+                  <dd><span class="pf-stat-value">{d.expertCount}</span><Fragment set:html={badgeFor('expertCount')} /></dd>
+                </div>
+              )}
+              {d.employeeCount && (
+                <div class="pf-stat">
+                  <dt>{d.employeeCountSource || 'Employees'}</dt>
+                  <dd><span class="pf-stat-value">{d.employeeCount}</span><Fragment set:html={badgeFor('employeeCount')} /></dd>
+                </div>
+              )}
+              {d.pricingModel && (
+                <div class="pf-stat">
+                  <dt>{d.pricingDetail || 'Pricing'}</dt>
+                  <dd><span class="pf-stat-value">{d.pricingModel}</span><Fragment set:html={badgeFor('pricingModel')} /></dd>
+                </div>
+              )}
+            </dl>
+          )}
+        </div>
+      </header>
+
+      <!-- Sticky section nav (below xl; the right-hand TOC takes over on wide screens) -->
+      <div class="pf-secnav" role="navigation" aria-label="On this page">
+        <div class="pf-secnav-inner">
+          <button id="sidebarToggle" type="button" class="pf-secnav-browse lg:hidden" aria-label="Browse networks" aria-haspopup="dialog" aria-expanded="false" aria-controls="mobileSidebar">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            Networks
+          </button>
+          <div id="pfSecnavScroll" class="pf-secnav-scroll">
+            {tocSections.map((s) => (
+              <a href={`#${s.id}`} class="pf-secnav-link" data-section={s.id}>{s.label}</a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <section class="pf-body">
+        <div class="pf-grid">
+        <div class="min-w-0">
+
+          <!-- Services -->
+          <section id="services" class="pf-section">
+            <h2 class="pf-h2">Services</h2>
+            <ul class="flex flex-wrap gap-2 p-0 m-0 list-none">
               {d.services.map((service: string) => (
-                <span class="inline-block px-3 py-1 text-sm rounded-full font-medium bg-accent/10 text-accent">{service}</span>
+                <li class="pf-chip">{service}</li>
               ))}
-            </div>
-          </div>
+            </ul>
+            <Fragment set:html={badgeFor('services', 'mt-3')} />
+          </section>
 
-          <!-- Best For -->
-          {d.bestFor && d.bestFor.length > 0 && (
-            <div id="best-for" class="mb-6 scroll-mt-20">
-              <h2 class="text-sm font-bold text-primary uppercase tracking-wide mb-2">Best For</h2>
-              <div class="flex flex-wrap gap-2">
-                {d.bestFor.map((buyer: string) => (
-                  <span class="inline-block px-3 py-1 text-sm rounded-full font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">{buyer}</span>
-                ))}
+          <!-- Fit -->
+          {(d.bestFor?.length > 0 || d.whenNotIdeal?.length > 0) && (
+            <section id="best-for" class="pf-section">
+              <h2 class="pf-h2">Buyer fit</h2>
+              <div class="grid gap-4 md:grid-cols-2">
+                {d.bestFor && d.bestFor.length > 0 && (
+                  <div class="pf-card pf-card-good">
+                    <h3 class="pf-card-title">
+                      <span class="pf-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg></span>
+                      Best for
+                    </h3>
+                    <ul class="pf-list">
+                      {d.bestFor.map((buyer: string) => <li>{buyer}</li>)}
+                    </ul>
+                  </div>
+                )}
+                {d.whenNotIdeal && d.whenNotIdeal.length > 0 && (
+                  <div class="pf-card pf-card-warn">
+                    <h3 class="pf-card-title">
+                      <span class="pf-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12h14"/></svg></span>
+                      When not ideal
+                    </h3>
+                    <ul class="pf-list">
+                      {d.whenNotIdeal.map((item: string) => <li>{item}</li>)}
+                    </ul>
+                  </div>
+                )}
               </div>
-            </div>
+            </section>
           )}
 
-          <!-- When not ideal -->
-          {d.whenNotIdeal && d.whenNotIdeal.length > 0 && (
-            <div class="mb-8">
-              <h2 class="text-sm font-bold text-primary uppercase tracking-wide mb-2">When Not Ideal</h2>
-              <div class="flex flex-wrap gap-2">
-                {d.whenNotIdeal.map((item: string) => (
-                  <span class="inline-block px-3 py-1 text-sm rounded-full font-medium bg-orange-50 text-orange-700 border border-orange-200">{item}</span>
-                ))}
-              </div>
-            </div>
-          )}
-
-          <!-- Quick strengths (Layer 1 summary) -->
+          <!-- Strengths -->
           {d.strengths && d.strengths.length > 0 && (
-            <div id="strengths" class="mb-8 scroll-mt-20">
-              <h2 class="text-sm font-bold text-primary uppercase tracking-wide mb-2">Key Strengths</h2>
-              <ul class="space-y-1.5">
+            <section id="strengths" class="pf-section">
+              <h2 class="pf-h2">Key strengths <Fragment set:html={badgeFor('strengths')} /></h2>
+              <ul class="pf-ticks pf-ticks-good">
                 {d.strengths.map((s: string) => (
-                  <li class="flex items-start gap-2 text-sm text-secondary">
-                    <span class="text-accent-green mt-0.5 flex-shrink-0">&#10003;</span>
-                    {s}
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                    <span>{s}</span>
                   </li>
                 ))}
               </ul>
-            </div>
+            </section>
           )}
 
-          <!-- Quick caveats -->
+          <!-- Caveats -->
           {d.caveats && d.caveats.length > 0 && (
-            <div id="watch-outs" class="mb-8 scroll-mt-20">
-              <h2 class="text-sm font-bold text-primary uppercase tracking-wide mb-2">Watch-outs</h2>
-              <ul class="space-y-1.5">
+            <section id="watch-outs" class="pf-section">
+              <h2 class="pf-h2">Watch-outs <Fragment set:html={badgeFor('caveats')} /></h2>
+              <ul class="pf-ticks pf-ticks-warn">
                 {d.caveats.map((c: string) => (
-                  <li class="flex items-start gap-2 text-sm text-secondary">
-                    <span class="text-orange-500 mt-0.5 flex-shrink-0">&#9888;</span>
-                    {c}
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+                    <span>{c}</span>
                   </li>
                 ))}
               </ul>
-            </div>
+            </section>
           )}
 
           <!-- ============================== -->
-          <!-- LAYER 2: Expandable accordions  -->
+          <!-- Deep dive accordions            -->
           <!-- ============================== -->
 
           {isRich && (
-            <div id="deep-dive" class="border-t border-border/40 pt-8 mt-4 mb-8 scroll-mt-20">
-              <h2 class="text-lg font-extrabold text-primary mb-4">Deep Dive</h2>
+            <section id="deep-dive" class="pf-section pf-section-rule">
+              <div class="flex items-end justify-between gap-3 mb-4">
+                <h2 class="pf-h2-lg">Deep dive</h2>
+                <button id="pfExpandAll" type="button" class="pf-text-btn" aria-pressed="false">Expand all</button>
+              </div>
 
-              <div class="space-y-3 accordion-group">
+              <div class="pf-acc-group accordion-group">
 
-                <!-- 1. Overview -->
                 {d.overview && (
-                  <details class="group bg-bg-secondary rounded-xl overflow-hidden">
-                    <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] active:bg-black/[0.06] transition-colors">
-                      <div class="flex items-center gap-2.5">
-                        <span class="w-7 h-7 rounded-lg bg-accent/10 text-accent flex items-center justify-center text-sm flex-shrink-0">1</span>
-                        <span class="font-semibold text-sm text-primary">Overview</span>
-                      </div>
-                      <svg class="w-4 h-4 text-tertiary transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-                    </summary>
-                    <div class="px-5 pb-5 text-sm text-secondary leading-relaxed">{d.overview}</div>
+                  <details class="pf-acc" open>
+                    <summary><span class="pf-acc-num">1</span><span class="pf-acc-title">Overview</span><Fragment set:html={badgeFor('overview')} /><svg class="pf-acc-chev" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+                    <div class="pf-acc-body pf-prose">
+                      {d.overview.split(/\n\n+/).map((para: string) => <p>{para}</p>)}
+                    </div>
                   </details>
                 )}
 
-                <!-- 2. History -->
                 {d.history && (
-                  <details class="group bg-bg-secondary rounded-xl overflow-hidden">
-                    <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] active:bg-black/[0.06] transition-colors">
-                      <div class="flex items-center gap-2.5">
-                        <span class="w-7 h-7 rounded-lg bg-accent/10 text-accent flex items-center justify-center text-sm flex-shrink-0">2</span>
-                        <span class="font-semibold text-sm text-primary">History</span>
+                  <details class="pf-acc">
+                    <summary><span class="pf-acc-num">2</span><span class="pf-acc-title">History</span><Fragment set:html={badgeFor('history')} /><svg class="pf-acc-chev" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+                    <div class="pf-acc-body">
+                      <div class="pf-prose">
+                        {d.history.narrative.split(/\n\n+/).map((para: string) => <p>{para}</p>)}
                       </div>
-                      <svg class="w-4 h-4 text-tertiary transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-                    </summary>
-                    <div class="px-5 pb-5">
-                      <p class="text-sm text-secondary leading-relaxed mb-4">{d.history.narrative}</p>
                       {d.history.timeline && d.history.timeline.length > 0 && (
-                        <div class="relative pl-6 border-l-2 border-accent/20 space-y-4">
+                        <ol class="pf-timeline" aria-label={`${shortName} timeline`}>
                           {d.history.timeline.map((t: {year: string; event: string}) => (
-                            <div class="relative">
-                              <div class="absolute -left-[25px] w-3 h-3 rounded-full bg-accent border-2 border-white"></div>
-                              <div class="text-xs font-bold text-accent">{t.year}</div>
-                              <div class="text-sm text-secondary mt-0.5">{t.event}</div>
-                            </div>
+                            <li>
+                              <span class="pf-tl-year">{t.year}</span>
+                              <span class="pf-tl-dot" aria-hidden="true"></span>
+                              <span class="pf-tl-event">{t.event}</span>
+                            </li>
                           ))}
-                        </div>
+                        </ol>
                       )}
                     </div>
                   </details>
                 )}
 
-                <!-- 3. Services Detail -->
                 {d.servicesDetailed && d.servicesDetailed.length > 0 && (
-                  <details class="group bg-bg-secondary rounded-xl overflow-hidden">
-                    <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] active:bg-black/[0.06] transition-colors">
-                      <div class="flex items-center gap-2.5">
-                        <span class="w-7 h-7 rounded-lg bg-accent/10 text-accent flex items-center justify-center text-sm flex-shrink-0">3</span>
-                        <span class="font-semibold text-sm text-primary">Services in Detail</span>
-                      </div>
-                      <svg class="w-4 h-4 text-tertiary transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-                    </summary>
-                    <div class="px-5 pb-5 space-y-4">
-                      {d.servicesDetailed.map((s: {name: string; description: string}) => (
-                        <div>
-                          <h4 class="text-sm font-bold text-primary mb-1">{s.name}</h4>
-                          <p class="text-sm text-secondary leading-relaxed">{s.description}</p>
-                        </div>
-                      ))}
+                  <details class="pf-acc">
+                    <summary><span class="pf-acc-num">3</span><span class="pf-acc-title">Services in detail</span><Fragment set:html={badgeFor('servicesDetailed')} /><svg class="pf-acc-chev" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+                    <div class="pf-acc-body">
+                      <dl class="pf-deflist">
+                        {d.servicesDetailed.map((s: {name: string; description: string}) => (
+                          <div>
+                            <dt>{s.name}</dt>
+                            <dd>{s.description}</dd>
+                          </div>
+                        ))}
+                      </dl>
                     </div>
                   </details>
                 )}
 
-                <!-- 4. AI & Platform -->
                 {d.aiPlatform && (
-                  <details class="group bg-bg-secondary rounded-xl overflow-hidden">
-                    <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] active:bg-black/[0.06] transition-colors">
-                      <div class="flex items-center gap-2.5">
-                        <span class="w-7 h-7 rounded-lg bg-accent/10 text-accent flex items-center justify-center text-sm flex-shrink-0">4</span>
-                        <span class="font-semibold text-sm text-primary">AI & Platform</span>
-                      </div>
-                      <svg class="w-4 h-4 text-tertiary transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-                    </summary>
-                    <div class="px-5 pb-5">
-                      {d.aiPlatform.narrative && <p class="text-sm text-secondary leading-relaxed mb-3">{d.aiPlatform.narrative}</p>}
+                  <details class="pf-acc">
+                    <summary><span class="pf-acc-num">4</span><span class="pf-acc-title">AI & platform</span><Fragment set:html={badgeFor('aiPlatform')} /><svg class="pf-acc-chev" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+                    <div class="pf-acc-body">
+                      {d.aiPlatform.narrative && <div class="pf-prose">{d.aiPlatform.narrative.split(/\n\n+/).map((para: string) => <p>{para}</p>)}</div>}
                       {d.aiPlatform.features && d.aiPlatform.features.length > 0 && (
-                        <ul class="space-y-1.5">
-                          {d.aiPlatform.features.map((f: string) => (
-                            <li class="flex items-start gap-2 text-sm text-secondary">
-                              <span class="text-accent mt-0.5 flex-shrink-0">&#9670;</span>
-                              {f}
-                            </li>
-                          ))}
+                        <ul class="pf-bullets">
+                          {d.aiPlatform.features.map((f: string) => <li>{f}</li>)}
                         </ul>
                       )}
                     </div>
                   </details>
                 )}
 
-                <!-- 5. Compliance (extended) -->
                 {d.complianceExtended && (
-                  <details class="group bg-bg-secondary rounded-xl overflow-hidden">
-                    <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] active:bg-black/[0.06] transition-colors">
-                      <div class="flex items-center gap-2.5">
-                        <span class="w-7 h-7 rounded-lg bg-accent/10 text-accent flex items-center justify-center text-sm flex-shrink-0">5</span>
-                        <span class="font-semibold text-sm text-primary">Compliance</span>
-                      </div>
-                      <svg class="w-4 h-4 text-tertiary transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-                    </summary>
-                    <div class="px-5 pb-5">
-                      {d.complianceExtended.narrative && <p class="text-sm text-secondary leading-relaxed mb-3">{d.complianceExtended.narrative}</p>}
+                  <details class="pf-acc">
+                    <summary><span class="pf-acc-num">5</span><span class="pf-acc-title">Compliance</span><Fragment set:html={badgeFor('complianceExtended')} /><svg class="pf-acc-chev" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+                    <div class="pf-acc-body">
+                      {d.complianceExtended.narrative && <div class="pf-prose">{d.complianceExtended.narrative.split(/\n\n+/).map((para: string) => <p>{para}</p>)}</div>}
                       {d.complianceExtended.highlights && d.complianceExtended.highlights.length > 0 && (
-                        <ul class="space-y-1.5 mb-3">
-                          {d.complianceExtended.highlights.map((h: string) => (
-                            <li class="flex items-start gap-2 text-sm text-secondary">
-                              <span class="text-emerald-600 mt-0.5 flex-shrink-0">&#9679;</span>
-                              {h}
-                            </li>
-                          ))}
+                        <ul class="pf-bullets pf-bullets-green">
+                          {d.complianceExtended.highlights.map((h: string) => <li>{h}</li>)}
                         </ul>
                       )}
                       {d.complianceExtended.regulatoryContext && (
-                        <div class="bg-white rounded-lg p-3 border border-border/40 mt-3">
-                          <div class="text-[10px] font-bold uppercase tracking-wider text-tertiary mb-1">Regulatory Context</div>
-                          <p class="text-xs text-secondary leading-relaxed">{d.complianceExtended.regulatoryContext}</p>
-                        </div>
+                        <aside class="pf-callout">
+                          <div class="pf-callout-label">Regulatory context</div>
+                          <p>{d.complianceExtended.regulatoryContext}</p>
+                        </aside>
                       )}
                     </div>
                   </details>
                 )}
 
-                <!-- 6. Client Fit -->
                 {d.clientFit && (
-                  <details class="group bg-bg-secondary rounded-xl overflow-hidden">
-                    <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] active:bg-black/[0.06] transition-colors">
-                      <div class="flex items-center gap-2.5">
-                        <span class="w-7 h-7 rounded-lg bg-accent/10 text-accent flex items-center justify-center text-sm flex-shrink-0">6</span>
-                        <span class="font-semibold text-sm text-primary">Client Fit</span>
-                      </div>
-                      <svg class="w-4 h-4 text-tertiary transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-                    </summary>
-                    <div class="px-5 pb-5">
-                      {d.clientFit.narrative && <p class="text-sm text-secondary leading-relaxed mb-3">{d.clientFit.narrative}</p>}
+                  <details class="pf-acc">
+                    <summary><span class="pf-acc-num">6</span><span class="pf-acc-title">Client fit</span><Fragment set:html={badgeFor('clientFit')} /><svg class="pf-acc-chev" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+                    <div class="pf-acc-body">
+                      {d.clientFit.narrative && <div class="pf-prose">{d.clientFit.narrative.split(/\n\n+/).map((para: string) => <p>{para}</p>)}</div>}
                       {d.clientFit.segments && d.clientFit.segments.length > 0 && (
-                        <ul class="space-y-1.5">
-                          {d.clientFit.segments.map((s: string) => (
-                            <li class="flex items-start gap-2 text-sm text-secondary">
-                              <span class="text-accent mt-0.5 flex-shrink-0">&#8594;</span>
-                              {s}
-                            </li>
-                          ))}
+                        <ul class="pf-bullets">
+                          {d.clientFit.segments.map((s: string) => <li>{s}</li>)}
                         </ul>
                       )}
                     </div>
                   </details>
                 )}
 
-                <!-- 7. Notable Facts -->
                 {d.notableFacts && d.notableFacts.length > 0 && (
-                  <details class="group bg-bg-secondary rounded-xl overflow-hidden">
-                    <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] active:bg-black/[0.06] transition-colors">
-                      <div class="flex items-center gap-2.5">
-                        <span class="w-7 h-7 rounded-lg bg-accent/10 text-accent flex items-center justify-center text-sm flex-shrink-0">7</span>
-                        <span class="font-semibold text-sm text-primary">Notable Facts</span>
-                      </div>
-                      <svg class="w-4 h-4 text-tertiary transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-                    </summary>
-                    <div class="px-5 pb-5">
-                      <ul class="space-y-1.5">
-                        {d.notableFacts.map((f: string) => (
-                          <li class="flex items-start gap-2 text-sm text-secondary">
-                            <span class="text-accent mt-0.5 flex-shrink-0">&#8226;</span>
-                            {f}
-                          </li>
-                        ))}
+                  <details class="pf-acc">
+                    <summary><span class="pf-acc-num">7</span><span class="pf-acc-title">Notable facts</span><Fragment set:html={badgeFor('notableFacts')} /><svg class="pf-acc-chev" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+                    <div class="pf-acc-body">
+                      <ul class="pf-bullets">
+                        {d.notableFacts.map((f: string) => <li>{f}</li>)}
                       </ul>
                     </div>
                   </details>
                 )}
 
-                <!-- 8. Source Notes -->
                 {d.sourceNotes && d.sourceNotes.length > 0 && (
-                  <details class="group bg-bg-secondary rounded-xl overflow-hidden">
-                    <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] active:bg-black/[0.06] transition-colors">
-                      <div class="flex items-center gap-2.5">
-                        <span class="w-7 h-7 rounded-lg bg-accent/10 text-accent flex items-center justify-center text-sm flex-shrink-0">8</span>
-                        <span class="font-semibold text-sm text-primary">Source Notes & Methodology</span>
-                      </div>
-                      <svg class="w-4 h-4 text-tertiary transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-                    </summary>
-                    <div class="px-5 pb-5">
-                      <ul class="space-y-1.5">
-                        {d.sourceNotes.map((n: string) => (
-                          <li class="flex items-start gap-2 text-xs text-tertiary">
-                            <span class="mt-0.5 flex-shrink-0">&#8505;</span>
-                            {n}
-                          </li>
-                        ))}
+                  <details class="pf-acc">
+                    <summary><span class="pf-acc-num">8</span><span class="pf-acc-title">Source notes & methodology</span><svg class="pf-acc-chev" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+                    <div class="pf-acc-body">
+                      <ul class="pf-bullets pf-bullets-muted">
+                        {d.sourceNotes.map((n: string) => <li>{n}</li>)}
                       </ul>
                     </div>
                   </details>
                 )}
 
-                <!-- 9. Confidence Legend -->
                 {d.confidence && Object.keys(d.confidence).length > 0 && (
-                  <details id="confidence-legend" class="group bg-bg-secondary rounded-xl overflow-hidden scroll-mt-20">
-                    <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] active:bg-black/[0.06] transition-colors">
-                      <div class="flex items-center gap-2.5">
-                        <span class="w-7 h-7 rounded-lg bg-accent/10 text-accent flex items-center justify-center text-sm flex-shrink-0">9</span>
-                        <span class="font-semibold text-sm text-primary">Data Confidence Ratings</span>
-                      </div>
-                      <svg class="w-4 h-4 text-tertiary transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-                    </summary>
-                    <div class="px-5 pb-5">
-                      <p class="text-xs text-tertiary mb-3">Each data point in this profile is graded for source confidence. Here's what each badge means:</p>
-                      <div class="space-y-2">
-                        <div class="flex items-start gap-2.5">
-                          <span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-semibold rounded bg-emerald-100 text-emerald-700 flex-shrink-0">Verified</span>
-                          <span class="text-xs text-secondary">Confirmed by official company disclosures, regulatory filings, or multiple independent sources.</span>
+                  <details id="confidence-legend" class="pf-acc">
+                    <summary><span class="pf-acc-num">9</span><span class="pf-acc-title">Data confidence ratings</span><svg class="pf-acc-chev" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+                    <div class="pf-acc-body">
+                      <p class="text-[14px] text-secondary mb-4">Each data point in this profile is graded for source confidence. Here's what each badge means:</p>
+                      <dl class="pf-legend">
+                        <div>
+                          <dt><Fragment set:html={confidenceBadge('verified')} /></dt>
+                          <dd>Confirmed by official company disclosures, regulatory filings, or multiple independent sources.</dd>
                         </div>
-                        <div class="flex items-start gap-2.5">
-                          <span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-semibold rounded bg-amber-100 text-amber-700 flex-shrink-0">Positioning</span>
-                          <span class="text-xs text-secondary">Based on company marketing claims or self-reported data that could not be independently verified.</span>
+                        <div>
+                          <dt><Fragment set:html={confidenceBadge('positioning')} /></dt>
+                          <dd>Based on company marketing claims or self-reported data that could not be independently verified.</dd>
                         </div>
-                        <div class="flex items-start gap-2.5">
-                          <span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-semibold rounded bg-blue-100 text-blue-700 flex-shrink-0">Inference</span>
-                          <span class="text-xs text-secondary">Estimated or inferred from indirect evidence, third-party aggregators, or industry context.</span>
+                        <div>
+                          <dt><Fragment set:html={confidenceBadge('inference')} /></dt>
+                          <dd>Estimated or inferred from indirect evidence, third-party aggregators, or industry context.</dd>
                         </div>
-                        <div class="flex items-start gap-2.5">
-                          <span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-semibold rounded bg-blue-100 text-blue-700 flex-shrink-0">Partially Unverifiable</span>
-                          <span class="text-xs text-secondary">Some aspects verified but full claim cannot be independently confirmed (e.g., private company financials from third-party estimates).</span>
+                        <div>
+                          <dt><Fragment set:html={confidenceBadge('partially-unverifiable')} /></dt>
+                          <dd>Some aspects verified but full claim cannot be independently confirmed (e.g., private company financials from third-party estimates).</dd>
                         </div>
-                      </div>
-                      {Object.keys(d.confidence).length > 0 && (
-                        <div class="mt-4 pt-3 border-t border-border">
-                          <p class="text-[10px] uppercase tracking-wider font-semibold text-tertiary mb-2">This profile's ratings</p>
-                          <div class="flex flex-wrap gap-1.5">
+                      </dl>
+                      <div class="mt-5 pt-4 border-t border-border/60">
+                        <p class="pf-eyebrow mb-2">This profile's ratings</p>
+                        <table class="pf-ratings">
+                          <tbody>
                             {Object.entries(d.confidence).map(([field, level]: [string, unknown]) => (
-                              <span class={`inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-medium rounded ${level === 'verified' ? 'bg-emerald-50 text-emerald-600' : level === 'positioning' ? 'bg-amber-50 text-amber-600' : 'bg-blue-50 text-blue-600'}`}>
-                                {field}: {level as string}
-                              </span>
+                              <tr>
+                                <th scope="row">{fieldLabel(field)}</th>
+                                <td><Fragment set:html={confidenceBadge(level as string)} /></td>
+                              </tr>
                             ))}
-                          </div>
-                        </div>
-                      )}
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
                   </details>
                 )}
 
-                <!-- 10. How We Researched This -->
-                <details id="methodology" class="group bg-bg-secondary rounded-xl overflow-hidden scroll-mt-20">
-                  <summary class="flex items-center justify-between px-5 py-4 cursor-pointer select-none hover:bg-black/[0.03] active:bg-black/[0.06] transition-colors">
-                    <div class="flex items-center gap-2.5">
-                      <span class="w-7 h-7 rounded-lg bg-accent/10 text-accent flex items-center justify-center text-sm flex-shrink-0">10</span>
-                      <span class="font-semibold text-sm text-primary">How We Researched This</span>
-                    </div>
-                    <svg class="w-4 h-4 text-tertiary transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-                  </summary>
-                  <div class="px-5 pb-5 text-xs text-secondary space-y-3">
+                <details id="methodology" class="pf-acc">
+                  <summary><span class="pf-acc-num">10</span><span class="pf-acc-title">How we researched this</span><svg class="pf-acc-chev" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></summary>
+                  <div class="pf-acc-body pf-prose pf-prose-sm">
                     <p>This profile was researched and written by the ExpertNetworks.net editorial team using a multi-source methodology:</p>
-                    <ol class="list-decimal list-inside space-y-1.5 text-tertiary">
-                      <li><strong class="text-secondary">Primary sources:</strong> Company website, press releases, SEC/regulatory filings, and official announcements</li>
-                      <li><strong class="text-secondary">Third-party verification:</strong> Industry reports (Integrity Research, Inex One), news coverage (TechCrunch, Bloomberg, FT), and data aggregators (PitchBook, Tracxn, Crunchbase)</li>
-                      <li><strong class="text-secondary">Cross-referencing:</strong> Claims were checked against multiple independent sources where possible; single-source claims are flagged</li>
-                      <li><strong class="text-secondary">Confidence grading:</strong> Each data point is rated as Verified, Positioning (company-claimed), or Inference (estimated from indirect evidence)</li>
+                    <ol>
+                      <li><strong>Primary sources:</strong> Company website, press releases, SEC/regulatory filings, and official announcements</li>
+                      <li><strong>Third-party verification:</strong> Industry reports (Integrity Research, Inex One), news coverage (TechCrunch, Bloomberg, FT), and data aggregators (PitchBook, Tracxn, Crunchbase)</li>
+                      <li><strong>Cross-referencing:</strong> Claims were checked against multiple independent sources where possible; single-source claims are flagged</li>
+                      <li><strong>Confidence grading:</strong> Each data point is rated as Verified, Positioning (company-claimed), or Inference (estimated from indirect evidence)</li>
                     </ol>
-                    <p class="text-tertiary">We do not accept payment from any expert network for inclusion or favorable coverage. If you spot an error, contact us with the correction and source.</p>
+                    <p>We do not accept payment from any expert network for inclusion or favorable coverage. If you spot an error, contact us with the correction and source.</p>
                     {d.lastUpdated && (
-                      <p class="text-[10px] text-tertiary/70 pt-1 border-t border-border">Last fact-checked: {d.lastUpdated}</p>
+                      <p class="pf-fineprint">Last fact-checked: <time datetime={d.lastUpdated}>{d.lastUpdated}</time></p>
                     )}
                   </div>
                 </details>
 
               </div>
-            </div>
+            </section>
           )}
 
           <!-- ============================== -->
@@ -757,205 +753,213 @@ const hasVsPages = vsPages[d.slug] || [];
           {!isRich && (
             <div>
               {d.aiCapabilities.length > 0 && (
-                <div class="mb-8">
-                  <h2 class="text-sm font-bold text-primary uppercase tracking-wide mb-2">AI Capabilities</h2>
-                  <ul class="space-y-2">
+                <section class="pf-section">
+                  <h2 class="pf-h2">AI capabilities</h2>
+                  <ul class="pf-ticks pf-ticks-good">
                     {d.aiCapabilities.map((cap: string) => (
-                      <li class="flex items-start gap-2 text-sm text-secondary">
-                        <span class="text-accent-green mt-0.5">&#10003;</span>
-                        {cap}
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                        <span>{cap}</span>
                       </li>
                     ))}
                   </ul>
-                </div>
+                </section>
               )}
 
               {d.industries.length > 0 && (
-                <div class="mb-8">
-                  <h2 class="text-sm font-bold text-primary uppercase tracking-wide mb-2">Industries Served</h2>
-                  <div class="flex flex-wrap gap-2">
+                <section class="pf-section">
+                  <h2 class="pf-h2">Industries served</h2>
+                  <ul class="flex flex-wrap gap-2 p-0 m-0 list-none">
                     {d.industries.map((industry: string) => (
-                      <span class="inline-block px-3 py-1 text-sm rounded-full font-medium bg-bg-secondary text-secondary">{industry}</span>
+                      <li class="pf-chip pf-chip-neutral">{industry}</li>
                     ))}
-                  </div>
-                </div>
+                  </ul>
+                </section>
               )}
 
               {d.keyDifferentiators.length > 0 && (
-                <div class="mb-8">
-                  <h2 class="text-sm font-bold text-primary uppercase tracking-wide mb-2">Key Differentiators</h2>
-                  <ul class="space-y-2">
-                    {d.keyDifferentiators.map((diff: string) => (
-                      <li class="flex items-start gap-2 text-sm text-secondary">
-                        <span class="text-accent mt-0.5">&#9679;</span>
-                        {diff}
-                      </li>
-                    ))}
+                <section class="pf-section">
+                  <h2 class="pf-h2">Key differentiators</h2>
+                  <ul class="pf-bullets">
+                    {d.keyDifferentiators.map((diff: string) => <li>{diff}</li>)}
                   </ul>
-                </div>
+                </section>
               )}
 
               {d.compliance && (
-                <div class="mb-8">
-                  <h2 class="text-sm font-bold text-primary uppercase tracking-wide mb-2">Compliance & MNPI</h2>
-                  <div class="bg-bg-secondary rounded-xl p-5 space-y-3">
+                <section class="pf-section">
+                  <h2 class="pf-h2">Compliance & MNPI</h2>
+                  <dl class="pf-deflist pf-card">
                     {d.compliance.mnpiPolicy && (
-                      <div>
-                        <div class="text-[10px] font-bold uppercase tracking-wide text-tertiary mb-0.5">MNPI Policy</div>
-                        <p class="text-sm text-secondary">{d.compliance.mnpiPolicy}</p>
-                      </div>
+                      <div><dt>MNPI policy</dt><dd>{d.compliance.mnpiPolicy}</dd></div>
                     )}
                     {d.compliance.expertVetting && (
-                      <div>
-                        <div class="text-[10px] font-bold uppercase tracking-wide text-tertiary mb-0.5">Expert Vetting</div>
-                        <p class="text-sm text-secondary">{d.compliance.expertVetting}</p>
-                      </div>
+                      <div><dt>Expert vetting</dt><dd>{d.compliance.expertVetting}</dd></div>
                     )}
                     {d.compliance.coolingOffPeriod && (
-                      <div>
-                        <div class="text-[10px] font-bold uppercase tracking-wide text-tertiary mb-0.5">Cooling-Off Period</div>
-                        <p class="text-sm text-secondary">{d.compliance.coolingOffPeriod}</p>
-                      </div>
+                      <div><dt>Cooling-off period</dt><dd>{d.compliance.coolingOffPeriod}</dd></div>
                     )}
                     <div>
-                      <div class="text-[10px] font-bold uppercase tracking-wide text-tertiary mb-0.5">Audit Trail</div>
-                      <span class={`text-sm font-semibold ${d.compliance.auditTrail ? 'text-accent-green' : 'text-tertiary'}`}>
-                        {d.compliance.auditTrail ? 'Yes' : 'No'}
-                      </span>
+                      <dt>Audit trail</dt>
+                      <dd class={d.compliance.auditTrail ? 'font-semibold text-emerald-700' : ''}>{d.compliance.auditTrail ? 'Yes' : 'No'}</dd>
                     </div>
                     {d.compliance.regulatoryHistory && (
-                      <div>
-                        <div class="text-[10px] font-bold uppercase tracking-wide text-tertiary mb-0.5">Regulatory History</div>
-                        <p class="text-sm text-secondary">{d.compliance.regulatoryHistory}</p>
-                      </div>
+                      <div><dt>Regulatory history</dt><dd>{d.compliance.regulatoryHistory}</dd></div>
                     )}
-                  </div>
-                </div>
+                  </dl>
+                </section>
               )}
             </div>
           )}
 
-          <!-- Industries (shown for both rich and legacy) -->
+          <!-- Industries -->
           {d.industries.length > 0 && isRich && (
-            <div id="industries" class="mb-8 scroll-mt-20">
-              <h2 class="text-sm font-bold text-primary uppercase tracking-wide mb-2">Industries Served</h2>
-              <div class="flex flex-wrap gap-2">
+            <section id="industries" class="pf-section">
+              <h2 class="pf-h2">Industries served</h2>
+              <ul class="flex flex-wrap gap-2 p-0 m-0 list-none">
                 {d.industries.map((industry: string) => (
-                  <span class="inline-block px-3 py-1 text-sm rounded-full font-medium bg-bg-secondary text-secondary">{industry}</span>
+                  <li class="pf-chip pf-chip-neutral">{industry}</li>
                 ))}
-              </div>
-            </div>
+              </ul>
+            </section>
           )}
 
           <!-- Related News -->
           {relatedNews.length > 0 && (
-            <div id="related-news" class="mb-8 border-t border-border/40 pt-8 scroll-mt-20">
-              <h2 class="text-sm font-bold text-primary uppercase tracking-wide mb-3">Recent News</h2>
-              <div class="space-y-3">
-                {relatedNews.map((article) => (
-                  <a href={article.data.sourceUrl || '#'} target="_blank" rel="noopener noreferrer" class="block bg-bg-secondary rounded-xl p-4 no-underline hover:bg-black/[0.04] transition-colors group">
-                    <div class="flex items-start justify-between gap-3">
-                      <div class="min-w-0">
-                        <div class="text-sm font-semibold text-primary group-hover:text-accent transition-colors leading-snug">{article.data.title}</div>
-                        <div class="text-[11px] text-tertiary mt-1">{article.data.source} &middot; {article.data.date}</div>
-                      </div>
-                      <svg class="w-4 h-4 text-tertiary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-                    </div>
-                  </a>
-                ))}
+            <section id="related-news" class="pf-section pf-section-rule">
+              <div class="flex items-end justify-between gap-3 mb-4">
+                <h2 class="pf-h2-lg">Recent news</h2>
+                <a href={`/news/?network=${d.slug}`} class="pf-text-btn no-underline">All {shortName} signals &rarr;</a>
               </div>
-            </div>
+              <ul class="pf-news">
+                {relatedNews.map((article) => {
+                  const date = new Date(`${article.data.date}T00:00:00Z`);
+                  const month = date.toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' });
+                  const day = date.toLocaleDateString('en-US', { day: 'numeric', timeZone: 'UTC' });
+                  const year = date.getUTCFullYear();
+                  const inner = (
+                    <Fragment>
+                      <time class="pf-news-date" datetime={article.data.date}>
+                        <span class="pf-news-month">{month}</span>
+                        <span class="pf-news-day">{day}</span>
+                        <span class="pf-news-year">{year}</span>
+                      </time>
+                      <span class="min-w-0 flex-1">
+                        <span class="pf-news-tags">
+                          {article.data.significance === 'major' && <span class="pf-news-major">Major</span>}
+                          <span class="pf-news-cat">{article.data.category}</span>
+                          {article.data.sourceType && <span class="pf-news-type">{article.data.sourceType}</span>}
+                        </span>
+                        <span class="pf-news-title">{article.data.title}</span>
+                        <span class="pf-news-source">{article.data.source}</span>
+                      </span>
+                      {article.data.sourceUrl && (
+                        <svg class="pf-news-arrow" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+                      )}
+                    </Fragment>
+                  );
+                  return (
+                    <li>
+                      {article.data.sourceUrl ? (
+                        <a href={article.data.sourceUrl} target="_blank" rel="noopener noreferrer" class="pf-news-item">{inner}<span class="sr-only">(opens source in a new tab)</span></a>
+                      ) : (
+                        <div class="pf-news-item">{inner}</div>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
           )}
 
-          <!-- Compare with CTA -->
-          <div class="pt-6 border-t border-border/40">
-            <h2 class="text-sm font-bold text-primary uppercase tracking-wide mb-3">Compare {d.name.split(' (')[0]}</h2>
+          <!-- Compare -->
+          <section id="compare" class="pf-section pf-section-rule">
+            <div class="pf-compare">
+              <div class="min-w-0">
+                <h2 class="pf-h2-lg">Compare {shortName}</h2>
+                <p class="mt-1 text-[14px] leading-relaxed text-secondary max-w-[52ch]">See {shortName} side by side with other providers on pricing, compliance, AI, and delivery model.</p>
+              </div>
+              <a href={`/compare/?add=${d.slug}`} class="pf-btn pf-btn-primary flex-shrink-0">
+                Open comparison
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </div>
+            <p class="pf-eyebrow mt-6 mb-2.5">Head to head</p>
             <div class="flex flex-wrap gap-2">
               {published.filter(n => n.data.slug !== d.slug).slice(0, 5).map((rival) => (
-                <a href={`/compare?networks=${d.slug},${rival.data.slug}`} class="inline-flex items-center gap-1.5 px-3 py-2 text-[12px] font-medium text-secondary bg-bg-secondary rounded-lg no-underline hover:bg-accent/[0.06] hover:text-accent transition-colors border border-border/30">
-                  <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
-                  vs {rival.data.shortName || rival.data.name.split(' (')[0]}
+                <a href={`/compare/?networks=${d.slug},${rival.data.slug}`} class="pf-vs">
+                  {rival.data.logo ? (
+                    <img src={rival.data.logo} alt="" width="20" height="20" class="w-5 h-5 rounded-md object-contain bg-white" loading="lazy" />
+                  ) : (
+                    <span class="w-5 h-5 rounded-md inline-flex items-center justify-center text-white text-[8px] font-bold" style={`background: linear-gradient(135deg, ${rival.data.gradientFrom}, ${rival.data.gradientTo})`} aria-hidden="true">{rival.data.shortName}</span>
+                  )}
+                  <span><span class="text-secondary font-medium">vs</span> {rival.data.name.split(' (')[0]}</span>
                 </a>
               ))}
             </div>
-            <a href={`/compare?add=${d.slug}`} class="inline-flex items-center gap-1 mt-2 text-[12px] text-accent font-medium no-underline hover:underline">
-              Full comparison with all providers &rarr;
-            </a>
-          </div>
+            {(hasAltPage || hasVsPages.length > 0) && (
+              <Fragment>
+                <p class="pf-eyebrow mt-6 mb-2.5">In-depth guides</p>
+                <div class="flex flex-wrap gap-2">
+                  {hasAltPage && (
+                    <a href={hasAltPage} class="pf-vs pf-vs-guide">{shortName} Alternatives &rarr;</a>
+                  )}
+                  {hasVsPages.map(vs => (
+                    <a href={vs.href} class="pf-vs pf-vs-guide">{vs.label}</a>
+                  ))}
+                </div>
+              </Fragment>
+            )}
+          </section>
 
-          <!-- Website link -->
-          {d.website && (
-            <div class="pt-6 border-t border-border/40">
-              <a href={d.website} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-accent font-semibold text-sm no-underline hover:underline">
-                Visit {d.name.split(' (')[0]} &rarr;
+          <footer class="pf-foot">
+            {d.website && (
+              <a href={d.website} target="_blank" rel="noopener noreferrer" class="pf-text-btn no-underline">
+                Visit {shortName} &rarr;<span class="sr-only"> (opens in a new tab)</span>
               </a>
-            </div>
-          )}
-
-          <div class="mt-4 text-xs text-tertiary">Last updated: {d.lastUpdated}</div>
+            )}
+            <span>Last updated: <time datetime={d.lastUpdated}>{d.lastUpdated}</time></span>
+          </footer>
         </div>
 
         <!-- Right-side TOC — desktop only -->
         <aside class="hidden xl:block">
-          <nav id="profile-toc" class="sticky top-[68px] max-h-[calc(100vh-84px)] overflow-y-auto">
-            <div class="text-[10px] font-bold uppercase tracking-wider text-tertiary mb-2">On this page</div>
-            <ul class="space-y-0.5 border-l border-border/40">
+          <nav id="profile-toc" class="pf-toc" aria-label="On this page">
+            <div class="pf-eyebrow mb-2.5">On this page</div>
+            <ul class="pf-toc-list">
               {tocSections.map((s) => (
                 <li>
-                  <a
-                    href={`#${s.id}`}
-                    class="toc-link block pl-3 py-1 text-[12px] text-tertiary no-underline hover:text-primary transition-colors border-l-2 border-transparent -ml-px"
-                    data-section={s.id}
-                  >
-                    {s.label}
-                  </a>
+                  <a href={`#${s.id}`} class="toc-link" data-section={s.id}>{s.label}</a>
                 </li>
               ))}
             </ul>
 
-            <!-- Quick facts -->
-            <div class="mt-6 pt-4 border-t border-border/30">
-              <div class="text-[10px] font-bold uppercase tracking-wider text-tertiary mb-2">Quick facts</div>
-              <div class="space-y-2 text-[11px]">
+            <div class="mt-6 pt-5 border-t border-border/60">
+              <div class="pf-eyebrow mb-2.5">Quick facts</div>
+              <dl class="pf-facts">
                 {d.pricingModel && (
-                  <div>
-                    <div class="text-tertiary">Pricing</div>
-                    <div class="text-primary font-medium flex items-center gap-1">{d.pricingModel}<Fragment set:html={badgeFor('pricingModel')} /></div>
-                  </div>
+                  <div><dt>Pricing</dt><dd>{d.pricingModel}<Fragment set:html={badgeFor('pricingModel')} /></dd></div>
                 )}
                 {d.expertCount && (
-                  <div>
-                    <div class="text-tertiary">Experts</div>
-                    <div class="text-primary font-medium flex items-center gap-1">{d.expertCount}<Fragment set:html={badgeFor('expertCount')} /></div>
-                  </div>
+                  <div><dt>Experts</dt><dd>{d.expertCount}<Fragment set:html={badgeFor('expertCount')} /></dd></div>
                 )}
                 {d.headquarters && (
-                  <div>
-                    <div class="text-tertiary">HQ</div>
-                    <div class="text-primary font-medium flex items-center gap-1">{d.headquarters}<Fragment set:html={badgeFor('headquarters')} /></div>
-                  </div>
+                  <div><dt>HQ</dt><dd>{d.headquarters}<Fragment set:html={badgeFor('headquarters')} /></dd></div>
                 )}
                 {d.founded && (
-                  <div>
-                    <div class="text-tertiary">Founded</div>
-                    <div class="text-primary font-medium flex items-center gap-1">{d.founded}<Fragment set:html={badgeFor('founded')} /></div>
-                  </div>
+                  <div><dt>Founded</dt><dd>{d.founded}<Fragment set:html={badgeFor('founded')} /></dd></div>
                 )}
-              </div>
+              </dl>
             </div>
 
-            <!-- Actions -->
-            <div class="mt-5 space-y-2">
+            <div class="mt-5 flex flex-col gap-2">
+              <a href={`/compare/?add=${network.data.slug}`} class="pf-btn pf-btn-primary pf-btn-sm">Compare this network</a>
               {d.website && (
-                <a href={d.website} target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-[11px] text-accent font-medium no-underline hover:underline">
-                  <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                <a href={d.website} target="_blank" rel="noopener noreferrer" class="pf-btn pf-btn-secondary pf-btn-sm">
                   Visit website
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
                 </a>
               )}
-              <a href={`/compare?add=${network.data.slug}`} class="flex items-center gap-1.5 text-[11px] text-accent font-medium no-underline hover:underline">
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-                Compare this network
-              </a>
             </div>
           </nav>
         </aside>
@@ -987,16 +991,25 @@ const hasVsPages = vsPages[d.slug] || [];
     setupSearch('sidebarSearch', ['featuredList', 'allList']);
     setupSearch('mobileSearch', ['mobileFeaturedList', 'mobileAllList']);
 
-    // Mobile sidebar toggle
+    // Mobile sidebar drawer
     const toggle = document.getElementById('sidebarToggle');
     const backdrop = document.getElementById('sidebarBackdrop');
     const mobileSidebar = document.getElementById('mobileSidebar');
     const closeBtn = document.getElementById('closeSidebar');
 
     let savedScrollY = 0;
+    function isDrawerOpen() {
+      return Boolean(mobileSidebar && !mobileSidebar.classList.contains('-translate-x-full'));
+    }
+    function setDrawerHidden(hidden: boolean) {
+      if (!mobileSidebar) return;
+      mobileSidebar.setAttribute('aria-hidden', String(hidden));
+      if (hidden) mobileSidebar.setAttribute('inert', ''); else mobileSidebar.removeAttribute('inert');
+    }
     function openMobile() {
       savedScrollY = window.scrollY;
       backdrop?.classList.remove('hidden');
+      setDrawerHidden(false);
       requestAnimationFrame(() => {
         backdrop?.classList.add('opacity-100');
         backdrop?.classList.remove('opacity-0');
@@ -1004,96 +1017,385 @@ const hasVsPages = vsPages[d.slug] || [];
       });
       document.body.classList.add('overlay-open');
       document.body.style.top = `-${savedScrollY}px`;
+      toggle?.setAttribute('aria-expanded', 'true');
+      setTimeout(() => closeBtn?.focus(), 60);
     }
 
-    function closeMobile() {
+    function closeMobile(restoreFocus = true) {
+      if (!isDrawerOpen()) return;
       backdrop?.classList.remove('opacity-100');
       backdrop?.classList.add('opacity-0');
       mobileSidebar?.classList.add('-translate-x-full');
-      setTimeout(() => backdrop?.classList.add('hidden'), 300);
+      setTimeout(() => { if (!isDrawerOpen()) backdrop?.classList.add('hidden'); }, 300);
       document.body.classList.remove('overlay-open');
       document.body.style.top = '';
       window.scrollTo(0, savedScrollY);
+      toggle?.setAttribute('aria-expanded', 'false');
+      setDrawerHidden(true);
+      if (restoreFocus) toggle?.focus({ preventScroll: true });
     }
 
+    setDrawerHidden(true);
     toggle?.addEventListener('click', openMobile);
-    backdrop?.addEventListener('click', closeMobile);
-    closeBtn?.addEventListener('click', closeMobile);
+    backdrop?.addEventListener('click', () => closeMobile());
+    closeBtn?.addEventListener('click', () => closeMobile());
 
     // Close mobile sidebar when clicking a network link inside it
     mobileSidebar?.addEventListener('click', (e) => {
       const target = e.target;
       if (target instanceof Element) {
         const link = target.closest('a');
-        if (link?.href) closeMobile();
+        if (link?.href) closeMobile(false);
       }
     });
 
-    // Close mobile sidebar on Escape key
+    // Escape closes; Tab stays inside the open drawer
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && mobileSidebar && !mobileSidebar.classList.contains('-translate-x-full')) {
-        closeMobile();
-      }
+      if (!isDrawerOpen() || !mobileSidebar) return;
+      if (e.key === 'Escape') { closeMobile(); return; }
+      if (e.key !== 'Tab') return;
+      const focusable = Array.from(mobileSidebar.querySelectorAll<HTMLElement>('a[href], button, input')).filter(el => el.offsetParent !== null);
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     });
+    window.matchMedia('(min-width: 1024px)').addEventListener('change', (e) => { if (e.matches) closeMobile(false); });
 
-    // Scroll active sidebar item into view on desktop
-    const activeSidebarItem = document.querySelector('#sidebar .bg-accent');
-    if (activeSidebarItem) {
-      activeSidebarItem.scrollIntoView({ block: 'center', behavior: 'auto' });
+    // Keep the active item visible in the desktop sidebar without scrolling the page
+    const sidebarEl = document.getElementById('sidebar');
+    const activeSidebarItem = sidebarEl?.querySelector<HTMLElement>('[aria-current="page"]');
+    if (sidebarEl && activeSidebarItem) {
+      sidebarEl.scrollTop = activeSidebarItem.offsetTop - sidebarEl.clientHeight / 2 + activeSidebarItem.offsetHeight / 2;
     }
 
-    // Right TOC — active section tracking via IntersectionObserver
-    const tocLinks = document.querySelectorAll('.toc-link') as NodeListOf<HTMLAnchorElement>;
-    if (tocLinks.length > 0) {
-      const sectionIds = Array.from(tocLinks).map(l => l.getAttribute('data-section')!);
-      const sections = sectionIds
+    // Section navigation: one scroll-spy drives both the sticky pill bar and the right-hand TOC
+    const navLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('.toc-link, .pf-secnav-link'));
+    const secnav = document.querySelector<HTMLElement>('.pf-secnav');
+    const secnavScroll = document.getElementById('pfSecnavScroll');
+    if (navLinks.length > 0) {
+      const ids = Array.from(new Set(navLinks.map(l => l.dataset.section || '')));
+      const sections = ids
         .map(id => document.getElementById(id))
         .filter((el): el is HTMLElement => el !== null);
+      let activeId = '';
+
+      function spyOffset() {
+        const navHeight = secnav && secnav.offsetParent !== null ? secnav.offsetHeight : 0;
+        return 52 + navHeight + 28;
+      }
 
       function setActive(id: string) {
-        tocLinks.forEach(link => {
-          const isActive = link.getAttribute('data-section') === id;
-          link.classList.toggle('text-accent', isActive);
-          link.classList.toggle('border-accent', isActive);
-          link.classList.toggle('font-medium', isActive);
-          link.classList.toggle('text-tertiary', !isActive);
-          link.classList.toggle('border-transparent', !isActive);
+        if (id === activeId) return;
+        activeId = id;
+        navLinks.forEach(link => {
+          const isActive = link.dataset.section === id;
+          link.classList.toggle('is-active', isActive);
+          if (isActive) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current');
+          if (isActive && secnavScroll && link.classList.contains('pf-secnav-link')) {
+            const target = link.offsetLeft - (secnavScroll.clientWidth - link.offsetWidth) / 2;
+            secnavScroll.scrollTo({ left: Math.max(0, target), behavior: 'auto' });
+          }
         });
       }
 
-      const tocObserver = new IntersectionObserver((entries) => {
-        // Find the first section that is intersecting (top-most visible)
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setActive(entry.target.id);
-            break;
-          }
+      function updateActive() {
+        const line = spyOffset();
+        /* The active section is the last one whose top has crossed the line under the sticky bars. */
+        let current = sections[0];
+        let bestTop = -Infinity;
+        for (const section of sections) {
+          const top = section.getBoundingClientRect().top;
+          if (top <= line && top > bestTop) { bestTop = top; current = section; }
         }
-      }, {
-        rootMargin: '-80px 0px -60% 0px',
-        threshold: 0
+        /* At the very bottom the last sections can never reach the line; pick the last one on screen. */
+        if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+          const onScreen = sections.filter(s => s.getBoundingClientRect().top < window.innerHeight);
+          if (onScreen.length) current = onScreen.reduce((a, b) => (b.getBoundingClientRect().top > a.getBoundingClientRect().top ? b : a));
+        }
+        if (current) setActive(current.id);
+      }
+
+      let ticking = false;
+      function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => { ticking = false; updateActive(); });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      document.querySelectorAll('details.pf-acc').forEach(el => el.addEventListener('toggle', onScroll));
+
+      /* Jumping to a collapsed accordion section opens it first */
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          const target = document.getElementById(link.dataset.section || '');
+          if (target instanceof HTMLDetailsElement && !target.open) target.open = true;
+        });
       });
+      const hashTarget = window.location.hash ? document.getElementById(decodeURIComponent(window.location.hash.slice(1))) : null;
+      if (hashTarget instanceof HTMLDetailsElement) { hashTarget.open = true; hashTarget.scrollIntoView(); }
 
-      sections.forEach(section => tocObserver.observe(section));
-
-      // Set initial active state
-      if (sections.length > 0) setActive(sections[0].id);
+      updateActive();
     }
+
+    // Expand / collapse all deep-dive sections
+    const expandAll = document.getElementById('pfExpandAll');
+    const accordions = Array.from(document.querySelectorAll<HTMLDetailsElement>('details.pf-acc'));
+    function syncExpandLabel() {
+      if (!expandAll) return;
+      const allOpen = accordions.length > 0 && accordions.every(a => a.open);
+      expandAll.textContent = allOpen ? 'Collapse all' : 'Expand all';
+      expandAll.setAttribute('aria-pressed', String(allOpen));
+    }
+    expandAll?.addEventListener('click', () => {
+      const allOpen = accordions.every(a => a.open);
+      accordions.forEach(a => { a.open = !allOpen; });
+      syncExpandLabel();
+    });
+    accordions.forEach(a => a.addEventListener('toggle', syncExpandLabel));
   </script>
-{(hasAltPage || hasVsPages.length > 0) && (
-  <section class="py-12 px-6 bg-bg-secondary border-t border-border/30">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-xl font-bold text-primary mb-6">Compare {shortName}</h2>
-      <div class="flex flex-wrap gap-3">
-        {hasAltPage && (
-          <a href={hasAltPage} class="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-primary border border-border/50 rounded-full font-semibold text-sm no-underline hover:bg-border/30 transition-colors">{shortName} Alternatives →</a>
-        )}
-        {hasVsPages.map(vs => (
-          <a href={vs.href} class="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-primary border border-border/50 rounded-full font-semibold text-sm no-underline hover:bg-border/30 transition-colors">{vs.label}</a>
-        ))}
-        <a href={`/compare?networks=${d.slug}`} class="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-white rounded-full font-semibold text-sm no-underline hover:bg-accent-hover transition-colors">Full Comparison Tool</a>
-      </div>
-    </div>
-  </section>
-)}
 </BaseLayout>
+
+<style is:global>
+  /*
+   * Global on purpose: confidence badges are emitted as HTML strings (set:html), which Astro-scoped
+   * selectors cannot reach. Ships only with /networks/[slug]; every class is pf- prefixed
+   * (plus the pre-existing toc-link hook).
+   */
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  /* Anchor targets must clear the site header plus this page's sticky section nav.
+     The site sets scroll-padding-top for the header alone, so the page owns the full offset here. */
+  html { scroll-padding-top: 116px; }
+  @media (min-width: 1280px) { html { scroll-padding-top: 72px; } }
+
+  .pf-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6e6e73; }
+  .pf-wrap, .pf-grid { max-width: 760px; margin: 0 auto; }
+  @media (min-width: 1280px) {
+    .pf-wrap, .pf-grid { max-width: 984px; }
+    .pf-grid { display: grid; grid-template-columns: minmax(0, 720px) 208px; gap: 56px; }
+  }
+
+  /* ── Hero ── */
+  .pf-hero {
+    position: relative;
+    padding: 20px 16px 28px;
+    background:
+      radial-gradient(900px 320px at 0% 0%, color-mix(in srgb, var(--pf-b, #0071e3) 9%, transparent), transparent 70%),
+      linear-gradient(180deg, #fff 0%, #fbfbfd 100%);
+    border-bottom: 1px solid rgba(210, 210, 215, 0.6);
+  }
+  @media (min-width: 640px) { .pf-hero { padding: 28px 24px 36px; } }
+  @media (min-width: 1024px) { .pf-hero { padding: 36px 32px 44px; } }
+  .pf-crumbs { margin-bottom: 20px; }
+  .pf-crumbs a { display: inline-flex; align-items: center; gap: 4px; min-height: 44px; margin: -12px 0; font-size: 13px; font-weight: 600; color: #0066cc; text-decoration: none; }
+  .pf-crumbs a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .pf-logo { width: 64px; height: 64px; border-radius: 16px; object-fit: contain; flex-shrink: 0; background: #fff; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.07), 0 6px 20px rgba(0, 0, 0, 0.08); }
+  @media (min-width: 640px) { .pf-logo { width: 80px; height: 80px; border-radius: 20px; } }
+  .pf-logo-fallback { display: flex; align-items: center; justify-content: center; color: #fff; font-size: 22px; font-weight: 700; letter-spacing: -0.02em; }
+  .pf-category { display: inline-flex; align-items: center; padding: 3px 9px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #004f9f; background: rgba(0, 113, 227, 0.1); border-radius: 6px; }
+  .pf-title { margin: 0; font-size: 28px; line-height: 1.12; font-weight: 800; letter-spacing: -0.025em; color: #1d1d1f; text-wrap: balance; }
+  @media (min-width: 640px) { .pf-title { font-size: 36px; } }
+  @media (min-width: 1280px) { .pf-title { font-size: 42px; } }
+  .pf-meta { display: flex; flex-wrap: wrap; gap: 10px 28px; margin: 20px 0 0; }
+  .pf-meta > div { min-width: 0; }
+  .pf-meta dt { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #6e6e73; }
+  .pf-meta dd { margin: 2px 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 14.5px; font-weight: 600; color: #1d1d1f; }
+  .pf-lead { margin: 20px 0 0; max-width: 68ch; font-size: 16px; line-height: 1.65; color: #424245; text-wrap: pretty; }
+  @media (min-width: 640px) { .pf-lead { font-size: 17px; } }
+  .pf-why { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; font-size: 13px; font-weight: 600; color: #004f9f; background: rgba(0, 113, 227, 0.08); border-radius: 999px; }
+
+  .pf-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 18px; font-size: 14.5px; font-weight: 600; border-radius: 12px; text-decoration: none; white-space: nowrap; transition: background-color 0.15s ease, transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease; }
+  .pf-btn-primary { color: #fff; background: #0071e3; box-shadow: 0 1px 2px rgba(0, 113, 227, 0.3); }
+  .pf-btn-primary:hover { background: #0064cc; box-shadow: 0 4px 14px rgba(0, 113, 227, 0.28); }
+  .pf-btn-secondary { color: #1d1d1f; background: #fff; border: 1px solid rgba(210, 210, 215, 0.95); }
+  .pf-btn-secondary:hover { background: #f5f5f7; border-color: #aeaeb2; }
+  .pf-btn:active { transform: scale(0.97); }
+  .pf-btn-sm { min-height: 40px; padding: 0 12px; font-size: 13px; border-radius: 10px; }
+  .pf-text-btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 10px; margin: -8px -10px; font-size: 13.5px; font-weight: 600; color: #0066cc; background: transparent; border: none; border-radius: 10px; cursor: pointer; white-space: nowrap; }
+  .pf-text-btn:hover { background: rgba(0, 113, 227, 0.07); }
+
+  /* Stat row */
+  .pf-stats { display: grid; grid-template-columns: 1fr; margin: 28px 0 0; background: #fff; border: 1px solid rgba(210, 210, 215, 0.7); border-radius: 16px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03), 0 8px 24px rgba(0, 0, 0, 0.04); overflow: hidden; }
+  .pf-stat { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: 6px; padding: 16px 18px; min-width: 0; }
+  .pf-stat + .pf-stat { border-top: 1px solid rgba(210, 210, 215, 0.6); }
+  @media (min-width: 640px) {
+    .pf-stats { grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); grid-template-columns: none; }
+    .pf-stat { padding: 20px 22px; }
+    .pf-stat + .pf-stat { border-top: 0; border-left: 1px solid rgba(210, 210, 215, 0.6); }
+  }
+  .pf-stat dt { font-size: 12.5px; line-height: 1.45; color: #6e6e73; text-wrap: pretty; }
+  .pf-stat dd { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+  .pf-stat-value { font-size: 24px; line-height: 1.15; font-weight: 700; letter-spacing: -0.02em; color: #1d1d1f; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+  @media (min-width: 640px) { .pf-stat-value { font-size: 26px; } }
+
+  /* Confidence badges */
+  .pf-conf { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px 2px 6px; font-size: 11.5px; line-height: 1.5; font-weight: 600; letter-spacing: 0; text-transform: none; border-radius: 999px; border: 1px solid; white-space: nowrap; vertical-align: middle; cursor: help; }
+  .pf-conf svg { width: 12px; height: 12px; flex-shrink: 0; }
+  .pf-conf-verified { color: #0b5d33; background: #e8f6ee; border-color: #b7e0c8; }
+  .pf-conf-positioning { color: #7a4100; background: #fff4e0; border-color: #f5d49a; }
+  .pf-conf-inference { color: #0b4a9e; background: #e8f1fd; border-color: #b9d4f8; }
+  .pf-conf-partial { color: #4a3b8f; background: #f0edfb; border-color: #cfc6f1; }
+  .pf-conf.mt-3 { margin-top: 12px; }
+
+  /* ── Sticky section nav ── */
+  .pf-secnav { position: sticky; top: 52px; z-index: 30; background: rgba(251, 251, 253, 0.88); -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(210, 210, 215, 0.6); }
+  @media (min-width: 1280px) { .pf-secnav { display: none; } }
+  .pf-secnav-inner { display: flex; align-items: center; max-width: 808px; margin: 0 auto; padding: 0 8px 0 16px; }
+  @media (min-width: 640px) { .pf-secnav-inner { padding: 0 16px 0 24px; } }
+  .pf-secnav-browse { display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 12px; margin-right: 10px; font-size: 13px; font-weight: 600; color: #fff; background: #1d1d1f; border: none; border-radius: 999px; cursor: pointer; flex-shrink: 0; position: relative; }
+  .pf-secnav-browse::after { content: ''; position: absolute; inset: -6px -2px; }
+  .pf-secnav-browse:active { transform: scale(0.96); }
+  @media (min-width: 1024px) { .pf-secnav-browse { display: none; } }
+  .pf-secnav-scroll { display: flex; align-items: center; gap: 2px; min-width: 0; flex: 1; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; -webkit-mask-image: linear-gradient(to right, black calc(100% - 28px), transparent); mask-image: linear-gradient(to right, black calc(100% - 28px), transparent); padding-right: 24px; }
+  .pf-secnav-scroll::-webkit-scrollbar { display: none; }
+  .pf-secnav-link { position: relative; display: inline-flex; align-items: center; height: 48px; padding: 0 12px; font-size: 13.5px; font-weight: 500; color: #6e6e73; text-decoration: none; white-space: nowrap; flex-shrink: 0; transition: color 0.15s ease; }
+  .pf-secnav-link:hover { color: #1d1d1f; }
+  .pf-secnav-link::after { content: ''; position: absolute; left: 12px; right: 12px; bottom: 0; height: 2px; border-radius: 2px 2px 0 0; background: #0071e3; transform: scaleX(0); transition: transform 0.2s cubic-bezier(0.32, 0.72, 0, 1); }
+  .pf-secnav-link.is-active { color: #1d1d1f; font-weight: 600; }
+  .pf-secnav-link.is-active::after { transform: scaleX(1); }
+
+  /* ── Body ── */
+  .pf-body { padding: 8px 16px 56px; }
+  @media (min-width: 640px) { .pf-body { padding: 12px 24px 64px; } }
+  @media (min-width: 1024px) { .pf-body { padding: 16px 32px 80px; } }
+  .pf-section { padding-top: 32px; }
+  .pf-section-rule { margin-top: 40px; padding-top: 40px; border-top: 1px solid rgba(210, 210, 215, 0.6); }
+  .pf-h2 { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 12px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #1d1d1f; }
+  .pf-h2-lg { margin: 0; font-size: 24px; line-height: 1.2; font-weight: 700; letter-spacing: -0.02em; color: #1d1d1f; }
+  .pf-chip { display: inline-flex; padding: 6px 13px; font-size: 14px; font-weight: 500; color: #004f9f; background: rgba(0, 113, 227, 0.08); border-radius: 999px; }
+  .pf-chip-neutral { color: #424245; background: #f0f0f3; }
+
+  .pf-card { padding: 18px 20px; background: #fff; border: 1px solid rgba(210, 210, 215, 0.7); border-radius: 16px; }
+  .pf-card-title { display: flex; align-items: center; gap: 8px; margin: 0 0 10px; font-size: 15px; font-weight: 700; color: #1d1d1f; }
+  .pf-card-icon { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 999px; flex-shrink: 0; }
+  .pf-card-icon svg { width: 12px; height: 12px; }
+  .pf-card-good { border-top: 3px solid #1f9d55; }
+  .pf-card-good .pf-card-icon { background: #e8f6ee; color: #0b5d33; }
+  .pf-card-warn { border-top: 3px solid #e08600; }
+  .pf-card-warn .pf-card-icon { background: #fff4e0; color: #7a4100; }
+  .pf-list { margin: 0; padding: 0; list-style: none; }
+  .pf-list li { position: relative; padding: 7px 0 7px 16px; font-size: 14.5px; line-height: 1.5; color: #424245; }
+  .pf-list li + li { border-top: 1px solid rgba(210, 210, 215, 0.45); }
+  .pf-list li::before { content: ''; position: absolute; left: 2px; top: 16px; width: 5px; height: 5px; border-radius: 999px; background: #aeaeb2; }
+
+  .pf-ticks { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; max-width: 68ch; }
+  .pf-ticks li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; line-height: 1.55; color: #424245; }
+  .pf-ticks svg { width: 18px; height: 18px; padding: 3px; margin-top: 2px; border-radius: 999px; flex-shrink: 0; }
+  .pf-ticks-good svg { color: #0b5d33; background: #e8f6ee; }
+  .pf-ticks-warn svg { color: #7a4100; background: #fff4e0; padding: 2px; }
+
+  /* Accordions */
+  .pf-acc-group { display: grid; gap: 8px; }
+  .pf-acc { background: #fff; border: 1px solid rgba(210, 210, 215, 0.7); border-radius: 14px; transition: border-color 0.15s ease, box-shadow 0.2s ease; }
+  .pf-acc[open] { border-color: rgba(174, 174, 178, 0.8); box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05); }
+  .pf-acc > summary { display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 10px 16px; cursor: pointer; list-style: none; user-select: none; border-radius: 14px; transition: background-color 0.15s ease; }
+  .pf-acc > summary::-webkit-details-marker { display: none; }
+  .pf-acc > summary:hover { background: #fafafc; }
+  .pf-acc[open] > summary { border-radius: 14px 14px 0 0; }
+  .pf-acc-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; font-size: 12.5px; font-weight: 700; color: #004f9f; background: rgba(0, 113, 227, 0.1); border-radius: 8px; flex-shrink: 0; font-variant-numeric: tabular-nums; }
+  .pf-acc-title { font-size: 15.5px; font-weight: 600; color: #1d1d1f; margin-right: auto; }
+  .pf-acc-chev { width: 16px; height: 16px; color: #6e6e73; flex-shrink: 0; transition: transform 0.2s ease; }
+  .pf-acc[open] .pf-acc-chev { transform: rotate(180deg); }
+  .pf-acc-body { padding: 4px 20px 22px 56px; }
+  @media (max-width: 639px) { .pf-acc-body { padding: 4px 16px 20px; } .pf-acc > summary .pf-conf { display: none; } }
+
+  .pf-prose { max-width: 66ch; font-size: 15.5px; line-height: 1.7; color: #424245; }
+  .pf-prose p { margin: 0; text-wrap: pretty; }
+  .pf-prose p + p, .pf-prose p + ol, .pf-prose ol + p { margin-top: 0.9em; }
+  .pf-prose ol { margin: 0; padding-left: 1.25em; list-style: decimal; display: grid; gap: 6px; }
+  .pf-prose strong { color: #1d1d1f; font-weight: 600; }
+  .pf-prose-sm { font-size: 14.5px; line-height: 1.65; }
+  .pf-fineprint { margin-top: 14px !important; padding-top: 12px; border-top: 1px solid rgba(210, 210, 215, 0.6); font-size: 13px; color: #6e6e73; }
+  .pf-bullets { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; max-width: 66ch; }
+  .pf-prose + .pf-bullets { margin-top: 16px; }
+  .pf-acc-body > .pf-bullets:first-child { margin-top: 0; }
+  .pf-bullets li { position: relative; padding-left: 18px; font-size: 15px; line-height: 1.6; color: #424245; }
+  .pf-bullets li::before { content: ''; position: absolute; left: 2px; top: 0.62em; width: 6px; height: 6px; border-radius: 2px; background: #0071e3; }
+  .pf-bullets-green li::before { background: #1f9d55; border-radius: 999px; }
+  .pf-bullets-muted li { font-size: 14px; color: #515154; }
+  .pf-bullets-muted li::before { background: #aeaeb2; border-radius: 999px; }
+  .pf-deflist { margin: 0; display: grid; gap: 16px; max-width: 66ch; }
+  .pf-deflist dt { font-size: 15px; font-weight: 600; color: #1d1d1f; }
+  .pf-deflist dd { margin: 3px 0 0; font-size: 15px; line-height: 1.6; color: #424245; }
+  .pf-callout { margin-top: 18px; padding: 14px 16px; max-width: 66ch; background: #f5f5f7; border-left: 3px solid #0071e3; border-radius: 0 10px 10px 0; }
+  .pf-callout-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #6e6e73; margin-bottom: 4px; }
+  .pf-callout p { margin: 0; font-size: 14px; line-height: 1.6; color: #424245; }
+
+  /* Timeline */
+  .pf-timeline { position: relative; margin: 24px 0 0; padding: 0; list-style: none; max-width: 66ch; }
+  .pf-timeline li { position: relative; display: grid; grid-template-columns: 96px 20px minmax(0, 1fr); column-gap: 12px; padding-bottom: 20px; }
+  .pf-timeline li:last-child { padding-bottom: 0; }
+  .pf-timeline li::before { content: ''; position: absolute; left: 117px; top: 16px; bottom: -6px; width: 2px; background: linear-gradient(#d2d2d7, #d2d2d7); border-radius: 2px; }
+  .pf-timeline li:last-child::before { display: none; }
+  .pf-tl-year { justify-self: end; align-self: start; padding: 2px 9px; font-size: 12.5px; line-height: 1.5; font-weight: 700; color: #004f9f; background: rgba(0, 113, 227, 0.09); border-radius: 999px; text-align: right; font-variant-numeric: tabular-nums; }
+  .pf-tl-dot { justify-self: center; width: 12px; height: 12px; margin-top: 6px; border-radius: 999px; background: #fff; border: 3px solid #0071e3; position: relative; z-index: 1; }
+  .pf-tl-event { font-size: 15px; line-height: 1.55; color: #424245; padding-top: 1px; }
+  @media (max-width: 639px) {
+    .pf-timeline li { grid-template-columns: 20px minmax(0, 1fr); grid-template-areas: 'dot year' 'dot event'; row-gap: 4px; column-gap: 10px; }
+    .pf-timeline li::before { left: 9px; }
+    .pf-tl-year { grid-area: year; justify-self: start; text-align: left; }
+    .pf-tl-dot { grid-area: dot; }
+    .pf-tl-event { grid-area: event; }
+  }
+
+  /* Confidence legend */
+  .pf-legend { margin: 0; display: grid; gap: 12px; }
+  .pf-legend > div { display: grid; grid-template-columns: 1fr; gap: 4px; }
+  @media (min-width: 640px) { .pf-legend > div { grid-template-columns: 168px minmax(0, 1fr); gap: 12px; align-items: start; } }
+  .pf-legend dd { margin: 0; font-size: 14px; line-height: 1.55; color: #424245; }
+  .pf-ratings { width: 100%; max-width: 420px; border-collapse: collapse; }
+  .pf-ratings th, .pf-ratings td { padding: 7px 0; border-top: 1px solid rgba(210, 210, 215, 0.5); text-align: left; }
+  .pf-ratings tr:first-child th, .pf-ratings tr:first-child td { border-top: 0; }
+  .pf-ratings th { font-size: 14px; font-weight: 500; color: #424245; }
+  .pf-ratings td { text-align: right; }
+
+  /* Related news */
+  .pf-news { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+  .pf-news-item { display: flex; align-items: flex-start; gap: 16px; padding: 16px 18px; background: #fff; border: 1px solid rgba(210, 210, 215, 0.7); border-radius: 14px; text-decoration: none; transition: border-color 0.15s ease, box-shadow 0.2s ease, transform 0.2s ease; }
+  a.pf-news-item:hover { border-color: rgba(174, 174, 178, 0.9); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07); transform: translateY(-1px); }
+  .pf-news-date { display: flex; flex-direction: column; align-items: center; width: 52px; padding: 6px 0; background: #f5f5f7; border-radius: 10px; flex-shrink: 0; }
+  .pf-news-month { font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c41e16; }
+  .pf-news-day { font-size: 20px; line-height: 1.1; font-weight: 700; color: #1d1d1f; font-variant-numeric: tabular-nums; }
+  .pf-news-year { font-size: 10.5px; color: #6e6e73; font-variant-numeric: tabular-nums; }
+  .pf-news-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 5px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .pf-news-major { padding: 1px 7px; color: #fff; background: #0071e3; border-radius: 999px; }
+  .pf-news-cat { color: #1d1d1f; }
+  .pf-news-type { color: #6e6e73; font-weight: 600; }
+  .pf-news-type::before { content: '· '; }
+  .pf-news-title { display: block; font-size: 15.5px; line-height: 1.4; font-weight: 600; color: #1d1d1f; text-wrap: pretty; transition: color 0.15s ease; }
+  a.pf-news-item:hover .pf-news-title { color: #0066cc; }
+  .pf-news-source { display: block; margin-top: 4px; font-size: 13px; color: #6e6e73; }
+  .pf-news-arrow { width: 16px; height: 16px; margin-top: 3px; color: #aeaeb2; flex-shrink: 0; transition: color 0.15s ease, transform 0.2s ease; }
+  a.pf-news-item:hover .pf-news-arrow { color: #0066cc; transform: translate(2px, -2px); }
+
+  /* Compare block */
+  .pf-compare { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding: 22px; background: linear-gradient(135deg, rgba(0, 113, 227, 0.07), rgba(0, 113, 227, 0.02)); border: 1px solid rgba(0, 113, 227, 0.18); border-radius: 18px; }
+  @media (min-width: 640px) { .pf-compare { flex-direction: row; align-items: center; justify-content: space-between; padding: 24px 26px; } }
+  .pf-vs { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px 0 10px; font-size: 14px; font-weight: 600; color: #1d1d1f; background: #fff; border: 1px solid rgba(210, 210, 215, 0.9); border-radius: 12px; text-decoration: none; transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.15s ease; }
+  .pf-vs:hover { border-color: #0071e3; background: rgba(0, 113, 227, 0.03); }
+  .pf-vs:active { transform: scale(0.97); }
+  .pf-vs-guide { padding: 0 14px; color: #0066cc; }
+  .pf-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(210, 210, 215, 0.6); font-size: 13px; color: #6e6e73; }
+
+  /* Right TOC */
+  .pf-toc { position: sticky; top: 76px; max-height: calc(100vh - 92px); overflow-y: auto; padding: 32px 2px 16px; scrollbar-width: none; }
+  .pf-toc-list { margin: 0; padding: 0; list-style: none; border-left: 1px solid rgba(210, 210, 215, 0.8); }
+  .toc-link { display: block; margin-left: -1px; padding: 6px 0 6px 14px; font-size: 13px; line-height: 1.35; color: #6e6e73; text-decoration: none; border-left: 2px solid transparent; transition: color 0.15s ease, border-color 0.15s ease; }
+  .toc-link:hover { color: #1d1d1f; }
+  .toc-link.is-active { color: #0066cc; font-weight: 600; border-left-color: #0071e3; }
+  .pf-facts { margin: 0; display: grid; gap: 12px; }
+  .pf-facts dt { font-size: 12px; color: #6e6e73; }
+  .pf-facts dd { margin: 2px 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; font-size: 13.5px; font-weight: 600; color: #1d1d1f; }
+
+  /* Sidebar polish */
+  .pf-side-close { width: 44px; height: 44px; margin-right: -8px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pf-btn, .pf-acc, .pf-acc > summary, .pf-acc-chev, .pf-secnav-link, .pf-secnav-link::after, .pf-news-item, .pf-news-arrow, .pf-news-title, .pf-vs, .toc-link {
+      transition: none !important;
+    }
+    .pf-btn:active, .pf-vs:active, .pf-secnav-browse:active, a.pf-news-item:hover, a.pf-news-item:hover .pf-news-arrow { transform: none; }
+  }
+</style>

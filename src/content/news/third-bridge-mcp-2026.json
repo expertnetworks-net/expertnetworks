@@ -1,0 +1,25 @@
+{
+  "title": "Third Bridge Launches Model Context Protocol for AI Research Workflows",
+  "slug": "third-bridge-mcp-2026",
+  "date": "2026-03-09",
+  "source": "Third Bridge (Press Release)",
+  "category": "AI",
+  "categoryColor": "#248A3D",
+  "gradientFrom": "#064e3b",
+  "gradientTo": "#059669",
+  "summary": "Third Bridge launched a Model Context Protocol (MCP) it describes as a platform-agnostic intelligence layer for the financial services ecosystem. The MCP makes Third Bridge's library of 100,000+ expert interview transcripts available inside leading large language models and specialist financial AI platforms, removing manual data movement between systems.",
+  "sourceUrl": "https://www.thirdbridge.com/en-us/about-us/media/news/third-bridge-launches-model-context-protocol-mcp",
+  "relatedNetworks": [
+    "third-bridge"
+  ],
+  "published": true,
+  "sourceType": "Press Release",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "Third Bridge's MCP extends its content-distribution strategy beyond named integrations (Anthropic, Aiera, Rogo, Samaya) into a standardized, platform-agnostic layer — making its transcript library reachable from virtually any AI environment a client chooses.",
+  "impactTags": [
+    "MCP",
+    "Content Distribution",
+    "AI Integration"
+  ]
+}

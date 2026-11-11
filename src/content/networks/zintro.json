@@ -59,7 +59,7 @@
   "regionStrength": "North America",
   "complianceBadge": "Standard Compliance",
   "aiBadge": "AI Moderation",
-  "lastUpdated": "2026-03-07",
+  "lastUpdated": "2026-11-11",
   "overview": "Zintro is a pioneer of the self-service expert network model, founded in 2007 by serial entrepreneur Stuart Lewtan in Boston. Lewtan conceived Zintro while serving as an executive-in-residence at a prominent Boston VC/PE firm, where he found existing expert networks overpriced and cumbersome. His solution: a marketplace where clients could post project briefs, receive expert responses within hours, and engage directly — with complete price transparency.\n\nZintro's core innovation is its dual service model. Clients can use the platform on a fully self-service basis (posting projects, reviewing expert responses, scheduling calls independently) or opt for full-service support comparable to GLG or AlphaSights, but at 30-75% lower cost. The company achieves this by maintaining remote operations teams in the Philippines and India alongside its Boston headquarters.\n\nWith 1M+ expert profiles and 500+ active clients ranging from startups to Global 1000 enterprises, Zintro has carved out a sustainable niche as the cost-effective, transparent alternative to premium expert networks. The company generates an estimated ~$7.1M in annual revenue and has operated profitably without major venture capital dependency.",
   "history": {
     "narrative": "Stuart Lewtan is a serial entrepreneur with a track record of successful technology ventures. Before Zintro, he founded Lewtan Technologies, a 100+ person company serving 400+ institutional clients in the asset-backed securities industry, which was acquired by DMG Information in 2004 (later sold to Moody's in 2015). He also co-founded MicroE Systems (precision motion control, acquired by GSI Group) and Axsun Technologies (MEMS-based optical engines for telecom and medical imaging).\n\nLewtan conceived Zintro around 2007 while serving as an executive-in-residence at a prominent Boston VC/PE firm, where he experienced firsthand the high costs and friction of traditional expert networks. He built Zintro as a fully self-service platform with no human intermediation. Over time, client demand led to the addition of full-service capabilities, creating the dual model that defines Zintro today.",
@@ -79,6 +79,10 @@
       {
         "year": "2020-2025",
         "event": "Grew to 1M+ expert profiles, 500+ active clients, and estimated ~$7.1M annual revenue"
+      },
+      {
+        "year": "2026 (September)",
+        "event": "Focus Crossroads acquired Zintro's B2B expert network and Concierge Program; Research Live reported the network at about 130,000 verified professionals; deal value undisclosed"
       }
     ]
   },
@@ -159,7 +163,8 @@
     "~400 employees (largely offshore) — smaller Boston HQ team may limit strategic capacity",
     "Less brand recognition than category leaders among Fortune 500 buyers",
     "Expert database size (1M+) includes profiles that may not be as actively maintained as smaller, curated networks",
-    "Limited office presence outside Boston compared to networks with global offices"
+    "Limited office presence outside Boston compared to networks with global offices",
+    "In September 2026 Focus Crossroads acquired Zintro's B2B expert network and Concierge Program assets; public reporting does not state how Zintro's remaining business will operate, so current service availability should be confirmed directly"
   ],
   "notableFacts": [
     "Founder Stuart Lewtan previously founded Lewtan Technologies (acquired by DMG Information/Moody's), MicroE Systems (acquired by GSI Group), and Axsun Technologies",
@@ -186,7 +191,8 @@
     "G2 — Zintro user reviews and platform ratings",
     "Insight Platforms — Zintro platform profile",
     "Integrity Research — expert network commoditization analysis featuring Zintro",
-    "Zintro AI-Moderated Interviews case study — 82% participant preference data"
+    "Zintro AI-Moderated Interviews case study — 82% participant preference data",
+    "November 2026 refresh: asset sale to Focus Crossroads sourced from Research Live (September 11, 2026), which describes the acquired network as about 130,000 verified professionals (roughly 50,000 senior executives) — a much smaller figure than the 1M+ profile count Zintro has marketed. Other profile fields were not re-verified and may no longer describe the business after the sale."
   ],
   "whyChoose": [
     "30-75% cost savings",

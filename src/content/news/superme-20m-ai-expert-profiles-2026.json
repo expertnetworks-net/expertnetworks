@@ -1,0 +1,23 @@
+{
+  "title": "SuperMe Raises $20M for a Network of AI Profiles Built from Real Experts",
+  "slug": "superme-20m-ai-expert-profiles-2026",
+  "date": "2026-10-29",
+  "source": "TechCrunch",
+  "category": "Funding",
+  "categoryColor": "#FF375F",
+  "gradientFrom": "#7f1d1d",
+  "gradientTo": "#ef4444",
+  "summary": "SuperMe, founded in 2024 by Casey Winters and Ludo Antonov, raised $20 million led by Kirsten Green of Forerunner with participation from Greylock Partners. TechCrunch describes the product as a network of AI profiles built from the knowledge of real-life experts: users ask a question and the platform assembles a group chat of relevant expert profiles, drawing on public sources and connected apps. The service is free for now and works with MCP, so questions can be asked from within chatbots such as Claude and ChatGPT.",
+  "sourceUrl": "https://techcrunch.com/2026/10/29/superme-raises-20m-for-its-network-of-ai-expert-profiles/",
+  "relatedNetworks": [],
+  "published": true,
+  "sourceType": "News Coverage",
+  "significance": "brief",
+  "featured": false,
+  "whyItMatters": "AI replicas of named experts are an adjacent model to the paid expert call; whether experts are compensated for their digital proxies is an open question the company says it is still considering.",
+  "impactTags": [
+    "Venture Funding",
+    "AI Expert Profiles",
+    "Adjacent Model"
+  ]
+}

@@ -13,7 +13,7 @@
   "employeeCountSource": "Tracxn / Getlatka (Jan 2026)",
   "expertCount": "1M (claimed)",
   "expertCountLabel": "Pre-qualified experts (AlphaSense marketing claim; not independently verified)",
-  "description": "AlphaSense is an AI-powered market intelligence platform that entered the expert network space through its $930 million acquisition of Tegus in 2024. The combined platform integrates 500M+ premium business documents, the Tegus Expert Transcript Library (240K+ transcripts), live expert calls, AI Interviewer-led Channel Checks, and structured financial data via Canalyst. With over 6,500 enterprise customers and $500M+ in ARR as of late 2025, AlphaSense is the largest player by revenue in the expert intelligence category, though its expert network is still being integrated post-acquisition.",
+  "description": "AlphaSense is an AI-powered market intelligence platform that entered the expert network space through its $930 million acquisition of Tegus in 2024. The combined platform integrates 500M+ premium business documents, the Tegus Expert Transcript Library (240K+ transcripts), live expert calls, AI Interviewer-led Channel Checks, and structured financial data via Canalyst. With 8,000+ enterprise customers (October 2026) and more than $700M in ARR as of Q2 2026, AlphaSense is the largest player by revenue in the expert intelligence category, though its expert network is still being integrated post-acquisition.",
   "services": [
     "Expert Calls",
     "Expert Insights (Tegus Transcript Library)",
@@ -32,7 +32,10 @@
     "Workflow Agents (custom AI automations)",
     "Generative Grid (structured multi-question analysis)",
     "Smart Synonyms",
-    "Sentiment analysis"
+    "Sentiment analysis",
+    "SuperAnalyst always-on AI agent (incl. autonomous expert identification and calls)",
+    "SuperAnalyst MCP for external AI tools",
+    "AI-Led Expert Calls (Tegus)"
   ],
   "industries": [
     "Financial Services",
@@ -81,7 +84,7 @@
     "surveys": true,
     "complianceTools": true
   },
-  "lastUpdated": "2026-03-07",
+  "lastUpdated": "2026-11-11",
   "overview": "AlphaSense is an AI-powered market intelligence platform that combines proprietary search technology, generative AI workflows, and one of the largest collections of business content in the industry. Founded in 2011 by Jack Kokko and Raj Neervannan, the platform started as an AI search engine for financial documents and has evolved into a comprehensive research platform spanning document search, expert content, financial data, and autonomous AI research agents. The $930M acquisition of Tegus in July 2024 added a major expert transcript library and expert call services, making AlphaSense a direct competitor in the expert network space alongside its core document intelligence business.",
   "history": {
     "narrative": "AlphaSense was founded in 2011 by Jack Kokko (CEO) and Raj Neervannan (CTO), who met at Wharton. Kokko, originally from Oulu, Finland, conceived the idea while working as an investment banking analyst at Morgan Stanley, frustrated by the manual process of searching through thousands of PDFs. The company launched as an AI-powered search engine for financial research documents and grew through acquisitions (Stream in 2021, Sentieo in 2022) and organic growth, raising over $1.4B across multiple rounds. The transformative moment came in June 2024 with the $930M acquisition of Tegus (which also brought BamSEC and Canalyst), making AlphaSense a combined document intelligence and expert network platform. Notably, AlphaSense had previously sued both Sentieo and Tegus before acquiring them.",
@@ -157,6 +160,26 @@
       {
         "year": "2026",
         "event": "Opening global headquarters at Hudson Yards, New York City"
+      },
+      {
+        "year": "2026",
+        "event": "Raises $350M at a $7.5B valuation (June 2026), led by Vitruvian Partners with Accenture Ventures and J.P. Morgan Asset Management; surpasses $600M ARR in Q1 2026"
+      },
+      {
+        "year": "2026 (Feb 24)",
+        "event": "Tegus by AlphaSense adds AI-Led Expert Calls conducted by an AI Interviewer Agent, with compliance-reviewed transcripts delivered in approximately 24 hours"
+      },
+      {
+        "year": "2026 (Jun 3)",
+        "event": "Introduces SuperAnalyst always-on AI agent; Accenture Ventures invests and Accenture becomes a partner integrating AlphaSense into client offerings"
+      },
+      {
+        "year": "2026 (Aug 27)",
+        "event": "Reports surpassing $700M ARR in Q2 2026 with 7,800+ customers; named the only Leader in The Forrester Wave: Market and Competitive Intelligence Platforms, Q3 2026"
+      },
+      {
+        "year": "2026 (Oct–Nov)",
+        "event": "Reports 8,000+ enterprise customers and 300,000+ expert interview transcripts (October 6); unveils Channel Check Intelligence at AlphaSummit 2026; launches SuperAnalyst MCP (November 4)"
       }
     ]
   },
@@ -212,7 +235,11 @@
       "Workflow Agents: user-built custom AI automations for recurring research",
       "Smart Synonyms: NLP-powered synonym expansion for comprehensive search coverage",
       "Sentiment analysis and entity extraction across 500M+ documents",
-      "AI-powered compliance scanning of expert transcripts for MNPI risk"
+      "AI-powered compliance scanning of expert transcripts for MNPI risk",
+      "SuperAnalyst: always-on agent running multi-step workflows across the platform, including identifying experts and conducting expert calls (June 2026)",
+      "AI-Led Expert Calls: AI Interviewer Agent conducts client-directed expert calls with standard compliance review (February 2026)",
+      "Channel Check Intelligence: verdict-first reads from expert conversations covering 750+ tickers, refreshed daily (October 2026)",
+      "SuperAnalyst MCP: agent access to 500M+ documents and Canalyst models from external AI tools (November 2026)"
     ]
   },
   "complianceExtended": {
@@ -288,7 +315,8 @@
     "Expert count '1M pre-qualified experts' from alpha-sense.com/pricing/ — marketing claim, not independently verified; previous '300K+' figure was also unverifiable",
     "240K+ transcripts, 8K/month growth, 27K+ companies from alpha-sense.com/platform/expert-insights/",
     "Acquisition history (Stream, Sentieo, lawsuits) from Sacra research and Inex One directory",
-    "Post-acquisition layoffs (Nov 2024) from Sacra; AlphaSights trademark lawsuit from Sacra and court records"
+    "Post-acquisition layoffs (Nov 2024) from Sacra; AlphaSights trademark lawsuit from Sacra and court records",
+    "November 2026 refresh: $700M+ ARR (Q2 2026) and 7,800+ customers from AlphaSense press release (Aug 27, 2026); 8,000+ enterprise customers and 300,000+ expert interview transcripts from press release (Oct 6, 2026); SuperAnalyst, Accenture partnership, AI-Led Expert Calls, AlphaSummit 2026, and SuperAnalyst MCP from alpha-sense.com press releases and product articles. Employee count was not re-verified in this pass."
   ],
   "whyChoose": [
     "Unified AI platform",

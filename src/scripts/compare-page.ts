@@ -25,13 +25,50 @@ export function bootComparePage(dataset: CompareDataset) {
   const matrixContent = document.getElementById('matrixContent');
 
   const providerCount = document.getElementById('providerCount');
-  const heroDirectoryBtn = document.getElementById('heroDirectoryBtn') as HTMLAnchorElement | null;
   const browseDirectoryBtn = document.getElementById('browseDirectoryBtn') as HTMLAnchorElement | null;
+  const controlBar = document.getElementById('controlBar');
+  const diffToggle = document.getElementById('diffToggle') as HTMLInputElement | null;
+  const confidenceToggle = document.getElementById('confidenceToggle') as HTMLInputElement | null;
+  const notesToggle = document.getElementById('notesToggle') as HTMLInputElement | null;
+  const resetViewBtn = document.getElementById('resetViewBtn');
+  const pickerEmpty = document.getElementById('pickerEmpty');
+  const pickerHint = document.getElementById('pickerHint');
+  const compareStatus = document.getElementById('compareStatus');
+
+  /* ---------- Toast ---------- */
+
+  function showToast(message: string) {
+    const existing = document.getElementById('compareToast');
+    if (existing) existing.remove();
+    const toast = document.createElement('div');
+    toast.id = 'compareToast';
+    toast.textContent = message;
+    Object.assign(toast.style, {
+      position: 'fixed', bottom: '24px', left: '50%', transform: 'translateX(-50%)',
+      background: '#1d1d1f', color: '#fff', padding: '10px 20px', borderRadius: '12px',
+      fontSize: '13px', fontWeight: '500', zIndex: '9999', opacity: '0',
+      transition: 'opacity 0.2s ease', pointerEvents: 'none', whiteSpace: 'nowrap',
+    });
+    document.body.appendChild(toast);
+    requestAnimationFrame(() => { toast.style.opacity = '1'; });
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      setTimeout(() => toast.remove(), 200);
+    }, 2500);
+  }
 
   /* ---------- State ---------- */
 
   function validSlugs(slugs: string[]): string[] {
     return slugs.filter((slug) => dataset.networkDataMap[slug]);
+  }
+
+  /* Default shortlist plus one requested provider. The defaults already fill all 5 slots, so a provider
+     outside them leads the list and the last default drops off (appending would silently discard it). */
+  function withProvider(slug: string): string[] {
+    const base = validSlugs([...dataset.defaultSlugs]);
+    if (base.includes(slug)) return base.slice(0, 5);
+    return [slug, ...base].slice(0, 5);
   }
 
   function getInitialSlugs(): string[] {
@@ -40,32 +77,30 @@ export function bootComparePage(dataset: CompareDataset) {
     if (fromUrl) {
       const slugs = [...new Set(fromUrl.split(','))].filter((slug) => dataset.networkDataMap[slug]);
       if (slugs.length === 1) {
-        const base = validSlugs([...dataset.defaultSlugs]);
-        if (!base.includes(slugs[0])) base.push(slugs[0]);
-        return base.slice(0, 5);
+        return withProvider(slugs[0]);
       }
       if (slugs.length >= 2) return slugs.slice(0, 5);
     }
     const presetParam = params.get('preset');
     if (presetParam && dataset.presets[presetParam]) {
       const presetSlugs = validSlugs([...dataset.presets[presetParam]]);
-      if (presetSlugs.length >= 2) return presetSlugs;
+      if (presetSlugs.length >= 2) return presetSlugs.slice(0, 5);
     }
     const addParam = params.get('add');
     if (addParam && dataset.networkDataMap[addParam]) {
-      const base = validSlugs([...dataset.defaultSlugs]);
-      if (!base.includes(addParam)) base.push(addParam);
-      return base.slice(0, 5);
+      return withProvider(addParam);
     }
     return validSlugs([...dataset.defaultSlugs]);
   }
 
   function getInitialPreset(): string {
     const params = new URLSearchParams(window.location.search);
-    const fromUrl = params.get('networks');
-    if (fromUrl) return '';
     const preset = params.get('preset');
-    return preset && dataset.presets[preset] ? preset : '';
+    if (!preset || !dataset.presets[preset]) return '';
+    /* An explicit provider list wins; the preset only stays active while the list still matches it. */
+    const fromUrl = params.get('networks');
+    if (fromUrl && !arraysEqual(getInitialSlugs(), validSlugs([...dataset.presets[preset]]).slice(0, 5))) return '';
+    return preset;
   }
 
   function getInitialGoal(): string {
@@ -81,22 +116,26 @@ export function bootComparePage(dataset: CompareDataset) {
   let activeSlugs = getInitialSlugs();
   let activePreset = getInitialPreset();
   let activeGoal = getInitialGoal();
-  let diffMode = false;
-  let showEvidenceNotes = false;
+  const initialParams = new URLSearchParams(window.location.search);
+  let diffMode = initialParams.get('diff') === '1';
+  let highConfidenceOnly = initialParams.get('confidence') === 'high';
+  let showEvidenceNotes = initialParams.get('notes') === '1';
   let expandedVisible = false;
-  let railObserver: IntersectionObserver | null = null;
 
   /* ---------- URL sync ---------- */
 
   function syncUrl() {
     const url = new URL(window.location.href);
     url.searchParams.set('networks', activeSlugs.join(','));
-    if (activePreset && dataset.presets[activePreset] && arraysEqual(activeSlugs, dataset.presets[activePreset])) {
+    if (activePreset && dataset.presets[activePreset] && arraysEqual(activeSlugs, validSlugs([...dataset.presets[activePreset]]).slice(0, 5))) {
       url.searchParams.set('preset', activePreset);
     } else {
       url.searchParams.delete('preset');
     }
     url.searchParams.delete('add');
+    if (diffMode) url.searchParams.set('diff', '1'); else url.searchParams.delete('diff');
+    if (highConfidenceOnly) url.searchParams.set('confidence', 'high'); else url.searchParams.delete('confidence');
+    if (showEvidenceNotes) url.searchParams.set('notes', '1'); else url.searchParams.delete('notes');
     window.history.replaceState({}, '', url.toString());
   }
 
@@ -104,19 +143,48 @@ export function bootComparePage(dataset: CompareDataset) {
 
   function renderGoalStates() {
     document.querySelectorAll<HTMLElement>('.goal-pill').forEach((button) => {
-      button.classList.toggle('is-active', button.dataset.goal === activeGoal);
+      const active = button.dataset.goal === activeGoal;
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-pressed', String(active));
     });
   }
 
   /* ---------- Modal ---------- */
 
   function filterPicker(query: string) {
-    const search = query.toLowerCase();
+    const search = query.toLowerCase().trim();
+    let shown = 0;
     networkPickerList?.querySelectorAll<HTMLElement>('.network-pick-btn').forEach((button) => {
       const name = button.dataset.name || '';
       const slug = button.dataset.slug || '';
-      button.style.display = (!query || name.includes(search)) && !activeSlugs.includes(slug) ? '' : 'none';
+      const visible = (!search || name.includes(search)) && !activeSlugs.includes(slug);
+      button.style.display = visible ? '' : 'none';
+      if (visible) shown += 1;
     });
+    pickerEmpty?.classList.toggle('hidden', shown > 0);
+    if (pickerHint) {
+      pickerHint.textContent = activeSlugs.length >= 5
+        ? 'You are comparing the maximum of 5. Adding one replaces the first provider in the list.'
+        : `Comparing ${activeSlugs.length} of 5. Pick a provider to add it.`;
+    }
+  }
+
+  /* ---------- Focus trap ---------- */
+
+  function trapFocus(event: KeyboardEvent) {
+    if (event.key !== 'Tab' || !addNetworkModal) return;
+    const focusable = addNetworkModal.querySelectorAll<HTMLElement>(
+      'button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    );
+    const visibleFocusable = Array.from(focusable).filter((element) => element.offsetParent !== null);
+    if (!visibleFocusable.length) return;
+    const first = visibleFocusable[0];
+    const last = visibleFocusable[visibleFocusable.length - 1];
+    if (event.shiftKey) {
+      if (document.activeElement === first) { event.preventDefault(); last.focus(); }
+    } else {
+      if (document.activeElement === last) { event.preventDefault(); first.focus(); }
+    }
   }
 
   let modalSavedScrollY = 0;
@@ -128,6 +196,7 @@ export function bootComparePage(dataset: CompareDataset) {
     document.body.style.top = `-${modalSavedScrollY}px`;
     if (networkSearch) networkSearch.value = '';
     filterPicker('');
+    document.addEventListener('keydown', trapFocus);
     /* Delay focus to prevent iOS keyboard shifting layout during animation */
     setTimeout(() => networkSearch?.focus(), 100);
   }
@@ -137,7 +206,9 @@ export function bootComparePage(dataset: CompareDataset) {
     addNetworkModal?.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('overlay-open');
     document.body.style.top = '';
+    document.removeEventListener('keydown', trapFocus);
     window.scrollTo(0, modalSavedScrollY);
+    addNetworkBtn?.focus();
   }
 
   /* ---------- Chip events ---------- */
@@ -146,16 +217,35 @@ export function bootComparePage(dataset: CompareDataset) {
     const atMinimum = activeSlugs.length <= 2;
     providerChips?.querySelectorAll<HTMLElement>('.remove-provider').forEach((button) => {
       button.style.display = atMinimum ? 'none' : '';
-      button.addEventListener('click', (event) => {
-        event.stopPropagation();
-        const slug = button.dataset.slug;
-        if (!slug || activeSlugs.length <= 2) return;
-        activeSlugs = activeSlugs.filter((candidate) => candidate !== slug);
-        activePreset = '';
-        activeGoal = '';
-        render();
-      });
     });
+  }
+
+  providerChips?.addEventListener('click', (event) => {
+    const button = (event.target as HTMLElement).closest<HTMLElement>('.remove-provider');
+    if (!button) return;
+    const slug = button.dataset.slug;
+    if (!slug || activeSlugs.length <= 2) return;
+    activeSlugs = activeSlugs.filter((candidate) => candidate !== slug);
+    activePreset = '';
+    activeGoal = '';
+    render();
+    addNetworkBtn?.focus();
+  });
+
+  /* ---------- View toggles ---------- */
+
+  function syncToggleUi() {
+    if (diffToggle) diffToggle.checked = diffMode;
+    if (confidenceToggle) confidenceToggle.checked = highConfidenceOnly;
+    if (notesToggle) notesToggle.checked = showEvidenceNotes;
+    resetViewBtn?.classList.toggle('hidden', !(diffMode || highConfidenceOnly || showEvidenceNotes));
+  }
+
+  function announce() {
+    if (!compareStatus) return;
+    const names = activeSlugs.map((slug) => dataset.networkDataMap[slug]?.name.split(' (')[0] || slug).join(', ');
+    const modes = [diffMode ? 'differences only' : '', highConfidenceOnly ? 'high-confidence rows' : '', showEvidenceNotes ? 'evidence notes shown' : ''].filter(Boolean).join(', ');
+    compareStatus.textContent = `Comparing ${names}${modes ? ` (${modes})` : ''}.`;
   }
 
   /* ---------- Render ---------- */
@@ -165,7 +255,7 @@ export function bootComparePage(dataset: CompareDataset) {
     try {
       view = buildCompareRender(activeSlugs, dataset, {
         diffMode,
-        highConfidenceOnly: false,
+        highConfidenceOnly,
         showEvidenceNotes,
       });
     } catch (err) {
@@ -186,7 +276,6 @@ export function bootComparePage(dataset: CompareDataset) {
 
     /* Metadata */
     if (providerCount) providerCount.textContent = `${activeSlugs.length}/5`;
-    if (heroDirectoryBtn) heroDirectoryBtn.href = view.directoryHref;
     if (browseDirectoryBtn) browseDirectoryBtn.href = view.directoryHref;
 
     /* Critical differences */
@@ -202,6 +291,8 @@ export function bootComparePage(dataset: CompareDataset) {
 
     /* Goal states */
     renderGoalStates();
+    syncToggleUi();
+    announce();
 
     syncUrl();
     bindTableScrollFade();
@@ -210,28 +301,43 @@ export function bootComparePage(dataset: CompareDataset) {
     }
   }
 
-  /* ---------- Rail nav observer ---------- */
+  /* ---------- Rail nav scroll-spy ---------- */
+
+  const railIds = ['criticalDiff', 'aiWorkflow', 'commercial', 'compliance', 'fullMatrix', 'methodology'];
+
+  function stickyOffset(): number {
+    return 52 + (controlBar?.offsetHeight || 0);
+  }
+
+  function updateRailActive() {
+    const railLinks = document.querySelectorAll<HTMLElement>('.rail-link');
+    if (!railLinks.length) return;
+    const line = stickyOffset() + 24;
+    let current = railIds[0];
+    for (const id of railIds) {
+      const element = document.getElementById(id);
+      if (element && element.getBoundingClientRect().top <= line) current = id;
+    }
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+      const last = railIds[railIds.length - 1];
+      const lastEl = document.getElementById(last);
+      if (lastEl && lastEl.getBoundingClientRect().top < window.innerHeight) current = last;
+    }
+    railLinks.forEach((link) => {
+      const active = link.dataset.rail === current;
+      link.classList.toggle('is-active', active);
+      if (active) link.setAttribute('aria-current', 'true'); else link.removeAttribute('aria-current');
+    });
+  }
 
   function updateRailNav() {
-    const railLinks = Array.from(document.querySelectorAll<HTMLElement>('.rail-link'));
-    if (!railLinks.length) return;
-
-    if (railObserver) {
-      railObserver.disconnect();
-      railObserver = null;
-    }
-
-    railObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        railLinks.forEach((link) => link.classList.toggle('is-active', link.dataset.rail === entry.target.id));
-      });
-    }, { rootMargin: '-140px 0px -60% 0px' });
-
-    ['criticalDiff', 'aiWorkflow', 'commercial', 'compliance', 'fullMatrix', 'methodology'].forEach((id) => {
-      const element = document.getElementById(id);
-      if (element) railObserver?.observe(element);
-    });
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => { ticking = false; updateRailActive(); });
+    }, { passive: true });
+    updateRailActive();
 
     /* Auto-open collapsed <details> when clicking a rail link */
     document.querySelectorAll<HTMLAnchorElement>('.rail-link').forEach((link) => {
@@ -244,6 +350,17 @@ export function bootComparePage(dataset: CompareDataset) {
       });
     });
   }
+
+  /* ---------- Sticky offsets ---------- */
+
+  function updateStickyOffset() {
+    document.documentElement.style.setProperty('--cmp-sticky-top', `${stickyOffset()}px`);
+  }
+  if (controlBar && 'ResizeObserver' in window) {
+    new ResizeObserver(updateStickyOffset).observe(controlBar);
+  }
+  window.addEventListener('resize', updateStickyOffset, { passive: true });
+  updateStickyOffset();
 
   /* ---------- Event bindings ---------- */
 
@@ -263,7 +380,11 @@ export function bootComparePage(dataset: CompareDataset) {
     button.addEventListener('click', () => {
       const slug = button.dataset.slug;
       if (!slug || activeSlugs.includes(slug)) return;
-      if (activeSlugs.length >= 5) activeSlugs.shift();
+      if (activeSlugs.length >= 5) {
+        const removedSlug = activeSlugs.shift()!;
+        const removedName = dataset.networkDataMap[removedSlug]?.name || removedSlug;
+        showToast(`Removed ${removedName} to stay within 5-provider limit`);
+      }
       activeSlugs.push(slug);
       activePreset = '';
       activeGoal = '';
@@ -287,10 +408,21 @@ export function bootComparePage(dataset: CompareDataset) {
       } else {
         activeGoal = goalId || '';
         activePreset = preset;
-        activeSlugs = [...dataset.presets[preset]].slice(0, 5);
+        activeSlugs = validSlugs([...dataset.presets[preset]]).slice(0, 5);
       }
       render();
     });
+  });
+
+  /* View toggles */
+  diffToggle?.addEventListener('change', () => { diffMode = diffToggle.checked; render(); });
+  confidenceToggle?.addEventListener('change', () => { highConfidenceOnly = confidenceToggle.checked; render(); });
+  notesToggle?.addEventListener('change', () => { showEvidenceNotes = notesToggle.checked; render(); });
+  resetViewBtn?.addEventListener('click', () => {
+    diffMode = false;
+    highConfidenceOnly = false;
+    showEvidenceNotes = false;
+    render();
   });
 
   /* Show more / fewer critical differences */
@@ -321,28 +453,39 @@ export function bootComparePage(dataset: CompareDataset) {
     }
   });
 
-  /* ---------- Table scroll fade ---------- */
+  /* ---------- Table scroll affordance ---------- */
 
   function bindTableScrollFade() {
     document.querySelectorAll<HTMLElement>('.table-shell').forEach((shell) => {
-      const checkEnd = () => {
+      const wrap = shell.closest<HTMLElement>('.table-wrap');
+      const check = () => {
+        const scrollable = shell.scrollWidth > shell.clientWidth + 4;
         const atEnd = shell.scrollLeft + shell.clientWidth >= shell.scrollWidth - 4;
         shell.classList.toggle('scrolled-end', atEnd);
+        wrap?.classList.toggle('is-scrollable', scrollable);
+        wrap?.classList.toggle('at-end', atEnd);
+        wrap?.classList.toggle('is-scrolled', shell.scrollLeft > 4);
       };
-      shell.addEventListener('scroll', checkEnd, { passive: true });
-      checkEnd();
+      if (!shell.dataset.scrollBound) {
+        shell.dataset.scrollBound = '1';
+        shell.addEventListener('scroll', check, { passive: true });
+      }
+      check();
     });
   }
+  window.addEventListener('resize', bindTableScrollFade, { passive: true });
+  document.querySelectorAll('details').forEach((details) => details.addEventListener('toggle', bindTableScrollFade));
 
   /* ---------- Init ---------- */
-  const needsClientRender = !arraysEqual(activeSlugs, dataset.defaultSlugs);
+  const needsClientRender = !arraysEqual(activeSlugs, dataset.defaultSlugs) || diffMode || highConfidenceOnly || showEvidenceNotes;
   if (needsClientRender) {
     render();
   } else {
     bindChipEvents();
     renderGoalStates();
+    syncToggleUi();
     syncUrl();
+    bindTableScrollFade();
   }
   updateRailNav();
-  bindTableScrollFade();
 }

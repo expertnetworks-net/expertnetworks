@@ -1,0 +1,26 @@
+{
+  "title": "VISASQ/COLEMAN Launches AI Scout, Offering Clients Expert Matches in Under Five Minutes",
+  "slug": "visasq-coleman-ai-scout-2026",
+  "date": "2026-03-11",
+  "source": "VisasQ (Press Release)",
+  "category": "AI",
+  "categoryColor": "#248A3D",
+  "gradientFrom": "#064e3b",
+  "gradientTo": "#059669",
+  "summary": "VISASQ/COLEMAN launched AI Scout, a service that gives clients direct, 24/7 access to the AI matching engine previously used only by its internal operations teams. The system aims to return qualified expert profiles within five minutes of a request submitted by email, with no login portal or forms. The company says it trained the technology for two years using a human-in-the-loop method across thousands of project scopes, and that its network includes more than 770,000 experts.",
+  "sourceUrl": "https://corp.visasq.co.jp/en/archives/20585",
+  "relatedNetworks": [
+    "visasq",
+    "coleman-research"
+  ],
+  "published": true,
+  "sourceType": "Press Release",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "Opening an internal matching engine directly to clients compresses the first step of an expert project from hours to minutes and reduces dependence on associate-driven sourcing.",
+  "impactTags": [
+    "AI Matching",
+    "Self-Serve",
+    "Speed"
+  ]
+}

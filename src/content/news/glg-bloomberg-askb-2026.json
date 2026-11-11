@@ -1,0 +1,25 @@
+{
+  "title": "GLG Expert Content Reaches Bloomberg Terminal via ASKB AI Interface",
+  "slug": "glg-bloomberg-askb-2026",
+  "date": "2026-05-14",
+  "source": "Integrity Research (Coverage)",
+  "category": "Partnerships",
+  "categoryColor": "#5AC8FA",
+  "gradientFrom": "#164e63",
+  "gradientTo": "#06b6d4",
+  "summary": "Industry coverage reported that GLG's Expert Content Library became accessible to Bloomberg Terminal clients through ASKB, Bloomberg's conversational AI interface, in beta. The integration places GLG's expert insights inside a workflow used widely across buy-side and sell-side desks, alongside the firm's reimagined myGLG platform.",
+  "sourceUrl": "https://www.integrity-research.com/glg-remakes-client-platform-with-agentic-ai/",
+  "relatedNetworks": [
+    "glg"
+  ],
+  "published": true,
+  "sourceType": "News Coverage",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "Distributing expert content through third-party AI surfaces like Bloomberg's ASKB mirrors the content-distribution strategy pursued by Third Bridge and Guidepoint, reinforcing that expert networks increasingly compete on where their insights can be consumed, not just on call access.",
+  "impactTags": [
+    "Content Distribution",
+    "AI Platform",
+    "Partnerships"
+  ]
+}

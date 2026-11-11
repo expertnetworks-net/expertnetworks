@@ -1,117 +1,100 @@
 # CLAUDE.md
 
-Repository guidance for AI-assisted edits.
+Instructions for AI agents that work in this repository.
+This file is loaded into each session. Keep it short. Put details in `docs/`.
 
-Last verified against the codebase: March 8, 2026
+## What this repository is
 
-## Repo Truths
+- A static Astro site for <https://expertnetworks.net>.
+- The repository is the CMS. Content is JSON in `src/content/`.
+- There is no server, no API, no database, no admin panel, and no React.
+- A push to the production branch deploys the live site. See `docs/DEPLOYMENT.md`.
 
-- This is a static Astro site for [https://expertnetworks.net](https://expertnetworks.net).
-- The repo itself is the CMS.
-- Content lives in JSON under `src/content/`.
-- There is no admin panel, no API surface, and no runtime content-editing workflow in the current repo.
-- The codebase does not currently use React components or React islands.
+## Terms
 
-Do not invent features that are not implemented.
+| Term | Meaning |
+|---|---|
+| provider | A company that the site profiles. This is the only term for the entity in the docs. |
+| network | The name for a provider in code and URLs: `src/content/networks/`, `relatedNetworks`, `/networks`. |
+| slug | The identifier of a provider or news item. It is the `slug` field and the file name without `.json`. |
+| production branch | The Git branch that Cloudflare Pages deploys to the live site. It is not `main`. |
 
-## Non-Negotiable Rules
+## Rules
 
-1. Treat `src/content.config.ts` as the source of truth for content shape.
-2. Do not add content fields without updating the schema.
-3. Do not describe the project as SSR, API-driven, or CMS-backed unless that architecture is actually added.
-4. Do not reintroduce admin/dashboard language into docs or code comments.
-5. Run `npm run verify` after meaningful code or content changes.
+1. `src/content.config.ts` is the source of truth for content shape. Change the schema before you add a field.
+2. Do not write a fact that you did not read in a public source in this session. See `docs/CONTENT-GUIDE.md`.
+3. Do not push to the production branch without the explicit approval of the owner. Get approval for each deploy.
+4. Run `npm run verify` after each change to code or content.
+5. Run `node .github/scripts/check-slugs.mjs` after each change in `src/content/`.
+6. Describe only what the code does now. Do not describe the site as SSR, API-driven, or CMS-backed.
+7. Keep the site static. A server, an adapter, or a runtime service is an architecture change. Ask the owner first.
+8. Keep each fact in one doc. Link to the doc that owns the fact. See the doc map below.
+9. When you change behavior, update the doc that owns that behavior in the same commit.
 
-## Core Content Model
+## Doc map
 
-### Providers
+Each fact has one owner. Read the owner before you work on that topic.
 
-- Files: `src/content/networks/*.json`
-- One file per provider profile
-- Used by homepage, directory, provider pages, compare page, global search, footer, and marquee
+| File | Owns |
+|---|---|
+| `README.md` | Purpose of the project, quick start, links. For human readers. |
+| `CLAUDE.md` | Agent rules, terms, repository map, commands, pitfalls. |
+| `docs/ARCHITECTURE.md` | Build pipeline, page and component responsibilities, client scripts, compare page design. |
+| `docs/CONTENT-GUIDE.md` | Sourcing rule, schema field reference, procedures for providers, news items, and compare config. |
+| `docs/DEPLOYMENT.md` | Branches, Cloudflare Pages, Node version, CI, deploy procedure, dependency updates, known issues. |
+| `docs/SECURITY.md` | Security posture, header policy rules, audit history. |
+| `docs/TROUBLESHOOTING.md` | Symptoms, causes, and corrections. |
+| `docs/archive/` | Historical files. Not maintained. Do not use them as a source of current facts. |
 
-### News
+## Repository map
 
-- Files: `src/content/news/*.json`
-- One file per signal
-- Used by homepage, `/news`, and related-news sections on provider pages
-- `relatedNetworks` must reference real provider slugs
+| Path | Content |
+|---|---|
+| `src/content.config.ts` | Zod schemas for the `networks` and `news` collections. |
+| `src/content/networks/*.json` | One file for each provider. |
+| `src/content/news/*.json` | One file for each news item. |
+| `src/content/compare.json` | Compare page defaults, presets, matrix rows, and compare-only provider data. |
+| `src/pages/` | Routes. One `.astro` file for each page. `networks/[slug].astro` makes one page for each provider. |
+| `src/layouts/BaseLayout.astro` | Metadata, JSON-LD, header, footer, shared browser script. |
+| `src/components/` | `Header`, `Footer`, `ParticleHero`, `TrackedNetworksMarquee`, `VsComparison`. |
+| `src/lib/compare-v2.ts` | Compare view-model and HTML renderer. Used at build time and in the browser. |
+| `src/scripts/compare-page.ts` | Compare page browser controller. |
+| `public/_headers` | Security headers, CSP, and cache rules for Cloudflare Pages. |
+| `scripts/verify-dist-links.mjs` | Internal link check on `dist/`. |
+| `.github/scripts/check-slugs.mjs` | Cross-file slug check on `src/content/`. |
+| `.github/workflows/verify.yml` | CI workflow. |
+| `.claude/skills/` | Project skills: `add-news`, `refresh-provider`, `deploy`. |
 
-### Compare
+## Commands
 
-- File: `src/content/compare.json`
-- Controls default providers, presets, buyer pathways, explainable insights, compare sections, and enriched compare-only fields
+| Command | Function |
+|---|---|
+| `npm ci` | Installs the locked dependencies. |
+| `npm run dev` | Starts the local dev server. |
+| `npm run build` | Builds the site into `dist/`. Validates all content against the schema. |
+| `npm run verify:links` | Checks internal `href` and `src` values in `dist/`. Needs a build first. |
+| `npm run check` | Runs `astro check` (TypeScript and template diagnostics). |
+| `npm run verify` | Runs build, link check, and `astro check` in sequence. Default check before each merge. |
+| `node .github/scripts/check-slugs.mjs` | Checks slugs, `relatedNetworks`, compare references, and logo paths. |
+| `npm audit --audit-level=high` | Reports the advisories that make CI fail. |
 
-## Page Ownership
+The required Node version is in `package.json` (`engines`). `.node-version` selects it for CI and Cloudflare Pages.
 
-- `src/pages/index.astro`
-  Homepage and hero behavior
-- `src/pages/networks/index.astro`
-  Directory filtering, search, view toggle, compare selection
-- `src/pages/networks/[slug].astro`
-  Provider profile rendering, sidebar navigation, related news
-- `src/pages/compare.astro`
-  Compare page shell and server-rendered default compare state
-- `src/lib/compare-v2.ts`
-  Shared compare view-model and HTML renderer
-- `src/scripts/compare-page.ts`
-  Compare-page client controller for filters, modal actions, and URL sync
-- `src/pages/news/index.astro`
-  Intelligence feed, filters, alternate view rendering
+## Skills
 
-## Shared Layout And Components
+| Skill | Use it to |
+|---|---|
+| `/add-news` | Add one news item from a public source. |
+| `/refresh-provider` | Verify a provider profile again and update it. |
+| `/deploy` | Deploy a verified branch to production. Only the owner starts this skill. |
 
-- `src/layouts/BaseLayout.astro`
-  Global metadata, layout chrome, JSON-LD, shared browser behavior
-- `src/components/Header.astro`
-  Navigation, search overlay, drawer
-- `src/components/Footer.astro`
-  Footer navigation and counts
-- `src/components/ParticleHero.astro`
-  Reusable dark header effect
-- `src/components/TrackedNetworksMarquee.astro`
-  Homepage provider marquee
+## Pitfalls
 
-## Implementation Notes
-
-- Most interactivity is inline browser JavaScript inside `.astro` files, but the compare page now uses a shared helper plus a bundled client script.
-- This is not a SPA. Navigation is normal page navigation.
-- Build-time content validation is strong; cross-file slug validation is still partly a maintainer responsibility.
-- The compare page is the most stateful public page and easiest to regress.
-- Because the site is static, query-string-specific compare selections still resolve in the browser after load. Do not describe that as SSR.
-
-## Common Pitfalls
-
-1. Slugs must stay consistent across network files, news `relatedNetworks`, and compare presets/defaults.
-2. A build can succeed even if a cross-reference is logically wrong.
-3. Inline-script regressions often come from changing DOM IDs or `data-*` attributes without updating selectors.
-4. Static asset paths under `public/` must match exactly, including filename case.
-5. If architecture changes, docs must be updated in the same pass.
-6. Keep compare rendering logic centralized in `src/lib/compare-v2.ts`; do not recreate a giant inline compare script in `src/pages/compare.astro`.
-
-## Validation Commands
-
-```bash
-npm run build
-npm run check
-npm run verify:links
-npm run verify
-```
-
-Use `npm run verify` as the default pre-merge check.
-
-## Deployment Context
-
-- GitHub default branch is `main`.
-- Cloudflare Pages preview branch is `main`.
-- Cloudflare Pages production branch is currently `claude/expert-network-sources-6oGs1` and should still be verified directly before assuming a push will update the live site.
-- The site is static and should stay static unless there is an explicit architecture change.
-
-## Editing Guidance For AI Agents
-
-- Prefer precise, source-grounded edits over broad rewrites.
-- When rewriting docs, verify claims against code first.
-- When changing content, preserve editorial tone and field semantics.
-- If you change compare behavior, keep `src/pages/compare.astro`, `src/lib/compare-v2.ts`, `src/scripts/compare-page.ts`, and `src/content/compare.json` aligned.
-- If compare changed materially, run `npm run verify` and do a quick browser pass on `/compare`.
-- When unsure, describe current behavior rather than future intent.
+1. **A push to `main` does not deploy.** The production branch is a different branch. See `docs/DEPLOYMENT.md`.
+2. **A build can pass with a wrong slug.** The schema does not check `relatedNetworks` or `src/content/compare.json` references. Run the slug check.
+3. **A build can pass with a broken UI.** Browser scripts find elements by `id`, class, and `data-*` attributes. If you rename one, update each selector that uses it.
+4. **The compare page has three code files and one config file.** Keep `src/pages/compare.astro`, `src/lib/compare-v2.ts`, `src/scripts/compare-page.ts`, and `src/content/compare.json` aligned. Put render logic in `src/lib/compare-v2.ts` only.
+5. **`public/_headers` contains the CSP.** A new external script, style, font, or embed needs a CSP change in the same commit. Do not remove the Cloudflare Web Analytics entries.
+6. **File names in `public/` are case-sensitive in CI and on Cloudflare Pages.**
+7. **CI fails on new high-severity advisories.** This can occur without a code change. See `docs/DEPLOYMENT.md`.
+8. **Counts go stale.** Do not write the number of providers, news items, or pages in a doc. Give the command that produces the number.
