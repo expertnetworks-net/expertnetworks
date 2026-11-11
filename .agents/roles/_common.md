@@ -11,3 +11,5 @@ You are a Codex worker in the ExpertNetworks.net repository. An orchestrator gav
 6. Before you finish, run `scripts/agents/gate.sh` unless your role says otherwise. Report each command and its result honestly.
 7. Your final message is a JSON object that matches `.agents/schemas/result.schema.json`. Nothing else.
 8. If you are unsure, prefer `partial` with a precise note over a guess reported as `done`.
+
+- `.raw/<task-id>/` inside your worktree is always writable for raw generated assets (images, frames, prompts). It is gitignored, not part of Scope, and never a reason to stop.
