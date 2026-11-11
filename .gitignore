@@ -9,3 +9,7 @@ drafts/
 *.log
 plan.md
 .claude/worktrees/
+
+# Agent swarm
+node_modules
+.agents/runs/

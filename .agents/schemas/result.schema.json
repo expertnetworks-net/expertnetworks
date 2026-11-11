@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WorkerResult",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["task_id", "role", "status", "summary", "commit_message", "files_changed", "checks", "out_of_scope", "risks", "followups"],
+  "properties": {
+    "task_id": { "type": "string" },
+    "role": { "type": "string", "enum": ["builder", "reviewer", "tester", "verifier", "monitor", "designer"] },
+    "status": { "type": "string", "enum": ["done", "partial", "blocked", "failed"] },
+    "summary": { "type": "string", "description": "What changed or what was found, max 5 sentences." },
+    "commit_message": { "type": "string", "description": "Imperative, max 72 chars. Empty if nothing should be committed." },
+    "files_changed": { "type": "array", "items": { "type": "string" } },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["command", "passed", "note"],
+        "properties": {
+          "command": { "type": "string" },
+          "passed": { "type": "boolean" },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "out_of_scope": { "type": "array", "items": { "type": "string" }, "description": "Files touched outside Scope, with reason. Must be empty for status done." },
+    "risks": { "type": "array", "items": { "type": "string" } },
+    "followups": { "type": "array", "items": { "type": "string" }, "description": "Proposed next tasks, one line each." }
+  }
+}

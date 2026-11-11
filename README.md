@@ -53,13 +53,14 @@ Before you commit:
 npm run verify
 ```
 
-`CLAUDE.md` contains the full command table.
+`AGENTS.md` contains the full command table.
 
 ## Documentation
 
 | Read this | To learn |
 |---|---|
-| [`CLAUDE.md`](CLAUDE.md) | Rules, repository map, commands, and pitfalls. Written for AI agents. Useful for all contributors. |
+| [`AGENTS.md`](AGENTS.md) | Rules, repository map, commands, and pitfalls. Written for AI agents (Codex and Claude). Useful for all contributors. |
+| [`docs/AGENT-WORKFLOW.md`](docs/AGENT-WORKFLOW.md) | How the orchestrator and Codex workers split, run, review, and merge work. |
 | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | How the build, the pages, and the browser scripts work. |
 | [`docs/CONTENT-GUIDE.md`](docs/CONTENT-GUIDE.md) | How to add or update a provider, a news item, or the compare config. Field reference. Sourcing rule. |
 | [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) | Branches, Cloudflare Pages, CI, the deploy procedure, and known issues. |

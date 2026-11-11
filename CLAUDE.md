@@ -1,100 +1,15 @@
 # CLAUDE.md
 
-Instructions for AI agents that work in this repository.
-This file is loaded into each session. Keep it short. Put details in `docs/`.
+@AGENTS.md
 
-## What this repository is
+## Claude-specific notes
 
-- A static Astro site for <https://expertnetworks.net>.
-- The repository is the CMS. Content is JSON in `src/content/`.
-- There is no server, no API, no database, no admin panel, and no React.
-- A push to the production branch deploys the live site. See `docs/DEPLOYMENT.md`.
+In this repository Claude is the **orchestrator**. Codex runs the workers. See `docs/AGENT-WORKFLOW.md`.
 
-## Terms
+As orchestrator:
 
-| Term | Meaning |
-|---|---|
-| provider | A company that the site profiles. This is the only term for the entity in the docs. |
-| network | The name for a provider in code and URLs: `src/content/networks/`, `relatedNetworks`, `/networks`. |
-| slug | The identifier of a provider or news item. It is the `slug` field and the file name without `.json`. |
-| production branch | The Git branch that Cloudflare Pages deploys to the live site. It is not `main`. |
-
-## Rules
-
-1. `src/content.config.ts` is the source of truth for content shape. Change the schema before you add a field.
-2. Do not write a fact that you did not read in a public source in this session. See `docs/CONTENT-GUIDE.md`.
-3. Do not push to the production branch without the explicit approval of the owner. Get approval for each deploy.
-4. Run `npm run verify` after each change to code or content.
-5. Run `node .github/scripts/check-slugs.mjs` after each change in `src/content/`.
-6. Describe only what the code does now. Do not describe the site as SSR, API-driven, or CMS-backed.
-7. Keep the site static. A server, an adapter, or a runtime service is an architecture change. Ask the owner first.
-8. Keep each fact in one doc. Link to the doc that owns the fact. See the doc map below.
-9. When you change behavior, update the doc that owns that behavior in the same commit.
-
-## Doc map
-
-Each fact has one owner. Read the owner before you work on that topic.
-
-| File | Owns |
-|---|---|
-| `README.md` | Purpose of the project, quick start, links. For human readers. |
-| `CLAUDE.md` | Agent rules, terms, repository map, commands, pitfalls. |
-| `docs/ARCHITECTURE.md` | Build pipeline, page and component responsibilities, client scripts, compare page design. |
-| `docs/CONTENT-GUIDE.md` | Sourcing rule, schema field reference, procedures for providers, news items, and compare config. |
-| `docs/DEPLOYMENT.md` | Branches, Cloudflare Pages, Node version, CI, deploy procedure, dependency updates, known issues. |
-| `docs/SECURITY.md` | Security posture, header policy rules, audit history. |
-| `docs/TROUBLESHOOTING.md` | Symptoms, causes, and corrections. |
-| `docs/archive/` | Historical files. Not maintained. Do not use them as a source of current facts. |
-
-## Repository map
-
-| Path | Content |
-|---|---|
-| `src/content.config.ts` | Zod schemas for the `networks` and `news` collections. |
-| `src/content/networks/*.json` | One file for each provider. |
-| `src/content/news/*.json` | One file for each news item. |
-| `src/content/compare.json` | Compare page defaults, presets, matrix rows, and compare-only provider data. |
-| `src/pages/` | Routes. One `.astro` file for each page. `networks/[slug].astro` makes one page for each provider. |
-| `src/layouts/BaseLayout.astro` | Metadata, JSON-LD, header, footer, shared browser script. |
-| `src/components/` | `Header`, `Footer`, `ParticleHero`, `TrackedNetworksMarquee`, `VsComparison`. |
-| `src/lib/compare-v2.ts` | Compare view-model and HTML renderer. Used at build time and in the browser. |
-| `src/scripts/compare-page.ts` | Compare page browser controller. |
-| `public/_headers` | Security headers, CSP, and cache rules for Cloudflare Pages. |
-| `scripts/verify-dist-links.mjs` | Internal link check on `dist/`. |
-| `.github/scripts/check-slugs.mjs` | Cross-file slug check on `src/content/`. |
-| `.github/workflows/verify.yml` | CI workflow. |
-| `.claude/skills/` | Project skills: `add-news`, `refresh-provider`, `deploy`. |
-
-## Commands
-
-| Command | Function |
-|---|---|
-| `npm ci` | Installs the locked dependencies. |
-| `npm run dev` | Starts the local dev server. |
-| `npm run build` | Builds the site into `dist/`. Validates all content against the schema. |
-| `npm run verify:links` | Checks internal `href` and `src` values in `dist/`. Needs a build first. |
-| `npm run check` | Runs `astro check` (TypeScript and template diagnostics). |
-| `npm run verify` | Runs build, link check, and `astro check` in sequence. Default check before each merge. |
-| `node .github/scripts/check-slugs.mjs` | Checks slugs, `relatedNetworks`, compare references, and logo paths. |
-| `npm audit --audit-level=high` | Reports the advisories that make CI fail. |
-
-The required Node version is in `package.json` (`engines`). `.node-version` selects it for CI and Cloudflare Pages.
-
-## Skills
-
-| Skill | Use it to |
-|---|---|
-| `/add-news` | Add one news item from a public source. |
-| `/refresh-provider` | Verify a provider profile again and update it. |
-| `/deploy` | Deploy a verified branch to production. Only the owner starts this skill. |
-
-## Pitfalls
-
-1. **A push to `main` does not deploy.** The production branch is a different branch. See `docs/DEPLOYMENT.md`.
-2. **A build can pass with a wrong slug.** The schema does not check `relatedNetworks` or `src/content/compare.json` references. Run the slug check.
-3. **A build can pass with a broken UI.** Browser scripts find elements by `id`, class, and `data-*` attributes. If you rename one, update each selector that uses it.
-4. **The compare page has three code files and one config file.** Keep `src/pages/compare.astro`, `src/lib/compare-v2.ts`, `src/scripts/compare-page.ts`, and `src/content/compare.json` aligned. Put render logic in `src/lib/compare-v2.ts` only.
-5. **`public/_headers` contains the CSP.** A new external script, style, font, or embed needs a CSP change in the same commit. Do not remove the Cloudflare Web Analytics entries.
-6. **File names in `public/` are case-sensitive in CI and on Cloudflare Pages.**
-7. **CI fails on new high-severity advisories.** This can occur without a code change. See `docs/DEPLOYMENT.md`.
-8. **Counts go stale.** Do not write the number of providers, news items, or pages in a doc. Give the command that produces the number.
+1. Turn the owner's request into task specs in `.agents/tasks/`, from `_TEMPLATE.md`. Keep scopes disjoint so tasks can run in parallel.
+2. Dispatch with `scripts/agents/swarm.sh`. Do not do large edits yourself when a worker can do them.
+3. Read each worker report in `.agents/runs/<task-id>/result.json`. Do not trust a report without the gate.
+4. Run `scripts/agents/swarm.sh review <task-id>` (Codex review) and `scripts/agents/gate.sh` on the branch before you merge.
+5. Merge agent branches into an integration branch. Deploy only with `/deploy` and the owner's approval.
