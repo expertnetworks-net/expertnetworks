@@ -38,6 +38,7 @@ After a worker ends:
 | Trusting a worker's "gate passed" | The first verifier reported a failed gate caused by tooling, not content. Always run the gate from the orchestrator. |
 | Trusting dated "confirmed" notes | A worker wrote "2026-11-11 check confirms" for pages the diff gave no evidence of. `metrics.mjs` now compares citations with the event log. |
 | Trusting your own instrumentation without a spot-check | The first version of the citation check reported 27 of 28 citations as unopened. It was a parser gap (batched page opens), not fabrication. |
+| One-file Scope for a fact that appears in many files | Verifier tasks scoped to one profile produced correct profiles that contradicted guide pages, `compare.json` presets, and badge fields. Follow each wave with a consistency task. |
 | Wide Scope "just in case" | Not tried, on purpose: MAST lists specification failures as the main cause of multi-agent failure. |
 | Pushing every agent branch | Each push is a Cloudflare Pages build (500 per month on Free). Agent branches stay local. |
 
@@ -84,6 +85,7 @@ One row per experiment. Record the question, the setup, the numbers, and the dec
 | 2026-11-11 | Can a verifier audit a profile from public sources? | GLG, flag-only, effort `high` | 60 claims checked, 37 confirmed, 15 issues; 402 s; 40 pages | Role is viable. Write the research protocol. |
 | 2026-11-11 | Does cross-vendor review add value? | Claude reviews Codex fixes on GLG | 1 MERGE with 3 findings, 1 BLOCK with 4 findings; a legal-risk passage caught | Mandatory for content. |
 | 2026-11-11 | Verify-and-fix in one worker, effort `high` | AlphaSights, Third Bridge, Guidepoint | 425–458 s, 184k–227k uncached input tokens, 34–39 pages, 0–1 unseen citations; 5–16 of ~40 claims confirmed as written | Works. Next: same protocol at `medium` on 13 profiles and compare pages opened, unseen citations, review verdicts. |
+| 2026-11-11 | Does cross-vendor review hold on the full wave, and does effort `medium` keep quality? | Claude review of 6 `high` profiles; 6 more profiles at `medium` | Review: 3 MERGE, 3 BLOCK. Main cause of BLOCK: a profile fix that contradicts other pages, `compare.json` presets, or badge fields the worker left untouched; removed fields that blank a compare cell or a profile stat. `medium` vs `high`: ~3.8 min vs ~8 min, ~120k vs ~193k uncached tokens, 17–28 vs 32–53 pages, 19–36 vs 37–46 claims checked. | Profile verification needs a second, cross-file pass: one `builder` task per wave for consistency (pages, compare, badges). `medium` is cheaper but shallower; judge it by review verdicts before adopting. Do not deploy a wave before the consistency pass. |
 
 ## 8. Known pitfalls of the tooling
 
