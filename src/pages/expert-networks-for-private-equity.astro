@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+const known = (v: unknown): v is string => typeof v === 'string' && v.trim() !== '' && !/^not (publicly )?(disclosed|verified)/i.test(v);
 
 const allNetworks = await getCollection('networks');
 const published = allNetworks.filter(n => n.data.published).sort((a, b) => a.data.priority - b.data.priority);
@@ -122,7 +123,7 @@ const peNetworks = published.filter(n => {
                       <span class="text-[10px] px-2 py-0.5 rounded-full bg-bg-secondary text-tertiary font-medium">{n.data.deliveryModel}</span>
                     )}
                   </div>
-                  <p class="text-[13px] leading-relaxed text-secondary mb-2">{n.data.expertCount || 'Not disclosed'} experts · {n.data.headquarters?.split(',')[0] || 'Not disclosed'} · Founded {n.data.founded || 'Not disclosed'}</p>
+                  <p class="text-[13px] leading-relaxed text-secondary mb-2">{known(n.data.expertCount) ? `${n.data.expertCount} experts` : 'Expert count not disclosed'} · {n.data.headquarters?.split(',')[0] || 'Not disclosed'} · Founded {n.data.founded || 'Not disclosed'}</p>
                   {peRelevance.length > 0 && (
                     <p class="text-xs text-accent-purple italic">PE fit: {peRelevance[0]}</p>
                   )}

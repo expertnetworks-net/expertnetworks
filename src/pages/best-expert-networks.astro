@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+const known = (v: unknown): v is string => typeof v === 'string' && v.trim() !== '' && !/^not (publicly )?(disclosed|verified)/i.test(v);
 
 const allNetworks = await getCollection('networks');
 const published = allNetworks.filter(n => n.data.published).sort((a, b) => a.data.priority - b.data.priority);
@@ -92,9 +93,9 @@ published.forEach(n => {
                 <div class="flex flex-wrap gap-3 text-[11px] text-tertiary">
                   <span>Founded {n.data.founded || 'Not disclosed'}</span>
                   <span>·</span>
-                  <span>{n.data.expertCount || 'Not disclosed'} experts</span>
+                  <span>{known(n.data.expertCount) ? `${n.data.expertCount} experts` : 'Expert count not disclosed'}</span>
                   <span>·</span>
-                  <span>{n.data.pricingModel || 'Not disclosed'} pricing</span>
+                  <span>{known(n.data.pricingModel) ? `${n.data.pricingModel} pricing` : 'Pricing not disclosed'}</span>
                   <span>·</span>
                   <span>{n.data.headquarters?.split(',')[0] || 'Not disclosed'}</span>
                 </div>
