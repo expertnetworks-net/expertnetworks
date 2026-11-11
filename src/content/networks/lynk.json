@@ -7,207 +7,198 @@
   "gradientTo": "#67e8f9",
   "type": "Expert Network",
   "founded": 2015,
-  "headquarters": "Hong Kong",
-  "employeeCount": "200+",
-  "expertCount": "840K+",
-  "description": "Asia-Pacific focused 'Knowledge-as-a-Service' platform with 840,000+ experts, using machine learning to match clients with regional specialists across Greater China, Southeast Asia, and global markets. Raised $35M+ in venture funding.",
+  "employeeCount": "200+ (January 2021)",
+  "expertCount": "800,000+ (company-stated)",
+  "description": "Lynk provides expert interviews, surveys and consulting services. It reports a global network of 800,000+ experts, consultants and talents, with AI matching and support from its Client Solutions team.",
   "services": [
     "Expert Calls",
     "Surveys",
-    "Compliance Tools",
-    "Asia Research",
-    "KaaS Platform"
+    "Consulting Projects",
+    "Market Research",
+    "Workflow Automation"
   ],
   "aiCapabilities": [
-    "ML-driven expert matching",
-    "Cross-border compliance automation",
-    "Multilingual NLP search",
-    "SaaS knowledge platform"
+    "AI expert matching (company-stated)",
+    "Workflow automation (company-stated)",
+    "AI document generation (company-stated)",
+    "AI data extraction (company-stated)"
   ],
   "industries": [
     "Financial Services",
     "Technology",
     "Consumer",
-    "Industrials",
     "Healthcare"
   ],
-  "pricingModel": "Per-call",
-  "pricingDetail": "Per-call with SaaS subscription options",
+  "pricingModel": "Contact for quote",
+  "pricingDetail": "Lynk invites clients to discuss customized solutions with its team; current per-call rates and subscription terms were not verified.",
   "keyDifferentiators": [
-    "First SaaS platform built on an expert network",
-    "840K+ expert database — one of the largest globally",
-    "Deep Asia-Pacific coverage with offices across 8+ cities"
+    "Company-reported global expert and survey networks",
+    "Client Solutions team plus independent consultants",
+    "Unbundled services or full-project support"
   ],
   "bestFor": [
-    "Asia-Pacific",
-    "Cross-Border",
-    "Financial Institutions"
+    "Expert Interviews",
+    "Custom Surveys",
+    "Consulting Projects"
   ],
   "compliance": {
-    "mnpiPolicy": "Multi-jurisdictional MNPI policies covering APAC regulatory frameworks",
-    "expertVetting": "Regional compliance checks with local regulatory alignment across Asian markets",
-    "auditTrail": true,
-    "regulatoryHistory": "Clean regulatory record. Experienced operational challenges during 2022 market downturn"
+    "mnpiPolicy": "Lynk says experts must not discuss confidential or material non-public information, or speak on behalf of their current employer.",
+    "expertVetting": "Lynk describes background database searches, reference checks, mandatory training and assessments.",
+    "auditTrail": true
   },
   "featured": false,
   "priority": 28,
   "published": true,
-  "categoryBadge": "Asia Specialist",
-  "deliveryModel": "Self-Serve",
-  "regionStrength": "Asia-Pacific",
-  "complianceBadge": "Standard Compliance",
+  "categoryBadge": "Technology-First",
+  "deliveryModel": "Hybrid",
+  "regionStrength": "Global",
+  "complianceBadge": "Compliance Tools",
   "aiBadge": "AI Matching",
-  "lastUpdated": "2026-03-07",
-  "overview": "Lynk is an Asia-Pacific-focused expert network operating as a 'Knowledge-as-a-Service' (KaaS) platform — described as the first SaaS platform built on top of an expert network. Founded in 2015 in Hong Kong by Peggy Choi, a former Silver Lake and TPG private equity professional, Lynk uses machine learning to match clients with experts from its database of 840,000+ professionals.\n\nThe company raised approximately $35 million across five funding rounds from a diverse investor base including Brewer Lane Ventures, MassMutual Ventures, Alibaba Entrepreneurs Fund, UBS, and Wavemaker Partners. At its peak, Lynk had over 200 employees across offices in Hong Kong, New York, Singapore, London, Mumbai, Shanghai, Hyderabad, Toronto, and Manila.\n\nHowever, Lynk faced significant challenges during the 2022 market downturn. The company was acquired by Eden in April 2022 and subsequently experienced major layoffs, late payments to experts and employees, and departures of senior leaders. Despite these difficulties, Lynk's platform and expert database remain among the largest in the Asia-Pacific region.",
+  "lastUpdated": "2026-11-11",
+  "overview": "Lynk is an expert network founded in 2015. In a GPCA interview, Peggy Choi identified Evan Xiao Han and Jennifer Li as fellow founders and described her prior work at Silver Lake and TPG.\n\nLynk currently presents itself as a consulting and market research solution, offering expert interviews, surveys and project support. Its website reports 800,000+ experts, consultants and talents. It combines a Client Solutions team with independent consultants and industry specialists, offering unbundled services or full-project engagements.\n\nIn September 2021, Lynk announced that investment from UBS brought total funding to $35 million. This is a historical funding figure, not a current valuation or funding total.",
   "history": {
-    "narrative": "Peggy Choi founded Lynk in 2015 in Hong Kong (originally as The Straits Network, incorporated in Singapore). Choi had worked at Silver Lake and TPG in private equity, where she was a heavy user of expert networks and saw an opportunity to build a technology-first alternative. She was joined by co-founders Jennifer Li and Evan Xiao Han, a Wharton MBA recruited through the Hong Kong-Penn alumni network.\n\nLynk raised a $1M seed round from Wavemaker Partners in 2015, followed by a $4M Series A in 2017 from Hong Leong Financial Group, Cyberport, and CRE Venture Capital. A $1M round in 2019 was led by MassMutual Ventures Southeast Asia with Alibaba Entrepreneurs Fund. The major funding came in January 2021: a $24M Series B from Brewer Lane Ventures and MassMutual Ventures. UBS invested an additional $5M in September 2021 to cross-sell UBS analysts as experts on the platform.\n\nThe 2022 market downturn hit Lynk hard. The company was acquired by Eden in April 2022. Subsequent reports indicated late payments of expert honorariums and employee salaries, major layoffs, and departures of senior leaders including the CCO, CFO, and SVPs across product, sales, and marketing.",
+    "narrative": "Founded in 2015, Lynk developed its Knowledge-as-a-Service platform to connect companies with specialist expertise. Funding included a $1 million seed round in 2015 and a $4 million Series A in 2017, according to Global Venturing. Its November 2019 announcement named MassMutual Ventures Southeast Asia, Alibaba Entrepreneurs Fund and Wavemaker Partners but did not disclose an amount.\n\nLynk announced $24 million in funding in January 2021, led by Brewer Lane Ventures and MassMutual Ventures with Alibaba Entrepreneurs Fund participating. UBS invested later that year; the September announcement reported $35 million raised to date.",
     "timeline": [
       {
         "year": "2015",
-        "event": "Founded by Peggy Choi, Jennifer Li, and Evan Xiao Han in Hong Kong (originally as The Straits Network)"
-      },
-      {
-        "year": "2015",
-        "event": "Raised $1M seed round from Wavemaker Partners"
+        "event": "Founded by Peggy Choi with Evan Xiao Han and Jennifer Li; raised a $1 million seed round led by Wavemaker Partners."
       },
       {
         "year": "2017",
-        "event": "Raised $4M Series A from Hong Leong Financial Group, Cyberport, and CRE Venture Capital"
+        "event": "Raised a $4 million Series A, according to Global Venturing."
       },
       {
-        "year": "2019",
-        "event": "Raised $1M from MassMutual Ventures SEA and Alibaba Entrepreneurs Fund"
+        "year": "2019 (November)",
+        "event": "Announced funding led by MassMutual Ventures Southeast Asia, with Alibaba Entrepreneurs Fund and Wavemaker Partners; amount undisclosed."
       },
       {
         "year": "2021 (January)",
-        "event": "Raised $24M Series B from Brewer Lane Ventures and MassMutual Ventures; 840,000+ experts, 200+ employees"
+        "event": "Announced $24 million in funding led by Brewer Lane Ventures and MassMutual Ventures, with Alibaba Entrepreneurs Fund participating."
       },
       {
         "year": "2021 (September)",
-        "event": "UBS invested $5M to integrate UBS analysts as experts on the Lynk platform"
-      },
-      {
-        "year": "2022 (April)",
-        "event": "Acquired by Eden; faced market downturn with layoffs and operational challenges"
+        "event": "UBS invested $5 million; Lynk reported $35 million in total funding at that time."
       }
     ]
   },
   "servicesDetailed": [
     {
-      "name": "Knowledge-as-a-Service Platform",
-      "description": "Lynk's SaaS platform enables clients to access expertise on-demand through a self-service interface. Unlike traditional expert networks where clients submit requests and wait for matches, the KaaS model allows direct search, filtering, and engagement with experts across the 840,000+ database."
-    },
-    {
       "name": "Expert Consultations",
-      "description": "One-on-one phone consultations with vetted industry experts across Asia-Pacific and global markets. Leverages ML matching to connect clients with specialists in Greater China, Southeast Asia, India, Japan, and other regions."
+      "description": "Lynk offers expert interviews and consultations, supported by its Client Solutions team and network of specialists."
     },
     {
       "name": "Survey Services",
-      "description": "Quantitative survey research leveraging the expert database for targeted B2B sampling, with particular strength in Asia-Pacific markets where other networks have limited coverage."
+      "description": "Lynk offers custom surveys and reports access to 6.3 million B2B and B2C survey panelists."
     },
     {
-      "name": "Cross-Border Research",
-      "description": "Multi-jurisdictional research spanning Asian and Western markets, supported by local teams across Hong Kong, Singapore, Mumbai, Shanghai, and other key cities with native language capabilities."
+      "name": "Consulting and Market Research",
+      "description": "Lynk advertises market entry research, competitor and customer insights, product research, due diligence and digital transformation support."
+    },
+    {
+      "name": "Automation Services",
+      "description": "Lynk advertises AI-assisted data extraction, document generation and lead generation automation."
     }
   ],
   "aiPlatform": {
-    "narrative": "Lynk positioned itself as the first SaaS platform built on an expert network, differentiating from traditional expert networks through technology-first engagement. The platform uses machine learning algorithms to match clients with the most relevant experts from its 840,000+ database, considering factors including expertise relevance, availability, compliance status, and past engagement quality. The KaaS model enables self-service expert search and direct engagement, reducing the traditional expert network's reliance on human project managers for every interaction.",
+    "narrative": "Lynk says it uses AI for expert matching and workflow automation. Its current automation offering also includes document generation, data extraction and lead generation. These are provider descriptions; performance was not independently tested.",
     "features": [
-      "ML-driven expert matching across 840,000+ professionals",
-      "Self-service SaaS platform for direct expert search and engagement",
-      "Multilingual search supporting English, Mandarin, Japanese, and other Asian languages",
-      "Cross-border compliance automation spanning multiple APAC jurisdictions",
-      "Real-time expert availability tracking and scheduling",
-      "Client analytics dashboard with engagement and spend insights"
+      "AI expert matching (company-stated)",
+      "Workflow automation (company-stated)",
+      "Document generation and data extraction (company-stated)",
+      "Lead generation automation (company-stated)"
     ]
   },
   "complianceExtended": {
-    "narrative": "Lynk operates across multiple Asia-Pacific jurisdictions, requiring compliance with diverse regulatory frameworks including Hong Kong SFC, Singapore MAS, and other regional standards. The platform's cross-border compliance automation handles the complexity of multi-jurisdictional expert engagements, managing cooling-off periods, conflict-of-interest screening, and MNPI policies across different regulatory environments.",
+    "narrative": "Lynk describes a customizable compliance framework for enterprise consultations. These controls are company-stated rather than an independent assessment of their effectiveness.",
     "highlights": [
-      "Multi-jurisdictional compliance across APAC regulatory frameworks",
-      "Cross-border compliance automation for multi-country engagements",
-      "MNPI monitoring aligned with Hong Kong SFC and Singapore MAS standards",
-      "Conflict-of-interest screening with regional regulatory alignment",
-      "Cooling-off period enforcement across all jurisdictions",
-      "Audit trail for all expert interactions"
-    ],
-    "regulatoryContext": "Lynk operates across some of the most diverse regulatory environments in the expert network industry, spanning Hong Kong, Singapore, India, mainland China, Japan, and Western markets. The company has maintained a clean regulatory record, though the 2022 acquisition and subsequent operational challenges introduced uncertainty about ongoing compliance infrastructure."
+      "Lynk says expert interactions are stored and linked to expert profiles for monitoring and audits",
+      "Company-described background verification and reference checks",
+      "Mandatory training at joining and annually thereafter, according to Lynk",
+      "Rules against current-employer consultations and sharing MNPI",
+      "Customizable selection rules and a company Do Not Call List"
+    ]
   },
   "clientFit": {
-    "narrative": "Lynk is best suited for clients needing deep Asia-Pacific expertise, particularly in Greater China, Southeast Asia, and India. The SaaS platform model appeals to organizations that prefer self-service expert engagement over traditional intermediated models. Clients focused exclusively on Western markets may find networks with deeper US/European coverage more suitable.",
+    "narrative": "Editorial assessment: the advertised mix of interviews, surveys and consulting projects may suit buyers who want research and implementation support from one provider. Buyers should confirm current specialist availability, delivery format and commercial terms.",
     "segments": [
-      "Private equity firms and investors conducting Asia-Pacific due diligence",
-      "Fortune 100 companies evaluating market entry or competitive dynamics in Asia",
-      "Consulting firms needing regional specialists across multiple Asian markets",
-      "Government entities and development organizations researching APAC markets",
-      "Financial institutions requiring cross-border Asia-Western research"
+      "Investment firms conducting due diligence",
+      "Corporations researching markets and customers",
+      "Consulting teams seeking specialist input"
     ]
   },
   "strengths": [
-    "840,000+ expert database — one of the largest in the industry, with deep Asia-Pacific coverage",
-    "First SaaS platform built on an expert network — pioneered the KaaS model",
-    "Founder Peggy Choi's Silver Lake/TPG background provides authentic PE expertise",
-    "Multi-city presence across APAC (Hong Kong, Singapore, Mumbai, Shanghai, Manila) ensures local knowledge",
-    "Prestigious investor base including UBS, Alibaba Entrepreneurs Fund, and MassMutual Ventures",
-    "ML-driven matching technology enables scalable expert sourcing across diverse geographies",
-    "$35M+ total funding demonstrates institutional investor confidence"
+    "Lynk reports 800,000+ experts, consultants and talents",
+    "Company-described support from a Client Solutions team and independent consultants",
+    "Offers both unbundled services and full-project engagements",
+    "Company-described AI matching and automation"
   ],
   "caveats": [
-    "2022 acquisition by Eden followed by layoffs and senior leadership departures creates uncertainty",
-    "Reports of late payments to experts and employees during 2022-2023 downturn may impact expert engagement quality",
-    "Departure of CCO, CFO, and SVPs across product, sales, and marketing signals organizational instability",
-    "Less established in Western markets compared to GLG, AlphaSights, or Guidepoint",
-    "KaaS self-service model may lack the white-glove touch expected by premium institutional clients",
-    "Platform's current operational status and team capacity unclear following 2022 restructuring"
+    "Network scale and AI capabilities are company-stated",
+    "The 200+ employee figure dates to January 2021; current staffing was not verified",
+    "Current pricing and subscription terms require confirmation with Lynk",
+    "Current headquarters was not established from the sources reviewed; the contact page lists team locations without identifying a headquarters"
   ],
   "notableFacts": [
-    "Founded by Peggy Choi, a former Silver Lake and TPG private equity professional",
-    "Described as the first SaaS platform built on an expert network (Knowledge-as-a-Service)",
-    "UBS invested $5M in September 2021 specifically to cross-sell UBS analysts as experts on the platform",
-    "Raised $35M+ total funding from investors including Brewer Lane Ventures, MassMutual Ventures, Alibaba Entrepreneurs Fund, and UBS",
-    "At peak had 200+ employees across offices in 8+ cities spanning Asia, US, and Europe",
-    "Acquired by Eden in April 2022 during the market downturn",
-    "Co-founder Evan Xiao Han was recruited through the Hong Kong-Penn alumni network and holds a Wharton MBA",
-    "Expert database of 840,000+ is among the largest globally alongside GLG and Guidepoint"
+    "Peggy Choi described her Silver Lake and TPG background in a GPCA interview",
+    "Lynk reported $35 million in total funding in September 2021",
+    "The 2021 UBS collaboration included access to UBS research analysts through Lynk"
   ],
   "sourceNotes": [
-    "TechCrunch (January 2021) — $24M Series B funding announcement and company overview",
-    "PR Newswire (November 2019) — funding round with MassMutual Ventures SEA and Alibaba Entrepreneurs Fund",
-    "Tracxn — total funding ($35M+), funding rounds, and acquisition by Eden",
-    "YourStory — Hong Kong startup profile and founding story",
-    "Capital Watch — Peggy Choi interview on founding story and credibility",
-    "GPCA (Global Private Capital Association) — startup spotlight on Lynk",
-    "Crunchbase — company profile, funding history, and founder details",
-    "INEX ONE Expert Network Directory — Lynk profile and industry context"
+    "2026-11-11 — https://www.lynk.global/ — description, expertCount, expertCountLabel, overview, services, keyDifferentiators, strengths, whyChoose: positioning — Current positioning, Client Solutions support, unbundled/full-project services and company-reported 800,000+ network.",
+    "2026-11-11 — https://www.lynk.global/why-lynk — aiCapabilities, aiPlatform, aiBadge: positioning; categoryBadge, deliveryModel, bestFor: inference — Company-stated AI matching, custom interviews and surveys; current self-service-only and Asia-only positioning not supported.",
+    "2026-11-11 — https://www.lynk.global/proprietary-expert-network — regionStrength, servicesDetailed, keyDifferentiators: positioning — Company-reported survey panel, global coverage, independent consultants and consulting teams.",
+    "2026-11-11 — https://www.lynk.global/solutions-categories/insights — services, servicesDetailed: positioning; clientFit: inference — Advertised research and consulting use cases.",
+    "2026-11-11 — https://www.lynk.global/solutions-categories/automate — aiCapabilities, aiPlatform, servicesDetailed: positioning — Advertised AI automation services; page is undated, so no launch date inferred.",
+    "2026-11-11 — https://www.lynk.global/trust-compliance — compliance, complianceExtended, complianceBadge: positioning — Company-described MNPI restrictions, screening, training, interaction records and configurable rules. Removed unsupported SFC/MAS alignment, cross-border automation, universal cooling-off periods and clean-record assertions.",
+    "2026-11-11 — https://www.globalprivatecapital.org/startup-spotlight-lynk/ — founded, history, notableFacts: verified; caveats (headquarters): partially-unverifiable — Founding year, founders and Choi career background in a founder interview; historical Hong Kong base and office list do not establish current headquarters. Removed unverified incorporation and alumni-recruitment details.",
+    "2026-11-11 — https://globalventuring.com/blog/2021/01/28/corporates-connect-to-lynk/ — history (seed and Series A): verified — Historical seed and Series A funding; 2019 amount undisclosed rather than the previously claimed $1 million.",
+    "2026-11-11 — https://www.prnewswire.com/news-releases/global-knowledge-as-a-service-platform-lynk-announces-successful-funding-round-300962155.html — history (2019 funding): verified — November 2019 company funding announcement; first-SaaS superlative removed rather than presented as established fact.",
+    "2026-11-11 — https://www.webwire.com/ViewPressRel.asp?aId=269521 — history (January 2021 funding): verified; employeeCount, employeeCountSource, industries: positioning; caveats (staffing): partially-unverifiable — January 2021 company funding release, historical 200+ employees and sector coverage. Removed unsupported current Industrials coverage and current office counts.",
+    "2026-11-11 — https://www.ent-fund.org/en/news/details/212 — history, notableFacts (September 2021 funding and UBS collaboration): verified — September 2021 company announcement reporting $35 million raised to date and UBS analyst collaboration.",
+    "2026-11-11 — https://techcrunch.com/2021/09/01/knowledge-as-a-service-platform-lynk-lands-funding-from-ubs-investment-bank/ — history (UBS investment): verified — Historical investment report.",
+    "2026-11-11 — https://businessday.ng/technology/article/eden-life-acquires-kenyan-lynk-in-push-for-east-african-market/ — acquisition identity check: verified; removed allegations: partially-unverifiable — Eden acquisition concerns a Kenyan informal-work marketplace, not this expert network; removed the misattributed acquisition. Also removed uncorroborated late-payment, layoff and executive-departure allegations and unsupported competitor rankings.",
+    "2026-11-11 — https://www.lynk.global/contact-us — pricingModel, whenNotIdeal: inference; pricingDetail, caveats (pricing and headquarters): partially-unverifiable — Contact route; team locations listed without identifying a headquarters. Customized solutions are described on the homepage; no current rate card verified.",
+    "2026-11-11 — https://www.lynk.global/terms-conditions-for-knowledge-workers — development chronology: partially-unverifiable — Terms page explicitly dated November 2020; not evidence of a recent product launch.",
+    "2026-11-11 — https://www.prnewswire.com/news/lynk/ — last-12-month developments: partially-unverifiable — Reviewed release listing while checking recent developments; listing mixes unrelated Lynk businesses. No attributable dated material announcement from 2025-11-11 through 2026-11-11 was found in the searches and official pages reviewed; current undated AI offerings are included without a launch-date claim."
   ],
   "whyChoose": [
-    "840K+ experts",
-    "Asia-Pacific depth",
-    "SaaS self-service platform",
-    "Cross-border APAC research"
+    "Expert interviews and surveys",
+    "Consulting project support",
+    "Company-described AI matching"
   ],
   "whenNotIdeal": [
-    "US/Europe only focus",
-    "Need operational stability",
-    "Want white-glove service",
-    "Risk-averse compliance needs"
+    "Need published fixed pricing",
+    "Need independently verified network scale"
   ],
   "confidence": {
     "founded": "verified",
-    "headquarters": "verified",
-    "expertCount": "verified",
-    "employeeCount": "partially-unverifiable",
-    "pricingModel": "verified",
-    "services": "verified",
+    "expertCount": "positioning",
+    "employeeCount": "positioning",
+    "pricingModel": "inference",
+    "pricingDetail": "partially-unverifiable",
+    "services": "positioning",
+    "industries": "positioning",
+    "aiCapabilities": "positioning",
+    "keyDifferentiators": "positioning",
+    "bestFor": "inference",
     "compliance": "positioning",
-    "overview": "verified",
+    "categoryBadge": "inference",
+    "deliveryModel": "inference",
+    "regionStrength": "positioning",
+    "complianceBadge": "positioning",
+    "aiBadge": "positioning",
+    "overview": "positioning",
     "history": "verified",
     "servicesDetailed": "positioning",
     "aiPlatform": "positioning",
     "complianceExtended": "positioning",
     "clientFit": "inference",
-    "strengths": "verified",
-    "caveats": "verified",
-    "notableFacts": "verified"
-  }
+    "strengths": "positioning",
+    "caveats": "partially-unverifiable",
+    "notableFacts": "verified",
+    "whyChoose": "positioning",
+    "whenNotIdeal": "inference"
+  },
+  "employeeCountSource": "Lynk press release, January 27, 2021; not a current headcount",
+  "expertCountLabel": "Experts, consultants and talents"
 }
