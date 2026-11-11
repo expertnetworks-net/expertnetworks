@@ -100,62 +100,79 @@ const relB = relatedPages[b.data.slug];
 const linksA = relA?.comparisons.filter(c => c.href !== currentPath && c.href !== altPath) || [];
 const linksB = relB?.comparisons.filter(c => c.href !== currentPath && c.href !== altPath) || [];
 const hasRelated = linksA.length > 0 || linksB.length > 0 || relA?.alternatives || relB?.alternatives;
+const sides = [
+  { n: a.data, name: nameA, short: shortA },
+  { n: b.data, name: nameB, short: shortB },
+];
+const diffCount = comparisons.filter(row => row.va !== row.vb).length;
 ---
 
 <!-- Visual Face-off -->
-<section class="py-12 px-6">
+<section class="py-10 md:py-12 px-4 md:px-6">
   <div class="max-w-4xl mx-auto">
-    <div class="grid md:grid-cols-2 gap-6">
-      <a href={`/networks/${a.data.slug}`} class="block no-underline group">
-        <div class="rounded-card p-6 text-center border-2 border-transparent hover:border-accent/30 transition-colors" style={`background: linear-gradient(135deg, ${a.data.gradientFrom}0f, ${a.data.gradientTo}0f)`}>
-          {a.data.logo ? (
-            <img src={a.data.logo} alt={`${nameA} logo`} width="64" height="64" class="w-16 h-16 rounded-xl object-cover mx-auto mb-4" loading="lazy" />
-          ) : (
-            <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white font-bold text-xl mx-auto mb-4" style={`background: linear-gradient(135deg, ${a.data.gradientFrom}, ${a.data.gradientTo})`}>{shortA}</div>
-          )}
-          <h2 class="text-xl font-bold text-primary mb-1 group-hover:text-accent transition-colors">{nameA}</h2>
-          <div class="mt-3 text-2xl font-extrabold text-primary">{a.data.expertCount || '—'}</div>
-          <div class="text-xs text-tertiary">experts · est. {a.data.founded || 'N/A'}</div>
-        </div>
-      </a>
-      <a href={`/networks/${b.data.slug}`} class="block no-underline group">
-        <div class="rounded-card p-6 text-center border-2 border-transparent hover:border-accent/30 transition-colors" style={`background: linear-gradient(135deg, ${b.data.gradientFrom}0f, ${b.data.gradientTo}0f)`}>
-          {b.data.logo ? (
-            <img src={b.data.logo} alt={`${nameB} logo`} width="64" height="64" class="w-16 h-16 rounded-xl object-cover mx-auto mb-4" loading="lazy" />
-          ) : (
-            <div class="w-16 h-16 rounded-xl flex items-center justify-center text-white font-bold text-xl mx-auto mb-4" style={`background: linear-gradient(135deg, ${b.data.gradientFrom}, ${b.data.gradientTo})`}>{shortB}</div>
-          )}
-          <h2 class="text-xl font-bold text-primary mb-1 group-hover:text-accent transition-colors">{nameB}</h2>
-          <div class="mt-3 text-2xl font-extrabold text-primary">{b.data.expertCount || '—'}</div>
-          <div class="text-xs text-tertiary">experts · est. {b.data.founded || 'N/A'}</div>
-        </div>
-      </a>
+    <div class="vs-faceoff">
+      {sides.map(({ n, name, short }, i) => (
+        <Fragment>
+          {i === 1 && <div class="vs-medallion" aria-hidden="true">VS</div>}
+          <a href={`/networks/${n.slug}`} class="vs-side group" style={`--vs-a: ${n.gradientFrom}; --vs-b: ${n.gradientTo}`}>
+            {n.logo ? (
+              <img src={n.logo} alt={`${name} logo`} width="72" height="72" class="vs-logo" loading="eager" decoding="async" />
+            ) : (
+              <div class="vs-logo vs-logo-fallback" style={`background: linear-gradient(135deg, ${n.gradientFrom}, ${n.gradientTo})`} aria-hidden="true">{short}</div>
+            )}
+            <h2 class="text-[22px] font-bold tracking-tight text-primary mt-4 group-hover:text-[#0066cc] transition-colors">{name}</h2>
+            {n.categoryBadge && <p class="text-[13px] text-secondary mt-0.5">{n.categoryBadge}</p>}
+            <div class="mt-4 text-[26px] leading-tight font-extrabold tracking-tight text-primary">{n.expertCount || '—'}</div>
+            <div class="text-[13px] text-secondary mt-0.5">experts · est. {n.founded || 'N/A'}</div>
+            <span class="vs-profile-link">View profile <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
+          </a>
+        </Fragment>
+      ))}
     </div>
   </div>
 </section>
 
 <!-- Comparison Table -->
-<section class="py-12 px-6 bg-bg-secondary">
+<section class="py-12 px-4 md:px-6 bg-bg-secondary">
   <div class="max-w-4xl mx-auto">
-    <h2 class="text-2xl font-bold text-primary mb-6">Side-by-Side Comparison</h2>
-    <div class="bg-white rounded-card shadow-card overflow-hidden">
+    <div class="flex flex-wrap items-end justify-between gap-2 mb-5">
+      <h2 class="text-2xl md:text-[28px] font-bold tracking-tight text-primary">Side-by-Side Comparison</h2>
+      <p class="text-[13px] text-secondary"><strong class="text-primary">{diffCount}</strong> of {comparisons.length} rows differ <span class="vs-diff-key" aria-hidden="true"></span></p>
+    </div>
+    <div class="vs-table-card">
       <div class="overflow-x-auto">
-        <table class="w-full text-sm">
+        <table class="vs-table">
           <thead>
-            <tr class="border-b border-border/40">
-              <th class="text-left px-5 py-3 text-xs font-semibold text-tertiary uppercase tracking-wider w-1/3">Metric</th>
-              <th class="text-left px-5 py-3 text-xs font-semibold uppercase tracking-wider w-1/3" style={`color: ${a.data.gradientTo}`}>{nameA}</th>
-              <th class="text-left px-5 py-3 text-xs font-semibold uppercase tracking-wider w-1/3" style={`color: ${b.data.gradientTo}`}>{nameB}</th>
+            <tr>
+              <th scope="col">Metric</th>
+              {sides.map(({ n, name, short }) => (
+                <th scope="col">
+                  <span class="inline-flex items-center gap-2">
+                    {n.logo ? (
+                      <img src={n.logo} alt="" width="22" height="22" class="w-[22px] h-[22px] rounded-md object-contain bg-white" loading="lazy" />
+                    ) : (
+                      <span class="w-[22px] h-[22px] rounded-md inline-flex items-center justify-center text-white font-bold text-[8px]" style={`background: linear-gradient(135deg, ${n.gradientFrom}, ${n.gradientTo})`} aria-hidden="true">{short}</span>
+                    )}
+                    {name}
+                  </span>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
-            {comparisons.map((row, i) => (
-              <tr class={`${i % 2 === 0 ? 'bg-bg-secondary/30' : ''} border-b border-border/20`}>
-                <td class="px-5 py-3 font-medium text-primary text-xs">{row.label}</td>
-                <td class="px-5 py-3 text-secondary text-xs">{row.va}</td>
-                <td class="px-5 py-3 text-secondary text-xs">{row.vb}</td>
-              </tr>
-            ))}
+            {comparisons.map((row) => {
+              const differs = row.va !== row.vb;
+              return (
+                <tr class={differs ? 'is-diff' : 'is-same'}>
+                  <th scope="row">
+                    {row.label}
+                    {!differs && <span class="vs-same">Same</span>}
+                  </th>
+                  <td>{row.va}</td>
+                  <td>{row.vb}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
@@ -164,72 +181,45 @@ const hasRelated = linksA.length > 0 || linksB.length > 0 || relA?.alternatives 
 </section>
 
 <!-- Services Comparison -->
-<section class="py-16 px-6">
+<section class="py-14 px-4 md:px-6">
   <div class="max-w-4xl mx-auto">
-    <h2 class="text-2xl font-bold text-primary mb-8">Products & Services</h2>
-    <div class="grid md:grid-cols-2 gap-6">
-      <div>
-        <h3 class="font-bold text-primary mb-4 flex items-center gap-2">
-          <div class="w-6 h-6 rounded flex items-center justify-center text-white font-bold text-[9px]" style={`background: linear-gradient(135deg, ${a.data.gradientFrom}, ${a.data.gradientTo})`}>{shortA}</div>
-          {nameA} Services
-        </h3>
-        <ul class="space-y-2">
-          {(a.data.services || []).map((s: string) => (
-            <li class="flex items-center gap-2 text-sm text-secondary">
-              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="text-accent-green flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
-              {s}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div>
-        <h3 class="font-bold text-primary mb-4 flex items-center gap-2">
-          <div class="w-6 h-6 rounded flex items-center justify-center text-white font-bold text-[9px]" style={`background: linear-gradient(135deg, ${b.data.gradientFrom}, ${b.data.gradientTo})`}>{shortB}</div>
-          {nameB} Services
-        </h3>
-        <ul class="space-y-2">
-          {(b.data.services || []).map((s: string) => (
-            <li class="flex items-center gap-2 text-sm text-secondary">
-              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="text-accent-green flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
-              {s}
-            </li>
-          ))}
-        </ul>
-      </div>
+    <h2 class="text-2xl md:text-[28px] font-bold tracking-tight text-primary mb-6">Products & Services</h2>
+    <div class="grid md:grid-cols-2 gap-5">
+      {sides.map(({ n, name, short }) => (
+        <div class="vs-card">
+          <h3 class="vs-card-title">
+            <span class="w-6 h-6 rounded-md inline-flex items-center justify-center text-white font-bold text-[9px] flex-shrink-0" style={`background: linear-gradient(135deg, ${n.gradientFrom}, ${n.gradientTo})`} aria-hidden="true">{short}</span>
+            {name} Services
+          </h3>
+          <ul class="vs-list">
+            {(n.services || []).map((s: string) => (
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" class="vs-tick" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                {s}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
   </div>
 </section>
 
 <!-- AI Comparison -->
 {(a.data.aiCapabilities?.length || b.data.aiCapabilities?.length) && (
-  <section class="py-16 px-6 bg-bg-secondary">
+  <section class="py-14 px-4 md:px-6 bg-bg-secondary">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl font-bold text-primary mb-8">AI & Technology</h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="bg-white rounded-card p-5 shadow-card">
-          <h3 class="font-bold text-primary mb-3">{nameA} AI Stack</h3>
-          <ul class="space-y-2">
-            {(a.data.aiCapabilities || []).map((c: string) => (
-              <li class="text-sm text-secondary flex items-start gap-2">
-                <span class="text-accent-orange mt-0.5">&#9679;</span>
-                {c}
-              </li>
-            ))}
-            {!(a.data.aiCapabilities?.length) && <li class="text-sm text-tertiary italic">Limited public information</li>}
-          </ul>
-        </div>
-        <div class="bg-white rounded-card p-5 shadow-card">
-          <h3 class="font-bold text-primary mb-3">{nameB} AI Stack</h3>
-          <ul class="space-y-2">
-            {(b.data.aiCapabilities || []).map((c: string) => (
-              <li class="text-sm text-secondary flex items-start gap-2">
-                <span class="text-accent-green mt-0.5">&#9679;</span>
-                {c}
-              </li>
-            ))}
-            {!(b.data.aiCapabilities?.length) && <li class="text-sm text-tertiary italic">Limited public information</li>}
-          </ul>
-        </div>
+      <h2 class="text-2xl md:text-[28px] font-bold tracking-tight text-primary mb-6">AI & Technology</h2>
+      <div class="grid md:grid-cols-2 gap-5">
+        {sides.map(({ n, name }) => (
+          <div class="vs-card">
+            <h3 class="vs-card-title">{name} AI Stack</h3>
+            <ul class="vs-list vs-list-dots">
+              {(n.aiCapabilities || []).map((c: string) => <li>{c}</li>)}
+              {!(n.aiCapabilities?.length) && <li class="vs-list-empty">Limited public information</li>}
+            </ul>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -237,32 +227,23 @@ const hasRelated = linksA.length > 0 || linksB.length > 0 || relA?.alternatives 
 
 <!-- Key Differentiators -->
 {(a.data.keyDifferentiators?.length || b.data.keyDifferentiators?.length) && (
-  <section class="py-16 px-6">
+  <section class="py-14 px-4 md:px-6">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl font-bold text-primary mb-8">Key Differentiators</h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="border border-border/60 rounded-card p-5">
-          <h3 class="font-bold text-primary mb-3">Why Choose {nameA}</h3>
-          <ul class="space-y-2">
-            {(a.data.keyDifferentiators || []).map((d: string) => (
-              <li class="text-sm text-secondary flex items-start gap-2">
-                <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="text-accent flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
-                {d}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div class="border border-border/60 rounded-card p-5">
-          <h3 class="font-bold text-primary mb-3">Why Choose {nameB}</h3>
-          <ul class="space-y-2">
-            {(b.data.keyDifferentiators || []).map((d: string) => (
-              <li class="text-sm text-secondary flex items-start gap-2">
-                <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="text-accent flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
-                {d}
-              </li>
-            ))}
-          </ul>
-        </div>
+      <h2 class="text-2xl md:text-[28px] font-bold tracking-tight text-primary mb-6">Key Differentiators</h2>
+      <div class="grid md:grid-cols-2 gap-5">
+        {sides.map(({ n, name }) => (
+          <div class="vs-card">
+            <h3 class="vs-card-title">Why Choose {name}</h3>
+            <ul class="vs-list">
+              {(n.keyDifferentiators || []).map((d: string) => (
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" class="vs-tick vs-tick-blue" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  {d}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -270,36 +251,28 @@ const hasRelated = linksA.length > 0 || linksB.length > 0 || relA?.alternatives 
 
 <!-- Best For -->
 {(a.data.bestFor?.length || b.data.bestFor?.length) && (
-  <section class="py-16 px-6 bg-bg-secondary">
+  <section class="py-14 px-4 md:px-6 bg-bg-secondary">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl font-bold text-primary mb-8">Best For</h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="bg-white rounded-card p-5 shadow-card">
-          <h3 class="font-bold text-primary mb-3">{nameA} Is Best For</h3>
-          <ul class="space-y-2">
-            {(a.data.bestFor || []).map((bf: string) => (
-              <li class="text-sm text-secondary">&rarr; {bf}</li>
-            ))}
-          </ul>
-        </div>
-        <div class="bg-white rounded-card p-5 shadow-card">
-          <h3 class="font-bold text-primary mb-3">{nameB} Is Best For</h3>
-          <ul class="space-y-2">
-            {(b.data.bestFor || []).map((bf: string) => (
-              <li class="text-sm text-secondary">&rarr; {bf}</li>
-            ))}
-          </ul>
-        </div>
+      <h2 class="text-2xl md:text-[28px] font-bold tracking-tight text-primary mb-6">Best For</h2>
+      <div class="grid md:grid-cols-2 gap-5">
+        {sides.map(({ n, name }) => (
+          <div class="vs-card">
+            <h3 class="vs-card-title">{name} Is Best For</h3>
+            <ul class="vs-list vs-list-arrows">
+              {(n.bestFor || []).map((bf: string) => <li>{bf}</li>)}
+            </ul>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 )}
 
 <!-- Verdict -->
-<section class="py-16 px-6">
+<section class="py-14 px-4 md:px-6">
   <div class="max-w-4xl mx-auto">
-    <h2 class="text-2xl font-bold text-primary mb-6">The Bottom Line</h2>
-    <div class="prose prose-sm text-secondary leading-relaxed max-w-none space-y-4">
+    <h2 class="text-2xl md:text-[28px] font-bold tracking-tight text-primary mb-5">The Bottom Line</h2>
+    <div class="vs-prose">
       {verdict.map((p) => <p set:html={p} />)}
     </div>
   </div>
@@ -307,47 +280,106 @@ const hasRelated = linksA.length > 0 || linksB.length > 0 || relA?.alternatives 
 
 <!-- Related Comparisons -->
 {hasRelated && (
-  <section class="py-12 px-6">
+  <section class="pb-14 px-4 md:px-6">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-xl font-bold text-primary mb-6">Related Comparisons</h2>
-      <div class="grid sm:grid-cols-2 gap-4">
-        <div>
-          <h3 class="text-sm font-semibold text-tertiary uppercase tracking-wider mb-3">{nameA}</h3>
-          <div class="space-y-2">
-            <a href={`/networks/${a.data.slug}`} class="block text-sm text-accent no-underline hover:underline">{nameA} Profile &rarr;</a>
-            {linksA.map(link => (
-              <a href={link.href} class="block text-sm text-accent no-underline hover:underline">{link.label} &rarr;</a>
-            ))}
-            {relA?.alternatives && (
-              <a href={relA.alternatives} class="block text-sm text-accent no-underline hover:underline">{nameA} Alternatives &rarr;</a>
-            )}
+      <h2 class="text-xl font-bold tracking-tight text-primary mb-5">Related Comparisons</h2>
+      <div class="grid sm:grid-cols-2 gap-5">
+        {[{ name: nameA, slug: a.data.slug, links: linksA, rel: relA }, { name: nameB, slug: b.data.slug, links: linksB, rel: relB }].map(({ name, slug, links, rel }) => (
+          <div class="vs-card">
+            <h3 class="text-[11px] font-bold text-secondary uppercase tracking-[0.1em] mb-1">{name}</h3>
+            <ul class="vs-links">
+              <li><a href={`/networks/${slug}`}>{name} Profile <span aria-hidden="true">&rarr;</span></a></li>
+              {links.map(link => (
+                <li><a href={link.href}>{link.label} <span aria-hidden="true">&rarr;</span></a></li>
+              ))}
+              {rel?.alternatives && (
+                <li><a href={rel.alternatives}>{name} Alternatives <span aria-hidden="true">&rarr;</span></a></li>
+              )}
+            </ul>
           </div>
-        </div>
-        <div>
-          <h3 class="text-sm font-semibold text-tertiary uppercase tracking-wider mb-3">{nameB}</h3>
-          <div class="space-y-2">
-            <a href={`/networks/${b.data.slug}`} class="block text-sm text-accent no-underline hover:underline">{nameB} Profile &rarr;</a>
-            {linksB.map(link => (
-              <a href={link.href} class="block text-sm text-accent no-underline hover:underline">{link.label} &rarr;</a>
-            ))}
-            {relB?.alternatives && (
-              <a href={relB.alternatives} class="block text-sm text-accent no-underline hover:underline">{nameB} Alternatives &rarr;</a>
-            )}
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   </section>
 )}
 
 <!-- Related -->
-<section class="py-12 px-6 bg-bg-secondary">
+<section class="py-12 px-4 md:px-6 bg-bg-secondary">
   <div class="max-w-3xl mx-auto text-center">
-    <h2 class="text-xl font-bold text-primary mb-6">Keep exploring</h2>
-    <div class="flex flex-wrap gap-4 justify-center">
-      <a href={`/compare?networks=${a.data.slug},${b.data.slug}`} class="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white rounded-full font-semibold text-sm no-underline hover:bg-accent-hover transition-colors">Full Comparison Tool</a>
-      <a href="/best-expert-networks" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary border border-border rounded-full font-semibold text-sm no-underline hover:bg-bg-secondary transition-colors">Best Networks Ranked</a>
-      <a href="/expert-network-pricing" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary border border-border rounded-full font-semibold text-sm no-underline hover:bg-bg-secondary transition-colors">Pricing Guide</a>
+    <h2 class="text-xl font-bold tracking-tight text-primary mb-2">Keep exploring</h2>
+    <p class="text-[14px] text-secondary mb-6">Open both providers in the interactive comparison, or widen the shortlist.</p>
+    <div class="flex flex-wrap gap-3 justify-center">
+      <a href={`/compare?networks=${a.data.slug},${b.data.slug}`} class="vs-btn vs-btn-primary">Full Comparison Tool</a>
+      <a href="/best-expert-networks" class="vs-btn vs-btn-secondary">Best Networks Ranked</a>
+      <a href="/expert-network-pricing" class="vs-btn vs-btn-secondary">Pricing Guide</a>
     </div>
   </div>
 </section>
+
+<style>
+  .vs-faceoff { position: relative; display: grid; gap: 16px; }
+  @media (min-width: 768px) { .vs-faceoff { grid-template-columns: 1fr 1fr; gap: 24px; } }
+  .vs-side {
+    position: relative; display: flex; flex-direction: column; align-items: center; text-align: center;
+    padding: 28px 24px 22px; text-decoration: none;
+    background: linear-gradient(160deg, color-mix(in srgb, var(--vs-b) 9%, #fff), #fff 70%);
+    border: 1px solid rgba(210, 210, 215, 0.7); border-radius: 22px;
+    transition: border-color 0.2s ease, box-shadow 0.25s ease, transform 0.25s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .vs-side:hover { border-color: rgba(174, 174, 178, 0.9); box-shadow: 0 12px 36px rgba(0, 0, 0, 0.09); transform: translateY(-2px); }
+  .vs-logo { width: 72px; height: 72px; border-radius: 18px; object-fit: contain; background: #fff; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 6px 18px rgba(0, 0, 0, 0.08); }
+  .vs-logo-fallback { display: flex; align-items: center; justify-content: center; color: #fff; font-size: 22px; font-weight: 700; }
+  .vs-profile-link { display: inline-flex; align-items: center; gap: 2px; margin-top: 16px; font-size: 13.5px; font-weight: 600; color: #0066cc; }
+  .vs-medallion {
+    position: absolute; left: 50%; top: 50%; z-index: 2; transform: translate(-50%, -50%);
+    display: flex; align-items: center; justify-content: center; width: 48px; height: 48px;
+    font-size: 13px; font-weight: 800; letter-spacing: 0.04em; color: #fff; background: #1d1d1f;
+    border: 4px solid #fbfbfd; border-radius: 999px; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  }
+
+  .vs-table-card { background: #fff; border: 1px solid rgba(210, 210, 215, 0.7); border-radius: 18px; overflow: hidden; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03), 0 8px 24px rgba(0, 0, 0, 0.04); }
+  .vs-table { width: 100%; min-width: 520px; border-collapse: separate; border-spacing: 0; font-size: 14.5px; table-layout: fixed; }
+  .vs-table th, .vs-table td { padding: 13px 18px; text-align: left; vertical-align: top; border-bottom: 1px solid rgba(210, 210, 215, 0.5); line-height: 1.5; }
+  .vs-table tbody tr:last-child > * { border-bottom: 0; }
+  .vs-table thead th { background: #f5f5f7; font-size: 14px; font-weight: 700; color: #1d1d1f; border-bottom-color: rgba(210, 210, 215, 0.9); }
+  .vs-table thead th:first-child { width: 30%; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #6e6e73; vertical-align: middle; }
+  .vs-table tbody th { position: sticky; left: 0; background: #fff; font-weight: 600; color: #1d1d1f; }
+  .vs-table td { color: #424245; }
+  .vs-table tr.is-diff td { color: #1d1d1f; font-weight: 500; }
+  .vs-table tr.is-diff th { box-shadow: inset 3px 0 0 #0071e3; }
+  .vs-table tr.is-same td { color: #6e6e73; }
+  .vs-same { display: inline-flex; margin-left: 8px; padding: 1px 7px; font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #6e6e73; background: #f0f0f3; border-radius: 999px; vertical-align: middle; }
+  .vs-diff-key { display: inline-block; width: 3px; height: 12px; margin-left: 6px; border-radius: 2px; background: #0071e3; vertical-align: -1px; }
+  @media (max-width: 639px) { .vs-table th, .vs-table td { padding: 12px 14px; font-size: 14px; } }
+
+  .vs-card { padding: 22px; background: #fff; border: 1px solid rgba(210, 210, 215, 0.7); border-radius: 18px; }
+  .vs-card-title { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; font-size: 17px; font-weight: 700; letter-spacing: -0.01em; color: #1d1d1f; }
+  .vs-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+  .vs-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; line-height: 1.5; color: #424245; }
+  .vs-tick { width: 18px; height: 18px; padding: 3px; margin-top: 2px; border-radius: 999px; flex-shrink: 0; color: #0b5d33; background: #e8f6ee; }
+  .vs-tick-blue { color: #004f9f; background: rgba(0, 113, 227, 0.1); }
+  .vs-list-dots li::before, .vs-list-arrows li::before { content: ''; flex-shrink: 0; width: 6px; height: 6px; margin-top: 0.55em; border-radius: 2px; background: #0071e3; }
+  .vs-list-arrows li::before { border-radius: 999px; background: #1f9d55; }
+  .vs-list-empty { font-style: italic; color: #6e6e73 !important; }
+  .vs-list-empty::before { display: none; }
+
+  .vs-prose { max-width: 68ch; font-size: 17px; line-height: 1.7; color: #424245; }
+  .vs-prose :global(p + p) { margin-top: 1.1em; }
+  .vs-prose :global(strong) { color: #1d1d1f; font-weight: 700; }
+  .vs-links { margin: 0; padding: 0; list-style: none; }
+  .vs-links a { display: flex; align-items: center; justify-content: space-between; min-height: 44px; font-size: 15px; font-weight: 500; color: #0066cc; text-decoration: none; border-top: 1px solid rgba(210, 210, 215, 0.5); }
+  .vs-links li:first-child a { border-top: 0; }
+  .vs-links a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+  .vs-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; font-size: 15px; font-weight: 600; border-radius: 999px; text-decoration: none; transition: background-color 0.15s ease, transform 0.15s ease; }
+  .vs-btn-primary { color: #fff; background: #0071e3; }
+  .vs-btn-primary:hover { background: #0064cc; }
+  .vs-btn-secondary { color: #1d1d1f; background: #fff; border: 1px solid rgba(210, 210, 215, 0.95); }
+  .vs-btn-secondary:hover { background: #f5f5f7; }
+  .vs-btn:active { transform: scale(0.97); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vs-side, .vs-btn { transition: none; }
+    .vs-side:hover, .vs-btn:active { transform: none; }
+  }
+</style>
