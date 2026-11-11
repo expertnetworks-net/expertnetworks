@@ -1,0 +1,25 @@
+{
+  "title": "Third Bridge Becomes First Expert Insight Provider in Bloomberg's ASKB Beta",
+  "slug": "third-bridge-bloomberg-askb-2026",
+  "date": "2026-04-16",
+  "source": "Third Bridge (Press Release)",
+  "category": "Partnerships",
+  "categoryColor": "#5AC8FA",
+  "gradientFrom": "#164e63",
+  "gradientTo": "#06b6d4",
+  "summary": "Third Bridge announced that its primary research is available through ASKB, Bloomberg's conversational AI interface on the Terminal, which is in beta. The firm says it is the first expert insight provider participating in this stage of the ASKB beta, giving users access to more than 100,000 interview transcripts with each answer attributed to the underlying expert interview. Content can also be used in ASKB Workflows such as earnings prep and thematic deep-dives, and is reachable through the Terminal's Document Search & Analysis solution.",
+  "sourceUrl": "https://www.thirdbridge.com/en-us/about-us/media/news/third-bridge-expert-insights-on-bloomberg-askb",
+  "relatedNetworks": [
+    "third-bridge"
+  ],
+  "published": true,
+  "sourceType": "Press Release",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "Bloomberg's agentic interface is becoming a shared distribution point for expert content: Third Bridge announced its ASKB availability in April, and GLG's library was reported in ASKB a month later.",
+  "impactTags": [
+    "Bloomberg Terminal",
+    "AI Distribution",
+    "Transcript Library"
+  ]
+}

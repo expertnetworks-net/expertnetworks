@@ -10,7 +10,7 @@
   "headquarters": "Tokyo, Japan",
   "employeeCount": "~500",
   "employeeCountSource": "LinkedIn (2025)",
-  "expertCount": "700K+",
+  "expertCount": "800K+",
   "description": "Asia's largest expert network and the only publicly listed pure-play expert network company (Tokyo Stock Exchange). Co-founded in 2012 by Eiko Hashiba, Tatsuya Aizawa, and Soshi Hanamura, VisasQ pioneered spot consulting in Japan and went global through its $102M acquisition of Coleman Research in 2021.",
   "services": [
     "Expert Calls",
@@ -25,7 +25,8 @@
     "Spot consulting marketplace platform",
     "Automated matching for Asia-Pacific projects",
     "Multilingual compliance screening",
-    "DeepBench partnership for AI-powered expert matching"
+    "DeepBench partnership for AI-powered expert matching",
+    "AI Scout client-facing expert matching (profiles in under five minutes)"
   ],
   "industries": [
     "Financial Services",
@@ -71,7 +72,7 @@
     "surveys": true,
     "complianceTools": true
   },
-  "lastUpdated": "2026-03-08",
+  "lastUpdated": "2026-11-11",
   "overview": "VisasQ is the only publicly listed pure-play expert network company in the world, trading on the Tokyo Stock Exchange since March 2020. Co-founded in 2012 by Eiko Hashiba, Tatsuya Aizawa, and Soshi Hanamura, VisasQ pioneered the concept of 'spot consulting' in Japan, creating a marketplace where professionals could share their expertise in short, focused consultations. Hashiba — a Goldman Sachs, L'Oréal, and Unison Capital alumna with an MIT Sloan MBA — serves as CEO and Representative Director.\n\nThe company's defining moment came in August 2021 when it acquired US-based Coleman Research for $102 million — a bold move given that Coleman had more than twice VisasQ's revenue at the time. The combined entity, operating as VISASQ/COLEMAN, now has 700,000+ experts globally (175,000+ in Japan alone), approximately 500 employees, and 7 offices spanning Tokyo, New York, Raleigh, Boston, San Francisco, Singapore, Hong Kong, and London.\n\nVisasQ's trailing twelve-month revenue stands at approximately $64.6 million, though the company has faced challenges. A prolonged US M&A slowdown caused Coleman's revenue to underperform, leading to a JPY 14.6 billion goodwill write-off in April 2024 and a decline in VisasQ's stock price of over 84% from its September 2021 peak. Despite these headwinds, VisasQ maintains a strong cash position and continues to invest in platform integration, AI capabilities (including the appointment of a Chief AI Officer in January 2025), and global expansion.\n\nThe company's advisory board includes notable figures such as Prof. Motoshige Itoh (University of Tokyo economist and former government advisor) and Shinjiro Iwata (former Nintendo executive), reflecting VisasQ's connections to Japan's business and academic elite.",
   "history": {
     "narrative": "Eiko Hashiba co-founded VisasQ (originally as Walkntalk Inc.) in 2012 alongside Tatsuya Aizawa and Soshi Hanamura, after a career spanning Goldman Sachs, L'Oréal Japan, and private equity firm Unison Capital. Hashiba, a University of Tokyo economics graduate who later attended MIT Sloan, was inspired by Steve Jobs' 'connecting the dots' philosophy. She recognized that Japan had no equivalent to the expert network services common in Western finance, and set out to build one.\n\nThe early years were challenging — Hashiba personally attended business events and made cold calls to recruit experts. But by acting first in an unserved market, VisasQ achieved dominance in Japanese spot consulting. In 2013, the company was selected by Japan's Ministry of Economy, Trade and Industry (METI) as a promising startup. The company rebranded from Walkntalk to VisasQ in 2015 and continued growing, earning J-Startup designation from METI in 2018.\n\nVisasQ went public on the Tokyo Stock Exchange's Mothers market on March 10, 2020. Just months after the IPO, in July 2020, VisasQ partnered with DeepBench, investing $300K in the AI-powered expert matching platform. Eighteen months after the IPO, in August 2021, the company made its boldest move: acquiring US-based Coleman Research for $102 million. Coleman had $43.8 million in revenue — more than double VisasQ's — and brought 260,000+ experts and 300+ clients. Kevin Coleman remained as CEO. The deal was funded partly through new share issuance.\n\nPost-acquisition, the combined entity expanded capabilities, launching a dedicated US Life Sciences team in July 2023. However, integration faced headwinds. A US M&A slowdown dragged Coleman's revenues below expectations, forcing VisasQ to write off JPY 14.6 billion in goodwill in April 2024. VisasQ's net worth dropped to JPY 302 million, though a strong cash position maintained creditor confidence.\n\nIn January 2025, VisasQ appointed Ilya Vadeiko as Chief AI Officer (CAIO), signaling a renewed focus on AI-driven platform capabilities and expert matching technology.",
@@ -127,6 +128,14 @@
       {
         "year": "2025 (January)",
         "event": "Appointed Ilya Vadeiko as Chief AI Officer (CAIO) to lead AI strategy"
+      },
+      {
+        "year": "2026 (March)",
+        "event": "Launched AI Scout, giving clients direct 24/7 access to its AI expert-matching engine with profiles returned in under five minutes"
+      },
+      {
+        "year": "2026 (August)",
+        "event": "Opened first Latin American office in Bogotá, Colombia, to support U.S. business; network reported at over 800,000 experts across 190 countries (as of end of March 2026)"
       }
     ]
   },
@@ -258,7 +267,8 @@
     "Crunchbase — co-founder profiles and career backgrounds",
     "DeepBench partnership announcement (July 2020) — $300K investment details",
     "VisasQ press releases — Life Sciences team launch (July 2023), CAIO appointment (January 2025)",
-    "METI / J-Startup — government startup designation records"
+    "METI / J-Startup — government startup designation records",
+    "November 2026 refresh: AI Scout and Bogotá office sourced from VISASQ/COLEMAN press releases (March 11 and August 3, 2026). Expert count updated to 800K+ per the August release (\"over 800,000 experts (as of end of March 2026)\"); narrative passages citing 700,000+ reflect the November 2024 figure. Employee count was not re-verified."
   ],
   "whyChoose": [
     "Japan market leadership",

@@ -1,0 +1,25 @@
+{
+  "title": "AlphaSense Launches SuperAnalyst MCP, Exposing Its Research Agent to External AI Tools",
+  "slug": "alphasense-superanalyst-mcp-2026",
+  "date": "2026-11-04",
+  "source": "AlphaSense (Product Article)",
+  "category": "AI",
+  "categoryColor": "#248A3D",
+  "gradientFrom": "#064e3b",
+  "gradientTo": "#059669",
+  "summary": "AlphaSense introduced the SuperAnalyst MCP, which provides access to its library of more than 500 million business documents and thousands of Canalyst models through a single endpoint. Rather than a retrieval-only connector, AlphaSense describes it as an agent MCP that plans research, sources information, runs analysis, writes and runs code, and returns cited context, so SuperAnalyst works both inside AlphaSense and in the AI assistants teams already use.",
+  "sourceUrl": "https://www.alpha-sense.com/resources/product-articles/superanalyst-mcp/",
+  "relatedNetworks": [
+    "alphasense-tegus"
+  ],
+  "published": true,
+  "sourceType": "Product Update",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "Where Third Bridge, Guidepoint, and GLG expose content and research workflows through MCP, AlphaSense is exposing a full research agent — a different bet on which layer of the stack clients will delegate to.",
+  "impactTags": [
+    "MCP",
+    "AI Agents",
+    "AI Integration"
+  ]
+}

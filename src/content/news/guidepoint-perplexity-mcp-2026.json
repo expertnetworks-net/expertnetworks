@@ -1,0 +1,25 @@
+{
+  "title": "Guidepoint Brings Expert Transcript Library to Perplexity via MCP Connector",
+  "slug": "guidepoint-perplexity-mcp-2026",
+  "date": "2026-06-03",
+  "source": "Guidepoint (Press Release)",
+  "category": "Partnerships",
+  "categoryColor": "#5AC8FA",
+  "gradientFrom": "#164e63",
+  "gradientTo": "#06b6d4",
+  "summary": "Guidepoint made its MCP connector available in Perplexity Computer for Finance, letting clients query its library of more than 100,000 expert interview transcripts inside Perplexity with citations back to the original source material in Guidepoint360. Guidepoint says the library is produced by a team of over 300 content specialists and is 100% compliance reviewed. Perplexity Chief Business Officer Dmitry Shevelenko said clients can bring their own Guidepoint entitlements into Perplexity.",
+  "sourceUrl": "https://www.guidepoint.com/pressreleases/guidepoint-integrates-trusted-expert-insights-with-perplexity/",
+  "relatedNetworks": [
+    "guidepoint"
+  ],
+  "published": true,
+  "sourceType": "Press Release",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "A month after launching on Claude, Guidepoint extended the same connector to a second AI platform — a sign that expert-content MCPs are being built once and distributed across multiple assistants on a bring-your-own-entitlement basis.",
+  "impactTags": [
+    "MCP",
+    "Perplexity",
+    "Content Distribution"
+  ]
+}

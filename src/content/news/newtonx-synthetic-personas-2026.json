@@ -1,0 +1,25 @@
+{
+  "title": "NewtonX Launches B2B Synthetic Personas Built on Identity-Verified Professional Data",
+  "slug": "newtonx-synthetic-personas-2026",
+  "date": "2026-06-23",
+  "source": "NewtonX (Press Release)",
+  "category": "AI",
+  "categoryColor": "#248A3D",
+  "gradientFrom": "#064e3b",
+  "gradientTo": "#059669",
+  "summary": "NewtonX announced Synthetic Personas, which it describes as the first B2B synthetic solution in the industry: custom AI-powered simulations that combine a client's own research with NewtonX's identity-verified professional data, drawing on more than eight years of signals across 140+ industries. Personas are locked to the client's organization rather than shared through a marketplace, return both interview-style and survey-style outputs through a chat interface, and include reflection checks and citation tracing. NewtonX positions the product as complementary to primary research, not a replacement.",
+  "sourceUrl": "https://www.newtonx.com/press/b2b-synthetic-personas",
+  "relatedNetworks": [
+    "newtonx"
+  ],
+  "published": true,
+  "sourceType": "Press Release",
+  "significance": "standard",
+  "featured": false,
+  "whyItMatters": "Synthetic respondents are the sharpest test yet of how much expert input can be simulated; NewtonX is betting that verified human data is the prerequisite for making synthetic B2B research credible.",
+  "impactTags": [
+    "Synthetic Data",
+    "B2B Research",
+    "AI Product"
+  ]
+}
