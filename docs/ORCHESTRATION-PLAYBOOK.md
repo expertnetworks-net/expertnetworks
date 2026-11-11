@@ -69,9 +69,9 @@ Baseline, first verifier wave (2026-11-11, effort `high`): about 7.5 minutes, ~2
 
 | Lever | Setting | Why |
 |---|---|---|
-| Reasoning effort | By role (`AGENT-WORKFLOW.md`, Configuration) | Verification is reading and matching; it does not need the effort that a refactor needs. Measure before changing. |
+| Reasoning effort | By role: builders `max`, verifiers/designers/reviewers `xhigh`, tester `high`, monitor `medium`; fast tier on (`CODEX_FAST=1`) | Owner's quota allows it (2026-11-11). Effort is cheaper than an extra review round. `ultra` (auto-delegation) not used: it would nest swarms inside the swarm. |
 | Worker context | Workers read `AGENTS.md` and the docs the spec links, nothing else | Orchestrator docs in a worker's context are paid for on every turn. |
-| Parallel width | 3 | 16 GB machine; each worker runs a build. |
+| Parallel width | 5 | Model calls are remote; the RAM cost is concurrent builds. Watch `memory_pressure`; drop to 3 if free memory falls under 20%. |
 | Retries | 1, only when there is no report | A retry on `failed` repeats a real answer and doubles cost. |
 | Orchestrator | Plans, reviews, integrates; does not do bulk edits | The orchestrator's context is the scarce resource. |
 
@@ -86,6 +86,9 @@ One row per experiment. Record the question, the setup, the numbers, and the dec
 | 2026-11-11 | Does cross-vendor review add value? | Claude reviews Codex fixes on GLG | 1 MERGE with 3 findings, 1 BLOCK with 4 findings; a legal-risk passage caught | Mandatory for content. |
 | 2026-11-11 | Verify-and-fix in one worker, effort `high` | AlphaSights, Third Bridge, Guidepoint | 425–458 s, 184k–227k uncached input tokens, 34–39 pages, 0–1 unseen citations; 5–16 of ~40 claims confirmed as written | Works. Next: same protocol at `medium` on 13 profiles and compare pages opened, unseen citations, review verdicts. |
 | 2026-11-11 | Does cross-vendor review hold on the full wave, and does effort `medium` keep quality? | Claude review of 6 `high` profiles; 6 more profiles at `medium` | Review: 3 MERGE, 3 BLOCK. Main cause of BLOCK: a profile fix that contradicts other pages, `compare.json` presets, or badge fields the worker left untouched; removed fields that blank a compare cell or a profile stat. `medium` vs `high`: ~3.8 min vs ~8 min, ~120k vs ~193k uncached tokens, 17–28 vs 32–53 pages, 19–36 vs 37–46 claims checked. | Profile verification needs a second, cross-file pass: one `builder` task per wave for consistency (pages, compare, badges). `medium` is cheaper but shallower; judge it by review verdicts before adopting. Do not deploy a wave before the consistency pass. |
+| 2026-11-11 | Codex at `max` + fast tier for builders, `xhigh` for verifiers and reviewers | 7 design tasks fanned out at width 5 on an integration branch (`integration/design`) holding the accepted profile, AI schema and records, logos, illustrations | Two tasks stopped in under a minute with `blocked`: the specs referenced a page another parallel task was creating, and assets not on the base branch. Cost ~50 s each. | Good failure mode: workers obey Scope instead of improvising. Orchestrator rule: before a parallel fan-out, put every shared asset on the base branch and list planned cross-task destinations in each spec. |
+| 2026-11-11 | Orchestrator visual review of builder output | Build the worktree, serve `dist/` with `python3 -m http.server` (astro preview failed outside the project root), inspect at 1440 and 375 px in a real browser | Found defects no gate catches: truncated summary, wrong fact label, blank animated sections (base `opacity: 0`), hidden mobile headline | Mandatory for any UI task before merge. |
+
 
 ## 8. Known pitfalls of the tooling
 

@@ -68,13 +68,14 @@ All roles get network access in the sandbox (`sandbox_workspace_write.network_ac
 
 | Variable | Default | Meaning |
 |---|---|---|
-| `SWARM_MAX_PAR` | `3` | Parallel Codex workers. 3 is the safe limit on the 16 GB MacBook Air. |
+| `SWARM_MAX_PAR` | `5` | Parallel Codex workers. Lower it if memory pressure rises. |
 | `SWARM_BASE` | `origin/main` | Start point of new agent branches. |
 | `SWARM_TIMEOUT` | `1800` | Seconds before a worker is killed. |
 | `SWARM_SKIP_DEPS` | `0` | `1` skips the `depends_on` check. |
 | `SWARM_WT_DIR` | `~/.cache/expertnetworks/worktrees` | Worktree location. Outside the repo so `astro check` and Astro do not scan it. |
-| `CODEX_MODEL` | Codex default (`~/.codex/config.toml`) | Model for workers. |
-| `CODEX_EFFORT` | by role | `model_reasoning_effort`. Default: monitor `low`; verifier, tester, designer `medium`; builder, reviewer `high`. Set it to override. |
+| `CODEX_MODEL` | `gpt-6.1-sol` | Model for workers. |
+| `CODEX_FAST` | `1` | Fast service tier (about 2x speed, more usage). `0` for the default tier. |
+| `CODEX_EFFORT` | by role | `model_reasoning_effort`. Default: builder `max`; verifier, designer, reviewer `xhigh`; tester `high`; monitor `medium`. Set it to override. |
 | `SWARM_RETRIES` | `1` | Automatic re-runs when a worker ends with no report (crash, timeout). A worker that reports `failed` or `blocked` is not retried. The worktree is reset before a retry. |
 | `INTEGRATION_BRANCH` | `integration/<YYYYMMDD>` | Target of `integrate`. |
 
