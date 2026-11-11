@@ -2,23 +2,23 @@
   "name": "Silverlight Research",
   "shortName": "SR",
   "slug": "silverlight-research",
-  "website": "https://silverlightresearch.com",
+  "website": "https://www.silverlightresearch.com/",
   "gradientFrom": "#374151",
   "gradientTo": "#9ca3af",
   "type": "Expert Network",
   "founded": 2017,
   "headquarters": "London, UK",
-  "employeeCount": "50+",
-  "expertCount": "25K+",
-  "description": "Institutional expert network founded in 2017 by a former Morgan Stanley investment manager, operating with a fully distributed workforce. Serves the world's largest PE funds, hedge funds, and sovereign wealth funds with a 97% engagement success rate and 65% client referral rate.",
+  "employeeCount": "51-200 (company-stated)",
+  "expertCount": "Tens of thousands (company-stated)",
+  "description": "London-based institutional expert network founded in 2017. Silverlight says its full-time internal team manages expert sourcing, screening, compliance, and scheduling for investors, consulting firms, and corporate strategy teams globally.",
   "services": [
     "Expert Calls",
-    "Curated Research",
-    "Bespoke Projects"
+    "Custom Expert Sourcing",
+    "Written Q&A",
+    "Expert Surveys"
   ],
   "aiCapabilities": [
-    "Database-backed expert matching",
-    "Distributed operations platform"
+    "AI-assisted expert matching (company claim, February 2025)"
   ],
   "industries": [
     "Private Equity",
@@ -27,161 +27,173 @@
     "Sovereign Wealth Funds",
     "Consulting"
   ],
-  "pricingModel": "Per-call",
-  "pricingDetail": "Per-call pricing for expert consultations",
+  "pricingModel": "Flexible",
+  "pricingDetail": "Silverlight describes pay-per-call and no-minimum options. Its September 2026 fee guide also discusses bundled projects, credit packs, and subscriptions, with fees agreed before work starts. Confirm commitments and included extras in a project quote.",
   "keyDifferentiators": [
-    "Founded by former Morgan Stanley investment manager — understands institutional research needs",
-    "Fully distributed workforce across EMEA, Americas, and Asia",
-    "97% engagement success rate with 65% of new clients from referrals"
+    "Company describes a permanent, full-time research and operations team",
+    "Company describes a standing expert database supplemented by targeted custom sourcing",
+    "Company offers expert profiles to client compliance teams for pre-approval"
   ],
   "bestFor": [
-    "Boutique PE Firms",
-    "Hedge Funds",
+    "Private Equity Research",
+    "Hedge Fund Research",
     "Senior Expert Access"
   ],
   "compliance": {
-    "mnpiPolicy": "Institutional-grade MNPI policies for hedge fund and PE clients",
-    "expertVetting": "Thorough manual vetting with investment management perspective",
+    "mnpiPolicy": "Silverlight prohibits sharing confidential information and MNPI and requires experts to complete compliance training and accept its terms.",
+    "expertVetting": "Silverlight says it screens eligibility and conflicts for each project and allows client compliance teams to review proposed experts before approval.",
     "auditTrail": true,
-    "regulatoryHistory": "Clean regulatory record"
+    "regulatoryHistory": "Companies House lists a first Gazette notice for compulsory strike-off filed on 3 March 2026 and discontinuance of that action on 4 March 2026. The company is listed as active as of 11 November 2026."
   },
   "featured": false,
   "priority": 15,
   "published": true,
-  "categoryBadge": "Boutique Specialist",
   "deliveryModel": "Concierge",
-  "regionStrength": "Europe",
+  "regionStrength": "Global",
   "complianceBadge": "Standard Compliance",
   "aiBadge": "Limited AI Detail",
-  "lastUpdated": "2026-03-07",
-  "overview": "Silverlight Research is a London-based institutional expert network founded in November 2017 by a former Morgan Stanley investment manager. The company operates with a distinctive fully distributed workforce model — all staff work part-time and remotely across key regions including EMEA (Portugal, Turkey, Bahrain, Saudi Arabia), the Americas (New York, Colombia), and Asia (Singapore, Pakistan, Hong Kong, Philippines).\n\nDespite its lean structure, Silverlight serves some of the world's largest private equity funds, hedge funds, long-only funds, sovereign wealth funds, and Fortune 500 corporations. The company maintains a 97% engagement success rate and a 61% expert acceptance rate. Perhaps most notably, 65% of new clients come from existing referrals — suggesting strong satisfaction among institutional buyers.\n\nSilverlight manages end-to-end expert sourcing, screening, compliance, scheduling, and documentation for time-bound practitioner consultations aligned with institutional research workflows. In April 2025, the company briefly launched 'Greystone expert network' as a separate branch under the same corporate entity.",
+  "lastUpdated": "2026-11-11",
+  "overview": "Silverlight Research is a London-based institutional expert network founded in 2017. Silverlight identifies James Cartwright as its founder and CEO and says he previously worked in Morgan Stanley's investment management and investment banking divisions. Companies House records incorporation of Silverlight Research Ltd on 27 December 2017.\n\nSilverlight says its internal team manages expert sourcing, screening, compliance, scheduling, and documentation. Its current company materials describe full-time staff and coverage across North America, Europe, and Asia. The company lists offices in London, New York, Valencia, Lisbon, Islamabad, and Manila.\n\nThe firm describes its services as structured access to independent practitioners for institutional research, rather than investment advice or authored consulting recommendations. Its public materials identify private equity firms, hedge funds, asset managers, consultants, corporate teams, and sovereign wealth funds as users.",
   "history": {
-    "narrative": "Silverlight Research was founded in November 2017 by a former Morgan Stanley investment manager who recognized an opportunity to build an expert network with an institutional investor's perspective. The founder's investment management background shaped Silverlight's approach — the company speaks the language of its institutional clients and understands the compliance, speed, and quality requirements of buy-side research.\n\nThe company adopted a fully distributed workforce model from inception, avoiding the overhead of traditional office-based operations. This allows Silverlight to maintain competitive pricing while deploying research and operations staff across global time zones.",
+    "narrative": "Silverlight dates its founding to 2017; Companies House records incorporation on 27 December that year. Its About page, updated 28 July 2026, describes a permanent, full-time leadership, operations, research, and sourcing team. The reviewed primary sources do not establish when this operating model began.",
     "timeline": [
       {
-        "year": "2017 (November)",
-        "event": "Founded in London by a former Morgan Stanley investment manager"
+        "year": "2017 (December)",
+        "event": "Silverlight Research Ltd incorporated on 27 December, according to Companies House"
       },
       {
-        "year": "2018-2022",
-        "event": "Grew distributed team across EMEA, Americas, and Asia; built institutional client base"
+        "year": "2026 (March)",
+        "event": "Companies House records a compulsory strike-off notice filed on 3 March and discontinuance of the action on 4 March"
       },
       {
-        "year": "2023-2024",
-        "event": "Expanded to serve world's largest PE funds, hedge funds, SWFs, and Fortune 500 corporations"
+        "year": "2026 (March)",
+        "event": "Company's Global Expert Network Landscape page carries a March 2026 update, outlining industry operating models and providers"
       },
       {
-        "year": "2025 (April)",
-        "event": "Briefly launched Greystone expert network as a separate branch"
+        "year": "2026 (July)",
+        "event": "About page updated 28 July describes a permanent, full-time internal team"
       }
     ]
   },
   "servicesDetailed": [
     {
       "name": "Expert Consultations",
-      "description": "Time-bound practitioner consultations aligned with institutional research workflows. Silverlight manages end-to-end sourcing, screening, compliance, scheduling, and documentation. Serves PE funds, hedge funds, long-only funds, SWFs, and corporate strategy teams."
+      "description": "Silverlight describes managed practitioner calls for research and due diligence. Clients submit a brief, review a curated shortlist, select experts, and have calls scheduled by the internal team."
     },
     {
-      "name": "Curated Expert Research",
-      "description": "Bespoke research projects leveraging Silverlight's database-backed expert network for targeted industry analysis and due diligence support."
+      "name": "Custom Expert Sourcing",
+      "description": "The company says it searches its standing network and supplements existing coverage with targeted sourcing where needed, screening proposed practitioners before client selection."
     },
     {
-      "name": "Global Distributed Coverage",
-      "description": "Geographically diversified research and operations spanning EMEA (London, Portugal, Turkey, Bahrain, Saudi Arabia), Americas (New York, Colombia), and Asia (Singapore, Pakistan, Hong Kong, Philippines), enabling round-the-clock expert sourcing."
+      "name": "Written Q&A and Surveys",
+      "description": "Silverlight's August 2026 sourcing guide lists written exchanges, expert surveys, group panels, and on-site meetings alongside phone and video calls. Availability and scope should be agreed for the project."
     }
   ],
   "aiPlatform": {
-    "narrative": "Silverlight operates as a database-backed expert network with manual curation and relationship-driven matching. The company's distributed model leverages technology for remote coordination and global coverage rather than AI-driven expert discovery.",
+    "narrative": "A company blog post dated 11 February 2025 says Silverlight is integrating AI and big-data analytics into expert matching. The reviewed current service pages describe database-backed sourcing by an internal team. The blog provides no named AI product or technical validation; it does not establish a self-service AI platform.",
     "features": [
-      "Database-backed expert matching with manual curation",
-      "Distributed operations platform spanning 3 continents",
-      "End-to-end workflow management for institutional clients",
-      "Compliance documentation and audit trail"
+      "AI-assisted matching described by the company in February 2025",
+      "Standing expert database with team-managed screening and custom sourcing"
     ]
   },
   "complianceExtended": {
-    "narrative": "Silverlight's compliance approach is shaped by its founder's institutional investment management background. The company manages expert screening, compliance documentation, and audit trails to meet the requirements of its buy-side institutional clients.",
+    "narrative": "Silverlight's published framework describes conflict screening, consultation boundaries, confidentiality obligations, and formal engagement terms. These are company descriptions of controls, not independent assurance of their effectiveness. Its August 2026 sourcing guide says clients can receive engagement records for audit and compliance review.",
     "highlights": [
-      "Institutional-grade compliance designed for buy-side clients",
-      "Founder's Morgan Stanley background ensures investment management perspective",
-      "Expert screening and conflict-of-interest management",
-      "Complete documentation for compliance and audit purposes",
-      "MNPI policies tailored for hedge fund and PE environments"
+      "Company requires expert terms and compliance training",
+      "Company screens potential conflicts for each project",
+      "Company prohibits discussion of an expert's current employer or other restricted information",
+      "Company offers client compliance pre-approval and exclusions",
+      "Company says engagement documentation supports audit review"
     ],
-    "regulatoryContext": "Silverlight serves institutional investors including hedge funds, PE funds, and sovereign wealth funds — clients with the highest compliance standards. The company's compliance infrastructure is designed to meet these requirements. Clean regulatory record."
+    "regulatoryContext": "The Companies House filing history records a compulsory strike-off notice on 3 March 2026 and discontinuance on 4 March. The register lists Silverlight Research Ltd as active. These entries do not establish the cause of the action or a general regulatory clearance."
   },
   "clientFit": {
-    "narrative": "Silverlight is designed for institutional investors and corporate strategy teams who value a research-oriented expert network that understands buy-side workflows. The distributed model provides global coverage with competitive pricing. Less suited for clients needing a self-service technology platform.",
+    "narrative": "Editorial assessment: the company's managed consultation workflow fits institutional teams seeking practitioner input for diligence, sector research, or strategic analysis. Buyers should confirm topic coverage, commercial terms, and any required platform features before commissioning work.",
     "segments": [
-      "Hedge funds conducting investment research and due diligence",
-      "PE funds needing expert access for portfolio evaluation",
-      "Sovereign wealth funds seeking independent practitioner insights",
-      "Fortune 500 corporations conducting strategic research",
-      "Long-only asset managers needing industry expert consultations"
+      "Hedge funds conducting investment research",
+      "PE funds researching investment opportunities and portfolio companies",
+      "Sovereign wealth funds seeking practitioner insights",
+      "Corporate strategy teams conducting market research",
+      "Asset managers and consulting firms seeking industry consultations"
     ]
   },
   "strengths": [
-    "Founded by former Morgan Stanley investment manager — authentic institutional understanding",
-    "97% engagement success rate demonstrates reliable expert delivery",
-    "65% of new clients from referrals indicates strong satisfaction",
-    "Fully distributed model across 3 continents provides 24/7 coverage with lean overhead",
-    "Institutional client base including world's largest PE funds, hedge funds, and SWFs",
-    "61% expert acceptance rate shows well-curated engagement approach"
+    "Company describes managed sourcing, screening, scheduling, and delivery",
+    "Company lists research and operations coverage across North America, Europe, and Asia",
+    "Published compliance process allows client review of expert profiles before engagement"
   ],
   "caveats": [
-    "Smaller company (~50 employees) limits capacity for very high-volume engagements",
-    "Fully distributed workforce may reduce team cohesion compared to office-based networks",
-    "Limited technology platform compared to AI-native competitors",
-    "Expert database (25K+) is smaller than industry leaders",
-    "Less brand recognition than established players like GLG or AlphaSights",
-    "Greystone branch launch/drop in 2025 suggests strategic experimentation"
+    "Performance percentages are company-stated; the reviewed sources provide no independent audit or measurement period",
+    "Published AI claims lack a named product or technical validation in the reviewed sources",
+    "Employee size band and expert-profile scale are company-stated, not audited counts",
+    "Commercial guides discuss several billing structures; confirm the applicable terms in a quote"
   ],
   "notableFacts": [
-    "Founded by a former Morgan Stanley investment manager in November 2017",
-    "Fully distributed workforce — all staff work part-time and remotely",
-    "97% engagement success rate across institutional client engagements",
-    "65% of new clients come from existing client referrals",
-    "61% expert acceptance rate",
-    "Clients include world's largest PE funds, hedge funds, SWFs, and Fortune 500 corporations",
-    "Operations span EMEA, Americas, and Asia across 10+ countries",
-    "Briefly launched Greystone expert network as a separate branch in April 2025"
+    "Company identifies James Cartwright as founder and CEO and describes his prior Morgan Stanley roles",
+    "Company LinkedIn reports approximately 97% engagement completion, 61% expert acceptance, and 65% of new client engagements originating from existing-client referrals",
+    "Company's Global Expert Network Landscape page was updated in March 2026"
   ],
   "sourceNotes": [
-    "Silverlight Research official website (silverlightresearch.com) — company overview and services",
-    "LinkedIn — company profile, team structure, and founding information",
-    "The Org — organizational structure and founding story",
-    "RocketReach — company profile and contact information",
-    "INEX ONE Expert Network Directory — Silverlight Research profile",
-    "PitchBook — company profile and service breakdown"
+    "Companies House company overview, read 2026-11-11: https://find-and-update.company-information.service.gov.uk/company/11124869 — entity 11124869, incorporation on 27 December 2017, London registered office, and active status.",
+    "Companies House filing history, read 2026-11-11: https://find-and-update.company-information.service.gov.uk/company/11124869/filing-history — first Gazette notice for compulsory strike-off filed 3 March 2026; action discontinued 4 March 2026. Replaces the unsupported clean-record statement. The listing was readable; linked notice PDFs and accounts documents could not be retrieved, so no cause or accounts figures are asserted.",
+    "Companies House officers, read 2026-11-11: https://find-and-update.company-information.service.gov.uk/company/11124869/officers — James Cartwright is an active director appointed 27 December 2017; this does not independently verify his CEO title or prior employment.",
+    "Company homepage, read 2026-11-11: https://www.silverlightresearch.com/ — company-stated expert calls, internal workflow, standing database, institutional user groups, and global coverage. No exact expert count or verified client ranking established.",
+    "Company About page, updated 28 July 2026, read 2026-11-11: https://www.silverlightresearch.com/about.html — company-stated founder/CEO, Morgan Stanley background, and permanent full-time team. Removed the November founding month, all-part-time workforce, and unsupported growth timeline; no primary corroboration for the Greystone branch history was found.",
+    "Company registration page, read 2026-11-11: https://www.silverlightresearch.com/company-information.html — entity number, London headquarters, and incorporation date agree with the public register.",
+    "Company LinkedIn profile, read 2026-11-11: https://uk.linkedin.com/company/silverlightresearchgroup — company size band 51-200; approximately 65% referral-originated new client engagements, 61% expert acceptance, and 97% engagement completion. Company-stated, without an independent audit or measurement period. Completion replaces success rate; LinkedIn-associated member profiles are not treated as payroll headcount.",
+    "Company client request page, read 2026-11-11: https://www.silverlightresearch.com/become-a-client-of-silverlight-expert-network1.html — team-managed sourcing, screening, shortlists, client selection, and scheduling; supports the editorial Concierge classification.",
+    "Company contact page, read 2026-11-11: https://www.silverlightresearch.com/contact2.html — company lists London, New York, Valencia, Lisbon, Islamabad, and Manila offices. Replaces the older country list and unsupported 10+ countries/24-hour operations claims.",
+    "Company compliance overview, read 2026-11-11: https://www.silverlightresearch.com/compliance-overview.html — expert terms, training, per-project conflicts checks, employer restrictions, client pre-approval, and exclusions are published company policies; effectiveness is not independently verified.",
+    "Company compliance framework, read 2026-11-11: https://www.silverlightresearch.com/compliance-framework.html — company-stated MNPI/confidentiality restrictions, conflict review, scoped engagements, and formal terms. No basis for founder pedigree guaranteeing compliance quality.",
+    "Company sourcing guide, updated 27 August 2026, read 2026-11-11: https://www.silverlightresearch.com/find-industry-experts.html — company describes tens of thousands of checked profiles, consultation formats including surveys and written Q&A, and audit documentation. Replaces unsupported 25K+; auditTrail=true reflects a company claim, not an independent control audit.",
+    "Company fee guide, updated 2 September 2026, read 2026-11-11: https://www.silverlightresearch.com/how-much-does-expert-call-cost.html — company-specific section describes agreed quotes, single calls, bundles, and discussion of credits/subscriptions. Broad market rate examples are not treated as a binding Silverlight tariff or evidence of cheaper pricing.",
+    "Company pay-per-call guide, updated 12 September 2026, read 2026-11-11: https://www.silverlightresearch.com/pay-per-call-expert-network.html — presents Silverlight among providers of call-based access. Read alongside its fee guide; per-call is not presented here as its sole commercial model.",
+    "Company no-minimum guide, updated 31 August 2026, read 2026-11-11: https://www.silverlightresearch.com/expert-network-with-no-minimum.html — company says it offers this option; buyers should confirm applicable commitments in their quote.",
+    "Company blog archive, read 2026-11-11: https://www.silverlightresearch.com/blog/previous/2 — surfaced the older AI claim and describes structured calls/written exchanges; current service and About pages take precedence over older consulting/advisory wording.",
+    "Company blog post dated 11 February 2025, read 2026-11-11: https://www.silverlightresearch.com/blog/silverlight-expert-network-london-empowering-businesses-with-specialised-knowledge — says AI and big-data analytics are being integrated into matching, without a named product or technical validation. Retained only as a dated company claim; database sourcing and distributed operations alone are not AI capabilities.",
+    "Company industry landscape, updated March 2026, read 2026-11-11: https://www.silverlightresearch.com/global-expert-network-landscape.html — industry overview and provider taxonomy published on the company site. Included as a recent publication, not independent evidence of Silverlight's rank or market leadership."
   ],
   "whyChoose": [
-    "Institutional expertise",
-    "97% success rate",
-    "Global distributed coverage",
-    "Morgan Stanley pedigree"
+    "Managed expert sourcing",
+    "Company-described global coverage",
+    "Client compliance pre-approval"
   ],
   "whenNotIdeal": [
-    "Need self-service platform",
-    "Want AI-driven matching",
-    "Require large expert database",
-    "High-volume call programs"
+    "Need independently audited performance metrics",
+    "Require documented AI product specifications"
   ],
   "confidence": {
     "founded": "verified",
     "headquarters": "verified",
+    "description": "positioning",
     "expertCount": "positioning",
-    "employeeCount": "partially-unverifiable",
-    "pricingModel": "verified",
-    "services": "verified",
+    "employeeCount": "positioning",
+    "pricingModel": "positioning",
+    "pricingDetail": "positioning",
+    "services": "positioning",
+    "industries": "positioning",
+    "keyDifferentiators": "positioning",
+    "bestFor": "inference",
+    "deliveryModel": "inference",
+    "regionStrength": "positioning",
+    "complianceBadge": "positioning",
+    "aiBadge": "partially-unverifiable",
+    "aiCapabilities": "positioning",
     "compliance": "positioning",
-    "overview": "verified",
-    "history": "verified",
+    "compliance.regulatoryHistory": "verified",
+    "overview": "positioning",
+    "history": "partially-unverifiable",
     "servicesDetailed": "positioning",
     "aiPlatform": "positioning",
     "complianceExtended": "positioning",
+    "complianceExtended.regulatoryContext": "verified",
     "clientFit": "inference",
-    "strengths": "verified",
+    "strengths": "positioning",
     "caveats": "inference",
-    "notableFacts": "verified"
-  }
+    "notableFacts": "positioning",
+    "whyChoose": "inference",
+    "whenNotIdeal": "inference"
+  },
+  "employeeCountSource": "Company LinkedIn size band, checked 2026-11-11; not an audited headcount",
+  "expertCountLabel": "Checked profiles, according to the company's August 2026 guide"
 }
