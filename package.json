@@ -24,7 +24,7 @@
     "@astrojs/check": "^0.9.12",
     "autoprefixer": "^10.6.2",
     "postcss": "^8.5.32",
-    "typescript": "^5.9.3"
+    "typescript": "^7.0.2"
   },
   "overrides": {
     "esbuild": "^0.28.1",
