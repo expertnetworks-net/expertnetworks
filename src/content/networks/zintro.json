@@ -7,7 +7,7 @@
   "gradientTo": "#38bdf8",
   "type": "Expert Network",
   "founded": 2007,
-  "expertCount": "130,000+ (acquired network; September 2026, company-stated)",
+  "expertCount": "130,000+",
   "description": "Zintro is an expert network whose B2B network and Concierge Program were acquired by Focus Crossroads in September 2026. Its app now says public services are no longer available through that website.",
   "services": [
     "Legacy expert interviews",
@@ -102,14 +102,14 @@
   "caveats": [
     "Zintro's app says public services are no longer available through that website",
     "Current pricing, service availability, and compliance arrangements should be confirmed with Focus Crossroads",
-    "The acquired-network count and the larger network figure on legacy marketing pages measure different described populations; they are not interchangeable"
+    "The 130,000+ acquired-network count is company-stated as of September 2026; the larger figure on legacy marketing pages describes a different population and is not interchangeable"
   ],
   "notableFacts": [
     "Zintro's investor page still markets more than 1,000,000 individuals; this is a company claim, not the size reported for the assets acquired in September 2026",
     "In its August 7, 2025 AI interview case study, Zintro reports that 82% of 50 surveyed participants preferred AI moderation to live interviews; this is a company-reported study result"
   ],
   "sourceNotes": [
-    "2026-11-11 — https://www.focuscrossroads.com/zintro-acquisition/ — Primary acquisition announcement dated September 9, 2026; asset scope, integration, company-stated acquired-network size and industry coverage.",
+    "2026-11-11 — https://www.focuscrossroads.com/zintro-acquisition/ — Reopened primary announcement: September 9, 2026; acquisition effective immediately; acquired network of 130,000+ professionals including 50,000+ C-suite leaders and senior executives, according to the buyer; asset scope, integration and industry coverage.",
     "2026-11-11 — https://app.zintro.com/browse/Market%20Research — Public-service closure notice; supersedes assumptions of continued self-service access.",
     "2026-11-11 — https://www.zintro.com/ — Legacy marketing site remains accessible; not evidence that app services remain available.",
     "2026-11-11 — https://www.zintro.com/about — Founding year and legacy service workflow; Boston address is a PMB mailing address, not sufficient evidence of current headquarters. Employee count, offshore operations, revenue, profitability, funding estimates, founder exit history, and ratings were not substantiated and were removed.",
@@ -156,5 +156,5 @@
     "whyChoose": "inference",
     "whenNotIdeal": "verified"
   },
-  "expertCountLabel": "Professionals in the acquired B2B network"
+  "expertCountLabel": "Acquired B2B network professionals (September 2026, company-stated)"
 }
