@@ -62,6 +62,8 @@ npm run verify
 | [`AGENTS.md`](AGENTS.md) | Rules, repository map, commands, and pitfalls. Written for AI agents (Codex and Claude). Useful for all contributors. |
 | [`docs/ROADMAP.md`](docs/ROADMAP.md) | Where the project is going, and why. |
 | [`docs/AGENT-WORKFLOW.md`](docs/AGENT-WORKFLOW.md) | How the orchestrator and Codex workers split, run, review, and merge work. |
+| [`docs/ORCHESTRATION-PLAYBOOK.md`](docs/ORCHESTRATION-PLAYBOOK.md) | What we learned running agent swarms on this project, with measurements. |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | How to report an error or contribute. |
 | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | How the build, the pages, and the browser scripts work. |
 | [`docs/CONTENT-GUIDE.md`](docs/CONTENT-GUIDE.md) | How to add or update a provider, a news item, or the compare config. Field reference. Sourcing rule. |
 | [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) | Branches, Cloudflare Pages, CI, the deploy procedure, and known issues. |

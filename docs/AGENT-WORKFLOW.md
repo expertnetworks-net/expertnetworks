@@ -1,6 +1,7 @@
 # Agent workflow
 
-This file owns: the multi-agent model, worker roles, the task spec format, worktrees, the swarm scripts, merge gates, and image generation.
+This file owns: the multi-agent model, worker roles, the task spec format, worktrees, the swarm scripts, configuration, and operating surfaces. It is the reference.
+Techniques, lessons, measurements, and the experiment log are in `ORCHESTRATION-PLAYBOOK.md`.
 Rules that bind every agent are in `AGENTS.md`. Deploy rules are in `DEPLOYMENT.md`.
 
 ## 1. Model
@@ -63,7 +64,7 @@ All roles get network access in the sandbox (`sandbox_workspace_write.network_ac
 | `gate.sh [--quick]` | Build, link check, astro check, slug check, npm audit. `--quick` skips the audit. |
 | `monitor.sh [url]` | Live status codes, security headers vs `public/_headers`, news freshness. |
 
-## 5. Configuration
+## 4. Configuration
 
 | Variable | Default | Meaning |
 |---|---|---|
@@ -79,7 +80,7 @@ All roles get network access in the sandbox (`sandbox_workspace_write.network_ac
 
 Run logs are in `.agents/runs/<id>/` (git-ignored): `prompt.md`, `events.jsonl`, `stderr.log`, `result.json`, `changes.txt`, `review.md`.
 
-## 6. Task spec rules
+## 5. Task spec rules
 
 - One observable result per task. If the Goal needs "and", split it.
 - Scope lists paths. Disjoint Scopes for tasks that run together. Two tasks that both touch `src/content/compare.json` or `src/lib/compare-v2.ts` must run one after the other (`depends_on`).
@@ -87,13 +88,13 @@ Run logs are in `.agents/runs/<id>/` (git-ignored): `prompt.md`, `events.jsonl`,
 - Content tasks list their sources. The worker reads them in the task.
 - Good sizes: one provider refresh, one news batch of up to 5 items, one page, one component.
 
-## 7. Image generation
+## 6. Image generation
 
 - Codex has the `image_generation` feature and the global `imagegen` skill. Use the **designer** role.
 - Raw images go to `.agents/runs/<id>/images/`. Only the chosen, optimized file goes into `public/images/`.
 - No generated provider logos, real people, or trademarks. Alt text for every image.
 
-## 8. Failure handling
+## 7. Failure handling
 
 | Symptom | Action |
 |---|---|
@@ -103,7 +104,7 @@ Run logs are in `.agents/runs/<id>/` (git-ignored): `prompt.md`, `events.jsonl`,
 | Gate fails after `integrate` | `git merge --abort` is not possible after the merge commit; `git reset --hard <previous sha>` on the integration branch, then integrate the branches one by one. |
 | Worktree locked | `git worktree prune`, then `swarm.sh clean <id>`. |
 
-## 9. Operating surfaces (Mac and phone)
+## 8. Operating surfaces (Mac and phone)
 
 All options below cost nothing beyond the owner's Claude and ChatGPT subscriptions.
 
@@ -115,48 +116,10 @@ All options below cost nothing beyond the owner's Claude and ChatGPT subscriptio
 | Phone, Mac asleep | ChatGPT app → Codex Cloud | Codex Cloud tasks on GitHub | Each task opens a PR. Then `@codex review` or Claude review, then gate in CI. |
 | Anywhere, on a PR | — | `@codex review` (Codex GitHub integration) | Free review pass on every PR. Optional: Claude Code Action with `CLAUDE_CODE_OAUTH_TOKEN` (subscription, not API key). |
 
-## 10. Review rule: cross-vendor
-
-A model misses more defects in its own output than in another model's (see `ROADMAP.md` 2.1).
-
-- Code written by a Codex worker is reviewed by Claude (the orchestrator) **and** by `swarm.sh review`.
-- Code written by Claude is reviewed by `codex exec review`.
-- Content (provider facts, news) is checked by a `verifier` worker that did not write it.
-
-## 11. Build budget
+## 9. Build budget
 
 Cloudflare Pages Free allows 500 builds per month. Every pushed branch triggers a preview build.
 
 - Do not push `agent/*` branches. They stay local; `integrate` combines them.
 - Push `integration/*` branches only when a preview URL is needed.
 - Codex Cloud PR branches count too: batch small changes into one task.
-
-## 12. Known pitfalls of the tooling
-
-Found while testing the swarm on 2026-11-11. Each one is fixed in `swarm.sh` or guarded by `gate.sh`.
-
-| Pitfall | Guard |
-|---|---|
-| Editing a script from a Linux VM or with `sed -i` can drop its executable bit. | `gate.sh` step "agent scripts executable". Fix: `chmod 755 scripts/agents/*.sh .githooks/*`. |
-| A shared `node_modules` symlink breaks the sandbox (Vite writes its cache outside the writable worktree) and parallel builds. | Per-worktree APFS clone. |
-| `codex exec review` rejects a custom prompt together with `--base`. | `swarm.sh review` passes no prompt; Codex reads `AGENTS.md`. |
-| `claude -p --allowedTools A B C "prompt"` treats the prompt as another tool name. | Prompt goes through stdin. |
-| `claude -p --permission-mode plan` returns only a plan stub. | Normal mode; the read-only tool allowlist denies everything else. |
-| Rewriting `swarm.sh` while a `fanout` is running makes bash execute the new file from an old byte offset. | Do not edit `swarm.sh` while a fanout runs. |
-| The Claude Code login on the Mac expires (warning seen: ends by 2026-11-14). | For unattended runs use `claude setup-token` (subscription token, no API cost). |
-
-## 13. Measurement and evidence
-
-`scripts/agents/metrics.mjs` reads the Codex event log of each run. It needs no network and no model.
-
-| Column | Meaning | Use |
-|---|---|---|
-| `SEC`, `UNCACHED`, `OUT` | Wall time, uncached input tokens, output tokens | Cost per task. Compare protocols and effort levels with these, not with impressions. |
-| `PAGES` | Distinct pages the worker opened | Research depth. |
-| `CONFIRMED` | Checks passed / checks reported | For a verifier, a low ratio means the profile needed work, not that the worker failed. |
-| `CITED` / `SNIPPET` / `UNSEEN` | URLs cited in the report and in added lines; of those, seen only as a search snippet; never seen at all | `UNSEEN` > 0 blocks a merge until a human or a reviewer opens the page. `SNIPPET` is weak evidence: spot-check. |
-
-`sources.json` in each run dir is the evidence ledger: every page opened and every query. Run dirs are local and git-ignored; the durable record is `sourceNotes` in the content file.
-
-Baseline, first verifier wave (2026-11-11, effort `high`): about 7.5 minutes, ~200k uncached input tokens, 35–40 pages opened per profile. Re-measure after any protocol change.
-

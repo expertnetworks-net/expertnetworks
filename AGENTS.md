@@ -44,7 +44,9 @@ Each fact has one owner. Read the owner before you work on that topic.
 | `AGENTS.md` | Agent rules, terms, repository map, commands, pitfalls. Shared by all agent tools. |
 | `CLAUDE.md` | Imports `AGENTS.md`. Adds only Claude-specific notes (orchestrator role). |
 | `docs/ROADMAP.md` | Goals, phases, decisions, and the research behind them. |
-| `docs/AGENT-WORKFLOW.md` | Multi-agent model: orchestrator, Codex worker roles, task specs, worktrees, swarm scripts, merge gates, image generation. |
+| `docs/AGENT-WORKFLOW.md` | Reference for the multi-agent model: roles, task specs, worktrees, swarm commands, configuration, operating surfaces. |
+| `docs/ORCHESTRATION-PLAYBOOK.md` | Techniques that worked or failed here, review rules, measurement, tooling pitfalls, experiment log. |
+| `CONTRIBUTING.md`, `.github/SECURITY.md` | How outsiders report errors, contribute, and report vulnerabilities. |
 | `docs/ARCHITECTURE.md` | Build pipeline, page and component responsibilities, client scripts, compare page design. |
 | `docs/CONTENT-GUIDE.md` | Sourcing rule, schema field reference, procedures for providers, news items, and compare config. |
 | `docs/DEPLOYMENT.md` | Branches, Cloudflare Pages, Node version, CI, deploy procedure, dependency updates, known issues. |
@@ -71,9 +73,9 @@ Each fact has one owner. Read the owner before you work on that topic.
 | `.github/workflows/verify.yml` | CI workflow. |
 | `.claude/skills/` | Project skills: `add-news`, `refresh-provider`, `deploy`. `.agents/skills` links here for Codex. |
 | `.agents/roles/` | Role prompts for Codex workers: builder, reviewer, tester, verifier, monitor, designer. |
-| `.agents/tasks/` | Task specs. `_TEMPLATE.md` is the format. One file for each unit of work. |
+| `.agents/tasks/` | Open task specs. `_TEMPLATE.md` is the format. Merged specs move to `tasks/done/`. Index: `.agents/README.md`. |
 | `.agents/schemas/` | JSON Schema for the final report of each worker. |
-| `scripts/agents/` | `swarm.sh` (dispatch, fan-out, review, status, clean), `gate.sh` (all checks in one command). |
+| `scripts/agents/` | `swarm.sh` (dispatch, fan-out, reviews, integrate, status, metrics), `gate.sh` (merge gate), `metrics.mjs` (cost and evidence), `monitor.sh` (live site), `identity-check.sh` (anonymity). |
 
 ## Commands
 
