@@ -66,10 +66,6 @@
         "event": "Companies House records a compulsory strike-off notice filed on 3 March and discontinuance of the action on 4 March"
       },
       {
-        "year": "2026 (March)",
-        "event": "Company's Global Expert Network Landscape page carries a March 2026 update, outlining industry operating models and providers"
-      },
-      {
         "year": "2026 (July)",
         "event": "About page updated 28 July describes a permanent, full-time internal team"
       }
@@ -130,12 +126,11 @@
   ],
   "notableFacts": [
     "Company identifies James Cartwright as founder and CEO and describes his prior Morgan Stanley roles",
-    "Company LinkedIn reports approximately 97% engagement completion, 61% expert acceptance, and 65% of new client engagements originating from existing-client referrals",
-    "Company's Global Expert Network Landscape page was updated in March 2026"
+    "Company LinkedIn reports approximately 97% engagement completion, 61% expert acceptance, and 65% of new client engagements originating from existing-client referrals"
   ],
   "sourceNotes": [
     "Companies House company overview, read 2026-11-11: https://find-and-update.company-information.service.gov.uk/company/11124869 — entity 11124869, incorporation on 27 December 2017, London registered office, and active status.",
-    "Companies House filing history, read 2026-11-11: https://find-and-update.company-information.service.gov.uk/company/11124869/filing-history — first Gazette notice for compulsory strike-off filed 3 March 2026; action discontinued 4 March 2026. Replaces the unsupported clean-record statement. The listing was readable; linked notice PDFs and accounts documents could not be retrieved, so no cause or accounts figures are asserted.",
+    "Companies House filing history, read 2026-11-11: https://find-and-update.company-information.service.gov.uk/company/11124869/filing-history — compliance.regulatoryHistory, complianceExtended.regulatoryContext, and the March 2026 timeline entry: verified filing dates. GAZ1 lists the first Gazette notice for compulsory strike-off on 3 March 2026; DISS40 lists discontinuance on 4 March 2026. These are filing dates; no cause, accounts figures, or general regulatory clearance is asserted.",
     "Companies House officers, read 2026-11-11: https://find-and-update.company-information.service.gov.uk/company/11124869/officers — James Cartwright is an active director appointed 27 December 2017; this does not independently verify his CEO title or prior employment.",
     "Company homepage, read 2026-11-11: https://www.silverlightresearch.com/ — company-stated expert calls, internal workflow, standing database, institutional user groups, and global coverage. No exact expert count or verified client ranking established.",
     "Company About page, updated 28 July 2026, read 2026-11-11: https://www.silverlightresearch.com/about.html — company-stated founder/CEO, Morgan Stanley background, and permanent full-time team. Removed the November founding month, all-part-time workforce, and unsupported growth timeline; no primary corroboration for the Greystone branch history was found.",
@@ -150,8 +145,7 @@
     "Company pay-per-call guide, updated 12 September 2026, read 2026-11-11: https://www.silverlightresearch.com/pay-per-call-expert-network.html — presents Silverlight among providers of call-based access. Read alongside its fee guide; per-call is not presented here as its sole commercial model.",
     "Company no-minimum guide, updated 31 August 2026, read 2026-11-11: https://www.silverlightresearch.com/expert-network-with-no-minimum.html — company says it offers this option; buyers should confirm applicable commitments in their quote.",
     "Company blog archive, read 2026-11-11: https://www.silverlightresearch.com/blog/previous/2 — surfaced the older AI claim and describes structured calls/written exchanges; current service and About pages take precedence over older consulting/advisory wording.",
-    "Company blog post dated 11 February 2025, read 2026-11-11: https://www.silverlightresearch.com/blog/silverlight-expert-network-london-empowering-businesses-with-specialised-knowledge — says AI and big-data analytics are being integrated into matching, without a named product or technical validation. Retained only as a dated company claim; database sourcing and distributed operations alone are not AI capabilities.",
-    "Company industry landscape, updated March 2026, read 2026-11-11: https://www.silverlightresearch.com/global-expert-network-landscape.html — industry overview and provider taxonomy published on the company site. Included as a recent publication, not independent evidence of Silverlight's rank or market leadership."
+    "Company blog post dated 11 February 2025, read 2026-11-11: https://www.silverlightresearch.com/blog/silverlight-expert-network-london-empowering-businesses-with-specialised-knowledge — says AI and big-data analytics are being integrated into matching, without a named product or technical validation. Retained only as a dated company claim; database sourcing and distributed operations alone are not AI capabilities."
   ],
   "whyChoose": [
     "Managed expert sourcing",
