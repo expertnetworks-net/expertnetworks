@@ -5,7 +5,7 @@
 #    Staged changes and commit messages must not contain any of those terms.
 # Usage: identity-check.sh staged | range <rev-range> | config
 set -u
-ALLOW='^(editors@expertnetworks\.net|noreply@anthropic\.com|noreply@github\.com)$'
+ALLOW='^(editors@expertnetworks\.net|noreply@anthropic\.com|noreply@github\.com|49699333\+dependabot\[bot\]@users\.noreply\.github\.com)$'
 DENY="${EXPERTNETWORKS_PRIVATE_TERMS:-$HOME/.config/expertnetworks/private-terms}"
 fail=0; bad() { echo "identity-check: $*" >&2; fail=1; }
 
