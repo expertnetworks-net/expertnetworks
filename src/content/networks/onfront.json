@@ -2,222 +2,259 @@
   "name": "OnFrontiers",
   "shortName": "OF",
   "slug": "onfront",
-  "website": "https://onfrontiers.com",
+  "website": "https://www.onfrontiers.com/",
   "gradientFrom": "#78350f",
   "gradientTo": "#fbbf24",
   "type": "Expert Network",
   "founded": 2014,
   "headquarters": "New York, NY",
-  "employeeCount": "170+",
-  "expertCount": "17K+ federal + 5K+ emerging markets",
-  "description": "Expert network specializing in two niche markets: frontier/emerging markets (100+ countries across Latin America, Africa, MENA, and Asia) and U.S. federal government contracting (17,000+ vetted federal SMEs). Official Expert Platform Partner of GPCA/EMPEA.",
+  "employeeCount": "11–50",
+  "expertCount": "17,000+",
+  "description": "Expert network focused on U.S. government contracting, with company-reported access to 17,000+ federal subject matter experts. Offers consultations, written responses, project engagements, and private knowledge networks; also serves development organizations.",
   "services": [
     "Expert Calls",
-    "Emerging Markets Research",
     "Federal Government Expertise",
+    "Written Responses",
     "Enterprise Knowledge Networks",
-    "Harness Intelligence Platform"
+    "Long-term Consulting Engagements",
+    "Capture and Proposal Support"
   ],
   "aiCapabilities": [
-    "AI-assisted expert discovery in emerging markets",
-    "Enterprise Knowledge Network platform",
-    "Harness expertise intelligence tool",
-    "Automated language and geography matching"
+    "Company-stated AI-powered expert matching",
+    "Company-stated AI-assisted knowledge and skills discovery",
+    "LLM matching and solicitation intelligence development disclosed in October 2026"
   ],
   "industries": [
     "International Development",
     "Government",
-    "Agriculture",
-    "Energy",
     "Healthcare",
-    "Infrastructure",
     "Defense"
   ],
-  "pricingModel": "Per-call",
-  "pricingDetail": "Per-call pricing with enterprise SaaS subscriptions for knowledge network platform",
+  "pricingModel": "Credit-based or subscription",
+  "pricingDetail": "The September 2026 plan documents describe Guided plans with prepaid credits and unlimited seats, and a per-seat Pro subscription with usage billed in U.S. dollars. Guided plan prices are quoted individually. Scoped engagements charge an expert fee and a separate platform fee. Older GovTribe marketing describes credit access without seat fees; confirm the applicable plan.",
   "keyDifferentiators": [
-    "Dual focus on emerging markets and U.S. federal government contracting — unique positioning",
-    "Official Expert Platform Partner of GPCA (formerly EMPEA)",
-    "Enterprise Knowledge Network platform for building proprietary expert networks"
+    "Focus on federal contracting, capture, and proposal expertise",
+    "GPCA hosts an undated EMPEA Expert Platform Partner page for emerging markets",
+    "Enterprise Knowledge Network platform for building proprietary expert networks",
+    "GovTribe integration surfaces experts alongside federal opportunities and pursuits"
   ],
   "bestFor": [
+    "Federal Contractors",
+    "Capture and Proposal Teams",
     "Development Organizations",
-    "Frontier Markets",
-    "Government/NGO",
-    "Federal Contractors"
+    "Consultancies"
   ],
   "compliance": {
-    "mnpiPolicy": "Compliance policies tailored to development sector and government engagement requirements",
-    "expertVetting": "Thorough vetting with emphasis on local knowledge verification and conflict-of-interest screening",
-    "coolingOffPeriod": "Standard cooling-off periods enforced where applicable",
-    "auditTrail": true,
-    "regulatoryHistory": "Clean regulatory record. Operates within federal contracting compliance frameworks"
+    "mnpiPolicy": "Published agreements prohibit disclosing confidential or proprietary information; no separate MNPI-specific policy was established in this review.",
+    "expertVetting": "OnFrontiers describes application review, background screening, mandatory compliance training, and conflict-of-interest checks in its September 2026 terms.",
+    "coolingOffPeriod": "Not disclosed",
+    "auditTrail": null,
+    "regulatoryHistory": "Not disclosed"
   },
   "featured": false,
   "priority": 19,
   "published": true,
   "categoryBadge": "Boutique Specialist",
   "deliveryModel": "Hybrid",
-  "regionStrength": "Emerging Markets",
-  "complianceBadge": "Standard Compliance",
+  "regionStrength": "North America",
+  "complianceBadge": "Compliance Tools",
   "aiBadge": "AI Matching",
   "comparison": {
     "expertCalls": true,
-    "contentLibrary": false,
-    "aiMatching": true,
-    "surveys": false,
+    "contentLibrary": null,
+    "aiMatching": "Company-stated AI-powered expert matching",
+    "surveys": null,
     "complianceTools": true
   },
-  "lastUpdated": "2026-03-07",
-  "overview": "OnFrontiers occupies a unique position in the expert network industry with a dual focus on two underserved markets: frontier/emerging markets and U.S. federal government contracting. Founded in 2014 by Brian Caouette, Anne Kroijer, and Kyle Teague, the company started as a peer-to-peer knowledge marketplace focused on emerging markets before expanding into federal expertise.\n\nThe emerging markets practice covers 100+ countries across six regions: Latin America, Sub-Saharan Africa, MENA, CEE & CIS, South Asia, and Southeast Asia. OnFrontiers is the official Expert Platform Partner of GPCA (Global Private Capital Association, formerly EMPEA), offering favorable rates to GPCA members investing in emerging markets.\n\nThe federal government practice maintains 17,000+ vetted subject matter experts and has partnered with Chemonics International (the largest USAID for-profit contractor, with $1.5B+ in contracts). In 2025, OnFrontiers launched a partnership with GovTribe (a GovExec platform), integrating its expert profiles directly into federal contractor tools.\n\nThe company has raised approximately $7.6 million from 12 investors including Techstars, ChemCapital (Chemonics' investment arm), Right Side Capital Management, and Black & Veatch IgniteX.",
+  "lastUpdated": "2026-11-11",
+  "overview": "OnFrontiers is an expert network focused on government contracting. The company says it serves federal contractors, consultancies, and development organizations, connecting them with practitioners for capture, proposal, and delivery work. It reports access to 17,000+ federal subject matter experts.\n\nIts emerging-markets history is documented by an undated GPCA-hosted page describing OnFrontiers as EMPEA’s Expert Platform Partner. That page advertises more than 5,000 experts across Latin America, Sub-Saharan Africa, MENA, CEE & CIS, South Asia, and Southeast Asia; it is not a current, dated network census. Chemonics announced an expanded knowledge-network partnership in October 2021.\n\nThe GovTribe integration announced in 2025 remains documented in GovTribe’s user guide: expert recommendations appear on federal opportunities and pursuits, with consultations arranged through OnFrontiers. In August 2026, OnFrontiers updated its standard terms for calls, written responses, project engagements, and a planned expert-content library. October 2026 hiring materials describe further work on LLM-powered matching and solicitation intelligence.",
   "history": {
-    "narrative": "Brian Caouette (CEO) co-founded OnFrontiers in 2014 with Anne Kroijer (CSO) and Kyle Teague (CTO). Caouette holds an MPA from Harvard Kennedy School in International Development and Economics, and had previously founded Farmbuilders as an Echoing Green Fellow. Kroijer co-designed the platform's knowledge marketplace approach, while Teague brought technical expertise from Georgia Tech.\n\nOnFrontiers joined the Techstars NYC Summer 2016 accelerator, gaining early-stage investment and mentorship. The company built its emerging markets expert network through partnerships with organizations like GPCA/EMPEA. A strategic inflection came when Chemonics International, the largest USAID for-profit contractor, made a strategic investment through its subsidiary ChemCapital, expanding OnFrontiers into the federal government contracting space with a Kenya office.",
+    "narrative": "Techstars’ company profile lists OnFrontiers as founded in 2014. Chemonics’ October 2021 announcement names Anne Kroijer and Brian Caouette as its founders. Echoing Green identifies Caouette as a 2010 Fellow and records his Harvard Kennedy School MPA/ID and work leading Farm Builders.\n\nOnFrontiers joined the Techstars NYC Summer 2016 program. Its subsequent work included enterprise knowledge networks for organizations such as Chemonics and a federal-contracting integration with GovTribe. The August 2026 terms update and October 2026 engineering recruitment describe its recent content-library plans and AI development.",
     "timeline": [
       {
         "year": "2014",
-        "event": "Founded in New York City by Brian Caouette, Anne Kroijer, and Kyle Teague as a peer-to-peer knowledge marketplace"
+        "event": "Founded, according to the Techstars company profile; Chemonics names Anne Kroijer and Brian Caouette as founders."
       },
       {
         "year": "2016",
-        "event": "Joined Techstars NYC Summer 2016 accelerator"
-      },
-      {
-        "year": "2016-2020",
-        "event": "Built emerging markets expert network; became GPCA/EMPEA's official Expert Platform Partner"
+        "event": "Joined Techstars NYC Summer 2016 accelerator."
       },
       {
         "year": "2021",
-        "event": "Expanded partnership with Chemonics International; ChemCapital made strategic investment"
-      },
-      {
-        "year": "2022-2023",
-        "event": "Launched Harness expertise intelligence platform; expanded to Kenya through Chemonics partnership"
+        "event": "Chemonics announced an expanded partnership to co-design and adopt enterprise knowledge-network products on October 19."
       },
       {
         "year": "2025",
-        "event": "Launched GovTribe partnership, integrating 17,000+ expert profiles into federal contractor tools"
+        "event": "Announced the GovTribe expert integration. The release body is dated August 7, while its webpage displays December 11."
+      },
+      {
+        "year": "August 2026",
+        "event": "Updated standard terms covering video consultations, written responses, scoped engagements, and a planned Library of expert content."
+      },
+      {
+        "year": "September 2026",
+        "event": "Published plan descriptions distinguishing Guided credit plans from a per-seat, self-service Pro subscription."
+      },
+      {
+        "year": "October 2026",
+        "event": "An October 12 engineering job posting described development of LLM-powered expert matching and solicitation intelligence; it does not establish a product launch."
       }
     ]
   },
   "servicesDetailed": [
     {
-      "name": "Expert Consultations (Emerging Markets)",
-      "description": "30-60 minute phone/video consultations with vetted subject matter experts covering 100+ countries across Latin America, Sub-Saharan Africa, MENA, CEE & CIS, South Asia, and Southeast Asia. Experts matched on recency, relevancy, and depth of knowledge, typically available within 24-48 hours."
+      "name": "Expert Consultations",
+      "description": "OnFrontiers describes phone or video conversations with vetted experts, typically lasting 30–60 minutes. Its help center lists capture work, market sizing, proposal support, and diligence among the use cases."
     },
     {
       "name": "Federal Government Expert Access",
-      "description": "17,000+ vetted federal subject matter experts supporting government contractors, agencies, and policy organizations. Includes key personnel sourcing, proposal support, and advisory services tailored to federal acquisition processes."
+      "description": "The company reports 17,000+ vetted federal subject matter experts for capture strategy and proposal work. GovTribe users can find recommended specialists for supported federal opportunities and pursuits, then continue to OnFrontiers to arrange an engagement."
     },
     {
       "name": "Enterprise Knowledge Networks",
-      "description": "SaaS platform enabling organizations to build proprietary networks of internal and external experts. Makes human knowledge visible, interpretable, and accessible within an organization while connecting to OnFrontiers' broader marketplace."
+      "description": "SaaS platform enabling organizations to build proprietary networks of internal and external experts. Chemonics described using the platform to manage employees and consultants and connect with outside expertise; the current help center also describes private, persistent expert networks."
     },
     {
-      "name": "Harness Expertise Intelligence",
-      "description": "Intelligence platform providing structured access to expertise data, enabling organizations to identify knowledge gaps, track expert engagement patterns, and optimize their use of human expertise."
+      "name": "Written Responses",
+      "description": "The published terms describe expert-written answers to a customer’s question or scope, with a fixed fee shown when the response is ordered."
     },
     {
       "name": "Long-term Consulting Engagements",
-      "description": "Multi-month advisory relationships, document review, and consulting projects that go beyond single consultations for clients needing sustained expert input."
+      "description": "The company offers work ranging from one-hour consultations to multi-month projects. Its 2026 Scoped Engagement terms specify an expert, scope, budget, and schedule; availability depends on the customer plan."
+    },
+    {
+      "name": "Capture and Proposal Support",
+      "description": "September 2026 plan descriptions offer Growth Pro services for fractional capture, business development, proposals, and strategy through a fixed project or recurring retainer under Guided plans."
     }
   ],
   "aiPlatform": {
-    "narrative": "OnFrontiers has evolved from a simple marketplace to an 'Enterprise Knowledge Network' platform — a SaaS tool that makes human knowledge visible and accessible within organizations. The Harness product adds expertise intelligence capabilities, helping organizations understand and optimize their use of expert knowledge. AI assists with expert discovery, matching, and the structuring of knowledge across the platform.",
+    "narrative": "OnFrontiers says its platform uses AI to make experts’ knowledge and skills discoverable and to match experts with contractors. It also offers private expert rosters and integrated consultation workflows. These are company-described capabilities, without independent performance validation.\n\nAn October 12, 2026 engineering posting describes work on LLM-powered matching, solicitation intelligence, and vector-based search. These are development disclosures rather than evidence that every feature is available. The August 2026 terms update announced an expert-content Library for later that year; a launch was not confirmed in this review.",
     "features": [
-      "Enterprise Knowledge Network SaaS platform",
-      "Harness expertise intelligence and analytics",
-      "AI-assisted expert discovery across emerging markets and federal domains",
-      "Automated matching based on geography, language, and subject matter",
-      "Integration with GovTribe for federal contractor tools",
-      "Knowledge graph connecting internal and external expertise"
+      "Company-stated AI matching and knowledge discovery",
+      "Private searchable networks of internal and external experts",
+      "Call summaries, messaging, payments, and compliance checks described by the company",
+      "GovTribe integration for federal opportunity and pursuit recommendations",
+      "LLM and vector-search development described in October 2026 hiring materials",
+      "Planned expert-content Library, with launch status unconfirmed"
     ]
   },
   "complianceExtended": {
-    "narrative": "OnFrontiers operates across two highly regulated environments: international development (requiring sensitivity to local regulations, conflict of interest, and political considerations) and U.S. federal government contracting (requiring adherence to federal acquisition regulations and security clearance protocols). The company's compliance framework is adapted for these unique requirements rather than the financial services focus typical of most expert networks.",
+    "narrative": "OnFrontiers’ published agreements require confidentiality, conflict-of-interest screening, and compliance with restrictions on government and post-government employment. Its expert agreement requires compliance training before platform use and periodically afterward. These are the company’s published requirements and processes; their execution was not independently audited in this review.",
     "highlights": [
-      "Federal government compliance aligned with FAR (Federal Acquisition Regulation) requirements",
-      "Development sector compliance with attention to local regulations and political sensitivity",
-      "Expert vetting with emphasis on local knowledge verification",
-      "Conflict-of-interest screening for government and development engagements",
-      "ChemCapital/Chemonics partnership validates compliance for USAID-related work",
-      "Audit trail for all expert interactions"
-    ],
-    "regulatoryContext": "OnFrontiers' dual focus on emerging markets and federal contracting places it in a distinct compliance environment. Federal work requires adherence to FAR regulations, while development work involves USAID, World Bank, and multilateral institution standards. This differs significantly from the MNPI/securities-focused compliance typical of finance-oriented expert networks."
+      "Mandatory expert compliance training under the Expert Participation Agreement",
+      "Expert attestations and screening for conflicts of interest",
+      "Restrictions on disclosing confidential and proprietary information",
+      "Government employment status must be disclosed under the expert agreement",
+      "Company-described compliance checks within the consultation workflow"
+    ]
   },
   "clientFit": {
-    "narrative": "OnFrontiers is uniquely positioned for organizations working in emerging/frontier markets or the U.S. federal government space. These are niche markets where traditional expert networks have limited coverage. Clients focused on developed market finance or corporate strategy will find more comprehensive options elsewhere.",
+    "narrative": "Editorial assessment: OnFrontiers is relevant to teams seeking practitioner input on government opportunities, capture strategy, proposals, and project delivery. Its help center also identifies enterprise teams, investors, and research teams as users. Development organizations are part of its stated customer base; the emerging-markets partnership material is undated.",
     "segments": [
-      "Development organizations (USAID, World Bank, multilateral institutions) needing emerging market expertise",
       "Federal government contractors seeking subject matter experts for proposals and projects",
-      "PE/VC firms investing in frontier and emerging markets (GPCA/EMPEA members)",
-      "NGOs and international organizations conducting field research in hard-to-reach geographies",
-      "Government agencies and policy organizations requiring specialized advisory"
+      "Capture, proposal, and business development teams seeking fractional support",
+      "Development organizations building knowledge networks",
+      "Enterprise teams evaluating markets, partnerships, or products",
+      "Investors and analysts conducting industry or program diligence"
     ]
   },
   "strengths": [
-    "Unique dual positioning in emerging markets and federal government — no direct competitor serves both",
-    "Official Expert Platform Partner of GPCA (formerly EMPEA) validates emerging market credibility",
-    "ChemCapital strategic investment connects OnFrontiers to the largest USAID for-profit contractor",
-    "GovTribe integration provides direct distribution channel to federal contracting community",
-    "CEO Brian Caouette's Harvard Kennedy School background gives authentic development sector expertise",
-    "Expertise in 100+ countries including geographies underserved by all other expert networks",
-    "Enterprise Knowledge Network platform enables organizations to build proprietary expert networks"
+    "Focus on federal government contracting expertise",
+    "GovTribe integration provides access to experts from federal opportunity and pursuit workflows",
+    "Enterprise Knowledge Network platform enables organizations to build proprietary expert networks",
+    "Calls, written responses, and scoped projects support different engagement needs",
+    "Published plans provide both research-assisted and self-service options"
   ],
   "caveats": [
-    "Niche positioning means limited relevance for mainstream financial services or corporate research",
-    "Smaller expert database (17K federal + 5K emerging markets) compared to generalist networks with 500K+",
-    "Limited brand recognition outside the development and federal contracting communities",
-    "Revenue estimated at $1.5-3.8M suggests relatively small scale",
-    "Employee count contracted ~17% in one recent year, suggesting growth challenges",
-    "Technology platform is less mature than established expert network portals"
+    "The 17,000+ federal expert figure is company-stated, not an independently audited count",
+    "The GPCA-hosted EMPEA page is undated; its emerging-markets count and member pricing should be reconfirmed",
+    "Current subscription documents and older no-seat-fee marketing describe different commercial options; confirm the applicable plan and fees",
+    "The planned Library’s launch and current content availability were not confirmed",
+    "October 2026 AI hiring disclosures do not establish availability or performance of the planned LLM features",
+    "GovTribe’s user guide says state-and-local-only pursuits are not matched by this integration"
   ],
   "notableFacts": [
-    "CEO Brian Caouette holds an MPA from Harvard Kennedy School and was an Echoing Green Fellow",
-    "Official Expert Platform Partner of GPCA (Global Private Capital Association, formerly EMPEA)",
-    "ChemCapital (investment arm of Chemonics International, largest USAID for-profit contractor) is a strategic investor",
-    "17,000+ vetted federal subject matter experts — among the largest federal expert databases",
-    "Experts have shared insights on 100+ countries across six emerging market regions",
-    "GovTribe partnership integrates expert profiles directly into federal contractor tools",
+    "Brian Caouette holds a Harvard Kennedy School MPA/ID and was a 2010 Echoing Green Fellow",
+    "GPCA hosts an undated page naming OnFrontiers as EMPEA’s Expert Platform Partner",
+    "Chemonics announced an expanded OnFrontiers partnership on October 19, 2021",
+    "GovTribe’s user guide documents contextual OnFrontiers expert recommendations",
     "Joined Techstars NYC Summer 2016 accelerator",
-    "Total funding of approximately $7.6M from 12 investors"
+    "August 2026 terms updates described new content elections and a planned expert-content Library"
   ],
   "sourceNotes": [
-    "OnFrontiers official website (onfrontiers.com) — company overview, services, and platform description",
-    "Tracxn — funding details ($7.58M total), employee count, and revenue estimates",
-    "Crunchbase — company profile, founders, and investor list",
-    "Techstars — NYC Summer 2016 cohort listing",
-    "GPCA (Global Private Capital Association) — Expert Platform Partner announcement",
-    "Chemonics International — ChemCapital strategic investment details",
-    "GovTribe partnership announcement (2025) — federal expert integration"
+    "2026-11-11 — https://www.onfrontiers.com/ — Company-reported federal expert scale, engagement formats, and New York address; does not independently verify the expert count.",
+    "2026-11-11 — https://www.onfrontiers.com/about — Current government-contracting focus and stated contractor, consultancy, and development customers.",
+    "2026-11-11 — https://www.linkedin.com/company/onfrontiers — Company lists 11–50 employees and New York headquarters; specialties and posts include defense and healthcare. Employee range is company-stated, not verified headcount.",
+    "2026-11-11 — https://jobs.techstars.com/companies/onfrontiers-2 — Undated job-board profile lists founding in 2014 and knowledge-network SaaS; the founding year was not independently confirmed. Its 51–200 employee range conflicts with the company’s LinkedIn range.",
+    "2026-11-11 — https://www.alexiskold.net/2016/09/29/meet-15-startups-from-techstars-nyc-summer-2016-program/ — Contemporary personal-blog cohort announcement lists OnFrontiers in Techstars NYC Summer 2016; no Techstars-hosted cohort announcement was verified.",
+    "2026-11-11 — https://www.prnewswire.com/news-releases/chemonics-expands-innovative-partnership-with-onfrontiers-301403588.html — Chemonics’ October 19, 2021 release describes the expanded partnership and names Anne Kroijer and Brian Caouette as founders. It does not substantiate the claimed ChemCapital investment, federal-market entry date, or Kenya office; those assertions were removed.",
+    "2026-11-11 — https://www.onfrontiers.com/blog/chemonics-international-is-expanding-their-innovative-partnership-with-onfrontiers — Company account of the Chemonics collaboration and founders. Its December 11, 2025 webpage date is not used to redate the 2021 partnership.",
+    "2026-11-11 — https://fellows.echoinggreen.org/fellow/brian-caouette/ — Confirms Caouette’s 2010 fellowship, Harvard MPA/ID, and Farm Builders background. Unsupported founder roles and the Kyle Teague co-founder claim were removed.",
+    "2026-11-11 — https://www.globalprivatecapital.org/onfrontiers-expertise-and-insights-in-emerging-markets/ — Undated EMPEA partner page hosted by GPCA lists more than 5,000 experts, six regions, member rates, and typical 30–60 minute calls. These are legacy marketing claims, not a current count or proof of an active member discount. No current 100+ country count was established.",
+    "2026-11-11 — https://www.onfrontiers.com/federal-contractors — Company-described expert search, AI knowledge/skills discovery, private rosters, and built-in compliance checks. Performance and speed claims were not adopted.",
+    "2026-11-11 — https://www.onfrontiers.com/govtribe — Company markets 17,000+ federal SMEs and credit access without seat fees; newer plan documents distinguish paid per-seat Pro access.",
+    "2026-11-11 — https://www.onfrontiers.com/blog/govtribe-partnership-announcement — Integration release body is dated August 7, 2025, while the page displays December 11, 2025. Retained the year and disclosed the discrepancy rather than treating it as a new December launch.",
+    "2026-11-11 — https://govtribe.com/docs/govtribe-user-guide/on-frontiers/ — Partner documentation confirms expert recommendations in supported federal opportunity and pursuit workflows, with engagement arranged in OnFrontiers; state/local-only pursuits are excluded.",
+    "2026-11-11 — https://support.onfrontiers.com/help-center/what-is-onfrontiers/ — Company describes 30–60 minute consultations, written/project work, private networks, and buyer types. Its no-subscription summary differs from the September 2026 subscription documents; commercial details follow the dated plan documents.",
+    "2026-11-11 — https://www.onfrontiers.com/policies/expert-participation-agreement — August 11, 2026 agreement requires compliance training, confidentiality, conflict screening, and disclosure of government employment. It does not establish a fixed cooling-off period or an audit trail for every interaction.",
+    "2026-11-11 — https://www.onfrontiers.com/policies/terms-of-service — September 3, 2026 terms describe vetting, engagement types, content elections, and Library rights. Removed unsupported clean-record, blanket FAR/security-clearance, and investor-validates-compliance assertions; no primary evidence established those claims.",
+    "2026-11-11 — https://www.onfrontiers.com/policies/compliance-commitment — Company compliance statement dated November 13, 2022; treated as positioning rather than independent proof of controls or regulatory history.",
+    "2026-11-11 — https://www.onfrontiers.com/policies/access-plan-description — September 2, 2026 plan descriptions distinguish Guided credit plans, self-service Pro subscriptions, Growth Pro services, and separately charged Library access. Contract descriptions alone do not confirm a populated Library launch.",
+    "2026-11-11 — https://www.onfrontiers.com/policies/rate-schedule — September 3, 2026 schedule gives quotation-based Guided prices and distinguishes credit-based calls, Pro usage charges, and scoped-engagement expert/platform fees. Future 2027 rates were not presented as current.",
+    "2026-11-11 — https://support.onfrontiers.com/help-center/standard-terms-update-august-2026/ — Describes August 11, 2026 changes and a Library planned for later in 2026, with no content included at the time of that notice. Current launch status remains unconfirmed.",
+    "2026-11-11 — https://jobs.techstars.com/companies/onfrontiers-2/jobs/96732820-software-engineer-full-stack-ai-first — October 12, 2026 company job posting describes LLM matching, solicitation intelligence, vector search, and expertise-graph development; not proof of feature release or performance.",
+    "2026-11-11 — https://www.onfrontiers.com/blog/monetize-gov-expertise — Company explicitly describes AI-powered expert matching. This is company-stated capability evidence, not independent validation.",
+    "2026-11-11 — https://www.onfrontiers.com/blog/how-chemonics-uses-knowledge-networks-to-find-local-expertise-while-abroad — Company case study describes knowledge-network sourcing and machine-learning assistance. Its Chemonics contract-value and ranking statements were not retained as current facts.",
+    "2026-11-11 — https://www.onfrontiers.com/blog — Reviewed the company blog for developments. No dependable source was established for the old $7.6 million/12-investor total, revenue range, 17% staff contraction, competitor-scale comparisons, or technology-maturity ranking; those claims were removed."
   ],
   "whyChoose": [
-    "Emerging markets expertise",
-    "Federal government access",
-    "GPCA/EMPEA partner",
-    "100+ country coverage"
+    "Federal contracting expertise",
+    "GovTribe integration",
+    "Private expert networks",
+    "Flexible engagement types"
   ],
   "whenNotIdeal": [
-    "Developed market focus",
-    "Financial services research",
-    "Need large expert pools",
-    "Want self-service platform"
+    "Need a confirmed live content library",
+    "Need independently audited expert counts",
+    "State/local-only GovTribe pursuits"
   ],
   "confidence": {
-    "founded": "verified",
+    "founded": "partially-unverifiable",
     "headquarters": "verified",
-    "expertCount": "verified",
-    "employeeCount": "partially-unverifiable",
-    "pricingModel": "verified",
-    "services": "verified",
-    "compliance": "positioning",
-    "overview": "verified",
-    "history": "verified",
-    "servicesDetailed": "verified",
+    "employeeCount": "positioning",
+    "expertCount": "positioning",
+    "description": "positioning",
+    "pricingModel": "positioning",
+    "pricingDetail": "positioning",
+    "services": "positioning",
+    "aiCapabilities": "positioning",
+    "industries": "positioning",
+    "keyDifferentiators": "partially-unverifiable",
+    "bestFor": "inference",
+    "categoryBadge": "inference",
+    "deliveryModel": "positioning",
+    "regionStrength": "inference",
+    "complianceBadge": "positioning",
+    "aiBadge": "positioning",
+    "comparison": "partially-unverifiable",
+    "comparison.expertCalls": "positioning",
+    "comparison.contentLibrary": "partially-unverifiable",
+    "comparison.aiMatching": "positioning",
+    "comparison.surveys": "partially-unverifiable",
+    "comparison.complianceTools": "positioning",
+    "compliance": "partially-unverifiable",
+    "overview": "positioning",
+    "history": "partially-unverifiable",
+    "servicesDetailed": "positioning",
     "aiPlatform": "positioning",
     "complianceExtended": "positioning",
     "clientFit": "inference",
-    "strengths": "verified",
-    "caveats": "inference",
-    "notableFacts": "verified"
-  }
+    "strengths": "positioning",
+    "caveats": "partially-unverifiable",
+    "notableFacts": "partially-unverifiable",
+    "whyChoose": "inference",
+    "whenNotIdeal": "inference"
+  },
+  "employeeCountSource": "OnFrontiers LinkedIn company page, checked 2026-11-11; not an independently verified headcount",
+  "expertCountLabel": "Federal subject matter experts"
 }

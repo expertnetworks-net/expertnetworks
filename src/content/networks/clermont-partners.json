@@ -2,178 +2,124 @@
   "name": "Clermont Partners",
   "shortName": "CP",
   "slug": "clermont-partners",
-  "website": "https://clermontpartners.com",
   "gradientFrom": "#1e3a5f",
   "gradientTo": "#93c5fd",
-  "type": "Expert Network",
-  "founded": 2014,
-  "headquarters": "London, UK",
-  "employeeCount": "80+",
-  "expertCount": "40K+",
-  "description": "European specialist expert network serving UK and Continental European investors with curated expert access, bespoke research projects, and deep regional market knowledge.",
+  "type": "ESG & Investor Relations Consultancy",
+  "founded": 2015,
+  "headquarters": "Chicago, US (at the June 2022 acquisition)",
+  "employeeCount": "35 (company-reported, June 2022)",
+  "expertCount": "Not disclosed",
+  "description": "Chicago-based ESG, investor relations, and transaction communications consultancy acquired by Riveron in June 2022. The acquisition sources describe corporate advisory services; they do not substantiate the previous European expert-network profile.",
   "services": [
-    "Expert Calls",
-    "European Research",
-    "Bespoke Projects"
+    "ESG Strategy & Communications",
+    "Investor Relations",
+    "Transaction Communications"
   ],
-  "aiCapabilities": [
-    "AI-assisted expert matching for European markets",
-    "Automated compliance screening for UK/EU regulations",
-    "Smart project scoping tools"
-  ],
-  "industries": [
-    "Financial Services",
-    "Healthcare",
-    "Technology",
-    "Consumer",
-    "Industrials",
-    "Energy"
-  ],
-  "pricingModel": "Per-call",
-  "keyDifferentiators": [
-    "Deep specialization in European markets with native-language coverage",
-    "Bespoke research capabilities tailored to UK and European investor needs",
-    "Strong relationships with senior executives across Continental Europe"
-  ],
+  "aiCapabilities": [],
+  "industries": [],
+  "pricingModel": "Not disclosed",
+  "keyDifferentiators": [],
   "bestFor": [
-    "European Markets",
-    "UK Investors",
-    "European PE"
+    "Corporate ESG programs",
+    "Investor relations",
+    "Transaction communications"
   ],
   "compliance": {
-    "mnpiPolicy": "MNPI policies aligned with FCA and EU MAR regulatory frameworks",
-    "expertVetting": "Thorough vetting with emphasis on European regulatory compliance and cross-border conflict screening",
-    "coolingOffPeriod": "Enforced cooling-off periods in compliance with UK and EU regulations",
-    "auditTrail": true,
-    "regulatoryHistory": "Clean regulatory record"
+    "mnpiPolicy": "Not disclosed",
+    "expertVetting": "Not disclosed",
+    "coolingOffPeriod": "Not disclosed",
+    "auditTrail": null
   },
   "featured": false,
   "priority": 22,
   "published": true,
-  "categoryBadge": "Boutique Specialist",
-  "deliveryModel": "Concierge",
-  "regionStrength": "Europe",
-  "complianceBadge": "Standard Compliance",
-  "aiBadge": "AI Matching",
   "comparison": {
-    "expertCalls": true,
-    "contentLibrary": false,
-    "aiMatching": true,
-    "surveys": false,
-    "complianceTools": true
+    "expertCalls": null,
+    "contentLibrary": null,
+    "aiMatching": null,
+    "surveys": null,
+    "complianceTools": null
   },
-  "lastUpdated": "2026-03-07",
-  "overview": "Clermont Partners is a London-based expert network specializing in European markets. Founded in 2014, the company serves UK and Continental European investors — including PE firms, hedge funds, and corporate strategy teams — with curated expert access and bespoke research projects.\n\nThe company differentiates through deep European coverage with native-language capabilities across major Continental European markets. Clermont's bespoke research approach goes beyond standard expert calls to deliver tailored research projects that combine expert insights with market analysis.",
+  "lastUpdated": "2026-11-11",
+  "overview": "Clermont Partners was founded in 2015 and acquired by Riveron in June 2022. H.I.G. Capital's acquisition announcement describes ESG strategy, investor relations, and transaction communications services for public and private companies. It identifies Chicago as headquarters and Washington, DC as an additional office at that time.\n\nRecent parent-company development: on March 3, 2026, Riveron announced an investment and growth partnership with AI and data advisory firm Cuesta Partners. This concerns Riveron's CFO advisory business; the announcement does not establish a Clermont expert-matching platform.",
   "history": {
-    "narrative": "Clermont Partners was founded in 2014 in London to serve the growing demand for European-focused expert network services tailored to institutional investors.",
+    "narrative": "The acquisition announcement dates Clermont's founding to 2015 and names Elizabeth Saunders and Victoria Sivrais as co-founders. The 2022 transaction added its services to Riveron's ESG and Strategic Communications practice.",
     "timeline": [
       {
-        "year": "2014",
-        "event": "Founded in London with focus on European markets"
+        "year": "2015",
+        "event": "Founded by Elizabeth Saunders and Victoria Sivrais, according to the acquisition announcement."
       },
       {
-        "year": "2015-2020",
-        "event": "Built expert network to 40K+ across UK and Continental Europe"
+        "year": "2022",
+        "event": "Riveron acquired Clermont Partners in June; the announcement reported a 35-person team."
       },
       {
-        "year": "2021-2025",
-        "event": "Expanded bespoke research capabilities; deepened Continental European coverage"
+        "year": "2026",
+        "event": "Parent-company update: Riveron announced its Cuesta Partners investment and growth partnership on March 3."
       }
     ]
   },
   "servicesDetailed": [
     {
-      "name": "Expert Consultations",
-      "description": "One-on-one phone consultations with vetted European industry experts, with native-language capabilities across major Continental European markets."
+      "name": "ESG Strategy & Communications",
+      "description": "The 2022 acquisition announcement identifies ESG strategy and strategic communications as Clermont services."
     },
     {
-      "name": "Bespoke Research Projects",
-      "description": "Tailored research engagements combining expert interviews with market analysis for European-focused due diligence and strategic research."
+      "name": "Investor Relations",
+      "description": "Clermont's description in the 2022 acquisition announcement says it helped companies build investor relations programs."
     },
     {
-      "name": "European Market Intelligence",
-      "description": "Deep market intelligence across UK, France, Germany, Nordics, and other European markets, leveraging local expert relationships."
+      "name": "Transaction Communications",
+      "description": "Transaction communications was identified as a service at the time of the Riveron acquisition."
     }
   ],
-  "aiPlatform": {
-    "narrative": "Clermont uses AI-assisted matching for European markets with automated compliance screening for UK FCA and EU MAR requirements.",
-    "features": [
-      "AI-assisted expert matching for European markets",
-      "Automated UK FCA and EU MAR compliance screening",
-      "Smart project scoping tools",
-      "Cross-border conflict detection across European jurisdictions"
-    ]
-  },
-  "complianceExtended": {
-    "narrative": "Clermont operates under UK FCA and EU MAR regulatory frameworks with compliance processes designed for institutional European investors.",
-    "highlights": [
-      "UK FCA-aligned compliance policies",
-      "EU MAR regulatory compliance",
-      "Cross-border European conflict screening",
-      "Cooling-off periods per UK/EU regulations",
-      "Audit trail for all interactions"
-    ],
-    "regulatoryContext": "Post-Brexit, Clermont navigates both UK FCA and EU regulatory requirements for cross-border expert engagements. Clean regulatory record."
-  },
   "clientFit": {
-    "narrative": "Ideal for investors and firms focused on European markets who need native-language expert access and bespoke research.",
+    "narrative": "The acquisition announcement positions Clermont's services for public and private companies seeking ESG and investor communications advice.",
     "segments": [
-      "UK and European PE firms conducting European due diligence",
-      "Hedge funds researching European equities and sectors",
-      "Consulting firms needing Continental European specialists",
-      "Corporations evaluating European market opportunities"
+      "Public companies",
+      "Private companies"
     ]
   },
-  "strengths": [
-    "Deep European specialization with native-language capabilities",
-    "Bespoke research goes beyond standard expert calls",
-    "London headquarters provides proximity to Europe's largest financial center",
-    "FCA and EU MAR-compliant operations"
-  ],
+  "strengths": [],
   "caveats": [
-    "Limited coverage outside Europe",
-    "Smaller expert database than global networks",
-    "Less brand recognition among US institutional buyers",
-    "Limited public information about funding and scale"
+    "The reviewed acquisition sources describe a corporate advisory consultancy, without substantiating expert-network services.",
+    "The staff figure and office locations are dated June 2022; current standalone staffing, pricing, and expert-network capabilities were not verified.",
+    "The March 2026 AI and data investment is a Riveron development; it does not substantiate the previous Clermont AI-matching claims."
   ],
   "notableFacts": [
-    "London-headquartered with deep Continental European coverage",
-    "Native-language expert access across major European markets",
-    "Bespoke research model tailored for European institutional investors"
+    "Riveron acquired Clermont Partners in June 2022.",
+    "On March 3, 2026, Riveron announced a strategic investment and growth partnership with Cuesta Partners."
   ],
   "sourceNotes": [
-    "Clermont Partners website — company overview",
-    "INEX ONE Expert Network Directory — profile listing",
-    "Expert network industry directories"
+    "H.I.G. Capital acquisition announcement, June 30, 2022 — https://hig.com/news/riveron-an-h-i-g-capital-portfolio-company-acquires-clermont-partners/ — accessed 2026-11-11. Primary source for founding, founders, acquisition, services, client positioning, Chicago headquarters, Washington, DC office, and the company-reported 35 staff at that date. Does not substantiate the former London/European expert-network description, 40K+ experts, per-call pricing, AI features, or FCA/EU MAR compliance claims; those claims and associated badges were removed or made explicit unknowns.",
+    "ESG Today acquisition coverage, June 30, 2022 — https://www.esgtoday.com/esg-ir-advisory-clermont-acquired-by-h-i-g-capitals-riveron/ — accessed 2026-11-11. Independent reporting corroborates the 2015 founding, corporate advisory services, Riveron acquisition, and dated team locations.",
+    "O'Dwyer's acquisition coverage, July 1, 2022 — https://www.odwyerpr.com/story/public/18143/2022-07-01/riveron-acquires-clermont-partners.html — accessed 2026-11-11. Public article excerpt corroborates Chicago, the acquisition, and a 35-member ESG communications and investor relations firm; the subscriber-only article was not used.",
+    "They Got Acquired retrospective, April 15, 2026 — https://theygotacquired.com/services/clermont-partners-acquired-by-riveron-consulting/ — accessed 2026-11-11. Recent coverage concerns the historical 2022 sale and reports the founders' departures in 2023 and 2024. Its 43-employee sale figure differs from the contemporaneous primary announcement's 35; this profile retains the dated primary figure, without treating either as current staffing.",
+    "Kohlberg/Riveron Business Wire press release, March 3, 2026 — https://www.kohlberg.com/kohlberg-and-riveron-announce-strategic-investment-in-cuesta-partners-to-expand-into-ai-and-data-advisory-services/ — accessed 2026-11-11. Primary source for Riveron's announced Cuesta Partners investment and growth partnership, with a stated focus on the Office of the CFO. Supports the dated announcement in notableFacts, not Clermont expert matching. Review of developments from 2025-11-11 through 2026-11-11 found no substantiated separate Clermont expert-network launch, funding, office expansion, or AI platform.",
+    "Ropes & Gray transaction announcement, March 4, 2026 — https://www.ropesgray.com/en/news-and-events/news/2026/03/kohlberg-backed-riveron-announces-strategic-investment-in-cuesta-partners — accessed 2026-11-11. Riveron's transaction counsel corroborates the Cuesta investment and its March 3 announcement date."
   ],
-  "whyChoose": [
-    "European market depth",
-    "Native-language access",
-    "Bespoke research",
-    "FCA/EU MAR compliant"
-  ],
-  "whenNotIdeal": [
-    "Non-European focus",
-    "Need global scale",
-    "Want self-service",
-    "Need Asia/US depth"
-  ],
+  "whyChoose": [],
+  "whenNotIdeal": [],
   "confidence": {
-    "founded": "partially-unverifiable",
+    "type": "verified",
+    "founded": "verified",
     "headquarters": "verified",
-    "expertCount": "positioning",
-    "employeeCount": "partially-unverifiable",
-    "pricingModel": "verified",
+    "employeeCount": "positioning",
+    "expertCount": "partially-unverifiable",
+    "description": "verified",
+    "pricingModel": "partially-unverifiable",
     "services": "positioning",
-    "compliance": "positioning",
+    "parentCompany": "verified",
+    "bestFor": "positioning",
+    "compliance": "partially-unverifiable",
+    "comparison": "partially-unverifiable",
     "overview": "positioning",
-    "history": "inference",
+    "history": "verified",
     "servicesDetailed": "positioning",
-    "aiPlatform": "positioning",
-    "complianceExtended": "positioning",
-    "clientFit": "inference",
-    "strengths": "positioning",
-    "caveats": "inference",
-    "notableFacts": "positioning"
-  }
+    "clientFit": "positioning",
+    "caveats": "partially-unverifiable",
+    "notableFacts": "verified"
+  },
+  "employeeCountSource": "H.I.G. Capital acquisition announcement, June 30, 2022; not a current headcount",
+  "parentCompany": "Riveron (acquired June 2022)"
 }

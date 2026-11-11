@@ -2,25 +2,26 @@
   "name": "Astute Connect",
   "shortName": "AC",
   "slug": "astute-connect",
-  "website": "https://astuteconnect.com",
+  "website": "https://www.astuteconnect.com/",
   "gradientFrom": "#065f46",
   "gradientTo": "#34d399",
   "type": "Expert Network",
-  "founded": 2020,
-  "headquarters": "New Delhi, India",
-  "employeeCount": "200+",
-  "expertCount": "75K+",
-  "description": "India-based expert network launched as a division of Astute Analytica, combining data analytics expertise with expert consultations. Serves 500+ global clients across 100+ countries with AI-enhanced expert matching.",
+  "founded": 2023,
+  "headquarters": "Noida, Uttar Pradesh, India",
+  "employeeCount": "51–200 (company-stated)",
+  "expertCount": "400K+ (combined Astute ecosystem, company-stated)",
+  "description": "India-based expert network launched by Astute Analytica in 2023. Offers expert consultations, custom recruitment, surveys, and primary research. Its website reports 400,000+ experts and 500+ clients across the combined Astute ecosystem, with access across 100+ countries.",
   "services": [
     "Expert Calls",
     "Surveys",
     "Market Research",
-    "Custom Recruitment"
+    "Custom Recruitment",
+    "Moderated Expert Calls",
+    "Transcripts & Insight Summaries"
   ],
   "aiCapabilities": [
-    "AI-powered expert matching",
-    "Data analytics integration",
-    "Automated requirement analysis"
+    "AI-powered expert matching (company-stated, September 2024)",
+    "AI analysis of client requirements (company-stated, September 2024)"
   ],
   "industries": [
     "Financial Services",
@@ -29,146 +30,175 @@
     "Consumer",
     "Manufacturing"
   ],
-  "pricingModel": "Per-call",
-  "pricingDetail": "Per-call pricing with India-based operational model",
+  "pricingModel": "Project-based (company-stated)",
+  "pricingDetail": "The company says scope and pricing are agreed before sourcing, with no retainer, platform fee, or minimum commitment. Rates are not published on the reviewed official pages; request a project quote.",
   "keyDifferentiators": [
-    "Strong India and Asia coverage with local operations",
-    "Integration with Astute Analytica's data analytics capabilities",
-    "Competitive pricing from India-based operations"
+    "Company-described research partnership with Astute Analytica",
+    "Company-described senior project lead throughout each engagement",
+    "Company-stated expert access across 100+ countries"
   ],
   "bestFor": [
-    "Emerging Markets Research",
-    "India/South Asia Focus",
-    "Cost-Sensitive Buyers"
+    "Consulting Research",
+    "Investment Due Diligence",
+    "Corporate Strategy",
+    "Expert Interviews and Surveys"
   ],
   "compliance": {
-    "mnpiPolicy": "Standard compliance protocols",
-    "expertVetting": "Manual vetting with regional compliance awareness",
-    "auditTrail": false,
-    "regulatoryHistory": "Clean regulatory record"
+    "mnpiPolicy": "The company says experts acknowledge rules prohibiting material non-public and confidential employer information before every consultation.",
+    "expertVetting": "The company describes checks of professional background, recent experience, employment restrictions, and conflicts for each engagement.",
+    "coolingOffPeriod": "The company says it applies client-specified cooling-off periods; a standard duration is not disclosed on its compliance page.",
+    "auditTrail": null,
+    "regulatoryHistory": "Not disclosed"
   },
   "featured": false,
   "priority": 13,
   "published": true,
   "categoryBadge": "Boutique Specialist",
   "deliveryModel": "Concierge",
-  "regionStrength": "India",
-  "complianceBadge": "Standard Compliance",
+  "regionStrength": "Global",
   "lastUpdated": "2026-11-11",
-  "overview": "Astute Connect is an India-based expert network that launched in 2020 as a division of Astute Analytica and Report Ocean, market research firms with established data analytics capabilities. Headquartered in New Delhi, the company connects businesses with industry experts for one-on-one consultations and custom recruitment, leveraging its parent company's data analytics expertise to enhance expert matching.\n\nThe company claims to serve 500+ global clients across 100+ countries, with AI-powered matching algorithms that analyze client requirements and connect them with the most relevant experts. Astute Connect differentiates through its integration of traditional expert network services with data analytics capabilities inherited from its parent company.\n\nAs an organically grown, unfunded company, Astute Connect competes primarily on cost efficiency and regional expertise rather than technology or scale.",
+  "overview": "Astute Connect is an India-based expert network introduced by Astute Analytica in September 2023. Its company LinkedIn page lists Noida, Uttar Pradesh as headquarters. The current website describes Astute Analytica as an affiliated research and intelligence firm and offers expert consultations, custom recruitment, surveys, and other primary research services.\n\nThe website reports 400,000+ experts, 500+ clients, and expert access across 100+ countries for the combined Astute Connect and Astute Analytica ecosystem. These are company-stated figures, not independently verified standalone Astute Connect totals. A January 2026 press release claimed over 4 million experts; the current profile uses the lower website figure with its broader ecosystem scope.\n\nThe company describes a managed process covering project scoping, expert sourcing, screening, scheduling, and agreed deliverables. Its January 12, 2026 announcement reported expanded expert engagement capabilities for consulting, investment, and corporate strategy clients.",
   "history": {
-    "narrative": "Astute Connect emerged from the Astute Analytica ecosystem, a market research and analytics firm based in India. The company was established around 2020 as a natural extension of Astute Analytica's existing research capabilities, adding expert network services to complement its data analytics and market research offerings. The company has grown organically without external funding.",
+    "narrative": "Astute Analytica publicly introduced Astute Connect on September 11, 2023. Subsequent company releases described AI-assisted matching in September 2024, a market-sizing report in August 2025, and expanded expert engagement capabilities in January 2026. These announcements establish what the company reported at those dates; they do not independently validate its technology or scale.",
     "timeline": [
       {
-        "year": "2020",
-        "event": "Launched as a division of Astute Analytica and Report Ocean in New Delhi, India"
-      },
-      {
-        "year": "2021-2023",
-        "event": "Expanded global reach to 100+ countries with 500+ clients"
+        "year": "2023",
+        "event": "Astute Analytica introduced Astute Connect in a September 11 launch announcement."
       },
       {
         "year": "2024",
-        "event": "Enhanced AI-powered expert matching; published industry analysis valuing expert network market at $2.52B"
+        "event": "In a September 18 release, the company described AI algorithms for client requirement analysis and expert matching."
+      },
+      {
+        "year": "2025",
+        "event": "On August 1, announced The Expert Network Market Sizing 2025, which estimated the 2024 market at over $2.52 billion; this is the company’s estimate."
       },
       {
         "year": "2026",
-        "event": "Announced expanded expert engagement services for consulting, investment, and corporate strategy clients (January 12)"
+        "event": "On January 12, announced expanded expert engagement capabilities for consulting, investment, and corporate strategy clients."
       }
     ]
   },
   "servicesDetailed": [
     {
       "name": "Expert Consultations",
-      "description": "One-on-one interviews with industry experts across global markets. AI algorithms analyze client requirements to match with the most relevant experts."
+      "description": "The company offers one-on-one and group expert calls, with its team sourcing, screening, and scheduling practitioners against the client brief."
     },
     {
       "name": "Custom Expert Recruitment",
-      "description": "Targeted recruitment of niche experts for specific project requirements, leveraging Astute Analytica's research networks and databases."
+      "description": "The website offers recruitment for advisory roles, project engagements, and specialist positions. Its process page describes sourcing and screening against each brief."
     },
     {
-      "name": "Market Research Integration",
-      "description": "Combined expert consultations with data analytics and market research from the Astute Analytica platform."
+      "name": "Primary Research",
+      "description": "The company advertises in-depth interviews, focus groups, B2B and B2C surveys, respondent recruitment, retail audits, and customer experience research."
+    },
+    {
+      "name": "Transcripts and Insight Summaries",
+      "description": "The company offers transcripts and summaries as scoped add-ons, plus synthesis across multiple calls and a searchable archive of a client’s engagements. It says deliverables are exclusive to the commissioning client."
     }
   ],
   "aiPlatform": {
-    "narrative": "Astute Connect integrates AI-powered expert matching with its parent company's data analytics capabilities. The platform uses algorithms to analyze client requirements and match them with the most relevant experts.",
+    "narrative": "In its September 18, 2024 press release, Astute Connect said AI algorithms analyzed client requirements and matched experts. These are dated company claims, without independent technical validation. The current process page describes research-team sourcing and screening; the June 2026 AI article discusses industry practices without documenting a new Astute Connect product launch.",
     "features": [
-      "AI-powered requirement analysis and expert matching",
-      "Integration with Astute Analytica data analytics platform",
-      "Automated expert sourcing across 100+ countries"
+      "AI analysis of client requirements (company-stated, September 2024)",
+      "AI-assisted expert matching (company-stated, September 2024)",
+      "Automated scheduling tools (company-stated, September 2024)"
     ]
   },
   "complianceExtended": {
-    "narrative": "Astute Connect maintains standard compliance protocols for expert consultations. As a relatively young company focused on market research, the compliance infrastructure is less mature than finance-focused networks.",
+    "narrative": "Astute Connect publishes a company-described framework covering screening, conflicts, MNPI restrictions, confidentiality, and engagement records. These are policy statements; their execution has not been independently audited in this review.",
     "highlights": [
-      "Standard compliance protocols for expert consultations",
-      "Expert background verification",
-      "NDA management for client engagements"
-    ],
-    "regulatoryContext": "Astute Connect operates primarily from India with a global client base. Compliance framework oriented toward market research rather than securities. Clean regulatory record."
+      "Company-stated background, employment, and conflict checks for each engagement",
+      "Company-stated MNPI briefings and NDA terms before consultations",
+      "Company-stated retained engagement records available for client review",
+      "Company-stated support for client restricted lists, cooling-off rules, and observed or recorded calls"
+    ]
   },
   "clientFit": {
-    "narrative": "Best suited for clients seeking cost-effective expert consultations with strong India and South Asia coverage.",
+    "narrative": "The company markets its services to consulting firms, private equity and venture capital funds, hedge funds, and corporate strategy teams. The following use cases reflect that stated positioning.",
     "segments": [
-      "Companies conducting market research in India and South Asia",
-      "Cost-sensitive organizations seeking expert consultations at competitive rates",
-      "Market research firms needing expert access combined with data analytics"
+      "Consulting teams conducting sector research and market mapping",
+      "Investment teams conducting due diligence",
+      "Corporate strategy teams evaluating market entry and competitors"
     ]
   },
   "strengths": [
-    "Cost-competitive pricing from India-based operations",
-    "Integration with Astute Analytica's data analytics capabilities",
-    "Strong India and South Asia expert coverage",
-    "Global reach spanning 100+ countries with 500+ clients"
+    "Company-described research partnership with Astute Analytica",
+    "Company-described senior project attention from scoping through delivery",
+    "Company-stated global expert access across 100+ countries",
+    "Company-offered interviews, surveys, and structured research deliverables"
   ],
   "caveats": [
-    "Unfunded company with limited resources compared to venture-backed competitors",
-    "Less mature compliance infrastructure than finance-focused networks",
-    "Younger company (2020) with shorter track record",
-    "Limited brand recognition outside India"
+    "Published expert and client totals cover the combined Astute ecosystem; standalone Astute Connect scale is not established.",
+    "The current 400,000+ ecosystem expert figure differs from the January 2026 release’s claim of over 4 million; the company does not explain the difference on the reviewed pages.",
+    "Public AI implementation claims retained here date to September 2024 and lack independent validation.",
+    "Pricing requires a scoped quote; lower cost than competing providers is not established.",
+    "Compliance controls are company-described; this review does not establish their operational effectiveness."
   ],
   "notableFacts": [
-    "Division of Astute Analytica and Report Ocean, established market research firms",
-    "Serves 500+ global clients across 100+ countries",
-    "Published industry analysis valuing the expert network market at $2.52 billion in 2024",
-    "Organically grown without external venture funding"
+    "Astute Analytica introduced Astute Connect on September 11, 2023.",
+    "The current website attributes 400,000+ experts and 500+ clients to the combined Astute ecosystem.",
+    "An August 1, 2025 company release estimated the 2024 expert network market at over $2.52 billion.",
+    "A January 12, 2026 company release announced expanded expert engagement capabilities."
   ],
   "sourceNotes": [
-    "Astute Connect official website (astuteconnect.com) — company overview and services",
-    "Yahoo Finance — Astute Connect vision and industry sizing articles",
-    "Tracxn — company profile and funding status",
-    "INEX ONE Expert Network Directory — Astute Connect profile",
-    "November 2026 refresh: January 12, 2026 GlobeNewswire release describes \"a network of over 4 million experts across 100+ countries\" and 500+ clients. The 4 million figure is far above the 75K+ previously listed here and is not independently verified, so the expert count field is left unchanged pending corroboration."
+    "https://www.astuteconnect.com/ — Read 2026-11-11. Checks: name=verified; website=verified; type=verified; description=positioning; expertCount=positioning; expertCountLabel=positioning; services=positioning; industries=positioning; regionStrength=positioning; notableFacts=positioning; whyChoose=positioning; caveats=partially-unverifiable; whenNotIdeal=inference. Company-stated 400,000+ experts, 500+ clients, and access across 100+ countries cover the combined Astute Connect and Astute Analytica ecosystem. The short count label describes that scope; a standalone provider count is not established. Services, sector coverage, and no-retainer, no-platform-fee, no-minimum terms are company descriptions.",
+    "https://www.astuteconnect.com/about — Read 2026-11-11. Checks: overview=positioning; categoryBadge=positioning; keyDifferentiators=positioning; bestFor=positioning; clientFit=positioning; strengths=positioning; whyChoose=positioning. Company-described research partnership with Astute Analytica, boutique senior-team model, and consulting, investment, and corporate buyer segments. These support positioning, without establishing superiority, funding status, or comparative price advantages.",
+    "https://in.linkedin.com/company/astute-connect — Read 2026-11-11. Checks: headquarters=positioning; employeeCount=positioning; employeeCountSource=positioning; overview=positioning. Company-managed page lists Noida, Uttar Pradesh, India as headquarters and a 51–200 employee size band; the band is not an independently verified headcount.",
+    "https://www.einpresswire.com/article/655024993/introducing-astute-connect-your-gateway-to-premier-expert-networks — Read 2026-11-11. Checks: founded=verified; description=positioning; overview=positioning; history=positioning; notableFacts=positioning. Astute Analytica’s September 11, 2023 announcement introduced Astute Connect. The year records the service launch, not legal incorporation.",
+    "https://www.globenewswire.com/news-release/2024/09/18/2948110/0/en/astute-connect-vision-shaping-the-new-era-of-expert-networks.html — Read 2026-11-11. Checks: aiCapabilities=positioning; aiPlatform=positioning; history=positioning; caveats=partially-unverifiable; whenNotIdeal=inference. September 18, 2024 company claims describe AI requirement analysis, expert matching, and automated scheduling. They remain dated company claims; this release supplies no independent technical validation.",
+    "https://www.globenewswire.com/news-release/2025/08/01/3125716/0/en/astute-connect-the-expert-network-industry-to-reach-us-5-5-billion-by-2030.html — Read 2026-11-11. Checks: history=positioning; notableFacts=positioning. August 1, 2025 company announcement of The Expert Network Market Sizing 2025 estimated the 2024 market at over $2.52 billion. The profile attributes this estimate to the company.",
+    "https://www.globenewswire.com/news-release/2026/01/12/3217285/0/en/Astute-Connect-Expands-Global-Expert-Network-Capabilities-to-Support-Consulting-and-Investment-Research-Demand.html — Read 2026-11-11. Checks: overview=positioning; history=positioning; notableFacts=positioning; expertCount=positioning; caveats=partially-unverifiable. January 12, 2026 announcement reports expanded expert engagement capabilities within the last 12 months. Its over-4-million expert claim conflicts with the current 400,000+ ecosystem figure; the profile uses the lower website figure with explicit scope and attribution.",
+    "https://www.astuteconnect.com/how-it-works — Read 2026-11-11. Checks: deliveryModel=inference; overview=positioning; pricingModel=positioning; pricingDetail=positioning; servicesDetailed=positioning; keyDifferentiators=positioning; strengths=positioning; whenNotIdeal=inference. Concierge is an editorial classification inferred from team-managed scoping, sourcing, screening, scheduling, and deliverables. Scope and pricing are agreed before sourcing; no standard rates or comparative cost advantage are established here.",
+    "https://www.astuteconnect.com/compliance — Read 2026-11-11. Checks: compliance=positioning; compliance.mnpiPolicy=positioning; compliance.expertVetting=positioning; compliance.coolingOffPeriod=positioning; compliance.auditTrail=partially-unverifiable; compliance.regulatoryHistory=partially-unverifiable; complianceExtended=positioning; caveats=partially-unverifiable. Company policy describes MNPI briefings, employment and conflict checks, NDAs, client-specific cooling-off rules, and retained engagement records. Record availability is preserved as a company claim in complianceExtended; auditTrail is null because this policy alone does not establish an operational audit trail. No standard cooling-off duration or regulatory history is established by this page; regulatoryHistory remains Not disclosed, without a clean-record or enforcement conclusion.",
+    "https://www.astuteconnect.com/transcripts-library — Read 2026-11-11. Checks: services=positioning; servicesDetailed=positioning; strengths=positioning; whyChoose=positioning. Company-described transcripts, summaries, cross-call synthesis, and searchable archive across a client’s engagements. The FAQ calls transcripts and summaries scoped add-ons; deliverables are exclusive to the commissioning client.",
+    "https://www.astuteconnect.com/blog/how-ai-is-transforming-expert-matching — Read 2026-11-11. Checks: aiPlatform=positioning; caveats=partially-unverifiable. June 2026 industry commentary discusses AI matching practices without establishing a new Astute Connect product launch. It does not replace the dated September 2024 implementation claims.",
+    "https://inex.one/expert-network-directory/astute-connect — Read 2026-11-11. Checks: founded=verified; headquarters=positioning; services=positioning. Third-party cross-check for the 2023 launch, Noida location, calls, recruitment, and surveys; primary sources anchor the retained facts. Its staffing estimate and Report Ocean relationship are not used as sole-source claims."
   ],
   "whyChoose": [
-    "Cost-effective pricing",
-    "India/South Asia depth",
-    "Data analytics integration",
-    "100+ country coverage"
+    "Research partnership with Astute Analytica (company-stated)",
+    "Managed expert sourcing (company-described)",
+    "Interviews and surveys in one service range",
+    "100+ country access (company-stated)"
   ],
   "whenNotIdeal": [
-    "Need institutional compliance",
-    "Want premium brand",
-    "US/Europe primary focus",
-    "Require deep audit trails"
+    "Need independently verified standalone scale",
+    "Need publicly listed rates before requesting a quote",
+    "Need independently validated AI implementation"
   ],
   "confidence": {
-    "founded": "partially-unverifiable",
-    "headquarters": "verified",
+    "founded": "verified",
+    "headquarters": "positioning",
+    "employeeCount": "positioning",
+    "employeeCountSource": "positioning",
     "expertCount": "positioning",
-    "employeeCount": "partially-unverifiable",
-    "pricingModel": "verified",
+    "expertCountLabel": "positioning",
+    "description": "positioning",
+    "pricingModel": "positioning",
+    "pricingDetail": "positioning",
     "services": "positioning",
+    "industries": "positioning",
+    "aiCapabilities": "positioning",
+    "keyDifferentiators": "positioning",
+    "bestFor": "positioning",
     "compliance": "positioning",
-    "overview": "verified",
-    "history": "partially-unverifiable",
+    "compliance.auditTrail": "partially-unverifiable",
+    "compliance.regulatoryHistory": "partially-unverifiable",
+    "categoryBadge": "positioning",
+    "deliveryModel": "inference",
+    "regionStrength": "positioning",
+    "overview": "positioning",
+    "history": "positioning",
     "servicesDetailed": "positioning",
     "aiPlatform": "positioning",
-    "complianceExtended": "inference",
-    "clientFit": "inference",
+    "complianceExtended": "positioning",
+    "clientFit": "positioning",
     "strengths": "positioning",
-    "caveats": "inference",
-    "notableFacts": "partially-unverifiable"
-  }
+    "caveats": "partially-unverifiable",
+    "notableFacts": "positioning",
+    "whyChoose": "positioning",
+    "whenNotIdeal": "inference"
+  },
+  "employeeCountSource": "Company LinkedIn page, reviewed 2026-11-11; a size band, not an independently verified headcount",
+  "expertCountLabel": "ecosystem experts"
 }

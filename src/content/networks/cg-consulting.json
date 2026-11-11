@@ -1,181 +1,64 @@
 {
-  "name": "Catalight (formerly CG Consulting)",
+  "name": "Catalight",
   "shortName": "CL",
   "slug": "cg-consulting",
-  "website": "https://catalight.co",
   "gradientFrom": "#be123c",
   "gradientTo": "#fb7185",
-  "type": "Expert Network",
-  "founded": 2010,
-  "headquarters": "Hong Kong",
-  "employeeCount": "150+",
-  "expertCount": "80K+",
-  "description": "Greater China-focused expert network providing Hong Kong and mainland China market expertise, cross-border research capabilities, and industry events for Asia-focused investors.",
+  "type": "Not disclosed",
+  "headquarters": "Not disclosed",
+  "employeeCount": "Not disclosed",
+  "expertCount": "Not disclosed",
+  "description": "Provider details remain unverified following the November 11, 2026 review. The previously listed website could not be retrieved, and the reviewed sources did not corroborate the profile's company claims.",
   "services": [
-    "Expert Calls",
-    "China Market Research",
-    "Industry Events",
-    "Cross-Border Research"
+    "Not disclosed"
   ],
-  "aiCapabilities": [
-    "AI-powered expert matching for Greater China",
-    "Bilingual compliance screening (English/Mandarin)",
-    "Automated cross-border conflict detection"
-  ],
-  "industries": [
-    "Financial Services",
-    "Technology",
-    "Healthcare",
-    "Consumer",
-    "Real Estate",
-    "Manufacturing"
-  ],
-  "pricingModel": "Per-call",
-  "keyDifferentiators": [
-    "Deepest expert coverage across Greater China including mainland, Hong Kong, and Taiwan",
-    "Bilingual operations enabling seamless cross-border research",
-    "Industry events connecting investors with senior Chinese executives"
-  ],
-  "bestFor": [
-    "Greater China",
-    "Hong Kong Investors",
-    "Cross-Border Asia"
-  ],
+  "aiCapabilities": [],
+  "industries": [],
+  "pricingModel": "Not disclosed",
+  "keyDifferentiators": [],
+  "bestFor": [],
   "compliance": {
-    "mnpiPolicy": "MNPI policies aligned with Hong Kong SFC and mainland CSRC regulatory standards",
-    "expertVetting": "Comprehensive vetting with Mandarin-language verification and Greater China employment screening",
-    "coolingOffPeriod": "Enforced cooling-off periods compliant with Hong Kong and mainland China regulations",
-    "auditTrail": true,
-    "regulatoryHistory": "Clean regulatory record with long operating history in Hong Kong"
+    "mnpiPolicy": "Not disclosed",
+    "expertVetting": "Not disclosed",
+    "coolingOffPeriod": "Not disclosed",
+    "auditTrail": null,
+    "regulatoryHistory": "Not disclosed"
   },
   "featured": false,
   "priority": 23,
   "published": true,
-  "categoryBadge": "Asia Specialist",
-  "deliveryModel": "Concierge",
-  "regionStrength": "Greater China",
-  "complianceBadge": "Standard Compliance",
-  "aiBadge": "AI Matching",
+  "complianceBadge": "Limited Public Detail",
+  "aiBadge": "Limited AI Detail",
   "comparison": {
-    "expertCalls": true,
-    "contentLibrary": false,
-    "aiMatching": true,
-    "surveys": false,
-    "complianceTools": true
+    "expertCalls": null,
+    "contentLibrary": null,
+    "aiMatching": null,
+    "surveys": null,
+    "complianceTools": null
   },
-  "lastUpdated": "2026-03-07",
-  "overview": "Catalight, formerly known as CG Consulting, is a Greater China-focused expert network headquartered in Hong Kong. Founded in 2010, the company has built deep coverage across mainland China, Hong Kong, and Taiwan, connecting global investors and consultancies with Chinese industry experts through bilingual (English/Mandarin) operations.\n\nThe company differentiates through its combination of expert consultations and industry events that connect investors with senior Chinese executives — a format particularly valued in the relationship-driven Chinese business culture. With 80,000+ experts focused primarily on Greater China markets, Catalight serves as a specialist complement to global networks for clients needing deep Chinese market intelligence.",
-  "history": {
-    "narrative": "Founded in 2010 as CG Consulting in Hong Kong, the company built its expert network business with deep relationships across mainland China, Hong Kong, and Taiwan. The company later rebranded to Catalight.",
-    "timeline": [
-      {
-        "year": "2010",
-        "event": "Founded as CG Consulting in Hong Kong"
-      },
-      {
-        "year": "2010-2020",
-        "event": "Built expert network to 80K+ across Greater China; expanded industry events program"
-      },
-      {
-        "year": "2020-2025",
-        "event": "Rebranded to Catalight; enhanced bilingual AI-powered matching capabilities"
-      }
-    ]
-  },
-  "servicesDetailed": [
-    {
-      "name": "Expert Consultations",
-      "description": "One-on-one consultations with vetted experts across Greater China. Bilingual English/Mandarin operations enable access to Chinese executives not reachable through English-only networks."
-    },
-    {
-      "name": "Industry Events",
-      "description": "Curated events connecting global investors with senior Chinese executives for group discussions and networking."
-    },
-    {
-      "name": "Cross-Border Research",
-      "description": "Research spanning mainland China, Hong Kong, and Taiwan, with bilingual compliance screening for cross-border engagements."
-    }
-  ],
-  "aiPlatform": {
-    "narrative": "Catalight uses AI-powered matching optimized for Greater China, with bilingual compliance screening in English and Mandarin.",
-    "features": [
-      "AI-powered expert matching for Greater China markets",
-      "Bilingual compliance screening (English/Mandarin)",
-      "Automated cross-border conflict detection",
-      "Expert management across mainland/HK/Taiwan jurisdictions"
-    ]
-  },
-  "complianceExtended": {
-    "narrative": "Catalight navigates the regulatory landscape spanning Hong Kong SFC and mainland China CSRC frameworks with bilingual compliance processes.",
-    "highlights": [
-      "Hong Kong SFC-aligned compliance policies",
-      "Mainland China CSRC regulatory compliance",
-      "Bilingual vetting in English and Mandarin",
-      "Cross-border conflict detection across Greater China",
-      "15+ year compliance track record in Hong Kong"
-    ],
-    "regulatoryContext": "Operating across Greater China requires specialized compliance expertise spanning HK SFC, mainland CSRC, and Taiwan FSC. Clean regulatory record."
-  },
-  "clientFit": {
-    "narrative": "Purpose-built for clients needing deep Greater China expertise.",
-    "segments": [
-      "Global investors researching Chinese market opportunities",
-      "PE/VC firms conducting due diligence on Chinese targets",
-      "Consulting firms needing Greater China industry specialists",
-      "Corporations evaluating Chinese market entry"
-    ]
-  },
-  "strengths": [
-    "Deepest Greater China coverage among specialist expert networks",
-    "Bilingual English/Mandarin operations for cross-border research",
-    "Industry events format valued in Chinese business culture",
-    "15+ year Hong Kong operating history"
-  ],
+  "lastUpdated": "2026-11-11",
+  "overview": "The November 11, 2026 review attempted to open the previously listed website, catalight.co, but could not retrieve it. The reviewed directory pages did not corroborate this listing's company facts or the claimed former name CG Consulting. Company details, services, pricing, AI capabilities and compliance arrangements remain unverified. Website retrieval failure and directory coverage do not establish whether the provider is operating.",
+  "servicesDetailed": [],
+  "strengths": [],
   "caveats": [
-    "Coverage limited primarily to Greater China",
-    "Limited public information about funding and financials",
-    "Smaller than global networks outside China",
-    "Chinese regulatory constraints can limit expert engagement"
+    "The reviewed sources did not corroborate the provider identity or the claimed former-name relationship. Catalight is retained as the listing name, without confirming its legal identity.",
+    "The review did not find a source that reliably attributes a material development from November 11, 2025 through November 11, 2026 to this listing. This is a research limitation, not evidence that no developments occurred."
   ],
-  "notableFacts": [
-    "Formerly known as CG Consulting; rebranded to Catalight",
-    "15+ year operating history in Hong Kong",
-    "Industry events connect investors with senior Chinese executives",
-    "Bilingual operations spanning English and Mandarin"
-  ],
+  "notableFacts": [],
   "sourceNotes": [
-    "Catalight website — company overview and services",
-    "INEX ONE Expert Network Directory — profile listing",
-    "Expert network industry directories"
+    "Website and identity — unverifiable as of 2026-11-11. Attempted https://catalight.co/ in the web tool; it reported the URL inaccessible, and a separate local request failed with 'Could not resolve host'. HTTP and www variants were also attempted in the web tool without retrieving content. No company page was read at this domain, and its status and ownership remain unconfirmed. The URL is recorded as a failed retrieval, not a supporting source.",
+    "Company identity, founding, headquarters, scale and history — unverifiable. Inex One, Expert Network ENcyclopedia — https://inex.one/expert-network-directory — read 2026-11-11; directory page 2 — https://inex.one/expert-network-directory/page/2 — read 2026-11-11. Neither reviewed page corroborated the profile's company claims. Directory coverage does not prove nonexistence, closure or a name change. The neutral listing name Catalight is retained; the claimed CG Consulting relationship remains unconfirmed.",
+    "Geography, services, industries, pricing, bilingual operations and buyer fit — unverifiable. Inex One, Expert Networks in China — https://inex.one/expert-network-directory/region/china — read 2026-11-11. No Catalight or CG Consulting entry was located on this page. Unsupported claims remain removed or explicitly unknown; rankings, comparisons and buyer recommendations are not retained.",
+    "AI and compliance — unverifiable; evidence-availability labels are editorial inferences. Inex One directory page 2 — https://inex.one/expert-network-directory/page/2 — and China directory — https://inex.one/expert-network-directory/region/china — read 2026-11-11, supplied no company-specific support for these claims. Combined with the failed website retrieval, this leaves capabilities and auditTrail unknown (null). Limited AI Detail and Limited Public Detail describe the evidence available in this review, not an assessment of the provider's capabilities or legal record. No regulatory alignment or clean-record claim is retained.",
+    "Namesake disambiguation — excluded from provider evidence. Catalight — https://www.catalight.org/ — read 2026-11-11, describes behavioral-health and developmental-disability care. Catalight Consulting, We Are — https://catalightconsulting.com/we-are/ — read 2026-11-11, describes leadership, team and organizational training and coaching. Neither reviewed page establishes a connection to this listing; no company facts or developments from these pages are attributed to it.",
+    "Developments, 2025-11-11 through 2026-11-11 — unverifiable. Searches for Catalight, CG Consulting and the previously listed domain did not locate a reliably attributable announcement. The previously listed website could not be retrieved; the reviewed namesake pages above are excluded. No claim is made that the provider had no developments. lastUpdated records this review date, not successful verification of the provider."
   ],
-  "whyChoose": [
-    "Greater China depth",
-    "Bilingual operations",
-    "Industry events",
-    "15+ year HK track record"
-  ],
-  "whenNotIdeal": [
-    "No China needs",
-    "Need global coverage",
-    "Want self-service",
-    "Budget-constrained"
-  ],
+  "whyChoose": [],
+  "whenNotIdeal": [],
   "confidence": {
-    "founded": "partially-unverifiable",
-    "headquarters": "verified",
-    "expertCount": "positioning",
-    "employeeCount": "partially-unverifiable",
-    "pricingModel": "verified",
-    "services": "positioning",
-    "compliance": "positioning",
-    "overview": "positioning",
-    "history": "partially-unverifiable",
-    "servicesDetailed": "positioning",
-    "aiPlatform": "positioning",
-    "complianceExtended": "positioning",
-    "clientFit": "inference",
-    "strengths": "positioning",
-    "caveats": "inference",
-    "notableFacts": "partially-unverifiable"
+    "complianceBadge": "inference",
+    "aiBadge": "inference",
+    "overview": "inference",
+    "caveats": "inference"
   }
 }
