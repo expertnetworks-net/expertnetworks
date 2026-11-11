@@ -2,169 +2,181 @@
   "name": "Epsilon Research",
   "shortName": "ER",
   "slug": "epsilon-research",
-  "website": "https://epsilonresearch.com",
+  "website": "https://www.epsilon-research.com/",
   "gradientFrom": "#166534",
   "gradientTo": "#4ade80",
-  "type": "Expert Network",
-  "founded": 2017,
-  "headquarters": "Boston, MA",
-  "employeeCount": "80+",
-  "expertCount": "35K+",
-  "description": "Healthcare specialist expert network providing deep clinical and life sciences expertise to investors, pharmaceutical companies, and consultancies for due diligence and primary research.",
+  "type": "M&A Data & Valuation Platform",
+  "founded": 2007,
+  "headquarters": "Paris, France",
+  "employeeCount": "2-10",
+  "employeeCountSource": "Company-stated LinkedIn size range, checked 2026-11-11; not an independently verified headcount",
+  "expertCount": "Not disclosed",
+  "description": "Paris-based provider of European private-company M&A transaction data, valuation research and deal-management software for M&A advisers, private equity funds and valuation professionals.",
   "services": [
-    "Expert Calls",
-    "Healthcare Research",
-    "KOL Identification",
-    "Clinical Due Diligence"
+    "M&A Transaction Multiples",
+    "Private-Company Valuation Research",
+    "Market Indices",
+    "M&A CRM & Project Management"
   ],
-  "aiCapabilities": [
-    "AI-powered KOL mapping",
-    "Clinical trial analytics",
-    "Therapeutic area matching"
-  ],
+  "aiCapabilities": [],
   "industries": [
-    "Healthcare",
-    "Life Sciences",
-    "Pharmaceuticals",
-    "Medical Devices",
-    "Biotechnology"
+    "Health, Pharmaceuticals & Biotechnology",
+    "Software",
+    "Business Services",
+    "Industrial Goods"
   ],
-  "pricingModel": "Per-call",
+  "pricingModel": "Subscription / per-report",
+  "pricingDetail": "Epsilon offers EMAT subscriptions and online purchases of individual M&A deal reports. Confirm current fees and access terms with the provider.",
   "keyDifferentiators": [
-    "Deep healthcare specialization with clinical expertise",
-    "KOL identification and mapping capabilities",
-    "Clinical and regulatory expertise for pharma due diligence"
+    "European private-company acquisition multiples and deal analysis",
+    "Recurring valuation indices and regional M&A research",
+    "Company-documented CRM and project-management software for M&A professionals"
   ],
   "bestFor": [
-    "Healthcare",
-    "Life Sciences",
-    "Pharma DD"
+    "M&A Advisers",
+    "Private Equity Valuation",
+    "Corporate Finance"
   ],
   "compliance": {
-    "mnpiPolicy": "Strict healthcare-specific MNPI policies with clinical trial information safeguards",
-    "expertVetting": "Rigorous credential verification for medical and scientific professionals",
-    "auditTrail": true,
-    "regulatoryHistory": "Clean regulatory record"
+    "mnpiPolicy": "Not disclosed",
+    "expertVetting": "Not disclosed",
+    "auditTrail": null
   },
   "featured": false,
   "priority": 26,
   "published": true,
-  "categoryBadge": "Boutique Specialist",
-  "deliveryModel": "Concierge",
-  "regionStrength": "North America",
-  "complianceBadge": "Standard Compliance",
-  "lastUpdated": "2026-03-07",
-  "overview": "Epsilon Research is a Boston-based expert network that specializes exclusively in healthcare and life sciences. Founded in 2017, the company connects investors, pharmaceutical companies, and consulting firms with clinical experts, Key Opinion Leaders (KOLs), and scientific specialists for due diligence, primary research, and strategic advisory.\n\nThe company's healthcare-only focus enables deeper expertise in therapeutic areas, clinical trial dynamics, regulatory pathways, and market access — areas where generalist expert networks often lack depth. Epsilon's KOL identification and mapping capabilities help pharmaceutical companies identify influential physicians and researchers in specific disease areas.",
+  "categoryBadge": "Research Platform",
+  "deliveryModel": "Platform-Led",
+  "regionStrength": "Europe",
+  "complianceBadge": "Limited Public Detail",
+  "comparison": {
+    "expertCalls": null,
+    "contentLibrary": "M&A transaction analysis reports",
+    "aiMatching": null,
+    "surveys": null,
+    "complianceTools": null
+  },
+  "lastUpdated": "2026-11-11",
+  "overview": "Epsilon Research is a Paris-based research and financial analysis provider focused on private-company M&A and private equity. Its EMAT (Epsilon Multiple Analysis Tool) database provides European transaction multiples and deal-analysis reports for valuation work. The company also documents market studies, portfolio-valuation services and M&A CRM software.\n\nIts website describes transaction-data coverage across industry sectors, including healthcare, software, business services and industrial goods. It serves M&A, private equity, valuation, audit and accounting, and corporate teams.",
   "history": {
-    "narrative": "Epsilon Research was founded in 2017 in Boston, choosing to specialize exclusively in healthcare and life sciences rather than competing as a generalist. The company built its expert network through relationships with clinical researchers, physicians, regulatory specialists, and healthcare executives.",
+    "narrative": "Epsilon dates its founding to 2007. Its recent publications include the Régions & Transmission study with In Extenso Finance and the quarterly Argos Index with Argos.",
     "timeline": [
       {
-        "year": "2017",
-        "event": "Founded in Boston with exclusive healthcare and life sciences focus"
+        "year": "2007",
+        "event": "Company-stated founding year for its research and financial analysis business."
       },
       {
-        "year": "2018-2022",
-        "event": "Built healthcare expert network to 35K+; developed KOL mapping capabilities"
+        "year": "2025-11-20",
+        "event": "Argos announced the Q3 2025 Argos Index, jointly published with Epsilon Research."
       },
       {
-        "year": "2023-2025",
-        "event": "Expanded clinical due diligence and therapeutic area coverage"
+        "year": "2026-04-13",
+        "event": "In Extenso Finance published the tenth Régions & Transmission study in partnership with Epsilon, analyzing 1,076 French SME transactions from 2025 with 12 regional studies."
+      },
+      {
+        "year": "2026-09-03",
+        "event": "Argos announced the Q2 2026 Argos Index, jointly published with Epsilon Research to track eurozone private-company acquisition valuations."
       }
     ]
   },
   "servicesDetailed": [
     {
-      "name": "Healthcare Expert Consultations",
-      "description": "One-on-one consultations with physicians, clinical researchers, regulatory specialists, and healthcare executives across therapeutic areas."
+      "name": "EMAT Transaction Multiples",
+      "description": "Epsilon describes a searchable database of European private-company M&A and LBO reports, including deal structure, target financials, acquisition multiples and underlying information sources."
     },
     {
-      "name": "KOL Identification & Mapping",
-      "description": "AI-powered identification and mapping of Key Opinion Leaders across therapeutic areas, analyzing publication records, clinical trial involvement, and conference activity."
+      "name": "Valuation Research & Indices",
+      "description": "The company offers sector and country research and portfolio-valuation services. Its publications include the Argos Index and regional French SME transaction studies."
     },
     {
-      "name": "Clinical Due Diligence",
-      "description": "Expert-supported due diligence for healthcare investments, evaluating drug pipelines, clinical trial designs, regulatory risks, and market access strategies."
+      "name": "M&A CRM & Project Management",
+      "description": "Epsilon says its cloud software supports contact and lead management, M&A project tracking, document storage and knowledge management for advisers and investors."
     }
   ],
-  "aiPlatform": {
-    "narrative": "Epsilon uses AI for KOL mapping and therapeutic area matching, analyzing clinical trial databases, publication records, and conference participation to identify healthcare experts.",
-    "features": [
-      "AI-powered KOL mapping and identification",
-      "Clinical trial database analysis",
-      "Therapeutic area matching algorithms",
-      "Publication and citation analysis for expert credentialing"
+  "complianceExtended": {
+    "narrative": "The SaaS application's privacy policy, dated November 2025, describes data-protection and account-security measures. These company statements do not establish expert-network MNPI controls, expert vetting or an audit trail for expert consultations.",
+    "highlights": [
+      "Epsilon says it uses HTTPS/TLS, regular backups and controlled access",
+      "Epsilon says application data is hosted in France",
+      "Epsilon says it retains security logs for traceability"
     ]
   },
-  "complianceExtended": {
-    "narrative": "Epsilon maintains healthcare-specific compliance protocols with strict safeguards for clinical trial information and pharma consulting conflicts.",
-    "highlights": [
-      "Healthcare-specific MNPI policies",
-      "Clinical trial information safeguards",
-      "Rigorous credential verification for medical professionals",
-      "Pharma consulting conflict screening",
-      "Audit trail for all expert interactions"
-    ],
-    "regulatoryContext": "Healthcare expert consultations require careful handling of clinical trial data, FDA regulatory information, and pharma-specific conflicts. Clean regulatory record."
-  },
   "clientFit": {
-    "narrative": "Ideal for organizations that need deep healthcare expertise. Not suitable for non-healthcare research.",
+    "narrative": "Epsilon identifies M&A, private equity, valuation, audit and accounting, and corporate teams as its audiences. Editorial fit: consider it for transaction comparables and valuation research; expert-call sourcing capabilities remain unsubstantiated in the sources reviewed.",
     "segments": [
-      "Life sciences investors evaluating drug pipelines and biotech targets",
-      "Pharmaceutical companies seeking KOL identification and advisory",
-      "Healthcare-focused PE/VC firms conducting clinical due diligence",
-      "Medical device companies seeking regulatory and clinical expertise"
+      "M&A advisers researching comparable transactions",
+      "Private equity teams valuing private investments",
+      "Valuation, audit and accounting professionals",
+      "Corporate finance teams managing M&A projects"
     ]
   },
   "strengths": [
-    "Healthcare-only focus enables deeper therapeutic area expertise than generalist networks",
-    "KOL identification capabilities for pharma and biotech",
-    "Boston location provides access to world-class healthcare/biotech ecosystem",
-    "Clinical and regulatory expertise for investment due diligence"
+    "European private-company transaction comparables and deal-level financial analysis",
+    "Company-documented M&A CRM and project-management tools",
+    "Recurring valuation indices and regional transaction studies"
   ],
   "caveats": [
-    "No coverage outside healthcare and life sciences",
-    "Smaller expert database than generalist networks",
-    "Limited public information about funding and scale",
-    "Less suitable for broad market research spanning multiple sectors"
+    "Public sources reviewed describe an M&A data platform; expert-call sourcing, KOL mapping and clinical due diligence were not substantiated",
+    "Expert-network size and expert-specific compliance controls remain unverified",
+    "Employee range is self-reported on LinkedIn and may not reflect current headcount"
   ],
   "notableFacts": [
-    "Healthcare-only expert network — rare pure specialization in the industry",
-    "KOL mapping combines publication analysis, clinical trial data, and conference activity",
-    "Boston headquarters in the heart of the US biotech/pharma corridor"
+    "The 2026 Régions & Transmission release with In Extenso Finance covers French SME acquisitions during 2025",
+    "Epsilon and Argos continued publishing the quarterly Argos Index during the review period"
   ],
   "sourceNotes": [
-    "Epsilon Research website — company overview and services",
-    "Expert network industry directories",
-    "INEX ONE Expert Network Directory"
+    "https://www.epsilon-research.com/ — read 2026-11-11. Official site identifies an M&A data, research and software provider serving European transaction professionals; lists cross-sector coverage and individual deal-report purchases. The previous Boston healthcare expert-network identity was not substantiated.",
+    "https://www.epsilon-research.com/About — read 2026-11-11. Company states a 2007 founding and describes EMAT, ad hoc research and portfolio-valuation services. Removed the unsupported 2017 founding and expert-network expansion timeline.",
+    "https://www.epsilon-research.com/About/contact — read 2026-11-11. Paris contact and head-office details support Paris, France; Boston was not supported. Street-address details differ within the page, so only the city and country are used.",
+    "https://www.linkedin.com/company/epsilon-research2/ — read 2026-11-11. Company page links the official domain, lists Paris and a 2007 founding, and reports a 2-10 employee range. Replaced unsupported 80+ staff with the attributed range; no expert-population count was substantiated.",
+    "https://www.epsilon-research.com/Services/EMAT — read 2026-11-11. Documents European private-company transaction reports, search filters, source information and analyst research support. Does not substantiate the former expert-call, KOL, clinical-trial or AI-matching claims; those were removed rather than treated as established negatives.",
+    "https://www.epsilon-research.com/Services/MandA-Suite — read 2026-11-11. Company describes cloud CRM, project tracking, document storage and knowledge management. Supports platform-led classification; no AI capability is inferred from its software features.",
+    "https://app.epsilon-research.com/privacy — read 2026-11-11. November 2025 policy describes subscription billing, French hosting, HTTPS/TLS, backups, access controls and security logs. These are company statements, not proof of expert-consultation compliance controls. Removed healthcare MNPI, credential-vetting, conflict-screening and clean-regulatory-record claims; consultation audit trail is unknown.",
+    "https://argos.fund/mid-market-argos-index-for-the-third-quarter-of-2025/ — read 2026-11-11. Primary partner announcement dated 2025-11-20 identifies Epsilon as joint publisher of the Q3 2025 Argos Index and describes its M&A data and software business.",
+    "https://finance.inextenso.fr/actualites/regions-transmission-10eme-edition-cessions-acquisitions-de-pme-2025-porte-par-le-build-up-le-marche-resiste-au-choc-dincertitude/ — read 2026-11-11. Primary partner release dated 2026-04-13 announces the tenth Régions & Transmission edition with Epsilon: 1,076 transactions from 2025 and 12 regional studies.",
+    "https://www.epsilon-research.com/Marketfr/PanoramaIEFT — read 2026-11-11. Corroborates the 2025 transaction study and April 2026 publication. The linked full report required login and was not used as evidence.",
+    "https://argos.fund/mid-market-argos-index-q2-2026/ — read 2026-11-11. Primary partner release announces the Q2 2026 Argos Index on 2026-09-03 and describes Epsilon's cross-sector transaction-data platform.",
+    "https://www.epsilon-research.com/Market/Argos — read 2026-11-11. Corroborates the 2026-09-03 release and supports EMAT subscriptions. Introductory copy calls it Q1 despite the Q2 heading and analysis; the partner's Q2 release is used for the timeline.",
+    "https://www.epsilon-research.com/About/Press/Cover?SelectedYear=2026 — read 2026-11-11. Reviewed current coverage alongside company pages and targeted searches for developments from 2025-11-11 through 2026-11-11. No substantiated funding, acquisition, leadership, office or AI-launch announcement was found. Unsupported comparative and healthcare-only claims were removed; buyer-fit and classification labels are editorial interpretations of the documented services."
   ],
   "whyChoose": [
-    "Healthcare-only depth",
-    "KOL identification",
-    "Clinical due diligence",
-    "Boston biotech hub"
+    "European M&A comparables",
+    "Private-company valuation",
+    "Deal-management software"
   ],
   "whenNotIdeal": [
-    "Non-healthcare research",
-    "Need sector diversity",
-    "Want large generalist database",
-    "Need self-service platform"
+    "Need verified expert-call sourcing",
+    "Need documented clinical KOL mapping"
   ],
   "confidence": {
-    "founded": "partially-unverifiable",
+    "website": "verified",
+    "type": "verified",
+    "founded": "positioning",
     "headquarters": "verified",
-    "expertCount": "positioning",
-    "employeeCount": "partially-unverifiable",
+    "expertCount": "partially-unverifiable",
+    "employeeCount": "positioning",
+    "description": "verified",
     "pricingModel": "verified",
     "services": "positioning",
-    "compliance": "positioning",
+    "industries": "positioning",
+    "keyDifferentiators": "positioning",
+    "bestFor": "inference",
+    "categoryBadge": "inference",
+    "deliveryModel": "inference",
+    "regionStrength": "inference",
+    "complianceBadge": "inference",
+    "compliance": "partially-unverifiable",
+    "comparison": "partially-unverifiable",
+    "comparison.contentLibrary": "positioning",
     "overview": "positioning",
-    "history": "inference",
+    "history": "positioning",
     "servicesDetailed": "positioning",
-    "aiPlatform": "positioning",
     "complianceExtended": "positioning",
     "clientFit": "inference",
     "strengths": "positioning",
     "caveats": "inference",
-    "notableFacts": "positioning"
+    "notableFacts": "verified",
+    "whyChoose": "inference",
+    "whenNotIdeal": "inference"
   }
 }
