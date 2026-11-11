@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ParticleHero from '../components/ParticleHero.astro';
 import TrackedNetworksMarquee from '../components/TrackedNetworksMarquee.astro';
+import compareConfig from '../content/compare.json';
 import { getCollection } from 'astro:content';
 
 const allNetworks = await getCollection('networks');
@@ -11,6 +13,8 @@ const publishedNetworks = allNetworks
   .sort((a, b) => a.data.priority - b.data.priority);
 
 const top6 = publishedNetworks.slice(0, 6);
+const networkBySlug = new Map(publishedNetworks.map(n => [n.data.slug, n]));
+const shortName = (name: string) => name.split(' (')[0];
 
 const publishedNews = allNews
   .filter(n => n.data.published)
@@ -26,6 +30,43 @@ if (curatedNews.length < 4) {
     if (!slugsUsed.has(n.data.slug)) curatedNews.push(n);
   }
 }
+const [leadNews, ...restNews] = curatedNews;
+
+// ─── Hero stats: every figure is derived from the content collections ───
+const compareDimensionCount = compareConfig.sections.reduce((sum, section) => sum + section.rows.length, 0);
+const comparePresetCount = Object.keys(compareConfig.presets).length;
+const latestTimestamp = Math.max(
+  ...publishedNetworks.map(n => new Date(n.data.lastUpdated).getTime()),
+  ...publishedNews.map(n => new Date(n.data.date).getTime()),
+);
+const latestUpdate = new Date(latestTimestamp);
+const latestUpdateLabel = latestUpdate.toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' });
+const latestUpdateIso = latestUpdate.toISOString().slice(0, 10);
+
+const heroStats = [
+  { value: String(publishedNetworks.length), label: 'Providers profiled' },
+  { value: String(compareDimensionCount), label: 'Comparison dimensions' },
+  { value: String(publishedNews.length), label: 'Market signals logged' },
+];
+
+const formatDate = (value: string) =>
+  new Date(value).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+
+// ─── Compare presets shown on the homepage: read straight from compare.json ───
+const presets = compareConfig.presets as Record<string, string[]>;
+const presetMeta = compareConfig.presetMeta as Record<string, { label: string; description: string }>;
+const featuredPresets = [
+  { key: 'leaders', tone: 'text-accent-text' },
+  { key: 'aiResearch', tone: 'text-[#8944AB]' },
+  { key: 'library', tone: 'text-[#1F7A3D]' },
+]
+  .filter(p => presets[p.key] && presetMeta[p.key])
+  .map(p => ({
+    ...p,
+    label: presetMeta[p.key].label,
+    description: presetMeta[p.key].description,
+    networks: presets[p.key].map(slug => networkBySlug.get(slug)).filter(n => n !== undefined),
+  }));
 
 // Provider descriptor map for top 6
 const descriptors: Record<string, string> = {
@@ -44,6 +85,7 @@ const descriptors: Record<string, string> = {
   title="Best Expert Networks (2026): Compare 33 Providers — Pricing, Compliance, AI"
   description="Compare 33 expert network companies side-by-side. Independent profiles of GLG, AlphaSights, Third Bridge, Guidepoint, Dialectica, and 28 more — with pricing models, compliance ratings, AI capabilities, and expert coverage. Free, no sign-up."
   canonicalPath="/"
+  themeColor="#0d0d0f"
   jsonLd={{
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -59,739 +101,224 @@ const descriptors: Record<string, string> = {
   }}
 >
 
-  <!-- ═══ 1. Hero — dark interactive particle surface ═══ -->
-  <section class="relative overflow-hidden bg-[#0d0d0f] min-h-[220px] md:min-h-[260px] lg:min-h-[280px]" id="top">
-    <canvas id="heroCanvas" class="absolute inset-0 w-full h-full" style="pointer-events: none;" role="presentation" aria-hidden="true"></canvas>
-    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 50% 40%, transparent 30%, rgba(13,13,15,0.55) 100%);"></div>
-    <div class="relative z-10 pt-[76px] pb-10 md:pt-[92px] md:pb-14 lg:pt-[108px] lg:pb-16 px-4 md:px-6" id="heroContent">
-      <div class="max-w-site mx-auto text-center">
-        <h1 id="heroTitle" class="text-3xl md:text-4xl lg:text-[2.75rem] xl:text-5xl font-extrabold tracking-tight text-white leading-tight">
-          <span id="heroTitleText">Compare expert networks the way serious buyers actually evaluate them</span><span id="heroTitleCursor" class="inline-block w-[3px] h-[0.85em] bg-white/70 align-middle ml-0.5 animate-[heroBlink_0.53s_steps(2)_infinite]" style="display:none;"></span>
-        </h1>
-        <p id="heroSubtext" class="text-[#a1a1a6] text-sm md:text-base mt-4 leading-relaxed max-w-2xl mx-auto opacity-0 transition-opacity duration-700">
-          Independent research on expert networks across pricing model, compliance posture, AI capabilities, transcript access, geography, and service model.
-        </p>
-        <div id="heroCtas" class="flex flex-col sm:flex-row gap-3 justify-center items-center mt-6 md:mt-7 opacity-0 transition-opacity duration-700">
-          <a href="/compare" class="inline-flex items-center gap-1.5 px-6 py-3 md:py-2.5 bg-accent text-white text-sm font-semibold rounded-lg no-underline hover:bg-accent-hover transition-colors">
-            Compare Providers
-            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </a>
-          <a href="/networks" class="inline-flex items-center gap-1.5 px-6 py-3 md:py-2.5 bg-[rgba(255,255,255,0.08)] text-[#e5e5ea] text-sm font-semibold rounded-lg no-underline hover:bg-[rgba(255,255,255,0.14)] transition-colors border border-[rgba(255,255,255,0.08)]">
-            Browse All Networks
-          </a>
-          <a href="/what-is-an-expert-network" class="text-[#a1a1a6] text-xs font-medium no-underline hover:text-white transition-colors mt-1 sm:mt-0 sm:ml-2">
-            What is an expert network? &rarr;
-          </a>
-        </div>
-        <p id="heroMicro" class="text-[#6e6e73] text-[11px] mt-4 opacity-0 transition-opacity duration-700">No paywalls. No sign-up required. Public-source research.</p>
+  <!-- ═══ 1. Hero — dark interactive particle surface ═══
+       Everything here is server-rendered and visible on first paint. -->
+  <ParticleHero minHeight="clamp(520px, 78svh, 720px)" contentClass="pt-[92px] pb-12 md:pt-[124px] md:pb-16 px-4 sm:px-6">
+    <div class="home-hero max-w-[880px] mx-auto text-center" id="top">
+      <p class="hero-rise inline-flex items-center gap-2 rounded-full border border-white/[0.12] bg-white/[0.06] px-3.5 py-1.5 text-[12px] font-medium text-white/80">
+        <span class="relative flex h-1.5 w-1.5" aria-hidden="true"><span class="absolute inline-flex h-full w-full rounded-full bg-accent-green"></span></span>
+        Independent research &middot; No paid placements
+      </p>
+
+      <h1 id="heroTitle" class="hero-rise mt-6 text-step-5 font-bold tracking-[-0.035em] text-white">
+        Compare expert networks the way serious buyers <span class="hero-accent">actually evaluate them</span>
+      </h1>
+
+      <p id="heroSubtext" class="hero-rise hero-rise-2 mx-auto mt-5 max-w-[60ch] text-step-1 text-[#B4B4BA]">
+        Independent research on expert networks across pricing model, compliance posture, AI capabilities, transcript access, geography, and service model.
+      </p>
+
+      <!-- Search entry point: a real GET form to the directory (works without JS). -->
+      <form action="/networks" method="get" role="search" class="hero-rise hero-rise-3 hero-search mx-auto mt-8 flex max-w-[600px] items-center gap-2 rounded-full p-1.5 pl-4 sm:pl-5" aria-label="Search the provider directory">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24" class="flex-shrink-0 text-white/60" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <label for="heroSearchInput" class="sr-only">Search {publishedNetworks.length} expert networks</label>
+        <input
+          id="heroSearchInput"
+          type="search"
+          name="q"
+          autocomplete="off"
+          enterkeyhint="search"
+          placeholder={`Search ${publishedNetworks.length} providers`}
+          class="min-w-0 flex-1 bg-transparent h-11 text-base text-white placeholder:text-white/55 outline-none border-none [&::-webkit-search-cancel-button]:hidden"
+        />
+        <button type="submit" class="btn btn-primary !px-5">
+          Search
+        </button>
+      </form>
+
+      <div id="heroCtas" class="hero-rise hero-rise-3 mt-4 flex flex-wrap items-center justify-center gap-x-1 gap-y-0 text-sm sm:gap-x-3">
+        <a href="/compare" class="hero-link">
+          Compare providers
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+        <a href="/networks" class="hero-link">
+          Browse all networks
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+        <a href="/what-is-an-expert-network" class="hero-link">
+          What is an expert network?
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
       </div>
+
+      <!-- Stats: derived at build time from src/content -->
+      <dl class="hero-rise hero-rise-4 mx-auto mt-10 grid max-w-[720px] grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/[0.1] bg-white/[0.1] text-left sm:grid-cols-4 md:mt-12">
+        {heroStats.map(stat => (
+          <div class="flex flex-col-reverse bg-[#0d0d0f]/80 px-4 py-4 sm:px-5">
+            <dt class="mt-1 text-[12px] leading-snug text-[#A1A1A6]">{stat.label}</dt>
+            <dd class="text-[26px] font-semibold leading-none tracking-tight text-white tabular-nums sm:text-[28px]">{stat.value}</dd>
+          </div>
+        ))}
+        <div class="flex flex-col-reverse bg-[#0d0d0f]/80 px-4 py-4 sm:px-5">
+          <dt class="mt-1 text-[12px] leading-snug text-[#A1A1A6]">Latest data update</dt>
+          <dd class="text-[26px] font-semibold leading-none tracking-tight text-white sm:text-[28px]"><time datetime={latestUpdateIso}>{latestUpdateLabel}</time></dd>
+        </div>
+      </dl>
+
+      <p id="heroMicro" class="hero-rise hero-rise-4 mt-5 text-[12px] text-[#A1A1A6]">No paywalls. No sign-up required. No affiliations. Public-source research.</p>
     </div>
-  </section>
+  </ParticleHero>
 
-  <style>
-    @keyframes heroBlink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-  </style>
-
-  <script>
-  // @ts-nocheck
-  // ─── Typewriter effect for hero title ───
-  (function() {
-    const TITLE_TEXT = 'Compare expert networks the way serious buyers actually evaluate them';
-    const TYPE_DELAY = 24;
-    const START_DELAY = 300;
-    const CURSOR_LINGER = 500;
-
-    const textEl = document.getElementById('heroTitleText');
-    const cursorEl = document.getElementById('heroTitleCursor');
-    const subtext = document.getElementById('heroSubtext');
-    const ctas = document.getElementById('heroCtas');
-    const micro = document.getElementById('heroMicro');
-    if (!textEl || !cursorEl) return;
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      textEl.textContent = TITLE_TEXT;
-      cursorEl.style.display = 'none';
-      if (subtext) subtext.style.opacity = '1';
-      if (ctas) ctas.style.opacity = '1';
-      if (micro) micro.style.opacity = '1';
-      return;
-    }
-
-    // Clear server-rendered text for typewriter effect; cursor becomes visible
-    textEl.textContent = '';
-    cursorEl.style.display = '';
-
-    let i = 0;
-    function typeNext() {
-      if (i < TITLE_TEXT.length) {
-        textEl.textContent += TITLE_TEXT[i];
-        i++;
-        setTimeout(typeNext, TYPE_DELAY);
-      } else {
-        if (subtext) subtext.style.opacity = '1';
-        if (ctas) ctas.style.opacity = '1';
-        if (micro) micro.style.opacity = '1';
-        setTimeout(function() {
-          cursorEl.style.transition = 'opacity 0.4s';
-          cursorEl.style.opacity = '0';
-        }, CURSOR_LINGER);
-      }
-    }
-
-    setTimeout(typeNext, START_DELAY);
-  })();
-  </script>
-
-  <script>
-  // @ts-nocheck
-  (function() {
-    // ─── Particle system ───
-    const PARTICLE_COUNT_DESKTOP = 110;
-    const PARTICLE_COUNT_TABLET = 65;
-    const PARTICLE_COUNT_MOBILE = 35;
-    const MAX_CONNECTION_DIST = 140;
-    const MAX_CONNECTION_DIST_SQ = MAX_CONNECTION_DIST * MAX_CONNECTION_DIST;
-    const LINE_OPACITY = 0.09;
-    const BASE_PARTICLE_OPACITY = 0.4;
-    const IDLE_DRIFT_STRENGTH = 0.18;
-    const POINTER_INFLUENCE_RADIUS = 180;
-    const POINTER_INFLUENCE_RADIUS_SQ = POINTER_INFLUENCE_RADIUS * POINTER_INFLUENCE_RADIUS;
-    const POINTER_REPULSION_STRENGTH = 130;
-    const REVEAL_RADIUS = 200;
-    const REVEAL_RADIUS_SQ = REVEAL_RADIUS * REVEAL_RADIUS;
-    const REVEAL_OPACITY_BOOST = 0.5;
-    const RECOVERY_SPEED = 0.018;
-    const INTERPOLATION_FACTOR = 0.12;
-    const CLICK_PULSE_STRENGTH = 200;
-    const CLICK_PULSE_DURATION = 500;
-    const DPR_CAP = 2;
-
-    const REVEAL_PARTICLE_COUNT_DESKTOP = 140;
-    const REVEAL_PARTICLE_COUNT_TABLET = 80;
-    const REVEAL_PARTICLE_COUNT_MOBILE = 45;
-    const REVEAL_MAX_CONNECTION_DIST = 110;
-    const REVEAL_MAX_CONNECTION_DIST_SQ = REVEAL_MAX_CONNECTION_DIST * REVEAL_MAX_CONNECTION_DIST;
-    const REVEAL_LINE_OPACITY = 0.22;
-    const REVEAL_PARTICLE_OPACITY = 0.6;
-
-    const canvas = document.getElementById('heroCanvas');
-    const hero = document.getElementById('top');
-    if (!canvas || !hero) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    let prefersReducedMotion = motionQuery.matches;
-
-    function getTier() {
-      const w = window.innerWidth;
-      if (w >= 1024) return 'desktop';
-      if (w >= 640) return 'tablet';
-      return 'mobile';
-    }
-
-    function getParticleCount(tier) {
-      if (tier === 'desktop') return PARTICLE_COUNT_DESKTOP;
-      if (tier === 'tablet') return PARTICLE_COUNT_TABLET;
-      return PARTICLE_COUNT_MOBILE;
-    }
-
-    function getRevealCount(tier) {
-      if (tier === 'desktop') return REVEAL_PARTICLE_COUNT_DESKTOP;
-      if (tier === 'tablet') return REVEAL_PARTICLE_COUNT_TABLET;
-      return REVEAL_PARTICLE_COUNT_MOBILE;
-    }
-
-    let pointer = { x: -9999, y: -9999 };
-    let smoothPointer = { x: -9999, y: -9999 };
-    let isPointerInside = false;
-    let clickPulse = { active: false, x: 0, y: 0, startTime: 0 };
-    let particles = [];
-    let revealParticles = [];
-    let animationId = null;
-    let isVisible = true;
-    let currentTier = getTier();
-    let cachedW = 0;
-    let cachedH = 0;
-    let lastTime = 0;
-
-    function createParticle(w, h) {
-      return {
-        x: Math.random() * w,
-        y: Math.random() * h,
-        homeX: 0, homeY: 0,
-        vx: (Math.random() - 0.5) * IDLE_DRIFT_STRENGTH,
-        vy: (Math.random() - 0.5) * IDLE_DRIFT_STRENGTH,
-        size: 1 + Math.random() * 1.2,
-        opacity: BASE_PARTICLE_OPACITY * (0.4 + Math.random() * 0.6),
-      };
-    }
-
-    function createRevealParticle(w, h) {
-      return {
-        x: Math.random() * w,
-        y: Math.random() * h,
-        size: 0.8 + Math.random() * 0.8,
-        opacity: REVEAL_PARTICLE_OPACITY * (0.5 + Math.random() * 0.5),
-      };
-    }
-
-    function resize() {
-      const rect = hero.getBoundingClientRect();
-      const dpr = Math.min(window.devicePixelRatio || 1, DPR_CAP);
-      cachedW = rect.width;
-      cachedH = rect.height;
-      canvas.width = cachedW * dpr;
-      canvas.height = cachedH * dpr;
-      canvas.style.width = cachedW + 'px';
-      canvas.style.height = cachedH + 'px';
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-      const newTier = getTier();
-      const needsRebuild = (newTier !== currentTier) || particles.length === 0;
-      currentTier = newTier;
-
-      if (needsRebuild) {
-        const count = getParticleCount(currentTier);
-        const revCount = getRevealCount(currentTier);
-        particles = [];
-        revealParticles = [];
-        for (let i = 0; i < count; i++) {
-          const p = createParticle(cachedW, cachedH);
-          p.homeX = p.x;
-          p.homeY = p.y;
-          particles.push(p);
-        }
-        for (let i = 0; i < revCount; i++) {
-          revealParticles.push(createRevealParticle(cachedW, cachedH));
-        }
-      } else {
-        for (const p of particles) {
-          p.homeX = Math.min(p.homeX, cachedW);
-          p.homeY = Math.min(p.homeY, cachedH);
-          p.x = Math.min(p.x, cachedW);
-          p.y = Math.min(p.y, cachedH);
-        }
-      }
-    }
-
-    function onPointerMove(e) {
-      const rect = hero.getBoundingClientRect();
-      pointer.x = e.clientX - rect.left;
-      pointer.y = e.clientY - rect.top;
-      isPointerInside = true;
-    }
-    function onPointerLeave() { isPointerInside = false; }
-    function onClick(e) {
-      const rect = hero.getBoundingClientRect();
-      clickPulse.active = true;
-      clickPulse.x = e.clientX - rect.left;
-      clickPulse.y = e.clientY - rect.top;
-      clickPulse.startTime = performance.now();
-    }
-    function onTouchStart(e) {
-      if (e.touches.length > 0) {
-        const rect = hero.getBoundingClientRect();
-        pointer.x = e.touches[0].clientX - rect.left;
-        pointer.y = e.touches[0].clientY - rect.top;
-        isPointerInside = true;
-      }
-    }
-    function onTouchMove(e) {
-      if (e.touches.length > 0) {
-        const rect = hero.getBoundingClientRect();
-        pointer.x = e.touches[0].clientX - rect.left;
-        pointer.y = e.touches[0].clientY - rect.top;
-        isPointerInside = true;
-      }
-    }
-    function onTouchEnd() { isPointerInside = false; }
-
-    hero.addEventListener('mousemove', onPointerMove, { passive: true });
-    hero.addEventListener('mouseleave', onPointerLeave, { passive: true });
-    hero.addEventListener('click', onClick);
-    hero.addEventListener('touchstart', onTouchStart, { passive: true });
-    hero.addEventListener('touchmove', onTouchMove, { passive: true });
-    hero.addEventListener('touchend', onTouchEnd, { passive: true });
-    hero.addEventListener('touchcancel', onTouchEnd, { passive: true });
-
-    const observer = new IntersectionObserver(function(entries) {
-      isVisible = entries[0].isIntersecting;
-      if (isVisible && !prefersReducedMotion && !animationId) {
-        lastTime = 0;
-        animationId = requestAnimationFrame(draw);
-      }
-    }, { threshold: 0.05 });
-    observer.observe(hero);
-
-    function onVisibilityChange() {
-      if (document.hidden) {
-        if (animationId) { cancelAnimationFrame(animationId); animationId = null; }
-      } else if (!prefersReducedMotion && !animationId) {
-        lastTime = 0;
-        animationId = requestAnimationFrame(draw);
-      }
-    }
-    document.addEventListener('visibilitychange', onVisibilityChange);
-
-    function draw(now) {
-      if (!isVisible) {
-        animationId = null;
-        return;
-      }
-      animationId = requestAnimationFrame(draw);
-
-      var dt = lastTime ? Math.min((now - lastTime) / 16.667, 3) : 1;
-      lastTime = now;
-
-      var w = cachedW;
-      var h = cachedH;
-      ctx.clearRect(0, 0, w, h);
-
-      if (isPointerInside) {
-        smoothPointer.x += (pointer.x - smoothPointer.x) * INTERPOLATION_FACTOR;
-        smoothPointer.y += (pointer.y - smoothPointer.y) * INTERPOLATION_FACTOR;
-      } else {
-        smoothPointer.x += (-9999 - smoothPointer.x) * 0.02;
-        smoothPointer.y += (-9999 - smoothPointer.y) * 0.02;
-      }
-
-      var pulseStrength = 0;
-      var pulseRadius = 0;
-      var pulseRadiusSq = 0;
-      if (clickPulse.active) {
-        var elapsed = now - clickPulse.startTime;
-        if (elapsed > CLICK_PULSE_DURATION) {
-          clickPulse.active = false;
-        } else {
-          var t = elapsed / CLICK_PULSE_DURATION;
-          pulseStrength = CLICK_PULSE_STRENGTH * (1 - t);
-          pulseRadius = POINTER_INFLUENCE_RADIUS * (1 + t * 1.5);
-          pulseRadiusSq = pulseRadius * pulseRadius;
-        }
-      }
-
-      var spx = smoothPointer.x;
-      var spy = smoothPointer.y;
-      var revealActive = spx > -1000 && spy > -1000;
-
-      // Reveal layer
-      if (revealActive) {
-        ctx.strokeStyle = 'rgb(120,140,170)';
-        ctx.lineWidth = 0.5;
-        for (var i = 0; i < revealParticles.length; i++) {
-          var a = revealParticles[i];
-          var dxA = a.x - spx;
-          var dyA = a.y - spy;
-          var distSqA = dxA * dxA + dyA * dyA;
-          if (distSqA > REVEAL_RADIUS_SQ) continue;
-          var distA = Math.sqrt(distSqA);
-          var alphaA = 1 - (distA / REVEAL_RADIUS);
-
-          for (var j = i + 1; j < revealParticles.length; j++) {
-            var b = revealParticles[j];
-            var dxB = b.x - spx;
-            var dyB = b.y - spy;
-            var distSqB = dxB * dxB + dyB * dyB;
-            if (distSqB > REVEAL_RADIUS_SQ) continue;
-
-            var dxAB = a.x - b.x;
-            var dyAB = a.y - b.y;
-            var distSqAB = dxAB * dxAB + dyAB * dyAB;
-            if (distSqAB > REVEAL_MAX_CONNECTION_DIST_SQ) continue;
-
-            var distB = Math.sqrt(distSqB);
-            var distAB = Math.sqrt(distSqAB);
-            var alphaB = 1 - (distB / REVEAL_RADIUS);
-            var lineFade = 1 - (distAB / REVEAL_MAX_CONNECTION_DIST);
-            ctx.globalAlpha = REVEAL_LINE_OPACITY * alphaA * alphaB * lineFade;
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.stroke();
-          }
-        }
-
-        ctx.fillStyle = 'rgb(140,160,190)';
-        for (var i = 0; i < revealParticles.length; i++) {
-          var p = revealParticles[i];
-          var dx = p.x - spx;
-          var dy = p.y - spy;
-          var distSq = dx * dx + dy * dy;
-          if (distSq > REVEAL_RADIUS_SQ) continue;
-          var proximity = 1 - (Math.sqrt(distSq) / REVEAL_RADIUS);
-          ctx.globalAlpha = p.opacity * proximity * REVEAL_OPACITY_BOOST;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-          ctx.fill();
-        }
-      }
-
-      // Primary particles
-      ctx.fillStyle = 'rgb(180,180,190)';
-      for (var i = 0; i < particles.length; i++) {
-        var p = particles[i];
-        p.x += p.vx * dt;
-        p.y += p.vy * dt;
-
-        var dx = p.x - spx;
-        var dy = p.y - spy;
-        var distSq = dx * dx + dy * dy;
-        if (distSq < POINTER_INFLUENCE_RADIUS_SQ && distSq > 0) {
-          var dist = Math.sqrt(distSq);
-          var proximity = 1 - dist / POINTER_INFLUENCE_RADIUS;
-          var force = proximity * proximity * POINTER_REPULSION_STRENGTH;
-          p.x += (dx / dist) * force * 0.04 * dt;
-          p.y += (dy / dist) * force * 0.04 * dt;
-        }
-
-        if (clickPulse.active && pulseStrength > 0) {
-          var cdx = p.x - clickPulse.x;
-          var cdy = p.y - clickPulse.y;
-          var cdistSq = cdx * cdx + cdy * cdy;
-          if (cdistSq < pulseRadiusSq && cdistSq > 0) {
-            var cdist = Math.sqrt(cdistSq);
-            var pProx = 1 - cdist / pulseRadius;
-            var pForce = pProx * pProx * pulseStrength;
-            p.x += (cdx / cdist) * pForce * 0.06 * dt;
-            p.y += (cdy / cdist) * pForce * 0.06 * dt;
-          }
-        }
-
-        var recoveryFactor = 1 - Math.pow(1 - RECOVERY_SPEED, dt);
-        p.x += (p.homeX - p.x) * recoveryFactor;
-        p.y += (p.homeY - p.y) * recoveryFactor;
-
-        if (p.x < -10) p.x = w + 10;
-        if (p.x > w + 10) p.x = -10;
-        if (p.y < -10) p.y = h + 10;
-        if (p.y > h + 10) p.y = -10;
-
-        ctx.globalAlpha = p.opacity;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      // Connections
-      ctx.strokeStyle = 'rgb(180,180,190)';
-      ctx.lineWidth = 0.5;
-      for (var i = 0; i < particles.length; i++) {
-        for (var j = i + 1; j < particles.length; j++) {
-          var a = particles[i];
-          var b = particles[j];
-          var dxAB = a.x - b.x;
-          var dyAB = a.y - b.y;
-          var distSqAB = dxAB * dxAB + dyAB * dyAB;
-          if (distSqAB > MAX_CONNECTION_DIST_SQ) continue;
-          var distAB = Math.sqrt(distSqAB);
-          var lineFade = 1 - (distAB / MAX_CONNECTION_DIST);
-
-          var stress = 1;
-          var midX = (a.x + b.x) * 0.5;
-          var midY = (a.y + b.y) * 0.5;
-          var midDx = midX - spx;
-          var midDy = midY - spy;
-          var midDistSq = midDx * midDx + midDy * midDy;
-          if (midDistSq < POINTER_INFLUENCE_RADIUS_SQ) {
-            stress = Math.sqrt(midDistSq) / POINTER_INFLUENCE_RADIUS;
-            stress = stress * stress;
-          }
-
-          ctx.globalAlpha = LINE_OPACITY * lineFade * stress;
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
-        }
-      }
-
-      // Click pulse ring
-      if (clickPulse.active) {
-        var elapsed = now - clickPulse.startTime;
-        var t = elapsed / CLICK_PULSE_DURATION;
-        var ringRadius = 20 + t * POINTER_INFLUENCE_RADIUS * 1.2;
-        ctx.strokeStyle = 'rgb(120,150,200)';
-        ctx.globalAlpha = 0.15 * (1 - t);
-        ctx.lineWidth = 1.5 * (1 - t);
-        ctx.beginPath();
-        ctx.arc(clickPulse.x, clickPulse.y, ringRadius, 0, Math.PI * 2);
-        ctx.stroke();
-      }
-
-      ctx.globalAlpha = 1;
-    }
-
-    function drawStatic() {
-      resize();
-      ctx.clearRect(0, 0, cachedW, cachedH);
-      ctx.fillStyle = 'rgb(180,180,190)';
-      for (var i = 0; i < particles.length; i++) {
-        var p = particles[i];
-        ctx.globalAlpha = p.opacity * 0.7;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      ctx.strokeStyle = 'rgb(180,180,190)';
-      ctx.lineWidth = 0.5;
-      for (var i = 0; i < particles.length; i++) {
-        for (var j = i + 1; j < particles.length; j++) {
-          var a = particles[i];
-          var b = particles[j];
-          var dxAB = a.x - b.x;
-          var dyAB = a.y - b.y;
-          var distSqAB = dxAB * dxAB + dyAB * dyAB;
-          if (distSqAB > MAX_CONNECTION_DIST_SQ) continue;
-          var distAB = Math.sqrt(distSqAB);
-          var lineFade = 1 - (distAB / MAX_CONNECTION_DIST);
-          ctx.globalAlpha = LINE_OPACITY * lineFade * 0.7;
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
-        }
-      }
-      ctx.globalAlpha = 1;
-    }
-
-    function cleanup() {
-      if (animationId) { cancelAnimationFrame(animationId); animationId = null; }
-      observer.disconnect();
-      hero.removeEventListener('mousemove', onPointerMove);
-      hero.removeEventListener('mouseleave', onPointerLeave);
-      hero.removeEventListener('click', onClick);
-      hero.removeEventListener('touchstart', onTouchStart);
-      hero.removeEventListener('touchmove', onTouchMove);
-      hero.removeEventListener('touchend', onTouchEnd);
-      hero.removeEventListener('touchcancel', onTouchEnd);
-      document.removeEventListener('visibilitychange', onVisibilityChange);
-      window.removeEventListener('resize', debouncedResize);
-      motionQuery.removeEventListener('change', onMotionChange);
-    }
-
-    function onMotionChange(e) {
-      prefersReducedMotion = e.matches;
-      if (prefersReducedMotion) {
-        if (animationId) { cancelAnimationFrame(animationId); animationId = null; }
-        drawStatic();
-      } else {
-        if (!animationId) { lastTime = 0; animationId = requestAnimationFrame(draw); }
-      }
-    }
-    motionQuery.addEventListener('change', onMotionChange);
-
-    if (prefersReducedMotion) {
-      drawStatic();
-    } else {
-      resize();
-      lastTime = 0;
-      animationId = requestAnimationFrame(draw);
-    }
-
-    var resizeTimeout;
-    function debouncedResize() {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(function() {
-        resize();
-        if (prefersReducedMotion) drawStatic();
-      }, 150);
-    }
-    window.addEventListener('resize', debouncedResize, { passive: true });
-    window.addEventListener('beforeunload', cleanup);
-  })();
-  </script>
-
-  <script>
-  // @ts-nocheck
-  // ─── Homepage nav dark mode ───
-  (function() {
-    const nav = document.querySelector('nav');
-    const heroSection = document.getElementById('top');
-    if (!nav || !heroSection) return;
-
-    const brandLink = nav.querySelector('a[href="/"]');
-    const menuBtn = nav.querySelector('#menuBtn');
-    const navLinks = nav.querySelectorAll('ul a');
-    const searchBtn = nav.querySelector('#searchTrigger');
-    const linkedinLink = nav.querySelector('a[aria-label="LinkedIn"]');
-
-    let isDark = false;
-
-    function setDarkNav() {
-      if (isDark) return;
-      isDark = true;
-      nav.style.background = 'rgba(13,13,15,0.82)';
-      nav.style.borderBottomColor = 'rgba(255,255,255,0.06)';
-      if (brandLink) { brandLink.style.color = '#fff'; }
-      if (menuBtn) { menuBtn.style.color = '#a1a1a6'; }
-      navLinks.forEach(function(l) { l.style.color = '#a1a1a6'; });
-      if (searchBtn) { searchBtn.style.background = 'rgba(255,255,255,0.08)'; searchBtn.style.color = '#a1a1a6'; }
-      if (linkedinLink) { linkedinLink.style.color = '#a1a1a6'; }
-    }
-
-    function setLightNav() {
-      if (!isDark) return;
-      isDark = false;
-      nav.style.background = '';
-      nav.style.borderBottomColor = '';
-      if (brandLink) { brandLink.style.color = ''; }
-      if (menuBtn) { menuBtn.style.color = ''; }
-      navLinks.forEach(function(l) { l.style.color = ''; });
-      if (searchBtn) { searchBtn.style.background = ''; searchBtn.style.color = ''; }
-      if (linkedinLink) { linkedinLink.style.color = ''; }
-    }
-
-    function check() {
-      const heroBottom = heroSection.getBoundingClientRect().bottom;
-      if (heroBottom > 52) {
-        setDarkNav();
-      } else {
-        setLightNav();
-      }
-    }
-
-    check();
-    window.addEventListener('scroll', check, { passive: true });
-    window.addEventListener('resize', check, { passive: true });
-  })();
-  </script>
-
-  <!-- ═══ 2. Trust / proof strip ═══ -->
-  <section class="py-4 px-4 md:px-6 border-b border-border/40 bg-bg-primary">
-    <div class="max-w-site mx-auto flex flex-wrap justify-center gap-x-6 gap-y-2 text-[11px] md:text-xs text-tertiary font-medium">
-      <span class="flex items-center gap-1.5">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-accent-green"><polyline points="20 6 9 17 4 12"/></svg>
-        {publishedNetworks.length}+ providers tracked
-      </span>
-      <span class="flex items-center gap-1.5">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-accent-green"><polyline points="20 6 9 17 4 12"/></svg>
-        Public-source research
-      </span>
-      <span class="flex items-center gap-1.5">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-accent-green"><polyline points="20 6 9 17 4 12"/></svg>
-        Pricing, compliance, AI &amp; content compared
-      </span>
-      <span class="flex items-center gap-1.5">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-accent-green"><polyline points="20 6 9 17 4 12"/></svg>
-        No affiliations
-      </span>
-      <span class="flex items-center gap-1.5">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-accent-green"><polyline points="20 6 9 17 4 12"/></svg>
-        Continuously updated
-      </span>
-    </div>
-  </section>
-
-  <!-- ═══ 3. Networks Covered — interactive logo carousel ═══ -->
+  <!-- ═══ 2. Networks Covered — interactive logo carousel ═══ -->
   <TrackedNetworksMarquee />
 
-  <!-- ═══ 4. Decision pathways ═══ -->
-  <section class="py-12 md:py-16 px-4 md:px-6">
+  <!-- ═══ 3. Decision pathways (bento) ═══ -->
+  <section class="py-section px-4 sm:px-6" aria-labelledby="pathwaysHeading">
     <div class="max-w-site mx-auto">
-      <h2 class="text-xl md:text-2xl font-bold text-primary mb-8 text-center">Start with your use case</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <a href="/compare" class="group bg-white rounded-card p-5 shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all no-underline border border-border/30">
-          <div class="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-accent"><path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M21 3l-7 7"/><path d="M3 3l7 7"/><path d="M3 21l7-7"/><path d="M21 21l-7-7"/><path d="M16 21h5v-5"/><path d="M8 21H3v-5"/></svg>
+      <div class="fade-in mb-8 md:mb-10 max-w-2xl">
+        <p class="eyebrow mb-3">Where to start</p>
+        <h2 id="pathwaysHeading" class="text-step-3 font-bold text-primary">Start with your use case</h2>
+      </div>
+
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6">
+        <!-- Feature tile: compare -->
+        <a href="/compare" class="fade-in group card-spot card-spot-dark dark-surface flex flex-col justify-between overflow-hidden p-6 no-underline sm:col-span-2 md:p-8 lg:col-span-3 lg:row-span-2">
+          <div>
+            <div class="mb-5 flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.08] text-[#6CB4FF]">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            </div>
+            <h3 class="text-step-2 font-semibold text-white">I need to compare providers</h3>
+            <p class="mt-2 max-w-[44ch] text-[15px] leading-relaxed text-[#B4B4BA]">Side-by-side comparison across pricing, compliance, AI, and service model.</p>
           </div>
-          <h3 class="font-bold text-primary text-sm mb-1 group-hover:text-accent transition-colors">I need to compare providers</h3>
-          <p class="text-xs text-secondary">Side-by-side comparison across pricing, compliance, AI, and service model.</p>
+          <div class="mt-8">
+            <div class="flex flex-wrap items-center gap-2">
+              {top6.map((n) => (
+                n.data.logo ? (
+                  <img src={n.data.logo} alt="" width="36" height="36" loading="lazy" decoding="async" class:list={['h-9 w-9 rounded-[10px] bg-white object-cover ring-1 ring-white/10']} />
+                ) : (
+                  <span class:list={['flex h-9 w-9 items-center justify-center rounded-[10px] text-[10px] font-bold text-white ring-1 ring-white/10']} style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`} aria-hidden="true">{n.data.shortName}</span>
+                )
+              ))}
+              <span class="ml-1 text-[13px] text-[#A1A1A6]">{compareDimensionCount} dimensions &middot; {comparePresetCount} presets</span>
+            </div>
+            <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-[#6CB4FF]">
+              Open the comparison tool
+              <svg class="w-3.5 h-3.5 transition-transform duration-200 ease-out-expo group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </span>
+          </div>
         </a>
-        <a href="/networks" class="group bg-white rounded-card p-5 shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all no-underline border border-border/30">
-          <div class="w-9 h-9 rounded-lg bg-accent-purple/10 flex items-center justify-center mb-3">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-accent-purple"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+
+        <a href="/networks" class="fade-in group card-spot flex items-center gap-4 p-6 no-underline lg:col-span-3">
+          <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-accent-purple/10 text-[#8944AB]">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
           </div>
-          <h3 class="font-bold text-primary text-sm mb-1 group-hover:text-accent transition-colors">I need to browse the market</h3>
-          <p class="text-xs text-secondary">Explore all {publishedNetworks.length} tracked expert networks with search and filters.</p>
+          <div class="min-w-0">
+            <h3 class="text-[17px] font-semibold text-primary transition-colors group-hover:text-accent-text">I need to browse the market</h3>
+            <p class="mt-1 text-sm text-secondary">Explore all {publishedNetworks.length} tracked expert networks with search and filters.</p>
+          </div>
         </a>
-        <a href="/expert-network-pricing" class="group bg-white rounded-card p-5 shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all no-underline border border-border/30">
-          <div class="w-9 h-9 rounded-lg bg-accent-green/10 flex items-center justify-center mb-3">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-accent-green"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+
+        <a href="/expert-network-pricing" class="fade-in group card-spot flex items-center gap-4 p-6 no-underline lg:col-span-3">
+          <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-accent-green/10 text-[#1F7A3D]">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
           </div>
-          <h3 class="font-bold text-primary text-sm mb-1 group-hover:text-accent transition-colors">I need to understand pricing</h3>
-          <p class="text-xs text-secondary">How pricing models differ across calls, subscriptions, and content access.</p>
+          <div class="min-w-0">
+            <h3 class="text-[17px] font-semibold text-primary transition-colors group-hover:text-accent-text">I need to understand pricing</h3>
+            <p class="mt-1 text-sm text-secondary">How pricing models differ across calls, subscriptions, and content access.</p>
+          </div>
         </a>
-        <a href="/what-is-an-expert-network" class="group bg-white rounded-card p-5 shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all no-underline border border-border/30">
-          <div class="w-9 h-9 rounded-lg bg-accent-orange/10 flex items-center justify-center mb-3">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-accent-orange"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+
+        <a href="/what-is-an-expert-network" class="fade-in group card-spot p-6 no-underline lg:col-span-2">
+          <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-accent-orange/10 text-[#A05A00]">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           </div>
-          <h3 class="font-bold text-primary text-sm mb-1 group-hover:text-accent transition-colors">I'm new to this category</h3>
-          <p class="text-xs text-secondary">Learn how expert networks work, what they cost, and how to choose a provider.</p>
+          <h3 class="text-[17px] font-semibold text-primary transition-colors group-hover:text-accent-text">I'm new to this category</h3>
+          <p class="mt-1 text-sm text-secondary">Learn how expert networks work, what they cost, and how to choose a provider.</p>
         </a>
-        <a href="/news" class="group bg-white rounded-card p-5 shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all no-underline border border-border/30">
-          <div class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center mb-3">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-blue-500"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+
+        <a href="/news" class="fade-in group card-spot p-6 no-underline lg:col-span-2">
+          <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 text-accent-text">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
           </div>
-          <h3 class="font-bold text-primary text-sm mb-1 group-hover:text-accent transition-colors">I want the latest market news</h3>
-          <p class="text-xs text-secondary">Track launches, M&A, AI products, and market developments.</p>
+          <h3 class="text-[17px] font-semibold text-primary transition-colors group-hover:text-accent-text">I want the latest market news</h3>
+          <p class="mt-1 text-sm text-secondary">Track launches, M&amp;A, AI products, and market developments.</p>
         </a>
-        <a href="/best-expert-networks" class="group bg-white rounded-card p-5 shadow-card hover:shadow-card-hover hover:-translate-y-0.5 transition-all no-underline border border-border/30">
-          <div class="w-9 h-9 rounded-lg bg-rose-50 flex items-center justify-center mb-3">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-rose-500"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>
+
+        <a href="/best-expert-networks" class="fade-in group card-spot p-6 no-underline sm:col-span-2 lg:col-span-2">
+          <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-rose-50 text-rose-600">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>
           </div>
-          <h3 class="font-bold text-primary text-sm mb-1 group-hover:text-accent transition-colors">I want to explore leading providers</h3>
-          <p class="text-xs text-secondary">Curated overview of top expert networks by category and strength.</p>
+          <h3 class="text-[17px] font-semibold text-primary transition-colors group-hover:text-accent-text">I want to explore leading providers</h3>
+          <p class="mt-1 text-sm text-secondary">Curated overview of top expert networks by category and strength.</p>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ═══ 5. Featured compare module ═══ -->
-  <section class="py-12 md:py-16 px-4 md:px-6 bg-bg-secondary">
+  <!-- ═══ 4. Featured compare module ═══ -->
+  <section class="py-section px-4 sm:px-6 bg-bg-secondary" aria-labelledby="compareHeading">
     <div class="max-w-site mx-auto">
-      <h2 class="text-xl md:text-2xl font-bold text-primary mb-3">Compare leading expert networks</h2>
-      <p class="text-sm text-secondary mb-8 max-w-2xl">Choose a preset to see how providers stack up, or build your own comparison.</p>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-        <a href="/compare?preset=leaders" class="group bg-white rounded-card p-5 shadow-card hover:shadow-card-hover transition-all no-underline border border-border/30 hover:-translate-y-0.5">
-          <div class="text-[10px] font-bold uppercase tracking-wider text-accent mb-2">Global Leaders</div>
-          <p class="text-xs text-secondary mb-3">GLG, AlphaSights, Third Bridge, Guidepoint, Dialectica, AlphaSense</p>
-          <span class="text-xs font-semibold text-accent group-hover:underline">Open comparison &rarr;</span>
-        </a>
-        <a href="/compare?preset=ai" class="group bg-white rounded-card p-5 shadow-card hover:shadow-card-hover transition-all no-underline border border-border/30 hover:-translate-y-0.5">
-          <div class="text-[10px] font-bold uppercase tracking-wider text-accent-purple mb-2">AI-Forward Platforms</div>
-          <p class="text-xs text-secondary mb-3">AlphaSense, Techspert, Dialectica, NewtonX, ProSynth, Prosapient</p>
-          <span class="text-xs font-semibold text-accent group-hover:underline">Open comparison &rarr;</span>
-        </a>
-        <a href="/compare?preset=library" class="group bg-white rounded-card p-5 shadow-card hover:shadow-card-hover transition-all no-underline border border-border/30 hover:-translate-y-0.5">
-          <div class="text-[10px] font-bold uppercase tracking-wider text-accent-green mb-2">Library / Transcript-Heavy</div>
-          <p class="text-xs text-secondary mb-3">AlphaSense, Third Bridge, GLG, Guidepoint, Dialectica, Arches</p>
-          <span class="text-xs font-semibold text-accent group-hover:underline">Open comparison &rarr;</span>
+      <div class="fade-in mb-8 flex flex-col gap-4 md:mb-10 md:flex-row md:items-end md:justify-between">
+        <div class="max-w-2xl">
+          <p class="eyebrow mb-3">Comparison tool</p>
+          <h2 id="compareHeading" class="text-step-3 font-bold text-primary">Compare leading expert networks</h2>
+          <p class="mt-3 text-step-0 text-secondary">Choose a preset to see how providers stack up, or build your own comparison.</p>
+        </div>
+        <a href="/compare" class="btn btn-primary self-start md:self-auto">
+          Open full comparison tool
+          <svg class="btn-arrow w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
       </div>
 
-      <a href="/compare" class="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-white rounded-full font-semibold text-sm no-underline hover:bg-accent-hover transition-colors">
-        Open full comparison tool
-        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-      </a>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {featuredPresets.map(preset => (
+          <a href={`/compare?preset=${preset.key}`} class="fade-in group card-spot flex flex-col p-6 no-underline">
+            <div class:list={['text-[11px] font-bold uppercase tracking-[0.08em]', preset.tone]}>{preset.label}</div>
+            <p class="mt-2 text-sm text-secondary">{preset.description}</p>
+            <div class="mt-5 flex flex-wrap items-center gap-1.5">
+              {preset.networks.map((n) => (
+                n.data.logo ? (
+                  <img src={n.data.logo} alt="" width="32" height="32" loading="lazy" decoding="async" class:list={['h-8 w-8 rounded-lg bg-white object-cover ring-1 ring-black/5']} />
+                ) : (
+                  <span class:list={['flex h-8 w-8 items-center justify-center rounded-lg text-[9px] font-bold text-white ring-1 ring-black/5']} style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`} aria-hidden="true">{n.data.shortName}</span>
+                )
+              ))}
+            </div>
+            <p class="mt-3 text-[13px] leading-relaxed text-tertiary">{preset.networks.map(n => shortName(n.data.name).split(' / ')[0]).join(', ')}</p>
+            <span class="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-semibold text-accent-text">
+              Open comparison
+              <svg class="w-3.5 h-3.5 transition-transform duration-200 ease-out-expo group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </span>
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 
-  <!-- ═══ 6. Featured profiles ═══ -->
-  <section class="py-10 md:py-12 px-4 md:px-6">
+  <!-- ═══ 5. Featured profiles ═══ -->
+  <section class="py-section px-4 sm:px-6" aria-labelledby="profilesHeading">
     <div class="max-w-site mx-auto">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-lg md:text-xl font-bold text-primary">Featured profiles</h2>
-        <a href="/networks" class="text-accent text-sm font-medium no-underline hover:underline">View all {publishedNetworks.length} &rarr;</a>
+      <div class="fade-in mb-8 flex items-end justify-between gap-4 md:mb-10">
+        <div>
+          <p class="eyebrow mb-3">Provider profiles</p>
+          <h2 id="profilesHeading" class="text-step-3 font-bold text-primary">Featured profiles</h2>
+        </div>
+        <a href="/networks" class="inline-flex min-h-[44px] items-center gap-1 whitespace-nowrap text-sm font-semibold text-accent-text no-underline hover:underline">View all {publishedNetworks.length} <span aria-hidden="true">&rarr;</span></a>
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+      <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6">
         {top6.map(n => {
           const desc = descriptors[n.data.slug] || (n.data.description ? n.data.description.slice(0, 60) + '…' : n.data.type || '');
           return (
-            <a href={`/networks/${n.data.slug}`} class="group bg-white rounded-card p-4 shadow-card border border-border/30 hover:shadow-card-hover hover:-translate-y-0.5 transition-all no-underline text-center">
+            <a href={`/networks/${n.data.slug}`} class="fade-in group card-spot flex flex-col items-center p-5 text-center no-underline">
               {n.data.logo ? (
-                <img src={n.data.logo} alt={n.data.name} width="32" height="32" class="w-8 h-8 rounded-lg object-cover mx-auto mb-2" loading="lazy" />
+                <img src={n.data.logo} alt="" width="48" height="48" class="mb-3 h-12 w-12 rounded-xl object-cover shadow-xs" loading="lazy" decoding="async" style={`view-transition-name: net-${n.data.slug}`} />
               ) : (
-                <div class="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-[10px] mx-auto mb-2" style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}>
+                <div class="mb-3 flex h-12 w-12 items-center justify-center rounded-xl text-xs font-bold text-white" style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo}); view-transition-name: net-${n.data.slug}`} aria-hidden="true">
                   {n.data.shortName}
                 </div>
               )}
-              <div class="text-xs font-bold text-primary mb-1 group-hover:text-accent transition-colors">{n.data.name.split(' (')[0]}</div>
-              <div class="text-[10px] text-tertiary leading-snug">{desc}</div>
+              <div class="text-sm font-semibold text-primary transition-colors group-hover:text-accent-text">{shortName(n.data.name)}</div>
+              <div class="mt-1 text-[12px] leading-snug text-tertiary">{desc}</div>
             </a>
           );
         })}
@@ -799,90 +326,193 @@ const descriptors: Record<string, string> = {
     </div>
   </section>
 
-  <!-- ═══ 7. What matters now — curated news ═══ -->
-  <section class="py-12 md:py-16 px-4 md:px-6 bg-bg-secondary">
+  <!-- ═══ 6. What matters now — curated news ═══ -->
+  <section class="py-section px-4 sm:px-6 bg-bg-secondary" aria-labelledby="newsHeading">
     <div class="max-w-site mx-auto">
-      <div class="flex items-center justify-between mb-8">
-        <h2 class="text-xl md:text-2xl font-bold text-primary">What matters now</h2>
-        <a href="/news" class="text-accent text-sm font-medium no-underline hover:underline">All signals &rarr;</a>
+      <div class="fade-in mb-8 flex items-end justify-between gap-4 md:mb-10">
+        <div>
+          <p class="eyebrow mb-3">Market intelligence</p>
+          <h2 id="newsHeading" class="text-step-3 font-bold text-primary">What matters now</h2>
+        </div>
+        <a href="/news" class="inline-flex min-h-[44px] items-center gap-1 whitespace-nowrap text-sm font-semibold text-accent-text no-underline hover:underline">All signals <span aria-hidden="true">&rarr;</span></a>
       </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {curatedNews.map(article => {
-          const formattedDate = new Date(article.data.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-          return (
-            <a href={article.data.sourceUrl || `/news`} target={article.data.sourceUrl ? '_blank' : '_self'} rel="noopener noreferrer" class="group bg-white rounded-card p-5 shadow-card hover:shadow-card-hover transition-all no-underline border border-border/30 hover:-translate-y-0.5 flex flex-col">
-              <div class="flex items-center gap-2 mb-2.5">
-                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full" style={`color: ${article.data.categoryColor || '#0071E3'}; background: ${article.data.categoryColor || '#0071E3'}15;`}>
-                  {article.data.category}
-                </span>
-                {article.data.significance === 'major' && (
-                  <span class="text-[10px] font-bold uppercase tracking-wider text-rose-600 bg-rose-50 px-2 py-0.5 rounded-full">Major</span>
-                )}
-              </div>
-              <h3 class="text-[13px] font-semibold text-primary leading-snug mb-2 group-hover:text-accent transition-colors flex-1">{article.data.title}</h3>
-              {article.data.whyItMatters && (
-                <p class="text-[11px] text-secondary leading-relaxed mb-2">{article.data.whyItMatters}</p>
+
+      <div class="grid gap-4 lg:grid-cols-12">
+        {leadNews && (
+          <a href={leadNews.data.sourceUrl || '/news'} target={leadNews.data.sourceUrl ? '_blank' : undefined} rel={leadNews.data.sourceUrl ? 'noopener noreferrer' : undefined} class="fade-in group card-spot flex flex-col p-6 no-underline md:p-8 lg:col-span-5 lg:row-span-3">
+            <div class="mb-4 flex flex-wrap items-center gap-2">
+              <span class="news-chip" style={`--chip: ${leadNews.data.categoryColor || '#0071E3'}`}>{leadNews.data.category}</span>
+              {leadNews.data.significance === 'major' && (
+                <span class="rounded-full bg-rose-50 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.06em] text-rose-700">Major</span>
               )}
-              <div class="flex items-center gap-2 text-[11px] text-tertiary mt-auto pt-2 border-t border-border/20">
-                <span>{formattedDate}</span>
-                <span>&middot;</span>
-                <span>{article.data.sourceType || article.data.source}</span>
-                {article.data.sourceUrl && (
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-tertiary ml-auto flex-shrink-0"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                )}
+            </div>
+            <h3 class="text-step-2 font-semibold text-primary transition-colors group-hover:text-accent-text">{leadNews.data.title}</h3>
+            <p class="mt-3 text-[15px] leading-relaxed text-secondary">{leadNews.data.summary}</p>
+            {leadNews.data.whyItMatters && (
+              <div class="mt-5 rounded-xl bg-bg-secondary p-4">
+                <div class="eyebrow mb-1.5">Why it matters</div>
+                <p class="text-sm leading-relaxed text-secondary">{leadNews.data.whyItMatters}</p>
               </div>
-            </a>
-          );
-        })}
+            )}
+            <div class="mt-auto flex items-center gap-2 pt-6 text-[13px] text-tertiary">
+              <time datetime={leadNews.data.date}>{formatDate(leadNews.data.date)}</time>
+              <span aria-hidden="true">&middot;</span>
+              <span>{leadNews.data.sourceType || leadNews.data.source}</span>
+              {leadNews.data.sourceUrl && (
+                <span class="ml-auto inline-flex items-center gap-1 font-medium text-accent-text">
+                  Source
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  <span class="sr-only">(opens in a new tab)</span>
+                </span>
+              )}
+            </div>
+          </a>
+        )}
+
+        {restNews.map(article => (
+          <a href={article.data.sourceUrl || '/news'} target={article.data.sourceUrl ? '_blank' : undefined} rel={article.data.sourceUrl ? 'noopener noreferrer' : undefined} class="fade-in group card-spot flex flex-col p-5 no-underline md:p-6 lg:col-span-7">
+            <div class="mb-2.5 flex flex-wrap items-center gap-2">
+              <span class="news-chip" style={`--chip: ${article.data.categoryColor || '#0071E3'}`}>{article.data.category}</span>
+              {article.data.significance === 'major' && (
+                <span class="rounded-full bg-rose-50 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.06em] text-rose-700">Major</span>
+              )}
+              <span class="ml-auto flex items-center gap-2 text-[13px] text-tertiary">
+                <time datetime={article.data.date}>{formatDate(article.data.date)}</time>
+                {article.data.sourceUrl && (
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                )}
+              </span>
+            </div>
+            <h3 class="text-[17px] font-semibold leading-snug text-primary transition-colors group-hover:text-accent-text">{article.data.title}</h3>
+            {article.data.whyItMatters && (
+              <p class="mt-2 line-clamp-2 text-sm leading-relaxed text-secondary">{article.data.whyItMatters}</p>
+            )}
+            <div class="mt-auto pt-3 text-[13px] text-tertiary">
+              {article.data.sourceType || article.data.source}
+              {article.data.sourceUrl && <span class="sr-only"> (opens in a new tab)</span>}
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- ═══ 8. How this site works — methodology / trust ═══ -->
-  <section class="py-12 md:py-16 px-4 md:px-6 bg-white border-t border-border/20">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-xl md:text-2xl font-bold text-primary mb-4">How this site works</h2>
-      <p class="text-sm text-secondary leading-relaxed mb-6">This site is an independent public-source research resource covering expert networks, related research platforms, and industry developments. Provider data may reflect a mix of verified company statements, public reporting, and clearly labeled editorial inferences.</p>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-        <div class="bg-white rounded-lg p-3.5 text-center border border-border/30">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-accent-green mx-auto mb-2"><polyline points="20 6 9 17 4 12"/></svg>
-          <div class="text-[11px] font-medium text-primary">Public-source research only</div>
-        </div>
-        <div class="bg-white rounded-lg p-3.5 text-center border border-border/30">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-accent-green mx-auto mb-2"><polyline points="20 6 9 17 4 12"/></svg>
-          <div class="text-[11px] font-medium text-primary">No paywalls or gated access</div>
-        </div>
-        <div class="bg-white rounded-lg p-3.5 text-center border border-border/30">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-accent-green mx-auto mb-2"><polyline points="20 6 9 17 4 12"/></svg>
-          <div class="text-[11px] font-medium text-primary">No paid placement</div>
-        </div>
-        <div class="bg-white rounded-lg p-3.5 text-center border border-border/30">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="text-accent-green mx-auto mb-2"><polyline points="20 6 9 17 4 12"/></svg>
-          <div class="text-[11px] font-medium text-primary">Corrections welcomed</div>
+  <!-- ═══ 7. How this site works — methodology / trust ═══ -->
+  <section class="py-section px-4 sm:px-6" aria-labelledby="methodHeading">
+    <div class="max-w-site mx-auto grid gap-10 lg:grid-cols-12 lg:gap-12">
+      <div class="fade-in lg:col-span-5">
+        <p class="eyebrow mb-3">Methodology</p>
+        <h2 id="methodHeading" class="text-step-3 font-bold text-primary">How this site works</h2>
+        <p class="mt-4 max-w-measure text-step-0 text-secondary">This site is an independent public-source research resource covering expert networks, related research platforms, and industry developments. Provider data may reflect a mix of verified company statements, public reporting, and clearly labeled editorial inferences.</p>
+        <div class="mt-6 flex flex-wrap gap-x-6 gap-y-1">
+          <a href="/sources" class="inline-flex min-h-[44px] items-center gap-1 text-sm font-semibold text-accent-text no-underline hover:underline">Sources &amp; methodology <span aria-hidden="true">&rarr;</span></a>
+          <a href="/verification" class="inline-flex min-h-[44px] items-center gap-1 text-sm font-semibold text-accent-text no-underline hover:underline">Verification framework <span aria-hidden="true">&rarr;</span></a>
         </div>
       </div>
-      <div class="flex gap-4">
-        <a href="/sources" class="text-xs font-semibold text-accent no-underline hover:underline">Sources &amp; methodology &rarr;</a>
-        <a href="/verification" class="text-xs font-semibold text-secondary no-underline hover:text-accent hover:underline">Verification framework &rarr;</a>
-      </div>
+      <ul class="grid list-none grid-cols-1 gap-3 sm:grid-cols-2 lg:col-span-7">
+        {[
+          'Public-source research only',
+          'No paywalls or gated access',
+          'No paid placement',
+          'Corrections welcomed',
+        ].map(principle => (
+          <li class="fade-in flex items-center gap-3 rounded-2xl bg-white p-5 shadow-card">
+            <span class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-accent-green/15 text-[#1F7A3D]">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span class="text-[15px] font-medium text-primary">{principle}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 
-  <!-- ═══ 9. Final CTA ═══ -->
-  <section class="py-14 md:py-20 px-4 md:px-6">
-    <div class="max-w-3xl mx-auto text-center">
-      <h2 class="text-xl md:text-2xl font-bold text-primary mb-3">Ready to narrow your shortlist?</h2>
-      <p class="text-sm text-secondary mb-8 max-w-xl mx-auto">Compare providers side by side across pricing model, service format, compliance, AI capabilities, and content access.</p>
-      <div class="flex flex-col sm:flex-row gap-3 justify-center">
-        <a href="/compare" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-accent text-white rounded-full font-semibold text-sm no-underline hover:bg-accent-hover transition-colors">
-          Compare providers
-          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-        </a>
-        <a href="/networks" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-primary border border-border rounded-full font-semibold text-sm no-underline hover:bg-bg-secondary transition-colors">
-          Browse all networks
-        </a>
+  <!-- ═══ 8. Final CTA ═══ -->
+  <section class="px-4 pb-section sm:px-6" aria-labelledby="ctaHeading">
+    <div class="fade-in dark-surface relative mx-auto max-w-site overflow-hidden rounded-panel bg-[#0d0d0f] px-6 py-14 text-center md:py-20">
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true" style="background: radial-gradient(55% 80% at 50% 0%, rgba(0,113,227,0.28), transparent 70%);"></div>
+      <div class="relative">
+        <h2 id="ctaHeading" class="text-step-3 font-bold text-white">Ready to narrow your shortlist?</h2>
+        <p class="mx-auto mt-3 max-w-[52ch] text-step-0 text-[#B4B4BA]">Compare providers side by side across pricing model, service format, compliance, AI capabilities, and content access.</p>
+        <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+          <a href="/compare" class="btn btn-primary">
+            Compare providers
+            <svg class="btn-arrow w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+          <a href="/networks" class="btn btn-ghost-dark">
+            Browse all networks
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
 </BaseLayout>
+
+<style>
+  /* Hero entrance: a short CSS-only rise. Content is in the HTML and painted
+     on the first frame; the animation only eases it into place. */
+  @keyframes heroRise {
+    from { opacity: 0; transform: translateY(12px); }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-rise { animation: heroRise 0.6s var(--ease-out) both; }
+    .hero-rise-2 { animation-delay: 0.06s; }
+    .hero-rise-3 { animation-delay: 0.12s; }
+    .hero-rise-4 { animation-delay: 0.18s; }
+  }
+  .hero-accent {
+    background: linear-gradient(92deg, #5AABFF 0%, #9CCBFF 60%, #C7E1FF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero-search {
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14), 0 20px 50px -20px rgba(0, 0, 0, 0.8);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    transition: box-shadow var(--dur-base) var(--ease-out), background-color var(--dur-base) var(--ease-out);
+  }
+  .hero-search:focus-within {
+    background: rgba(255, 255, 255, 0.11);
+    box-shadow: inset 0 0 0 1px rgba(108, 180, 255, 0.9), 0 0 0 4px rgba(0, 113, 227, 0.28), 0 20px 50px -20px rgba(0, 0, 0, 0.8);
+  }
+  .hero-search input:focus-visible { outline: none; }
+  .hero-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    min-height: 44px;
+    padding: 0 0.625rem;
+    border-radius: 999px;
+    font-weight: 500;
+    color: #D1D1D6;
+    text-decoration: none;
+    transition: color var(--dur-fast) ease, background-color var(--dur-fast) ease;
+  }
+  .hero-link:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .news-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.625rem;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #424245;
+    background: #F5F5F7;
+  }
+  .news-chip::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--chip, #0071E3);
+  }
+</style>

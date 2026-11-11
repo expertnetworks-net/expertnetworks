@@ -17,6 +17,15 @@ const pageType = pathname === '/' ? 'home'
   : pathname.startsWith('/news') ? 'news'
   : 'default';
 
+const navItems = [
+  { href: '/what-is-an-expert-network', label: "What's an Expert Network?", short: 'Guide' },
+  { href: '/networks', label: 'Networks' },
+  { href: '/news', label: 'News' },
+  { href: '/compare', label: 'Compare' },
+  { href: '/expert-network-pricing', label: 'Pricing' },
+  { href: '/about', label: 'About' },
+];
+
 // Active path matching
 function isActive(href: string): boolean {
   if (href === '/') return pathname === '/';
@@ -24,34 +33,31 @@ function isActive(href: string): boolean {
 }
 ---
 <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[300] focus:bg-accent focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm focus:font-semibold">Skip to main content</a>
-<nav class="fixed top-0 left-0 right-0 z-50 bg-[rgba(251,251,253,0.72)] backdrop-blur-xl border-b border-border/40 transition-colors duration-300">
-  <div class="max-w-site mx-auto px-6 h-[52px] flex items-center justify-between">
-    <div class="flex items-center gap-4">
-      <button id="menuBtn" class="flex items-center justify-center gap-1.5 text-secondary hover:text-primary active:text-primary active:scale-95 transition-all cursor-pointer min-w-[44px] min-h-[44px]" aria-label="Open menu" aria-expanded="false" aria-controls="menuDrawer">
-        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+<nav class="site-nav fixed top-0 left-0 right-0 z-50" aria-label="Site">
+  <div class="max-w-site mx-auto px-3 sm:px-6 h-[52px] flex items-center justify-between gap-2">
+    <div class="flex items-center gap-1 sm:gap-3 min-w-0">
+      <button id="menuBtn" class="nav-muted flex items-center justify-center gap-1.5 active:scale-95 cursor-pointer min-w-[44px] min-h-[44px] rounded-lg" aria-label="Open menu" aria-expanded="false" aria-controls="menuDrawer">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         <span class="text-sm font-medium hidden sm:inline">Menu</span>
       </button>
-      <a href="/" class="flex items-center gap-1.5 font-bold text-lg tracking-tight text-primary no-underline">
+      <a href="/" class="nav-brand flex items-center gap-1.5 font-bold text-[17px] sm:text-lg tracking-tight no-underline min-h-[44px]" aria-label="ExpertNetworks home">
         <svg class="w-5 h-5 flex-shrink-0 opacity-80" viewBox="0 0 2048 2048" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M 1493 1721.15 L 1290 1721.17 L 1285 1719.35 L 1228 1716.77 L 1166 1707.92 L 1100 1692.5 L 1057.24 1679 L 1000 1654.83 L 933.33 1617 L 871 1570.28 L 825 1526.61 L 789.79 1489 L 745.39 1429 L 716.92 1383 L 687.97 1325 L 672.75 1288 L 657.1 1239 L 640 1159.34 L 615.79 1199 L 566.83 1288 L 502.98 1409 L 474.75 1467 L 485 1469.51 L 575 1472.05 L 580 1473.92 L 707 1474.77 L 739.53 1518 L 766.02 1549 L 816 1598.85 L 878 1647.62 L 933.02 1683 L 965 1699.96 L 965 1703 L 915 1708.2 L 910 1710.22 L 893 1710.42 L 888 1712.42 L 869 1712.57 L 864 1714.6 L 807 1717.17 L 802 1719.06 L 763 1719.34 L 757 1721.2 L 556 1721.19 L 551 1719.37 L 505 1719.05 L 500 1717.15 L 432 1714.6 L 427 1712.65 L 405 1712.34 L 387 1707.81 L 368.51 1692 L 331 1636.83 L 288.93 1566 L 233.5 1455 L 224.57 1430 L 224.63 1423 L 229.28 1409 L 374.98 1133 L 430.12 1036 L 461.5 989 L 510.23 927 L 562 875.27 L 618 830.45 L 671 797.29 L 722 772.91 L 762 757.34 L 833 737.41 L 899 726.41 L 921 726.02 L 927 724.11 L 1002 724.11 L 1045 728.54 L 1116 744.02 L 1172.17 763 L 1159.11 736 L 1123.59 676 L 1081.77 610 L 1022 521.85 L 1017.07 526 L 1001.77 548 L 938.79 648 L 925 666.3 L 902 666.82 L 853 673.46 L 802 684.48 L 756 697.74 L 691 722.31 L 638 748.84 L 602.97 770 L 606.6 758 L 664 645.42 L 758.78 480 L 791.87 427 L 838.68 358 L 857.49 337 L 867 331.98 L 906 326.98 L 941 326.62 L 946 324.82 L 1095 324.8 L 1101 326.63 L 1160 329.25 L 1178 333.73 L 1186 338.92 L 1210 369.71 L 1260.89 445 L 1368.85 619 L 1415.46 708 L 1444.09 785 L 1461.81 856 L 1468.49 896 L 1470.97 935 L 1472.94 941 L 1472.92 1024 L 1470.91 1029 L 1468.51 1066 L 1459.65 1117 L 1446.32 1166 L 1422.08 1230 L 1399.55 1275 L 1379.77 1308 L 1350.9 1348 L 1326.35 1377 L 1294 1409.32 L 1258.66 1438 L 1220 1463.71 L 1218.53 1467 L 1266 1469.89 L 1271 1471.87 L 1299 1472.1 L 1304 1473.98 L 1343 1474.26 L 1472 1473.91 L 1478 1472.03 L 1559 1469.53 L 1571.04 1467 L 1543.04 1409 L 1468.63 1269 L 1490.26 1217 L 1503.52 1177 L 1521.42 1101 L 1530.16 1030 L 1530.3 957 L 1528.18 946 L 1528.32 931 L 1530 929.32 L 1540.83 941 L 1591.07 1011 L 1646.36 1095 L 1673.39 1140 L 1752.43 1285 L 1812.46 1405 L 1821.47 1429 L 1812.13 1458 L 1768.16 1546 L 1748 1581.77 L 1721.46 1626 L 1677.48 1692 L 1671 1698.7 L 1653 1709.78 L 1643 1712.37 L 1595 1714.85 L 1590 1716.76 L 1553 1717.14 L 1548 1719.03 L 1498 1719.36 L 1493 1721.15 Z M 1042.02 1372 L 1087 1363.76 L 1128 1347.73 L 1154.93 1332 L 1173 1318.4 L 1193 1300.52 L 1207.54 1284 L 1232.19 1248 L 1252.23 1203 L 1258.74 1179 L 1263.2 1150 L 1263.36 1109 L 1254.31 1063 L 1238.84 1023 L 1216.42 985 L 1186 950.27 L 1148 921.13 L 1108 900.95 L 1080.69 892 L 1058 887.45 L 1006 885.36 L 965.02 892 L 927 905.36 L 905 916.47 L 878 934.55 L 845.31 965 L 816.2 1005 L 796.01 1048 L 787.23 1079 L 782.81 1106 L 782.73 1149 L 787.08 1178 L 793.76 1203 L 816 1252.33 L 836.59 1282 L 851.35 1299 L 871 1316.51 L 903 1339.3 L 952 1361.49 L 990 1370.42 L 1009 1372.55 L 1042.02 1372 Z M 1041 1260.06 L 1006 1260.14 L 985 1255.58 L 955.44 1242 L 940 1230.97 L 922.85 1214 L 911 1197.51 L 897.42 1168 L 892.96 1148 L 892.91 1108 L 895.35 1098 L 904.08 1072 L 917.74 1049 L 935 1029.47 L 958 1013.42 L 976 1004.47 L 1001 997.67 L 1025 995.49 L 1057 1000.13 L 1075 1006.89 L 1102 1022.72 L 1126 1046.72 L 1134.84 1060 L 1144 1078.29 L 1153.03 1112 L 1153.1 1143 L 1148.53 1166 L 1135 1197.55 L 1124 1213 L 1107 1230.14 L 1090.53 1242 L 1061 1255.57 L 1041 1260.06 Z"/></svg>
-        Expert<span class="text-accent">Networks</span>
+        <span>Expert<span class="nav-brand-accent">Networks</span></span>
       </a>
     </div>
-    <ul class="hidden md:flex gap-8 list-none">
-      <li><a href="/what-is-an-expert-network" class:list={["no-underline text-sm font-medium transition-colors", isActive('/what-is-an-expert-network') ? 'text-primary' : 'text-secondary hover:text-primary']}>What's an Expert Network?</a></li>
-      <li><a href="/networks" class:list={["no-underline text-sm font-medium transition-colors", isActive('/networks') ? 'text-primary' : 'text-secondary hover:text-primary']}>Networks</a></li>
-      <li><a href="/news" class:list={["no-underline text-sm font-medium transition-colors", isActive('/news') ? 'text-primary' : 'text-secondary hover:text-primary']}>News</a></li>
-      <li><a href="/compare" class:list={["no-underline text-sm font-medium transition-colors", isActive('/compare') ? 'text-primary' : 'text-secondary hover:text-primary']}>Compare</a></li>
-      <li><a href="/expert-network-pricing" class:list={["no-underline text-sm font-medium transition-colors", isActive('/expert-network-pricing') ? 'text-primary' : 'text-secondary hover:text-primary']}>Pricing</a></li>
-      <li><a href="/about" class:list={["no-underline text-sm font-medium transition-colors", isActive('/about') ? 'text-primary' : 'text-secondary hover:text-primary']}>About</a></li>
+    <ul class="hidden lg:flex items-center gap-0.5 list-none">
+      {navItems.map(item => (
+        <li><a href={item.href} class="nav-link" aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a></li>
+      ))}
     </ul>
-    <div class="flex items-center gap-3">
-    <a href="https://www.linkedin.com/company/expertnetworks-net/" target="_blank" rel="noopener noreferrer" class="text-secondary hover:text-accent transition-colors" aria-label="LinkedIn">
+    <div class="flex items-center gap-1 sm:gap-2">
+    <a href="https://www.linkedin.com/company/expertnetworks-net/" target="_blank" rel="noopener noreferrer" class="nav-muted hidden sm:flex items-center justify-center w-11 h-11 rounded-lg" aria-label="LinkedIn">
       <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
     </a>
-    <button id="searchTrigger" aria-label="Search networks" class="flex items-center gap-2 px-3 py-2 bg-bg-secondary rounded-lg text-tertiary text-sm cursor-pointer hover:bg-border/50 active:bg-border/60 active:scale-95 transition-all border-none min-h-[44px]">
-      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <span class="hidden sm:inline">Search networks...</span>
-      <kbd class="hidden sm:inline bg-white px-1.5 py-0.5 rounded text-xs text-tertiary border border-border ml-2">/</kbd>
+    <button id="searchTrigger" aria-label="Search networks" aria-haspopup="dialog" aria-keyshortcuts="/ Meta+K Control+K" class="nav-search flex items-center justify-center gap-2 px-3 rounded-[10px] text-sm cursor-pointer active:scale-95 border-none min-h-[44px] min-w-[44px] sm:min-h-[36px]">
+      <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span class="hidden sm:inline">Search networks</span>
+      <kbd class="nav-kbd whitespace-nowrap hidden sm:inline-flex items-center justify-center min-w-[34px] px-1.5 py-0.5 rounded-md text-[11px] font-sans font-medium ml-1.5" data-kbd-search>/</kbd>
     </button>
     </div>
   </div>
@@ -70,10 +76,10 @@ function isActive(href: string): boolean {
         <svg class="w-[18px] h-[18px] flex-shrink-0 text-white/80 mt-[3px]" viewBox="0 0 2048 2048" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M 1493 1721.15 L 1290 1721.17 L 1285 1719.35 L 1228 1716.77 L 1166 1707.92 L 1100 1692.5 L 1057.24 1679 L 1000 1654.83 L 933.33 1617 L 871 1570.28 L 825 1526.61 L 789.79 1489 L 745.39 1429 L 716.92 1383 L 687.97 1325 L 672.75 1288 L 657.1 1239 L 640 1159.34 L 615.79 1199 L 566.83 1288 L 502.98 1409 L 474.75 1467 L 485 1469.51 L 575 1472.05 L 580 1473.92 L 707 1474.77 L 739.53 1518 L 766.02 1549 L 816 1598.85 L 878 1647.62 L 933.02 1683 L 965 1699.96 L 965 1703 L 915 1708.2 L 910 1710.22 L 893 1710.42 L 888 1712.42 L 869 1712.57 L 864 1714.6 L 807 1717.17 L 802 1719.06 L 763 1719.34 L 757 1721.2 L 556 1721.19 L 551 1719.37 L 505 1719.05 L 500 1717.15 L 432 1714.6 L 427 1712.65 L 405 1712.34 L 387 1707.81 L 368.51 1692 L 331 1636.83 L 288.93 1566 L 233.5 1455 L 224.57 1430 L 224.63 1423 L 229.28 1409 L 374.98 1133 L 430.12 1036 L 461.5 989 L 510.23 927 L 562 875.27 L 618 830.45 L 671 797.29 L 722 772.91 L 762 757.34 L 833 737.41 L 899 726.41 L 921 726.02 L 927 724.11 L 1002 724.11 L 1045 728.54 L 1116 744.02 L 1172.17 763 L 1159.11 736 L 1123.59 676 L 1081.77 610 L 1022 521.85 L 1017.07 526 L 1001.77 548 L 938.79 648 L 925 666.3 L 902 666.82 L 853 673.46 L 802 684.48 L 756 697.74 L 691 722.31 L 638 748.84 L 602.97 770 L 606.6 758 L 664 645.42 L 758.78 480 L 791.87 427 L 838.68 358 L 857.49 337 L 867 331.98 L 906 326.98 L 941 326.62 L 946 324.82 L 1095 324.8 L 1101 326.63 L 1160 329.25 L 1178 333.73 L 1186 338.92 L 1210 369.71 L 1260.89 445 L 1368.85 619 L 1415.46 708 L 1444.09 785 L 1461.81 856 L 1468.49 896 L 1470.97 935 L 1472.94 941 L 1472.92 1024 L 1470.91 1029 L 1468.51 1066 L 1459.65 1117 L 1446.32 1166 L 1422.08 1230 L 1399.55 1275 L 1379.77 1308 L 1350.9 1348 L 1326.35 1377 L 1294 1409.32 L 1258.66 1438 L 1220 1463.71 L 1218.53 1467 L 1266 1469.89 L 1271 1471.87 L 1299 1472.1 L 1304 1473.98 L 1343 1474.26 L 1472 1473.91 L 1478 1472.03 L 1559 1469.53 L 1571.04 1467 L 1543.04 1409 L 1468.63 1269 L 1490.26 1217 L 1503.52 1177 L 1521.42 1101 L 1530.16 1030 L 1530.3 957 L 1528.18 946 L 1528.32 931 L 1530 929.32 L 1540.83 941 L 1591.07 1011 L 1646.36 1095 L 1673.39 1140 L 1752.43 1285 L 1812.46 1405 L 1821.47 1429 L 1812.13 1458 L 1768.16 1546 L 1748 1581.77 L 1721.46 1626 L 1677.48 1692 L 1671 1698.7 L 1653 1709.78 L 1643 1712.37 L 1595 1714.85 L 1590 1716.76 L 1553 1717.14 L 1548 1719.03 L 1498 1719.36 L 1493 1721.15 Z M 1042.02 1372 L 1087 1363.76 L 1128 1347.73 L 1154.93 1332 L 1173 1318.4 L 1193 1300.52 L 1207.54 1284 L 1232.19 1248 L 1252.23 1203 L 1258.74 1179 L 1263.2 1150 L 1263.36 1109 L 1254.31 1063 L 1238.84 1023 L 1216.42 985 L 1186 950.27 L 1148 921.13 L 1108 900.95 L 1080.69 892 L 1058 887.45 L 1006 885.36 L 965.02 892 L 927 905.36 L 905 916.47 L 878 934.55 L 845.31 965 L 816.2 1005 L 796.01 1048 L 787.23 1079 L 782.81 1106 L 782.73 1149 L 787.08 1178 L 793.76 1203 L 816 1252.33 L 836.59 1282 L 851.35 1299 L 871 1316.51 L 903 1339.3 L 952 1361.49 L 990 1370.42 L 1009 1372.55 L 1042.02 1372 Z M 1041 1260.06 L 1006 1260.14 L 985 1255.58 L 955.44 1242 L 940 1230.97 L 922.85 1214 L 911 1197.51 L 897.42 1168 L 892.96 1148 L 892.91 1108 L 895.35 1098 L 904.08 1072 L 917.74 1049 L 935 1029.47 L 958 1013.42 L 976 1004.47 L 1001 997.67 L 1025 995.49 L 1057 1000.13 L 1075 1006.89 L 1102 1022.72 L 1126 1046.72 L 1134.84 1060 L 1144 1078.29 L 1153.03 1112 L 1153.1 1143 L 1148.53 1166 L 1135 1197.55 L 1124 1213 L 1107 1230.14 L 1090.53 1242 L 1061 1255.57 L 1041 1260.06 Z"/></svg>
         <div>
           <span class="text-[15px] font-bold tracking-tight text-white/90">Expert<span class="text-[#4DA3FF]">Networks</span></span>
-          <div class="text-[10px] text-white/32 font-medium tracking-wide">Independent research</div>
+          <div class="text-[10px] text-white/50 font-medium tracking-wide">Independent research</div>
         </div>
       </a>
-      <button id="menuClose" class="w-8 h-8 rounded-full bg-white/[0.08] flex items-center justify-center text-white/50 hover:bg-white/[0.14] hover:text-white/70 transition-all cursor-pointer" aria-label="Close menu" aria-controls="menuDrawer">
+      <button id="menuClose" class="w-11 h-11 -mr-1.5 rounded-full bg-white/[0.08] flex items-center justify-center text-white/50 hover:bg-white/[0.14] hover:text-white/70 transition-all cursor-pointer" aria-label="Close menu" aria-controls="menuDrawer">
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
@@ -82,7 +88,7 @@ function isActive(href: string): boolean {
     <button id="drawerSearchBtn" class="w-full drawer-search-trigger flex items-center gap-2.5 px-3.5 py-2.5 cursor-pointer text-left">
       <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       <span class="text-[13px]">Search providers, pricing, news...</span>
-      <kbd class="ml-auto text-[10px] bg-white/[0.06] px-1.5 py-0.5 rounded text-white/30 border border-white/[0.08]">/</kbd>
+      <kbd class="ml-auto hidden sm:inline whitespace-nowrap text-[10px] font-sans bg-white/[0.06] px-1.5 py-0.5 rounded text-white/60 border border-white/[0.1]" data-kbd-search>/</kbd>
     </button>
   </div>
 
@@ -93,49 +99,49 @@ function isActive(href: string): boolean {
     <div class="mb-5">
       <div class="drawer-label px-2 mb-2">Navigate</div>
       <nav aria-label="Primary navigation">
-        <a href="/what-is-an-expert-network" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/what-is-an-expert-network') && 'drawer-nav-active']}>
+        <a href="/what-is-an-expert-network" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/what-is-an-expert-network') && 'drawer-nav-active']} aria-current={isActive('/what-is-an-expert-network') ? 'page' : undefined}>
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           <div class="min-w-0">
             <div class="text-[13px] font-medium">Start Here</div>
             <div class="text-[11px] opacity-50">What is an expert network?</div>
           </div>
         </a>
-        <a href="/compare" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/compare') && 'drawer-nav-active']}>
+        <a href="/compare" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/compare') && 'drawer-nav-active']} aria-current={isActive('/compare') ? 'page' : undefined}>
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
           <div class="min-w-0">
             <div class="text-[13px] font-medium">Compare Providers</div>
             <div class="text-[11px] opacity-50">Side-by-side with presets</div>
           </div>
         </a>
-        <a href="/networks" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/networks') && !pathname.startsWith('/networks/') && 'drawer-nav-active']}>
+        <a href="/networks" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/networks') && !pathname.startsWith('/networks/') && 'drawer-nav-active']} aria-current={isActive('/networks') && !pathname.startsWith('/networks/') ? 'page' : undefined}>
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
           <div class="min-w-0">
             <div class="text-[13px] font-medium">Browse Networks</div>
             <div class="text-[11px] opacity-50">{publishedNetworks.length} providers tracked</div>
           </div>
         </a>
-        <a href="/expert-network-pricing" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/expert-network-pricing') && 'drawer-nav-active']}>
+        <a href="/expert-network-pricing" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/expert-network-pricing') && 'drawer-nav-active']} aria-current={isActive('/expert-network-pricing') ? 'page' : undefined}>
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
           <div class="min-w-0">
             <div class="text-[13px] font-medium">Pricing Guide</div>
             <div class="text-[11px] opacity-50">Rates, models & benchmarks</div>
           </div>
         </a>
-        <a href="/news" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/news') && 'drawer-nav-active']}>
+        <a href="/news" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/news') && 'drawer-nav-active']} aria-current={isActive('/news') ? 'page' : undefined}>
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0a2 2 0 01-2-2v-9c0-1.1.9-2 2-2h2"/></svg>
           <div class="min-w-0">
             <div class="text-[13px] font-medium">Industry News</div>
             <div class="text-[11px] opacity-50">Signals & intelligence</div>
           </div>
         </a>
-        <a href="/best-expert-networks" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/best-expert-networks') && 'drawer-nav-active']}>
+        <a href="/best-expert-networks" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/best-expert-networks') && 'drawer-nav-active']} aria-current={isActive('/best-expert-networks') ? 'page' : undefined}>
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <div class="min-w-0">
             <div class="text-[13px] font-medium">Best Networks Ranked</div>
             <div class="text-[11px] opacity-50">Independent rankings</div>
           </div>
         </a>
-        <a href="/verification" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/verification') && 'drawer-nav-active']}>
+        <a href="/verification" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/verification') && 'drawer-nav-active']} aria-current={isActive('/verification') ? 'page' : undefined}>
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           <div class="min-w-0">
             <div class="text-[13px] font-medium">Methodology</div>
@@ -152,27 +158,27 @@ function isActive(href: string): boolean {
         <svg id="pathwaysChevron" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="transition-transform duration-200"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
       <div id="pathwaysList" class="drawer-card overflow-hidden">
-        <a href="/expert-networks-for-consulting" class="flex items-center gap-2.5 px-3.5 py-2.5 no-underline drawer-provider-item">
+        <a href="/expert-networks-for-consulting" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item">
           <span class="text-[13px]">Consulting Teams</span>
           <svg class="w-3 h-3 ml-auto flex-shrink-0 opacity-30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
-        <a href="/expert-networks-for-private-equity" class="flex items-center gap-2.5 px-3.5 py-2.5 no-underline drawer-provider-item border-t drawer-divider">
+        <a href="/expert-networks-for-private-equity" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider">
           <span class="text-[13px]">Private Equity & Hedge Funds</span>
           <svg class="w-3 h-3 ml-auto flex-shrink-0 opacity-30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
-        <a href="/compare?preset=enterprise" class="flex items-center gap-2.5 px-3.5 py-2.5 no-underline drawer-provider-item border-t drawer-divider">
+        <a href="/compare?preset=enterprise" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider">
           <span class="text-[13px]">Enterprise Strategy</span>
           <svg class="w-3 h-3 ml-auto flex-shrink-0 opacity-30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
-        <a href="/compare?preset=library" class="flex items-center gap-2.5 px-3.5 py-2.5 no-underline drawer-provider-item border-t drawer-divider">
+        <a href="/compare?preset=library" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider">
           <span class="text-[13px]">Transcript-Led Research</span>
           <svg class="w-3 h-3 ml-auto flex-shrink-0 opacity-30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
-        <a href="/compare?preset=aiResearch" class="flex items-center gap-2.5 px-3.5 py-2.5 no-underline drawer-provider-item border-t drawer-divider">
+        <a href="/compare?preset=aiResearch" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider">
           <span class="text-[13px]">AI-Forward Research</span>
           <svg class="w-3 h-3 ml-auto flex-shrink-0 opacity-30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
-        <a href="/what-is-an-expert-network" class="flex items-center gap-2.5 px-3.5 py-2.5 no-underline drawer-provider-item border-t drawer-divider">
+        <a href="/what-is-an-expert-network" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider">
           <span class="text-[13px]">First-Time Buyer</span>
           <svg class="w-3 h-3 ml-auto flex-shrink-0 opacity-30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -190,7 +196,7 @@ function isActive(href: string): boolean {
           <a
             href={`/networks/${n.data.slug}`}
             class:list={[
-              'flex items-center gap-2.5 px-3 py-2.5 no-underline drawer-provider-item',
+              'flex items-center gap-2.5 px-3 py-2.5 min-h-[44px] no-underline drawer-provider-item',
               i > 0 ? 'border-t drawer-divider' : '',
               pathname === `/networks/${n.data.slug}` || pathname === `/networks/${n.data.slug}/` ? 'drawer-nav-active' : '',
             ]}
@@ -210,7 +216,7 @@ function isActive(href: string): boolean {
           </a>
         ))}
       </div>
-      <a href="/networks" class="flex items-center gap-1.5 px-2 mt-2 no-underline text-[11px] font-medium drawer-trust-link hover:text-white/60">
+      <a href="/networks" class="flex items-center gap-1.5 px-2 mt-1 min-h-[44px] no-underline text-[12px] font-medium drawer-trust-link">
         View all {publishedNetworks.length} providers
         <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
       </a>
@@ -222,15 +228,15 @@ function isActive(href: string): boolean {
       <div class="mb-5">
         <div class="drawer-label px-2 mb-2">Quick Actions</div>
         <div class="drawer-card p-3 space-y-2">
-          <a href="/compare" class="flex items-center gap-2 px-2.5 py-2 rounded-lg no-underline drawer-nav-item text-[12px] font-medium">
+          <a href="/compare" class="flex items-center gap-2 px-2.5 py-2 min-h-[44px] rounded-lg no-underline drawer-nav-item text-[13px] font-medium">
             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="opacity-60"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
             Compare top providers
           </a>
-          <a href="/expert-network-pricing" class="flex items-center gap-2 px-2.5 py-2 rounded-lg no-underline drawer-nav-item text-[12px] font-medium">
+          <a href="/expert-network-pricing" class="flex items-center gap-2 px-2.5 py-2 min-h-[44px] rounded-lg no-underline drawer-nav-item text-[13px] font-medium">
             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="opacity-60"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
             See pricing benchmarks
           </a>
-          <a href="/news" class="flex items-center gap-2 px-2.5 py-2 rounded-lg no-underline drawer-nav-item text-[12px] font-medium">
+          <a href="/news" class="flex items-center gap-2 px-2.5 py-2 min-h-[44px] rounded-lg no-underline drawer-nav-item text-[13px] font-medium">
             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="opacity-60"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0a2 2 0 01-2-2v-9c0-1.1.9-2 2-2h2"/></svg>
             Latest intelligence
           </a>
@@ -243,12 +249,12 @@ function isActive(href: string): boolean {
       <div class="mb-5">
         <div class="drawer-label px-2 mb-2">Compare Presets</div>
         <div class="drawer-card overflow-hidden">
-          <a href="/compare?preset=leaders" class="flex items-center gap-2.5 px-3.5 py-2.5 no-underline drawer-provider-item text-[12px]">Global Leaders</a>
-          <a href="/compare?preset=pe" class="flex items-center gap-2.5 px-3.5 py-2.5 no-underline drawer-provider-item border-t drawer-divider text-[12px]">PE / Hedge Funds</a>
-          <a href="/compare?preset=consulting" class="flex items-center gap-2.5 px-3.5 py-2.5 no-underline drawer-provider-item border-t drawer-divider text-[12px]">Consulting Fit</a>
-          <a href="/compare?preset=library" class="flex items-center gap-2.5 px-3.5 py-2.5 no-underline drawer-provider-item border-t drawer-divider text-[12px]">Transcript Leaders</a>
-          <a href="/compare?preset=aiResearch" class="flex items-center gap-2.5 px-3.5 py-2.5 no-underline drawer-provider-item border-t drawer-divider text-[12px]">AI Research</a>
-          <a href="/compare?preset=asia" class="flex items-center gap-2.5 px-3.5 py-2.5 no-underline drawer-provider-item border-t drawer-divider text-[12px]">APAC Specialists</a>
+          <a href="/compare?preset=leaders" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item text-[12px]">Global Leaders</a>
+          <a href="/compare?preset=pe" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider text-[12px]">PE / Hedge Funds</a>
+          <a href="/compare?preset=consulting" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider text-[12px]">Consulting Fit</a>
+          <a href="/compare?preset=library" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider text-[12px]">Transcript Leaders</a>
+          <a href="/compare?preset=aiResearch" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider text-[12px]">AI Research</a>
+          <a href="/compare?preset=asia" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider text-[12px]">APAC Specialists</a>
         </div>
       </div>
     )}
@@ -265,14 +271,14 @@ function isActive(href: string): boolean {
 
     <!-- G. TRUST FOOTER -->
     <div class="pt-3 border-t drawer-divider">
-      <div class="flex flex-wrap gap-x-4 gap-y-1.5 px-1">
-        <a href="/about" class="no-underline text-[11px] drawer-trust-link">About</a>
-        <a href="/sources" class="no-underline text-[11px] drawer-trust-link">Sources</a>
-        <a href="/verification" class="no-underline text-[11px] drawer-trust-link">Verification</a>
-        <a href="/disclaimer" class="no-underline text-[11px] drawer-trust-link">Disclaimer</a>
-        <a href="/privacy" class="no-underline text-[11px] drawer-trust-link">Privacy</a>
+      <div class="flex flex-wrap gap-x-4 gap-y-0 px-1">
+        <a href="/about" class="no-underline text-[12px] py-2 drawer-trust-link">About</a>
+        <a href="/sources" class="no-underline text-[12px] py-2 drawer-trust-link">Sources</a>
+        <a href="/verification" class="no-underline text-[12px] py-2 drawer-trust-link">Verification</a>
+        <a href="/disclaimer" class="no-underline text-[12px] py-2 drawer-trust-link">Disclaimer</a>
+        <a href="/privacy" class="no-underline text-[12px] py-2 drawer-trust-link">Privacy</a>
       </div>
-      <div class="mt-3 px-1 text-[10px] text-white/20">
+      <div class="mt-3 px-1 text-[11px] text-white/45">
         Independent research. No paid placements.
       </div>
     </div>
@@ -280,26 +286,37 @@ function isActive(href: string): boolean {
 </aside>
 
 <!-- Search overlay -->
-<div id="searchOverlay" class="fixed inset-0 z-[200] hidden">
-  <div id="searchBackdrop" class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
-  <div class="relative max-w-xl mx-auto mt-[8vh] sm:mt-[15vh] px-4">
-    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-border/40">
-      <div class="flex items-center gap-3 px-4 py-3 border-b border-border/40">
-        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" class="text-tertiary flex-shrink-0" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+<div id="searchOverlay" class="fixed inset-0 z-[200] hidden" role="dialog" aria-modal="true" aria-label="Search networks">
+  <div id="searchBackdrop" class="absolute inset-0 bg-black/45 backdrop-blur-sm"></div>
+  <div class="relative max-w-xl mx-auto mt-[8vh] sm:mt-[14vh] px-4">
+    <div class="search-panel bg-white rounded-2xl shadow-elevated overflow-hidden">
+      <div class="flex items-center gap-3 px-4 border-b border-border/50">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="text-tertiary flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         <input
           id="headerSearchInput"
-          type="text"
+          type="search"
+          enterkeyhint="search"
           placeholder="Search networks by name..."
           aria-label="Search networks by name"
-          class="flex-1 bg-transparent border-none outline-none text-[15px] text-primary placeholder:text-tertiary"
+          aria-controls="searchList"
+          class="flex-1 min-w-0 h-14 bg-transparent border-none outline-none text-base text-primary placeholder:text-tertiary [&::-webkit-search-cancel-button]:hidden"
           autocomplete="off"
+          autocapitalize="off"
+          spellcheck="false"
         />
-        <kbd class="bg-bg-secondary px-2 py-0.5 rounded text-xs text-tertiary border border-border">Esc</kbd>
+        <button id="searchCloseBtn" type="button" class="flex items-center justify-center min-w-[44px] min-h-[44px] -mr-2 cursor-pointer bg-transparent border-none" aria-label="Close search">
+          <kbd class="bg-bg-secondary px-2 py-1 rounded-md text-[11px] font-sans font-medium text-secondary border border-border/70">Esc</kbd>
+        </button>
       </div>
-      <div id="searchResults" class="max-h-[50vh] overflow-y-auto">
+      <div id="searchResults" class="max-h-[50vh] overflow-y-auto overscroll-contain">
         <div id="searchEmpty" class="px-4 py-8 text-center text-sm text-tertiary">Type to search across {publishedNetworks.length} networks</div>
-        <div id="searchList" class="hidden"></div>
-        <div id="searchNoMatch" class="hidden px-4 py-8 text-center text-sm text-tertiary">No networks found</div>
+        <div id="searchList" class="hidden" role="listbox" aria-label="Matching networks"></div>
+        <div id="searchNoMatch" class="hidden px-4 py-8 text-center text-sm text-tertiary">No networks found. <a href="/networks" class="text-accent-text font-medium">Browse the full directory</a></div>
+      </div>
+      <div class="hidden sm:flex items-center gap-4 px-4 py-2.5 border-t border-border/50 bg-bg-primary text-[11px] text-tertiary">
+        <span class="flex items-center gap-1.5"><kbd class="px-1.5 py-0.5 rounded bg-white border border-border/70 font-sans">&uarr;</kbd><kbd class="px-1.5 py-0.5 rounded bg-white border border-border/70 font-sans">&darr;</kbd> to navigate</span>
+        <span class="flex items-center gap-1.5"><kbd class="px-1.5 py-0.5 rounded bg-white border border-border/70 font-sans">Enter</kbd> to open</span>
+        <a href="/networks" class="ml-auto text-accent-text font-medium no-underline hover:underline">Browse all {publishedNetworks.length} &rarr;</a>
       </div>
     </div>
   </div>
@@ -337,13 +354,19 @@ function isActive(href: string): boolean {
   let searchIsOpen = false;
   let menuIsOpen = false;
 
+  let searchReturnFocus = null;
+  let activeIndex = -1;
+
   function openSearch() {
     if (searchIsOpen) return;
     if (menuIsOpen) closeMenu();
     searchIsOpen = true;
+    searchReturnFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     searchOverlay?.classList.remove('hidden');
     lockScroll();
-    setTimeout(() => searchInput?.focus(), 100);
+    // Focus synchronously so mobile keyboards open within the user gesture.
+    searchInput?.focus({ preventScroll: true });
+    setTimeout(() => searchInput?.focus({ preventScroll: true }), 100);
   }
 
   function closeSearch() {
@@ -354,7 +377,21 @@ function isActive(href: string): boolean {
     searchList?.classList.add('hidden');
     searchEmpty?.classList.remove('hidden');
     searchNoMatch?.classList.add('hidden');
+    activeIndex = -1;
     unlockScroll();
+    if (searchReturnFocus && document.contains(searchReturnFocus)) searchReturnFocus.focus({ preventScroll: true });
+    searchReturnFocus = null;
+  }
+
+  function setActiveResult(index) {
+    const items = searchList ? Array.from(searchList.querySelectorAll('a.search-result')) : [];
+    if (!items.length) { activeIndex = -1; return; }
+    activeIndex = (index + items.length) % items.length;
+    items.forEach((el, i) => {
+      el.dataset.active = i === activeIndex ? 'true' : 'false';
+      el.setAttribute('aria-selected', i === activeIndex ? 'true' : 'false');
+    });
+    items[activeIndex].scrollIntoView({ block: 'nearest' });
   }
 
   function escapeHtml(str) {
@@ -392,7 +429,7 @@ function isActive(href: string): boolean {
         const avatar = n.logo
           ? `<img src="${escapeHtml(n.logo)}" alt="" width="32" height="32" class="w-8 h-8 rounded-lg object-cover flex-shrink-0" loading="lazy" />`
           : `<div class="w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-[10px] flex-shrink-0" style="background:linear-gradient(135deg,${escapeHtml(n.gradientFrom)},${escapeHtml(n.gradientTo)})">${safeShort}</div>`;
-        return `<a href="/networks/${safeSlug}" class="flex items-center gap-3 px-4 py-3 hover:bg-bg-secondary transition-colors no-underline text-primary border-b border-bg-secondary last:border-0">
+        return `<a href="/networks/${safeSlug}" role="option" aria-selected="false" class="search-result flex items-center gap-3 px-4 py-3 min-h-[56px] hover:bg-bg-secondary transition-colors no-underline text-primary border-b border-bg-secondary last:border-0">
           ${avatar}
           <div class="min-w-0 flex-1">
             <div class="text-[13px] font-semibold">${safeName}</div>
@@ -401,12 +438,38 @@ function isActive(href: string): boolean {
           <svg class="w-3.5 h-3.5 flex-shrink-0 text-tertiary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>`;
       }).join('');
+      setActiveResult(0);
     }
   }
 
   searchTrigger?.addEventListener('click', openSearch);
   drawerSearchBtn?.addEventListener('click', openSearch);
   searchBackdrop?.addEventListener('click', closeSearch);
+  document.getElementById('searchCloseBtn')?.addEventListener('click', closeSearch);
+  // Any element on the page can open search with [data-open-search].
+  document.addEventListener('click', (e) => {
+    const opener = e.target instanceof Element ? e.target.closest('[data-open-search]') : null;
+    if (opener) { e.preventDefault(); openSearch(); }
+  });
+  searchInput?.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown') { e.preventDefault(); setActiveResult(activeIndex + 1); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); setActiveResult(activeIndex - 1); }
+    else if (e.key === 'Enter') {
+      const items = searchList ? searchList.querySelectorAll('a.search-result') : [];
+      const target = items[activeIndex] || items[0];
+      if (target && !searchList?.classList.contains('hidden')) { e.preventDefault(); target.click(); }
+    }
+  });
+  // Keep Tab inside the dialog while it is open.
+  searchOverlay?.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab') return;
+    const focusable = Array.from(searchOverlay.querySelectorAll('input, button, a[href]')).filter(el => el.offsetParent !== null);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
   searchInput?.addEventListener('input', (e) => {
     const input = e.target;
     if (input instanceof HTMLInputElement) renderResults(input.value);
@@ -424,9 +487,13 @@ function isActive(href: string): boolean {
   const menuDrawer = document.getElementById('menuDrawer');
   const menuClose = document.getElementById('menuClose');
 
+  // The closed drawer is off-screen; `inert` keeps it out of the tab order.
+  menuDrawer?.setAttribute('inert', '');
+
   function openMenu() {
     if (menuIsOpen) return;
     menuIsOpen = true;
+    menuDrawer?.removeAttribute('inert');
     menuBackdrop?.classList.remove('hidden');
     requestAnimationFrame(() => {
       menuBackdrop?.classList.add('opacity-100');
@@ -450,8 +517,10 @@ function isActive(href: string): boolean {
     menuDrawer?.classList.add('-translate-x-full');
     menuDrawer?.setAttribute('aria-hidden', 'true');
     menuBtn?.setAttribute('aria-expanded', 'false');
-    setTimeout(() => menuBackdrop?.classList.add('hidden'), 300);
+    menuDrawer?.setAttribute('inert', '');
+    setTimeout(() => { if (!menuIsOpen) menuBackdrop?.classList.add('hidden'); }, 300);
     unlockScroll();
+    if (!searchIsOpen) menuBtn?.focus({ preventScroll: true });
   }
 
   menuBtn?.addEventListener('click', openMenu);
@@ -543,12 +612,82 @@ function isActive(href: string): boolean {
       if (searchIsOpen) closeSearch();
       else if (menuIsOpen) closeMenu();
     }
-    if (e.key === '/' && !searchIsOpen) {
-      const tag = document.activeElement?.tagName;
-      if (tag !== 'INPUT' && tag !== 'TEXTAREA' && tag !== 'SELECT') {
+    // Cmd+K (macOS) / Ctrl+K toggles search from anywhere, including inputs.
+    if ((e.metaKey || e.ctrlKey) && !e.altKey && !e.shiftKey && (e.key === 'k' || e.key === 'K')) {
+      e.preventDefault();
+      if (searchIsOpen) closeSearch(); else openSearch();
+      return;
+    }
+    if (e.key === '/' && !searchIsOpen && !e.metaKey && !e.ctrlKey && !e.altKey) {
+      const active = document.activeElement;
+      const tag = active?.tagName;
+      if (tag !== 'INPUT' && tag !== 'TEXTAREA' && tag !== 'SELECT' && !(active instanceof HTMLElement && active.isContentEditable)) {
         e.preventDefault();
         openSearch();
       }
     }
+    if (e.key === 'Tab' && menuIsOpen && menuDrawer) {
+      const focusable = Array.from(menuDrawer.querySelectorAll('a[href], button')).filter(el => el.offsetParent !== null);
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (!menuDrawer.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+      else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
   });
+
+  // Shortcut hint: show the platform's command-palette shortcut.
+  (function () {
+    const isMac = /Mac|iPhone|iPad/.test(navigator.userAgent || '');
+    document.querySelectorAll('[data-kbd-search]').forEach((el) => { el.textContent = isMac ? '\u2318K' : 'Ctrl K'; });
+  })();
+
+  // ─── Scroll-aware header + tone ───
+  // `data-scrolled` switches on the translucent blur state. `data-tone="dark"`
+  // is applied while a section marked [data-nav-tone="dark"] sits under the
+  // header (dark heroes, fully dark pages). Styles live in global.css.
+  (function () {
+    const nav = document.querySelector('.site-nav');
+    if (!nav) return;
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    const lightTheme = '#FBFBFD';
+    const darkTheme = '#0d0d0f';
+    let zones = [];
+    let ticking = false;
+    let lastTone = null;
+
+    function update() {
+      ticking = false;
+      // Scroll lock pins the body (scrollY reads 0); keep the current state.
+      if (document.body.classList.contains('overlay-open')) return;
+      const navH = nav.offsetHeight || 52;
+      let dark = false;
+      for (const zone of zones) {
+        const rect = zone.getBoundingClientRect();
+        if (rect.top <= navH * 0.5 && rect.bottom > navH * 0.5) { dark = true; break; }
+      }
+      const tone = dark ? 'dark' : 'light';
+      if (tone !== lastTone) {
+        lastTone = tone;
+        nav.dataset.tone = tone;
+        if (themeMeta) themeMeta.setAttribute('content', dark ? darkTheme : lightTheme);
+      }
+      // Over a dark hero the bar stays glassy from the first pixel of scroll;
+      // on light pages it fades in once content starts moving underneath.
+      nav.toggleAttribute('data-scrolled', window.scrollY > 8);
+    }
+    function requestUpdate() {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }
+    function init() {
+      zones = Array.from(document.querySelectorAll('[data-nav-tone="dark"]'));
+      update();
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+    else init();
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate, { passive: true });
+    window.addEventListener('pageshow', requestUpdate);
+  })();
 </script>
