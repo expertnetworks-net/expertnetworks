@@ -9,6 +9,8 @@
   "type": "Expert Network",
   "founded": 2010,
   "headquarters": "Berlin, Germany",
+  "expertCount": "680K+ (2021)",
+  "expertCountLabel": "Company-stated opinion leaders, August 2021; not a current count",
   "description": "Atheneum is a Berlin-founded Research-as-a-Service provider connecting investment funds, consulting firms, and corporations with industry experts. Founded in 2010, the firm offers expert calls, surveys, custom research, and placements. Atheneum currently reports nine offices and 60+ languages spoken; it announced $150 million in growth funding led by Guidepost Growth Equity in August 2021.",
   "services": [
     "Expert Calls",
@@ -40,33 +42,32 @@
   "bestFor": [
     "Consulting firms needing multilingual, multi-geography expert access",
     "Private equity teams conducting cross-border diligence",
-    "Corporate strategy teams requiring primary research",
-    "Japan-focused research: assess current coverage under the NIKKEI SEEKS collaboration announced in 2020"
+    "Corporate strategy teams requiring primary research"
   ],
   "compliance": {
     "mnpiPolicy": "Atheneum’s April 2026 expert terms prohibit engagements involving material non-public information, confidentiality breaches, or conflicts of interest, and require experts to report compliance concerns.",
     "expertVetting": "Atheneum says experts are pre-screened and subject to identity verification and client feedback. Its expert terms permit identity and background checks and require accurate credentials and necessary employer approvals.",
-    "auditTrail": true
+    "auditTrail": false
   },
   "featured": false,
   "priority": 10,
   "published": true,
-  "categoryBadge": "Major Provider",
+  "categoryBadge": "Research Platform",
   "deliveryModel": "Hybrid",
-  "regionStrength": "Europe",
-  "complianceBadge": "Compliance Tools",
-  "aiBadge": "AI Matching",
+  "regionStrength": "Global",
+  "complianceBadge": "Limited Public Detail",
+  "aiBadge": "Limited AI Detail",
   "comparison": {
     "expertCalls": true,
     "contentLibrary": "Not publicly verified",
     "aiMatching": "Company-stated machine learning (2021)",
     "surveys": true,
-    "complianceTools": true
+    "complianceTools": false
   },
   "lastUpdated": "2026-11-11",
-  "overview": "Atheneum is a global insights platform founded in 2010 in Berlin, Germany. Company sources identify Mathias Wengeler and Ammad Ahmad as co-founders; its 2021 funding announcement also names Marta Margolis in the founding management team. The company operates as a Research-as-a-Service (RaaS) provider, connecting investment funds, strategy consulting firms, and corporations with industry experts. Its current website reports nine offices worldwide and 60+ languages spoken.\n\nAtheneum offers expert calls, surveys, expert-backed research, and placements, supported by its client-facing Atheneum Insights Platform and Atheneum Hub app for experts. A December 2020 announcement describes cooperation with Nikkei Inc.’s NIKKEI SEEKS platform to improve Japanese expert sourcing; the 500,000+ figure in that announcement refers to Atheneum’s international network, not a Japanese expert pool. In August 2021, Atheneum announced $150 million in growth funding led by Guidepost Growth Equity and reported more than 500 enterprise customers at that time.\n\nRecent developments include expert terms updated in April 2026 that permit AI-enabled recording, transcription, summaries, and analysis, while prohibiting experts from using AI to generate answers. Leadership information requires care: Atheneum still lists Dan McCarthy as CEO, but GovExec announced his appointment as its CEO on October 13, 2026 and described his Atheneum role in the past tense. Atheneum’s current leadership page lists David Koscinski as CTO.",
+  "overview": "Atheneum is a global insights platform founded in 2010 in Berlin, Germany. Company sources identify Mathias Wengeler and Ammad Ahmad as co-founders; its 2021 funding announcement also names Marta Margolis in the founding management team. The company operates as a Research-as-a-Service (RaaS) provider, connecting investment funds, strategy consulting firms, and corporations with industry experts. Its current website reports nine offices worldwide and 60+ languages spoken.\n\nAtheneum offers expert calls, surveys, expert-backed research, and placements, supported by its client-facing Atheneum Insights Platform and Atheneum Hub app for experts. A December 2020 announcement describes cooperation with Nikkei Inc.’s NIKKEI SEEKS platform to improve Japanese expert sourcing; the 500,000+ figure in that announcement refers to Atheneum’s international network, not a Japanese expert pool. In August 2021, Atheneum announced $150 million in growth funding led by Guidepost Growth Equity and reported more than 500 enterprise customers at that time.\n\nRecent developments include expert terms updated in April 2026 that permit AI-enabled recording, transcription, summaries, and analysis, while prohibiting experts from using AI to generate answers. As checked on November 11, 2026, Atheneum’s leadership page lists Dan McCarthy as CEO and David Koscinski as CTO.",
   "history": {
-    "narrative": "Atheneum launched in Berlin in 2010. Company sources name Mathias Wengeler and Ammad Ahmad as co-founders and describe their management consulting background. The company announced €10 million in funding led by Crosslantic Capital Management in September 2018, followed by $150 million led by Guidepost Growth Equity in August 2021. Jim Owens succeeded Wengeler as CEO in April 2023. Atheneum subsequently listed Dan McCarthy as CEO; GovExec announced McCarthy as its CEO in October 2026, leaving Atheneum’s current CEO status unclear from the sources reviewed.",
+    "narrative": "Atheneum launched in Berlin in 2010. Company sources name Mathias Wengeler and Ammad Ahmad as co-founders and describe their management consulting background. The company announced €10 million in funding led by Crosslantic Capital Management in September 2018, followed by $150 million led by Guidepost Growth Equity in August 2021. Jim Owens succeeded Wengeler as CEO in April 2023.",
     "timeline": [
       {
         "year": "2010",
@@ -102,7 +103,7 @@
       },
       {
         "year": "2026",
-        "event": "April expert terms address AI-enabled processing and prohibit AI-generated expert answers; on October 13, GovExec announced Dan McCarthy as CEO, although Atheneum still lists him as its CEO"
+        "event": "April expert terms address AI-enabled processing and prohibit AI-generated expert answers; in October, GovExec announced Dan McCarthy as its CEO and described his Atheneum CEO role as prior experience"
       }
     ]
   },
@@ -175,15 +176,14 @@
     "Announced $150M growth funding led by Guidepost Growth Equity in August 2021"
   ],
   "caveats": [
-    "Current employee and expert totals were not verified from the primary sources reviewed; earlier figures should not be treated as current counts",
+    "The expert count is Atheneum’s August 2021 statement of more than 680,000 opinion leaders, not a current estimate; current expert and employee totals were not verified",
     "Public sources reviewed did not establish client pricing, markup, or subscription terms",
     "Current product pages did not substantiate ATLAS, automated compliance screening, or a searchable pre-built research library",
-    "Leadership sources conflict: Atheneum lists Dan McCarthy as CEO, while GovExec announced him as its CEO on October 13, 2026",
     "April 2026 expert terms permit recordings and transcripts to support AI system development; buyers should clarify data-use controls for their projects",
     "Trustpilot displayed 4.6/5 from 13,218 reviews when checked on November 11, 2026; these are user reviews, not a measure of buyer research quality"
   ],
   "notableFacts": [
-    "Atheneum’s 2021 announcement reported 45% growth in 2020 and nearly doubled growth in the first seven months of 2021; these are historical company statements",
+    "Atheneum’s August 2021 announcement said it grew 45% in 2020, with “the company’s growth nearly doubling” in the first seven months of 2021; these are historical company statements",
     "Seton Hall University’s 2024 Future of Leadership Survey report identifies Atheneum as its survey distribution partner",
     "Atheneum says Hub users complete the expert application process 33% faster than online applicants; no methodology was given on the page reviewed",
     "Jim Owens’ April 2023 appointment announcement describes earlier service as a US Navy Submarine Officer",
@@ -192,15 +192,15 @@
     "April 2026 expert terms explicitly prohibit experts from using AI to generate answers while permitting AI-enabled transcription and analysis"
   ],
   "sourceNotes": [
-    "2026-11-11 — https://www.atheneum.ai/ — Company-stated nine offices and 60+ languages spoken; replaces current 11-office and 40-language claims.",
+    "2026-11-11 — https://www.atheneum.ai/ — Company-stated nine offices and 60+ languages spoken; global operations support the Global region classification, not a Europe-specific strength.",
     "2026-11-11 — https://www.atheneum.ai/contact — Current office locations; no current Tianjin listing. Historic office openings are dated separately.",
     "2026-11-11 — https://www.atheneum.ai/mission — Client segments and research partnerships; its 500,000+ Japan-based wording conflicts with the original December 2020 announcement, which is preferred.",
     "2026-11-11 — https://www.atheneum.ai/network — Company-described expert validation, confidentiality controls, and 33% faster Hub application claim; no current total expert count verified.",
     "2026-11-11 — https://www.atheneum.ai/services — Services, placements, research deliverables, transcripts, and company-stated 30/60-minute shortlist and 24-hour survey timelines. No client price schedule verified.",
-    "2026-11-11 — https://www.atheneum.ai/digital-products — Current Insights Platform and Hub features. Does not substantiate ATLAS, automated compliance screening, or real-time matching claims.",
+    "2026-11-11 — https://www.atheneum.ai/digital-products — Insights Platform and Hub features support the Research Platform category (company positioning). Current pages do not substantiate ATLAS, automated compliance screening, or AI matching performance; AI and compliance badges use limited-detail labels.",
     "2026-11-11 — https://www.atheneum.ai/privacy-policy — Published privacy governance, headquarters, DPO, Privacy Chief, retention, transfer safeguards, and breach procedures. Policies are not proof of blanket GDPR/PIPL compliance or a clean record.",
     "2026-11-11 — https://www.atheneum.ai/compliance — Links to public expert agreements, including the English April 2026 terms.",
-    "2026-11-11 — https://static1.squarespace.com/static/6754e676044e270129a1918e/t/6a5104a93f408e20c96feb67/1783694506138/20260326_Atheneum+Expert+Terms+2026_English_ok.pdf — Read all six pages after the website link failed in the browser fetcher. Footer says Updated: April 2026. Sections 2–5, 9 and 13 support MNPI restrictions, vetting, participation records, AI processing and confidentiality. auditTrail denotes retained records, not a verified client audit dashboard.",
+    "2026-11-11 — https://static1.squarespace.com/static/6754e676044e270129a1918e/t/6a5104a93f408e20c96feb67/1783694506138/20260326_Atheneum+Expert+Terms+2026_English_ok.pdf — Expert terms footer says Updated: April 2026. Sections 2–5, 9, 10 and 13 describe MNPI restrictions, checks, retained participation records, AI processing and confidentiality. Retained records do not verify a client audit trail or compliance tools; auditTrail and complianceTools are false for lack of public verification.",
     "2026-11-11 — https://www.atheneum-partners.cn/our-story/ — Company describes founders’ consulting background and names Mathias, Ammad, and Marta; founder lists vary across company sources.",
     "2026-11-11 — https://www.atheneum-partners.cn/2019/03/14/atheneum-extends-global-footprint-to-korea/ — Contemporary announcement names Mathias Wengeler and Ammad Ahmad as founders and says Marta Margolis joined the leadership team in 2012. Michael Brehm’s asserted co-founder role was not established.",
     "2026-11-11 — https://www.atheneum.ai/updates/atheneum-raises-10-million-in-new-funding — September 2018 €10M Crosslantic-led investment. Removed 2012/2015 financing and valuation details that lacked corroborating primary or reputable reporting in this pass.",
@@ -208,19 +208,17 @@
     "2026-11-11 — https://www.atheneum.ai/updates/atheneum-extends-global-footprint-to-south-korea — Seoul office announcement dated March 14, 2019.",
     "2026-11-11 — https://www.atheneum.ai/updates/atheneum-appoints-david-adams-as-new-chief-technology-officer-lm78x — 2019 CTO appointment and Chime Advisors background belong to David Adams, not Mark Gerson. Removed unsupported 2024 Mark Gerson/ATLAS narrative.",
     "2026-11-11 — https://www.atheneum-partners.cn/2020/12/04/atheneum-nikkei/ — Original December 2020 collaboration announcement: 500,000+ refers to Atheneum’s international experts, not Japanese experts; no exclusivity established.",
-    "2026-11-11 — https://www.prnewswire.com/news-releases/atheneum-raises-150m-in-growth-capital-to-accelerate-global-expansion-301363383.html — Opened and read the company’s August 2021 release via web search/open; direct terminal request returned 403. Supports 2010 Berlin founding, $150M funding, Athena One, historical customer counts and growth. Historical staff/expert totals are not current estimates.",
-    "2026-11-11 — https://www.atheneum-partners.cn/2021/08/26/atheneum-raises-150m-in-growth-capital-to-accelerate-global-expansion/ — Company-hosted announcement corroborates the August 2021 $150M Guidepost-led funding.",
-    "2026-11-11 — https://techcrunch.com/2021/08/26/atheneum-150-million/ — 2021 valuation undisclosed; removed the unsupported $300M valuation estimate and $95M current revenue estimate.",
+    "2026-11-11 — https://www.prnewswire.com/news-releases/atheneum-raises-150m-in-growth-capital-to-accelerate-global-expansion-301363383.html — August 26, 2021 company release: 2010 Berlin founding, $150M Guidepost-led funding, Athena One, over 500 enterprise customers, and more than 680,000 opinion leaders. expertCount and its label explicitly date this company-stated historical figure. Growth wording is 45% in 2020 and the company’s growth nearly doubling in the first seven months of 2021, not nearly 80%.",
     "2026-11-11 — https://www.atheneum.ai/updates/atheneum-appoints-jim-owens-as-new-chief-executive-officer — April 2023 CEO succession and US Navy Submarine Officer background; does not establish the original nuclear qualifier.",
-    "2026-11-11 — https://www.atheneum.ai/updates/atheneum-extends-global-footprint-to-korea-l3w9m — Tianjin office opening announced May 13, 2024; retained as historical, not a current location assertion.",
-    "2026-11-11 — https://www.atheneum.ai/updates/atheneum-extends-global-footprint-to-korea-zgmhc — Ho Chi Minh City office opening announced September 16, 2024.",
+    "2026-11-11 — https://www.atheneum.ai/updates/atheneum-extends-global-footprint-to-korea-l3w9m — Despite the Korea slug, page title and body announce the Tianjin office opening on May 13, 2024; retained as historical, not a current office listing.",
+    "2026-11-11 — https://www.atheneum.ai/updates/atheneum-extends-global-footprint-to-korea-zgmhc — Despite the Korea slug, page title and body announce the Ho Chi Minh City office opening on September 16, 2024.",
     "2026-11-11 — https://www.atheneum.ai/updates/atheneum-announces-123-promotions-in-q1-2025 — Body reports 129 promotions on January 27, 2025, despite the 123 in the URL.",
     "2026-11-11 — https://www.shu.edu/leadership/news/the-future-of-leadership-survey-2024.html — University report confirms Atheneum’s survey partnership.",
-    "2026-11-11 — https://www.atheneum.ai/leaders — Lists Dan McCarthy as CEO and David Koscinski as CTO; CEO entry conflicts with GovExec’s October 2026 announcement.",
-    "2026-11-11 — https://www.atheneum.ai/about/dan-mccarthy — Company biography still describes McCarthy as CEO; no appointment date verified.",
-    "2026-11-11 — https://www.atheneum.ai/about/david-koscinski — Biography identifies Koscinski as CTO; URL/title still say Head of Engineering.",
-    "2026-11-11 — https://about.govexec.com/company/blog/govexec-announces-leadership-transition/ — October 13, 2026 primary announcement names McCarthy as GovExec CEO and describes his Atheneum role in the past tense. No Atheneum successor verified.",
-    "2026-11-11 — https://www.atheneum.ai/updates — Reviewed for developments through November 11, 2026; newest listed update is February 2025. Recent verified developments instead come from April 2026 expert terms and October 2026 GovExec announcement; no new funding, M&A, or named AI launch established.",
+    "2026-11-11 — https://www.atheneum.ai/leaders — Company leadership page lists Dan McCarthy as CEO and David Koscinski as CTO on the check date; these are attributed website listings, not confirmation of appointment or departure dates.",
+    "2026-11-11 — https://www.atheneum.ai/about/dan-mccarthy — Company biography describes McCarthy as CEO. No Atheneum appointment or departure date established.",
+    "2026-11-11 — https://www.atheneum.ai/about/david-koscinski — Biography body identifies Koscinski as Chief Technology Officer despite the Head of Engineering page title.",
+    "2026-11-11 — https://about.govexec.com/company/blog/govexec-announces-leadership-transition/ — Primary announcement dated October 13, 2026, before this check date, names McCarthy as GovExec CEO and describes his Atheneum CEO role as prior experience. Retained as an attributed announcement without inferring an Atheneum departure date or successor.",
+    "2026-11-11 — https://www.atheneum.ai/updates — Updates index checked for recent developments; newest listed update is February 2025. April 2026 expert terms and the October 2026 GovExec announcement supply the dated recent developments retained here.",
     "2026-11-11 — https://www.trustpilot.com/review/www.atheneum.ai — Displayed 4.6/5 and 13,218 reviews when opened. Removed unsupported generalizations about payment delays and screening quality; did not use its AI-generated review summary as evidence."
   ],
   "whyChoose": [
@@ -256,12 +254,14 @@
     "caveats": "partially-unverifiable",
     "notableFacts": "positioning",
     "comparison": "partially-unverifiable",
-    "categoryBadge": "inference",
+    "categoryBadge": "positioning",
     "deliveryModel": "inference",
     "regionStrength": "inference",
-    "complianceBadge": "inference",
-    "aiBadge": "positioning",
+    "complianceBadge": "partially-unverifiable",
+    "aiBadge": "partially-unverifiable",
     "whyChoose": "positioning",
-    "whenNotIdeal": "inference"
+    "whenNotIdeal": "inference",
+    "expertCount": "positioning",
+    "expertCountLabel": "positioning"
   }
 }
