@@ -62,9 +62,34 @@ The reference is a well-made native macOS app: fast, quiet, exact. Premium comes
 | Easing | Enter: `cubic-bezier(0.2, 0.8, 0.2, 1)`. Exit: `cubic-bezier(0.4, 0, 1, 1)`, 30% shorter than enter. No bounce, no overshoot. |
 | Page navigation | Cross-document view transitions (already in `global.css`): 180 ms cross-fade of the content area; header and section nav stay fixed (`view-transition-name`). Profile to profile: the logo and name morph. |
 | Press feedback | Buttons and cards scale to 0.98 on `:active`. Hover changes background or border, not size. |
-| Scroll | Native scrolling only. No scroll hijacking, no parallax, no reveal-on-scroll for content. `scroll-behavior: smooth` for in-page anchors; `scroll-margin-top` on every section. |
+| Scroll | Native scrolling only: no scroll hijacking and no smooth-scroll library. Scroll effects use CSS scroll-driven animations (see "Two registers"). `scroll-behavior: smooth` for in-page anchors; `scroll-margin-top` on every section. |
 | Reduced motion | `prefers-reduced-motion: reduce` removes transforms and cuts durations to 0. |
 | Speed | No layout shift (set `width`/`height` on media, reserve space for chips). Prefetch same-origin links on hover (speculation rules are already in `BaseLayout`). Interaction to next paint under 100 ms. |
+
+### Two registers (owner's direction, 2026-11-11: rich scroll effects, 60 fps)
+
+The site has two kinds of pages, and they move differently.
+
+| Register | Pages | Motion budget |
+|---|---|---|
+| **Showcase** | Home, `/ai/` hub, the top of each guide, About | Rich. Scroll-told scenes, pinned sections, parallax layers, drawn lines, counting numbers. This is where the site impresses. |
+| **Workbench** | Profiles, Compare, Directory, News | Restrained. Content is never delayed or moved by scrolling. A few signature moments only (below). |
+
+Showcase techniques (all compositor-only, no library):
+
+- **Scroll-driven animations**: `animation-timeline: view()` and `scroll()` with `animation-range`. Animate `transform`, `opacity`, `clip-path`, and SVG `stroke-dashoffset` only. Wrap in `@supports (animation-timeline: view())`; without support the content is simply visible.
+- **Pinned scenes**: a tall section with a `position: sticky` stage (100svh). Scroll progress drives the scene: the network graph assembles node by node, a question travels to the one expert who knows, the compare matrix fills column by column, the evidence ladder lights up from "Claimed" to "Documented". Three scenes at most per page; each scene says one thing.
+- **Parallax layers**: two or three layers moving at different rates via `scroll()` timelines, depth 8–40 px. Never on text blocks longer than a headline.
+- **Line drawing**: SVG paths drawn with `stroke-dashoffset` tied to scroll (timeline spine, connector lines between sections).
+- **Numbers that count**: `@property`-registered integers with `counter()` so figures count up when they enter view, in tabular numerals, landing on the sourced value.
+- **Staggered entrance**: grid items rise 12 px and fade in with 40 ms stagger as they enter (`view()` timeline, `animation-range: entry 0% entry 60%`).
+- **Marquee**: provider logos in a seamless loop (CSS `translate`), paused on hover and under reduced motion.
+- **Cursor light** on dark hero surfaces: one radial highlight following the pointer through CSS variables updated in `requestAnimationFrame`; off on touch devices.
+- **Page-load sequence**: headline words rise in order (60 ms stagger), then the scene. Total under 900 ms; content is readable at 0 ms for assistive tech (`prefers-reduced-motion` and no-JS show the final state).
+
+Signature moments allowed on Workbench pages: profile header to profile header morph (view transitions); fact values count up once on first view; the timeline spine draws as it scrolls into view; section-nav indicator slides; chips and cards respond to hover and press. Nothing else moves.
+
+Performance rules for every effect: 60 fps on a mid-range phone; only `transform`/`opacity`/`clip-path`/`stroke-dashoffset`; `will-change` set only while animating; no layout or paint work in scroll handlers (no scroll listeners at all where a scroll timeline works); videos and heavy scenes lazy-loaded; Largest Contentful Paint element is never animated in; total blocking time unaffected. `prefers-reduced-motion: reduce` disables scenes and shows final states.
 
 ### Menus, dropdowns, popovers
 
@@ -81,7 +106,7 @@ Deep-dive sections are open by default on desktop. Do not hide the page behind t
 
 ### What we refuse (it reads as generated or cheap)
 
-- Decorative gradients, glows, animated blobs, particle backgrounds behind text.
+- Decoration with no meaning: animated blobs, glows, random particles behind text. Every scene illustrates the idea of its section (a network, a comparison, evidence, a timeline).
 - Glass cards everywhere, neon accents, more than one accent colour on a screen.
 - Emoji as icons; mixed icon sets. One icon set, 1.5 px stroke, 20 px grid.
 - Filler copy ("Unlock insights", "Seamlessly", "Powerful"). Labels are nouns; buttons are verbs.
