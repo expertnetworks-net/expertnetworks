@@ -48,7 +48,9 @@ function analyze(id) {
   if (res) cited = cited.concat(urlsIn(JSON.stringify(res.checks || [])));
   try {
     const wt = path.join(wtDir, id);
-    const base = execSync('git merge-base HEAD origin/main', { cwd: wt, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
+    // Base = parent of the task's own first commit, so sources that came with the starting branch are not counted.
+    const own = execSync(`git log --format=%H --fixed-strings --grep="[agent:${id}]"`, { cwd: wt, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim().split('\n').filter(Boolean);
+    const base = own.length ? own[own.length - 1] + '^' : execSync('git merge-base HEAD origin/main', { cwd: wt, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
     const diff = execSync(`git diff ${base} -- .`, { cwd: wt, maxBuffer: 1 << 26, stdio: ['ignore', 'pipe', 'ignore'] }).toString();
     cited = cited.concat(urlsIn(diff.split('\n').filter(l => l.startsWith('+') && !l.startsWith('+++')).join('\n')));
   } catch { /* worktree gone: report notes only */ }
