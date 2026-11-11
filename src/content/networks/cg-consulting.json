@@ -1,5 +1,5 @@
 {
-  "name": "Catalight (identity unverified)",
+  "name": "Catalight",
   "shortName": "CL",
   "slug": "cg-consulting",
   "gradientFrom": "#be123c",
@@ -8,7 +8,7 @@
   "headquarters": "Not disclosed",
   "employeeCount": "Not disclosed",
   "expertCount": "Not disclosed",
-  "description": "Unverified listing: the public sources reviewed did not establish Catalight's identity as an expert network or its claimed connection to CG Consulting.",
+  "description": "Provider details remain unverified following the November 11, 2026 review. The previously listed website could not be retrieved, and the reviewed sources did not corroborate the profile's company claims.",
   "services": [
     "Not disclosed"
   ],
@@ -27,6 +27,8 @@
   "featured": false,
   "priority": 23,
   "published": true,
+  "complianceBadge": "Limited Public Detail",
+  "aiBadge": "Limited AI Detail",
   "comparison": {
     "expertCalls": null,
     "contentLibrary": null,
@@ -34,36 +36,29 @@
     "surveys": null,
     "complianceTools": null
   },
-  "lastUpdated": "2026-03-07",
-  "overview": "This listing could not be verified as an operating expert network during the November 11, 2026 review. The reviewed public pages did not establish a connection between Catalight and CG Consulting. Company facts, services, pricing, AI capabilities and compliance arrangements remain unverified.",
+  "lastUpdated": "2026-11-11",
+  "overview": "The November 11, 2026 review attempted to open the previously listed website, catalight.co, but could not retrieve it. The reviewed directory pages did not corroborate this listing's company facts or the claimed former name CG Consulting. Company details, services, pricing, AI capabilities and compliance arrangements remain unverified. Website retrieval failure and directory coverage do not establish whether the provider is operating.",
   "servicesDetailed": [],
   "strengths": [],
   "caveats": [
-    "The provider identity and claimed former-name relationship could not be corroborated in the public sources reviewed.",
-    "No material developments from November 11, 2025 through November 11, 2026 could be attributed to this listing with a qualifying source."
+    "The reviewed sources did not corroborate the provider identity or the claimed former-name relationship. Catalight is retained as the listing name, without confirming its legal identity.",
+    "The review did not find a source that reliably attributes a material development from November 11, 2025 through November 11, 2026 to this listing. This is a research limitation, not evidence that no developments occurred."
   ],
   "notableFacts": [],
   "sourceNotes": [
-    "Inex One, Expert Network ENcyclopedia — https://inex.one/expert-network-directory — read 2026-11-11. Reviewed the directory named by the old profile; this page did not substantiate its company-specific claims. The directory is paginated, so this page alone does not establish absence from the directory.",
-    "Inex One, directory page 2 — https://inex.one/expert-network-directory/page/2 — read 2026-11-11. Reviewed the alphabetic section containing names beginning with C; no Catalight or CG Consulting entry was located. This does not establish nonexistence or closure.",
-    "Inex One, Expert Networks in China — https://inex.one/expert-network-directory/region/china — read 2026-11-11. No Catalight or CG Consulting entry was located on the reviewed regional page. It does not substantiate the claimed Greater China coverage, Hong Kong headquarters, founding date, scale, bilingual operations, services, pricing, AI or compliance. These claims were removed or replaced with explicit unknown values; unsupported rankings and buyer recommendations were removed. Identity verification remains incomplete, so lastUpdated was not advanced.",
-    "Catalight — https://www.catalight.org/ — read 2026-11-11 for identity disambiguation. The page describes behavioral-health and developmental-disability care. It does not establish a connection to this expert-network listing; its company facts and recent developments were not transferred to this profile.",
-    "Catalight Consulting, We Are — https://catalightconsulting.com/we-are/ — read 2026-11-11 for identity disambiguation. The page describes leadership, team and organizational training and coaching. It does not establish a connection to this expert-network listing; its company facts were not transferred to this profile."
+    "Website and identity — unverifiable as of 2026-11-11. Attempted https://catalight.co/ in the web tool; it reported the URL inaccessible, and a separate local request failed with 'Could not resolve host'. HTTP and www variants were also attempted in the web tool without retrieving content. No company page was read at this domain, and its status and ownership remain unconfirmed. The URL is recorded as a failed retrieval, not a supporting source.",
+    "Company identity, founding, headquarters, scale and history — unverifiable. Inex One, Expert Network ENcyclopedia — https://inex.one/expert-network-directory — read 2026-11-11; directory page 2 — https://inex.one/expert-network-directory/page/2 — read 2026-11-11. Neither reviewed page corroborated the profile's company claims. Directory coverage does not prove nonexistence, closure or a name change. The neutral listing name Catalight is retained; the claimed CG Consulting relationship remains unconfirmed.",
+    "Geography, services, industries, pricing, bilingual operations and buyer fit — unverifiable. Inex One, Expert Networks in China — https://inex.one/expert-network-directory/region/china — read 2026-11-11. No Catalight or CG Consulting entry was located on this page. Unsupported claims remain removed or explicitly unknown; rankings, comparisons and buyer recommendations are not retained.",
+    "AI and compliance — unverifiable; evidence-availability labels are editorial inferences. Inex One directory page 2 — https://inex.one/expert-network-directory/page/2 — and China directory — https://inex.one/expert-network-directory/region/china — read 2026-11-11, supplied no company-specific support for these claims. Combined with the failed website retrieval, this leaves capabilities and auditTrail unknown (null). Limited AI Detail and Limited Public Detail describe the evidence available in this review, not an assessment of the provider's capabilities or legal record. No regulatory alignment or clean-record claim is retained.",
+    "Namesake disambiguation — excluded from provider evidence. Catalight — https://www.catalight.org/ — read 2026-11-11, describes behavioral-health and developmental-disability care. Catalight Consulting, We Are — https://catalightconsulting.com/we-are/ — read 2026-11-11, describes leadership, team and organizational training and coaching. Neither reviewed page establishes a connection to this listing; no company facts or developments from these pages are attributed to it.",
+    "Developments, 2025-11-11 through 2026-11-11 — unverifiable. Searches for Catalight, CG Consulting and the previously listed domain did not locate a reliably attributable announcement. The previously listed website could not be retrieved; the reviewed namesake pages above are excluded. No claim is made that the provider had no developments. lastUpdated records this review date, not successful verification of the provider."
   ],
   "whyChoose": [],
   "whenNotIdeal": [],
   "confidence": {
-    "name": "partially-unverifiable",
-    "type": "partially-unverifiable",
-    "headquarters": "partially-unverifiable",
-    "expertCount": "partially-unverifiable",
-    "employeeCount": "partially-unverifiable",
-    "pricingModel": "partially-unverifiable",
-    "services": "partially-unverifiable",
-    "industries": "partially-unverifiable",
-    "compliance": "partially-unverifiable",
-    "comparison": "partially-unverifiable",
-    "overview": "partially-unverifiable",
-    "caveats": "partially-unverifiable"
+    "complianceBadge": "inference",
+    "aiBadge": "inference",
+    "overview": "inference",
+    "caveats": "inference"
   }
 }
