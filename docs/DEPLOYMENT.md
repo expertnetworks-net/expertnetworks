@@ -225,3 +225,17 @@ git log --oneline origin/claude/expert-network-sources-6oGs1..origin/<branch>
 The production branch name `claude/expert-network-sources-6oGs1` looks like a feature branch.
 This causes wrong assumptions. A possible correction is to make `main` the production branch in Cloudflare Pages.
 This is a decision for the owner. If it changes, update section 1 and the `deploy` skill.
+
+## 9. Accounts and services
+
+Verified on 2026-11-11.
+
+| Service | Used by this project | Notes |
+|---|---|---|
+| GitHub `expertnetworks-net/expertnetworks` | Yes | Source of truth. Local `gh` must be signed in as `expertnetworks-net` (`gh auth switch -u expertnetworks-net`). |
+| Cloudflare Pages + DNS + Web Analytics | Yes | Hosting and analytics. Settings live in the dashboard, not in the repository. |
+| Vercel | No | The owner's Vercel team has no project for this site. Do not add one. |
+| Supabase | No | The site has no database. Adding one is an architecture change (see `AGENTS.md` rule 7). |
+| Codex CLI | Yes, for agent workers | See `AGENT-WORKFLOW.md`. Not part of the build. |
+
+Older repositories (`Expert-Networks.net`, `Experts-Portal---V1.0`) are archived. `dialectica-expert-network` is a separate private prototype. None of them deploy this site.
