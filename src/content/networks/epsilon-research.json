@@ -9,7 +9,7 @@
   "founded": 2007,
   "headquarters": "Paris, France",
   "employeeCount": "2-10",
-  "employeeCountSource": "Company-stated LinkedIn size range, checked 2026-11-11; not an independently verified headcount",
+  "employeeCountSource": "Company-stated LinkedIn Company size field, publicly readable 2026-11-11; not an independently verified headcount",
   "expertCount": "Not disclosed",
   "description": "Paris-based provider of European private-company M&A transaction data, valuation research and deal-management software for M&A advisers, private equity funds and valuation professionals.",
   "services": [
@@ -44,7 +44,7 @@
   },
   "featured": false,
   "priority": 26,
-  "published": true,
+  "published": false,
   "categoryBadge": "Research Platform",
   "deliveryModel": "Platform-Led",
   "regionStrength": "Europe",
@@ -94,12 +94,8 @@
     }
   ],
   "complianceExtended": {
-    "narrative": "The SaaS application's privacy policy, dated November 2025, describes data-protection and account-security measures. These company statements do not establish expert-network MNPI controls, expert vetting or an audit trail for expert consultations.",
-    "highlights": [
-      "Epsilon says it uses HTTPS/TLS, regular backups and controlled access",
-      "Epsilon says application data is hosted in France",
-      "Epsilon says it retains security logs for traceability"
-    ]
+    "narrative": "Expert-consultation MNPI policies, expert vetting and consultation audit trails are not disclosed in the reviewed EMAT and M&A CRM Suite pages.",
+    "highlights": []
   },
   "clientFit": {
     "narrative": "Epsilon identifies M&A, private equity, valuation, audit and accounting, and corporate teams as its audiences. Editorial fit: consider it for transaction comparables and valuation research; expert-call sourcing capabilities remain unsubstantiated in the sources reviewed.",
@@ -116,6 +112,7 @@
     "Recurring valuation indices and regional transaction studies"
   ],
   "caveats": [
+    "Identity continuity with the previous profile and eligibility for this directory remain unresolved; this draft is unpublished pending owner review",
     "Public sources reviewed describe an M&A data platform; expert-call sourcing, KOL mapping and clinical due diligence were not substantiated",
     "Expert-network size and expert-specific compliance controls remain unverified",
     "Employee range is self-reported on LinkedIn and may not reflect current headcount"
@@ -125,19 +122,19 @@
     "Epsilon and Argos continued publishing the quarterly Argos Index during the review period"
   ],
   "sourceNotes": [
-    "https://www.epsilon-research.com/ — read 2026-11-11. Official site identifies an M&A data, research and software provider serving European transaction professionals; lists cross-sector coverage and individual deal-report purchases. The previous Boston healthcare expert-network identity was not substantiated.",
-    "https://www.epsilon-research.com/About — read 2026-11-11. Company states a 2007 founding and describes EMAT, ad hoc research and portfolio-valuation services. Removed the unsupported 2017 founding and expert-network expansion timeline.",
-    "https://www.epsilon-research.com/About/contact — read 2026-11-11. Paris contact and head-office details support Paris, France; Boston was not supported. Street-address details differ within the page, so only the city and country are used.",
-    "https://www.linkedin.com/company/epsilon-research2/ — read 2026-11-11. Company page links the official domain, lists Paris and a 2007 founding, and reports a 2-10 employee range. Replaced unsupported 80+ staff with the attributed range; no expert-population count was substantiated.",
+    "https://www.epsilon-research.com/ — read 2026-11-11. Official site describes an M&A data, research and software business serving European transaction professionals; lists cross-sector coverage and individual deal-report purchases. This draft documents that business. The reviewed sources do not establish continuity with the previous Boston healthcare expert-network record or prove that such a company does not exist. Publication is disabled pending owner confirmation of the intended entity and directory eligibility.",
+    "https://www.epsilon-research.com/About — read 2026-11-11. Company states a 2007 founding and describes EMAT, ad hoc research and portfolio-valuation services. These facts concern the M&A business documented in this draft; they do not resolve the previous profile's identity.",
+    "https://www.epsilon-research.com/About/contact — read 2026-11-11. Paris contact and head-office details support Paris, France for the M&A business. Street-address details differ within the page, so only the city and country are used.",
+    "https://www.linkedin.com/company/epsilon-research2/ — read 2026-11-11. The publicly readable company page links the official domain, lists Paris and a 2007 founding, and displays 2-10 employees in its Company size field. Retained as a company-stated range, not a verified current headcount; associated employee profiles are not used as a headcount.",
     "https://www.epsilon-research.com/Services/EMAT — read 2026-11-11. Documents European private-company transaction reports, search filters, source information and analyst research support. Does not substantiate the former expert-call, KOL, clinical-trial or AI-matching claims; those were removed rather than treated as established negatives.",
     "https://www.epsilon-research.com/Services/MandA-Suite — read 2026-11-11. Company describes cloud CRM, project tracking, document storage and knowledge management. Supports platform-led classification; no AI capability is inferred from its software features.",
-    "https://app.epsilon-research.com/privacy — read 2026-11-11. November 2025 policy describes subscription billing, French hosting, HTTPS/TLS, backups, access controls and security logs. These are company statements, not proof of expert-consultation compliance controls. Removed healthcare MNPI, credential-vetting, conflict-screening and clean-regulatory-record claims; consultation audit trail is unknown.",
+    "https://app.epsilon-research.com/privacy — read 2026-11-11. November 2025 policy concerns SaaS-account data and subscription billing. Its application-security statements are not used as expert-consultation compliance evidence. Expert-specific compliance fields remain Not disclosed or null.",
     "https://argos.fund/mid-market-argos-index-for-the-third-quarter-of-2025/ — read 2026-11-11. Primary partner announcement dated 2025-11-20 identifies Epsilon as joint publisher of the Q3 2025 Argos Index and describes its M&A data and software business.",
     "https://finance.inextenso.fr/actualites/regions-transmission-10eme-edition-cessions-acquisitions-de-pme-2025-porte-par-le-build-up-le-marche-resiste-au-choc-dincertitude/ — read 2026-11-11. Primary partner release dated 2026-04-13 announces the tenth Régions & Transmission edition with Epsilon: 1,076 transactions from 2025 and 12 regional studies.",
-    "https://www.epsilon-research.com/Marketfr/PanoramaIEFT — read 2026-11-11. Corroborates the 2025 transaction study and April 2026 publication. The linked full report required login and was not used as evidence.",
+    "https://www.epsilon-research.com/Marketfr/PanoramaIEFT — read 2026-11-11. Public page corroborates the 2025 transaction study and links an April 2026 report. Only the public page was used as evidence.",
     "https://argos.fund/mid-market-argos-index-q2-2026/ — read 2026-11-11. Primary partner release announces the Q2 2026 Argos Index on 2026-09-03 and describes Epsilon's cross-sector transaction-data platform.",
     "https://www.epsilon-research.com/Market/Argos — read 2026-11-11. Corroborates the 2026-09-03 release and supports EMAT subscriptions. Introductory copy calls it Q1 despite the Q2 heading and analysis; the partner's Q2 release is used for the timeline.",
-    "https://www.epsilon-research.com/About/Press/Cover?SelectedYear=2026 — read 2026-11-11. Reviewed current coverage alongside company pages and targeted searches for developments from 2025-11-11 through 2026-11-11. No substantiated funding, acquisition, leadership, office or AI-launch announcement was found. Unsupported comparative and healthcare-only claims were removed; buyer-fit and classification labels are editorial interpretations of the documented services."
+    "https://www.epsilon-research.com/About/Press/Cover?SelectedYear=2026 — read 2026-11-11. Reviewed the 2026 press-coverage list for recent publications. The listed coverage concerns indices and valuation research; it is not used to infer the absence of funding, acquisitions, leadership changes, office changes or AI launches. Buyer-fit and classification labels are editorial interpretations of the documented services."
   ],
   "whyChoose": [
     "European M&A comparables",
@@ -150,7 +147,7 @@
   ],
   "confidence": {
     "website": "verified",
-    "type": "verified",
+    "type": "inference",
     "founded": "positioning",
     "headquarters": "verified",
     "expertCount": "partially-unverifiable",
@@ -171,11 +168,11 @@
     "overview": "positioning",
     "history": "positioning",
     "servicesDetailed": "positioning",
-    "complianceExtended": "positioning",
+    "complianceExtended": "partially-unverifiable",
     "clientFit": "inference",
     "strengths": "positioning",
     "caveats": "inference",
-    "notableFacts": "verified",
+    "notableFacts": "inference",
     "whyChoose": "inference",
     "whenNotIdeal": "inference"
   }
