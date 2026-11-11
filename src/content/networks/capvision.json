@@ -45,15 +45,15 @@
   "featured": false,
   "priority": 7,
   "published": true,
-  "categoryBadge": "Asia Specialist",
+  "categoryBadge": "Research Platform",
   "deliveryModel": "Concierge",
-  "regionStrength": "Asia-Pacific",
+  "regionStrength": "Global",
   "complianceBadge": "Limited Public Detail",
   "aiBadge": "AI Research",
   "lastUpdated": "2026-11-11",
-  "overview": "Capvision provides expert consultations, surveys, conference calls, and customized research for financial institutions, consulting firms, and enterprises. The company describes a network of more than 600,000 experts and lists Malaysia, Austin, and Shanghai as headquarters locations. These are company disclosures, not independently audited measures of current scale.\n\nCurrent public materials also use the ChatBrilliant name. Capvision Malaysia describes itself as the Southeast Asia hub of ChatBrilliant Partners and markets an AI-driven ChatBrilliant Content Library. Keboda’s 2025 annual report, published in April 2026, identifies 慧谈智能科技（上海）股份有限公司 as the renamed 凯盛融英信息科技（上海）股份有限公司. These disclosures establish a naming development but do not by themselves explain the ownership or contracting arrangements across all Capvision-branded businesses.",
+  "overview": "Capvision provides expert consultations, surveys, conference calls, and customized research for financial institutions, consulting firms, and enterprises. The company describes a network of more than 600,000 experts and lists Malaysia, Austin, and Shanghai as headquarters locations. These are company disclosures, not independently audited measures of current scale.\n\nCurrent public materials also use the ChatBrilliant name. Capvision Malaysia describes itself as the Southeast Asia hub of ChatBrilliant Partners and markets an AI-driven ChatBrilliant Content Library. This company description does not by itself establish ownership or contracting arrangements across all Capvision-branded businesses.",
   "history": {
-    "narrative": "Capvision’s About page states that it was founded in 2006 by former management consultants and investment bankers; its LinkedIn page names Bain & Company and Morgan Stanley as their former firms. The official website’s homepage instead displays an establishment year of 2008. The discrepancy is unresolved. In 2026, public corporate reporting identifies a new name for the Shanghai entity, while current Capvision Malaysia materials describe a relationship with ChatBrilliant Partners.",
+    "narrative": "Capvision’s About page states that it was founded in 2006 by former management consultants and investment bankers; its LinkedIn page names Bain & Company and Morgan Stanley as their former firms. The official website’s homepage instead displays an establishment year of 2008. The discrepancy is unresolved.",
     "timeline": [
       {
         "year": "2006",
@@ -62,14 +62,6 @@
       {
         "year": "2023 (May)",
         "event": "China’s foreign ministry acknowledged national security law enforcement action when asked about the investigation into Capvision."
-      },
-      {
-        "year": "2026 (April disclosure)",
-        "event": "Keboda’s annual report identifies 慧谈智能科技（上海）股份有限公司 as formerly 凯盛融英信息科技（上海）股份有限公司; it does not give the effective date of the name change."
-      },
-      {
-        "year": "2026 (November review)",
-        "event": "Capvision Malaysia’s public company page identifies it as ChatBrilliant Partners’ Southeast Asia hub and describes an AI-driven ChatBrilliant Content Library; no launch date is given."
       }
     ]
   },
@@ -124,17 +116,14 @@
   ],
   "notableFacts": [
     "Capvision Malaysia currently describes itself as ChatBrilliant Partners’ Southeast Asia hub.",
-    "A corporate annual report published in April 2026 records the Shanghai entity’s new Chinese name."
+    "Capvision Malaysia describes an AI-driven ChatBrilliant Content Library; its public company page gives no launch date."
   ],
   "sourceNotes": [
     "2026-11-11 — https://www.capvision.com/us/js/app.416e11fe.js — Official JavaScript linked by the About page, downloaded and read directly because the HTML pages return JavaScript notices. Contains About, homepage, expert, service and location text. About states 2006, 600 employees, 600,000+ experts and headquarters in Malaysia, Austin and Shanghai; homepage instead says established 2008 and 600+ employees. Used the About-page employee figure and disclosed the founding discrepancy. Removed unsupported call volumes, compensation, pricing, funding, valuations, IPO details, named founders, office-opening dates, HR services, language lists, rankings and integrations.",
     "2026-11-11 — https://www.linkedin.com/company/capvision — Company page read for founder backgrounds, client segments, consultations, surveys, conference calls, transcripts and CRM positioning. Lists New York headquarters and 2006 founding, conflicting with other company location/year presentations; no independent confirmation of scale or comparative performance.",
     "2026-11-11 — https://sg.linkedin.com/company/capvision-malaysia — Company-stated relationship with ChatBrilliant Partners, Southeast Asia hub, Kuala Lumpur and Singapore offices, and AI-driven ChatBrilliant Content Library. No product launch date or independent functionality validation provided.",
-    "2026-11-11 — https://stockmc.xueqiu.com/202604/603786_20260423_2P9F.pdf — Keboda 2025 annual report, approved April 21, 2026 and published April 23, identifies 慧谈智能科技（上海）股份有限公司 as formerly 凯盛融英信息科技（上海）股份有限公司 in its outside-directorship table. Downloaded PDF text read directly; effective name-change date and group-wide ownership implications are not specified.",
     "2026-11-11 — https://www.mfa.gov.cn/eng/xw/fyrbt/lxjzh/202405/t20240530_11347518.html — Primary foreign ministry transcript dated May 9, 2023 names Capvision in questions and acknowledges national security enforcement in response. Retained only that narrow historical statement; removed unsupported Western regulatory scrutiny, remittance figures, broadcast duration and rectification-completion claims.",
-    "2026-11-11 — https://cepres.com/about/partnerships — Read the current partner page; it does not substantiate the previously claimed Capvision partnership in 2024. Removed that claim.",
-    "2026-11-11 — https://www.linkedin.com/company/chatbrilliant-partner — Company page describes an Austin headquarters, 2008 founding, expert consultations and a recent visual identity refresh. Used as context for the ChatBrilliant development; relative post dates do not establish an exact rebrand date.",
-    "2026-11-11 — https://www.cr.gov.hk/docs/wrpt/RNC063_2026.03.02-2026.03.08.pdf — Primary Hong Kong registry list read for Chatbrilliant Elite Limited, BRN 64936843, name-change date March 3, 2026. The list does not identify its prior name, so no Capvision-to-ChatBrilliant Hong Kong entity conclusion is asserted."
+    "2026-11-11 — https://www.linkedin.com/company/capvision and https://sg.linkedin.com/company/capvision-malaysia — Research Platform is an editorial category based on the described research services, proprietary CRM and content library, not a scale ranking or Asia-specialist claim. Global reflects company-stated worldwide clients and expert reach, not independently measured regional depth. No legal-entity rename is inferred from the Malaysia page’s ChatBrilliant relationship statement."
   ],
   "whyChoose": [
     "Expert consultations",
@@ -163,8 +152,9 @@
     "strengths": "positioning",
     "bestFor": "inference",
     "categoryBadge": "inference",
-    "regionStrength": "inference",
-    "deliveryModel": "inference"
+    "regionStrength": "positioning",
+    "deliveryModel": "inference",
+    "notableFacts": "positioning"
   },
   "employeeCountSource": "Capvision About page; undated company disclosure read 2026-11-11",
   "expertCountLabel": "Industry experts reported by Capvision"
