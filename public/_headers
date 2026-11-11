@@ -26,6 +26,12 @@
   Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
   Cross-Origin-Opener-Policy: same-origin
 
+# The pages.dev hostname serves a copy of the site. Keep it out of search indexes.
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+https://:version.:project.pages.dev/*
+  X-Robots-Tag: noindex
+
 # Fingerprinted build assets are immutable — cache aggressively.
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable

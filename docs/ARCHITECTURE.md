@@ -107,7 +107,7 @@ npm run build && find dist -name '*.html' | sort
 
 | File | Function |
 |---|---|
-| `src/layouts/BaseLayout.astro` | `<head>` metadata, canonical URL, Open Graph and Twitter tags, favicons, fonts, JSON-LD, header, footer. Also a small shared script: fade-in observer and a reset of the scroll lock on `body`. |
+| `src/layouts/BaseLayout.astro` | `<head>` metadata, canonical URL, Open Graph and Twitter tags, favicons, font preload, JSON-LD, Speculation Rules, header, footer. Optional props: `progress` (reading bar) and `themeColor`. Also a small shared script: fade-in fallback observer, pointer spotlight for `.card-spot`, and a reset of the scroll lock on `body`. |
 | `src/components/Header.astro` | Fixed navigation, menu drawer, search overlay. Reads the `networks` collection for search data. Stores the drawer section state in `localStorage`. |
 | `src/components/Footer.astro` | Footer links and provider shortcuts. Reads the `networks` collection. |
 | `src/components/ParticleHero.astro` | Dark hero with a canvas particle animation. Obeys the reduced-motion setting. |
@@ -115,6 +115,20 @@ npm run build && find dist -name '*.html' | sort
 | `src/components/VsComparison.astro` | Shared layout for head-to-head pages. |
 
 A change in `BaseLayout.astro`, `Header.astro`, or `Footer.astro` changes all pages.
+
+### 5.1 Shared front-end conventions
+
+| Topic | Rule |
+|---|---|
+| Font | Inter is self-hosted through the `@fontsource-variable/inter` package. `src/styles/global.css` declares the `@font-face` rules. No external font origin is used. |
+| Page transitions | CSS cross-document View Transitions (`@view-transition` in `src/styles/global.css`). The Astro `ClientRouter` is not used, because page scripts must run on each load. |
+| View-transition names | `site-header` is reserved. A provider logo uses `net-<slug>`. A name must occur one time only in a page. |
+| Prefetch | A Speculation Rules script in `BaseLayout.astro` prefetches same-origin links. Add `data-no-speculate` to a link to exclude it. |
+| Header tone | The header is `.site-nav`. Put `data-nav-tone="dark"` on a dark section; do not style `nav` inline. |
+| Search | An element with `data-open-search` opens the search overlay. `/` and Cmd/Ctrl+K also open it. |
+| Scroll reveal | `.fade-in` uses `animation-timeline: view()`. Keep `animation-timeline` in a rule separate from the `animation` shorthand, or the CSS minifier deletes it. |
+| Design tokens | Colours, type steps (`text-step-*`), spacing, and shadows are in `tailwind.config.mjs` and the `:root` block of `src/styles/global.css`. Use `text-accent-text` for small blue text. |
+| `/llms.txt` | `src/pages/llms.txt.ts` generates it from the content collections at build time. |
 
 ## 6. Compare page
 

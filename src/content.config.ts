@@ -1,6 +1,6 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
-// Import zod directly; Astro 6 deprecated the `z` re-export from astro:content.
+// Import zod directly; the `z` re-export from astro:content is deprecated.
 import { z } from 'zod';
 
 const networks = defineCollection({
