@@ -10,14 +10,14 @@
   "founded": 2003,
   "headquarters": "New York, NY",
   "employeeCount": "2,000+",
-  "employeeCountSource": "Company website (November 2026: \"2,000+ professionals in 20 offices\"; previously 1,700+). Third-party estimates from CompWorth/Getlatka suggest ~4,300–4,500, which may include contractors or advisors",
+  "employeeCountSource": "Guidepoint company page, read November 11, 2026: reports 2,000+ employees and 20 global offices; company-stated, not independently audited.",
   "expertCount": "2M+",
-  "expertCountLabel": "Guidepoint Advisors",
-  "description": "Guidepoint is a research enablement platform and one of the largest expert networks globally, founded in 2003 by Albert Sebag. Originally launched as Clinical Advisors to match cancer patients with clinical trials, the firm pivoted to the broader expert-network model and now connects more than 5,000 client organizations with 2 million+ advisors across 150+ industries. Guidepoint differentiates through breadth of coverage, flexible pricing, healthcare data products (Qsight), and its 2025 launch of Guidepoint360 — an AI-powered platform merging expert knowledge with generative AI via its AskGP interface.",
+  "expertCountLabel": "Guidepoint Advisors (company-stated)",
+  "description": "Guidepoint is a research enablement platform founded in 2003 by Albert Sebag. The company reports serving 5,000+ client organizations through a network of 2M+ advisors. Its services include expert calls, surveys, Guidepoint Library, healthcare data products through Qsight, and Guidepoint360 — an AI-powered platform launched with the AskGP research assistant in October 2025.",
   "services": [
     "Expert Calls",
     "Surveys",
-    "Guidepoint Insights",
+    "Guidepoint Library / Insights",
     "Guidepoint Qsight",
     "AI Moderation",
     "Guidepoint360 / AskGP",
@@ -27,7 +27,7 @@
     "AskGP conversational AI research assistant",
     "Guidepoint360 unified AI + expert knowledge platform",
     "AI Moderation for enterprise-scale expert calls",
-    "AI-powered scheduling and matching",
+    "Company-stated AI-assisted expert matching and MCP scheduling",
     "Guidepoint360 mobile app with AI-driven research",
     "Guidepoint MCP connector (Claude, Perplexity, Gemini Enterprise for Financial Services)"
   ],
@@ -41,30 +41,27 @@
     "Corporate Strategy",
     "Legal / Professional Services"
   ],
-  "pricingModel": "Flexible",
-  "pricingDetail": "Per-call and subscription options; enterprise pricing negotiated individually. Third-party benchmarks suggest rates around ~$1,200/hr.",
+  "pricingModel": "Contact provider",
+  "pricingDetail": "No current client rate card was verified in the public sources reviewed. Request pricing and access terms from Guidepoint.",
   "keyDifferentiators": [
-    "Very large advisor network (2M+ across 150+ industries)",
+    "Company reports 2M+ advisors across 300+ industries",
     "Healthcare data specialization via Qsight",
-    "Flexible pricing model — competitive vs. premium peers",
-    "Guidepoint360 + AskGP AI platform launched Oct 2025",
-    "Breadth of client coverage (5,000+ organizations)",
-    "Strong compliance infrastructure"
+    "Guidepoint360 + AskGP AI platform launched October 2025",
+    "Company reports serving 5,000+ organizations",
+    "Customizable compliance controls and consultation audit trails"
   ],
   "bestFor": [
     "Healthcare and life sciences investors",
     "Hedge funds seeking broad industry coverage",
-    "Consulting firms (serves 9 of top 10)",
+    "Consulting firms",
     "Private equity deal teams",
-    "Corporate strategy and market intelligence teams",
-    "Budget-conscious teams needing reliable expert access"
+    "Corporate strategy and market intelligence teams"
   ],
   "compliance": {
-    "mnpiPolicy": "Industry-recognized compliance program with MNPI screening, monitoring, and dedicated compliance officers per engagement",
-    "expertVetting": "Multi-layer advisor vetting including compliance tutorials, conflict-of-interest checks, and ongoing monitoring; client dashboard for compliance personnel to audit interactions",
-    "coolingOffPeriod": "Standard cooling-off periods enforced for public-company employees",
-    "auditTrail": true,
-    "regulatoryHistory": "Guidepoint has never been charged with wrongdoing. However, its name appeared in several insider trading cases (Dr. Yves Benhamou, Winifred Jiau) where individual consultants were charged — in each case, the individuals deliberately circumvented Guidepoint's compliance controls. Per Integrity Research: 'Guidepoint's compliance procedures protected it from accusations of wrongdoing.' General Counsel Catherine Smith is a former SEC Division of Enforcement Senior Counsel."
+    "mnpiPolicy": "Guidepoint says advisors must affirm before each project that they will not disclose confidential or material non-public information; project managers screen requests and involve Legal and Compliance as needed.",
+    "expertVetting": "Guidepoint describes third-party background checks for new advisors, annual checks on a rolling sample of active experts, annual compliance tutorials, and client-specific screening.",
+    "coolingOffPeriod": "Advisor terms prohibit consulting about a current employer; former finance or accounting employees must wait four months before consulting about that employer.",
+    "auditTrail": true
   },
   "featured": true,
   "priority": 5,
@@ -72,237 +69,281 @@
   "categoryBadge": "Major Provider",
   "deliveryModel": "Hybrid",
   "regionStrength": "Global",
-  "complianceBadge": "Strong Compliance",
-  "aiBadge": "AI Matching",
+  "complianceBadge": "Compliance Tools",
+  "aiBadge": "AI Research",
   "comparison": {
     "expertCalls": true,
-    "contentLibrary": "Guidepoint Insights",
-    "aiMatching": "AskGP",
+    "contentLibrary": "Guidepoint Library",
+    "aiMatching": "AI-assisted sourcing (company-stated)",
     "surveys": true,
     "complianceTools": true
   },
   "lastUpdated": "2026-11-11",
-  "overview": "Guidepoint is one of the largest expert networks globally, connecting more than 5,000 client organizations with 2 million+ advisors across 150+ industries and 500+ subsectors. The firm operates as a research enablement platform — providing not just expert access but also healthcare data intelligence (Qsight), content libraries (Guidepoint Insights with 65,000+ transcripts), live events (1,500+ per month), and since October 2025, the Guidepoint360 AI platform with its AskGP conversational research assistant. Guidepoint is privately held and founder-led by Albert Sebag, who serves as CEO. The company has grown from ~800 employees in 2020 to 1,700+ today across 19 global offices.",
+  "overview": "Guidepoint connects clients with expert advisors and provides surveys, healthcare data intelligence through Qsight, a transcript library, and live events. As of November 2026, the company reports 5,000+ client organizations, 2M+ advisors, 2,000+ employees, 20 global offices, and 130,000+ library transcripts. Founder Albert Sebag serves as CEO. Guidepoint360 brings expert access, transcripts, and AskGP synthesis into one platform. During 2026, Guidepoint announced a mobile app, MCP integrations with Claude, Perplexity, and Gemini Enterprise for Financial Services, and a repositioning toward AI-powered access to expert insights.",
   "history": {
-    "narrative": "Guidepoint was founded in 2003 by Albert Sebag, an organic chemist turned patent attorney. Sebag earned his Ph.D. in Organic Chemistry from Northeastern University (with research at MIT) and his J.D. from Boston College Law School. He began as a patent litigator at Kenyon & Kenyon advising generic pharma companies, then founded Clinical Advisors to match cancer patients with clinical trials. As the model expanded into broader healthcare and other industries, the company rebranded to Guidepoint Global in 2007. Through organic growth and three acquisitions — Vista Research (2009, from Standard & Poor's, giving Guidepoint Asia presence), Innosquared (2015, European expert network), and Quanton Data Analytics (2016, alternative data, foundation for Qsight) — Guidepoint has become one of the 'Big Five' expert networks.",
+    "narrative": "Guidepoint was founded in 2003 by Albert Sebag. A 2020 Boston College Law School profile describes his doctorate in organic chemistry at Northeastern University, legal education at Boston College, and work as a patent litigator at Kenyon and Kenyon. Sebag described an earlier cancer clinical-trial database venture and a pivot toward research for financial firms. Guidepoint acquired Vista Research from Standard & Poor's in 2009 and Innosquared in 2015. Integrity Research reported that Guidepoint absorbed Quanton Data in 2016; Qsight followed in 2018. The company launched Guidepoint360 and AskGP in October 2025 and expanded its mobile and AI integrations during 2026.",
     "timeline": [
       {
         "year": "2003",
-        "event": "Founded as Clinical Advisors by Albert Sebag in New York to match cancer patients with clinical trials"
+        "event": "Founded in New York by Albert Sebag"
       },
       {
         "year": "2007",
-        "event": "Rebranded to Guidepoint Global; launched Tracker product (recurring physician surveys)"
+        "event": "Launches Tracker, according to the company timeline"
       },
       {
         "year": "2009",
-        "event": "Acquires Vista Research from Standard & Poor's — gains Asia presence and tech/telecom expertise; opens London office; becomes second-largest expert network after GLG"
+        "event": "Acquires Vista Research from Standard & Poor's; company history links the acquisition to Asian expansion and dates the London office to this year"
       },
       {
         "year": "2012",
-        "event": "Expands into mainland China with Shanghai office"
+        "event": "Company history dates the Shanghai office launch and expansion into mainland China to this year"
       },
       {
         "year": "2015",
-        "event": "Acquires Innosquared, a Germany-based expert network, expanding European presence to 50,000+ EMEA experts"
+        "event": "Acquires Germany-based Innosquared; the February announcement says the combined EMEA network exceeded 50,000 experts at that time"
       },
       {
         "year": "2016",
-        "event": "Acquires Quanton Data Analytics (alternative data provider), laying the foundation for Qsight"
+        "event": "Absorbs alternative data provider Quanton Data, according to Integrity Research's July 2018 report"
       },
       {
         "year": "2018",
-        "event": "Launches Guidepoint Insights — moderated teleconferences with transcripts"
+        "event": "Launches Guidepoint Insights live teleconferences and transcript library; the Data Insights team is relaunched as Qsight"
       },
       {
         "year": "2020",
-        "event": "Approximately 800 employees, 14 offices, 650,000+ experts"
+        "event": "Boston College Law School reports 650,000 advisors across 150 industries at that time"
       },
       {
         "year": "2021",
-        "event": "Network surpasses 1 million advisors (announced via PRNewswire)"
+        "event": "Company history records the network reaching one million advisors"
       },
       {
         "year": "2022",
-        "event": "Opens Mumbai office; reaches 1,000+ daily interactions"
+        "event": "Company history dates its first India office in Mumbai to this year"
       },
       {
         "year": "2024",
-        "event": "Grows to 1,300+ employees, 17 offices, 1.5M+ experts, 4,500+ clients; launches Guidepoint Qsight healthcare data platform"
+        "event": "Announces a Technology and Engineering Center of Excellence in Pune on March 4"
       },
       {
         "year": "Oct 2025",
-        "event": "Launches Guidepoint360 AI platform with AskGP conversational research assistant and AI Moderation"
+        "event": "Announces Guidepoint360 and AskGP on October 8, followed by AI Moderation on October 22"
       },
       {
-        "year": "2025–2026",
-        "event": "Expands to 1,700+ employees, 19 offices, 1.75M+ advisors, 5,000+ clients; launches Guidepoint360 mobile app"
+        "year": "Nov 2025",
+        "event": "Qsight announces Social Intelligence on November 24 to analyze aesthetics practitioners' social media activity"
       },
       {
-        "year": "2026",
-        "event": "Launches MCP server on Anthropic's Claude exposing 100,000+ expert transcripts (May 2026); repositions globally from 'expert network' to AI-powered access to real-time expert insights (May 2026)"
+        "year": "Feb 2026",
+        "event": "Announces the Guidepoint360 mobile app on February 11, with AskGP, project alerts, messaging, and scheduling"
       },
       {
-        "year": "Mar–Jun 2026",
-        "event": "Transcript library surpasses 100,000 expert interviews (March 26); MCP connector extended to Perplexity Computer for Finance (June 3)"
+        "year": "Mar 2026",
+        "event": "Reports the Guidepoint Library surpassing 100,000 expert interviews on March 26"
       },
       {
-        "year": "Aug–Sep 2026",
-        "event": "Guidepoint Library (120,000+ transcripts) becomes a governed source in Google Cloud's Gemini Enterprise for Financial Services via MCP connector (August); Shanghai office relocates to the Bund Center (September)"
+        "year": "May 2026",
+        "event": "Announces MCP on Claude on May 5 and an AI-focused business repositioning on May 18; Qsight announces its Cross-Purchasing Dashboard on May 28"
+      },
+      {
+        "year": "Jun 2026",
+        "event": "Announces availability of its MCP connector in Perplexity Computer for Finance on June 3"
+      },
+      {
+        "year": "Aug 2026",
+        "event": "August 26 release announces Guidepoint Library access through MCP in Gemini Enterprise for Financial Services, citing 120,000+ transcripts at that time"
+      },
+      {
+        "year": "Sep 2026",
+        "event": "September 21 release announces relocation of the Shanghai office to the Bund Center on East Yan'an Road"
       },
       {
         "year": "Nov 2026",
-        "event": "Company website cites 2M+ vetted experts, 2,000+ professionals in 20 offices, 5,000+ client organizations, and 130K+ searchable library transcripts"
+        "event": "Qsight announces Consumer Tracker on November 4 for U.S. aesthetics consumer sentiment; company pages reviewed November 11 report 2M+ advisors, 2,000+ employees, 20 offices, 5,000+ client organizations, and 130,000+ transcripts"
       }
     ]
   },
   "servicesDetailed": [
     {
       "name": "Expert Calls",
-      "description": "Guidepoint's core offering: one-on-one and multi-party consultations with advisors from its 2M+ network. Guidepoint assigns dedicated project managers to each engagement and emphasizes breadth of coverage across 150+ industries and 500+ subsectors. Calls include full compliance workflow with MNPI screening."
+      "description": "Guidepoint's core offering: one-on-one consultations with advisors from its company-stated 2M+ network. Dedicated project teams support sourcing and screening; the company describes AI-assisted matching, client approval of experts, and project-level compliance controls."
     },
     {
       "name": "Surveys",
-      "description": "Scalable B2B surveys leveraging Guidepoint's advisor network for quantitative and qualitative market research. Surveys can be paired with follow-up calls and are used for market sizing, competitive benchmarking, customer sentiment, and pricing studies."
+      "description": "Expert-sourced surveys for quantitative market research. Guidepoint offers questionnaire design, recruitment, programming, and data delivery, as well as program-and-host, recruiting-only, and quick-poll formats. The company lists adoption trends, pricing dynamics, and competitive shifts among research uses."
     },
     {
-      "name": "Guidepoint Insights",
-      "description": "A content library of more than 65,000 searchable transcripts and audio recordings from expert consultations. Guidepoint Insights provides reusable research content that clients can access without scheduling individual calls, complementing the bespoke call model."
+      "name": "Guidepoint Library / Insights",
+      "description": "A library of searchable transcripts and audio recordings from expert interviews. Guidepoint reports 130,000+ transcripts as of November 2026. Clients can filter by company, industry, geography, date, or format and use AskGP to synthesize content with links to source passages. Guidepoint Insights produces moderated research content for the library."
     },
     {
       "name": "Guidepoint Qsight",
-      "description": "A dedicated healthcare data intelligence platform providing alternative data products for healthcare and life sciences investors. Qsight offers sales intelligence, industry insights, and data analytics across pharmaceutical, biotech, and medtech sectors — a significant differentiator from general-purpose competitors."
+      "description": "Healthcare data intelligence for Medical Aesthetics and MedTech investors and executives. Qsight combines transaction data, market models, and primary research for sales intelligence, market monitoring, and practitioner insights. Recent company announcements include Social Intelligence (November 2025), the Cross-Purchasing Dashboard (May 2026), and Consumer Tracker (November 2026)."
     },
     {
       "name": "AI Moderation",
-      "description": "An AI-powered capability that conducts expert interviews autonomously — without a live client present. AI runs structured interviews with consistent prompts and can run dozens simultaneously, 24/7. This produces 'AI-Guided' transcripts for the Insights library. Guidepoint claims 'thousands of interviews' facilitated for early-adopter clients. Note: AlphaSense launched a comparable AI Agent Interviewer product in August 2025, so Guidepoint is no longer the only major provider offering autonomous AI-conducted expert interviews."
+      "description": "Announced October 22, 2025, AI Moderation enables expert interviews without a client attending live. Guidepoint says it supports dozens of simultaneous interviews, structured prompts, and 24/7 availability. At launch, the company reported thousands of early-adopter interviews and use of the same interviewer for AI-Guided library transcripts. Findings can be synthesized with AskGP."
     },
     {
       "name": "Guidepoint360 / AskGP",
-      "description": "Launched in October 2025, Guidepoint360 is a unified platform merging AI and expert knowledge. AskGP is its conversational AI research assistant that synthesizes insights across Guidepoint's content library and expert interactions. A mobile app followed, delivering AI-driven research on the go."
+      "description": "Launched in October 2025, Guidepoint360 is a unified platform merging AI and expert knowledge. AskGP is its conversational AI research assistant that synthesizes insights across eligible Guidepoint Library content and client call transcripts, with source citations. A mobile app was announced on February 11, 2026."
     },
     {
       "name": "Events",
-      "description": "Guidepoint hosts 1,500+ live events per month including roundtables, teleconferences, and industry panels. Events bring together multiple advisors and clients around specific industry themes, providing broader perspective-gathering beyond one-on-one calls."
+      "description": "Guidepoint hosts live teleconferences, roundtables, and conferences. Its March 26, 2026 announcement reported 1,400+ hosted teleconferences per month; its current corporate-services page also cites 1,400+ monthly live teleconferences. These complement one-on-one expert calls and on-demand transcripts."
     }
   ],
   "aiPlatform": {
-    "narrative": "Guidepoint's AI strategy has accelerated significantly in 2025. The centerpiece is Guidepoint360, launched in October 2025, which consolidates all client content — transcripts, call recordings, project briefs, and research — into a single AI-powered platform. AskGP, the conversational AI interface within Guidepoint360, lets clients query the full content library in natural language and synthesize insights across multiple expert interactions. Guidepoint also announced AI Moderation for enterprise-scale expert calls, and in early 2026 launched a Guidepoint360 mobile app for AI-driven research on the go.",
+    "narrative": "Guidepoint360, launched with AskGP in October 2025, brings expert consultations, transcripts, AI tools, and project organization into a single platform. Guidepoint describes AskGP as a conversational interface for searching and synthesizing content that a client is entitled to access, with links to source passages. AI Moderation supports interviews without live client attendance. The company announced its mobile app in February 2026 and MCP connections with Claude, Perplexity Computer for Finance, and Gemini Enterprise for Financial Services during 2026.",
     "features": [
-      "Guidepoint360: Unified AI + expert knowledge platform consolidating all client content",
-      "AskGP: Conversational AI research assistant for natural-language queries across the transcript library (130K+ transcripts per company website, November 2026)",
-      "AI Moderation: Automated moderation of expert calls at enterprise scale",
-      "AI-powered scheduling and expert matching",
-      "Guidepoint360 mobile app for AI-driven research on the go",
-      "130K+ searchable library transcripts covering 80,000+ companies, with about 7,000 added per month (company website, November 2026)",
-      "MCP connector available on Anthropic's Claude, Perplexity Computer for Finance, and Gemini Enterprise for Financial Services"
+      "Guidepoint360: Unified expert research workspace",
+      "AskGP: Company-described conversational search and synthesis with transcript citations",
+      "AI Moderation: Company-described parallel expert interviews without live client attendance",
+      "Company-stated AI-assisted expert matching and MCP scheduling",
+      "Guidepoint360 mobile app for research and project management",
+      "Company reports 130,000+ library transcripts as of November 2026",
+      "MCP connections announced for Claude, Perplexity Computer for Finance, and Gemini Enterprise for Financial Services"
     ]
   },
   "complianceExtended": {
-    "narrative": "Guidepoint positions compliance as a core brand differentiator and structures its framework in three stages: Advisor Eligibility (third-party background checks, Employer Opt-Out Registry), Project Compliance (proprietary IT platform enforcing screens before workflow proceeds, advisor re-affirmation of T&Cs before each consultation), and Project Review (custom client controls, real-time dashboards). Advisors must complete a mandatory Compliance Tutorial upon joining and re-certify annually. Advisors are instructed to terminate any consultation where they believe they are being solicited for confidential or MNPI information — and are still paid for the full consultation. General Counsel Catherine Smith is a former Senior Counsel of the SEC Division of Enforcement.",
+    "narrative": "Guidepoint describes three compliance stages: Advisor Eligibility, Project Compliance, and Project Review. Its published controls include employer opt-outs, advisor tutorials, project screens, and client monitoring. These are company descriptions of the program, not an independent assessment of its effectiveness. Catherine Smith is listed as Chief Legal Officer; the company's FY2024 statement describes her as a former SEC enforcement attorney.",
     "highlights": [
-      "Three-stage compliance framework: Advisor Eligibility, Project Compliance, Project Review",
-      "Third-party background checks on all new advisors; periodic re-checks on existing advisors",
-      "Employer Opt-Out Registry — automated system preventing employees of opted-out companies from participating",
-      "Mandatory Compliance Tutorial with annual re-certification for all advisors",
-      "Advisors instructed to terminate consultations if solicited for MNPI (still paid in full)",
-      "Client compliance dashboard with downloadable interaction records and real-time auditing",
-      "General Counsel Catherine Smith is former SEC Division of Enforcement Senior Counsel",
-      "Zero AI model training on customer data — compliance-oriented AI positioning"
-    ],
-    "regulatoryContext": "Guidepoint has never been charged with wrongdoing. However, its name appeared in several insider trading cases where individual consultants (Dr. Yves Benhamou, Winifred Jiau) were charged — in each case, the individuals deliberately circumvented Guidepoint's compliance controls rather than exploiting gaps in them. Massachusetts Secretary of State William Galvin also filed a complaint against Risk Reward Capital Management for using Guidepoint to obtain inside information, but Guidepoint itself was not charged. Per Integrity Research: 'Guidepoint's compliance procedures protected it from accusations of wrongdoing.' The SEC's 2022 Risk Alert on expert networks was industry-wide and not directed at Guidepoint specifically."
+      "Company-described framework: Advisor Eligibility, Project Compliance, Project Review",
+      "Guidepoint says new advisors receive background checks and active experts are re-checked on an annual rolling sample",
+      "Company says its Employer Database Registry blocks participation where an employer prohibits it",
+      "Advisor tutorial required on joining and every twelve months, according to Guidepoint",
+      "Advisor terms permit a request for full-project payment when an engagement is ended early to comply with those terms",
+      "Company describes downloadable consultation records and a complete audit trail",
+      "Guidepoint says AskGP prompts and responses are not used to train or fine-tune its models or third-party foundation models"
+    ]
   },
   "clientFit": {
-    "narrative": "Guidepoint serves the broadest client base among the Big Five expert networks, with 5,000+ organizations including institutional investors, consulting firms, corporates, legal teams, and government agencies. The firm's positioning emphasizes breadth, flexibility, and competitive pricing — making it accessible to teams with varying budgets and research intensity. Qsight provides a uniquely specialized offering for healthcare investors.",
+    "narrative": "Guidepoint markets its services to institutional investors, consulting firms, corporations, and professional services firms. It reports 5,000+ client organizations overall. Its FY2024 statement says its client list included nine of the top ten consulting firms and more than 500 hedge funds at that time; these are company-stated figures. Qsight is aimed at healthcare investors and Medical Aesthetics and MedTech businesses.",
     "segments": [
-      "Hedge funds seeking broad multi-sector expert coverage (500+ hedge fund clients)",
+      "Hedge funds seeking multi-sector expert coverage",
       "Private equity deal teams for diligence and portfolio monitoring",
-      "Consulting firms — serves 9 of the top 10 globally (750+ consulting firm clients)",
-      "Healthcare and life sciences investors (via Qsight data platform)",
+      "Consulting firms",
+      "Healthcare and life sciences investors (via Qsight)",
       "Corporate strategy and market intelligence teams",
-      "Legal and professional services firms",
-      "Government and public sector organizations"
+      "Advertising, public relations, and market research firms"
     ]
   },
   "strengths": [
-    "Very large advisor network: 2M+ across 150+ industries and 500+ subsectors",
-    "Broadest client coverage among Big Five: 5,000+ organizations",
-    "Healthcare specialization via Qsight — unique among general-purpose expert networks",
-    "Competitive pricing and flexible engagement model (per-call and subscription)",
-    "Guidepoint360 + AskGP represent significant AI investment (Oct 2025 launch)",
-    "Content library of 65,000+ transcripts and audio recordings",
-    "1,500+ live events hosted per month",
-    "19 global offices; rapid expansion from 800 employees (2020) to 1,700+ (2025)",
-    "Founder-led with Albert Sebag as CEO since founding in 2003"
+    "Company reports 2M+ advisors across 300+ industries and 500+ subsectors",
+    "Company reports serving 5,000+ organizations",
+    "Healthcare data specialization via Qsight",
+    "Guidepoint360 + AskGP combine expert access and AI synthesis",
+    "Company reports 130,000+ searchable library transcripts as of November 2026",
+    "Company reports 1,400+ monthly live teleconferences",
+    "Company reports 20 global offices and 2,000+ employees as of November 2026",
+    "Founder Albert Sebag remains CEO"
   ],
   "caveats": [
-    "Less analyst-led curation than Third Bridge — Guidepoint operates more as an access platform",
-    "AI capabilities (Guidepoint360) are very new (Oct 2025) and may not be fully mature",
-    "Employee count discrepancy: company website says 1,700+, but third-party sources (CompWorth, Getlatka) estimate ~4,300–4,500 — the gap may reflect contractor or advisor inclusion in third-party counts",
-    "Less brand cachet among premium buy-side clients compared to GLG or AlphaSights",
-    "Qsight is healthcare-specific — may create unevenness in depth across verticals",
-    "Content library (65,000+ transcripts) is large but less differentiated than Third Bridge's analyst-curated Library"
+    "Current client prices and subscription terms were not verified in the public sources reviewed; request a quote",
+    "Advisor, employee, client, and transcript counts are company-stated and were not independently audited",
+    "Guidepoint cautions that AskGP may produce errors, omissions, or hallucinations and does not replace review of the source",
+    "AskGP content access follows client entitlements and compliance filters, according to Guidepoint",
+    "Qsight specializes in Medical Aesthetics and MedTech; buyers should confirm coverage for their healthcare segment"
   ],
   "notableFacts": [
-    "Founded in 2003 as Clinical Advisors to match cancer patients with clinical trials",
-    "Founder Albert Sebag holds a Ph.D. in Organic Chemistry (Northeastern/MIT) and J.D. (Boston College Law)",
-    "Rebranded from Clinical Advisors to Guidepoint Global in 2007",
-    "Network has grown from 650K+ (2020) to 1.75M+ advisors (2025) — adding 20,000+ experts per month",
-    "Serves 5,000+ client organizations including 9 of the top 10 consulting firms",
-    "500+ hedge fund clients",
-    "Three acquisitions: Vista Research (2009, from S&P, gave Asia presence), Innosquared (2015, European), Quanton Data Analytics (2016, alt data → Qsight)",
-    "Launched Guidepoint Qsight healthcare data platform in 2024",
-    "Launched Guidepoint360 + AskGP AI platform in October 2025",
-    "Hosts 1,500+ live events per month",
-    "Content library: 65,000+ searchable transcripts and audio recordings",
-    "Revenue estimated at $200–350M range (third-party estimates vary widely; company is privately held)",
-    "Ranked as second-largest expert network by Integrity Research",
-    "General Counsel Catherine Smith is former SEC Division of Enforcement Senior Counsel",
-    "Chief Technology and AI Officer: Kaushik Deka",
-    "Pune, India technology center for platform development",
-    "AI Moderation can conduct autonomous expert interviews 24/7 without live client (AlphaSense launched a comparable product in Aug 2025)"
+    "Founded in 2003 by Albert Sebag in New York",
+    "Founder studied organic chemistry at Northeastern University and law at Boston College, according to a 2020 Boston College Law School profile",
+    "Company history dates Tracker to 2007 and Guidepoint Insights and Qsight to 2018",
+    "Company reports adding 15,000+ advisors per month as of November 2026",
+    "FY2024 company statement reports nine of the top ten consulting firms and more than 500 hedge funds as clients at that time",
+    "Historical acquisitions include Vista Research (2009), Innosquared (2015), and Quanton Data (2016)",
+    "Launched Guidepoint360 + AskGP in October 2025",
+    "Company reports 1,400+ monthly live teleconferences and 130,000+ library transcripts",
+    "Catherine Smith is Chief Legal Officer; the FY2024 company statement identifies her as a former SEC enforcement attorney",
+    "Chief Technology and AI Officer: Kaushik Deka, according to the company leadership page",
+    "Company announced its Pune Technology and Engineering Center of Excellence in March 2024",
+    "Guidepoint says AI Moderation can conduct parallel interviews 24/7 without a client attending live",
+    "Qsight announced Consumer Tracker for U.S. aesthetics consumer sentiment on November 4, 2026"
   ],
   "sourceNotes": [
-    "Guidepoint official website (guidepoint.com) used as primary source for products, services, and company positioning",
-    "Wikipedia entry used for founding story (Clinical Advisors origin), rebranding history, and acquisition timeline",
-    "Employee count: company says '1,700+ employees' — Getlatka estimates ~4,500; discrepancy may reflect contractor inclusion or different counting methodology",
-    "Advisor count of '1.75M+' is from company website (updated from earlier 1.5M+ figure); adds 20,000+ per month per company claims",
-    "Revenue estimates vary widely ($200M–$460M depending on source) — Guidepoint is privately held with no public financial filings identified; Inex One estimated 'north of $200M' in 2021",
-    "Acquisition timeline corrected: Vista Research was acquired in 2009 (from Standard & Poor's), not 2024; Quanton Data Analytics acquired 2016",
-    "Regulatory context: Guidepoint's name appeared in insider trading cases (Benhamou, Jiau, Risk Reward Capital) but firm was never charged — sourced from Wikipedia, Integrity Research",
-    "Guidepoint360 and AskGP details sourced from October 2025 PRNewswire press release and Yahoo Finance coverage",
-    "Qsight details from dedicated Qsight website (qsight.guidepoint.com) and company press releases",
-    "Client count (5,000+ organizations) and consulting firm stat (9 of top 10) from company website — not independently verified",
-    "Competitive positioning draws on third-party comparisons (CleverX, Silverlight Research, Third Bridge) — these sources have competitive biases",
-    "No individual clients are publicly named despite claiming 5,000+ client organizations; case studies describe clients by type only",
-    "November 2026 refresh: expert count (2M+), professionals (2,000+), offices (20), clients (5,000+), and library size (130K+ transcripts) taken from guidepoint.com homepage; 2026 integrations and office move from Guidepoint press releases (March 26, June 3, August 26, and September 21, 2026). All counts are company-stated."
+    "Read 2026-11-11 — https://www.guidepoint.com/ — Company-stated 2M+ experts, 2,000+ professionals, 20 offices, 5,000+ organizations, 130,000+ transcripts, 80,000+ covered companies, and 7,000 monthly transcript additions; New York headquarters. Removed unsupported employee-estimate reconciliation and revenue estimates.",
+    "Read 2026-11-11 — https://www.guidepoint.com/company/ — Founding year and city, Albert Sebag as founder and CEO, Kaushik Deka as Chief Technology & AI Officer, Catherine Smith as Chief Legal Officer, and company-stated scale. Its timeline groups the mobile app under 2025; the dedicated February 11, 2026 launch announcement is used for that event.",
+    "Read 2026-11-11 — https://www.guidepoint.com/services/compliance/ — Company-described three-stage controls, employer opt-outs, annual tutorials, new-advisor background checks, sample-based annual re-checks, and audit trails. Project managers screen requests and involve Legal and Compliance as needed; this does not establish dedicated compliance staff review of every project. Removed unsupported case narratives and blanket assertions about charging history; no primary case document naming Guidepoint was read.",
+    "Read 2026-11-11 — https://www.guidepoint.com/resources/press-releases/ — Reviewed recent announcement index for the November 2025–November 2026 development pass; individual release datelines are used where index dates differ.",
+    "Read 2026-11-11 — https://www.guidepoint.com/platform/guidepoint360/ — Platform combines expert access, transcripts, AskGP, project management, and mobile access. Product descriptions are company-stated; no independent performance testing was performed.",
+    "Read 2026-11-11 — https://www.guidepoint.com/services/1-to-1-calls/ — Expert calls, project teams, AI-assisted sourcing, knowledge-graph matching, screening, and client approval. Removed unsupported claims of a dedicated compliance officer on every engagement.",
+    "Read 2026-11-11 — https://www.guidepoint.com/services/surveys/ — Survey design, recruitment, programming, delivery, program-and-host, recruiting-only, and quick-poll formats; adoption, pricing, and competitive research use cases.",
+    "Read 2026-11-11 — https://www.guidepoint.com/services/qsight-data/ — Current Qsight coverage is Medical Aesthetics and MedTech, with transaction data, market models, practitioner surveys, and sales intelligence. Removed unsupported broad pharma/biotech coverage and uniqueness comparisons.",
+    "Read 2026-11-11 — https://www.guidepoint.com/platform/guidepoint360/askgp/ — Company-described source-linked conversational search and synthesis over eligible library and client-call transcripts.",
+    "Read 2026-11-11 — https://www.guidepoint.com/mcp/ — Company describes transcript search, expert discovery, and scheduling through MCP-compatible AI tools. Used for MCP workflow claims, not an independently tested integration assessment.",
+    "Read 2026-11-11 — https://www.guidepoint.com/mobile-app/ — Reviewed mobile-app product page navigation; launch date and functionality are sourced to the dedicated February 2026 release.",
+    "Read 2026-11-11 — https://www.guidepoint.com/pressreleases/guidepoint-relocates-shanghai-office-to-strengthen-regional-presence/ — Release dateline is September 21, 2026; announces Shanghai relocation to Bund Center on East Yan'an Road. Index lists September 30.",
+    "Read 2026-11-11 — https://www.guidepoint.com/pressreleases/guidepoint-accelerates-enterprise-ai-transformation-with-gemini-enterprise-for-financial-services/ — August 26, 2026 dateline announces Gemini Enterprise for Financial Services MCP access and company-stated 120,000+ transcripts at that time. Index lists August 25.",
+    "Read 2026-11-11 — https://www.guidepoint.com/pressreleases/guidepoint-integrates-trusted-expert-insights-with-perplexity/ — June 3, 2026 announcement of MCP availability in Perplexity Computer for Finance, with source citations and client entitlements.",
+    "Read 2026-11-11 — https://www.guidepoint.com/pressreleases/guidepoint-expands-offerings-to-deliver-real-time-access-to-expert-knowledge/ — May 18, 2026 business repositioning and brand refresh; company reports 300+ industries, 150 countries, and 1,400+ monthly live interviews. Removed unsupported current rankings and broadest-client-base claims.",
+    "Read 2026-11-11 — https://www.guidepoint.com/pressreleases/guidepoint-launches-mcp-on-claude-embedding-trusted-expert-insights-into-ai-powered-research-workflows/ — May 5, 2026 announcement of MCP on Claude with source-linked transcript access and client-specific compliance controls.",
+    "Read 2026-11-11 — https://www.guidepoint.com/pressreleases/guidepoint-library-surpasses-100000-transcripts-scaling-real-time-access-to-expert-knowledge/ — March 26, 2026 company-stated 100,000-transcript milestone and 1,400+ monthly teleconferences. Replaced unsupported 1,500+ event count and dated the historic library milestone.",
+    "Read 2026-11-11 — https://www.guidepoint.com/pressreleases/guidepoint-launches-guidepoint360-mobile-app-delivering-ai-driven-research-whenever-its-needed/ — February 11, 2026 mobile launch with AskGP, alerts, messaging, scheduling, and project management.",
+    "Read 2026-11-11 — https://www.guidepoint.com/pressreleases/guidepoint-unveils-ai-moderation-accelerate-expert-insights-at-enterprise-scale/ — October 22, 2025 AI Moderation launch; parallel interviews, structured prompts, 24/7 availability, and thousands of early-adopter interviews are company claims. Removed unsupported AlphaSense comparison.",
+    "Read 2026-11-11 — https://lawmagazine.bc.edu/2020/07/got-a-hard-question-call-guidepoint/ — Summer 2020 profile supports founder education, patent litigation career, and earlier Cancer Advisors venture, rather than the unsupported Clinical Advisors founding narrative. Reports 650,000 advisors across 150 industries at that time; historical subscription reference does not verify current pricing. MIT research claim and unsupported 2007 rebrand were removed.",
+    "Read 2026-11-11 — https://www.prnewswire.com/news-releases/guidepoint-presenta-guidepoint360-que-fusiona-ia-y-conocimiento-experto-en-una-sola-plataforma-302577005.html — Company-issued October 8, 2025 release confirms Guidepoint360 and AskGP launch date and source-cited synthesis. Its 1.75M advisor and 60,000-transcript figures are historical, not current scale.",
+    "Read 2026-11-11 — https://www.guidepoint.com/resources/blog/guidepoint-acquires-innosquared-a-european-expert-network-firm/ — February 12, 2015 announcement says Innosquared acquisition closed February 11, confirms 2009 Vista Research purchase from Standard & Poor's, and reports over 50,000 EMEA experts at that time.",
+    "Read 2026-11-11 — https://www.integrity-research.com/guidepoint-releases-new-alternative-data-product/ — July 24, 2018 report identifies Qsight launch and says Quanton Data was absorbed two years earlier. Corrected Qsight launch from 2024 to 2018; historical rankings were not carried forward.",
+    "Read 2026-11-11 — https://www.guidepoint.co.kr/about-us/?lang=en — Regional company history supports Tracker (2007), London (2009), Shanghai (2012), Insights (2018), one million advisors (2021), Mumbai (2022), and Qsight relaunch (2018). Its lower undated scale figures were not used as current counts.",
+    "Read 2026-11-11 — https://www.guidepoint.com/services/compliance/compliance-faqs/ — Advisors must decline employer-related consultations; FAQ permits ending an uncomfortable consultation and invoicing Guidepoint when confidential information is solicited.",
+    "Read 2026-11-11 — https://www.guidepoint.com/guidepoint-global-advisors-terms-conditions/ — Terms specify a four-month employer-related restriction for former finance/accounting staff, MNPI/conflict restrictions, annual tutorial completion, and eligibility to request full-project payment after early termination for compliance. Replaced vague standard cooling-off and unconditional full-payment claims.",
+    "Read 2026-11-11 — https://www.guidepoint.com/clients/consulting/ — Company positions expert calls, library content, and AI tools for consulting workflows. Its 5,000+ monthly transcript-addition figure differs from the homepage's 7,000; no growth rate is presented as independently verified.",
+    "Read 2026-11-11 — https://www.guidepoint.com/clients/professional-services/ — Company markets to advertising, public relations, and market research firms. Removed unsupported government-client and premium-brand comparisons.",
+    "Read 2026-11-11 — https://www.guidepoint.com/clients/institutional-investors/ — Company markets to hedge funds and private equity investors for diligence and monitoring.",
+    "Read 2026-11-11 — https://www.guidepoint.com/clients/corporations/ — Corporate strategy, market entry, M&A, and market-research use cases; current page reports 1,400+ monthly live teleconferences.",
+    "Read 2026-11-11 — https://www.guidepoint.com/platform/guidepoint360/library/ — Current Guidepoint Library name, company-stated 130,000+ transcripts, audio access, filtering, and AskGP integration. Replaced stale 65,000+ figures and unsupported comparisons with Third Bridge.",
+    "Read 2026-11-11 — https://www.guidepoint.com/wp-content/uploads/2026/05/FY-2024-Guidepoint-Modern-Slavery-Statement_Signed.pdf — Company statement for financial year ended December 31, 2024 reports nine of the top ten consulting firms, over 500 hedge funds, and over 750 private/growth equity firms. Corrected the misclassification of 750+ as consulting clients; retained selected figures only with FY2024 attribution. Identifies Catherine Smith as Chief Legal Officer and former SEC enforcement attorney.",
+    "Read 2026-11-11 — https://www.guidepoint.com/company/faqs/ — Company reports 300+ industries, 500+ subsectors, and 15,000+ monthly advisor additions, replacing the unsupported current 20,000+ rate. Says AskGP respects entitlements, may hallucinate, and does not train models on prompts/responses. No current rate card was verified; hourly pricing and cheaper-than-peer claims were removed.",
+    "Read 2026-11-11 — https://www.guidepoint.com/resources/blog/guidepoint-unveils-new-technology-and-engineering-center-in-pune-india-marking-a-milestone-for-innovation/ — March 4, 2024 announcement of Pune engineering and product center.",
+    "Read 2026-11-11 — https://qsight.guidepoint.com/blog/guidepoint-qsight-launches-medical-aesthetics-patient-journey-analytics-product/ — Page contains a launch headline dated June 4, 2026 but no substantive release body; the full May 28 wire release is used for the announcement date and product details.",
+    "Read 2026-11-11 — https://qsight.guidepoint.com/blog/guidepoint-qsight-launches-social-media-intelligence-tool/ — Page headline dated November 24, 2025; full company-issued wire release supplies the product details.",
+    "Read 2026-11-11 — https://www.globenewswire.com/news-release/2025/11/24/3193664/0/en/Guidepoint-Qsight-Launches-Social-Media-Intelligence-Tool-to-Track-Medical-Aesthetics-Industry-s-View-into-Treatments.html — Company-issued November 24, 2025 launch release for Qsight Social Intelligence and aesthetics-practitioner social media analysis; superlatives were not adopted.",
+    "Read 2026-11-11 — https://www.globenewswire.com/news-release/2026/05/28/3303184/0/en/guidepoint-qsight-launches-medical-aesthetics-patient-journey-analytics-product.html — Company-issued May 28, 2026 launch release for Qsight Cross-Purchasing Dashboard, analyzing treatment combinations and repeat purchasing.",
+    "Read 2026-11-11 — https://www.globenewswire.com/news-release/2026/11/04/3395704/0/en/guidepoint-qsight-launches-consumer-sentiment-tool-to-understand-motivations-behavior-trends-in-aesthetics.html — Company-issued November 4, 2026 launch release for Qsight Consumer Tracker, surveying U.S. aesthetics users and prospective consumers quarterly."
   ],
   "whyChoose": [
-    "Network breadth",
+    "Network breadth (company-stated)",
     "Healthcare (Qsight)",
-    "Competitive pricing",
+    "Transcript library",
     "AI platform (AskGP)"
   ],
   "whenNotIdeal": [
-    "Wants analyst-led curation",
-    "Needs premium brand signaling",
-    "Heavy transcript library user",
-    "Early AI maturity concern"
+    "Needs a published client rate card",
+    "Needs independently audited scale figures",
+    "Needs AI output without source review"
   ],
   "confidence": {
     "founded": "verified",
     "headquarters": "verified",
+    "employeeCount": "positioning",
     "expertCount": "positioning",
-    "employeeCount": "verified",
-    "pricingModel": "inference",
-    "pricingDetail": "inference",
-    "services": "verified",
+    "description": "positioning",
+    "pricingModel": "partially-unverifiable",
+    "pricingDetail": "partially-unverifiable",
+    "services": "positioning",
+    "aiCapabilities": "positioning",
     "compliance": "positioning",
-    "overview": "verified",
-    "history": "verified",
-    "servicesDetailed": "verified",
+    "overview": "positioning",
+    "history": "positioning",
+    "servicesDetailed": "positioning",
     "aiPlatform": "positioning",
-    "complianceExtended": "verified",
-    "clientFit": "inference"
+    "complianceExtended": "positioning",
+    "clientFit": "positioning",
+    "strengths": "positioning",
+    "keyDifferentiators": "positioning",
+    "bestFor": "inference",
+    "industries": "positioning",
+    "categoryBadge": "inference",
+    "deliveryModel": "inference",
+    "regionStrength": "inference",
+    "complianceBadge": "positioning",
+    "aiBadge": "positioning",
+    "comparison": "positioning",
+    "caveats": "inference",
+    "notableFacts": "positioning",
+    "whyChoose": "inference",
+    "whenNotIdeal": "inference"
   }
 }

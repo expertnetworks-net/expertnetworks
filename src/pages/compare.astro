@@ -280,7 +280,7 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
                   <span class="inline-flex items-center rounded-full bg-white px-2 py-0.5 border border-border/30">Publicly documented</span>
                   <span class="inline-flex items-center rounded-full bg-white px-2 py-0.5 border border-border/30">Publicly indicated</span>
                   <span class="inline-flex items-center rounded-full bg-white px-2 py-0.5 border border-border/30">Limited public evidence</span>
-                  <span class="inline-flex items-center rounded-full bg-white px-2 py-0.5 border border-border/30">Not publicly clear</span>
+                  <span class="inline-flex items-center rounded-full bg-white px-2 py-0.5 border border-border/30">Not disclosed</span>
                 </div>
               </div>
             </div>
@@ -329,10 +329,7 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
       <h2 class="text-xl font-bold text-primary mb-4">How to compare expert networks</h2>
       <div class="space-y-4 text-[14px] leading-relaxed text-secondary">
         <p>
-          Choosing the right expert network depends on your workflow, budget, and compliance requirements. The largest providers — GLG, AlphaSights, Third Bridge, and Guidepoint — each serve different buyer profiles. GLG leads in breadth and scale with over one million experts, while AlphaSights is known for speed-to-connect and white-glove project management. Third Bridge differentiates through its research content library (Forum and Interviews), and Guidepoint offers flexible, high-volume access at competitive price points.
-        </p>
-        <p>
-          Beyond the top four, the market includes specialist platforms like Dialectica (deep research with hard-to-find experts), AlphaSense/Tegus (AI-led search plus pre-recorded transcripts), and regional specialists like Capvision (Asia-Pacific depth) and Atheneum (global consulting-oriented service). Newer entrants such as Prosapient, Stax, and NewtonX compete on technology-first workflows and transparent pricing.
+          Compare providers against your workflow, budget, and compliance requirements. The matrix reads pricing, scale, services, and buyer fit from the provider profiles. Missing information is shown as “Not disclosed”; request current terms from the provider.
         </p>
         <p>
           When evaluating providers, buyers typically weigh five dimensions: <strong>pricing model</strong> (per-call vs. subscription vs. annual commitment), <strong>compliance infrastructure</strong> (personal trading restrictions, information barriers, call monitoring), <strong>expert coverage</strong> (geographic breadth and industry depth), <strong>AI and technology capabilities</strong> (automated matching, transcript search, analytics), and <strong>delivery model</strong> (managed service vs. self-service marketplace). Use the comparison matrix above to evaluate these factors across your shortlisted providers.
@@ -690,6 +687,7 @@ const compareClientJson = JSON.stringify(compareClientData).replaceAll('<', '\\u
     line-height: 1.35;
     width: fit-content;
   }
+  .cell-no { color: #515154; font-size: 12px; }
   .cell-empty { color: #6e6e73; font-size: 12px; }
   .cell-note { margin-top: 2px; font-size: 11.5px; line-height: 1.5; color: #6e6e73; }
   .cell-yes { display: inline-flex; align-items: center; gap: 5px; color: #0f7a3d; font-weight: 600; font-size: 12.5px; }

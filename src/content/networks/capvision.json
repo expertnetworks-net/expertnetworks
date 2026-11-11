@@ -8,243 +8,167 @@
   "gradientTo": "#f97316",
   "type": "Expert Network",
   "founded": 2006,
-  "headquarters": "Shanghai, China",
-  "employeeCount": "600+",
-  "expertCount": "360K–400K",
-  "description": "Asia-focused expert network with global reach, providing expert consultations, industry reports, and primary research across major markets. Note: Most publicly available operational data (call volumes, expert count, employee numbers) predates the May 2023 Chinese state security investigation; current operational scale is uncertain.",
+  "headquarters": "Malaysia, Austin and Shanghai (company-stated)",
+  "employeeCount": "600 (company-stated)",
+  "expertCount": "600,000+ (company-stated)",
+  "description": "Expert network providing consultations, surveys, conferences, and customized research. Current company disclosures also connect Capvision Malaysia with ChatBrilliant Partners and its AI content library.",
   "services": [
     "Expert Calls",
-    "Industry Reports",
     "Surveys",
-    "Primary Research",
-    "Events",
-    "Corporate Access"
+    "Industry Research",
+    "Conferences",
+    "Customized Research"
   ],
   "aiCapabilities": [
-    "AI-assisted matching",
-    "Automated compliance checks",
-    "Natural language search"
+    "AI-driven ChatBrilliant Content Library (company-stated by Capvision Malaysia)"
   ],
   "industries": [
     "Financial Services",
     "Healthcare",
-    "Technology",
-    "Consumer",
-    "Industrials",
-    "Energy",
-    "Real Estate"
+    "Technology, Media & Telecommunications",
+    "Consumer & Retail",
+    "Automotive",
+    "Energy & Environment",
+    "Engineering",
+    "Transportation"
   ],
-  "pricingModel": "Per-call",
-  "pricingDetail": "Per-call / project-based",
   "keyDifferentiators": [
-    "Strongest Asia-Pacific coverage among expert networks",
-    "Multilingual capabilities across Asian and Western markets",
-    "Local market expertise with on-the-ground teams in major Asian cities",
-    "Dual-market positioning spanning China and global institutional clients"
+    "Company-reported global expert network",
+    "Translation available on request",
+    "Research combining internal analysts and external experts"
   ],
   "bestFor": [
-    "Asia-Pacific investors needing on-the-ground expert access",
-    "Cross-border research teams spanning China and global markets",
-    "Private equity firms conducting emerging market due diligence",
-    "Corporates needing bilingual expertise across Asian geographies"
+    "Investors seeking expert consultations",
+    "Consulting firms conducting industry research",
+    "Companies commissioning surveys or customized research"
   ],
-  "compliance": {
-    "mnpiPolicy": "Compliance framework adapted to both Western and Asian regulatory environments with enhanced protocols post-2023 rectification",
-    "expertVetting": "Regional compliance teams with local regulatory knowledge; expert screening adapted to Chinese and international standards",
-    "auditTrail": true,
-    "regulatoryHistory": "In May 2023, Chinese state security authorities raided Capvision offices as part of a broader crackdown on consulting firms. Capvision subsequently completed a government-supervised rectification process and implemented comprehensive compliance reforms. Separately, the firm has faced scrutiny from Western regulators regarding cross-border information flows."
-  },
   "featured": false,
   "priority": 7,
   "published": true,
-  "categoryBadge": "Asia Specialist",
   "deliveryModel": "Concierge",
-  "regionStrength": "Asia-Pacific",
-  "complianceBadge": "Standard Compliance",
-  "aiBadge": "AI Matching",
-  "comparison": {
-    "expertCalls": true,
-    "contentLibrary": false,
-    "aiMatching": true,
-    "surveys": true,
-    "complianceTools": true
-  },
-  "lastUpdated": "2026-03-07",
-  "overview": "Capvision is one of the largest expert networks headquartered in Asia and the largest expert network based in China, where it is domestically known as Kaisheng Rongying (凯盛融英). Founded in 2006 by former Bain & Company consultants and Morgan Stanley investment bankers, the firm has built deep expertise in connecting global institutional clients with industry professionals across the Asia-Pacific region and beyond. Capvision partners with over 2,000 clients including institutional investors, consulting firms, and Fortune 500 companies, and facilitated approximately 150,000 consulting calls annually as of 2021–2022.\n\nThe company offers a broad suite of primary research services including expert consultations, surveys, corporate access events, customized research projects, and industry reports. With offices in Shanghai, New York, Munich, Hong Kong, Osaka, and Beijing, Capvision straddles both Asian and Western markets — a positioning that is both its key differentiator and, following the 2023 Chinese government crackdown on consulting firms, a source of ongoing regulatory complexity. The company raised $56.6M in total funding and filed for a Hong Kong IPO in 2022 targeting a $1.5–3 billion valuation, though those plans were effectively shelved after the 2023 state security investigation.",
+  "regionStrength": "Global",
+  "complianceBadge": "Limited Public Detail",
+  "aiBadge": "AI Research",
+  "lastUpdated": "2026-11-11",
+  "overview": "Capvision provides expert consultations, surveys, conference calls, and customized research for financial institutions, consulting firms, and enterprises. The company describes a network of more than 600,000 experts and lists Malaysia, Austin, and Shanghai as headquarters locations. These are company disclosures, not independently audited measures of current scale.\n\nCurrent public materials also use the ChatBrilliant name. Capvision Malaysia describes itself as the Southeast Asia hub of ChatBrilliant Partners and markets an AI-driven ChatBrilliant Content Library. This company description does not by itself establish ownership or contracting arrangements across all Capvision-branded businesses.",
   "history": {
-    "narrative": "Capvision was founded in 2006 in Shanghai by Roger Xu and Kai Hong, both of whom came from backgrounds in management consulting and investment banking. The firm originally focused on sourcing expert advisors within China for global institutional clients, and gradually expanded its network and geographic footprint. By the early 2020s Capvision had grown to 600+ employees and was positioning for a Hong Kong IPO. However, the company's trajectory was significantly disrupted in 2023 when Chinese state security authorities raided its offices as part of a broader crackdown on consulting and due diligence firms operating in China.",
+    "narrative": "Capvision’s About page states that it was founded in 2006 by former management consultants and investment bankers; its LinkedIn page names Bain & Company and Morgan Stanley as their former firms. The official website’s homepage instead displays an establishment year of 2008. The discrepancy is unresolved.",
     "timeline": [
       {
         "year": "2006",
-        "event": "Founded in Shanghai by Roger Xu and Kai Hong"
-      },
-      {
-        "year": "2006–2015",
-        "event": "Establishes as China's first and largest domestic expert network with deep Asia-Pacific coverage"
-      },
-      {
-        "year": "2010s",
-        "event": "Expands internationally with offices in Hong Kong, Munich, Osaka, and Beijing"
-      },
-      {
-        "year": "2019",
-        "event": "Opens New York office, marking formal entry into the U.S. expert network market"
-      },
-      {
-        "year": "2020",
-        "event": "Series of equity transfers value company at ~RMB 2.3 billion (~$320M)"
-      },
-      {
-        "year": "2021",
-        "event": "Files for Hong Kong IPO; facilitates 134,000 consulting calls in first nine months"
-      },
-      {
-        "year": "2022",
-        "event": "Refiles for Hong Kong IPO after 45% revenue growth; aims to raise $300M at $1.5–3B valuation"
+        "event": "Founding year stated on Capvision’s About and LinkedIn pages; the website homepage separately displays 2008."
       },
       {
         "year": "2023 (May)",
-        "event": "Chinese state security authorities raid offices in Shanghai, Beijing, Shenzhen, and Suzhou; featured in 15-minute CCTV broadcast"
-      },
-      {
-        "year": "2023 (October)",
-        "event": "Completes government-supervised rectification and implements comprehensive compliance overhaul"
-      },
-      {
-        "year": "2024",
-        "event": "Forms strategic partnership with CEPRES to integrate expert insights with private market analytics"
+        "event": "China’s foreign ministry acknowledged national security law enforcement action when asked about the investigation into Capvision."
       }
     ]
   },
   "servicesDetailed": [
     {
       "name": "Expert Consultations",
-      "description": "One-on-one or group consultations connecting clients with industry professionals who have direct operational experience in specific sectors, companies, or markets. Capvision offers optional live language translation, making it particularly effective for cross-border research involving Asian markets. The firm facilitated approximately 150,000 consulting calls annually as of 2021–2022, with experts earning an average of $230 per hour."
+      "description": "Capvision offers one-on-one telephone and in-person consultations with selected industry experts. Live language translation is available on request."
     },
     {
       "name": "Surveys",
-      "description": "Quantitative and qualitative survey research leveraging Capvision's expert network to provide structured data on market conditions, competitive dynamics, and industry trends. Surveys can be paired with follow-up consultations for deeper investigation."
+      "description": "The company offers quantitative and qualitative surveys, with support from questionnaire design through reporting or for individual stages."
     },
     {
-      "name": "Industry Reports",
-      "description": "Capvision produces and distributes industry-focused research reports drawing on its expert network and primary research capabilities, covering sectors across Asia and global markets."
+      "name": "Industry Research",
+      "description": "Capvision describes research teams combining internal analysts and external experts for industry research, market research, corporate consulting, and due diligence."
     },
     {
-      "name": "Corporate Access / Events",
-      "description": "Conferences, roundtables, and corporate access events that bring together industry experts, company management teams, and institutional investors. These events are particularly focused on Asian markets and cross-border investment themes."
-    },
-    {
-      "name": "Customized Research",
-      "description": "Bespoke research projects combining expert consultations, surveys, and desk research into comprehensive deliverables tailored to specific client questions — often used for due diligence, market entry analysis, and competitive intelligence."
-    },
-    {
-      "name": "HR & Talent Services",
-      "description": "Executive search and talent advisory services that leverage Capvision's expert network for recruitment and organizational consulting."
+      "name": "Conferences",
+      "description": "Expert-led conferences and conference calls cover policy developments, investment opportunities, and industry topics."
     }
   ],
   "aiPlatform": {
-    "narrative": "Capvision's technology infrastructure centers on a proprietary CRM system that manages expert matching, client relationships, and project workflows. The platform integrates third-party tools including Confirmit, Qualtrics, and ZoomInfo for survey delivery, data enrichment, and expert sourcing. While Capvision markets AI-assisted matching and automated compliance checks, detailed public documentation of specific AI capabilities is limited compared to some Western competitors. The platform also includes a mobile knowledge app for on-demand expert content delivery.",
+    "narrative": "Capvision describes a proprietary CRM. Capvision Malaysia separately says it combines CRM technology with an AI-driven ChatBrilliant Content Library for access to interviews, surveys, transcripts, and tailored research. This is company-stated functionality; the sources reviewed do not document AI matching, automated compliance checks, natural language search, or the previously listed third-party integrations.",
     "features": [
-      "Proprietary CRM system for expert matching and project management",
-      "AI-assisted expert matching to client research needs",
-      "Automated compliance screening across Chinese and international regulatory frameworks",
-      "Integration with Confirmit and Qualtrics for survey delivery",
-      "ZoomInfo integration for expert sourcing and data enrichment",
-      "Live language translation for cross-border consultations",
-      "Mobile knowledge platform for on-demand expert content",
-      "Multi-language support in platform interfaces"
+      "Proprietary CRM (company-stated)",
+      "AI-driven ChatBrilliant Content Library (company-stated by Capvision Malaysia)"
     ]
   },
   "complianceExtended": {
-    "narrative": "Capvision's compliance story is uniquely complex due to its position straddling Chinese and international regulatory environments. Following the May 2023 raid by Chinese state security authorities, the firm underwent a government-supervised rectification process and announced comprehensive compliance reforms. The company now operates under enhanced scrutiny in China while also maintaining compliance frameworks aligned with Western regulatory expectations around MNPI and expert vetting.",
-    "highlights": [
-      "Dedicated compliance committee established in May 2023, chaired by CEO Roger Xu",
-      "Completed government-supervised rectification in October 2023",
-      "Comprehensive compliance system overhaul addressing identified gaps",
-      "Dual compliance framework covering Chinese national security regulations and Western MNPI standards",
-      "Regional compliance teams with local regulatory knowledge in each major office",
-      "Expert screening adapted to both Chinese and international standards",
-      "Audit trail capabilities for client interactions"
-    ],
-    "regulatoryContext": "In May 2023, Chinese state security authorities raided Capvision offices in Shanghai, Beijing, Shenzhen, and Suzhou and featured the investigation in a 15-minute CCTV broadcast, accusing the firm of facilitating the transfer of sensitive information to foreign entities. The probe alleged that between 2017–2020, Capvision received over 2,000 remittances from over 100 overseas companies totaling more than $70 million. Capvision completed a government-supervised rectification in October 2023. This was part of a broader crackdown that also affected Bain & Company, Mintz Group, and the Big Four accounting firms in China. Note: This was a Chinese national security investigation, not a U.S. SEC action as sometimes incorrectly reported."
+    "narrative": "Capvision’s expert page says it handles compliance, scheduling, and payments for experts. The reviewed materials do not establish current MNPI controls, regional compliance staffing, or client audit-trail functionality.",
+    "highlights": [],
+    "regulatoryContext": "At its May 9, 2023 press conference, China’s foreign ministry responded to questions naming Capvision by acknowledging joint law enforcement action by national security authorities and other departments. This documents the historical action; it does not establish the company’s current compliance status."
   },
   "clientFit": {
-    "narrative": "Capvision is best suited for clients who need deep Asia-Pacific expertise, particularly those with investment or business interests in China and broader Asian markets. The firm's dual-market positioning makes it especially valuable for cross-border research where understanding both Asian and Western perspectives is important.",
+    "narrative": "Editorial assessment: the documented consultations, surveys, and customized research make Capvision relevant to investment, consulting, and corporate research teams. Buyers considering ChatBrilliant-branded services should clarify the contracting entity and product access.",
     "segments": [
-      "Institutional investors with Asia-Pacific portfolio exposure or investment mandates",
-      "Private equity firms conducting due diligence on Asian targets or portfolio companies",
-      "Consulting firms needing rapid access to industry experts in China, Japan, and Southeast Asia",
-      "Multinational corporations evaluating market entry or competitive dynamics in Asian markets",
-      "Research teams needing multilingual expert access across Asian languages"
+      "Institutional investment research teams",
+      "Management consulting firms",
+      "Corporate strategy and research teams"
     ]
   },
   "strengths": [
-    "Deepest expert network coverage in China and Asia-Pacific among major expert networks",
-    "Multilingual capabilities spanning Mandarin, Cantonese, Japanese, Korean, and other Asian languages",
-    "On-the-ground presence in major Asian business centers",
-    "Broad service offering beyond calls — surveys, events, research, corporate access",
-    "Large network scale (360K–400K experts per HK IPO filings) with strong Asia weighting",
-    "Competitive pricing relative to major Western expert networks",
-    "Dual-market positioning serving both Asian and Western institutional clients"
+    "Consultations with translation available on request",
+    "Survey support from questionnaire design through reporting",
+    "Research teams combining internal analysts and external experts"
   ],
   "caveats": [
-    "2023 Chinese government raid and rectification process creates ongoing reputational and regulatory uncertainty",
-    "Cross-border compliance complexity — clients must evaluate whether Capvision's dual-jurisdiction positioning aligns with their own compliance requirements",
-    "Hong Kong IPO plans suspended following 2023 events; financial trajectory less certain",
-    "AI and technology platform less mature than newer technology-first competitors",
-    "Western market coverage less deep than dedicated Western-focused expert networks",
-    "Less transparent public information about current operational scale and financial health"
+    "Company sources disagree on founding year and headquarters presentation.",
+    "Expert and employee totals are self-reported and undated.",
+    "The reviewed sources do not disclose buyer pricing or establish current audit-trail and MNPI controls.",
+    "The relationship among Capvision-branded operations and ChatBrilliant requires clarification before contracting."
   ],
   "notableFacts": [
-    "Founded in 2006 — one of the oldest expert networks in Asia",
-    "Largest expert network headquartered in China (domestically known as Kaisheng Rongying)",
-    "Founded by former Bain & Company consultants and Morgan Stanley investment bankers",
-    "Valued at approximately RMB 2.3 billion (~$320M) in 2020 equity transfers",
-    "Filed for Hong Kong IPO twice (2021 and 2022) targeting $300M raise at $1.5–3B valuation",
-    "Raised $56.6M in total funding from investors including Huizhi Capital and Zhejiang Silk Road Fund",
-    "Facilitated 134,000 consulting calls in first nine months of 2021 alone",
-    "Average expert compensation of $230/hour, with rates ranging from $79 to $10,000/hour",
-    "Offices in Shanghai, New York, Munich, Hong Kong, Osaka, and Beijing",
-    "Partners with over 2,000 clients including institutional investors and Fortune 500 companies",
-    "Subject of a 15-minute CCTV broadcast during 2023 Chinese national security crackdown",
-    "Completed government-supervised rectification in October 2023",
-    "Formed strategic partnership with CEPRES in 2024 for private market analytics"
+    "Capvision Malaysia currently describes itself as ChatBrilliant Partners’ Southeast Asia hub.",
+    "Capvision Malaysia describes an AI-driven ChatBrilliant Content Library; its public company page gives no launch date."
   ],
   "sourceNotes": [
-    "Capvision official website (capvision.com) used for service descriptions and positioning claims",
-    "Expert Opportunities (expertopportunities.com) review provided financial data, expert compensation details, and call volume statistics from Capvision's Hong Kong IPO filings",
-    "CNN, CNBC, and South China Morning Post reporting used for 2023 investigation details",
-    "Consultancy.asia used for rectification completion details",
-    "Inex One and ExpertNetworkCalls.com used for independent third-party profile information",
-    "PitchBook and Tracxn used for funding and valuation data",
-    "Important correction: Previous profile incorrectly stated 'SEC investigation' — the 2023 probe was conducted by Chinese state security authorities, not the U.S. SEC",
-    "CICC Capital (unit of China International Capital Corporation) publicly reported to have terminated its Capvision relationship during the 2023 crackdown — no other named clients found"
+    "2026-11-11 — https://www.capvision.com/us/js/app.416e11fe.js — Official JavaScript linked by the About page, downloaded and read directly because the HTML pages return JavaScript notices. Contains About, homepage, expert, service and location text. About states 2006, 600 employees, 600,000+ experts and headquarters in Malaysia, Austin and Shanghai; homepage instead says established 2008 and 600+ employees. Used the About-page employee figure and disclosed the founding discrepancy. Removed unsupported call volumes, compensation, pricing, funding, valuations, IPO details, named founders, office-opening dates, HR services, language lists, rankings and integrations.",
+    "2026-11-11 — https://www.linkedin.com/company/capvision — Company page read for founder backgrounds, client segments, consultations, surveys, conference calls, transcripts and CRM positioning. Lists New York headquarters and 2006 founding, conflicting with other company location/year presentations; no independent confirmation of scale or comparative performance.",
+    "2026-11-11 — https://sg.linkedin.com/company/capvision-malaysia — Company-stated relationship with ChatBrilliant Partners, Southeast Asia hub, Kuala Lumpur and Singapore offices, and AI-driven ChatBrilliant Content Library. No product launch date or independent functionality validation provided.",
+    "2026-11-11 — https://www.mfa.gov.cn/eng/xw/fyrbt/lxjzh/202405/t20240530_11347518.html — Primary foreign ministry transcript dated May 9, 2023 names Capvision in questions and acknowledges national security enforcement in response. Retained only that narrow historical statement; removed unsupported Western regulatory scrutiny, remittance figures, broadcast duration and rectification-completion claims.",
+    "2026-11-11 — https://www.linkedin.com/company/capvision and https://sg.linkedin.com/company/capvision-malaysia — Research Platform is an editorial category based on the described research services, proprietary CRM and content library, not a scale ranking or Asia-specialist claim. Global reflects company-stated worldwide clients and expert reach, not independently measured regional depth. No legal-entity rename is inferred from the Malaysia page’s ChatBrilliant relationship statement."
   ],
   "whyChoose": [
-    "Unmatched Asia-Pacific coverage",
-    "Multilingual expert access",
-    "Cross-border research strength",
-    "Broad service suite beyond calls"
+    "Expert consultations",
+    "Translation on request",
+    "Surveys and customized research"
   ],
   "whenNotIdeal": [
-    "Regulatory risk concerns from 2023 events",
-    "Weaker Western-only coverage",
-    "Less tech-forward than newer competitors",
-    "Compliance complexity for risk-sensitive clients"
+    "Need published buyer pricing",
+    "Need independently verified scale",
+    "Need fully documented compliance controls"
   ],
   "confidence": {
-    "founded": "verified",
-    "headquarters": "verified",
+    "founded": "partially-unverifiable",
+    "headquarters": "partially-unverifiable",
     "expertCount": "positioning",
-    "employeeCount": "partially-unverifiable",
-    "pricingModel": "inference",
-    "services": "verified",
-    "compliance": "verified",
-    "overview": "verified",
-    "history": "verified",
+    "employeeCount": "positioning",
+    "services": "positioning",
+    "overview": "positioning",
+    "history": "partially-unverifiable",
     "servicesDetailed": "positioning",
     "aiPlatform": "positioning",
-    "complianceExtended": "verified",
-    "clientFit": "inference"
+    "complianceExtended": "partially-unverifiable",
+    "clientFit": "inference",
+    "aiCapabilities": "positioning",
+    "keyDifferentiators": "positioning",
+    "strengths": "positioning",
+    "bestFor": "inference",
+    "categoryBadge": "inference",
+    "regionStrength": "positioning",
+    "deliveryModel": "inference",
+    "notableFacts": "positioning"
+  },
+  "employeeCountSource": "Capvision About page; undated company disclosure read 2026-11-11",
+  "expertCountLabel": "Industry experts reported by Capvision",
+  "comparison": {
+    "expertCalls": null,
+    "surveys": null,
+    "contentLibrary": null,
+    "complianceTools": null
+  },
+  "pricingModel": "Not disclosed",
+  "pricingDetail": "Not disclosed",
+  "compliance": {
+    "mnpiPolicy": "Not disclosed",
+    "expertVetting": "Not disclosed",
+    "auditTrail": null,
+    "coolingOffPeriod": "Not disclosed"
   }
 }

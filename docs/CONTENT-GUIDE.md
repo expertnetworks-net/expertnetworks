@@ -22,6 +22,14 @@ The site publishes facts about real companies. A wrong fact damages the trust in
 9. Do not copy long text from a source. Summarize in your own words. Keep a neutral tone.
 10. Do not change an existing fact unless a source shows that it is wrong or out of date.
 
+### Unknown values
+
+**Remove a claim, keep the field explicit.** When verification drops a value used by a table or facts display, retain `"Not disclosed"` for text or `null` for a boolean/capability. Do not invent a replacement or use `false` to mean unknown. Optional fields omitted in older records also render as “Not disclosed”. Empty lists have the same display fallback.
+
+Boolean fields in `comparison` and `compliance.auditTrail` have three states: `true` (Yes), `false` (No, only for an established negative), and `null` (Not disclosed). Their schema default is `null`; absence must never manufacture a negative. Missing and explicit unknown values appear as muted text in the compare matrix and directory. The integrity check validates rendered cells, not whether a provider publishes every fact.
+
+Remove badges and preset memberships whose capability implication is no longer supported by the profile. Do not restore a claim just to keep a badge or a preset. Compare pricing, services, AI capability lists, and caveats read the collection; compare-only AI assessments may be `null` when no supported assessment remains. Check editorial pages and metadata for repeated claims after each profile verification.
+
 Confidence values for provider fields:
 
 | Value | Use it when |
@@ -179,7 +187,7 @@ All fields in this table are `string[]` with default `[]`.
 
 ### 7.4 Classification (enums)
 
-All fields in this table are optional in the schema. All existing providers set them. The directory filters use them.
+All fields in this table are optional in the schema. Omit an unsupported badge instead of restoring an unverified capability. The directory filters use supported values.
 
 | Field | Permitted values |
 |---|---|
@@ -193,8 +201,8 @@ All fields in this table are optional in the schema. All existing providers set 
 
 | Field | Shape | Notes |
 |---|---|---|
-| `compliance` | `{ mnpiPolicy?, expertVetting?, coolingOffPeriod?, regulatoryHistory?: string; auditTrail: boolean (default false) }` | Optional. |
-| `comparison` | `{ expertCalls, surveys, complianceTools: boolean; contentLibrary, aiMatching: boolean or string }` | Optional. All defaults are `false`. The compare matrix reads these values. |
+| `compliance` | `{ mnpiPolicy?, expertVetting?, coolingOffPeriod?, regulatoryHistory?: string; auditTrail: boolean or null (default null) }` | Optional. |
+| `comparison` | `{ expertCalls, surveys, complianceTools: boolean or null; contentLibrary, aiMatching: boolean, string, or null }` | Optional. Capability defaults are `null` (unknown). The compare matrix reads these values. |
 | `overview` | string | Optional. Long text for the provider page. |
 | `history` | `{ narrative: string; timeline: { year: string; event: string }[] }` | Optional. |
 | `servicesDetailed` | `{ name: string; description: string }[]` | Default `[]`. |
@@ -219,9 +227,7 @@ The design of the compare page is in [`ARCHITECTURE.md`](ARCHITECTURE.md), secti
 | `substituteTypes` | Yes | Map from provider type to its relation label, for example `Direct peer`. |
 | `comparisonNote` | Yes | Note below the goal buttons. |
 | `contextualDisclaimers` | Yes | Disclaimer text for `pricing`, `scale`, `ai`, and `compliance`. |
-| `presetMeta` | No | Labels and descriptions for presets. No code reads this key. |
-| `buyerPathwayGroups` | No | No code reads this key. |
-| `explainableInsights` | No | No code reads this key. |
+| `presetMeta` | Yes | Labels and descriptions for the preset cards on the homepage (`src/pages/index.astro`). |
 
 Row fields in `sections[].rows[]`:
 
@@ -241,10 +247,10 @@ Fields of `enriched.<slug>`:
 | Field | Content |
 |---|---|
 | `providerType` | Must be a key of `substituteTypes`. |
-| `officialAIProducts` | Product names from official sources. |
-| `weakness` | The primary trade-off. |
+| `officialAIProducts` | Legacy data; the matrix uses the profile’s `aiCapabilities` list. |
+| `weakness` | Legacy data; the matrix uses the profile’s `caveats` list. |
 | `scaleEvidence`, `employeeEvidence` | Evidence label, for example `Company-Stated`, `Inferred`, `Estimated`. |
-| `ai` | Six capabilities: `matchingAI`, `libraryQA`, `synthesis`, `agents`, `interviewing`, `complianceAI`. Each value is an array: status, evidence label, optional note. |
+| `ai` | Six capabilities: `matchingAI`, `libraryQA`, `synthesis`, `agents`, `interviewing`, `complianceAI`. Each value is an array (status, evidence label, optional note), or `null` for unknown. Keep supported assessments aligned with the profile’s AI fields; do not blank them just because another capability is unconfirmed. Include the primary source URL in the assessment note. Expert matching reads `comparison.aiMatching` from the profile instead. |
 
 The `ai` status values in use are `Publicly documented`, `Publicly indicated`, `Limited public evidence`, and `Not publicly clear`.
 

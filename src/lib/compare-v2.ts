@@ -18,7 +18,7 @@ export const compareGoals = [
   { id: 'transcript-research', label: 'Transcript-led research', preset: 'library' },
   { id: 'ai-sourcing', label: 'AI-supported sourcing', preset: 'aiMatching' },
   { id: 'ai-synthesis', label: 'AI-supported synthesis', preset: 'aiResearch' },
-  { id: 'compliance', label: 'Lowest compliance risk', preset: 'leaders' },
+  { id: 'compliance', label: 'Compliance comparison', preset: 'leaders' },
   { id: 'consulting', label: 'Best for consulting', preset: 'consulting' },
   { id: 'pe', label: 'Best for private equity', preset: 'pe' },
   { id: 'hedge-funds', label: 'Best for hedge funds', preset: 'publicMarkets' },
@@ -87,7 +87,16 @@ const aiBadgeColors: Record<string, string> = {
   'Limited AI Detail': 'bg-amber-500/12 text-amber-700',
 };
 
-const EMPTY_CELL = '<span class="cell-empty" aria-label="No public data">&ndash;</span>';
+const EMPTY_CELL = '<span class="cell-empty">Not disclosed</span>';
+const NO_CELL = '<span class="cell-no">No</span>';
+
+export function isUnknown(value: any): boolean {
+  return value == null || (typeof value === 'string' && (!value.trim() || /^(not (disclosed|publicly (disclosed|verified|clear|detailed))|unknown)$/i.test(value.trim()))) || (Array.isArray(value) && !value.length);
+}
+
+export function hasCapability(value: any): boolean {
+  return value === true || (typeof value === 'string' && !isUnknown(value));
+}
 
 const YES_CELL = '<span class="cell-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Yes</span>';
 
@@ -174,6 +183,7 @@ function getCellValue(dataset: CompareDataset, slug: string, row: any): any {
 
 function getComparableValue(dataset: CompareDataset, slug: string, row: any): any {
   const value = getCellValue(dataset, slug, row);
+  if (isUnknown(value) || (Array.isArray(value) && isUnknown(value[0]))) return null;
   return Array.isArray(value) ? value[0] : value;
 }
 
@@ -183,7 +193,7 @@ function isSameRow(dataset: CompareDataset, activeSlugs: string[], row: any): bo
 }
 
 function renderCapabilityValue(value: any, showNotes: boolean): string {
-  if (!Array.isArray(value)) return '<span class="cell-empty">Not publicly clear</span>';
+  if (!Array.isArray(value) || isUnknown(value[0])) return EMPTY_CELL;
   const note = showNotes && value[2] ? `<div class="cell-note">${escapeHtml(value[2])}</div>` : '';
   return `<div class="flex flex-col gap-1"><span class="data-pill ${capabilityPillClass(value[0])}">${escapeHtml(value[0])}</span>${note}</div>`;
 }
@@ -191,6 +201,7 @@ function renderCapabilityValue(value: any, showNotes: boolean): string {
 function renderCellValue(dataset: CompareDataset, slug: string, row: any, showNotes: boolean): string {
   const value = getCellValue(dataset, slug, row);
   const type = row.type;
+  if (isUnknown(value)) return EMPTY_CELL;
   if (type === 'capability') return renderCapabilityValue(value, showNotes);
   if (type === 'chip-provider') {
     if (!value) return EMPTY_CELL;
@@ -203,17 +214,20 @@ function renderCellValue(dataset: CompareDataset, slug: string, row: any, showNo
   if (type === 'product-names') {
     if (!value) return EMPTY_CELL;
     const products = String(value).split(',').map((p: string) => p.trim()).filter(Boolean);
+    if (!products.length) return EMPTY_CELL;
     return `<div class="flex flex-wrap gap-1.5">${products.map((p: string) => `<span class="inline-flex items-center rounded-lg border border-[#d8dae0] bg-[#f0f1f4] px-2 py-1 text-[11px] font-semibold text-[#1d1d1f] leading-tight">${escapeHtml(p)}</span>`).join('')}</div>`;
   }
   if (type === 'text-evidence') {
     if (value == null || value === '') return EMPTY_CELL;
-    const evidence = dataset.enriched[slug]?.[row.evidenceField] || 'Inferred';
+    const confidence = dataset.networkDataMap[slug]?.confidence?.[row.key];
+    const evidence = ({ verified: 'Verified', positioning: 'Company-Stated', inference: 'Inferred', 'partially-unverifiable': 'Unconfirmed' } as Record<string, string>)[confidence] || dataset.enriched[slug]?.[row.evidenceField] || 'Inferred';
     return `<div class="inline-flex items-center gap-2"><span class="text-[13px] text-primary">${escapeHtml(value)}</span><span class="ev-dot ${evidenceDotClass(evidence)}" title="${escapeHtml(evidence)}"></span><span class="sr-only">(${escapeHtml(evidence)})</span></div>`;
   }
   if (type === 'text-italic') return value ? `<span class="text-[12px] italic leading-relaxed text-[#515154]">${escapeHtml(value)}</span>` : EMPTY_CELL;
-  if (type === 'boolean') return value === true ? YES_CELL : EMPTY_CELL;
+  if (type === 'boolean') return value === true ? YES_CELL : value === false ? NO_CELL : EMPTY_CELL;
   if (type === 'boolean-or-string') {
     if (value === true) return YES_CELL;
+    if (value === false) return NO_CELL;
     if (typeof value === 'string') return `<span class="text-[12px] font-medium text-primary">${escapeHtml(value)}</span>`;
     return EMPTY_CELL;
   }
@@ -229,11 +243,14 @@ function renderCellValue(dataset: CompareDataset, slug: string, row: any, showNo
       : badgeColors;
     return `<span class="inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold ${palette[value] || 'bg-slate-100 text-slate-700'}">${escapeHtml(value)}</span>`;
   }
+  if (type === 'text-list') {
+    if (!Array.isArray(value) || !value.length) return EMPTY_CELL;
+    return `<ul class="list-disc pl-4 space-y-2 text-[12px] leading-relaxed text-secondary">${value.map((item: string) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`;
+  }
   if (type === 'list') {
     if (!Array.isArray(value) || value.length === 0) return EMPTY_CELL;
-    const items = value.slice(0, 3).map((item: string) => `<span class="inline-flex rounded-full bg-[#f5f5f7] px-2 py-1 text-[11px] font-medium text-[#515154]">${escapeHtml(item)}</span>`).join('');
-    const extra = value.length > 3 ? `<span class="text-[11px] text-secondary">+${value.length - 3}</span>` : '';
-    return `<div class="flex flex-wrap gap-1.5">${items}${extra}</div>`;
+    const items = value.map((item: string) => `<span class="inline-flex rounded-full bg-[#f5f5f7] px-2 py-1 text-[11px] font-medium text-[#515154]">${escapeHtml(item)}</span>`).join('');
+    return `<div class="flex flex-wrap gap-1.5">${items}</div>`;
   }
   if (type === 'best-fit') return value ? `<span class="text-[13px] text-primary">${escapeHtml(value)}</span>` : EMPTY_CELL;
   if (value != null && value !== '') return `<span class="text-[13px] text-primary">${escapeHtml(value)}</span>`;
@@ -295,6 +312,7 @@ function renderComparisonTable(entries: any[], dataset: CompareDataset, activeSl
 
 export function projectCompareNetwork(data: any) {
   return {
+    confidence: data.confidence || {},
     slug: data.slug,
     name: data.name,
     shortName: data.shortName,
@@ -305,6 +323,8 @@ export function projectCompareNetwork(data: any) {
     pricingModel: data.pricingModel || '',
     pricingDetail: data.pricingDetail || '',
     bestFor: data.bestFor || [],
+    aiCapabilities: data.aiCapabilities || [],
+    caveats: data.caveats || [],
     keyDifferentiators: data.keyDifferentiators || [],
     regionStrength: data.regionStrength || '',
     expertCount: data.expertCount || '',

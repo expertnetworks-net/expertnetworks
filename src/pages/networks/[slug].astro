@@ -47,16 +47,17 @@ const tocSections: {id: string; label: string}[] = [
   { id: 'compare', label: 'Compare' },
 ];
 
+const known = (v: unknown): v is string => typeof v === 'string' && v.trim() !== '' && !/^not (publicly )?(disclosed|verified)/i.test(v);
 // Build FAQ entries from available data
 const shortName = d.name.split(' (')[0];
 const faqEntries: {question: string; answer: string}[] = [];
-if (d.pricingModel) {
+if (known(d.pricingModel)) {
   faqEntries.push({
     question: `What is ${shortName}'s pricing model?`,
-    answer: `${shortName} uses a ${d.pricingModel.toLowerCase()} pricing model.${d.pricingDetail ? ' ' + d.pricingDetail : ''}`,
+    answer: `${shortName} uses a ${d.pricingModel.toLowerCase()} pricing model.${known(d.pricingDetail) ? ' ' + d.pricingDetail : ''}`,
   });
 }
-if (d.expertCount) {
+if (known(d.expertCount)) {
   faqEntries.push({
     question: `How many experts does ${shortName} have?`,
     answer: `${shortName} has ${d.expertCount} ${d.expertCountLabel || 'experts'} in its network.`,
@@ -74,7 +75,7 @@ if (d.bestFor?.length) {
     answer: `${shortName} is best suited for ${d.bestFor.slice(0, 3).join(', ')}.`,
   });
 }
-if (d.headquarters) {
+if (known(d.headquarters)) {
   faqEntries.push({
     question: `Where is ${shortName} headquartered?`,
     answer: `${shortName} is headquartered in ${d.headquarters}${d.founded ? ' and was founded in ' + d.founded : ''}.`,
@@ -169,7 +170,7 @@ const hasVsPages = vsPages[d.slug] || [];
 
 <BaseLayout
   title={`${d.name} Review (2026): Pricing, Compliance & Expert Coverage | ExpertNetworks.net`}
-  description={`${d.name} expert network review: ${d.expertCount ? d.expertCount + ' experts, ' : ''}${d.pricingModel ? d.pricingModel.toLowerCase() + ' pricing, ' : ''}${d.headquarters ? d.headquarters + ', ' : ''}founded ${d.founded || 'N/A'}. Independent analysis of services, compliance, and AI capabilities.`}
+  description={`${d.name} expert network review: ${known(d.expertCount) ? d.expertCount + ' experts, ' : ''}${known(d.pricingModel) ? d.pricingModel.toLowerCase() + ' pricing, ' : ''}${known(d.headquarters) ? d.headquarters + ', ' : ''}founded ${d.founded || 'N/A'}. Independent analysis of services, compliance, and AI capabilities.`}
   ogType="article"
   canonicalPath={`/networks/${d.slug}/`}
   jsonLd={{
@@ -248,7 +249,7 @@ const hasVsPages = vsPages[d.slug] || [];
               )}
               <div class="min-w-0">
                 <div class:list={['text-[13px] font-medium truncate', n.data.slug === d.slug ? 'text-white' : 'text-primary']}>{n.data.name.split(' (')[0]}</div>
-                <div class:list={['text-[11px] truncate', n.data.slug === d.slug ? 'text-white/80' : 'text-secondary']}>{n.data.expertCount} experts</div>
+                <div class:list={['text-[11px] truncate', n.data.slug === d.slug ? 'text-white/80' : 'text-secondary']}>{known(n.data.expertCount) ? `${n.data.expertCount} experts` : n.data.type}</div>
               </div>
               {n.data.slug === d.slug && (
                 <svg class="w-4 h-4 ml-auto flex-shrink-0 text-white/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
@@ -334,7 +335,7 @@ const hasVsPages = vsPages[d.slug] || [];
               )}
               <div class="min-w-0">
                 <div class:list={['text-[13px] font-medium truncate', n.data.slug === d.slug ? 'text-white' : 'text-primary']}>{n.data.name.split(' (')[0]}</div>
-                <div class:list={['text-[11px] truncate', n.data.slug === d.slug ? 'text-white/80' : 'text-secondary']}>{n.data.expertCount} experts</div>
+                <div class:list={['text-[11px] truncate', n.data.slug === d.slug ? 'text-white/80' : 'text-secondary']}>{known(n.data.expertCount) ? `${n.data.expertCount} experts` : n.data.type}</div>
               </div>
             </a>
           ))}
@@ -440,21 +441,21 @@ const hasVsPages = vsPages[d.slug] || [];
           <!-- Key facts -->
           {(d.expertCount || d.employeeCount || d.pricingModel) && (
             <dl class="pf-stats">
-              {d.expertCount && (
+              {known(d.expertCount) && (
                 <div class="pf-stat">
                   <dt>{d.expertCountLabel || 'Experts'}</dt>
                   <dd><span class="pf-stat-value">{d.expertCount}</span><Fragment set:html={badgeFor('expertCount')} /></dd>
                 </div>
               )}
-              {d.employeeCount && (
+              {known(d.employeeCount) && (
                 <div class="pf-stat">
                   <dt>{d.employeeCountSource || 'Employees'}</dt>
                   <dd><span class="pf-stat-value">{d.employeeCount}</span><Fragment set:html={badgeFor('employeeCount')} /></dd>
                 </div>
               )}
-              {d.pricingModel && (
+              {known(d.pricingModel) && (
                 <div class="pf-stat">
-                  <dt>{d.pricingDetail || 'Pricing'}</dt>
+                  <dt>{known(d.pricingDetail) ? d.pricingDetail : 'Pricing'}</dt>
                   <dd><span class="pf-stat-value">{d.pricingModel}</span><Fragment set:html={badgeFor('pricingModel')} /></dd>
                 </div>
               )}
@@ -801,7 +802,7 @@ const hasVsPages = vsPages[d.slug] || [];
                     )}
                     <div>
                       <dt>Audit trail</dt>
-                      <dd class={d.compliance.auditTrail ? 'font-semibold text-emerald-700' : ''}>{d.compliance.auditTrail ? 'Yes' : 'No'}</dd>
+                      <dd class={d.compliance.auditTrail === true ? 'font-semibold text-emerald-700' : ''}>{d.compliance.auditTrail === true ? 'Yes' : d.compliance.auditTrail === false ? 'No' : 'Not disclosed'}</dd>
                     </div>
                     {d.compliance.regulatoryHistory && (
                       <div><dt>Regulatory history</dt><dd>{d.compliance.regulatoryHistory}</dd></div>

@@ -8,273 +8,287 @@
   "gradientTo": "#059669",
   "type": "Expert Network / B2B Information Services",
   "founded": 2015,
-  "headquarters": "London, UK (28 Margaret Street, Marylebone, W1W 8RZ — registered HQ); operational hub in Athens, Greece",
+  "headquarters": "London, UK (registered office: 28 Margaret Street, 2nd Floor, Marylebone, W1W 8RZ); major operations in Athens and Thessaloniki, Greece",
   "employeeCount": "1,600+",
-  "employeeCountSource": "Employees (company claim, July 2026 announcement and About page: \"1600+ professionals from 60+ nationalities\"; previously 1,400+ as of Aug 2025; RocketReach ~2,270 — variation likely due to contractor inclusion)",
-  "expertCount": "750,000+",
-  "expertCountLabel": "Vetted subject-matter experts (company-stated; also references 1M+ 'knowledge connectors')",
-  "description": "Dialectica is a fast-growing B2B information services firm founded in 2015 by George Tsarouchas and Frederick Corkett. The company started in Athens with a small London sales office and has grown to 1,400+ employees across six offices on three continents, crossing $100 million in annual revenue. Dialectica differentiates through its Athens-based operational model (which the firm positions as enabling competitive pricing relative to London/NYC-based peers), aggressive AI investment ($25M+ in tech, 50+ GenAI tools, Dialectica IQ knowledge graph), and its Origin deal-sourcing platform for private equity. Named to the FT 1000 (Europe's fastest-growing companies) for five consecutive years (2021-2025). The company is entirely bootstrapped and founder-owned.",
+  "employeeCountSource": "Company-stated: more than 1,600 employees in the July 1, 2026 announcement; About page also lists 1,600+ professionals (reviewed November 11, 2026)",
+  "expertCount": "750,000",
+  "expertCountLabel": "Expert community (company-stated on the platform page; separately lists 1M knowledge connectors)",
+  "description": "Dialectica is a B2B information services firm founded in 2015 by George Tsarouchas and Frederick Corkett. The company reports more than 1,600 employees as of July 2026. Its products include expert calls, B2B surveys, bespoke Insights reports, Origin company intelligence, and Executive Partnerships. Dialectica describes its AI infrastructure as a combination of its Dialectica IQ knowledge graph and more than 50 GenAI tools. In March 2026, it announced its sixth consecutive appearance in the FT1000 and reported investing over $30 million in AI and technology during the preceding three years.",
   "services": [
     "Calls (Expert Consultations)",
     "B2B Surveys",
     "Insights (Written Reports)",
-    "Origin (Deal Sourcing Platform)",
-    "Dialectica IQ (Knowledge Graph & Content Platform)"
+    "Origin (Company & Market Intelligence)",
+    "Executive Partnerships",
+    "Dialectica IQ (Knowledge Graph)"
   ],
   "aiCapabilities": [
-    "Dialectica IQ knowledge graph (80M+ company/market records)",
-    "50+ advanced GenAI tools",
-    "Proprietary AI agents",
-    "AI-assisted expert matching",
-    "100+ software engineers, data scientists, and product specialists",
-    "Automated compliance monitoring"
+    "Dialectica IQ knowledge graph (company-stated: 80M company and market records)",
+    "50+ GenAI tools (company-stated)",
+    "Proprietary AI agents (company-stated)",
+    "AI-powered call transcripts and executive summaries",
+    "Origin MCP connector for cited research in Claude and other MCP clients"
   ],
   "industries": [
     "Private Equity",
     "Management Consulting",
     "Corporate Strategy",
-    "Healthcare / Life Sciences",
+    "Healthcare",
     "Technology",
     "Financial Services",
     "Investment Banking"
   ],
-  "pricingModel": "Credit-based",
-  "pricingDetail": "Credit system (~$700–$1,100/call client-side; multiple credits may apply per call)",
+  "pricingModel": "Packages / Pay-as-you-go (corporate offering)",
+  "pricingDetail": "Dialectica states that corporate clients can use packages or pay-as-you-go agreements, with pay-as-you-go usually carrying a premium. No client per-call price was verified in the sources reviewed; request a quote for the intended service.",
   "keyDifferentiators": [
-    "Athens-based operations model — positioned as enabling competitive pricing relative to London/NYC peers",
-    "Heavy AI investment: 50+ GenAI tools, Dialectica IQ knowledge graph, $25M+ reported tech spend",
-    "Origin deal-sourcing platform for PE (unique in expert network space)",
-    "70% lifetime CAGR (60% CAGR 2019-2024)",
-    "Strong European and emerging market presence",
-    "Appointed Jason Howard (former Tegus General Counsel & CCO, ex-SEC) as Chief Legal & Regulatory Officer (Jan 2025)"
+    "Custom expert recruitment: Dialectica says over 65% of call expert profiles are first-time, custom-recruited professionals",
+    "Company-reported investment of over $30M in AI and technology during the three years preceding March 2026",
+    "Origin combines company intelligence with interview transcripts and deal alerts",
+    "Jason Howard appointed Chief Legal & Regulatory Officer in January 2025"
   ],
   "bestFor": [
-    "Private equity deal teams (especially via Origin platform)",
-    "Consulting firms needing high-quality curated interactions",
-    "European and emerging market research",
-    "Teams seeking AI-augmented research workflows",
-    "Teams seeking competitive pricing with premium-quality service"
+    "Private equity deal teams using Origin for target screening",
+    "Consulting firms commissioning expert calls and surveys",
+    "Corporate teams seeking bespoke research reports",
+    "Teams seeking expert transcripts and cited research through an MCP connector"
   ],
-  "compliance": {
-    "mnpiPolicy": "Structured MNPI policies with compliance screening integrated into platform workflow",
-    "expertVetting": "Technology-assisted vetting with human compliance review; proprietary AI-powered compliance monitoring",
-    "coolingOffPeriod": "Standard cooling-off periods enforced",
-    "auditTrail": true,
-    "regulatoryHistory": "No known regulatory enforcement actions against Dialectica. In January 2025, Dialectica appointed Jason Howard as Chief Legal & Regulatory Officer. Howard previously served as General Counsel & Chief Compliance Officer at Tegus (~5 years) and spent 13 years at the SEC Division of Enforcement — a significant compliance infrastructure investment as the firm scales into larger institutional accounts."
-  },
   "featured": true,
   "priority": 3,
   "published": true,
   "categoryBadge": "Fast-Growing",
   "deliveryModel": "Hybrid",
   "regionStrength": "Global",
-  "complianceBadge": "Strong Compliance",
-  "aiBadge": "AI-Native",
+  "complianceBadge": "Compliance Tools",
+  "aiBadge": "AI Research",
   "comparison": {
     "expertCalls": true,
-    "contentLibrary": "Insights",
-    "aiMatching": true,
+    "contentLibrary": "Origin transcripts and expert-content repository (company-stated)",
+    "aiMatching": null,
     "surveys": true,
     "complianceTools": true
   },
   "lastUpdated": "2026-11-11",
-  "overview": "Dialectica is a B2B information services firm that has grown from a small Athens-based startup in 2015 to one of the fastest-growing expert networks globally. The company's model is built on running operations primarily from Athens rather than London or New York — a structure the firm positions as enabling competitive pricing while maintaining high service quality. This has fueled a 70% lifetime CAGR (60% for 2019-2024) and revenue crossing $100 million. Dialectica is now pushing aggressively into AI with its Dialectica IQ knowledge graph, 50+ GenAI tools, and Origin deal-sourcing platform, while expanding its compliance infrastructure by appointing Jason Howard (former General Counsel & CCO at Tegus, 13 years at SEC Enforcement) as Chief Legal & Regulatory Officer. The firm was upgraded to 'Global Leader' status by Inex One in 2024 and has publicly stated its ambition to become a top-three global information services firm by 2035.",
+  "overview": "Dialectica is a B2B information services firm founded in 2015, with its first offices in London and Athens. The company combines custom expert recruitment with surveys, written research, company intelligence and senior-advisor searches. In its July 9, 2025 anniversary announcement, Dialectica reported annual revenue exceeding $100 million. It now reports more than 1,600 employees and describes Dialectica IQ as the knowledge graph behind its products. Its March 2026 announcement reports a sixth consecutive FT1000 appearance and over $30 million invested in AI and technology during the preceding three years. Origin now documents embedded interview transcripts and an MCP connector for searching and synthesizing research inside AI tools.",
   "history": {
-    "narrative": "Dialectica was co-founded in 2015 by George Tsarouchas (CEO) and Frederick Corkett. Tsarouchas previously worked for institutional investors (specific firm not publicly named; a Goldman Sachs attribution appears in one third-party source but is unverified). Corkett was a strategy consultant at AMR International. Note: some sources attribute an AlphaSights background to the founders, but this appears to be a misreading of Sacra's description of the business model Dialectica replicated, not an employment history. They started the company in Athens, Greece with a small sales office in London, deliberately choosing Athens for its talent pool and cost advantages during Greek capital controls. The firm grew rapidly, earning a place on the FT 1000 (Europe's fastest-growing companies) for five consecutive years (2021-2025) and crossing $100 million in revenue. The company is entirely bootstrapped and founder-owned, with no confirmed external funding.",
+    "narrative": "Dialectica was co-founded in 2015 by George Tsarouchas and Frederick Corkett. Its About page identifies Tsarouchas as CEO and Corkett as Managing Director, and records its first offices in London and Athens, its Montreal opening in 2020 and New York opening in 2021. The company reported annual revenue exceeding $100 million in its July 9, 2025 anniversary announcement. Its March 2026 announcement reports its sixth consecutive inclusion in the FT1000.",
     "timeline": [
       {
         "year": "2015",
-        "event": "Founded in Athens by George Tsarouchas and Frederick Corkett; small sales office in London"
+        "event": "Founded by George Tsarouchas and Frederick Corkett; first offices in London and Athens."
       },
       {
         "year": "2020",
-        "event": "Montreal office opened to serve the Americas"
+        "event": "First Americas office opened in Montreal, according to the company timeline."
       },
       {
         "year": "2021",
-        "event": "Named fastest-growing expert network in Europe (FT 1000); opens New York sales office and Vancouver recruitment office"
-      },
-      {
-        "year": "2021–2025",
-        "event": "Named to FT 1000 (Europe's fastest-growing companies) for five consecutive years"
-      },
-      {
-        "year": "2023",
-        "event": "Expands to Bogotá, Colombia and Ho Chi Minh City, Vietnam; major senior leadership transition (new CFO, Product VP, regional heads)"
+        "event": "New York office opened, according to the company timeline."
       },
       {
         "year": "2024",
-        "event": "Revenue reaches ~$121M (Sacra estimate, 39% YoY); upgraded to 'Global Leader' by Inex One; launches Origin deal-sourcing platform; opens Thessaloniki office"
+        "event": "Sacra estimates revenue of $121.3M, up approximately 39% year over year; this is a third-party estimate."
       },
       {
         "year": "2025-01",
-        "event": "Appoints Jason Howard (former Tegus General Counsel & CCO, 13 years SEC Enforcement) as Chief Legal & Regulatory Officer"
+        "event": "Announces Jason Howard as Chief Legal & Regulatory Officer on January 30."
       },
       {
         "year": "2025-07",
-        "event": "Appoints Dimitris Psaltoulis as Chief People Officer; rebrands domain from dialecticanet.com to dialectica.io"
+        "event": "July 9 anniversary post reports annual revenue exceeding $100M; July 18 announcement names Dimitris Psaltoulis as Chief People Officer."
       },
       {
-        "year": "2025-08",
-        "event": "Celebrates 10th anniversary; announces revenue exceeding $100M, 1,400+ employees across 6 offices, 67 nationalities represented"
-      },
-      {
-        "year": "2026",
-        "event": "Steers Asia-Pacific expansion from Ho Chi Minh City, Vietnam; reiterates ambition to become a top-three global information services firm by 2035"
+        "year": "2026-01",
+        "event": "UN Global Compact participant since January 8, according to its official participant record."
       },
       {
         "year": "2026-03",
-        "event": "Named to FT1000 Europe's Fastest-Growing Companies for the sixth consecutive year; states it has invested over $30M in AI and technology over three years"
+        "event": "Reports its sixth consecutive FT1000 appearance and over $30M invested in AI and technology during the preceding three years."
+      },
+      {
+        "year": "2026-04",
+        "event": "Reports that its Ho Chi Minh City office has more than 120 professionals and supports APAC expansion; announces renewed Great Place to Work certification in Vietnam."
       },
       {
         "year": "2026-07",
-        "event": "Announces up to 25% increase in Client Service starting pay in Greece effective September 1, 2026; reports more than 1,600 employees worldwide"
+        "event": "Reports more than 1,600 employees and announces up to a 25% increase in Client Service base pay in Greece, effective September 1, 2026."
       }
     ]
   },
   "servicesDetailed": [
     {
       "name": "Expert Calls",
-      "description": "Dialectica's core offering: one-on-one and multi-party consultations with custom-sourced experts. The firm emphasizes high curation quality — a 1,000+ strong operations team based primarily in Athens manages expert sourcing, scheduling, and compliance. The firm positions its Athens-based operational model as enabling competitive pricing relative to London/NYC-headquartered peers."
+      "description": "One-on-one consultations with custom-sourced experts. Dialectica says over 65% of call expert profiles are first-time, custom-recruited professionals. Its corporate offering includes AI-powered call transcripts and executive summaries."
     },
     {
       "name": "B2B Surveys",
-      "description": "Scalable B2B surveys sourced through Dialectica's expert network and broader respondent panels. Surveys are designed for market sizing, competitive benchmarking, customer sentiment, and pricing studies. Can be paired with follow-up expert calls for deeper exploration."
+      "description": "End-to-end B2B surveys covering custom respondent recruitment, questionnaire design, programming, fieldwork and live results. Dialectica describes use cases including customer research, competitive benchmarking, pricing strategy and due diligence. Respondents can be selected for follow-up calls."
     },
     {
       "name": "Insights (Written Reports)",
-      "description": "Consultant-style written deliverables delivered in 3-5 business days. Unlike competitors' searchable transcript libraries (Tegus, Third Bridge), Dialectica's Insights product is a bespoke research output — expert-sourced analysis and synthesis tailored to the client's specific question, enriched by AI-powered tools and the Dialectica IQ knowledge graph."
+      "description": "Bespoke written research for market sizing, competitive positioning, customer insights and M&A target assessment. Dialectica says its team combines expert interviews, public sources and internal data, and describes a 3–5 business-day turnaround for requested company reports."
     },
     {
-      "name": "Origin (Deal Sourcing Platform)",
-      "description": "A self-service deal-sourcing and market intelligence platform built for private equity, venture capital, and corporate strategy teams. Origin provides expert-vetted company snapshots, qualitative deal intelligence, and CRM integration. It targets workflow budgets currently allocated to deal-sourcing databases by offering the 'critical context that data tables miss.' Origin represents Dialectica's push beyond traditional expert calls into structured data products."
+      "name": "Origin (Company & Market Intelligence)",
+      "description": "A deal-screening and company intelligence platform aimed at private equity teams. Dialectica describes expert-derived company profiles, embedded interview transcripts, target search and personalized deal alerts. Its MCP connector provides cited research within Claude and other compatible clients. No launch date for the MCP connector was verified."
     },
     {
-      "name": "Dialectica IQ (Knowledge Graph & Content Platform)",
-      "description": "Dialectica's proprietary knowledge graph structuring 80M+ company and market records plus metadata from 1M+ historical expert interactions. Unlike competitors' searchable transcript libraries (Tegus, Third Bridge), Dialectica IQ is architecturally different — a dynamic, continuously evolving graph that powers AI-driven insight extraction, expert recommendation, and automated research workflows. Includes 50+ GenAI tools layered on top."
+      "name": "Executive Partnerships",
+      "description": "Senior-advisor and chair searches for deal origination, due diligence and portfolio-company work. Dialectica describes tailored candidate profiles, introductory calls and ongoing advisor introductions."
+    },
+    {
+      "name": "Dialectica IQ (Knowledge Graph)",
+      "description": "Dialectica describes IQ as the knowledge graph behind its products. Its platform page lists 80M company and market records, 1M expert conversations and a community of 750,000 experts. These are company-stated scale figures, rather than independently audited counts."
     }
   ],
   "aiPlatform": {
-    "narrative": "Dialectica has made AI a central part of its identity and growth strategy. The firm positions itself as 'redefining how knowledge is discovered, indexed, and synthesized' through its Dialectica IQ knowledge graph — a dynamic, continuously evolving system that structures 80M+ company and market records and metadata from 1M+ historical expert interactions. The firm operates with 50+ advanced GenAI tools, proprietary AI agents, and a team of 100+ software engineers, data scientists, and product specialists ($25M+ invested in technology over the past 3 years). Datasets are enriched by a 1,000+ operations team, combining human intelligence with AI at scale. Notably, Dialectica does NOT offer a traditional searchable transcript library like Tegus or Third Bridge — its approach is knowledge-graph-first.",
+    "narrative": "Dialectica says its AI infrastructure combines the Dialectica IQ knowledge graph, more than 50 GenAI tools, proprietary AI agents and datasets enriched by a 1,000+ operations team. Its homepage lists 120+ technology and data professionals. In March 2026, it reported investing over $30M in AI and technology during the preceding three years. Its public product pages describe AI-powered transcripts and executive summaries, while Origin documents cited synthesis and transcript search through an MCP connector. These descriptions establish the advertised capabilities; they do not independently validate research quality or performance.",
     "features": [
-      "Dialectica IQ: Dynamic knowledge graph (80M+ company/market records, 1M+ historical expert interactions)",
-      "50+ advanced GenAI tools for research synthesis and insight extraction",
-      "Proprietary AI agents for automated research workflows",
-      "100+ software engineers, data scientists, and product specialists ($25M+ tech investment over 3 years)",
-      "1,000+ operations team enriching AI datasets with human intelligence",
-      "AI-powered compliance monitoring and expert matching",
-      "Origin platform with expert-vetted company intelligence for deal sourcing",
-      "First expert network to launch an AI Bootcamp for employee skill development (32,000+ training hours in 2025)"
+      "Dialectica IQ: company-stated corpus of 80M company and market records and 1M expert conversations",
+      "Company-stated 50+ GenAI tools and proprietary AI agents",
+      "Company-stated 120+ technology and data professionals and 1,000+ operations staff",
+      "AI-powered call transcripts and executive summaries",
+      "Origin MCP: cited synthesis across expert calls and company profiles, plus search across past project transcripts",
+      "Company reports 32,000+ total learning and development hours in 2025; these were not all AI training"
     ]
   },
   "complianceExtended": {
-    "narrative": "Dialectica has significantly invested in compliance infrastructure as it scales into larger institutional accounts. In January 2025, Dialectica appointed Jason Howard as Chief Legal & Regulatory Officer. Howard previously served as General Counsel & Chief Compliance Officer at Tegus (~5 years) and spent 13 years at the SEC Division of Enforcement. The firm uses technology-assisted vetting combined with human compliance review, and its proprietary AI tools include automated compliance monitoring capabilities. As a newer entrant (founded 2015), Dialectica's compliance infrastructure is less battle-tested than incumbents like GLG or Guidepoint, but the Howard appointment signals the firm is actively closing this gap.",
+    "narrative": "Dialectica announced Jason Howard as Chief Legal & Regulatory Officer on January 30, 2025, responsible for legal, compliance and Global Client Protection. The announcement says he previously spent nearly five years as General Counsel and Chief Compliance Officer at Tegus and over 13 years in the SEC Division of Enforcement. Dialectica describes expert screening and compliance review of Origin content. A Persona customer case study describes identity verification integrated into Dialectica workflows and tailored to client requirements; it presents verification of the entire network as a goal, rather than a completed rollout. Dialectica’s FAQ describes compliance tooling for identity verification, employment-history, adverse-news and sanctions checks. A standard cooling-off period and an audit trail covering every expert interaction were not established by the reviewed sources.",
     "highlights": [
-      "Jason Howard appointed Chief Legal & Regulatory Officer (Jan 2025) — former General Counsel & CCO at Tegus, 13 years at SEC Enforcement",
-      "Technology-assisted expert vetting with human compliance review",
-      "Proprietary AI-powered compliance monitoring",
-      "Structured MNPI policies integrated into platform workflow",
-      "Standard cooling-off periods enforced",
-      "Full audit trail of all expert interactions"
-    ],
-    "regulatoryContext": "No known regulatory enforcement actions against Dialectica were identified in this review. As a company founded in 2015, Dialectica is a newer entrant than the Big Five incumbents and has a shorter compliance track record. The January 2025 appointment of Jason Howard (former Tegus GC & CCO, 13 years SEC Enforcement) as Chief Legal & Regulatory Officer signals the firm's recognition that scaling into large institutional investor accounts requires more mature compliance infrastructure."
+      "Jason Howard appointment and remit documented in Dialectica’s January 2025 announcement",
+      "Origin content reviewed for relevance, quality and compliance, according to Dialectica",
+      "Persona case study describes configurable identity checks alongside manual expert screening",
+      "B2B Surveys page describes SurveyGuard anti-fraud checks and response-quality monitoring",
+      "Dialectica’s FAQ describes Persona identity verification and employment-history, adverse-news and sanctions screening"
+    ]
   },
   "clientFit": {
-    "narrative": "Dialectica is especially well suited for clients who want premium-quality expert interactions at competitive pricing. The firm positions its Athens-based operational model as enabling competitive pricing relative to London and New York-based peers. Origin makes it particularly strong for PE deal teams. The firm's European roots give it a natural advantage in European and emerging market research.",
+    "narrative": "Editorial assessment based on the advertised services: Dialectica is a fit to evaluate for private equity target screening, consulting research and corporate strategy work combining calls, surveys and bespoke reports. Origin is relevant to teams seeking company intelligence, interview transcripts and research within existing AI tools. Pricing and capability requirements should be checked against a service-specific proposal.",
     "segments": [
-      "Private equity deal teams (especially via Origin deal-sourcing platform)",
-      "Management consulting firms needing high-quality curated interactions",
-      "Corporate strategy teams at large enterprises",
-      "Investment banks requiring sector-specific expert access",
-      "Healthcare and life sciences investors",
-      "Teams focused on European and emerging market research"
+      "Private equity deal teams",
+      "Management consulting firms",
+      "Corporate strategy teams",
+      "Investment banks",
+      "Hedge funds and asset managers"
     ]
   },
   "strengths": [
-    "Exceptional growth trajectory — 70% lifetime CAGR (60% for 2019-2024), crossed $100M revenue, FT 1000 five consecutive years (2021-2025)",
-    "Athens-based operations model: positioned as enabling competitive pricing relative to London/NYC peers",
-    "Aggressive AI investment: $25M+ in tech, 50+ GenAI tools, Dialectica IQ knowledge graph, 100+ tech team",
-    "Origin platform — unique self-service deal-sourcing product for PE (not just expert calls)",
-    "Upgraded to 'Global Leader' by Inex One in 2024 — youngest firm in this tier",
-    "750,000+ vetted experts with 60%+ custom-sourced per project (not just database pulls)",
-    "1,000+ strong operations team enriching AI datasets with human intelligence",
-    "Entirely bootstrapped and founder-led — no external PE/VC funding",
-    "Strong European presence and emerging market coverage (Athens, Bogotá, Ho Chi Minh City, Thessaloniki)"
+    "Custom recruitment: Dialectica says over 65% of call expert profiles are first-time recruits",
+    "Company-reported AI and technology investment of over $30M during the three years preceding March 2026",
+    "Origin combines company intelligence, interview transcripts and deal alerts",
+    "Expert calls, surveys, bespoke reports and senior-advisor searches offered within one provider",
+    "Company reports its sixth consecutive FT1000 appearance in 2026",
+    "Operations in Europe, the Americas and Asia documented by the company"
   ],
   "caveats": [
-    "Younger company (founded 2015) — less established track record than Big Five incumbents",
-    "Credit-based pricing can be opaque — multiple credits per call may make effective price higher than expected",
-    "Compliance infrastructure is maturing (Jason Howard appointment in Jan 2025 signals this is still being built out)",
-    "Smaller than GLG, AlphaSights, Third Bridge, or Guidepoint by most measures",
-    "Employee count discrepancy: company says 1,400+; some third-party estimates suggest ~2,200",
-    "Glassdoor rating of 3.3/5 (621 reviews) — below consulting industry average of 3.7; recurring themes of high pressure, unrealistic targets, and high turnover",
-    "Move into light strategy consulting for PE (2024) risks alienating consulting firm clients who are a core customer segment",
-    "Does not offer a traditional searchable transcript library unlike Tegus and Third Bridge",
-    "Athens talent pool now contested — Guidepoint and GLG have opened large Athens offices"
+    "Expert-community size, staffing, AI investment and research-performance descriptions are company-stated figures",
+    "No client per-call price was verified; the corporate page describes packages and pay-as-you-go agreements",
+    "A full audit trail for every expert interaction and a standard cooling-off period were not established by the public sources reviewed",
+    "Origin’s MCP landing page marks project launch and interactive cards as coming soon, while its documentation also describes those workflows; confirm availability for the intended account. No MCP launch date was verified.",
+    "Persona’s case study describes full-network identity verification as a goal, so it should not be assumed for every expert",
+    "AI-based expert matching was not established by the sources reviewed; confirm matching capabilities with the provider"
   ],
   "notableFacts": [
-    "Founded in 2015 in Athens by George Tsarouchas (institutional investing background) and Frederick Corkett (strategy consultant, AMR International) during Greek capital controls",
-    "Revenue crossed $100 million (company confirmed Aug 2025); Sacra estimates $121M in 2024 (39% YoY); 70% lifetime CAGR",
-    "Named to FT 1000 (Europe's fastest-growing companies) for five consecutive years (2021-2025); upgraded to 'Global Leader' by Inex One in 2024 — youngest firm in this tier",
-    "Entirely bootstrapped and founder-owned — no confirmed external funding",
-    "Athens operations model is a core differentiator: competitive labor costs enabling lower client pricing than London/NYC-based peers",
-    "Jason Howard appointed Chief Legal & Regulatory Officer (Jan 2025) — former Tegus GC & CCO, 13 years SEC Enforcement",
-    "Origin deal-sourcing platform targets PE/VC workflow budgets; Dialectica IQ knowledge graph has 80M+ records and 1M+ historical interactions",
-    "100+ software engineers and data scientists; $25M+ tech investment over 3 years; 32,000+ AI training hours in 2025",
-    "Bogotá office grew from 0 to ~382 employees in under 3 years; 67 nationalities represented globally",
-    "Great Place to Work certified in Greece, Vietnam, and Canada (2025); Growth Winner by Eurobank/Grant Thornton (2025)",
-    "Major 2023 leadership transition: new CFO, Product VP, and regional heads replaced; CPO (Psaltoulis) and domain rebrand to dialectica.io followed in 2025"
+    "Founded in 2015, with first offices in London and Athens",
+    "Company reported annual revenue exceeding $100M in its July 9, 2025 anniversary post; Sacra estimates $121.3M revenue for 2024, up approximately 39% year over year",
+    "Company reports more than 1,600 employees as of July 2026",
+    "Company reports its sixth consecutive FT1000 appearance in March 2026",
+    "Jason Howard’s January 2025 appointment announcement cites prior Tegus and SEC Enforcement experience",
+    "Company reports Great Place to Work certification in Greece in November 2025 and renewals in Vietnam in April 2026 and Canada in August 2026",
+    "Company reports Growth Winner recognition at the 2025 Eurobank and Grant Thornton Growth Awards",
+    "UN Global Compact participant since January 8, 2026"
   ],
   "sourceNotes": [
-    "Dialectica official website (dialectica.io) used as primary source for product descriptions and company positioning",
-    "Founding story sourced from Inex One, ListAlpha interview with Fred Corkett, Sacra, and Athens Times interview with Tsarouchas",
-    "Revenue data: Sacra estimates $121M (2024, 39% YoY); company confirmed crossing $100M in August 2025 10th anniversary press release (Yahoo Finance / BusinessWire / PR Newswire)",
-    "Sacra FY2024 estimates: $121.3M revenue, $26.1M gross profit (21% margin), $15.5M operating profit, $10.9M net income — NOTE: these are estimates, not audited financials",
-    "Employee count: company says '1,400+ employees' (Aug 2025 press release); third-party estimates (PitchBook ~1,600, RocketReach ~2,270) vary by contractor inclusion",
-    "Expert count: 750,000+ vetted experts (company-stated on website and confirmed by Sacra); also references '1M+ knowledge connectors'",
-    "FT 1000 rankings confirmed for 2021-2025 via BusinessWire press releases and Dialectica blog posts",
-    "Jason Howard appointment confirmed via PR Newswire (Jan 30, 2025) — title: Chief Legal & Regulatory Officer; background: Tegus GC & CCO, 13 years SEC Enforcement",
-    "Dimitris Psaltoulis CPO appointment reported by Athens Times (July 2025)",
-    "Origin platform details from dialectica.io/origin and dialectica.io/solutions/origin",
-    "AI investment figures ($25M+ tech spend, 50+ GenAI tools) are company-claimed and not independently verified",
-    "Glassdoor rating (3.3/5 as of early 2026) included in caveats; reviews cite recurring themes of high pressure and high turnover but may not reflect current conditions following CPO appointment",
-    "Pricing information from Inex One comparison page and expert review sites (competitive bias noted)",
-    "Glassdoor: 3.3/5 stars from 621 reviews; 54% would recommend; 2.6/5 work-life balance",
-    "London registered office confirmed at 28 Margaret Street, 2nd Floor, Marylebone, W1W 8RZ via UK Companies House",
-    "Thessaloniki office at 29A Ptolemeon St confirmed from job listings and company materials (~2024)",
-    "IMPORTANT: Goldman Sachs attribution for Tsarouchas comes only from Sacra and could not be independently verified — his own bios say 'institutional investor' without naming the firm",
-    "IMPORTANT: AlphaSights as employer for either founder could not be verified — appears to be a misreading of Sacra's description of the business model, not employment history",
-    "IMPORTANT: $2.2M raise attributed by Sacra appears to reference a different company (Milan-based biotech also named Dialectica); all authoritative sources describe this Dialectica as entirely bootstrapped",
-    "Bogotá office scale (~382 employees) confirmed via EMIS 2025 data for Dialectica Colombia S.A.S.",
-    "No individual clients are publicly named; company uses aggregate trust claims ('10/10 top consulting firms') without naming specific organizations",
-    "November 2026 refresh: headcount of 1,600+ from Dialectica announcement (July 1, 2026) and dialectica.io About page; FT1000 sixth year and $30M+ AI/technology investment from Dialectica announcement (March 11, 2026). Narrative passages citing 1,400+ employees reflect the August 2025 10th-anniversary announcement."
+    "https://find-and-update.company-information.service.gov.uk/company/09605745 — Read 2026-11-11. Checks: founded=verified; headquarters=partially-unverifiable. Companies House: incorporation on May 22, 2015 and registered office address; a registered office is not evidence of the principal operating headquarters.",
+    "https://find-and-update.company-information.service.gov.uk/company/09605745/persons-with-significant-control — Read 2026-11-11. Lists Dialectica Capital Management Limited as the active controlling entity; removed assertions of exclusive founder ownership and no external funding.",
+    "https://www.dialectica.io/ — Read 2026-11-11. Checks: type=verified; description=positioning; aiCapabilities=positioning; aiPlatform=positioning; aiBadge=inference. Company-stated 120+ technology/data professionals, 1,000+ operations staff, GenAI tools and agents; geographic and headcount totals vary across pages.",
+    "https://www.dialectica.io/about — Read 2026-11-11. Checks: services=verified; overview=positioning; history=partially-unverifiable; deliveryModel=inference; regionStrength=inference; strengths=positioning; notableFacts=positioning. Founders, first offices, Montreal/New York milestones, company-stated 1,600+ professionals and IQ; historical headcount blocks on this page are inconsistent, so the dated July 2026 announcement anchors current staffing.",
+    "https://www.dialectica.io/platform — Read 2026-11-11. Checks: expertCount=positioning; expertCountLabel=positioning; comparison=partially-unverifiable; comparison.contentLibrary=positioning; comparison.aiMatching=partially-unverifiable; whenNotIdeal=inference; caveats=partially-unverifiable. Company-stated 750K experts, 1M knowledge connectors, 1M expert conversations and 80M records; these are distinct measures. Describes an expert-content repository; removed blanket assertions that no library exists.",
+    "https://www.dialectica.io/solutions/calls — Read 2026-11-11. Checks: keyDifferentiators=positioning; bestFor=inference; whyChoose=inference; servicesDetailed=positioning; comparison.expertCalls=verified; comparison.aiMatching=partially-unverifiable. One-on-one calls, AI transcripts and company-stated over 65% first-time custom recruitment; this is not a verified per-project minimum.",
+    "https://www.dialectica.io/solutions/b2b-surveys — Read 2026-11-11. Checks: servicesDetailed=positioning; comparison.surveys=verified. Survey workflow, follow-up calls and SurveyGuard quality controls; no independent performance validation.",
+    "https://www.dialectica.io/solutions/insights — Read 2026-11-11. Checks: servicesDetailed=positioning; services=verified. Bespoke written research and company-described 3–5 business-day company reports; removed competitor architecture comparisons.",
+    "https://www.dialectica.io/solutions/origin — Read 2026-11-11. Checks: clientFit=inference; comparison.contentLibrary=positioning; servicesDetailed=positioning. Expert-derived profiles, transcripts, alerts and content review; removed unsupported exclusivity, CRM integration and 2024 launch-date assertions.",
+    "https://www.dialectica.io/solutions/executive-partnerships — Read 2026-11-11. Checks: servicesDetailed=positioning; services=verified. Advisor searches, introductions, origination and portfolio support; current product missing from the previous profile.",
+    "https://www.dialectica.io/solutions/origin/mcp — Read 2026-11-11. Checks: aiCapabilities=positioning; servicesDetailed=positioning; caveats=partially-unverifiable. Documents cited research through MCP; labels project launch and interactive cards coming soon. No launch date verified.",
+    "https://www.dialectica.io/solutions/origin/mcp/documentation — Read 2026-11-11. Checks: aiPlatform=positioning; servicesDetailed=positioning; caveats=partially-unverifiable. Documents Origin-account access, synthesis and project/private transcript search. Workflow availability descriptions differ from the landing page; confirm with the provider.",
+    "https://www.dialectica.io/industries/corporates — Read 2026-11-11. Checks: pricingModel=positioning; pricingDetail=partially-unverifiable; industries=positioning; whenNotIdeal=inference. Corporate packages, pay-as-you-go and call transcripts/summaries. Removed the unsupported $700–$1,100 client call-price range and assumptions about call credit multipliers or lower prices than peers.",
+    "https://www.dialectica.io/blog/a-decade-of-dialectica-redefining-business-decision-making-with-the-power-of-ai — Read 2026-11-11. Checks: overview=positioning; history=partially-unverifiable; notableFacts=positioning. Post dated July 9, 2025 reports revenue above $100M, six offices, 1,400+ staff and a top-three-by-2035 ambition. Its 70% CAGR lacks a defined period; removed lifetime/2019–2024 CAGR and market-ranking assertions.",
+    "https://www.dialectica.io/blog/dialectica-named-one-of-europes-fastest-growing-companies-for-the-6th-consecutive-year — Read 2026-11-11. Checks: categoryBadge=inference; description=positioning; keyDifferentiators=positioning; strengths=positioning; notableFacts=positioning. March 11, 2026 announcement: sixth FT1000 inclusion and company-stated $30M+ AI/technology spend over the preceding three years; replaces stale five-year and $25M figures.",
+    "https://www.dialectica.io/fr-ca/blog/dialectica-up-to-25-increase-in-starting-salary-alongside-enhanced-remuneration-package — Read 2026-11-11. Checks: employeeCount=positioning; employeeCountSource=positioning; headquarters=partially-unverifiable; history=partially-unverifiable. July 1, 2026 announcement: 1,600+ employees, more than half in Athens/Thessaloniki, and Greek Client Service base-pay increase effective September 1, 2026. Removed speculative contractor explanations for third-party headcount differences.",
+    "https://www.dialectica.io/blog/dialectica-appoints-jason-howard-as-chief-legal-regulatory-officer — Read 2026-11-11. Checks: complianceExtended=positioning; keyDifferentiators=positioning; history=partially-unverifiable; notableFacts=positioning. January 30, 2025 appointment, responsibilities and attributed Tegus/SEC career history. Removed unsupported conclusions about compliance maturity and regulatory enforcement history.",
+    "https://withpersona.com/customers/dialectica — Read 2026-11-11. Checks: complianceExtended=positioning; comparison.complianceTools=positioning; complianceBadge=inference; caveats=partially-unverifiable. Vendor customer case study with Dialectica executive comments: configurable identity verification and manual screening; full-network coverage remains a stated goal. Publication date not established.",
+    "https://www.dialectica.io/blog/dialectica-appoints-dimitris-psaltoulis-as-chief-people-officer — Read 2026-11-11. Checks: history=partially-unverifiable. July 18, 2025 appointment, Greek operations and AI Bootcamp. Removed the unverified first-in-sector comparison.",
+    "https://www.dialectica.io/blog/world-education-day-2026-a-look-into-dialectica-commitment-to-lifelong-learning — Read 2026-11-11. Checks: aiPlatform=positioning. Reports 32,000+ total training hours during 2025; corrected the prior description of all those hours as AI training.",
+    "https://www.dialectica.io/blog/dialectica-vietnam-certified-as-a-great-place-to-work-for-a-second-consecutive-year — Read 2026-11-11. Checks: history=partially-unverifiable; notableFacts=positioning; regionStrength=inference. April 23, 2026 company announcement: renewed certification, 120+ Ho Chi Minh City staff and APAC expansion role.",
+    "https://www.dialectica.io/blog/dialectica-earns-once-more-the-great-place-to-work-certification-in-greece — Read 2026-11-11. Checks: notableFacts=positioning. November 26, 2025 company announcement of certification in Greece.",
+    "https://www.dialectica.io/blog/two-years-running-dialectica-canada-is-once-again-certified-as-a-great-place-to-work — Read 2026-11-11. Checks: notableFacts=positioning. August 7, 2026 company announcement of renewed Canadian certification; removed unverified Glassdoor statistics and generalized workplace allegations.",
+    "https://www.dialectica.io/blog/dialectica-receives-top-honor-at-the-growth-awards-2025 — Read 2026-11-11. Checks: notableFacts=positioning. Company reports Growth Winner recognition at the 2025 awards organized by Eurobank and Grant Thornton.",
+    "https://unglobalcompact.org/what-is-gc/participants/202575-Dialectica-LTD — Read 2026-11-11. Checks: history=partially-unverifiable; notableFacts=positioning. Official participant record: active participation since January 8, 2026; participation is not a compliance certification.",
+    "https://www.dialectica.io/blog/dialectica-joins-the-un-global-compact-initiative — Read 2026-11-11. February 3, 2026 announcement of voluntary participation.",
+    "https://sacra.com/c/dialectica/ — Read 2026-11-11. Checks: history=partially-unverifiable; notableFacts=positioning. Dated third-party 2024 revenue estimate of $121.3M and approximately 39% growth retained as an estimate. Funding narrative conflicts with its $2.2M header; removed categorical funding claims and unsupported explanations of mistaken identity.",
+    "https://www.dialectica.io/blog/dialectica-shortlisted-in-three-categories-for-ica-compliance-awards-europe-2026 — Read 2026-11-11. Company reports a 2026 shortlist including Compliance AI Solution of the Year, but gives a conflicting 2024 ceremony date. Not used as proof of an implemented automated compliance system or an award win.",
+    "https://www.dialectica.io/blog/dialectica-launches-new-website-to-reflect-growth-innovation-and-global-ambition — Read 2026-11-11. Website relaunch and expanded client/product scope; removed the unsupported precise date of the domain migration.",
+    "https://www.dialectica.io/faq — Read 2026-11-11. Checks: complianceExtended=positioning; comparison.complianceTools=positioning; complianceBadge=inference; sourceNotes=inference. Company-described client sectors, office locations, Persona identity verification and employment-history, adverse-news and sanctions screening; does not substantiate standardized cooling-off periods or a full interaction audit trail.",
+    "https://www.dialectica.io/terms-conditions — Read 2026-11-11. Checks: caveats=partially-unverifiable; whenNotIdeal=inference. Website terms, not expert engagement terms; do not establish MNPI controls, cooling-off periods or an interaction audit trail. Comprehensive interaction audit trails remain unverified; no positive or negative coverage claim is made.",
+    "https://www.dialectica.io/contact — Read 2026-11-11. Checks: industries=positioning; clientFit.segments=positioning. Reviewed sales inquiry routes and client segment choices; no client per-call quote verified.",
+    "https://www.dialectica.io/blog — Read 2026-11-11. Reviewed recent company developments; no sourced basis retained for claimed 2023 leadership replacements, office-opening dates in 2023/2024, or the Inex One ranking and youngest-provider comparison.",
+    "https://www.dialectica.io/industries/hedge-funds — Read 2026-11-11. Checks: clientFit=inference; clientFit.segments=positioning. Dedicated company page explicitly describes services for hedge funds and asset managers; retained this client segment as company positioning, with fit assessed editorially."
   ],
   "whyChoose": [
-    "Premium quality, competitive cost",
-    "AI-forward platform (Dialectica IQ)",
-    "Origin for PE deals",
-    "European & EM strength"
+    "Custom expert sourcing",
+    "Calls, surveys and bespoke reports",
+    "Origin company intelligence",
+    "Transcripts in AI research workflows"
   ],
   "whenNotIdeal": [
-    "Needs largest network scale",
-    "Wants long compliance track record",
-    "US-centric research only",
-    "Wants searchable transcript library"
+    "Requires a verified public per-call price",
+    "Requires independently audited network-size figures",
+    "Requires confirmed cooling-off and audit-trail terms before procurement"
   ],
   "confidence": {
     "founded": "verified",
-    "headquarters": "verified",
-    "expertCount": "verified",
-    "employeeCount": "verified",
-    "pricingModel": "inference",
+    "headquarters": "partially-unverifiable",
+    "expertCount": "positioning",
+    "employeeCount": "positioning",
+    "pricingModel": "positioning",
+    "pricingDetail": "partially-unverifiable",
     "services": "verified",
-    "compliance": "verified",
-    "founderBackgrounds": "partially-unverifiable",
-    "overview": "verified",
-    "history": "verified",
-    "servicesDetailed": "verified",
+    "aiCapabilities": "positioning",
+    "overview": "positioning",
+    "history": "partially-unverifiable",
+    "servicesDetailed": "positioning",
     "aiPlatform": "positioning",
-    "complianceExtended": "verified",
-    "clientFit": "inference"
+    "complianceExtended": "positioning",
+    "clientFit": "inference",
+    "bestFor": "inference",
+    "categoryBadge": "inference",
+    "deliveryModel": "inference",
+    "regionStrength": "inference",
+    "complianceBadge": "inference",
+    "aiBadge": "inference",
+    "comparison": "partially-unverifiable",
+    "strengths": "positioning",
+    "notableFacts": "positioning",
+    "type": "verified",
+    "description": "positioning",
+    "employeeCountSource": "positioning",
+    "expertCountLabel": "positioning",
+    "industries": "positioning",
+    "keyDifferentiators": "positioning",
+    "caveats": "partially-unverifiable",
+    "whyChoose": "inference",
+    "whenNotIdeal": "inference",
+    "sourceNotes": "inference",
+    "comparison.expertCalls": "verified",
+    "comparison.surveys": "verified",
+    "comparison.contentLibrary": "positioning",
+    "comparison.aiMatching": "partially-unverifiable",
+    "comparison.complianceTools": "positioning",
+    "clientFit.segments": "positioning"
+  },
+  "compliance": {
+    "mnpiPolicy": "Not disclosed",
+    "expertVetting": "Not disclosed",
+    "auditTrail": null,
+    "coolingOffPeriod": "Not disclosed"
   }
 }

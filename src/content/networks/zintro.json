@@ -7,222 +7,153 @@
   "gradientTo": "#38bdf8",
   "type": "Expert Network",
   "founded": 2007,
-  "headquarters": "Boston, MA",
-  "employeeCount": "~400 (including offshore teams)",
-  "expertCount": "1M+",
-  "description": "Pioneer of the self-service expert network model, offering both DIY marketplace access and full-service support at 30-75% lower cost than traditional networks. Founded by serial entrepreneur Stuart Lewtan with 1M+ expert profiles.",
+  "expertCount": "130,000+",
+  "description": "Zintro is an expert network whose B2B network and Concierge Program were acquired by Focus Crossroads in September 2026. Its app now says public services are no longer available through that website.",
   "services": [
-    "Self-serve Platform",
-    "Expert Calls",
-    "Full-Service Research",
-    "Surveys",
-    "AI-Moderated Interviews",
-    "Recruiting"
+    "Legacy expert interviews",
+    "Legacy full-service research recruitment",
+    "Legacy surveys",
+    "Legacy recruitment for AI-moderated studies"
   ],
   "aiCapabilities": [
-    "Semantic matching algorithm",
-    "AI-moderated interviews",
-    "Anonymous expert-client matching",
-    "Alpha-generating discovery engine"
+    "Company-described AI search for recruitment (legacy)",
+    "Participant recruitment for third-party AI interview platforms (legacy)"
   ],
   "industries": [
-    "Management Consulting",
     "Technology",
     "Healthcare",
-    "Financial Services",
-    "Private Equity"
+    "Financial Services"
   ],
-  "pricingModel": "Platform fee",
-  "pricingDetail": "Marketplace model with visible expert fees plus platform margin. Positioned as lower-cost alternative to concierge networks.",
+  "pricingModel": "Legacy project-based pricing",
+  "pricingDetail": "Zintro's client page advertises project-based pricing without cost or credit minimums or mandatory subscriptions. These are legacy terms; confirm current pricing with Focus Crossroads following the asset acquisition.",
   "keyDifferentiators": [
-    "Self-service + full-service dual model at 30-75% lower cost",
-    "Complete price transparency — itemized expert fees and Zintro margins",
-    "Nearly two decades of platform development with 1M+ expert profiles"
+    "B2B expert network and Concierge Program acquired by Focus Crossroads in September 2026",
+    "Legacy custom recruitment and project support"
   ],
   "bestFor": [
-    "Small/Mid-size Firms",
-    "Self-Service Buyers",
-    "Budget-Conscious",
-    "PE/VC Due Diligence"
+    "B2B research recruitment via Focus Crossroads"
   ],
-  "compliance": {
-    "mnpiPolicy": "Standard MNPI guidelines with user-managed compliance workflows",
-    "expertVetting": "Platform-verified profiles with credential validation",
-    "auditTrail": true,
-    "regulatoryHistory": "Clean regulatory record"
-  },
   "featured": false,
   "priority": 32,
   "published": true,
-  "categoryBadge": "Marketplace",
-  "deliveryModel": "Marketplace",
-  "regionStrength": "North America",
-  "complianceBadge": "Standard Compliance",
-  "aiBadge": "AI Moderation",
+  "deliveryModel": "Concierge",
+  "complianceBadge": "Limited Public Detail",
+  "aiBadge": "Limited AI Detail",
   "lastUpdated": "2026-11-11",
-  "overview": "Zintro is a pioneer of the self-service expert network model, founded in 2007 by serial entrepreneur Stuart Lewtan in Boston. Lewtan conceived Zintro while serving as an executive-in-residence at a prominent Boston VC/PE firm, where he found existing expert networks overpriced and cumbersome. His solution: a marketplace where clients could post project briefs, receive expert responses within hours, and engage directly — with complete price transparency.\n\nZintro's core innovation is its dual service model. Clients can use the platform on a fully self-service basis (posting projects, reviewing expert responses, scheduling calls independently) or opt for full-service support comparable to GLG or AlphaSights, but at 30-75% lower cost. The company achieves this by maintaining remote operations teams in the Philippines and India alongside its Boston headquarters.\n\nWith 1M+ expert profiles and 500+ active clients ranging from startups to Global 1000 enterprises, Zintro has carved out a sustainable niche as the cost-effective, transparent alternative to premium expert networks. The company generates an estimated ~$7.1M in annual revenue and has operated profitably without major venture capital dependency.",
+  "overview": "On September 9, 2026, Focus Crossroads announced the acquisition of Zintro's B2B expert network, Concierge Program, and specialized professional audience assets, effective immediately. The buyer says the acquired network includes more than 130,000 verified professionals, including more than 50,000 C-suite leaders and senior executives, and is being integrated into its recruitment operations.\n\nZintro's app now states that public services are no longer available through that website. Its marketing pages remain accessible and describe full-service recruitment for research. Buyers should confirm current services and engagement terms with Focus Crossroads.",
   "history": {
-    "narrative": "Stuart Lewtan is a serial entrepreneur with a track record of successful technology ventures. Before Zintro, he founded Lewtan Technologies, a 100+ person company serving 400+ institutional clients in the asset-backed securities industry, which was acquired by DMG Information in 2004 (later sold to Moody's in 2015). He also co-founded MicroE Systems (precision motion control, acquired by GSI Group) and Axsun Technologies (MEMS-based optical engines for telecom and medical imaging).\n\nLewtan conceived Zintro around 2007 while serving as an executive-in-residence at a prominent Boston VC/PE firm, where he experienced firsthand the high costs and friction of traditional expert networks. He built Zintro as a fully self-service platform with no human intermediation. Over time, client demand led to the addition of full-service capabilities, creating the dual model that defines Zintro today.",
+    "narrative": "Zintro was founded in 2007. A March 2010 company press release identifies Stuart Lewtan as founder and describes a marketplace with anonymous client-expert messaging. Zintro's investor page says the idea arose while its founder was an executive-in-residence at Battery Ventures in Boston.",
     "timeline": [
       {
         "year": "2007",
-        "event": "Founded by serial entrepreneur Stuart Lewtan in Boston, conceived during EIR stint at Boston VC/PE firm"
+        "event": "Founded, according to Zintro’s About page"
       },
       {
-        "year": "2007-2015",
-        "event": "Built self-service marketplace; raised approximately $3-9M in early funding"
+        "year": "2010",
+        "event": "Company press release describes anonymous client-expert messaging and identifies founder Stuart Lewtan"
       },
       {
-        "year": "2015-2020",
-        "event": "Evolved to add full-service capability alongside self-service model; built remote ops teams in Philippines and India"
-      },
-      {
-        "year": "2020-2025",
-        "event": "Grew to 1M+ expert profiles, 500+ active clients, and estimated ~$7.1M annual revenue"
-      },
-      {
-        "year": "2026 (September)",
-        "event": "Focus Crossroads acquired Zintro's B2B expert network and Concierge Program; Research Live reported the network at about 130,000 verified professionals; deal value undisclosed"
+        "year": "2026 (September 9)",
+        "event": "Focus Crossroads announces acquisition of the B2B expert network and Concierge Program"
       }
     ]
   },
   "servicesDetailed": [
     {
-      "name": "Self-Service Marketplace",
-      "description": "Clients post project briefs to the platform; Zintro's algorithm anonymously matches them to relevant experts. Typically 5-12 experts respond within hours to a few days. Clients review profiles, select experts, and schedule calls independently. Complete price transparency with itemized expert fees and Zintro margins."
+      "name": "Legacy Full-Service Research",
+      "description": "Zintro's About page describes custom recruiting, screening, compliance checks, scheduling, transcription, and expert payments. Availability after the asset acquisition requires confirmation with Focus Crossroads."
     },
     {
-      "name": "Full-Service Expert Calls",
-      "description": "Traditional expert network service where Zintro's fulfillment team handles recruiting, screening, compliance, scheduling, transcription, and expert payment — comparable to GLG or AlphaSights but at 30-75% lower cost."
+      "name": "Legacy Surveys & Quantitative Research",
+      "description": "Zintro's investor page describes B2B surveys alongside expert interviews for investment research."
     },
     {
-      "name": "Surveys & Quantitative Research",
-      "description": "Participant recruitment from the 1M+ expert database for quantitative studies and structured survey research."
-    },
-    {
-      "name": "AI-Moderated Interviews",
-      "description": "Supporting clients using AI-driven interview moderation. Zintro reports that 82% of surveyed participants preferred AI-moderated over live interviews."
-    },
-    {
-      "name": "Custom Expert Recruiting",
-      "description": "Tracking down niche experts outside the existing network for specialized requirements that the 1M+ database cannot fulfill."
-    },
-    {
-      "name": "Recruiting & Talent Placement",
-      "description": "Facilitating full-time and part-time placements through the expert network, charging a 15% fee on first-year compensation."
+      "name": "Legacy AI Interview Recruitment",
+      "description": "In an August 7, 2025 case study, Zintro says it recruited and onboarded participants for studies conducted on clients' chosen AI moderation platforms, and handled scheduling, incentives, and support."
     }
   ],
   "aiPlatform": {
-    "narrative": "Zintro's proprietary matching algorithm understands semantic relationships between keywords — for example, a search for 'securitization specialists' automatically surfaces experts with 'MBS' or 'structured finance' in their profiles. Results are distilled into a single relevance coefficient for force-ranking experts. The algorithm can identify non-obvious expert matches that human recruiters might miss due to search habit bias, a capability Zintro calls 'alpha-generating discovery.' All initial client-expert interactions are anonymous until both parties agree to engage.",
+    "narrative": "Zintro describes using a proprietary AI search model to identify relevant profiles in a payroll research case study. Its AI interview case study describes recruitment for third-party platforms rather than a Zintro moderation product. These are legacy examples; current availability after the asset sale is unconfirmed.",
     "features": [
-      "Semantic matching algorithm understanding keyword relationships and synonyms",
-      "Single-coefficient force-ranking of expert relevance",
-      "Alpha-generating discovery surfacing non-obvious expert matches",
-      "Anonymous client-expert communication until mutual agreement to engage",
-      "AI-moderated interview support (82% participant preference over live interviews)",
-      "Self-service project posting with automated expert notification"
+      "Company-described AI-assisted profile search",
+      "Recruitment and participant support for third-party AI-moderated research"
     ]
   },
   "complianceExtended": {
-    "narrative": "Zintro provides standard compliance capabilities appropriate for its diverse client base spanning PE/VC, consulting, and corporate research. The self-service model places more compliance responsibility on the client, while the full-service option includes screening, NDA management, and conflict checks handled by Zintro's team.",
+    "narrative": "Zintro's published compliance page prohibits experts from sharing confidential information, including material non-public information, and requires clients to stop a call and notify Zintro if prohibited information is disclosed. These published policies do not establish the compliance arrangements for services after the acquisition.",
     "highlights": [
-      "Standard MNPI guidelines with user-managed compliance for self-service",
-      "Full compliance support (screening, NDAs, conflict checks) in full-service mode",
-      "Platform-verified expert profiles with credential validation",
-      "Anonymous interactions protect client identity until mutual engagement agreement",
-      "Audit trail for all platform interactions",
-      "NDA management and expert payment processing"
-    ],
-    "regulatoryContext": "Zintro's dual service model creates different compliance dynamics: self-service clients manage their own compliance workflows, while full-service clients receive traditional expert network compliance support. Clean regulatory record over 18+ years of operation."
+      "Zintro says it checks projects before and during launch and monitors changes",
+      "Experts must respect contractual restrictions and keep client information confidential"
+    ]
   },
   "clientFit": {
-    "narrative": "Zintro is ideal for cost-conscious organizations that value price transparency and want control over their expert engagement process. The self-service model appeals to teams comfortable managing their own research, while the full-service option serves those who want traditional expert network support at lower cost. Premium institutional clients requiring the deepest compliance infrastructure may prefer established players.",
+    "narrative": "Zintro's legacy client page addresses research firms, consultancies, investors, and corporations. Following the acquisition, buyers seeking B2B participants should discuss requirements with Focus Crossroads.",
     "segments": [
-      "Small and mid-size PE/VC firms conducting due diligence on a budget",
-      "Management consulting firms needing cost-effective expert access",
-      "Corporate strategy teams wanting self-service expert engagement",
-      "Market research firms recruiting survey participants and expert respondents",
-      "Startups and growth companies needing expert validation without premium pricing"
+      "Market research firms",
+      "Management consulting firms",
+      "Investment research teams",
+      "Corporate research teams"
     ]
   },
   "strengths": [
-    "Complete price transparency — clients see exactly what experts earn and what Zintro charges",
-    "30-75% lower cost than traditional expert networks while offering comparable service quality",
-    "Dual model: self-service marketplace + full-service support gives clients maximum flexibility",
-    "1M+ expert profiles — among the largest databases in the industry",
-    "18+ year track record provides proven reliability and operational maturity",
-    "Founder Stuart Lewtan's serial entrepreneur background (3 successful exits) brings business acumen",
-    "Semantic matching algorithm surfaces non-obvious experts that human recruiters miss",
-    "Remote ops teams in Philippines/India enable cost efficiency passed to clients",
-    "Strong B2B expertise — noted as particularly effective for hard-to-recruit B2B audiences",
-    "High satisfaction ratings: 5 stars on Trustpilot (170 reviews), 4.7/5 on Glassdoor"
+    "Legacy full-service support covering recruitment through expert payment"
   ],
   "caveats": [
-    "Lower pricing may signal less premium positioning to some institutional buyers",
-    "Self-service model places more compliance burden on the client",
-    "~400 employees (largely offshore) — smaller Boston HQ team may limit strategic capacity",
-    "Less brand recognition than category leaders among Fortune 500 buyers",
-    "Expert database size (1M+) includes profiles that may not be as actively maintained as smaller, curated networks",
-    "Limited office presence outside Boston compared to networks with global offices",
-    "In September 2026 Focus Crossroads acquired Zintro's B2B expert network and Concierge Program assets; public reporting does not state how Zintro's remaining business will operate, so current service availability should be confirmed directly"
+    "Zintro's app says public services are no longer available through that website",
+    "Current pricing, service availability, and compliance arrangements should be confirmed with Focus Crossroads",
+    "The 130,000+ acquired-network count is company-stated as of September 2026; the larger figure on legacy marketing pages describes a different population and is not interchangeable"
   ],
   "notableFacts": [
-    "Founder Stuart Lewtan previously founded Lewtan Technologies (acquired by DMG Information/Moody's), MicroE Systems (acquired by GSI Group), and Axsun Technologies",
-    "Complete price transparency: expert fees average ~$200/hr, Zintro charges $300-$400/call, vs. ~$1,000 industry standard",
-    "82% of surveyed participants preferred AI-moderated interviews over live moderation",
-    "1M+ expert profiles — one of the largest databases in the expert network industry",
-    "500+ active clients ranging from startups to Global 1000 enterprises",
-    "Estimated annual revenue of approximately $7.1M",
-    "Self-service model was conceived when founder was EIR at a Boston VC/PE firm and found existing networks overpriced",
-    "Remote operations teams in Philippines and India keep costs low while maintaining service quality",
-    "20,000+ clients have processed inquiries through the platform historically",
-    "5 stars on Trustpilot (170 reviews) and 4.7/5 on Glassdoor (18 reviews)",
-    "Particularly strong in B2B audience recruitment for hard-to-reach professional segments"
+    "Zintro's investor page still markets more than 1,000,000 individuals; this is a company claim, not the size reported for the assets acquired in September 2026",
+    "In its August 7, 2025 AI interview case study, Zintro reports that 82% of 50 surveyed participants preferred AI moderation to live interviews; this is a company-reported study result"
   ],
   "sourceNotes": [
-    "Zintro official website (zintro.com) — company overview, services, and pricing transparency",
-    "Expert Network Calls directory — Zintro profile and service description",
-    "Tracxn — funding details, revenue estimates (~$7.1M), and company profile",
-    "INEX ONE Expert Network Directory — Zintro profile",
-    "Crunchbase — company profile, founding date, and founder (Stuart Lewtan)",
-    "LinkedIn — company page and founder profile",
-    "Trustpilot — Zintro reviews (5 stars, 170 reviews)",
-    "Glassdoor — Zintro employee reviews (4.7/5, 18 reviews)",
-    "G2 — Zintro user reviews and platform ratings",
-    "Insight Platforms — Zintro platform profile",
-    "Integrity Research — expert network commoditization analysis featuring Zintro",
-    "Zintro AI-Moderated Interviews case study — 82% participant preference data",
-    "November 2026 refresh: asset sale to Focus Crossroads sourced from Research Live (September 11, 2026), which describes the acquired network as about 130,000 verified professionals (roughly 50,000 senior executives) — a much smaller figure than the 1M+ profile count Zintro has marketed. Other profile fields were not re-verified and may no longer describe the business after the sale."
+    "2026-11-11 — https://www.focuscrossroads.com/zintro-acquisition/ — Reopened primary announcement: September 9, 2026; acquisition effective immediately; acquired network of 130,000+ professionals including 50,000+ C-suite leaders and senior executives, according to the buyer; asset scope, integration and industry coverage.",
+    "2026-11-11 — https://app.zintro.com/browse/Market%20Research — Public-service closure notice; supersedes assumptions of continued self-service access.",
+    "2026-11-11 — https://www.zintro.com/ — Legacy marketing site remains accessible; not evidence that app services remain available.",
+    "2026-11-11 — https://www.zintro.com/about — Founding year and legacy service workflow; Boston address is a PMB mailing address, not sufficient evidence of current headquarters. Employee count, offshore operations, revenue, profitability, funding estimates, founder exit history, and ratings were not substantiated and were removed.",
+    "2026-11-11 — https://www.zintro.com/become-a-client — Company-stated legacy project pricing, full-service delivery and client types. Removed unsupported itemized margins, hourly prices, savings comparisons, and 500 active-client claim.",
+    "2026-11-11 — https://www.zintro.com/investors — Company-stated founder EIR background, legacy million-person network marketing claim and survey services; not equivalent to acquired-network size.",
+    "2026-11-11 — https://www.pr.com/press-release/220885 — Company release dated March 22, 2010 names founder Stuart Lewtan and describes anonymous messaging; treated as historical, not a current service guarantee.",
+    "2026-11-11 — https://www.zintro.com/compliance — Company-published MNPI prohibition and project checks. No substantiation of an audit trail, universal credential validation, or clean regulatory history; those claims were removed.",
+    "2026-11-11 — https://www.zintro.com/articles — Recent-development search of the company blog; displayed entries are dated 2025 or earlier, outside the last 12 months.",
+    "2026-11-11 — https://www.zintro.com/case-studies/finding-payroll-and-benefits-dms-for-an-hr-solutions-provider — Company-described AI profile search; does not substantiate semantic coefficients or alpha-generating discovery claims, which were removed.",
+    "2026-11-11 — https://www.zintro.com/case-studies/ai-moderated-interviews — Company-reported recruitment for third-party AI platforms and survey of 50 participants; 82% preference result is not an independent or general-population finding.",
+    "2026-11-11 — https://www.zintro.com/case-studies/category/AI-Moderation — Dates the AI interview study to August 7, 2025.",
+    "2026-11-11 — https://app.zintro.com/resources/zintro-terms-of-service.pdf — Requested terms URL returns the transition notice, not the contract; 15% placement fee could not be read and was removed."
   ],
   "whyChoose": [
-    "30-75% cost savings",
-    "Price transparency",
-    "Self-service + full-service",
-    "1M+ expert profiles"
+    "B2B recruitment through Focus Crossroads"
   ],
   "whenNotIdeal": [
-    "Need premium brand cachet",
-    "Want institutional-grade compliance",
-    "Require global office presence",
-    "Expect white-glove only service"
+    "Need continued access through Zintro’s app"
   ],
   "confidence": {
     "founded": "verified",
-    "headquarters": "verified",
     "expertCount": "positioning",
-    "employeeCount": "partially-unverifiable",
-    "pricingModel": "verified",
-    "pricingDetail": "positioning",
-    "services": "verified",
-    "compliance": "positioning",
+    "description": "verified",
+    "pricingModel": "positioning",
+    "pricingDetail": "partially-unverifiable",
+    "services": "positioning",
+    "industries": "positioning",
     "overview": "verified",
     "history": "verified",
-    "servicesDetailed": "verified",
+    "servicesDetailed": "positioning",
+    "aiCapabilities": "positioning",
     "aiPlatform": "positioning",
     "complianceExtended": "positioning",
     "clientFit": "inference",
     "strengths": "positioning",
     "caveats": "inference",
-    "notableFacts": "partially-unverifiable"
-  }
+    "notableFacts": "positioning",
+    "categoryBadge": "inference",
+    "deliveryModel": "inference",
+    "complianceBadge": "partially-unverifiable",
+    "aiBadge": "partially-unverifiable",
+    "bestFor": "inference",
+    "keyDifferentiators": "verified",
+    "whyChoose": "inference",
+    "whenNotIdeal": "verified"
+  },
+  "expertCountLabel": "Acquired B2B network professionals (September 2026, company-stated)"
 }

@@ -32,6 +32,9 @@ jobs:
       - name: Check slugs
         run: node .github/scripts/check-slugs.mjs
 
+      - name: Check content integrity
+        run: node .github/scripts/check-content-integrity.mjs
+
       - name: Build
         run: npm run build
 

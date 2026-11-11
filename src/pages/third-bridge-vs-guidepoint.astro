@@ -6,17 +6,11 @@ import { getCollection } from 'astro:content';
 const allNetworks = await getCollection('networks');
 const a = allNetworks.find(n => n.data.slug === 'third-bridge')!;
 const b = allNetworks.find(n => n.data.slug === 'guidepoint')!;
-
-const verdict = [
-  `<strong>Third Bridge</strong> leads with content. Its Library (formerly Forum — pre-published interview transcripts covering 65,000+ companies) and Connections product give research teams asynchronous access to expert insights at scale. For buy-side investors who want to scan industries before committing to live consultations, Third Bridge's library-first model is its core value proposition.`,
-  `<strong>Guidepoint</strong> leads with volume and flexibility. With one of the largest advisor networks in the industry and flexible pricing (per-call and subscription options), Guidepoint is the high-volume choice for teams that need many expert calls without annual commitments. Their flexible commercial model appeals to smaller funds and corporate strategy teams.`,
-  `Third Bridge is the better fit for content-driven research workflows. Guidepoint is the better fit for high-volume expert call programs on a budget. The two serve overlapping but distinct buyer profiles.`,
-];
 ---
 
 <BaseLayout
   title="Third Bridge vs Guidepoint: Expert Network Comparison (2026) | ExpertNetworks.net"
-  description="Compare Third Bridge and Guidepoint expert networks. Content library vs. high-volume expert access — pricing, coverage, compliance, and AI capabilities compared side by side."
+  description="Compare Third Bridge and Guidepoint expert networks. Pricing, coverage, compliance, and AI capabilities compared side by side."
   canonicalPath="/third-bridge-vs-guidepoint"
   ogType="article"
   jsonLd={{
@@ -49,10 +43,10 @@ const verdict = [
       <span class="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-semibold rounded-full mb-4 tracking-wide uppercase">Head-to-Head</span>
       <h1 class="text-4xl md:text-5xl font-extrabold text-primary mb-6 leading-tight">Third Bridge vs Guidepoint</h1>
       <p class="text-lg text-secondary max-w-3xl leading-relaxed">
-        Content library research vs. high-volume expert access. Two top-four expert networks optimized for different buyer priorities.
+        Compare the profile evidence on services, pricing, scale, and buyer fit.
       </p>
     </div>
   </section>
 
-  <VsComparison a={a} b={b} verdict={verdict} />
+  <VsComparison a={a} b={b} />
 </BaseLayout>
