@@ -43,7 +43,7 @@
   },
   "featured": false,
   "priority": 27,
-  "published": true,
+  "published": false,
   "comparison": {
     "expertCalls": null,
     "contentLibrary": null,
@@ -106,13 +106,13 @@
   ],
   "sourceNotes": [
     "https://www.guptamedia.com/about-us — Accessed 2026-11-11. Describes an advertising agency and consultancy offering creative strategy, digital media, analytics, and performance marketing, with technology, consumer-brand, music, festival, and sports clients; does not establish the previous expert-network identity.",
-    "https://www.linkedin.com/company/gupta-media — Accessed 2026-11-11. Company profile lists Boston headquarters, a 51–200 employee range, and a 2001 founding year. Headcount is company-stated, not independently verified.",
+    "https://www.linkedin.com/company/gupta-media — Accessed 2026-11-11. Read the public About us fields: Headquarters is Boston, Massachusetts; Company size is 51–200 employees; Founded is 2001. The employee range is company-stated, not an audited headcount; the conflicting founding year is not displayed.",
     "https://www.guptamedia.com/technology — Accessed 2026-11-11. Describes Report(SE), custom reporting, Tally, and a CPM Tracker. These marketing tools do not substantiate the removed expert-matching, AI sentiment-analysis, expert-database, pricing, or compliance claims.",
-    "https://www.guptamedia.com/insights/gogi-gupta-named-to-boston-magazines-2026-most-influential-bostonians-list — Accessed 2026-11-11. April 28, 2026 article says founded in 2003, conflicting with company LinkedIn's 2001 and 2026 anniversary messaging; removed unsupported 2004 and left founding year unset.",
+    "https://www.guptamedia.com/insights/gogi-gupta-named-to-boston-magazines-2026-most-influential-bostonians-list — Accessed 2026-11-11. Article dated April 28, 2026 says founded in Boston in 2003, conflicting with company LinkedIn's 2001 and 2026 anniversary messaging; founding year remains unset.",
     "https://www.guptamedia.com/insights/gupta-media-2025-top-places-to-work-boston-globe — Accessed 2026-11-11. December 3, 2025 announcement reports Boston Globe workplace recognition and a forthcoming 25th anniversary in 2026. Recognition retained as company-reported.",
-    "https://www.guptamedia.com/insights/what-does-it-take-to-keep-growing-after-25-years-gupta-media-named-to-adweeks-fastest-growing-agencies-list — Accessed 2026-11-11. October 9, 2026 announcement reports 54th overall on ADWEEK's 2026 Fastest Growing Agencies list. Ranking is company-stated; linked ADWEEK pages could not be read.",
-    "https://www.guptamedia.com/insights/usga-selects-gupta-media-paid-media-agency-record — Accessed 2026-11-11. October 16, 2026 announcement details the USGA appointment, paid media scope, audience strategy, first-party data integration, and Tally ticketing analytics.",
-    "https://www.mediapost.com/publications/article/418779/usga-selects-gupta-media-as-its-paid-media-aor.html — Accessed 2026-11-11. Independently reports the USGA appointment and ticket-sales remit. No reviewed public source substantiated the former clean-regulatory-record assertion; removed it rather than equating missing evidence with a clean record."
+    "https://www.guptamedia.com/insights/what-does-it-take-to-keep-growing-after-25-years-gupta-media-named-to-adweeks-fastest-growing-agencies-list — Accessed 2026-11-11. October 9, 2026 announcement reports 54th overall on ADWEEK's 2026 Fastest Growing Agencies list. Ranking retained as company-reported.",
+    "https://www.guptamedia.com/insights/usga-selects-gupta-media-paid-media-agency-record — Accessed 2026-11-11. October 16, 2026 announcement details the USGA appointment, paid media scope, audience strategy, and first-party data integration. Its tools paragraph explicitly names TallyTickets.com as the company's ticketing analytics platform.",
+    "https://www.mediapost.com/publications/article/418779/usga-selects-gupta-media-as-its-paid-media-aor.html — Accessed 2026-11-11. Read the article body, not only the company's coverage link. Steve McClellan's byline is dated October 15, 2026; the article reports the USGA appointment, championship ticket-sales remit, and co-branded paid media work."
   ],
   "whyChoose": [
     "Digital marketing expertise",
