@@ -63,7 +63,7 @@
   "comparison": {
     "expertCalls": true,
     "contentLibrary": "Origin transcripts and expert-content repository (company-stated)",
-    "aiMatching": "Not established by the primary sources reviewed",
+    "aiMatching": false,
     "surveys": true,
     "complianceTools": true
   },
@@ -111,10 +111,6 @@
       {
         "year": "2026-07",
         "event": "Reports more than 1,600 employees and announces up to a 25% increase in Client Service base pay in Greece, effective September 1, 2026."
-      },
-      {
-        "year": "2026-11 (review)",
-        "event": "Origin product pages document embedded transcripts and an MCP connector for cited research in Claude and other MCP clients; no launch date was verified."
       }
     ]
   },
@@ -133,7 +129,7 @@
     },
     {
       "name": "Origin (Company & Market Intelligence)",
-      "description": "A deal-screening and company intelligence platform aimed at private equity teams. Dialectica describes expert-derived company profiles, embedded interview transcripts, target search and personalized deal alerts. Its MCP connector provides cited research within Claude and other compatible clients."
+      "description": "A deal-screening and company intelligence platform aimed at private equity teams. Dialectica describes expert-derived company profiles, embedded interview transcripts, target search and personalized deal alerts. Its MCP connector provides cited research within Claude and other compatible clients. No launch date for the MCP connector was verified."
     },
     {
       "name": "Executive Partnerships",
@@ -156,12 +152,13 @@
     ]
   },
   "complianceExtended": {
-    "narrative": "Dialectica announced Jason Howard as Chief Legal & Regulatory Officer on January 30, 2025, responsible for legal, compliance and Global Client Protection. The announcement says he previously spent nearly five years as General Counsel and Chief Compliance Officer at Tegus and over 13 years in the SEC Division of Enforcement. Dialectica describes expert screening and compliance review of Origin content. A Persona customer case study describes identity verification integrated into Dialectica workflows and tailored to client requirements; it presents verification of the entire network as a goal, rather than a completed rollout.",
+    "narrative": "Dialectica announced Jason Howard as Chief Legal & Regulatory Officer on January 30, 2025, responsible for legal, compliance and Global Client Protection. The announcement says he previously spent nearly five years as General Counsel and Chief Compliance Officer at Tegus and over 13 years in the SEC Division of Enforcement. Dialectica describes expert screening and compliance review of Origin content. A Persona customer case study describes identity verification integrated into Dialectica workflows and tailored to client requirements; it presents verification of the entire network as a goal, rather than a completed rollout. Dialectica’s FAQ describes compliance tooling for identity verification, employment-history, adverse-news and sanctions checks. A standard cooling-off period and an audit trail covering every expert interaction were not established by the reviewed sources.",
     "highlights": [
       "Jason Howard appointment and remit documented in Dialectica’s January 2025 announcement",
       "Origin content reviewed for relevance, quality and compliance, according to Dialectica",
       "Persona case study describes configurable identity checks alongside manual expert screening",
-      "B2B Surveys page describes SurveyGuard anti-fraud checks and response-quality monitoring"
+      "B2B Surveys page describes SurveyGuard anti-fraud checks and response-quality monitoring",
+      "Dialectica’s FAQ describes Persona identity verification and employment-history, adverse-news and sanctions screening"
     ]
   },
   "clientFit": {
@@ -186,8 +183,9 @@
     "Expert-community size, staffing, AI investment and research-performance descriptions are company-stated figures",
     "No client per-call price was verified; the corporate page describes packages and pay-as-you-go agreements",
     "A full audit trail for every expert interaction and a standard cooling-off period were not established by the public sources reviewed",
-    "Origin’s MCP landing page marks project launch and interactive cards as coming soon, while its documentation also describes those workflows; confirm availability for the intended account",
-    "Persona’s case study describes full-network identity verification as a goal, so it should not be assumed for every expert"
+    "Origin’s MCP landing page marks project launch and interactive cards as coming soon, while its documentation also describes those workflows; confirm availability for the intended account. No MCP launch date was verified.",
+    "Persona’s case study describes full-network identity verification as a goal, so it should not be assumed for every expert",
+    "AI-based expert matching was not established by the sources reviewed; confirm matching capabilities with the provider"
   ],
   "notableFacts": [
     "Founded in 2015, with first offices in London and Athens",
@@ -200,40 +198,40 @@
     "UN Global Compact participant since January 8, 2026"
   ],
   "sourceNotes": [
-    "https://find-and-update.company-information.service.gov.uk/company/09605745 — Read 2026-11-11. Companies House: incorporation on May 22, 2015 and registered office address; a registered office is not evidence of the principal operating headquarters.",
+    "https://find-and-update.company-information.service.gov.uk/company/09605745 — Read 2026-11-11. Checks: founded=verified; headquarters=partially-unverifiable. Companies House: incorporation on May 22, 2015 and registered office address; a registered office is not evidence of the principal operating headquarters.",
     "https://find-and-update.company-information.service.gov.uk/company/09605745/persons-with-significant-control — Read 2026-11-11. Lists Dialectica Capital Management Limited as the active controlling entity; removed assertions of exclusive founder ownership and no external funding.",
-    "https://www.dialectica.io/ — Read 2026-11-11. Company-stated 120+ technology/data professionals, 1,000+ operations staff, GenAI tools and agents; geographic and headcount totals vary across pages.",
-    "https://www.dialectica.io/about — Read 2026-11-11. Founders, first offices, Montreal/New York milestones, company-stated 1,600+ professionals and IQ; historical headcount blocks on this page are inconsistent, so the dated July 2026 announcement anchors current staffing.",
-    "https://www.dialectica.io/platform — Read 2026-11-11. Company-stated 750K experts, 1M knowledge connectors, 1M expert conversations and 80M records; these are distinct measures. Describes an expert-content repository; removed blanket assertions that no library exists.",
-    "https://www.dialectica.io/solutions/calls — Read 2026-11-11. One-on-one calls, AI transcripts and company-stated over 65% first-time custom recruitment; this is not a verified per-project minimum.",
-    "https://www.dialectica.io/solutions/b2b-surveys — Read 2026-11-11. Survey workflow, follow-up calls and SurveyGuard quality controls; no independent performance validation.",
-    "https://www.dialectica.io/solutions/insights — Read 2026-11-11. Bespoke written research and company-described 3–5 business-day company reports; removed competitor architecture comparisons.",
-    "https://www.dialectica.io/solutions/origin — Read 2026-11-11. Expert-derived profiles, transcripts, alerts and content review; removed unsupported exclusivity, CRM integration and 2024 launch-date assertions.",
-    "https://www.dialectica.io/solutions/executive-partnerships — Read 2026-11-11. Advisor searches, introductions, origination and portfolio support; current product missing from the previous profile.",
-    "https://www.dialectica.io/solutions/origin/mcp — Read 2026-11-11. Documents cited research through MCP; labels project launch and interactive cards coming soon. No launch date verified.",
-    "https://www.dialectica.io/solutions/origin/mcp/documentation — Read 2026-11-11. Documents Origin-account access, synthesis and project/private transcript search. Workflow availability descriptions differ from the landing page; confirm with the provider.",
-    "https://www.dialectica.io/industries/corporates — Read 2026-11-11. Corporate packages, pay-as-you-go and call transcripts/summaries. Removed the unsupported $700–$1,100 client call-price range and assumptions about call credit multipliers or lower prices than peers.",
-    "https://www.dialectica.io/blog/a-decade-of-dialectica-redefining-business-decision-making-with-the-power-of-ai — Read 2026-11-11. Post dated July 9, 2025 reports revenue above $100M, six offices, 1,400+ staff and a top-three-by-2035 ambition. Its 70% CAGR lacks a defined period; removed lifetime/2019–2024 CAGR and market-ranking assertions.",
-    "https://www.dialectica.io/blog/dialectica-named-one-of-europes-fastest-growing-companies-for-the-6th-consecutive-year — Read 2026-11-11. March 11, 2026 announcement: sixth FT1000 inclusion and company-stated $30M+ AI/technology spend over the preceding three years; replaces stale five-year and $25M figures.",
-    "https://www.dialectica.io/blog/dialectica-up-to-25-increase-in-starting-salary-alongside-enhanced-remuneration-package — Read 2026-11-11. July 1, 2026 announcement: 1,600+ employees, more than half in Athens/Thessaloniki, and Greek Client Service base-pay increase effective September 1, 2026. Removed speculative contractor explanations for third-party headcount differences.",
-    "https://www.dialectica.io/blog/dialectica-appoints-jason-howard-as-chief-legal-regulatory-officer — Read 2026-11-11. January 30, 2025 appointment, responsibilities and attributed Tegus/SEC career history. Removed unsupported conclusions about compliance maturity and regulatory enforcement history.",
-    "https://withpersona.com/customers/dialectica — Read 2026-11-11. Vendor customer case study with Dialectica executive comments: configurable identity verification and manual screening; full-network coverage remains a stated goal. Publication date not established.",
-    "https://www.dialectica.io/blog/dialectica-appoints-dimitris-psaltoulis-as-chief-people-officer — Read 2026-11-11. July 18, 2025 appointment, Greek operations and AI Bootcamp. Removed the unverified first-in-sector comparison.",
-    "https://www.dialectica.io/blog/world-education-day-2026-a-look-into-dialectica-commitment-to-lifelong-learning — Read 2026-11-11. Reports 32,000+ total training hours during 2025; corrected the prior description of all those hours as AI training.",
-    "https://www.dialectica.io/blog/dialectica-vietnam-certified-as-a-great-place-to-work-for-a-second-consecutive-year — Read 2026-11-11. April 23, 2026 company announcement: renewed certification, 120+ Ho Chi Minh City staff and APAC expansion role.",
-    "https://www.dialectica.io/blog/dialectica-earns-once-more-the-great-place-to-work-certification-in-greece — Read 2026-11-11. November 26, 2025 company announcement of certification in Greece.",
-    "https://www.dialectica.io/blog/two-years-running-dialectica-canada-is-once-again-certified-as-a-great-place-to-work — Read 2026-11-11. August 7, 2026 company announcement of renewed Canadian certification; removed unverified Glassdoor statistics and generalized workplace allegations.",
-    "https://www.dialectica.io/blog/dialectica-receives-top-honor-at-the-growth-awards-2025 — Read 2026-11-11. Company reports Growth Winner recognition at the 2025 awards organized by Eurobank and Grant Thornton.",
-    "https://unglobalcompact.org/what-is-gc/participants/202575-Dialectica-LTD — Read 2026-11-11. Official participant record: active participation since January 8, 2026; participation is not a compliance certification.",
+    "https://www.dialectica.io/ — Read 2026-11-11. Checks: type=verified; description=positioning; aiCapabilities=positioning; aiPlatform=positioning; aiBadge=inference. Company-stated 120+ technology/data professionals, 1,000+ operations staff, GenAI tools and agents; geographic and headcount totals vary across pages.",
+    "https://www.dialectica.io/about — Read 2026-11-11. Checks: services=verified; overview=positioning; history=partially-unverifiable; deliveryModel=inference; regionStrength=inference; strengths=positioning; notableFacts=positioning. Founders, first offices, Montreal/New York milestones, company-stated 1,600+ professionals and IQ; historical headcount blocks on this page are inconsistent, so the dated July 2026 announcement anchors current staffing.",
+    "https://www.dialectica.io/platform — Read 2026-11-11. Checks: expertCount=positioning; expertCountLabel=positioning; comparison=partially-unverifiable; comparison.contentLibrary=positioning; comparison.aiMatching=partially-unverifiable; whenNotIdeal=inference; caveats=partially-unverifiable. Company-stated 750K experts, 1M knowledge connectors, 1M expert conversations and 80M records; these are distinct measures. Describes an expert-content repository; removed blanket assertions that no library exists.",
+    "https://www.dialectica.io/solutions/calls — Read 2026-11-11. Checks: keyDifferentiators=positioning; bestFor=inference; whyChoose=inference; servicesDetailed=positioning; comparison.expertCalls=verified; comparison.aiMatching=partially-unverifiable. One-on-one calls, AI transcripts and company-stated over 65% first-time custom recruitment; this is not a verified per-project minimum.",
+    "https://www.dialectica.io/solutions/b2b-surveys — Read 2026-11-11. Checks: servicesDetailed=positioning; comparison.surveys=verified. Survey workflow, follow-up calls and SurveyGuard quality controls; no independent performance validation.",
+    "https://www.dialectica.io/solutions/insights — Read 2026-11-11. Checks: servicesDetailed=positioning; services=verified. Bespoke written research and company-described 3–5 business-day company reports; removed competitor architecture comparisons.",
+    "https://www.dialectica.io/solutions/origin — Read 2026-11-11. Checks: clientFit=inference; comparison.contentLibrary=positioning; servicesDetailed=positioning. Expert-derived profiles, transcripts, alerts and content review; removed unsupported exclusivity, CRM integration and 2024 launch-date assertions.",
+    "https://www.dialectica.io/solutions/executive-partnerships — Read 2026-11-11. Checks: servicesDetailed=positioning; services=verified. Advisor searches, introductions, origination and portfolio support; current product missing from the previous profile.",
+    "https://www.dialectica.io/solutions/origin/mcp — Read 2026-11-11. Checks: aiCapabilities=positioning; servicesDetailed=positioning; caveats=partially-unverifiable. Documents cited research through MCP; labels project launch and interactive cards coming soon. No launch date verified.",
+    "https://www.dialectica.io/solutions/origin/mcp/documentation — Read 2026-11-11. Checks: aiPlatform=positioning; servicesDetailed=positioning; caveats=partially-unverifiable. Documents Origin-account access, synthesis and project/private transcript search. Workflow availability descriptions differ from the landing page; confirm with the provider.",
+    "https://www.dialectica.io/industries/corporates — Read 2026-11-11. Checks: pricingModel=positioning; pricingDetail=partially-unverifiable; industries=positioning; whenNotIdeal=inference. Corporate packages, pay-as-you-go and call transcripts/summaries. Removed the unsupported $700–$1,100 client call-price range and assumptions about call credit multipliers or lower prices than peers.",
+    "https://www.dialectica.io/blog/a-decade-of-dialectica-redefining-business-decision-making-with-the-power-of-ai — Read 2026-11-11. Checks: overview=positioning; history=partially-unverifiable; notableFacts=positioning. Post dated July 9, 2025 reports revenue above $100M, six offices, 1,400+ staff and a top-three-by-2035 ambition. Its 70% CAGR lacks a defined period; removed lifetime/2019–2024 CAGR and market-ranking assertions.",
+    "https://www.dialectica.io/blog/dialectica-named-one-of-europes-fastest-growing-companies-for-the-6th-consecutive-year — Read 2026-11-11. Checks: categoryBadge=inference; description=positioning; keyDifferentiators=positioning; strengths=positioning; notableFacts=positioning. March 11, 2026 announcement: sixth FT1000 inclusion and company-stated $30M+ AI/technology spend over the preceding three years; replaces stale five-year and $25M figures.",
+    "https://www.dialectica.io/fr-ca/blog/dialectica-up-to-25-increase-in-starting-salary-alongside-enhanced-remuneration-package — Read 2026-11-11. Checks: employeeCount=positioning; employeeCountSource=positioning; headquarters=partially-unverifiable; history=partially-unverifiable. July 1, 2026 announcement: 1,600+ employees, more than half in Athens/Thessaloniki, and Greek Client Service base-pay increase effective September 1, 2026. Removed speculative contractor explanations for third-party headcount differences.",
+    "https://www.dialectica.io/blog/dialectica-appoints-jason-howard-as-chief-legal-regulatory-officer — Read 2026-11-11. Checks: complianceExtended=positioning; keyDifferentiators=positioning; history=partially-unverifiable; notableFacts=positioning. January 30, 2025 appointment, responsibilities and attributed Tegus/SEC career history. Removed unsupported conclusions about compliance maturity and regulatory enforcement history.",
+    "https://withpersona.com/customers/dialectica — Read 2026-11-11. Checks: complianceExtended=positioning; comparison.complianceTools=positioning; complianceBadge=inference; caveats=partially-unverifiable. Vendor customer case study with Dialectica executive comments: configurable identity verification and manual screening; full-network coverage remains a stated goal. Publication date not established.",
+    "https://www.dialectica.io/blog/dialectica-appoints-dimitris-psaltoulis-as-chief-people-officer — Read 2026-11-11. Checks: history=partially-unverifiable. July 18, 2025 appointment, Greek operations and AI Bootcamp. Removed the unverified first-in-sector comparison.",
+    "https://www.dialectica.io/blog/world-education-day-2026-a-look-into-dialectica-commitment-to-lifelong-learning — Read 2026-11-11. Checks: aiPlatform=positioning. Reports 32,000+ total training hours during 2025; corrected the prior description of all those hours as AI training.",
+    "https://www.dialectica.io/blog/dialectica-vietnam-certified-as-a-great-place-to-work-for-a-second-consecutive-year — Read 2026-11-11. Checks: history=partially-unverifiable; notableFacts=positioning; regionStrength=inference. April 23, 2026 company announcement: renewed certification, 120+ Ho Chi Minh City staff and APAC expansion role.",
+    "https://www.dialectica.io/blog/dialectica-earns-once-more-the-great-place-to-work-certification-in-greece — Read 2026-11-11. Checks: notableFacts=positioning. November 26, 2025 company announcement of certification in Greece.",
+    "https://www.dialectica.io/blog/two-years-running-dialectica-canada-is-once-again-certified-as-a-great-place-to-work — Read 2026-11-11. Checks: notableFacts=positioning. August 7, 2026 company announcement of renewed Canadian certification; removed unverified Glassdoor statistics and generalized workplace allegations.",
+    "https://www.dialectica.io/blog/dialectica-receives-top-honor-at-the-growth-awards-2025 — Read 2026-11-11. Checks: notableFacts=positioning. Company reports Growth Winner recognition at the 2025 awards organized by Eurobank and Grant Thornton.",
+    "https://unglobalcompact.org/what-is-gc/participants/202575-Dialectica-LTD — Read 2026-11-11. Checks: history=partially-unverifiable; notableFacts=positioning. Official participant record: active participation since January 8, 2026; participation is not a compliance certification.",
     "https://www.dialectica.io/blog/dialectica-joins-the-un-global-compact-initiative — Read 2026-11-11. February 3, 2026 announcement of voluntary participation.",
-    "https://sacra.com/c/dialectica/ — Read 2026-11-11. Dated third-party 2024 revenue estimate of $121.3M and approximately 39% growth retained as an estimate. Funding narrative conflicts with its $2.2M header; removed categorical funding claims and unsupported explanations of mistaken identity.",
+    "https://sacra.com/c/dialectica/ — Read 2026-11-11. Checks: history=partially-unverifiable; notableFacts=positioning. Dated third-party 2024 revenue estimate of $121.3M and approximately 39% growth retained as an estimate. Funding narrative conflicts with its $2.2M header; removed categorical funding claims and unsupported explanations of mistaken identity.",
     "https://www.dialectica.io/blog/dialectica-shortlisted-in-three-categories-for-ica-compliance-awards-europe-2026 — Read 2026-11-11. Company reports a 2026 shortlist including Compliance AI Solution of the Year, but gives a conflicting 2024 ceremony date. Not used as proof of an implemented automated compliance system or an award win.",
     "https://www.dialectica.io/blog/dialectica-launches-new-website-to-reflect-growth-innovation-and-global-ambition — Read 2026-11-11. Website relaunch and expanded client/product scope; removed the unsupported precise date of the domain migration.",
-    "https://www.dialectica.io/faq — Read 2026-11-11. Company-described client sectors and office locations; does not substantiate standardized cooling-off periods or a full interaction audit trail.",
-    "https://www.dialectica.io/terms-conditions — Read 2026-11-11. Website terms, not expert engagement terms; do not establish MNPI controls, cooling-off periods or an interaction audit trail. Comprehensive interaction audit trails remain unverified; no positive or negative coverage claim is made.",
-    "https://www.dialectica.io/contact — Read 2026-11-11. Reviewed sales inquiry routes and client segment choices; no client per-call quote verified.",
+    "https://www.dialectica.io/faq — Read 2026-11-11. Checks: complianceExtended=positioning; comparison.complianceTools=positioning; complianceBadge=inference; sourceNotes=inference. Company-described client sectors, office locations, Persona identity verification and employment-history, adverse-news and sanctions screening; does not substantiate standardized cooling-off periods or a full interaction audit trail.",
+    "https://www.dialectica.io/terms-conditions — Read 2026-11-11. Checks: caveats=partially-unverifiable; whenNotIdeal=inference. Website terms, not expert engagement terms; do not establish MNPI controls, cooling-off periods or an interaction audit trail. Comprehensive interaction audit trails remain unverified; no positive or negative coverage claim is made.",
+    "https://www.dialectica.io/contact — Read 2026-11-11. Checks: industries=positioning; clientFit.segments=positioning. Reviewed sales inquiry routes and client segment choices; no client per-call quote verified.",
     "https://www.dialectica.io/blog — Read 2026-11-11. Reviewed recent company developments; no sourced basis retained for claimed 2023 leadership replacements, office-opening dates in 2023/2024, or the Inex One ranking and youngest-provider comparison.",
-    "https://www.dialectica.io/sitemap.xml — Read 2026-11-11. Used to discover company announcements and product pages; no factual claim relies on a search-result snippet alone."
+    "https://www.dialectica.io/industries/hedge-funds — Read 2026-11-11. Checks: clientFit=inference; clientFit.segments=positioning. Dedicated company page explicitly describes services for hedge funds and asset managers; retained this client segment as company positioning, with fit assessed editorially."
   ],
   "whyChoose": [
     "Custom expert sourcing",
@@ -248,7 +246,7 @@
   ],
   "confidence": {
     "founded": "verified",
-    "headquarters": "verified",
+    "headquarters": "partially-unverifiable",
     "expertCount": "positioning",
     "employeeCount": "positioning",
     "pricingModel": "positioning",
@@ -269,6 +267,22 @@
     "aiBadge": "inference",
     "comparison": "partially-unverifiable",
     "strengths": "positioning",
-    "notableFacts": "positioning"
+    "notableFacts": "positioning",
+    "type": "verified",
+    "description": "positioning",
+    "employeeCountSource": "positioning",
+    "expertCountLabel": "positioning",
+    "industries": "positioning",
+    "keyDifferentiators": "positioning",
+    "caveats": "partially-unverifiable",
+    "whyChoose": "inference",
+    "whenNotIdeal": "inference",
+    "sourceNotes": "inference",
+    "comparison.expertCalls": "verified",
+    "comparison.surveys": "verified",
+    "comparison.contentLibrary": "positioning",
+    "comparison.aiMatching": "partially-unverifiable",
+    "comparison.complianceTools": "positioning",
+    "clientFit.segments": "positioning"
   }
 }
