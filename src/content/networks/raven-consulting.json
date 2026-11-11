@@ -2,160 +2,60 @@
   "name": "Raven Expert Consulting",
   "shortName": "RC",
   "slug": "raven-consulting",
-  "website": "https://ravenexpertconsulting.com",
   "gradientFrom": "#1c1917",
   "gradientTo": "#78716c",
-  "type": "Expert Network",
-  "founded": 2019,
-  "headquarters": "London, UK",
-  "employeeCount": "30+",
-  "expertCount": "15K+",
-  "description": "Boutique expert network specializing in private equity due diligence across European mid-market transactions, offering bespoke research and curated expert access with a white-glove service model.",
-  "services": [
-    "Expert Calls",
-    "Due Diligence Support",
-    "Bespoke Research"
-  ],
-  "aiCapabilities": [
-    "AI-assisted expert curation",
-    "Deal-specific matching algorithms",
-    "Automated compliance screening"
-  ],
-  "industries": [
-    "Private Equity",
-    "Industrials",
-    "Business Services",
-    "Healthcare"
-  ],
-  "pricingModel": "Per-call",
-  "keyDifferentiators": [
-    "Boutique PE specialization with personalized service",
-    "European mid-market transaction expertise",
-    "White-glove bespoke research model"
-  ],
-  "bestFor": [
-    "Boutique PE",
-    "Mid-Market",
-    "European DD"
-  ],
+  "type": "Not disclosed",
+  "headquarters": "Not disclosed",
+  "employeeCount": "Not disclosed",
+  "expertCount": "Not disclosed",
+  "description": "Public-source verification is incomplete; provider identity, services, and company details are not confirmed.",
+  "services": [],
+  "aiCapabilities": [],
+  "industries": [],
+  "pricingModel": "Not disclosed",
+  "keyDifferentiators": [],
+  "bestFor": [],
   "compliance": {
-    "mnpiPolicy": "PE-specific MNPI protocols aligned with FCA and European regulatory standards",
-    "expertVetting": "Thorough vetting with conflict-of-interest screening for deal-related consultations",
-    "auditTrail": true,
-    "regulatoryHistory": "Clean regulatory record"
+    "mnpiPolicy": "Not disclosed",
+    "expertVetting": "Not disclosed",
+    "coolingOffPeriod": "Not disclosed",
+    "auditTrail": null,
+    "regulatoryHistory": "Not disclosed"
   },
   "featured": false,
   "priority": 29,
-  "published": true,
-  "categoryBadge": "Boutique Specialist",
-  "deliveryModel": "Concierge",
-  "regionStrength": "Europe",
-  "complianceBadge": "Standard Compliance",
-  "lastUpdated": "2026-03-07",
-  "overview": "Raven Expert Consulting is a London-based boutique expert network specializing in PE due diligence for European mid-market transactions. Founded in 2019, the company takes a white-glove approach — providing highly curated, deal-specific expert access with senior staff involved in every engagement.\n\nThe boutique model trades volume for quality, making Raven appealing to mid-market PE firms who value depth of service over breadth of platform.",
-  "history": {
-    "narrative": "Founded in 2019 in London to serve the European mid-market PE community with a boutique, high-touch expert network model.",
-    "timeline": [
-      {
-        "year": "2019",
-        "event": "Founded in London with European mid-market PE focus"
-      },
-      {
-        "year": "2020-2023",
-        "event": "Built curated expert network across European industrials, business services, and healthcare"
-      },
-      {
-        "year": "2024-2025",
-        "event": "Expanded bespoke research capabilities for deal-specific due diligence"
-      }
-    ]
+  "published": false,
+  "comparison": {
+    "expertCalls": null,
+    "contentLibrary": null,
+    "aiMatching": null,
+    "surveys": null,
+    "complianceTools": null
   },
-  "servicesDetailed": [
-    {
-      "name": "Expert Consultations",
-      "description": "Highly curated consultations with industry experts matched specifically to PE deal requirements."
-    },
-    {
-      "name": "Due Diligence Support",
-      "description": "Deal-specific expert sourcing for European mid-market PE transactions, with rapid turnaround."
-    },
-    {
-      "name": "Bespoke Research Projects",
-      "description": "Custom research combining expert interviews with market analysis for PE investment evaluation."
-    }
-  ],
-  "aiPlatform": {
-    "narrative": "Raven uses AI to assist expert curation and deal-specific matching, overlaid with human judgment.",
-    "features": [
-      "AI-assisted expert curation",
-      "Deal-specific matching algorithms",
-      "Automated compliance screening"
-    ]
-  },
-  "complianceExtended": {
-    "narrative": "PE-specific compliance aligned with FCA and European standards.",
-    "highlights": [
-      "FCA-aligned PE compliance",
-      "Deal-specific conflict screening",
-      "Cooling-off period enforcement",
-      "Complete audit trail"
-    ],
-    "regulatoryContext": "PE due diligence requires careful handling of deal-sensitive information. Clean regulatory record."
-  },
-  "clientFit": {
-    "narrative": "Ideal for mid-market PE firms in Europe who value personalized service over platform scale.",
-    "segments": [
-      "European mid-market PE firms",
-      "Boutique advisory firms supporting PE transactions",
-      "Mid-market investors needing curated European expert access"
-    ]
-  },
-  "strengths": [
-    "White-glove service with senior staff on every engagement",
-    "European mid-market PE specialization",
-    "Boutique model enables personalized attention"
-  ],
+  "lastUpdated": "2026-11-11",
+  "servicesDetailed": [],
+  "strengths": [],
   "caveats": [
-    "Very small team (~30) limits capacity",
-    "Expert database (15K) is smallest among profiled networks",
-    "Limited coverage outside Europe"
+    "Provider identity and current operations could not be verified from accessible public sources during the 2026-11-11 review."
   ],
-  "notableFacts": [
-    "Boutique model with senior staff on every engagement",
-    "European mid-market PE specialization"
-  ],
+  "notableFacts": [],
   "sourceNotes": [
-    "Raven Expert Consulting website",
-    "Expert network industry directories"
+    "https://www.ravengroup.global/consulting/ — Read 2026-11-11. Raven Consulting describes business and information-system consulting and gives a Belfast contact address. The page does not establish a connection to this record; its services and location were not transferred to this profile.",
+    "https://www.trustraven.com/ — Read 2026-11-11. This site identifies its operator as Raven Worldwide Ltd, trading as Raven, and describes growth and innovation consulting and an expert community. No connection to the provider identity in this record was established; its company details were not transferred.",
+    "https://www.trustraven.com/news/from-hype-to-impact-how-raven-s-ai-expert-model-is-redefining-investment-diligence-and-value-creation — Read 2026-11-11. Raven Worldwide describes AI-supported investment diligence and expert teams. The article does not establish that it concerns this provider, so it was not used to support AI, service, or recent-development claims here. Developments from 2025-11-11 through 2026-11-11 remain unverified pending identification of the provider.",
+    "https://umbrex.com/resources/expert-network-directory/ — Read 2026-11-11. A search of the accessible directory text found no Raven entry. This is a research limitation, not proof that the provider does not exist. Exact-name and domain searches yielded no usable corroboration; unsupported company, scale, pricing, service, AI, compliance, history, and comparison claims were removed. The record remains unpublished because verification is incomplete."
   ],
-  "whyChoose": [
-    "White-glove PE service",
-    "European mid-market",
-    "Senior-led engagements",
-    "Deal-specific curation"
-  ],
-  "whenNotIdeal": [
-    "Need high-volume calls",
-    "Non-PE research",
-    "Want self-service",
-    "Need global coverage"
-  ],
+  "whyChoose": [],
+  "whenNotIdeal": [],
   "confidence": {
-    "founded": "partially-unverifiable",
-    "headquarters": "verified",
-    "expertCount": "positioning",
+    "name": "partially-unverifiable",
+    "type": "partially-unverifiable",
+    "headquarters": "partially-unverifiable",
+    "expertCount": "partially-unverifiable",
     "employeeCount": "partially-unverifiable",
-    "pricingModel": "verified",
-    "services": "positioning",
-    "compliance": "positioning",
-    "overview": "positioning",
-    "history": "inference",
-    "servicesDetailed": "positioning",
-    "aiPlatform": "positioning",
-    "complianceExtended": "positioning",
-    "clientFit": "inference",
-    "strengths": "positioning",
-    "caveats": "inference",
-    "notableFacts": "positioning"
+    "pricingModel": "partially-unverifiable",
+    "services": "partially-unverifiable",
+    "aiCapabilities": "partially-unverifiable",
+    "compliance": "partially-unverifiable"
   }
 }
