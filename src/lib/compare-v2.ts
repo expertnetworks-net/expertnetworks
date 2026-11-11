@@ -87,6 +87,10 @@ const aiBadgeColors: Record<string, string> = {
   'Limited AI Detail': 'bg-amber-500/12 text-amber-700',
 };
 
+const EMPTY_CELL = '<span class="cell-empty" aria-label="No public data">&ndash;</span>';
+
+const YES_CELL = '<span class="cell-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Yes</span>';
+
 const importanceOrder: Record<string, number> = { major: 0, moderate: 1, minor: 2 };
 
 function escapeHtml(value = ''): string {
@@ -179,8 +183,8 @@ function isSameRow(dataset: CompareDataset, activeSlugs: string[], row: any): bo
 }
 
 function renderCapabilityValue(value: any, showNotes: boolean): string {
-  if (!Array.isArray(value)) return '<span class="text-tertiary/60 text-[11px]">Not publicly clear</span>';
-  const note = showNotes && value[2] ? `<div class="mt-1 text-[10px] leading-relaxed text-tertiary">${escapeHtml(value[2])}</div>` : '';
+  if (!Array.isArray(value)) return '<span class="cell-empty">Not publicly clear</span>';
+  const note = showNotes && value[2] ? `<div class="cell-note">${escapeHtml(value[2])}</div>` : '';
   return `<div class="flex flex-col gap-1"><span class="data-pill ${capabilityPillClass(value[0])}">${escapeHtml(value[0])}</span>${note}</div>`;
 }
 
@@ -189,55 +193,55 @@ function renderCellValue(dataset: CompareDataset, slug: string, row: any, showNo
   const type = row.type;
   if (type === 'capability') return renderCapabilityValue(value, showNotes);
   if (type === 'chip-provider') {
-    if (!value) return '<span class="text-tertiary/60">-</span>';
-    return `<span class="inline-flex rounded-full border px-2 py-1 text-[10px] font-semibold ${providerTypeColors[value] || 'bg-slate-100 text-slate-700 border-slate-200/80'}">${escapeHtml(value)}</span>`;
+    if (!value) return EMPTY_CELL;
+    return `<span class="inline-flex rounded-full border px-2.5 py-1 text-[11px] font-semibold ${providerTypeColors[value] || 'bg-slate-100 text-slate-700 border-slate-200/80'}">${escapeHtml(value)}</span>`;
   }
   if (type === 'substitute-type') {
     const substituteType = getSubstituteType(dataset, slug);
-    return `<div class="flex flex-col gap-2"><span class="inline-flex rounded-full border px-2 py-1 text-[10px] font-semibold ${getSubstituteClass(substituteType)}">${escapeHtml(substituteType)}</span><span class="text-[10px] leading-relaxed text-tertiary">${escapeHtml(getSubstituteHint(dataset, slug))}</span></div>`;
+    return `<div class="flex flex-col gap-2"><span class="inline-flex rounded-full border px-2.5 py-1 text-[11px] font-semibold ${getSubstituteClass(substituteType)}">${escapeHtml(substituteType)}</span><span class="cell-note">${escapeHtml(getSubstituteHint(dataset, slug))}</span></div>`;
   }
   if (type === 'product-names') {
-    if (!value) return '<span class="text-tertiary/60">-</span>';
+    if (!value) return EMPTY_CELL;
     const products = String(value).split(',').map((p: string) => p.trim()).filter(Boolean);
-    return `<div class="flex flex-wrap gap-1.5">${products.map((p: string) => `<span class="inline-flex items-center rounded-lg border border-[#d8dae0] bg-[#f0f1f4] px-2.5 py-1.5 text-[10px] font-semibold text-[#1d1d1f] leading-tight">${escapeHtml(p)}</span>`).join('')}</div>`;
+    return `<div class="flex flex-wrap gap-1.5">${products.map((p: string) => `<span class="inline-flex items-center rounded-lg border border-[#d8dae0] bg-[#f0f1f4] px-2 py-1 text-[11px] font-semibold text-[#1d1d1f] leading-tight">${escapeHtml(p)}</span>`).join('')}</div>`;
   }
   if (type === 'text-evidence') {
-    if (value == null || value === '') return '<span class="text-tertiary/60">-</span>';
+    if (value == null || value === '') return EMPTY_CELL;
     const evidence = dataset.enriched[slug]?.[row.evidenceField] || 'Inferred';
-    return `<div class="inline-flex items-center gap-2"><span class="text-[12px] text-primary">${escapeHtml(value)}</span><span class="ev-dot ${evidenceDotClass(evidence)}" title="${escapeHtml(evidence)}"></span></div>`;
+    return `<div class="inline-flex items-center gap-2"><span class="text-[13px] text-primary">${escapeHtml(value)}</span><span class="ev-dot ${evidenceDotClass(evidence)}" title="${escapeHtml(evidence)}"></span><span class="sr-only">(${escapeHtml(evidence)})</span></div>`;
   }
-  if (type === 'text-italic') return value ? `<span class="text-[11px] italic leading-relaxed text-secondary">${escapeHtml(value)}</span>` : '<span class="text-tertiary/60">-</span>';
-  if (type === 'boolean') return value === true ? '<span class="text-emerald-600 font-bold">Yes</span>' : '<span class="text-tertiary/60">-</span>';
+  if (type === 'text-italic') return value ? `<span class="text-[12px] italic leading-relaxed text-[#515154]">${escapeHtml(value)}</span>` : EMPTY_CELL;
+  if (type === 'boolean') return value === true ? YES_CELL : EMPTY_CELL;
   if (type === 'boolean-or-string') {
-    if (value === true) return '<span class="text-emerald-600 font-bold">Yes</span>';
-    if (typeof value === 'string') return `<span class="text-[11px] font-medium text-primary">${escapeHtml(value)}</span>`;
-    return '<span class="text-tertiary/60">-</span>';
+    if (value === true) return YES_CELL;
+    if (typeof value === 'string') return `<span class="text-[12px] font-medium text-primary">${escapeHtml(value)}</span>`;
+    return EMPTY_CELL;
   }
   if (type === 'graded') {
-    if (!value) return '<span class="text-tertiary/60">-</span>';
-    return `<span class="inline-flex rounded-full px-2 py-1 text-[10px] font-semibold ${complianceColors[value] || 'bg-slate-100 text-slate-700'}">${escapeHtml(value)}</span>`;
+    if (!value) return EMPTY_CELL;
+    return `<span class="inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold ${complianceColors[value] || 'bg-slate-100 text-slate-700'}">${escapeHtml(value)}</span>`;
   }
   if (type === 'chip') {
-    if (!value) return '<span class="text-tertiary/60">-</span>';
+    if (!value) return EMPTY_CELL;
     const palette = row.key === 'deliveryModel' ? deliveryColors
       : row.key === 'regionStrength' ? regionColors
       : row.key === 'aiBadge' ? aiBadgeColors
       : badgeColors;
-    return `<span class="inline-flex rounded-full px-2 py-1 text-[10px] font-semibold ${palette[value] || 'bg-slate-100 text-slate-700'}">${escapeHtml(value)}</span>`;
+    return `<span class="inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold ${palette[value] || 'bg-slate-100 text-slate-700'}">${escapeHtml(value)}</span>`;
   }
   if (type === 'list') {
-    if (!Array.isArray(value) || value.length === 0) return '<span class="text-tertiary/60">-</span>';
-    const items = value.slice(0, 3).map((item: string) => `<span class="inline-flex rounded-full bg-[#f5f5f7] px-2 py-1 text-[10px] font-medium text-secondary">${escapeHtml(item)}</span>`).join('');
-    const extra = value.length > 3 ? `<span class="text-[10px] text-tertiary">+${value.length - 3}</span>` : '';
+    if (!Array.isArray(value) || value.length === 0) return EMPTY_CELL;
+    const items = value.slice(0, 3).map((item: string) => `<span class="inline-flex rounded-full bg-[#f5f5f7] px-2 py-1 text-[11px] font-medium text-[#515154]">${escapeHtml(item)}</span>`).join('');
+    const extra = value.length > 3 ? `<span class="text-[11px] text-secondary">+${value.length - 3}</span>` : '';
     return `<div class="flex flex-wrap gap-1.5">${items}${extra}</div>`;
   }
-  if (type === 'best-fit') return value ? `<span class="text-[12px] text-primary">${escapeHtml(value)}</span>` : '<span class="text-tertiary/60">-</span>';
-  if (value != null && value !== '') return `<span class="text-[12px] text-primary">${escapeHtml(value)}</span>`;
-  return '<span class="text-tertiary/60">-</span>';
+  if (type === 'best-fit') return value ? `<span class="text-[13px] text-primary">${escapeHtml(value)}</span>` : EMPTY_CELL;
+  if (value != null && value !== '') return `<span class="text-[13px] text-primary">${escapeHtml(value)}</span>`;
+  return EMPTY_CELL;
 }
 
 function renderProviderHeaderCell(dataset: CompareDataset, slug: string): string {
-  return `<th class="compare-head text-left min-w-[130px] provider-col" data-slug="${escapeHtml(slug)}"><div class="flex items-center gap-2.5">${renderIconLg(dataset, slug)}<span class="provider-name">${escapeHtml(shortName(dataset, slug))}</span></div></th>`;
+  return `<th scope="col" class="compare-head text-left provider-col" data-slug="${escapeHtml(slug)}"><div class="flex items-center gap-2.5">${renderIconLg(dataset, slug)}<a class="provider-name" href="/networks/${escapeHtml(slug)}">${escapeHtml(shortName(dataset, slug))}</a></div></th>`;
 }
 
 function renderComparisonTable(entries: any[], dataset: CompareDataset, activeSlugs: string[], options: {
@@ -260,15 +264,31 @@ function renderComparisonTable(entries: any[], dataset: CompareDataset, activeSl
 
   if (filtered.length === 0) return `<div class="empty-panel">${options.diffOnly ? 'All rows in this section are identical across the selected providers. Try adding a different provider to surface differences.' : 'No rows match the current filters.'}</div>`;
 
+  let diffCount = 0;
   const rowsHtml = filtered.map((entry, index) => {
+    const comparable = activeSlugs.map((slug) => JSON.stringify(getComparableValue(dataset, slug, entry.row)));
+    const same = comparable.every((value) => value === comparable[0]);
+    if (!same) diffCount += 1;
+    /* Flag a cell as an outlier only when a strict majority of providers agree and it departs from them. */
+    const tally = new Map<string, number>();
+    comparable.forEach((value) => tally.set(value, (tally.get(value) || 0) + 1));
+    const majority = [...tally.entries()].find(([, count]) => count > comparable.length / 2)?.[0];
     const sectionMeta = options.showSection ? `<span class="summary-pill">${escapeHtml(entry.sectionName)}</span>` : '';
     const note = options.showNotes && entry.row.description ? `<div class="row-note">${escapeHtml(entry.row.description)}</div>` : '';
-    const cells = activeSlugs.map((slug) => `<td class="provider-col" data-slug="${escapeHtml(slug)}" data-label="${escapeHtml(shortName(dataset, slug))}">${renderCellValue(dataset, slug, entry.row, Boolean(options.showNotes))}</td>`).join('');
-    const zebraClass = index % 2 === 1 ? ' class="zebra-row"' : '';
-    return `<tr${zebraClass}><td class="sticky-col"><div class="row-label"><div class="row-name">${escapeHtml(entry.row.label)}</div>${sectionMeta ? `<div class="row-meta">${sectionMeta}</div>` : ''}${note}</div></td>${cells}</tr>`;
+    const cells = activeSlugs.map((slug, slugIndex) => {
+      const isOutlier = !same && majority !== undefined && comparable[slugIndex] !== majority;
+      return `<td class="provider-col${isOutlier ? ' is-outlier' : ''}" data-slug="${escapeHtml(slug)}" data-label="${escapeHtml(shortName(dataset, slug))}">${renderCellValue(dataset, slug, entry.row, Boolean(options.showNotes))}</td>`;
+    }).join('');
+    const rowClass = `${same ? 'is-same' : 'is-diff'}${index % 2 === 1 ? ' zebra-row' : ''}`;
+    const flag = same
+      ? '<span class="row-flag row-flag-same">Same</span>'
+      : '<span class="row-flag row-flag-diff">Differs</span>';
+    return `<tr class="${rowClass}"><th scope="row" class="sticky-col"><div class="row-label"><div class="row-name">${escapeHtml(entry.row.label)}</div><div class="row-meta">${flag}${sectionMeta}</div>${note}</div></th>${cells}</tr>`;
   }).join('');
 
-  return `<div class="table-shell"><table class="compare-table"><thead><tr><th class="compare-head sticky-col text-left">Category</th>${activeSlugs.map((slug) => renderProviderHeaderCell(dataset, slug)).join('')}</tr></thead><tbody>${rowsHtml}</tbody></table></div>`;
+  const meta = `<div class="table-meta"><span class="table-meta-count"><strong>${diffCount}</strong> of ${filtered.length} row${filtered.length === 1 ? '' : 's'} differ</span><span class="scroll-hint" aria-hidden="true">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></span></div>`;
+
+  return `<div class="table-wrap">${meta}<div class="table-shell" tabindex="0" role="region" aria-label="Comparison table"><table class="compare-table" style="--cols:${activeSlugs.length}"><thead><tr><th scope="col" class="compare-head sticky-col text-left">Category</th>${activeSlugs.map((slug) => renderProviderHeaderCell(dataset, slug)).join('')}</tr></thead><tbody>${rowsHtml}</tbody></table></div></div>`;
 }
 
 /* ---------- Export: projectCompareNetwork ---------- */
@@ -403,10 +423,10 @@ export function buildCompareRender(activeSlugs: string[], dataset: CompareDatase
     directoryHref,
     chipsHtml: activeSlugs.map((slug) => {
       const data = dataset.networkDataMap[slug];
-      return `<div class="provider-chip flex items-center gap-2 px-3.5 py-2 bg-[#f5f5f7] rounded-xl border border-border/40 whitespace-nowrap" data-slug="${escapeHtml(slug)}">
+      return `<div class="provider-chip" data-slug="${escapeHtml(slug)}">
         ${renderIconLg(dataset, slug)}
-        <span class="text-[13px] font-semibold text-primary">${escapeHtml(shortName(dataset, slug))}</span>
-        <button class="remove-provider text-tertiary hover:text-red-500 transition-colors bg-transparent border-none cursor-pointer p-0 ml-0.5" data-slug="${escapeHtml(slug)}" aria-label="Remove ${escapeHtml(data.name)}">
+        <span class="provider-chip-name">${escapeHtml(shortName(dataset, slug))}</span>
+        <button type="button" class="remove-provider" data-slug="${escapeHtml(slug)}" aria-label="Remove ${escapeHtml(data.name)} from comparison">
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </button>
       </div>`;
@@ -420,7 +440,7 @@ export function buildCompareRender(activeSlugs: string[], dataset: CompareDatase
       ${diffMode ? 'Differences only: identical rows hidden, remaining sorted by importance.' : 'All tracked rows visible.'}
       ${highConfidenceOnly ? ' High-confidence rows only.' : ''}
       ${showEvidenceNotes ? ' Evidence notes expanded.' : ''}
-      <div class="mt-1.5 text-[11px] text-tertiary">${hiddenSameCount} identical row${hiddenSameCount === 1 ? '' : 's'}. ${highConfidenceHidden} mixed/lower-confidence row${highConfidenceHidden === 1 ? '' : 's'}.</div>
+      <div class="mt-1.5 text-[12px] text-secondary">${hiddenSameCount} identical row${hiddenSameCount === 1 ? '' : 's'}. ${highConfidenceHidden} mixed/lower-confidence row${highConfidenceHidden === 1 ? '' : 's'}.</div>
     </div>`,
     fullMatrixContentHtml: fullMatrixEntries || '<div class="empty-panel">No rows match the current filters.</div>',
   };
