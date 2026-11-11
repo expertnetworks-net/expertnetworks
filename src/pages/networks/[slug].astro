@@ -133,33 +133,33 @@ function fieldLabel(field: string) {
 
 // Alternative and comparison pages that exist
 const altPages: Record<string, string> = {
-  'glg': '/glg-alternatives',
-  'alphasights': '/alphasights-alternatives',
-  'third-bridge': '/third-bridge-alternatives',
+  'glg': '/glg-alternatives/',
+  'alphasights': '/alphasights-alternatives/',
+  'third-bridge': '/third-bridge-alternatives/',
 };
 
 const vsPages: Record<string, {href: string; label: string}[]> = {
   'glg': [
-    { href: '/glg-vs-alphasights', label: 'GLG vs AlphaSights' },
-    { href: '/glg-vs-third-bridge', label: 'GLG vs Third Bridge' },
-    { href: '/glg-vs-guidepoint', label: 'GLG vs Guidepoint' },
+    { href: '/glg-vs-alphasights/', label: 'GLG vs AlphaSights' },
+    { href: '/glg-vs-third-bridge/', label: 'GLG vs Third Bridge' },
+    { href: '/glg-vs-guidepoint/', label: 'GLG vs Guidepoint' },
   ],
   'alphasights': [
-    { href: '/glg-vs-alphasights', label: 'GLG vs AlphaSights' },
-    { href: '/alphasights-vs-third-bridge', label: 'AlphaSights vs Third Bridge' },
-    { href: '/alphasights-vs-dialectica', label: 'AlphaSights vs Dialectica' },
+    { href: '/glg-vs-alphasights/', label: 'GLG vs AlphaSights' },
+    { href: '/alphasights-vs-third-bridge/', label: 'AlphaSights vs Third Bridge' },
+    { href: '/alphasights-vs-dialectica/', label: 'AlphaSights vs Dialectica' },
   ],
   'third-bridge': [
-    { href: '/glg-vs-third-bridge', label: 'GLG vs Third Bridge' },
-    { href: '/alphasights-vs-third-bridge', label: 'AlphaSights vs Third Bridge' },
-    { href: '/third-bridge-vs-guidepoint', label: 'Third Bridge vs Guidepoint' },
+    { href: '/glg-vs-third-bridge/', label: 'GLG vs Third Bridge' },
+    { href: '/alphasights-vs-third-bridge/', label: 'AlphaSights vs Third Bridge' },
+    { href: '/third-bridge-vs-guidepoint/', label: 'Third Bridge vs Guidepoint' },
   ],
   'guidepoint': [
-    { href: '/glg-vs-guidepoint', label: 'GLG vs Guidepoint' },
-    { href: '/third-bridge-vs-guidepoint', label: 'Third Bridge vs Guidepoint' },
+    { href: '/glg-vs-guidepoint/', label: 'GLG vs Guidepoint' },
+    { href: '/third-bridge-vs-guidepoint/', label: 'Third Bridge vs Guidepoint' },
   ],
   'dialectica': [
-    { href: '/alphasights-vs-dialectica', label: 'AlphaSights vs Dialectica' },
+    { href: '/alphasights-vs-dialectica/', label: 'AlphaSights vs Dialectica' },
   ],
 };
 
@@ -171,14 +171,14 @@ const hasVsPages = vsPages[d.slug] || [];
   title={`${d.name} Review (2026): Pricing, Compliance & Expert Coverage | ExpertNetworks.net`}
   description={`${d.name} expert network review: ${d.expertCount ? d.expertCount + ' experts, ' : ''}${d.pricingModel ? d.pricingModel.toLowerCase() + ' pricing, ' : ''}${d.headquarters ? d.headquarters + ', ' : ''}founded ${d.founded || 'N/A'}. Independent analysis of services, compliance, and AI capabilities.`}
   ogType="article"
-  canonicalPath={`/networks/${d.slug}`}
+  canonicalPath={`/networks/${d.slug}/`}
   jsonLd={{
     "@context": "https://schema.org",
     "@graph": [
       Object.fromEntries(Object.entries({
         "@type": "Organization",
         "name": d.name,
-        "url": d.website || `https://expertnetworks.net/networks/${d.slug}`,
+        "url": d.website || `https://expertnetworks.net/networks/${d.slug}/`,
         "description": d.description,
         "foundingDate": d.founded ? String(d.founded) : undefined,
         "address": d.headquarters ? { "@type": "PostalAddress", "addressLocality": d.headquarters } : undefined,
@@ -189,7 +189,7 @@ const hasVsPages = vsPages[d.slug] || [];
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://expertnetworks.net/" },
           { "@type": "ListItem", "position": 2, "name": "Expert Networks", "item": "https://expertnetworks.net/networks" },
-          { "@type": "ListItem", "position": 3, "name": d.name, "item": `https://expertnetworks.net/networks/${d.slug}` }
+          { "@type": "ListItem", "position": 3, "name": d.name, "item": `https://expertnetworks.net/networks/${d.slug}/` }
         ]
       },
       ...(faqEntries.length >= 2 ? [{
@@ -225,7 +225,7 @@ const hasVsPages = vsPages[d.slug] || [];
         <div class="bg-white rounded-[10px] shadow-[0_0_0_0.5px_rgba(0,0,0,0.04),0_1px_3px_rgba(0,0,0,0.06)] overflow-hidden" id="featuredList">
           {featured.map((n, i) => (
             <a
-              href={`/networks/${n.data.slug}`}
+              href={`/networks/${n.data.slug}/`}
               class:list={[
                 'sidebar-item flex items-center gap-3 px-3 py-3 no-underline transition-colors duration-150',
                 n.data.slug === d.slug ? 'bg-accent text-white' : 'text-primary hover:bg-black/[0.04]',
@@ -264,7 +264,7 @@ const hasVsPages = vsPages[d.slug] || [];
         <div class="bg-white rounded-[10px] shadow-[0_0_0_0.5px_rgba(0,0,0,0.04),0_1px_3px_rgba(0,0,0,0.06)] overflow-hidden" id="allList">
           {others.map((n, i) => (
             <a
-              href={`/networks/${n.data.slug}`}
+              href={`/networks/${n.data.slug}/`}
               class:list={[
                 'sidebar-item flex items-center gap-3 px-3 py-3 no-underline transition-colors duration-150',
                 n.data.slug === d.slug ? 'bg-accent text-white' : 'text-primary hover:bg-black/[0.04]',
@@ -323,7 +323,7 @@ const hasVsPages = vsPages[d.slug] || [];
         <div class="text-[11px] font-semibold uppercase tracking-wider text-secondary px-3 mb-1">Featured</div>
         <div class="bg-white rounded-[10px] shadow-[0_0_0_0.5px_rgba(0,0,0,0.04),0_1px_3px_rgba(0,0,0,0.06)] overflow-hidden" id="mobileFeaturedList">
           {featured.map((n, i) => (
-            <a href={`/networks/${n.data.slug}`}
+            <a href={`/networks/${n.data.slug}/`}
               class:list={['sidebar-item flex items-center gap-3 px-3 py-3 no-underline transition-colors duration-150', n.data.slug === d.slug ? 'bg-accent text-white' : 'text-primary hover:bg-black/[0.04]', i > 0 ? 'border-t border-black/[0.06]' : '']}
               data-name={n.data.name.toLowerCase()} aria-current={n.data.slug === d.slug ? 'page' : undefined}>
               {n.data.logo ? (
@@ -344,7 +344,7 @@ const hasVsPages = vsPages[d.slug] || [];
         <div class="text-[11px] font-semibold uppercase tracking-wider text-secondary px-3 mb-1">All Networks</div>
         <div class="bg-white rounded-[10px] shadow-[0_0_0_0.5px_rgba(0,0,0,0.04),0_1px_3px_rgba(0,0,0,0.06)] overflow-hidden" id="mobileAllList">
           {others.map((n, i) => (
-            <a href={`/networks/${n.data.slug}`}
+            <a href={`/networks/${n.data.slug}/`}
               class:list={['sidebar-item flex items-center gap-3 px-3 py-3 no-underline transition-colors duration-150', n.data.slug === d.slug ? 'bg-accent text-white' : 'text-primary hover:bg-black/[0.04]', i > 0 ? 'border-t border-black/[0.06]' : '']}
               data-name={n.data.name.toLowerCase()} aria-current={n.data.slug === d.slug ? 'page' : undefined}>
               {n.data.logo ? (
@@ -372,7 +372,7 @@ const hasVsPages = vsPages[d.slug] || [];
       <header id="profile-summary" class="pf-hero" style={`--pf-a: ${d.gradientFrom}; --pf-b: ${d.gradientTo}`}>
         <div class="pf-wrap">
           <nav aria-label="Breadcrumb" class="pf-crumbs">
-            <a href="/networks">
+            <a href="/networks/">
               <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
               All networks
             </a>
@@ -424,7 +424,7 @@ const hasVsPages = vsPages[d.slug] || [];
           )}
 
           <div class="flex flex-wrap gap-2.5 mt-6">
-            <a href={`/compare?add=${d.slug}`} class="pf-btn pf-btn-primary">
+            <a href={`/compare/?add=${d.slug}`} class="pf-btn pf-btn-primary">
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="4" width="7" height="16" rx="1.5"/><rect x="14" y="4" width="7" height="16" rx="1.5"/></svg>
               Compare {shortName}
             </a>
@@ -829,7 +829,7 @@ const hasVsPages = vsPages[d.slug] || [];
             <section id="related-news" class="pf-section pf-section-rule">
               <div class="flex items-end justify-between gap-3 mb-4">
                 <h2 class="pf-h2-lg">Recent news</h2>
-                <a href={`/news?network=${d.slug}`} class="pf-text-btn no-underline">All {shortName} signals &rarr;</a>
+                <a href={`/news/?network=${d.slug}`} class="pf-text-btn no-underline">All {shortName} signals &rarr;</a>
               </div>
               <ul class="pf-news">
                 {relatedNews.map((article) => {
@@ -879,7 +879,7 @@ const hasVsPages = vsPages[d.slug] || [];
                 <h2 class="pf-h2-lg">Compare {shortName}</h2>
                 <p class="mt-1 text-[14px] leading-relaxed text-secondary max-w-[52ch]">See {shortName} side by side with other providers on pricing, compliance, AI, and delivery model.</p>
               </div>
-              <a href={`/compare?add=${d.slug}`} class="pf-btn pf-btn-primary flex-shrink-0">
+              <a href={`/compare/?add=${d.slug}`} class="pf-btn pf-btn-primary flex-shrink-0">
                 Open comparison
                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
               </a>
@@ -887,7 +887,7 @@ const hasVsPages = vsPages[d.slug] || [];
             <p class="pf-eyebrow mt-6 mb-2.5">Head to head</p>
             <div class="flex flex-wrap gap-2">
               {published.filter(n => n.data.slug !== d.slug).slice(0, 5).map((rival) => (
-                <a href={`/compare?networks=${d.slug},${rival.data.slug}`} class="pf-vs">
+                <a href={`/compare/?networks=${d.slug},${rival.data.slug}`} class="pf-vs">
                   {rival.data.logo ? (
                     <img src={rival.data.logo} alt="" width="20" height="20" class="w-5 h-5 rounded-md object-contain bg-white" loading="lazy" />
                   ) : (
@@ -953,7 +953,7 @@ const hasVsPages = vsPages[d.slug] || [];
             </div>
 
             <div class="mt-5 flex flex-col gap-2">
-              <a href={`/compare?add=${network.data.slug}`} class="pf-btn pf-btn-primary pf-btn-sm">Compare this network</a>
+              <a href={`/compare/?add=${network.data.slug}`} class="pf-btn pf-btn-primary pf-btn-sm">Compare this network</a>
               {d.website && (
                 <a href={d.website} target="_blank" rel="noopener noreferrer" class="pf-btn pf-btn-secondary pf-btn-sm">
                   Visit website

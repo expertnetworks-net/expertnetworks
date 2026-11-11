@@ -57,37 +57,37 @@ const shortB = b.data.shortName || nameB.charAt(0);
 const relatedPages: Record<string, { comparisons: { href: string; label: string }[]; alternatives?: string }> = {
   'glg': {
     comparisons: [
-      { href: '/glg-vs-alphasights', label: 'GLG vs AlphaSights' },
-      { href: '/glg-vs-third-bridge', label: 'GLG vs Third Bridge' },
-      { href: '/glg-vs-guidepoint', label: 'GLG vs Guidepoint' },
+      { href: '/glg-vs-alphasights/', label: 'GLG vs AlphaSights' },
+      { href: '/glg-vs-third-bridge/', label: 'GLG vs Third Bridge' },
+      { href: '/glg-vs-guidepoint/', label: 'GLG vs Guidepoint' },
     ],
-    alternatives: '/glg-alternatives',
+    alternatives: '/glg-alternatives/',
   },
   'alphasights': {
     comparisons: [
-      { href: '/glg-vs-alphasights', label: 'GLG vs AlphaSights' },
-      { href: '/alphasights-vs-third-bridge', label: 'AlphaSights vs Third Bridge' },
-      { href: '/alphasights-vs-dialectica', label: 'AlphaSights vs Dialectica' },
+      { href: '/glg-vs-alphasights/', label: 'GLG vs AlphaSights' },
+      { href: '/alphasights-vs-third-bridge/', label: 'AlphaSights vs Third Bridge' },
+      { href: '/alphasights-vs-dialectica/', label: 'AlphaSights vs Dialectica' },
     ],
-    alternatives: '/alphasights-alternatives',
+    alternatives: '/alphasights-alternatives/',
   },
   'third-bridge': {
     comparisons: [
-      { href: '/glg-vs-third-bridge', label: 'GLG vs Third Bridge' },
-      { href: '/alphasights-vs-third-bridge', label: 'AlphaSights vs Third Bridge' },
-      { href: '/third-bridge-vs-guidepoint', label: 'Third Bridge vs Guidepoint' },
+      { href: '/glg-vs-third-bridge/', label: 'GLG vs Third Bridge' },
+      { href: '/alphasights-vs-third-bridge/', label: 'AlphaSights vs Third Bridge' },
+      { href: '/third-bridge-vs-guidepoint/', label: 'Third Bridge vs Guidepoint' },
     ],
-    alternatives: '/third-bridge-alternatives',
+    alternatives: '/third-bridge-alternatives/',
   },
   'guidepoint': {
     comparisons: [
-      { href: '/glg-vs-guidepoint', label: 'GLG vs Guidepoint' },
-      { href: '/third-bridge-vs-guidepoint', label: 'Third Bridge vs Guidepoint' },
+      { href: '/glg-vs-guidepoint/', label: 'GLG vs Guidepoint' },
+      { href: '/third-bridge-vs-guidepoint/', label: 'Third Bridge vs Guidepoint' },
     ],
   },
   'dialectica': {
     comparisons: [
-      { href: '/alphasights-vs-dialectica', label: 'AlphaSights vs Dialectica' },
+      { href: '/alphasights-vs-dialectica/', label: 'AlphaSights vs Dialectica' },
     ],
   },
 };
@@ -114,7 +114,7 @@ const diffCount = comparisons.filter(row => row.va !== row.vb).length;
       {sides.map(({ n, name, short }, i) => (
         <Fragment>
           {i === 1 && <div class="vs-medallion" aria-hidden="true">VS</div>}
-          <a href={`/networks/${n.slug}`} class="vs-side group" style={`--vs-a: ${n.gradientFrom}; --vs-b: ${n.gradientTo}`}>
+          <a href={`/networks/${n.slug}/`} class="vs-side group" style={`--vs-a: ${n.gradientFrom}; --vs-b: ${n.gradientTo}`}>
             {n.logo ? (
               <img src={n.logo} alt={`${name} logo`} width="72" height="72" class="vs-logo" loading="eager" decoding="async" />
             ) : (
@@ -288,7 +288,7 @@ const diffCount = comparisons.filter(row => row.va !== row.vb).length;
           <div class="vs-card">
             <h3 class="text-[11px] font-bold text-secondary uppercase tracking-[0.1em] mb-1">{name}</h3>
             <ul class="vs-links">
-              <li><a href={`/networks/${slug}`}>{name} Profile <span aria-hidden="true">&rarr;</span></a></li>
+              <li><a href={`/networks/${slug}/`}>{name} Profile <span aria-hidden="true">&rarr;</span></a></li>
               {links.map(link => (
                 <li><a href={link.href}>{link.label} <span aria-hidden="true">&rarr;</span></a></li>
               ))}
@@ -309,9 +309,9 @@ const diffCount = comparisons.filter(row => row.va !== row.vb).length;
     <h2 class="text-xl font-bold tracking-tight text-primary mb-2">Keep exploring</h2>
     <p class="text-[14px] text-secondary mb-6">Open both providers in the interactive comparison, or widen the shortlist.</p>
     <div class="flex flex-wrap gap-3 justify-center">
-      <a href={`/compare?networks=${a.data.slug},${b.data.slug}`} class="vs-btn vs-btn-primary">Full Comparison Tool</a>
-      <a href="/best-expert-networks" class="vs-btn vs-btn-secondary">Best Networks Ranked</a>
-      <a href="/expert-network-pricing" class="vs-btn vs-btn-secondary">Pricing Guide</a>
+      <a href={`/compare/?networks=${a.data.slug},${b.data.slug}`} class="vs-btn vs-btn-primary">Full Comparison Tool</a>
+      <a href="/best-expert-networks/" class="vs-btn vs-btn-secondary">Best Networks Ranked</a>
+      <a href="/expert-network-pricing/" class="vs-btn vs-btn-secondary">Pricing Guide</a>
     </div>
   </div>
 </section>

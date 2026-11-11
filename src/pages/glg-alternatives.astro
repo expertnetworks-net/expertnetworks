@@ -42,9 +42,9 @@ const alternatives = published.filter(n => n.data.slug !== 'glg').slice(0, 10);
   <section class="guide-hero pt-[calc(var(--nav-h)+3.5rem)] pb-section-sm px-4 sm:px-6">
     <div class="max-w-4xl mx-auto">
       <div class="flex items-center gap-3 mb-4">
-        <a href="/networks/glg" class="inline-flex items-center min-h-[44px] text-accent-text text-sm font-medium no-underline hover:underline">&larr; GLG Profile</a>
+        <a href="/networks/glg/" class="inline-flex items-center min-h-[44px] text-accent-text text-sm font-medium no-underline hover:underline">&larr; GLG Profile</a>
         <span class="text-tertiary text-sm">|</span>
-        <a href="/networks" class="inline-flex items-center min-h-[44px] text-accent-text text-sm font-medium no-underline hover:underline">All Networks</a>
+        <a href="/networks/" class="inline-flex items-center min-h-[44px] text-accent-text text-sm font-medium no-underline hover:underline">All Networks</a>
       </div>
       <span class="inline-block px-3 py-1 bg-accent/10 text-accent-text text-xs font-semibold rounded-full mb-4 tracking-wide uppercase">Alternatives Guide</span>
       <h1 class="text-step-4 font-bold tracking-[-0.03em] text-primary mb-5">GLG Alternatives</h1>
@@ -90,7 +90,7 @@ const alternatives = published.filter(n => n.data.slug !== 'glg').slice(0, 10);
             </div>
             <div class="flex-1 min-w-0">
               <div class="flex items-center gap-2 flex-wrap">
-                <a href={`/networks/${network.data.slug}`} class="inline-flex items-center max-lg:min-h-[44px] text-[15px] font-bold text-primary no-underline hover:text-accent-text transition-colors">{network.data.name.split(' (')[0]}</a>
+                <a href={`/networks/${network.data.slug}/`} class="inline-flex items-center max-lg:min-h-[44px] text-[15px] font-bold text-primary no-underline hover:text-accent-text transition-colors">{network.data.name.split(' (')[0]}</a>
                 {network.data.categoryBadge && (
                   <span class="px-2 py-0.5 text-[11px] font-semibold rounded-full bg-accent/10 text-accent-text">{network.data.categoryBadge}</span>
                 )}
@@ -102,8 +102,8 @@ const alternatives = published.filter(n => n.data.slug !== 'glg').slice(0, 10);
                 {network.data.headquarters && <span>HQ: {network.data.headquarters}</span>}
               </div>
               <div class="flex gap-4 mt-1">
-                <a href={`/networks/${network.data.slug}`} class="inline-flex items-center min-h-[44px] text-[13px] font-semibold text-accent-text no-underline hover:underline">Full profile &rarr;</a>
-                <a href={`/compare?networks=glg,${network.data.slug}`} class="inline-flex items-center min-h-[44px] text-[13px] font-medium text-secondary no-underline hover:text-accent-text hover:underline">Compare with GLG</a>
+                <a href={`/networks/${network.data.slug}/`} class="inline-flex items-center min-h-[44px] text-[13px] font-semibold text-accent-text no-underline hover:underline">Full profile &rarr;</a>
+                <a href={`/compare/?networks=glg,${network.data.slug}`} class="inline-flex items-center min-h-[44px] text-[13px] font-medium text-secondary no-underline hover:text-accent-text hover:underline">Compare with GLG</a>
               </div>
             </div>
           </div>
@@ -117,9 +117,9 @@ const alternatives = published.filter(n => n.data.slug !== 'glg').slice(0, 10);
     <div class="max-w-3xl mx-auto text-center">
       <h2 class="text-step-2 font-bold text-primary mb-6">Keep exploring</h2>
       <div class="flex flex-wrap gap-3 justify-center">
-        <a href="/compare" class="btn btn-primary">Full Comparison Tool</a>
-        <a href="/best-expert-networks" class="btn btn-secondary">Best Networks Ranked</a>
-        <a href="/expert-network-pricing" class="btn btn-secondary">Pricing Guide</a>
+        <a href="/compare/" class="btn btn-primary">Full Comparison Tool</a>
+        <a href="/best-expert-networks/" class="btn btn-secondary">Best Networks Ranked</a>
+        <a href="/expert-network-pricing/" class="btn btn-secondary">Pricing Guide</a>
       </div>
     </div>
   </section>

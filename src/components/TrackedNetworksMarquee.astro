@@ -40,7 +40,7 @@ const descriptors: Record<string, string> = {
           const bestFor = (n.data.bestFor || [])[0] || '';
           return (
             <a
-              href={`/networks/${n.data.slug}`}
+              href={`/networks/${n.data.slug}/`}
               class="marquee-item flex-shrink-0 flex items-center gap-2 px-3.5 min-h-[44px] rounded-full border border-border/60 bg-white hover:border-accent/50 hover:shadow-xs transition-all group no-underline"
               title={n.data.name.split(' (')[0]}
               draggable="false"
@@ -74,7 +74,7 @@ const descriptors: Record<string, string> = {
       <div class="flex gap-2.5 items-center w-max pb-1">
         {tracked.map((n) => (
           <a
-            href={`/networks/${n.data.slug}`}
+            href={`/networks/${n.data.slug}/`}
             class="flex-shrink-0 flex items-center gap-2 px-3.5 rounded-full border border-border/60 bg-white active:bg-bg-secondary transition-colors no-underline min-h-[44px]"
           >
             <img
@@ -249,8 +249,8 @@ const descriptors: Record<string, string> = {
     } else if (hcBestFor) {
       hcBestFor.style.display = 'none';
     }
-    if (hcProfile) hcProfile.href = '/networks/' + slug;
-    if (hcCompare) hcCompare.href = '/compare?add=' + slug;
+    if (hcProfile) hcProfile.href = '/networks/' + slug + '/';
+    if (hcCompare) hcCompare.href = '/compare/?add=' + slug;
 
     // Position card above the item using viewport coords (fixed positioning)
     var itemRect = item.getBoundingClientRect();

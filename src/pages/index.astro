@@ -119,7 +119,7 @@ const descriptors: Record<string, string> = {
       </p>
 
       <!-- Search entry point: a real GET form to the directory (works without JS). -->
-      <form action="/networks" method="get" role="search" class="hero-rise hero-rise-3 hero-search mx-auto mt-8 flex max-w-[600px] items-center gap-2 rounded-full p-1.5 pl-4 sm:pl-5" aria-label="Search the provider directory">
+      <form action="/networks/" method="get" role="search" class="hero-rise hero-rise-3 hero-search mx-auto mt-8 flex max-w-[600px] items-center gap-2 rounded-full p-1.5 pl-4 sm:pl-5" aria-label="Search the provider directory">
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24" class="flex-shrink-0 text-white/60" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         <label for="heroSearchInput" class="sr-only">Search {publishedNetworks.length} expert networks</label>
         <input
@@ -137,15 +137,15 @@ const descriptors: Record<string, string> = {
       </form>
 
       <div id="heroCtas" class="hero-rise hero-rise-3 mt-4 flex flex-wrap items-center justify-center gap-x-1 gap-y-0 text-sm sm:gap-x-3">
-        <a href="/compare" class="hero-link">
+        <a href="/compare/" class="hero-link">
           Compare providers
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
-        <a href="/networks" class="hero-link">
+        <a href="/networks/" class="hero-link">
           Browse all networks
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
-        <a href="/what-is-an-expert-network" class="hero-link">
+        <a href="/what-is-an-expert-network/" class="hero-link">
           What is an expert network?
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -182,7 +182,7 @@ const descriptors: Record<string, string> = {
 
       <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6">
         <!-- Feature tile: compare -->
-        <a href="/compare" class="fade-in group card-spot card-spot-dark dark-surface flex flex-col justify-between overflow-hidden p-6 no-underline sm:col-span-2 md:p-8 lg:col-span-3 lg:row-span-2">
+        <a href="/compare/" class="fade-in group card-spot card-spot-dark dark-surface flex flex-col justify-between overflow-hidden p-6 no-underline sm:col-span-2 md:p-8 lg:col-span-3 lg:row-span-2">
           <div>
             <div class="mb-5 flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.08] text-[#6CB4FF]">
               <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
@@ -208,7 +208,7 @@ const descriptors: Record<string, string> = {
           </div>
         </a>
 
-        <a href="/networks" class="fade-in group card-spot flex items-center gap-4 p-6 no-underline lg:col-span-3">
+        <a href="/networks/" class="fade-in group card-spot flex items-center gap-4 p-6 no-underline lg:col-span-3">
           <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-accent-purple/10 text-[#8944AB]">
             <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
           </div>
@@ -218,7 +218,7 @@ const descriptors: Record<string, string> = {
           </div>
         </a>
 
-        <a href="/expert-network-pricing" class="fade-in group card-spot flex items-center gap-4 p-6 no-underline lg:col-span-3">
+        <a href="/expert-network-pricing/" class="fade-in group card-spot flex items-center gap-4 p-6 no-underline lg:col-span-3">
           <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-accent-green/10 text-[#1F7A3D]">
             <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
           </div>
@@ -228,7 +228,7 @@ const descriptors: Record<string, string> = {
           </div>
         </a>
 
-        <a href="/what-is-an-expert-network" class="fade-in group card-spot p-6 no-underline lg:col-span-2">
+        <a href="/what-is-an-expert-network/" class="fade-in group card-spot p-6 no-underline lg:col-span-2">
           <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-accent-orange/10 text-[#A05A00]">
             <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           </div>
@@ -236,7 +236,7 @@ const descriptors: Record<string, string> = {
           <p class="mt-1 text-sm text-secondary">Learn how expert networks work, what they cost, and how to choose a provider.</p>
         </a>
 
-        <a href="/news" class="fade-in group card-spot p-6 no-underline lg:col-span-2">
+        <a href="/news/" class="fade-in group card-spot p-6 no-underline lg:col-span-2">
           <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 text-accent-text">
             <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
           </div>
@@ -244,7 +244,7 @@ const descriptors: Record<string, string> = {
           <p class="mt-1 text-sm text-secondary">Track launches, M&amp;A, AI products, and market developments.</p>
         </a>
 
-        <a href="/best-expert-networks" class="fade-in group card-spot p-6 no-underline sm:col-span-2 lg:col-span-2">
+        <a href="/best-expert-networks/" class="fade-in group card-spot p-6 no-underline sm:col-span-2 lg:col-span-2">
           <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-rose-50 text-rose-600">
             <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>
           </div>
@@ -264,7 +264,7 @@ const descriptors: Record<string, string> = {
           <h2 id="compareHeading" class="text-step-3 font-bold text-primary">Compare leading expert networks</h2>
           <p class="mt-3 text-step-0 text-secondary">Choose a preset to see how providers stack up, or build your own comparison.</p>
         </div>
-        <a href="/compare" class="btn btn-primary self-start md:self-auto">
+        <a href="/compare/" class="btn btn-primary self-start md:self-auto">
           Open full comparison tool
           <svg class="btn-arrow w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -272,7 +272,7 @@ const descriptors: Record<string, string> = {
 
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {featuredPresets.map(preset => (
-          <a href={`/compare?preset=${preset.key}`} class="fade-in group card-spot flex flex-col p-6 no-underline">
+          <a href={`/compare/?preset=${preset.key}`} class="fade-in group card-spot flex flex-col p-6 no-underline">
             <div class:list={['text-[11px] font-bold uppercase tracking-[0.08em]', preset.tone]}>{preset.label}</div>
             <p class="mt-2 text-sm text-secondary">{preset.description}</p>
             <div class="mt-5 flex flex-wrap items-center gap-1.5">
@@ -303,13 +303,13 @@ const descriptors: Record<string, string> = {
           <p class="eyebrow mb-3">Provider profiles</p>
           <h2 id="profilesHeading" class="text-step-3 font-bold text-primary">Featured profiles</h2>
         </div>
-        <a href="/networks" class="inline-flex min-h-[44px] items-center gap-1 whitespace-nowrap text-sm font-semibold text-accent-text no-underline hover:underline">View all {publishedNetworks.length} <span aria-hidden="true">&rarr;</span></a>
+        <a href="/networks/" class="inline-flex min-h-[44px] items-center gap-1 whitespace-nowrap text-sm font-semibold text-accent-text no-underline hover:underline">View all {publishedNetworks.length} <span aria-hidden="true">&rarr;</span></a>
       </div>
       <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6">
         {top6.map(n => {
           const desc = descriptors[n.data.slug] || (n.data.description ? n.data.description.slice(0, 60) + '…' : n.data.type || '');
           return (
-            <a href={`/networks/${n.data.slug}`} class="fade-in group card-spot flex flex-col items-center p-5 text-center no-underline">
+            <a href={`/networks/${n.data.slug}/`} class="fade-in group card-spot flex flex-col items-center p-5 text-center no-underline">
               {n.data.logo ? (
                 <img src={n.data.logo} alt="" width="48" height="48" class="mb-3 h-12 w-12 rounded-xl object-cover shadow-xs" loading="lazy" decoding="async" style={`view-transition-name: net-${n.data.slug}`} />
               ) : (
@@ -334,7 +334,7 @@ const descriptors: Record<string, string> = {
           <p class="eyebrow mb-3">Market intelligence</p>
           <h2 id="newsHeading" class="text-step-3 font-bold text-primary">What matters now</h2>
         </div>
-        <a href="/news" class="inline-flex min-h-[44px] items-center gap-1 whitespace-nowrap text-sm font-semibold text-accent-text no-underline hover:underline">All signals <span aria-hidden="true">&rarr;</span></a>
+        <a href="/news/" class="inline-flex min-h-[44px] items-center gap-1 whitespace-nowrap text-sm font-semibold text-accent-text no-underline hover:underline">All signals <span aria-hidden="true">&rarr;</span></a>
       </div>
 
       <div class="grid gap-4 lg:grid-cols-12">
@@ -405,8 +405,8 @@ const descriptors: Record<string, string> = {
         <h2 id="methodHeading" class="text-step-3 font-bold text-primary">How this site works</h2>
         <p class="mt-4 max-w-measure text-step-0 text-secondary">This site is an independent public-source research resource covering expert networks, related research platforms, and industry developments. Provider data may reflect a mix of verified company statements, public reporting, and clearly labeled editorial inferences.</p>
         <div class="mt-6 flex flex-wrap gap-x-6 gap-y-1">
-          <a href="/sources" class="inline-flex min-h-[44px] items-center gap-1 text-sm font-semibold text-accent-text no-underline hover:underline">Sources &amp; methodology <span aria-hidden="true">&rarr;</span></a>
-          <a href="/verification" class="inline-flex min-h-[44px] items-center gap-1 text-sm font-semibold text-accent-text no-underline hover:underline">Verification framework <span aria-hidden="true">&rarr;</span></a>
+          <a href="/sources/" class="inline-flex min-h-[44px] items-center gap-1 text-sm font-semibold text-accent-text no-underline hover:underline">Sources &amp; methodology <span aria-hidden="true">&rarr;</span></a>
+          <a href="/verification/" class="inline-flex min-h-[44px] items-center gap-1 text-sm font-semibold text-accent-text no-underline hover:underline">Verification framework <span aria-hidden="true">&rarr;</span></a>
         </div>
       </div>
       <ul class="grid list-none grid-cols-1 gap-3 sm:grid-cols-2 lg:col-span-7">
@@ -435,11 +435,11 @@ const descriptors: Record<string, string> = {
         <h2 id="ctaHeading" class="text-step-3 font-bold text-white">Ready to narrow your shortlist?</h2>
         <p class="mx-auto mt-3 max-w-[52ch] text-step-0 text-[#B4B4BA]">Compare providers side by side across pricing model, service format, compliance, AI capabilities, and content access.</p>
         <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-          <a href="/compare" class="btn btn-primary">
+          <a href="/compare/" class="btn btn-primary">
             Compare providers
             <svg class="btn-arrow w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
           </a>
-          <a href="/networks" class="btn btn-ghost-dark">
+          <a href="/networks/" class="btn btn-ghost-dark">
             Browse all networks
           </a>
         </div>

@@ -50,7 +50,7 @@ const peNetworks = published.filter(n => {
   <section class="guide-hero pt-[calc(var(--nav-h)+3.5rem)] pb-section-sm px-4 sm:px-6">
     <div class="max-w-4xl mx-auto">
       <div class="flex items-center gap-3 mb-4">
-        <a href="/what-is-an-expert-network" class="inline-flex items-center min-h-[44px] text-accent-text text-sm font-medium no-underline hover:underline">&larr; What's an Expert Network?</a>
+        <a href="/what-is-an-expert-network/" class="inline-flex items-center min-h-[44px] text-accent-text text-sm font-medium no-underline hover:underline">&larr; What's an Expert Network?</a>
       </div>
       <span class="inline-block px-3 py-1 bg-accent-purple/10 text-accent-purple text-xs font-semibold rounded-full mb-4 tracking-wide uppercase">Private Equity Guide</span>
       <h1 class="text-step-4 font-bold tracking-[-0.03em] text-primary mb-5">
@@ -105,7 +105,7 @@ const peNetworks = published.filter(n => {
             return lower.includes('private equity') || lower.includes('pe ') || lower.includes('deal') || lower.includes('due diligence') || lower.includes('investor');
           });
           return (
-            <a href={`/networks/${n.data.slug}`} class="block no-underline group">
+            <a href={`/networks/${n.data.slug}/`} class="block no-underline group">
               <div class="flex items-start gap-4 p-5 bg-white rounded-card shadow-card hover:shadow-card-hover transition-shadow">
                 {n.data.logo ? (
                   <img src={n.data.logo} alt="" width="44" height="44" class="w-11 h-11 rounded-lg object-cover flex-shrink-0" loading="lazy" />
@@ -143,23 +143,23 @@ const peNetworks = published.filter(n => {
       <div class="grid md:grid-cols-2 gap-5">
         <div class="border border-border/60 rounded-card p-5">
           <h3 class="font-semibold text-primary text-[15px] mb-2">Deal Sourcing Platforms</h3>
-          <p class="text-[13px] leading-relaxed text-secondary mb-2"><a href="/networks/dialectica" class="text-accent-text hover:underline">Dialectica Origin</a> is the only major expert network with a dedicated PE deal-sourcing product. It helps firms identify acquisition targets through expert-validated market maps.</p>
+          <p class="text-[13px] leading-relaxed text-secondary mb-2"><a href="/networks/dialectica/" class="text-accent-text hover:underline">Dialectica Origin</a> is the only major expert network with a dedicated PE deal-sourcing product. It helps firms identify acquisition targets through expert-validated market maps.</p>
         </div>
         <div class="border border-border/60 rounded-card p-5">
           <h3 class="font-semibold text-primary text-[15px] mb-2">Content Libraries for Diligence</h3>
-          <p class="text-[13px] leading-relaxed text-secondary"><a href="/networks/third-bridge" class="text-accent-text hover:underline">Third Bridge Library</a> (65,000+ companies) lets you read existing expert interview transcripts before commissioning new calls — faster and cheaper for initial diligence screening.</p>
+          <p class="text-[13px] leading-relaxed text-secondary"><a href="/networks/third-bridge/" class="text-accent-text hover:underline">Third Bridge Library</a> (65,000+ companies) lets you read existing expert interview transcripts before commissioning new calls — faster and cheaper for initial diligence screening.</p>
         </div>
         <div class="border border-border/60 rounded-card p-5">
           <h3 class="font-semibold text-primary text-[15px] mb-2">Speed of Delivery</h3>
-          <p class="text-[13px] leading-relaxed text-secondary"><a href="/networks/alphasights" class="text-accent-text hover:underline">AlphaSights</a> positions speed as a core differentiator for PE deal timelines. Their custom-sourcing model prioritizes same-day or next-day expert delivery for time-sensitive processes.</p>
+          <p class="text-[13px] leading-relaxed text-secondary"><a href="/networks/alphasights/" class="text-accent-text hover:underline">AlphaSights</a> positions speed as a core differentiator for PE deal timelines. Their custom-sourcing model prioritizes same-day or next-day expert delivery for time-sensitive processes.</p>
         </div>
         <div class="border border-border/60 rounded-card p-5">
           <h3 class="font-semibold text-primary text-[15px] mb-2">Compliance for Regulated Investors</h3>
-          <p class="text-[13px] leading-relaxed text-secondary">PE firms under SEC/FCA oversight need audit-ready compliance. <a href="/networks/glg" class="text-accent-text hover:underline">GLG</a> and <a href="/networks/third-bridge" class="text-accent-text hover:underline">Third Bridge</a> are among the providers with well-established compliance infrastructure, including cooling-off periods and call monitoring.</p>
+          <p class="text-[13px] leading-relaxed text-secondary">PE firms under SEC/FCA oversight need audit-ready compliance. <a href="/networks/glg/" class="text-accent-text hover:underline">GLG</a> and <a href="/networks/third-bridge/" class="text-accent-text hover:underline">Third Bridge</a> are among the providers with well-established compliance infrastructure, including cooling-off periods and call monitoring.</p>
         </div>
         <div class="border border-border/60 rounded-card p-5">
           <h3 class="font-semibold text-primary text-[15px] mb-2">Healthcare Diligence</h3>
-          <p class="text-[13px] leading-relaxed text-secondary">Healthcare PE is a massive vertical. <a href="/networks/guidepoint" class="text-accent-text hover:underline">Guidepoint Qsight</a> provides specialized healthcare data; GLG has deep life sciences coverage; and several boutiques specialize in pharma/biotech experts.</p>
+          <p class="text-[13px] leading-relaxed text-secondary">Healthcare PE is a massive vertical. <a href="/networks/guidepoint/" class="text-accent-text hover:underline">Guidepoint Qsight</a> provides specialized healthcare data; GLG has deep life sciences coverage; and several boutiques specialize in pharma/biotech experts.</p>
         </div>
         <div class="border border-border/60 rounded-card p-5">
           <h3 class="font-semibold text-primary text-[15px] mb-2">AI Research Synthesis</h3>
@@ -221,9 +221,9 @@ const peNetworks = published.filter(n => {
       <h2 class="text-step-2 font-bold text-primary mb-4">Ready to evaluate providers?</h2>
       <p class="text-secondary text-sm mb-8">Use our comparison tool to evaluate providers across the dimensions that matter most for PE: compliance, speed, pricing, and content libraries.</p>
       <div class="flex flex-wrap gap-3 justify-center">
-        <a href="/compare" class="btn btn-primary">Compare Networks</a>
-        <a href="/best-expert-networks" class="btn btn-secondary">Best Networks Ranked</a>
-        <a href="/expert-network-pricing" class="btn btn-secondary">Pricing Guide</a>
+        <a href="/compare/" class="btn btn-primary">Compare Networks</a>
+        <a href="/best-expert-networks/" class="btn btn-secondary">Best Networks Ranked</a>
+        <a href="/expert-network-pricing/" class="btn btn-secondary">Pricing Guide</a>
       </div>
     </div>
   </section>

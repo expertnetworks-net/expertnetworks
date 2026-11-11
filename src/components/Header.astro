@@ -18,12 +18,12 @@ const pageType = pathname === '/' ? 'home'
   : 'default';
 
 const navItems = [
-  { href: '/what-is-an-expert-network', label: "What's an Expert Network?", short: 'Guide' },
-  { href: '/networks', label: 'Networks' },
-  { href: '/news', label: 'News' },
-  { href: '/compare', label: 'Compare' },
-  { href: '/expert-network-pricing', label: 'Pricing' },
-  { href: '/about', label: 'About' },
+  { href: '/what-is-an-expert-network/', label: "What's an Expert Network?", short: 'Guide' },
+  { href: '/networks/', label: 'Networks' },
+  { href: '/news/', label: 'News' },
+  { href: '/compare/', label: 'Compare' },
+  { href: '/expert-network-pricing/', label: 'Pricing' },
+  { href: '/about/', label: 'About' },
 ];
 
 // Active path matching
@@ -99,49 +99,49 @@ function isActive(href: string): boolean {
     <div class="mb-5">
       <div class="drawer-label px-2 mb-2">Navigate</div>
       <nav aria-label="Primary navigation">
-        <a href="/what-is-an-expert-network" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/what-is-an-expert-network') && 'drawer-nav-active']} aria-current={isActive('/what-is-an-expert-network') ? 'page' : undefined}>
+        <a href="/what-is-an-expert-network/" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/what-is-an-expert-network') && 'drawer-nav-active']} aria-current={isActive('/what-is-an-expert-network') ? 'page' : undefined}>
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           <div class="min-w-0">
             <div class="text-[13px] font-medium">Start Here</div>
             <div class="text-[11px] opacity-50">What is an expert network?</div>
           </div>
         </a>
-        <a href="/compare" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/compare') && 'drawer-nav-active']} aria-current={isActive('/compare') ? 'page' : undefined}>
+        <a href="/compare/" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/compare') && 'drawer-nav-active']} aria-current={isActive('/compare') ? 'page' : undefined}>
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
           <div class="min-w-0">
             <div class="text-[13px] font-medium">Compare Providers</div>
             <div class="text-[11px] opacity-50">Side-by-side with presets</div>
           </div>
         </a>
-        <a href="/networks" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/networks') && !pathname.startsWith('/networks/') && 'drawer-nav-active']} aria-current={isActive('/networks') && !pathname.startsWith('/networks/') ? 'page' : undefined}>
+        <a href="/networks/" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/networks') && !pathname.startsWith('/networks/') && 'drawer-nav-active']} aria-current={isActive('/networks') && !pathname.startsWith('/networks/') ? 'page' : undefined}>
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
           <div class="min-w-0">
             <div class="text-[13px] font-medium">Browse Networks</div>
             <div class="text-[11px] opacity-50">{publishedNetworks.length} providers tracked</div>
           </div>
         </a>
-        <a href="/expert-network-pricing" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/expert-network-pricing') && 'drawer-nav-active']} aria-current={isActive('/expert-network-pricing') ? 'page' : undefined}>
+        <a href="/expert-network-pricing/" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/expert-network-pricing') && 'drawer-nav-active']} aria-current={isActive('/expert-network-pricing') ? 'page' : undefined}>
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
           <div class="min-w-0">
             <div class="text-[13px] font-medium">Pricing Guide</div>
             <div class="text-[11px] opacity-50">Rates, models & benchmarks</div>
           </div>
         </a>
-        <a href="/news" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/news') && 'drawer-nav-active']} aria-current={isActive('/news') ? 'page' : undefined}>
+        <a href="/news/" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/news') && 'drawer-nav-active']} aria-current={isActive('/news') ? 'page' : undefined}>
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0a2 2 0 01-2-2v-9c0-1.1.9-2 2-2h2"/></svg>
           <div class="min-w-0">
             <div class="text-[13px] font-medium">Industry News</div>
             <div class="text-[11px] opacity-50">Signals & intelligence</div>
           </div>
         </a>
-        <a href="/best-expert-networks" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/best-expert-networks') && 'drawer-nav-active']} aria-current={isActive('/best-expert-networks') ? 'page' : undefined}>
+        <a href="/best-expert-networks/" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/best-expert-networks') && 'drawer-nav-active']} aria-current={isActive('/best-expert-networks') ? 'page' : undefined}>
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <div class="min-w-0">
             <div class="text-[13px] font-medium">Best Networks Ranked</div>
             <div class="text-[11px] opacity-50">Independent rankings</div>
           </div>
         </a>
-        <a href="/verification" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/verification') && 'drawer-nav-active']} aria-current={isActive('/verification') ? 'page' : undefined}>
+        <a href="/verification/" class:list={["relative flex items-center gap-3 px-3 py-2.5 rounded-lg no-underline drawer-nav-item min-h-[44px]", isActive('/verification') && 'drawer-nav-active']} aria-current={isActive('/verification') ? 'page' : undefined}>
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           <div class="min-w-0">
             <div class="text-[13px] font-medium">Methodology</div>
@@ -158,27 +158,27 @@ function isActive(href: string): boolean {
         <svg id="pathwaysChevron" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" class="transition-transform duration-200"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
       <div id="pathwaysList" class="drawer-card overflow-hidden">
-        <a href="/expert-networks-for-consulting" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item">
+        <a href="/expert-networks-for-consulting/" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item">
           <span class="text-[13px]">Consulting Teams</span>
           <svg class="w-3 h-3 ml-auto flex-shrink-0 opacity-30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
-        <a href="/expert-networks-for-private-equity" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider">
+        <a href="/expert-networks-for-private-equity/" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider">
           <span class="text-[13px]">Private Equity & Hedge Funds</span>
           <svg class="w-3 h-3 ml-auto flex-shrink-0 opacity-30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
-        <a href="/compare?preset=enterprise" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider">
+        <a href="/compare/?preset=enterprise" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider">
           <span class="text-[13px]">Enterprise Strategy</span>
           <svg class="w-3 h-3 ml-auto flex-shrink-0 opacity-30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
-        <a href="/compare?preset=library" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider">
+        <a href="/compare/?preset=library" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider">
           <span class="text-[13px]">Transcript-Led Research</span>
           <svg class="w-3 h-3 ml-auto flex-shrink-0 opacity-30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
-        <a href="/compare?preset=aiResearch" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider">
+        <a href="/compare/?preset=aiResearch" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider">
           <span class="text-[13px]">AI-Forward Research</span>
           <svg class="w-3 h-3 ml-auto flex-shrink-0 opacity-30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
-        <a href="/what-is-an-expert-network" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider">
+        <a href="/what-is-an-expert-network/" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider">
           <span class="text-[13px]">First-Time Buyer</span>
           <svg class="w-3 h-3 ml-auto flex-shrink-0 opacity-30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -194,11 +194,11 @@ function isActive(href: string): boolean {
       <div id="networksList" class="drawer-card overflow-hidden">
         {top10.map((n, i) => (
           <a
-            href={`/networks/${n.data.slug}`}
+            href={`/networks/${n.data.slug}/`}
             class:list={[
               'flex items-center gap-2.5 px-3 py-2.5 min-h-[44px] no-underline drawer-provider-item',
               i > 0 ? 'border-t drawer-divider' : '',
-              pathname === `/networks/${n.data.slug}` || pathname === `/networks/${n.data.slug}/` ? 'drawer-nav-active' : '',
+              pathname === `/networks/${n.data.slug}/` || pathname === `/networks/${n.data.slug}/` ? 'drawer-nav-active' : '',
             ]}
           >
             {n.data.logo ? (
@@ -216,7 +216,7 @@ function isActive(href: string): boolean {
           </a>
         ))}
       </div>
-      <a href="/networks" class="flex items-center gap-1.5 px-2 mt-1 min-h-[44px] no-underline text-[12px] font-medium drawer-trust-link">
+      <a href="/networks/" class="flex items-center gap-1.5 px-2 mt-1 min-h-[44px] no-underline text-[12px] font-medium drawer-trust-link">
         View all {publishedNetworks.length} providers
         <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
       </a>
@@ -228,15 +228,15 @@ function isActive(href: string): boolean {
       <div class="mb-5">
         <div class="drawer-label px-2 mb-2">Quick Actions</div>
         <div class="drawer-card p-3 space-y-2">
-          <a href="/compare" class="flex items-center gap-2 px-2.5 py-2 min-h-[44px] rounded-lg no-underline drawer-nav-item text-[13px] font-medium">
+          <a href="/compare/" class="flex items-center gap-2 px-2.5 py-2 min-h-[44px] rounded-lg no-underline drawer-nav-item text-[13px] font-medium">
             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="opacity-60"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
             Compare top providers
           </a>
-          <a href="/expert-network-pricing" class="flex items-center gap-2 px-2.5 py-2 min-h-[44px] rounded-lg no-underline drawer-nav-item text-[13px] font-medium">
+          <a href="/expert-network-pricing/" class="flex items-center gap-2 px-2.5 py-2 min-h-[44px] rounded-lg no-underline drawer-nav-item text-[13px] font-medium">
             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="opacity-60"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
             See pricing benchmarks
           </a>
-          <a href="/news" class="flex items-center gap-2 px-2.5 py-2 min-h-[44px] rounded-lg no-underline drawer-nav-item text-[13px] font-medium">
+          <a href="/news/" class="flex items-center gap-2 px-2.5 py-2 min-h-[44px] rounded-lg no-underline drawer-nav-item text-[13px] font-medium">
             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" class="opacity-60"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0a2 2 0 01-2-2v-9c0-1.1.9-2 2-2h2"/></svg>
             Latest intelligence
           </a>
@@ -249,12 +249,12 @@ function isActive(href: string): boolean {
       <div class="mb-5">
         <div class="drawer-label px-2 mb-2">Compare Presets</div>
         <div class="drawer-card overflow-hidden">
-          <a href="/compare?preset=leaders" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item text-[12px]">Global Leaders</a>
-          <a href="/compare?preset=pe" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider text-[12px]">PE / Hedge Funds</a>
-          <a href="/compare?preset=consulting" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider text-[12px]">Consulting Fit</a>
-          <a href="/compare?preset=library" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider text-[12px]">Transcript Leaders</a>
-          <a href="/compare?preset=aiResearch" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider text-[12px]">AI Research</a>
-          <a href="/compare?preset=asia" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider text-[12px]">APAC Specialists</a>
+          <a href="/compare/?preset=leaders" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item text-[12px]">Global Leaders</a>
+          <a href="/compare/?preset=pe" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider text-[12px]">PE / Hedge Funds</a>
+          <a href="/compare/?preset=consulting" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider text-[12px]">Consulting Fit</a>
+          <a href="/compare/?preset=library" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider text-[12px]">Transcript Leaders</a>
+          <a href="/compare/?preset=aiResearch" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider text-[12px]">AI Research</a>
+          <a href="/compare/?preset=asia" class="flex items-center gap-2.5 px-3.5 py-2.5 min-h-[44px] no-underline drawer-provider-item border-t drawer-divider text-[12px]">APAC Specialists</a>
         </div>
       </div>
     )}
@@ -272,11 +272,11 @@ function isActive(href: string): boolean {
     <!-- G. TRUST FOOTER -->
     <div class="pt-3 border-t drawer-divider">
       <div class="flex flex-wrap gap-x-4 gap-y-0 px-1">
-        <a href="/about" class="no-underline text-[12px] py-2 drawer-trust-link">About</a>
-        <a href="/sources" class="no-underline text-[12px] py-2 drawer-trust-link">Sources</a>
-        <a href="/verification" class="no-underline text-[12px] py-2 drawer-trust-link">Verification</a>
-        <a href="/disclaimer" class="no-underline text-[12px] py-2 drawer-trust-link">Disclaimer</a>
-        <a href="/privacy" class="no-underline text-[12px] py-2 drawer-trust-link">Privacy</a>
+        <a href="/about/" class="no-underline text-[12px] py-2 drawer-trust-link">About</a>
+        <a href="/sources/" class="no-underline text-[12px] py-2 drawer-trust-link">Sources</a>
+        <a href="/verification/" class="no-underline text-[12px] py-2 drawer-trust-link">Verification</a>
+        <a href="/disclaimer/" class="no-underline text-[12px] py-2 drawer-trust-link">Disclaimer</a>
+        <a href="/privacy/" class="no-underline text-[12px] py-2 drawer-trust-link">Privacy</a>
       </div>
       <div class="mt-3 px-1 text-[11px] text-white/45">
         Independent research. No paid placements.
@@ -311,12 +311,12 @@ function isActive(href: string): boolean {
       <div id="searchResults" class="max-h-[50vh] overflow-y-auto overscroll-contain">
         <div id="searchEmpty" class="px-4 py-8 text-center text-sm text-tertiary">Type to search across {publishedNetworks.length} networks</div>
         <div id="searchList" class="hidden" role="listbox" aria-label="Matching networks"></div>
-        <div id="searchNoMatch" class="hidden px-4 py-8 text-center text-sm text-tertiary">No networks found. <a href="/networks" class="text-accent-text font-medium">Browse the full directory</a></div>
+        <div id="searchNoMatch" class="hidden px-4 py-8 text-center text-sm text-tertiary">No networks found. <a href="/networks/" class="text-accent-text font-medium">Browse the full directory</a></div>
       </div>
       <div class="hidden sm:flex items-center gap-4 px-4 py-2.5 border-t border-border/50 bg-bg-primary text-[11px] text-tertiary">
         <span class="flex items-center gap-1.5"><kbd class="px-1.5 py-0.5 rounded bg-white border border-border/70 font-sans">&uarr;</kbd><kbd class="px-1.5 py-0.5 rounded bg-white border border-border/70 font-sans">&darr;</kbd> to navigate</span>
         <span class="flex items-center gap-1.5"><kbd class="px-1.5 py-0.5 rounded bg-white border border-border/70 font-sans">Enter</kbd> to open</span>
-        <a href="/networks" class="ml-auto text-accent-text font-medium no-underline hover:underline">Browse all {publishedNetworks.length} &rarr;</a>
+        <a href="/networks/" class="ml-auto text-accent-text font-medium no-underline hover:underline">Browse all {publishedNetworks.length} &rarr;</a>
       </div>
     </div>
   </div>
@@ -429,7 +429,7 @@ function isActive(href: string): boolean {
         const avatar = n.logo
           ? `<img src="${escapeHtml(n.logo)}" alt="" width="32" height="32" class="w-8 h-8 rounded-lg object-cover flex-shrink-0" loading="lazy" />`
           : `<div class="w-8 h-8 rounded-lg flex items-center justify-center text-white font-semibold text-[10px] flex-shrink-0" style="background:linear-gradient(135deg,${escapeHtml(n.gradientFrom)},${escapeHtml(n.gradientTo)})">${safeShort}</div>`;
-        return `<a href="/networks/${safeSlug}" role="option" aria-selected="false" class="search-result flex items-center gap-3 px-4 py-3 min-h-[56px] hover:bg-bg-secondary transition-colors no-underline text-primary border-b border-bg-secondary last:border-0">
+        return `<a href="/networks/${safeSlug}/" role="option" aria-selected="false" class="search-result flex items-center gap-3 px-4 py-3 min-h-[56px] hover:bg-bg-secondary transition-colors no-underline text-primary border-b border-bg-secondary last:border-0">
           ${avatar}
           <div class="min-w-0 flex-1">
             <div class="text-[13px] font-semibold">${safeName}</div>

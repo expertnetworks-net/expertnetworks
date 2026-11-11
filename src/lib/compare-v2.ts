@@ -241,7 +241,7 @@ function renderCellValue(dataset: CompareDataset, slug: string, row: any, showNo
 }
 
 function renderProviderHeaderCell(dataset: CompareDataset, slug: string): string {
-  return `<th scope="col" class="compare-head text-left provider-col" data-slug="${escapeHtml(slug)}"><div class="flex items-center gap-2.5">${renderIconLg(dataset, slug)}<a class="provider-name" href="/networks/${escapeHtml(slug)}">${escapeHtml(shortName(dataset, slug))}</a></div></th>`;
+  return `<th scope="col" class="compare-head text-left provider-col" data-slug="${escapeHtml(slug)}"><div class="flex items-center gap-2.5">${renderIconLg(dataset, slug)}<a class="provider-name" href="/networks/${escapeHtml(slug)}/">${escapeHtml(shortName(dataset, slug))}</a></div></th>`;
 }
 
 function renderComparisonTable(entries: any[], dataset: CompareDataset, activeSlugs: string[], options: {
@@ -387,7 +387,7 @@ export function buildCompareRender(activeSlugs: string[], dataset: CompareDatase
     .filter(Boolean)
     .sort()
     .at(-1);
-  const directoryHref = `/networks?selected=${activeSlugs.join(',')}`;
+  const directoryHref = `/networks/?selected=${activeSlugs.join(',')}`;
 
   /* Full matrix */
   const fullMatrixEntries = dataset.sections.map((section) => {

@@ -302,7 +302,7 @@ const topProviders = published.slice(0, 6);
         <div class="bg-white rounded-card p-5 shadow-card">
           <h3 class="font-semibold text-primary text-[15px] mb-2">Private equity / venture capital</h3>
           <p class="text-[13px] leading-relaxed text-secondary">Commercial diligence, market mapping, portfolio support, and management referencing.</p>
-          <a href="/expert-networks-for-private-equity" class="text-accent-text text-[13px] font-medium inline-flex items-center min-h-[44px] hover:underline no-underline">PE buyer's guide &rarr;</a>
+          <a href="/expert-networks-for-private-equity/" class="text-accent-text text-[13px] font-medium inline-flex items-center min-h-[44px] hover:underline no-underline">PE buyer's guide &rarr;</a>
         </div>
         <div class="bg-white rounded-card p-5 shadow-card">
           <h3 class="font-semibold text-primary text-[15px] mb-2">Hedge funds / asset managers</h3>
@@ -413,7 +413,7 @@ const topProviders = published.slice(0, 6);
         <p class="text-sm text-blue-800"><strong>What matters most</strong> is not the sticker price, but the total cost of getting the right answer fast and compliantly.</p>
       </div>
 
-      <a href="/expert-network-pricing" class="inline-flex items-center gap-2 min-h-[44px] text-accent-text text-sm font-semibold no-underline hover:underline">
+      <a href="/expert-network-pricing/" class="inline-flex items-center gap-2 min-h-[44px] text-accent-text text-sm font-semibold no-underline hover:underline">
         See the full pricing guide &rarr;
       </a>
     </div>
@@ -538,9 +538,9 @@ const topProviders = published.slice(0, 6);
       </div>
 
       <div class="flex flex-wrap gap-3">
-        <a href="/compare" class="btn btn-primary">Compare providers side by side</a>
-        <a href="/expert-network-pricing" class="btn btn-secondary">See pricing models</a>
-        <a href="/networks" class="btn btn-secondary">Browse all networks</a>
+        <a href="/compare/" class="btn btn-primary">Compare providers side by side</a>
+        <a href="/expert-network-pricing/" class="btn btn-secondary">See pricing models</a>
+        <a href="/networks/" class="btn btn-secondary">Browse all networks</a>
       </div>
     </div>
   </section>
@@ -566,7 +566,7 @@ const topProviders = published.slice(0, 6);
                 return (
                   <tr class={`border-b border-border/20 ${i % 2 !== 0 ? 'bg-bg-secondary/20' : ''}`}>
                     <td class="px-5 py-3">
-                      <a href={`/networks/${n.data.slug}`} class="flex items-center gap-2 max-lg:min-h-[44px] no-underline text-primary hover:text-accent-text transition-colors">
+                      <a href={`/networks/${n.data.slug}/`} class="flex items-center gap-2 max-lg:min-h-[44px] no-underline text-primary hover:text-accent-text transition-colors">
                         <div class="w-6 h-6 rounded flex items-center justify-center text-white font-bold text-[7px] flex-shrink-0" style={`background: linear-gradient(135deg, ${n.data.gradientFrom}, ${n.data.gradientTo})`}>
                           {n.data.shortName}
                         </div>
@@ -583,7 +583,7 @@ const topProviders = published.slice(0, 6);
           </table>
         </div>
       </div>
-      <p class="text-xs text-tertiary mt-4">For provider-specific details, pricing, and current product mix, see each profile. <a href="/best-expert-networks" class="text-accent-text hover:underline no-underline">Full ranked list &rarr;</a></p>
+      <p class="text-xs text-tertiary mt-4">For provider-specific details, pricing, and current product mix, see each profile. <a href="/best-expert-networks/" class="text-accent-text hover:underline no-underline">Full ranked list &rarr;</a></p>
     </div>
   </section>
 
@@ -614,7 +614,7 @@ const topProviders = published.slice(0, 6);
             How much do expert networks cost?
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="transition-transform group-open:rotate-180 flex-shrink-0"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
-          <div class="px-6 pb-4 text-sm text-secondary">Based on market estimates, expert calls generally range from roughly $500 to $1,800+ per hour on the client side, though rates vary widely. Pricing depends on expert seniority, sourcing difficulty, urgency, and provider. Common models include per-call, credit-based subscriptions, and hybrid enterprise contracts. See our <a href="/expert-network-pricing" class="text-accent-text hover:underline">pricing guide</a> for details.</div>
+          <div class="px-6 pb-4 text-sm text-secondary">Based on market estimates, expert calls generally range from roughly $500 to $1,800+ per hour on the client side, though rates vary widely. Pricing depends on expert seniority, sourcing difficulty, urgency, and provider. Common models include per-call, credit-based subscriptions, and hybrid enterprise contracts. See our <a href="/expert-network-pricing/" class="text-accent-text hover:underline">pricing guide</a> for details.</div>
         </details>
 
         <details class="bg-bg-secondary rounded-card overflow-hidden group">
@@ -638,7 +638,7 @@ const topProviders = published.slice(0, 6);
             How do I choose the right provider?
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="transition-transform group-open:rotate-180 flex-shrink-0"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
-          <div class="px-6 pb-4 text-sm text-secondary">It depends on your priorities: speed, geography, service model, content depth, compliance posture, and budget. Many research teams work with more than one provider. See our <a href="/compare" class="text-accent-text hover:underline">comparison tool</a> or <a href="/best-expert-networks" class="text-accent-text hover:underline">ranked list</a>.</div>
+          <div class="px-6 pb-4 text-sm text-secondary">It depends on your priorities: speed, geography, service model, content depth, compliance posture, and budget. Many research teams work with more than one provider. See our <a href="/compare/" class="text-accent-text hover:underline">comparison tool</a> or <a href="/best-expert-networks/" class="text-accent-text hover:underline">ranked list</a>.</div>
         </details>
 
         <details class="bg-bg-secondary rounded-card overflow-hidden group">
@@ -658,9 +658,9 @@ const topProviders = published.slice(0, 6);
       <h2 class="text-xl font-bold text-primary mb-3">Next steps</h2>
       <p class="text-sm text-secondary mb-8">Use the directory if you want to compare firms. Use the pricing guide if you want to understand cost. Use the compare page if you already have a shortlist.</p>
       <div class="flex flex-wrap gap-3">
-        <a href="/compare" class="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white rounded-full font-semibold text-sm no-underline hover:bg-accent-hover transition-colors">Compare expert networks side by side</a>
-        <a href="/expert-network-pricing" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary border border-border rounded-full font-semibold text-sm no-underline hover:bg-bg-secondary transition-colors">See pricing models and service types</a>
-        <a href="/networks" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary border border-border rounded-full font-semibold text-sm no-underline hover:bg-bg-secondary transition-colors">Browse all provider profiles</a>
+        <a href="/compare/" class="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white rounded-full font-semibold text-sm no-underline hover:bg-accent-hover transition-colors">Compare expert networks side by side</a>
+        <a href="/expert-network-pricing/" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary border border-border rounded-full font-semibold text-sm no-underline hover:bg-bg-secondary transition-colors">See pricing models and service types</a>
+        <a href="/networks/" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary border border-border rounded-full font-semibold text-sm no-underline hover:bg-bg-secondary transition-colors">Browse all provider profiles</a>
       </div>
     </div>
   </section>

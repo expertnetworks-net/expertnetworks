@@ -111,7 +111,7 @@ const directoryEntries = networks.map((network, index) => {
             "@type": "ListItem",
             "position": i + 1,
             "name": n.data.name,
-            "url": `https://expertnetworks.net/networks/${n.data.slug}`
+            "url": `https://expertnetworks.net/networks/${n.data.slug}/`
     }))
         }
       }
@@ -252,7 +252,7 @@ const directoryEntries = networks.map((network, index) => {
         <div class="flex flex-wrap items-center gap-x-3 gap-y-2 mb-4 min-h-[36px]">
           <p id="resultCount" class="text-[15px] text-secondary" role="status" aria-live="polite"><strong class="text-primary font-bold">{networks.length}</strong> networks</p>
           <div id="activeChips" class="flex flex-wrap items-center gap-1.5" aria-label="Active filters"></div>
-          <a id="heroCompareBtn" href="/compare" class="ml-auto hidden md:inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#0066cc] no-underline hover:underline underline-offset-4">
+          <a id="heroCompareBtn" href="/compare/" class="ml-auto hidden md:inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#0066cc] no-underline hover:underline underline-offset-4">
             <span id="heroCompareBtnText">Open compare tool</span>
             <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
@@ -308,7 +308,7 @@ const directoryEntries = networks.map((network, index) => {
                     <div class="dir-logo dir-logo-fallback" aria-hidden="true" style={`background: linear-gradient(135deg, ${n.gradientFrom}, ${n.gradientTo}); view-transition-name: net-${n.slug}`}>{n.shortName}</div>
                   )}
                   <div class="min-w-0 flex-1">
-                    <h2 class="dir-card-name"><a href={`/networks/${n.slug}`} class="dir-card-link">{displayName}</a></h2>
+                    <h2 class="dir-card-name"><a href={`/networks/${n.slug}/`} class="dir-card-link">{displayName}</a></h2>
                     <p class="dir-card-type">{n.type}</p>
                   </div>
                   <label class="compare-label dir-compare" title="Add to comparison">
@@ -387,10 +387,10 @@ const directoryEntries = networks.map((network, index) => {
           Expert networks connect investors, consultants, and corporate teams with subject-matter experts for paid consultations. The industry has grown from a handful of providers in the early 2000s to more than {networks.length} tracked companies in 2026, spanning global leaders, regional specialists, technology-first platforms, and boutique research firms.
         </p>
         <p>
-          The market is led by four major providers: <a href="/networks/glg" class="dir-prose-link">GLG</a> (the largest by expert count and revenue), <a href="/networks/alphasights" class="dir-prose-link">AlphaSights</a> (known for fast turnaround and project management), <a href="/networks/third-bridge" class="dir-prose-link">Third Bridge</a> (differentiated by its Forum and Interviews content library), and <a href="/networks/guidepoint" class="dir-prose-link">Guidepoint</a> (offering flexible, high-volume expert access). Together they serve the majority of institutional investors and management consulting firms globally.
+          The market is led by four major providers: <a href="/networks/glg/" class="dir-prose-link">GLG</a> (the largest by expert count and revenue), <a href="/networks/alphasights/" class="dir-prose-link">AlphaSights</a> (known for fast turnaround and project management), <a href="/networks/third-bridge/" class="dir-prose-link">Third Bridge</a> (differentiated by its Forum and Interviews content library), and <a href="/networks/guidepoint/" class="dir-prose-link">Guidepoint</a> (offering flexible, high-volume expert access). Together they serve the majority of institutional investors and management consulting firms globally.
         </p>
         <p>
-          Key trends shaping the industry in 2026 include AI-powered expert matching and transcript search, increased regulatory scrutiny around compliance and information barriers, consolidation through M&A (including the AlphaSense–Tegus merger), and the rise of self-service marketplace models that challenge traditional managed-service approaches. Use the filters above to explore providers by pricing model, geography, compliance posture, and AI capabilities, or <a href="/compare" class="dir-prose-link">compare providers side-by-side</a>.
+          Key trends shaping the industry in 2026 include AI-powered expert matching and transcript search, increased regulatory scrutiny around compliance and information barriers, consolidation through M&A (including the AlphaSense–Tegus merger), and the rise of self-service marketplace models that challenge traditional managed-service approaches. Use the filters above to explore providers by pricing model, geography, compliance posture, and AI capabilities, or <a href="/compare/" class="dir-prose-link">compare providers side-by-side</a>.
         </p>
       </div>
     </div>
@@ -406,7 +406,7 @@ const directoryEntries = networks.map((network, index) => {
         </div>
         <div class="flex items-center gap-1 flex-shrink-0">
           <button id="clearCompare" type="button" class="dir-tray-clear">Clear</button>
-          <a id="compareLink" href="/compare" class="dir-tray-cta">Compare</a>
+          <a id="compareLink" href="/compare/" class="dir-tray-cta">Compare</a>
         </div>
       </div>
       <p id="compareLimitMsg" class="sr-only" role="status" aria-live="polite"></p>
@@ -823,7 +823,7 @@ const directoryEntries = networks.map((network, index) => {
         <div class="network-row" role="listitem">
           ${logoHtml(entry)}
           <div class="dir-row-main">
-            <a href="/networks/${esc(entry.slug)}" class="dir-row-name">${esc(entry.displayName)}</a>
+            <a href="/networks/${esc(entry.slug)}/" class="dir-row-name">${esc(entry.displayName)}</a>
             <div class="dir-row-sub">${esc(entry.badge || entry.type)}</div>
           </div>
           ${col('c1', 'Pricing', entry.pricingModel)}
@@ -996,17 +996,17 @@ const directoryEntries = networks.map((network, index) => {
   function buildCompareUrl() {
     const slugs = Array.from(selected.keys());
     if (slugs.length === 1) {
-      return `/compare?add=${encodeURIComponent(slugs[0])}`;
+      return `/compare/?add=${encodeURIComponent(slugs[0])}`;
     }
     if (slugs.length >= 2) {
-      const base = `/compare?networks=${slugs.slice(0, MAX_COMPARE).join(',')}`;
+      const base = `/compare/?networks=${slugs.slice(0, MAX_COMPARE).join(',')}`;
       const comparePreset = directoryToComparePreset[activePreset];
       return comparePreset ? `${base}&preset=${comparePreset}` : base;
     }
     if (activePreset && directoryToComparePreset[activePreset]) {
-      return `/compare?preset=${directoryToComparePreset[activePreset]}`;
+      return `/compare/?preset=${directoryToComparePreset[activePreset]}`;
     }
-    return '/compare';
+    return '/compare/';
   }
 
   function updateCompareTray(sync = true) {

@@ -147,7 +147,7 @@ const topTrends = Object.entries(trendCounts).sort((a, b) => b[1] - a[1]).slice(
                   <p class="nw-lead-summary">{lead.data.summary}</p>
                   <div class="flex flex-wrap items-center gap-2 mt-5">
                     {lead.data.relatedNetworks.map((s: string) => networkMap[s] ? (
-                      <a href={`/networks/${s}`} class="nw-lead-chip">
+                      <a href={`/networks/${s}/`} class="nw-lead-chip">
                         {networkLogoMap[s] && <img src={networkLogoMap[s]} alt="" width="18" height="18" class="w-[18px] h-[18px] rounded object-contain bg-white" loading="lazy" />}
                         {networkMap[s]}
                       </a>
@@ -342,7 +342,7 @@ const topTrends = Object.entries(trendCounts).sort((a, b) => b[1] - a[1]).slice(
                       <div class="nw-item-meta">
                         <span class="nw-item-source">{article.data.source}</span>
                         {article.data.relatedNetworks.map((s: string) => networkMap[s] ? (
-                          <a href={`/networks/${s}`} class="nw-net-chip">
+                          <a href={`/networks/${s}/`} class="nw-net-chip">
                             {networkLogoMap[s] && <img src={networkLogoMap[s]} alt="" width="16" height="16" class="w-4 h-4 rounded object-contain bg-white" loading="lazy" />}
                             {networkMap[s]}
                           </a>
@@ -387,7 +387,7 @@ const topTrends = Object.entries(trendCounts).sort((a, b) => b[1] - a[1]).slice(
           const count = articles.filter(a => a.data.relatedNetworks.includes(slug)).length;
           const logo = networkLogoMap[slug];
           return (
-            <a href={`/networks/${slug}`} class="network-coverage-chip" data-network-slug={slug}>
+            <a href={`/networks/${slug}/`} class="network-coverage-chip" data-network-slug={slug}>
               {logo ? (
                 <img src={logo} alt="" width="20" height="20" class="w-5 h-5 rounded-md object-contain bg-white" loading="lazy" />
               ) : (

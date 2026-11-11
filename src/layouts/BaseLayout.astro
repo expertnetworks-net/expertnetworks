@@ -30,7 +30,10 @@ const {
 } = Astro.props;
 
 const siteUrl = 'https://expertnetworks.net';
-const canonicalUrl = canonicalPath ? `${siteUrl}${canonicalPath}` : new URL(Astro.url.pathname, siteUrl).href;
+// Pages are served at the trailing-slash URL; the other form is a 308 redirect.
+// The canonical URL must be the served form.
+const withSlash = (path: string) => (path.endsWith('/') ? path : `${path}/`);
+const canonicalUrl = `${siteUrl}${withSlash(canonicalPath ?? Astro.url.pathname)}`;
 const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 ---
 
