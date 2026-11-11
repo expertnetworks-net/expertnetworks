@@ -147,16 +147,54 @@ cmd_claude_review() {  # cross-vendor review: Claude Code (subscription login) r
   (cd "$wt" && git diff "$base"...HEAD) > "$RUNS/$id/diff.patch"
   cat > "$RUNS/$id/review-claude.prompt" <<PROMPT
 You review a diff written by another AI model (Codex). Read AGENTS.md and the task spec at $RUNS/$id/task.md.
-The diff is in $RUNS/$id/diff.patch (base: $base). You may read any file in the repository.
+The diff is in $RUNS/$id/diff.patch (base: $base). You may read any file in the repository, and open the cited sources to spot-check the riskiest claims (legal, financial, people).
 Report only real defects: correctness, scope violations, unsourced or legally risky claims, security, missing doc updates.
 Most severe first; each with file, line, and a concrete failure. No style nits.
 End with exactly one line: VERDICT: MERGE or VERDICT: BLOCK
 PROMPT
   # Prompt goes through stdin: --allowedTools is variadic and would swallow a positional prompt.
   # No plan mode: in -p it returns only a plan stub. Read-only comes from the tool allowlist (other tools are denied in -p).
-  (cd "$wt" && with_timeout claude -p --add-dir "$RUNS/$id" --allowedTools Read Grep Glob < "$RUNS/$id/review-claude.prompt") \
-    > "$RUNS/$id/review-claude.md" 2> "$RUNS/$id/review-claude.log"
+  local try
+  for try in 1 2; do
+    (cd "$wt" && with_timeout claude -p --add-dir "$RUNS/$id" --allowedTools Read Grep Glob WebFetch WebSearch < "$RUNS/$id/review-claude.prompt") \
+      > "$RUNS/$id/review-claude.md" 2> "$RUNS/$id/review-claude.log"
+    # A verdict with no findings text is not a review: run it once more.
+    grep -q '^VERDICT: ' "$RUNS/$id/review-claude.md" && [ "$(wc -l < "$RUNS/$id/review-claude.md")" -ge 4 ] && break
+    grep -q '^VERDICT: MERGE' "$RUNS/$id/review-claude.md" && break
+    echo "[$(ts)] empty review for $id (try $try)"
+  done
   cat "$RUNS/$id/review-claude.md"
+}
+
+cmd_fix() {  # Codex addresses the findings of the latest Claude review, in the same worktree and branch
+  local id="${1:-}"; [ -n "$id" ] || die "usage: fix <id>"
+  local wt="$WT_DIR/$id" run="$RUNS/$id" rev="$RUNS/$id/review-claude.md"
+  [ -d "$wt" ] || die "no worktree for $id"; [ -s "$rev" ] || die "no review for $id: run claude-review first"
+  [ "$(wc -l < "$rev")" -ge 4 ] || { echo "[$(ts)] skip   $id (review has no findings)"; return 0; }
+  local round=1; while [ -e "$run/result.fix$round.json" ]; do round=$((round+1)); done
+  cp "$rev" "$run/review-claude.round$round.md"
+  { cat .agents/roles/_common.md; echo; cat .agents/roles/builder.md; echo
+    echo "# Task: address review findings (task_id=$id, role=builder, round $round)"; echo
+    echo "An independent reviewer (a different model) read your earlier change on this branch. Its findings are below."
+    echo "For each finding: fix it inside Scope, or, if the reviewer is wrong, say why in a check note with the source URL you opened."
+    echo "A finding about files outside Scope: do not edit them; list it in followups as 'CONSISTENCY: <file>: <what must change>'."
+    echo "Legal, financial, and people claims: keep only with a primary or reputable source you open now. Remove rather than hedge."
+    echo "Fields the site renders for every provider (counts, badges): do not delete them; set an honest value or label with its source."
+    echo; echo "## Reviewer findings"; echo; cat "$rev"; echo; echo "## Original task spec"; echo; cat "$run/task.md"
+    echo; echo "Working directory: $wt (branch agent/$id). Final message: JSON matching the result schema."; } > "$run/prompt.fix$round.md"
+  echo "[$(ts)] fix    $id (round $round) -> $wt"
+  # shellcheck disable=SC2086
+  with_timeout codex exec -C "$wt" -s workspace-write $MODEL_ARGS -c model_reasoning_effort="$(effort_for builder)" \
+    -c sandbox_workspace_write.network_access=true \
+    --output-schema "$SCHEMA" -o "$run/result.fix$round.json" --json - < "$run/prompt.fix$round.md" \
+    > "$run/events.fix$round.jsonl" 2> "$run/stderr.fix$round.log"
+  local rc=$? status msg; status="$(jfield "$run/result.fix$round.json" status)"; msg="$(jfield "$run/result.fix$round.json" commit_message)"
+  scope_violations "$run/task.md" "$wt" > "$run/scope_violations.txt"
+  if [ -s "$run/scope_violations.txt" ]; then echo "[$(ts)] SCOPE  $id fix touched files outside Scope - not committed"
+  elif [ -n "$(cd "$wt" && git status --porcelain)" ] && [ -n "$msg" ]; then
+    (cd "$wt" && git add -A && git commit -q -m "[agent:$id] $msg" -m "role=builder fix-round=$round status=$status") && echo "[$(ts)] commit $id: $msg"
+  fi
+  echo "[$(ts)] end    $id fix round $round status=${status:-none} codex_exit=$rc"
 }
 
 cmd_gate() { local id="${1:-}"; [ -n "$id" ] || die "usage: gate <id> [--quick]"; (cd "$WT_DIR/$id" && "$ROOT/scripts/agents/gate.sh" "${2:-}"); }
@@ -206,7 +244,7 @@ cmd_metrics() { node "$ROOT/scripts/agents/metrics.mjs" "$@"; }
 cmd_help() { sed -n '/^## Commands/,/^## /p' docs/AGENT-WORKFLOW.md | sed '$d'; }
 
 case "${1:-help}" in
-  new|run|fanout|review|gate|integrate|status|metrics|clean|help) c="$1"; shift; "cmd_$c" "$@";;
+  new|run|fanout|review|fix|gate|integrate|status|metrics|clean|help) c="$1"; shift; "cmd_$c" "$@";;
   claude-review) shift; cmd_claude_review "$@";;
   *) die "unknown command '$1' (try: help)";;
 esac
