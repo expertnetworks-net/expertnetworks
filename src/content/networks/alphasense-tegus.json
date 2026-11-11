@@ -3,39 +3,42 @@
   "shortName": "AS",
   "slug": "alphasense-tegus",
   "logo": "/images/networks/alphasense-tegus.png",
-  "website": "https://alphasense.com",
+  "website": "https://www.alpha-sense.com/",
   "gradientFrom": "#0c4a6e",
   "gradientTo": "#0284c7",
   "type": "AI Market Intelligence Platform",
   "founded": 2011,
   "headquarters": "New York, NY",
-  "employeeCount": "~2,800",
-  "employeeCountSource": "Tracxn / Getlatka (Jan 2026)",
-  "expertCount": "1M (claimed)",
-  "expertCountLabel": "Pre-qualified experts (AlphaSense marketing claim; not independently verified)",
-  "description": "AlphaSense is an AI-powered market intelligence platform that entered the expert network space through its $930 million acquisition of Tegus in 2024. The combined platform integrates 500M+ premium business documents, the Tegus Expert Transcript Library (240K+ transcripts), live expert calls, AI Interviewer-led Channel Checks, and structured financial data via Canalyst. With 8,000+ enterprise customers (October 2026) and more than $700M in ARR as of Q2 2026, AlphaSense is the largest player by revenue in the expert intelligence category, though its expert network is still being integrated post-acquisition.",
+  "expertCount": "1M (company-stated, checked November 2026)",
+  "expertCountLabel": "Pre-qualified experts; AlphaSense pricing-page claim, not independently verified",
+  "description": "AlphaSense is an AI-powered market intelligence platform that acquired Tegus for $930 million in July 2024. It combines document search, the Tegus transcript library, live expert calls, AI-led interviews, and financial data via Canalyst. AlphaSense reported 8,000 enterprise customers and more than 300,000 expert interview transcripts in October 2026, and more than $700M in ARR in Q2 2026. These scale figures are company-stated.",
   "services": [
     "Expert Calls",
     "Expert Insights (Tegus Transcript Library)",
     "Channel Checks (AI Interviewer)",
     "Generative Search",
     "Deep Research",
+    "Generative Grid",
     "Financial Data",
     "Workflow Agents",
     "Enterprise Intelligence",
-    "Monitoring & Alerts"
+    "Monitoring & Alerts",
+    "SuperAnalyst",
+    "PowerPoint & Excel AI Assistants",
+    "Clinical Trial and Drug Data",
+    "Market Research (including EIU)"
   ],
   "aiCapabilities": [
     "Generative Search (multi-agent research system)",
-    "Deep Research (autonomous analyst agent)",
-    "AI Agent Interviewer for Channel Checks",
-    "Workflow Agents (custom AI automations)",
-    "Generative Grid (structured multi-question analysis)",
+    "Deep Research (autonomous research agent)",
+    "AI Interviewer for Channel Checks and client-directed expert calls",
+    "Workflow Agents (custom research automations)",
+    "Generative Grid (multi-document analysis)",
     "Smart Synonyms",
-    "Sentiment analysis",
-    "SuperAnalyst always-on AI agent (incl. autonomous expert identification and calls)",
-    "SuperAnalyst MCP for external AI tools",
-    "AI-Led Expert Calls (Tegus)"
+    "Sentiment analysis and Sentiment Indices",
+    "SuperAnalyst (research, coding, and deliverable creation; documented as beta in November 2026)",
+    "SuperAnalyst MCP (beta connector; account enablement required)",
+    "PowerPoint & Excel AI Assistants"
   ],
   "industries": [
     "Financial Services",
@@ -45,29 +48,27 @@
     "Consumer",
     "Legal"
   ],
-  "pricingModel": "Subscription",
-  "pricingDetail": "Subscription-based platform access; annual contracts. Seat pricing varies by package and is typically negotiated.",
+  "pricingModel": "Platform subscription; pay-as-you-go expert calls",
+  "pricingDetail": "AlphaSense advertises per-seat and enterprise subscription options; platform prices require a sales quote. Tegus advertises pay-as-you-go calls with no minimum commitment, billed at the expert rate plus a $75 transcription fee. The April 7, 2026 AI-led call FAQ says the same pricing applies to AI-led and human-led calls, prorated to 15-minute increments.",
   "keyDifferentiators": [
-    "AI-first platform with agentic research workflows",
-    "Tegus transcript library ($930M acquisition, 240K+ transcripts, 8K+/month growth)",
-    "500M+ premium documents in a single searchable platform",
-    "Only platform offering autonomous AI Agent Interviewer for expert calls",
-    "Unified quantitative financial data and qualitative content"
+    "AI platform with agentic research workflows",
+    "Tegus transcript library: company reports 300,000+ insights, 29,000+ companies, and 8,000+ monthly additions (November 2026 product page)",
+    "Company reports 500M+ business documents (June 2026)",
+    "Choice of human-led and AI-led expert calls",
+    "Quantitative financial data and qualitative content in one workflow"
   ],
-  "parentCompany": "AlphaSense Inc.",
   "bestFor": [
     "Hedge funds & asset managers",
     "Private equity & venture capital",
     "Investment banks & equity research",
     "Corporate strategy & competitive intelligence",
-    "Large enterprises (88% of S&P 100 are customers)"
+    "Enterprises combining internal knowledge with external research (editorial fit assessment)"
   ],
   "compliance": {
-    "mnpiPolicy": "Multi-layered MNPI framework: pre-call compliance training, structured questionnaires, AI-powered transcript scanning, and human-in-the-loop review by dedicated compliance team",
-    "expertVetting": "Pre-call vetting including Terms & Conditions agreement, compliance training on insider trading, and pre-call compliance questionnaire; all calls recorded and transcribed",
-    "coolingOffPeriod": "14-day publication delay for public company transcripts; 90-day delay for private company transcripts. AI Interviewer tuned to avoid risky topics during live calls",
-    "auditTrail": true,
-    "regulatoryHistory": "No major public regulatory actions identified. Compliance overseen by CCO Brian Moroney (20+ years experience, former Goldman Sachs). 75+ dedicated compliance professionals; $100M+ annual investment in expert content. SOC 2 Type 2 and ISO/IEC 27001 certified. Compliance portal allows clients to audit transcript activities and questionnaires."
+    "mnpiPolicy": "AlphaSense describes pre-call training and questionnaires, automated transcript screening, and human compliance review to address confidential information and MNPI risks.",
+    "expertVetting": "AlphaSense says experts complete agreements, compliance training, and pre-call questionnaires; its framework requires consent to record and transcribe consultations.",
+    "coolingOffPeriod": "The April 7, 2026 AI-led call FAQ states library publication delays of 14 days for public target companies and 90 days for private target companies, with a pay-to-delay option. These are transcript embargoes, not expert employment cooling-off periods.",
+    "auditTrail": true
   },
   "featured": false,
   "priority": 6,
@@ -80,186 +81,205 @@
   "comparison": {
     "expertCalls": true,
     "contentLibrary": "Expert Insights (Tegus Library)",
-    "aiMatching": true,
-    "surveys": true,
+    "aiMatching": "Not publicly confirmed",
     "complianceTools": true
   },
   "lastUpdated": "2026-11-11",
-  "overview": "AlphaSense is an AI-powered market intelligence platform that combines proprietary search technology, generative AI workflows, and one of the largest collections of business content in the industry. Founded in 2011 by Jack Kokko and Raj Neervannan, the platform started as an AI search engine for financial documents and has evolved into a comprehensive research platform spanning document search, expert content, financial data, and autonomous AI research agents. The $930M acquisition of Tegus in July 2024 added a major expert transcript library and expert call services, making AlphaSense a direct competitor in the expert network space alongside its core document intelligence business.",
+  "overview": "AlphaSense is an AI-powered market intelligence platform that combines proprietary search technology, generative AI workflows, business documents, expert content, and financial data. Founded in 2011 by Jack Kokko and Raj Neervannan, the platform started as a search engine for financial research documents and expanded through acquisitions including Stream, Sentieo, and Tegus. The $930M Tegus acquisition closed in July 2024 and brought expert research, BamSEC, and Canalyst into the group. AlphaSense now offers both human-led and AI-led expert calls alongside its document intelligence platform.",
   "history": {
-    "narrative": "AlphaSense was founded in 2011 by Jack Kokko (CEO) and Raj Neervannan (CTO), who met at Wharton. Kokko, originally from Oulu, Finland, conceived the idea while working as an investment banking analyst at Morgan Stanley, frustrated by the manual process of searching through thousands of PDFs. The company launched as an AI-powered search engine for financial research documents and grew through acquisitions (Stream in 2021, Sentieo in 2022) and organic growth, raising over $1.4B across multiple rounds. The transformative moment came in June 2024 with the $930M acquisition of Tegus (which also brought BamSEC and Canalyst), making AlphaSense a combined document intelligence and expert network platform. Notably, AlphaSense had previously sued both Sentieo and Tegus before acquiring them.",
+    "narrative": "AlphaSense launched in 2011 with co-founders Jack Kokko (CEO) and Raj Neervannan (CTO). The company describes its origins in Kokko's experience with manual investment research. It acquired Stream in October 2021, Sentieo in May 2022, Tegus in July 2024, and Carousel in October 2025. In June 2026, AlphaSense announced $350M in funding at a $7.5B valuation and an Accenture partnership. Its June release reported that its new Hudson Yards headquarters in New York City had opened.",
     "timeline": [
       {
         "year": "2011",
-        "event": "Founded in New York by Jack Kokko (CEO) and Raj Neervannan (CTO), both Wharton MBA graduates"
+        "event": "Launched by Jack Kokko and Raj Neervannan."
       },
       {
-        "year": "2013",
-        "event": "Raises $1.7M seed round; Helsinki office becomes the technology headquarters"
+        "year": "2019 (Jul 17)",
+        "event": "Announces $50M Series B led by Innovation Endeavors, with Soros Fund Management participation."
       },
       {
-        "year": "2016",
-        "event": "Series A (~$33M cumulative); investors include Soros Fund Management and Tribeca Venture Partners"
+        "year": "2021 (Sep 30)",
+        "event": "Announces $180M Series C co-led by Viking Global and Goldman Sachs, with Morgan Stanley, Citi, Bank of America, Barclays, Wells Fargo Strategic Capital, Cowen, and AllianceBernstein participating."
       },
       {
-        "year": "2019",
-        "event": "Series B: $50M from Innovation Endeavors, Euclidean Capital (Jim Simons), Soros"
-      },
-      {
-        "year": "2021 (Sep)",
-        "event": "Series C: $180M led by Viking Global; valuation reaches ~$1.7B (unicorn status). Also acquires Stream (expert transcript library)"
+        "year": "2021 (Oct 25)",
+        "event": "Announces acquisition of Stream by Mosaic, an expert interview transcript library."
       },
       {
         "year": "2022 (May)",
-        "event": "Acquires Sentieo (competing financial research platform). Series D: $225M from Viking Global, Goldman Sachs"
+        "event": "Acquires Sentieo, as confirmed in the June 2022 funding release."
       },
       {
-        "year": "2023 (Apr)",
-        "event": "Series D extension: $100M addition from Alphabet's CapitalG, Goldman Sachs, Viking Global"
+        "year": "2022 (Jun 15)",
+        "event": "Announces $225M Series D led by Goldman Sachs and Viking Global at a $1.7B valuation; the announced financing includes a debt investment from BlackRock-managed funds or accounts."
       },
       {
-        "year": "2023 (Sep)",
-        "event": "Series E: $150M led by BOND (Mary Meeker), valuation reaches $2.5B. BAM Elevate (Balyasny) joins as investor"
+        "year": "2023 (Apr 11)",
+        "event": "Announces $100M addition to Series D led by CapitalG, with Goldman Sachs and Viking Global, at a $1.8B valuation."
+      },
+      {
+        "year": "2023 (Sep 28)",
+        "event": "Announces $150M Series E led by BOND at a $2.5B valuation; BAM Elevate joins as an investor."
       },
       {
         "year": "2024 (Apr)",
-        "event": "Surpasses $200M in ARR"
+        "event": "Reports reaching $200M ARR, as recalled in its March 2025 release."
       },
       {
-        "year": "2024 (Jun)",
-        "event": "Announces $930M acquisition of Tegus (valued at $3B in 2021 — a ~69% haircut); raises $650M Series F co-led by Viking Global and BDT & MSD Partners; valuation reaches $4B"
+        "year": "2024 (Jun 11)",
+        "event": "Announces the agreement to acquire Tegus for $930M; completion follows in July."
       },
       {
         "year": "2024 (Jul 8)",
-        "event": "Completes Tegus acquisition. Tegus employees in Chicago, Vancouver, and Waterford join AlphaSense. Tegus brings BamSEC (SEC filings) and Canalyst (financial models on 4,000+ public companies)"
+        "event": "Completes Tegus acquisition and closes $650M funding co-led by Viking Global and BDT & MSD Partners at a $4B valuation. Tegus includes BamSEC and Canalyst; employees join across Chicago, Vancouver, and Waterford offices."
       },
       {
-        "year": "2024 (Nov)",
-        "event": "Post-acquisition layoffs following Tegus/Sentieo integration"
-      },
-      {
-        "year": "2024 (Nov)",
-        "event": "Launches Generative Search (natural language queries against full 500M document corpus)"
-      },
-      {
-        "year": "2025 (Mar)",
-        "event": "Surpasses $400M in ARR with 6,000+ customers"
+        "year": "2025 (Mar 12)",
+        "event": "Reports more than $400M ARR and more than 6,000 customers."
       },
       {
         "year": "2025 (Jun 10)",
-        "event": "Launches Deep Research (autonomous agentic analyst)"
+        "event": "Launches Deep Research for automated multi-step analysis."
       },
       {
         "year": "2025 (Aug 19)",
-        "event": "Launches AI Agent Interviewer and Channel Checks (AI-led expert interviews across 350+ tickers)"
+        "event": "Launches AI Agent Interviewer and Channel Checks, using live interviews with human experts."
       },
       {
         "year": "2025 (Oct 7)",
-        "event": "Surpasses $500M in ARR with 6,500+ customers. Acquires Carousel Technologies (AI-powered Excel modeling)"
+        "event": "Reports more than $500M ARR and 6,500 customers; announces acquisition of Carousel for AI-powered Excel modeling."
       },
       {
-        "year": "2026",
-        "event": "Opening global headquarters at Hudson Yards, New York City"
+        "year": "2026 (Feb)",
+        "event": "Monthly product update documents AI-led client-directed calls within Tegus Expert Call Services and a new multi-agent Generative Search architecture."
       },
       {
-        "year": "2026",
-        "event": "Raises $350M at a $7.5B valuation (June 2026), led by Vitruvian Partners with Accenture Ventures and J.P. Morgan Asset Management; surpasses $600M ARR in Q1 2026"
+        "year": "2026 (Apr 7)",
+        "event": "Announces APAC and EMEA expansion, appointing Julia Lecocq to lead UK/EMEA corporate sales and June Boo to lead Singapore corporate sales; adds multilingual analysis and regional content."
       },
       {
-        "year": "2026 (Feb 24)",
-        "event": "Tegus by AlphaSense adds AI-Led Expert Calls conducted by an AI Interviewer Agent, with compliance-reviewed transcripts delivered in approximately 24 hours"
+        "year": "2026 (Apr 14)",
+        "event": "Appoints Samantha Greenberg as Chief Financial Officer."
       },
       {
         "year": "2026 (Jun 3)",
-        "event": "Introduces SuperAnalyst always-on AI agent; Accenture Ventures invests and Accenture becomes a partner integrating AlphaSense into client offerings"
+        "event": "Announces $350M funding at a $7.5B valuation, co-led by Vitruvian Partners, Accenture Ventures, and J.P. Morgan Asset Management; reports more than $600M ARR in Q1 2026 and that its Hudson Yards headquarters has opened. Announces an Accenture partnership and SuperAnalyst early access."
+      },
+      {
+        "year": "2026 (Jun 23)",
+        "event": "Launches Sentiment Indices to track earnings-call language across 15 sectors."
+      },
+      {
+        "year": "2026 (Jul 14)",
+        "event": "Announces native PowerPoint and Excel AI assistants for creating and refining presentations and models."
       },
       {
         "year": "2026 (Aug 27)",
-        "event": "Reports surpassing $700M ARR in Q2 2026 with 7,800+ customers; named the only Leader in The Forrester Wave: Market and Competitive Intelligence Platforms, Q3 2026"
+        "event": "Reports more than $700M ARR in Q2 2026 and 7,800 customers; says it is the only Leader in The Forrester Wave: Market and Competitive Intelligence Platforms, Q3 2026."
       },
       {
-        "year": "2026 (Oct–Nov)",
-        "event": "Reports 8,000+ enterprise customers and 300,000+ expert interview transcripts (October 6); unveils Channel Check Intelligence at AlphaSummit 2026; launches SuperAnalyst MCP (November 4)"
+        "year": "2026 (Sep 15)",
+        "event": "Announces Clinical Trial and Drug Data, integrating trial registries, approvals, labels, and patents with its AI research platform."
+      },
+      {
+        "year": "2026 (Oct 6)",
+        "event": "Reports 8,000 enterprise customers, more than 300,000 expert transcripts, and over 10,000 new investment banking users in Q3."
+      },
+      {
+        "year": "2026 (Oct 7)",
+        "event": "Announces EIU integration through a Market Research subscription and expanded enterprise AI security and governance. AlphaSummit recap introduces Channel Check Intelligence with daily updates across 750+ tickers and supply-chain knowledge-graph expansion."
+      },
+      {
+        "year": "2026 (Nov)",
+        "event": "Promotes SuperAnalyst MCP; November 6 help documentation describes a beta search connector with SuperAnalyst tools planned for later in Q4. November 10 documentation still labels SuperAnalyst beta."
       }
     ]
   },
   "servicesDetailed": [
     {
       "name": "Expert Calls",
-      "description": "One-on-one consultations with pre-vetted industry experts, inherited from Tegus's expert network infrastructure. Includes compliance training, recording, and transcript delivery. Experts go through onboarding, compliance vetting, and pre-call questionnaires before each call."
+      "description": "One-on-one consultations with pre-vetted industry experts through Tegus Expert Call Services. AlphaSense offers human-led calls, AI-led calls, custom expert recruiting, and recorded transcripts. Its published options include pay-as-you-go calls and prepaid packages."
     },
     {
       "name": "Expert Insights (Tegus Transcript Library)",
-      "description": "Library of 240,000+ expert call transcripts covering 27,000+ companies, growing at 8,000+ new transcripts per month. Acquired through Tegus. Every transcript undergoes multi-layered compliance review (AI-powered scanning plus human-in-the-loop). Public company transcripts published after 14-day delay; private company transcripts after 90-day delay."
+      "description": "AlphaSense's November 2026 product page reports 300,000+ investor-led insights, coverage of 29,000+ companies, and 8,000+ monthly transcript additions. The October 6 release separately reports more than 300,000 expert interview transcripts covering over 24,000 private companies and over 7,000 public enterprises. Coverage definitions differ between these sources."
     },
     {
       "name": "Channel Checks (AI Interviewer)",
-      "description": "AI-led expert interviews launched August 19, 2025. AlphaSense's autonomous AI Agent Interviewer conducts live 1:1 interviews with real market participants — distributors, suppliers, retailers — following structured guides with adaptive probing. Covers 350+ tickers across 20+ subsectors in TMT, Energy & Industrials, and Healthcare. Delivers raw transcripts within minutes and compliance-approved transcripts within hours."
+      "description": "AI-led expert interviews launched August 19, 2025. AlphaSense says its AI Interviewer conducts live conversations with human market participants to investigate demand, pricing, and supply-chain developments. Its October 2026 AlphaSummit recap describes Channel Check Intelligence summaries across 750+ tickers, refreshed daily with links to supporting expert quotes and transcripts."
     },
     {
       "name": "Generative Search",
-      "description": "Multi-agent research system that reasons across qualitative insights, structured financial data, and internal knowledge to deliver cited, auditable outputs. Built on AlphaSense's proprietary generative AI and the full 500M+ document library."
+      "description": "AlphaSense describes a multi-agent research system that combines qualitative content, structured financial data, and internal knowledge to produce cited outputs. Its February 2026 product update documents custom scheduled agents, slide creation, and a tool for checking generated insights against source content."
     },
     {
       "name": "Deep Research",
-      "description": "Launched June 10, 2025. Agentic AI mode within Generative Search that takes 10–30 minutes per query — autonomously plans research steps, searches across the full content library, iterates, and produces comprehensive reports (company primers, M&A screening, competitive landscapes, bull/bear debates). Users can filter by expert transcripts for focused output."
+      "description": "Launched June 10, 2025. AlphaSense describes an AI research mode that searches and synthesizes content into cited reports, including company primers, M&A screening, and meeting preparation. Enterprise Intelligence customers can include internal documents."
     },
     {
       "name": "Generative Grid",
-      "description": "Structured multi-question analysis tool that lets users compare themes, metrics, and expert views across multiple companies or transcripts in a grid format. Pre-built grids are available for Channel Checks insights."
+      "description": "AlphaSense describes a tool that applies multiple research prompts across documents and organizes the results in a table, with pre-built criteria for repeatable analysis."
     },
     {
       "name": "Financial Data (via Canalyst)",
-      "description": "Structured financials via Canalyst (acquired by Tegus, now part of AlphaSense) covering fully drivable models on 4,000+ public companies. Includes screening tools, industry-specific comparables, M&A transactions, funding rounds, valuation metrics, consensus estimates, and company-specific KPIs. Also includes BamSEC for self-serve SEC filing access."
+      "description": "AlphaSense offers financial statements, consensus estimates, company-specific KPIs, valuation metrics, M&A data, funding data, and comparables. Its Financial Data page advertises 4,200+ Canalyst models as checked in November 2026; an October 2025 acquisition release cited 4,500 companies, so the figures should not be treated as a consistent growth series. BamSEC provides SEC filing search tools."
     },
     {
-      "name": "Workflow Agents",
-      "description": "Custom AI agents that users can build and deploy to automate recurring research tasks — company profiles, SWOT analysis, competitive landscapes, bull/bear debates, IPO primers. Includes a Slide Agent that creates pitchbook slides in a firm's own templates, plus Excel generation via Carousel Technologies (acquired Oct 2025)."
+      "name": "Workflow Agents and Work Products",
+      "description": "AlphaSense lets users automate recurring research and deliverables. Its July 14, 2026 release adds native PowerPoint and Excel AI assistants for creating decks and models, incorporating source material, and applying firm templates. Carousel, acquired October 7, 2025, adds AI-powered Excel modeling technology."
     },
     {
       "name": "Enterprise Intelligence",
-      "description": "Allows organizations to connect shared drives, making internal memos, meeting notes, and slide decks searchable alongside AlphaSense's 500M+ external documents. Enterprise Intelligence deals grew 185% in 2025."
+      "description": "AlphaSense describes connectors and uploads that make internal research searchable alongside external documents. An October 7, 2025 release reported 185% growth in Enterprise Intelligence deals without specifying the comparison period; this is a dated company claim, not a full-year 2025 result."
     },
     {
       "name": "Monitoring & Alerts",
-      "description": "Customized dashboards providing a single view of competitors, industry trends, and macro topics. Includes real-time alerts and mobile app access for tracking insights on the go."
+      "description": "AlphaSense offers customizable dashboards and real-time alerts for tracking companies, industries, and themes, with mobile access. Its June 23, 2026 Sentiment Indices release adds sector-level analysis of management language across earnings cycles."
+    },
+    {
+      "name": "SuperAnalyst and MCP",
+      "description": "SuperAnalyst was announced June 3, 2026. AlphaSense documents research, code execution, persistent project memory, and creation of reports, slides, and spreadsheets. The November 10 guide labels it beta. The November 6 MCP help page describes an account-enabled beta connector limited to Generative Search Auto mode, with broader SuperAnalyst tools planned for later in Q4; this is narrower than the MCP launch article's agent-execution description."
+    },
+    {
+      "name": "Clinical Trial and Drug Data",
+      "description": "Announced September 15, 2026, this offering connects clinical trials, regulatory approvals, drug labels, and patents to the AlphaSense research workflow for life sciences teams."
+    },
+    {
+      "name": "Market Research (including EIU)",
+      "description": "An October 7, 2026 announcement adds EIU country and industry reports, macroeconomic forecasts, and geopolitical intelligence through a Market Research subscription offering."
     }
   ],
   "aiPlatform": {
-    "narrative": "AlphaSense's AI capabilities are central to the platform and represent its primary competitive differentiation. The company has moved aggressively into agentic AI workflows, where autonomous agents conduct research, interview experts, and generate deliverables. The AI Agent Interviewer is the most distinctive capability — an autonomous conversational agent that conducts live 1:1 interviews with human experts, following structured guides while adapting dynamically to probe deeper. GenAI query usage increased 33% quarter-over-quarter as of late 2025, with exponential growth in LLM token consumption.",
+    "narrative": "AlphaSense describes AI search, research synthesis, custom workflow agents, and an AI Interviewer that conducts calls with real experts. SuperAnalyst extends this to research execution and deliverable creation, but its November 2026 help documentation still calls it beta. The SuperAnalyst FAQ also says financial-data citations are still being rolled out and shared team projects are not yet available. These are company-described capabilities and limitations, not independent performance findings.",
     "features": [
-      "Generative Search: multi-agent system reasoning across qualitative, quantitative, and internal data",
-      "Deep Research: autonomous analyst agent generating investment-grade briefings",
-      "AI Agent Interviewer: autonomous live expert interviews with adaptive probing",
-      "Generative Grid: structured multi-question comparative analysis",
-      "Workflow Agents: user-built custom AI automations for recurring research",
-      "Smart Synonyms: NLP-powered synonym expansion for comprehensive search coverage",
-      "Sentiment analysis and entity extraction across 500M+ documents",
-      "AI-powered compliance scanning of expert transcripts for MNPI risk",
-      "SuperAnalyst: always-on agent running multi-step workflows across the platform, including identifying experts and conducting expert calls (June 2026)",
-      "AI-Led Expert Calls: AI Interviewer Agent conducts client-directed expert calls with standard compliance review (February 2026)",
-      "Channel Check Intelligence: verdict-first reads from expert conversations covering 750+ tickers, refreshed daily (October 2026)",
-      "SuperAnalyst MCP: agent access to 500M+ documents and Canalyst models from external AI tools (November 2026)"
+      "Generative Search: cited answers across research content and structured financial data",
+      "Deep Research: automated multi-step reports",
+      "AI Interviewer: live calls with human experts for Channel Checks and client projects",
+      "Generative Grid: multiple prompts applied across documents",
+      "Workflow Agents: custom and scheduled research automations",
+      "Smart Synonyms: expanded keyword and thematic search",
+      "Sentiment analysis and sector-level Sentiment Indices",
+      "Automated and human compliance review of expert transcripts, according to AlphaSense",
+      "SuperAnalyst: code execution, persistent memory, and work products; beta as documented November 10, 2026",
+      "Channel Check Intelligence: daily summaries with transcript-level evidence (company-stated)",
+      "SuperAnalyst MCP: beta search connector; broader agent tools remain planned in November 6 help documentation"
     ]
   },
   "complianceExtended": {
-    "narrative": "AlphaSense operates a multi-layered compliance framework backed by 75+ dedicated compliance professionals and over $100M in annual investment in expert content. Every expert transcript undergoes AI-powered scanning for potential MNPI risks, followed by human-in-the-loop review. The process is overseen by CCO Brian Moroney (20+ years experience, former Goldman Sachs). Public company transcripts have a 14-day publication delay; private company transcripts have a 90-day delay. For AI-led Channel Checks, the AI Interviewer is tuned to avoid risky or inappropriate topics during live calls, and all transcripts go through the same compliance pipeline before publication.",
+    "narrative": "AlphaSense describes a framework combining expert agreements, training, questionnaires, recorded calls, automated checks, and human review. Its August 19, 2025 launch release reported more than 75 compliance professionals and over $100M in annual investment in expert content; these are dated company claims. The current leadership page names Brian Moroney as Chief Compliance Officer. Its security page reports SOC 2 Type 2 attestation and ISO/IEC 27001 certification; the underlying audit reports were not reviewed in this pass.",
     "highlights": [
-      "75+ dedicated compliance professionals; $100M+ annual investment in expert content",
-      "Pre-call compliance training on insider trading required for all experts",
-      "Pre-call compliance questionnaire before each engagement",
-      "All calls recorded and transcribed with expert consent (serves as natural MNPI deterrent)",
-      "AI-powered transcript scanning for MNPI and confidentiality risks",
-      "Human-in-the-loop review by dedicated compliance team for every transcript",
-      "14-day publication delay (public companies) / 90-day delay (private companies)",
-      "CCO Brian Moroney (20+ years experience, former Goldman Sachs)",
-      "Client-facing compliance portal for auditing transcript activities and questionnaires",
-      "SOC 2 Type 2 and ISO/IEC 27001 certified"
+      "Company-described pre-call compliance training and questionnaires",
+      "Consent to record and transcribe consultations required by the published framework",
+      "Automated and human review of AI-led transcripts before release, according to AlphaSense",
+      "Company-described compliance portal for transcript activity and questionnaires",
+      "Brian Moroney listed as Chief Compliance Officer (November 2026)",
+      "Company reports SOC 2 Type 2 attestation and ISO/IEC 27001 certification",
+      "Expanded enterprise AI security and governance announced October 7, 2026"
     ],
-    "regulatoryContext": "No major public regulatory actions against AlphaSense or its expert network operations were identified. AlphaSights filed a trademark infringement lawsuit against AlphaSense in January 2025 (SDNY), but this is a branding dispute, not a compliance issue. AlphaSense acquired Tegus's compliance infrastructure in the July 2024 acquisition and has integrated it into a unified framework."
+    "regulatoryContext": "A Southern District of New York order dated August 20, 2025 in AlphaSights Ltd v. AlphaSense, Inc. (1:25-cv-00479) describes trademark and unfair-competition claims and denies AlphaSense's motion to dismiss two state-law claims. The order addresses pleading sufficiency, not a finding of liability. It is a dated court record; the current disposition was not established in this pass."
   },
   "clientFit": {
-    "narrative": "AlphaSense is best suited for organizations that need both document-level market intelligence and expert-sourced primary research in a single platform. Its strength is in combining quantitative financial data with qualitative expert content and AI-powered synthesis, making it especially powerful for buy-side research workflows. The platform uses subscription-based pricing with annual contracts, positioning it for mid-to-large enterprise budgets.",
+    "narrative": "Editorial assessment: AlphaSense fits teams combining document-level market intelligence, financial data, and expert-sourced research in one workflow. Its published customer segments include investment banking, asset management, private equity, venture capital, corporate strategy, and life sciences. Buyers should obtain a platform quote and assess call services separately: Tegus advertises pay-as-you-go options rather than an annual call commitment.",
     "segments": [
       "Hedge funds and asset managers doing company and thematic diligence",
       "Private equity and venture capital teams across sourcing, diligence, and portfolio monitoring",
@@ -270,53 +290,79 @@
     ]
   },
   "strengths": [
-    "Largest integrated content library in the category (500M+ documents + 240K+ expert transcripts growing 8K+/month)",
-    "AI Agent Interviewer offers autonomous AI-led expert calls — an early-mover capability not yet widely replicated at this scale",
-    "Strong revenue trajectory: $200M ARR (Apr 2024) → $400M (Mar 2025) → $500M (Oct 2025)",
-    "Deep institutional customer base (88% of S&P 100, 80% of top global banks, all 20 largest pharma companies)",
-    "Unified quantitative and qualitative research in one platform reduces tool fragmentation",
-    "$4B valuation with $1.4B+ raised from blue-chip investors (Viking, Goldman, CapitalG, SoftBank, J.P. Morgan)"
+    "Company reports 500M+ documents and more than 300,000 expert interview transcripts (2026 releases)",
+    "Choice of human-led expert calls, AI-led calls, and transcript research",
+    "Company-reported ARR milestones: $200M (April 2024), $400M (March 2025), $500M (October 2025), and $700M+ (Q2 2026)",
+    "Company reports 18 of the 20 leading investment banks as customers (October 6, 2026)",
+    "Editorial assessment: combining financial data, expert content, and work products may reduce research-tool switching",
+    "$7.5B financing valuation announced June 3, 2026"
   ],
   "caveats": [
-    "Expert network capabilities are inherited from Tegus acquisition (July 2024) — integration of Tegus, Sentieo, BamSEC, Canalyst, and Carousel into one platform is complex; post-acquisition layoffs occurred Nov 2024",
-    "Claims 1M pre-qualified experts, but this is a marketing figure not independently verified; the expert network is newer than incumbents like GLG (25+ years) or AlphaSights",
-    "Emphasis on historical transcripts over tailored live expert conversations — PE firms may find expert insights don't fully align with current needs",
-    "Subscription pricing may be expensive for smaller firms or one-off research needs",
-    "The platform's breadth (documents + experts + financial data + AI agents) can create a steep learning curve",
-    "Channel Checks covers 20+ subsectors — narrower than traditional expert networks that serve any sector on demand",
-    "Rapid feature velocity means the product experience changes frequently; some users may find this disorienting"
+    "Expert and content counts are company-stated and use differing coverage definitions across public pages",
+    "Platform subscription prices require a sales quote; pay-as-you-go call pricing is a separate published option",
+    "SuperAnalyst remains labeled beta in November 10, 2026 help documentation; financial-data citations and team sharing are still being developed",
+    "MCP launch marketing describes agent execution, while November 6 help documentation limits the beta connector to Auto search and defers SuperAnalyst tools",
+    "The April 7, 2026 AI-led call FAQ says clients cannot join the AI-led call or prompt it live; human-led calls remain an option"
   ],
   "notableFacts": [
-    "Founded by Jack Kokko (Finnish, from Oulu) and Raj Neervannan, who met at Wharton Business School",
-    "Helsinki, Finland is the technology headquarters — the center of core platform development since day one",
-    "Sued both Sentieo and Tegus before eventually acquiring them",
-    "Acquired Tegus for $930M in July 2024 (Tegus had been valued at $3B in Nov 2021 — a ~69% haircut)",
-    "Also acquired Stream (2021, expert transcripts), Sentieo (2022, financial research), and Carousel (Oct 2025, Excel modeling)",
-    "ARR more than doubled in 18 months: $200M (Apr 2024) to $500M (Oct 2025)",
-    "Average ARR per customer grew from $28K to $67K in under three years",
-    "240,000+ expert transcripts covering 27,000+ companies, growing 8,000+/month",
-    "Named to Forbes 2025 Cloud 100 (top 25) and CNBC Disruptor 50 (top 10)",
-    "Enterprise Intelligence deals grew 185% in 2025",
-    "Opening new global headquarters at Hudson Yards, NYC in early 2026",
-    "GenAI query usage growing 33% quarter-over-quarter as of late 2025",
-    "AlphaSights filed trademark infringement lawsuit against AlphaSense in January 2025 (SDNY)",
-    "Confirmed clients/partners include System1 (published case study with named CFO), Citi (content partner and investor), Goldman Sachs (content partner and lead Series C investor), JPMorgan (confirmed customer)",
-    "Strategic investors in Series C include Morgan Stanley, Bank of America, Barclays, Wells Fargo, and AllianceBernstein — these are confirmed financial relationships but may reflect investor status rather than product usage"
+    "Founded in 2011 by Jack Kokko and Raj Neervannan",
+    "Acquired Stream (October 2021), Sentieo (May 2022), Tegus ($930M; July 2024), and Carousel (October 2025)",
+    "AlphaSense reported 33% quarter-over-quarter GenAI query growth in its October 7, 2025 release",
+    "AlphaSense reported top-25 placement in Forbes Cloud 100 and top-10 placement in CNBC Disruptor 50 for 2025",
+    "New global headquarters at Hudson Yards, New York City had opened by the June 3, 2026 funding announcement",
+    "Samantha Greenberg appointed Chief Financial Officer on April 14, 2026",
+    "Accenture Ventures investment and an Accenture partnership announced June 3, 2026",
+    "Named customer examples in AlphaSense releases include JPMorgan, Microsoft, Nvidia, Pfizer, and Salesforce; investor relationships are listed separately in the funding timeline"
   ],
   "sourceNotes": [
-    "Funding history and valuation from Tracxn, Crunchbase, and AlphaSense press releases via PR Newswire",
-    "Tegus acquisition details ($930M, Jul 8 2024 completion) from AlphaSense and Tegus press releases via PR Newswire; Tegus $3B prior valuation from Fintech Futures",
-    "$500M ARR, 6,500+ customers, S&P 100 penetration from AlphaSense press release (Oct 7, 2025)",
-    "Product capabilities from alpha-sense.com product pages, help center articles, and PR Newswire releases (with specific launch dates: Channel Checks Aug 19 2025, Deep Research Jun 10 2025, Generative Search Nov 2024)",
-    "Compliance framework from alpha-sense.com/blog/product/expert-insights-compliance/, compliance portal page, and help center articles",
-    "Employee count (~2,800) from Tracxn and Getlatka (Jan 2026); AlphaSense's own about page references '1,000+' which appears outdated post-Tegus acquisition",
-    "Pricing ($10K–$20K/seat) from Getlatka; not confirmed on AlphaSense's own website",
-    "Founding history from Helsinki Fintech Farm interview and The Financial Revolutionist interview with Jack Kokko",
-    "Expert count '1M pre-qualified experts' from alpha-sense.com/pricing/ — marketing claim, not independently verified; previous '300K+' figure was also unverifiable",
-    "240K+ transcripts, 8K/month growth, 27K+ companies from alpha-sense.com/platform/expert-insights/",
-    "Acquisition history (Stream, Sentieo, lawsuits) from Sacra research and Inex One directory",
-    "Post-acquisition layoffs (Nov 2024) from Sacra; AlphaSights trademark lawsuit from Sacra and court records",
-    "November 2026 refresh: $700M+ ARR (Q2 2026) and 7,800+ customers from AlphaSense press release (Aug 27, 2026); 8,000+ enterprise customers and 300,000+ expert interview transcripts from press release (Oct 6, 2026); SuperAnalyst, Accenture partnership, AI-Led Expert Calls, AlphaSummit 2026, and SuperAnalyst MCP from alpha-sense.com press releases and product articles. Employee count was not re-verified in this pass."
+    "2026-11-11 — https://www.alpha-sense.com/about/ — Official company history and current leadership: 2011 launch, co-founders, CCO, CFO, and Hudson Yards headquarters. Removed unsupported Oulu/Wharton origin details and Helsinki technology-headquarters assertion.",
+    "2026-11-11 — https://www.alpha-sense.com/pricing/ — Company-stated one million pre-qualified experts, 500M+ documents, tailored subscriptions and enterprise/per-seat options. Annual platform contract requirement not established. Official links use alpha-sense.com; corrected the unrelated alphasense.com website field.",
+    "2026-11-11 — https://www.alpha-sense.com/platform/expert-insights/expert-call-services/ — Company describes human-led and AI-led calls, pay-as-you-go/no minimum commitments, expert rate plus $75 transcription fee, and custom sourcing. Survey services and AI expert matching were not established; removed the positive survey flag and marked matching unconfirmed.",
+    "2026-11-11 — https://www.alpha-sense.com/platform/expert-insights/ — Company-stated 300,000+ investor-led insights, 29,000+ companies, and 8,000+ monthly additions; replaces stale 240,000/27,000 figures. Coverage definitions differ from the October 6 release. No independent scale validation.",
+    "2026-11-11 — https://www.alpha-sense.com/resources/product-articles/what-is-alphasense/ — Company descriptions of Generative Grid, workflow agents, financial data, Enterprise Intelligence, monitoring, industry and buyer segments, and BamSEC. Removed unsupported largest-by-revenue, largest-library, exclusive-interviewer and competitor comparisons; buyer-fit and badge judgments are editorial inference.",
+    "2026-11-11 — https://www.alpha-sense.com/platform/financial-data/ — Company advertises 4,200+ Canalyst models and financial datasets; differs from the 4,500-company count in the October 2025 Carousel release. Retained the current product-page count with attribution, not an inferred decline.",
+    "2026-11-11 — https://www.alpha-sense.com/blog/product/expert-insights-compliance/ — Company-described expert onboarding, recording consent and compliance portal; not an independent assessment of effectiveness. Removed unsupported assurance that no major regulatory actions exist.",
+    "2026-11-11 — https://help.alpha-sense.com/hc/en-us/articles/50627969088019-AI-Led-Expert-Calls-FAQs — April 7, 2026 FAQ: onboarding, automated/human review, typical under-24-hour transcript delivery, 14/90-day publication embargoes with pay-to-delay, pricing and inability to join or prompt live. Embargoes are not employment cooling-off rules.",
+    "2026-11-11 — https://www.alpha-sense.com/resources/product-articles/blended-future-expert-research/ — Company distinguishes commissioned AI-led calls from provider-produced Channel Checks and describes human/automated transcript review. Historical 350-ticker coverage is superseded by the October recap; removed unsupported 20-subsector limitation.",
+    "2026-11-11 — https://www.alpha-sense.com/security/ — Company reports SOC 2 Type 2 attestation and ISO/IEC 27001 certification; audit reports/certificate scope not inspected. Corrected wording that treated SOC 2 as certification.",
+    "2026-11-11 — https://www.prnewswire.com/news-releases/ai-based-market-intelligence-search-engine-alphasense-secures-50m-in-series-b-funding-led-by-innovation-endeavors-300885942.html — July 17, 2019 company release: $50M Series B led by Innovation Endeavors with Soros participation.",
+    "2026-11-11 — https://www.prnewswire.com/news-releases/alphasense-raises-180-million-series-c-led-by-viking-global-and-goldman-sachs-joined-by-morgan-stanley-citi-bank-of-america-barclays-wells-fargo-cowen-alliancebernstein-301388784.html — September 30, 2021 company release: $180M Series C, co-leads and strategic investors, plus Series B participation by Euclidean Capital. Does not support the original $1.7B Series C valuation. Investor status does not establish product usage.",
+    "2026-11-11 — https://www.prnewswire.com/news-releases/alphasense-acquires-stream-by-mosaic-delivering-market-intelligence-from-an-extensive-library-of-investor-led-expert-interviews-301407437.html — October 25, 2021 company release: Stream acquisition predates Tegus; corrected the claim that Tegus was the first entry into expert content.",
+    "2026-11-11 — https://www.prnewswire.com/news-releases/alphasenses-valuation-jumps-to-1-7-billion-with-225-million-series-d-led-by-goldman-sachs-asset-management-and-viking-global-301568717.html — June 15, 2022 company release: $225M Series D at $1.7B, Goldman/Viking leadership, debt component and Sentieo closing the preceding month. Corrected May dating of the financing and removed the incorrect Series C valuation.",
+    "2026-11-11 — https://www.prnewswire.com/news-releases/alphasense-raises-100m-led-by-alphabets-capitalg-to-fuel-innovation-in-ai-and-market-intelligence-301794245.html — April 11, 2023 company release: $100M Series D addition at $1.8B, led by CapitalG with Goldman and Viking.",
+    "2026-11-11 — https://www.prnewswire.com/news-releases/alphasense-grows-to-2-5-billion-valuation-securing-150-million-in-series-e-funding-led-by-bond-301941224.html — September 28, 2023 company release: $150M Series E at $2.5B led by BOND; BAM Elevate joins. Removed unnecessary personal associations not established by this release.",
+    "2026-11-11 — https://www.prnewswire.com/news-releases/alphasense-completes-acquisition-of-tegus-302190934.html?trk=article-ssr-frontend-pulse_little-text-block — July 8, 2024 company release: $930M completion, June 11 signing announcement, $650M funding at $4B, offices and Tegus ownership of BamSEC/Canalyst. Removed unsupported prior Tegus valuation/haircut comparison.",
+    "2026-11-11 — https://www.alpha-sense.com/press/alphasense-surpasses-usd400m-in-arr-accelerating-growth-with-private-content-expansion-and-generative-ai-innovation/ — March 12, 2025 company release: $400M+ ARR, 6,000+ customers and retrospective April 2024 $200M milestone. These are dated, unaudited company metrics.",
+    "2026-11-11 — https://www.alpha-sense.com/press/alphasense-launches-deep-research-automating-in-depth-analysis-with-agentic-ai-on-high-value-content/?trk=article-ssr-frontend-pulse_little-text-block — June 10, 2025 launch, report use cases and internal-content option. Removed fixed 10–30-minute turnaround; source says minutes.",
+    "2026-11-11 — https://www.alpha-sense.com/press/alphasense-launches-autonomous-ai-agent-interviewer-debuts-channel-checks-to-deliver-real-time-market-signals-across-all-sectors-of-the-economy/ — August 19, 2025 launch; company reports 75+ compliance staff and $100M+ annual expert-content investment. Dated and attributed; removed unsupported exact launch coverage and delivery-speed claims.",
+    "2026-11-11 — https://www.alpha-sense.com/press/alphasense-surpasses-500m-in-arr/ — October 7, 2025 company release: $500M+ ARR, 6,500+ customers, 33% quarter-over-quarter GenAI query growth, 185% Enterprise Intelligence deal growth and 2025 awards. Deal-growth comparison period unspecified; not a full-year result. Removed unsupported ARR/customer ratio.",
+    "2026-11-11 — https://www.alpha-sense.com/press/alphasense-acquires-carousel/ — October 7, 2025 Carousel acquisition and AI Excel modeling; historical 4,500-company Canalyst count differs from current Financial Data page.",
+    "2026-11-11 — https://www.alpha-sense.com/press/alphasense-ranks-in-the-top-10-of-the-2025-cnbc-disruptor-50-list-highlighting-value-of-trusted-generative-ai-for-business-workflows/ — Company reports CNBC rank eight in 2025 and historical customer penetration (88% S&P 100, 80% top banks, 20 largest pharma companies); removed undated penetration claims from current fit/strengths.",
+    "2026-11-11 — https://www.alpha-sense.com/blog/product/driving-decisions-that-outcompete-our-best-releases-of-2022/ — Company documents Smart Synonyms, transcript sentiment analysis and mobile dashboards; no inference that these amount to AI expert matching.",
+    "2026-11-11 — https://help.alpha-sense.com/hc/en-us/articles/49460548624915-AlphaSense-Product-Updates-February-2026 — February 2026 update, revised March 2: AI-led client calls, multi-agent Generative Search, scheduled custom agents and slide creation. Exact February 24 launch date not established here.",
+    "2026-11-11 — https://www.alpha-sense.com/press/alphasense-scales-global-operations-to-meet-surging-demand-for-applied-ai/ — April 7, 2026 regional expansion, Julia Lecocq and June Boo appointments, multilingual analysis and content.",
+    "2026-11-11 — https://www.alpha-sense.com/press/alphasense-appoints-samantha-greenberg-as-chief-financial-officer/ — April 14, 2026 CFO appointment.",
+    "2026-11-11 — https://www.alpha-sense.com/press/alphasense-raises-350m-at-7-5b-valuation-and-surpasses-600m-in-annual-recurring-revenue/ — June 3, 2026 funding: $350M at $7.5B, co-led by Vitruvian, Accenture Ventures and J.P. Morgan Asset Management; company reports $600M+ Q1 ARR and headquarters already opened. Removed stale current $4B valuation and unsupported cumulative-funding assertion.",
+    "2026-11-11 — https://www.alpha-sense.com/press/accenture-and-alphasense-announce-strategic-investment-and-partnership/ — June 3, 2026 strategic investment and partnership for enterprise agentic workflows.",
+    "2026-11-11 — https://www.alpha-sense.com/press/alphasense-introduces-superanalyst-the-always-on-ai-execution-layer-for-decision-grade-intelligence/ — June 3, 2026 SuperAnalyst announcement, initially select-enterprise early access. Broad always-on claims are qualified by newer help documentation.",
+    "2026-11-11 — https://www.alpha-sense.com/press/alphasense-launches-sentiment-indices-to-identify-early-signals-of-market-confidence-and-risk/ — June 23, 2026 launch of earnings-language indices across 15 sectors.",
+    "2026-11-11 — https://www.alpha-sense.com/press/alphasense-launches-work-products/ — July 14, 2026 PowerPoint and Excel assistants and template-based deliverables.",
+    "2026-11-11 — https://www.alpha-sense.com/press/alphasense-named-the-only-leader-in-market-and-competitive-intelligence-platforms/ — August 27, 2026 company report of $700M+ Q2 ARR, 7,800 customers and Forrester recognition. Recognition remains attributed; underlying Forrester report not independently reviewed.",
+    "2026-11-11 — https://www.alpha-sense.com/press/alphasense-strengthens-its-life-sciences-platform/ — September 15, 2026 Clinical Trial and Drug Data announcement.",
+    "2026-11-11 — https://www.alpha-sense.com/press/alphasense-adds-over-10000-investment-banking-users-in-most-recent-quarter/ — October 6, 2026 company metrics: 8,000 customers, 300,000+ transcripts, 24,000+ private and 7,000+ public companies, 18 of 20 leading investment banks and 10,000+ new Q3 banking users. Independent verification unavailable.",
+    "2026-11-11 — https://www.alpha-sense.com/press/alphasense-and-eiu-partner/ — October 7, 2026 EIU integration via Market Research subscription; no assumption that every subscription includes it.",
+    "2026-11-11 — https://www.alpha-sense.com/press/alphasense-expands-enterprise-ai-security-and-governance/ — October 7, 2026 governance/security announcement says SuperAnalyst available to all customers; November help still calls it beta. Availability and product maturity are distinguished.",
+    "2026-11-11 — https://www.alpha-sense.com/resources/product-articles/alphasummit-2026-product-announcements/ — October 2026 recap: Channel Check Intelligence across 750+ tickers with daily refresh and source traceability; supply-chain knowledge graph and MCP preview. SuperAnalyst Apps are future plans, not a current service.",
+    "2026-11-11 — https://www.alpha-sense.com/resources/product-articles/superanalyst-mcp/ — MCP launch marketing describes research, code execution and Canalyst access; conflicts with November 6 help page limiting the beta to Auto search. Used narrower documented availability; removed unsupported exact November 4 launch date.",
+    "2026-11-11 — https://help.alpha-sense.com/hc/en-us/articles/56689794102419-SuperAnalyst-MCP — Updated November 6, 2026: beta, firm enablement and user entitlements required; no Deep Research through MCP; SuperAnalyst tools planned later in Q4. This operational documentation governs the conservative availability description.",
+    "2026-11-11 — https://help.alpha-sense.com/hc/en-us/articles/53909448564243-Getting-Started-with-SuperAnalyst — Updated November 10, 2026: beta, source-linked research, memory, work products and Skills. Feature availability may vary.",
+    "2026-11-11 — https://help.alpha-sense.com/hc/en-us/articles/53911346856851-SuperAnalyst-FAQs — Updated November 10, 2026: code/artifacts/memory supported; financial-data citations still rolling out; shared projects/Skills and event-triggered automation remain planned. Removed blanket claims of complete auditability and continuous autonomous execution.",
+    "2026-11-11 — https://law.justia.com/cases/federal/district-courts/new-york/nysdce/1:2025cv00479/635192/31/ — Primary August 20, 2025 court order reproduced by Justia names AlphaSense and addresses trademark/unfair-competition pleadings. Retained a dated procedural account, not liability or current case status; no primary support established for alleged pre-acquisition Sentieo/Tegus suits, which were removed.",
+    "2026-11-11 — https://cases.justia.com/federal/district-courts/new-york/nysdce/1:2025cv00479/635192/31/0.pdf?ts=1755780860 — Read the underlying six-page court order: denial concerns two state-law claims at pleading stage, with allegations assumed true for that motion.",
+    "2026-11-11 — https://dockets.justia.com/docket/new-york/nysdce/1:2025cv00479/635192 — Public docket lists January 16, 2025 filing; listing is incomplete for current disposition. Corporate-parent field removed because the profiled group identity is not resolved by a simple Inc. parent label.",
+    "2026-11-11 — https://getlatka.com/companies/alphasense — Data page shows a May 2026 third-party 3,000 employee estimate, not the original verified 2,800. Removed employee count rather than treating an indirect estimate as verified. Early seed/Series A details, November 2024 layoffs and personal founder/Helsinki details lacked adequate primary or reputable corroboration and were removed.",
+    "2026-11-11 — https://www.alpha-sense.com/platform/ — Read official product overview as additional context for platform-led classification; no market leadership or performance comparison inferred.",
+    "2026-11-11 — https://www.alpha-sense.com/press/alphasense-announces-ai-workflow-enhancements-on-mobile-named-to-the-prestigious-forbes-2025-cloud-100/ — Page opened but article body was not available in the extracted response; no claim relies on it. The dated award claim instead uses the October 7, 2025 release."
   ],
   "whyChoose": [
     "Unified AI platform",
@@ -326,27 +372,40 @@
     "Enterprise scale"
   ],
   "whenNotIdeal": [
-    "Small one-off research needs",
-    "Budget-constrained teams",
-    "Need for very broad expert network",
-    "Prefer human-only expert calls"
+    "Need a public platform price without a sales conversation",
+    "Need to join or prompt an AI-led interview live",
+    "Need shared SuperAnalyst projects available today",
+    "Need Deep Research through the currently documented MCP beta"
   ],
   "confidence": {
     "founded": "verified",
     "headquarters": "verified",
-    "employeeCount": "verified",
     "expertCount": "positioning",
     "pricingModel": "verified",
-    "pricingDetail": "inference",
-    "services": "verified",
-    "compliance": "verified",
-    "description": "verified",
-    "aiCapabilities": "verified",
+    "pricingDetail": "positioning",
+    "services": "positioning",
+    "compliance": "positioning",
+    "description": "positioning",
+    "aiCapabilities": "positioning",
     "overview": "verified",
-    "history": "verified",
-    "servicesDetailed": "verified",
-    "aiPlatform": "verified",
-    "complianceExtended": "verified",
-    "clientFit": "inference"
+    "history": "positioning",
+    "servicesDetailed": "positioning",
+    "aiPlatform": "positioning",
+    "complianceExtended": "partially-unverifiable",
+    "clientFit": "inference",
+    "keyDifferentiators": "positioning",
+    "bestFor": "inference",
+    "industries": "positioning",
+    "comparison": "partially-unverifiable",
+    "strengths": "inference",
+    "caveats": "positioning",
+    "notableFacts": "positioning",
+    "whyChoose": "inference",
+    "whenNotIdeal": "inference",
+    "categoryBadge": "inference",
+    "deliveryModel": "inference",
+    "regionStrength": "inference",
+    "complianceBadge": "inference",
+    "aiBadge": "inference"
   }
 }
