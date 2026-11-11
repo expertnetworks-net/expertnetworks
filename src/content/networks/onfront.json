@@ -8,8 +8,8 @@
   "type": "Expert Network",
   "founded": 2014,
   "headquarters": "New York, NY",
-  "employeeCount": "11–50 (company LinkedIn range)",
-  "expertCount": "17,000+ (company-stated federal SMEs)",
+  "employeeCount": "11–50",
+  "expertCount": "17,000+",
   "description": "Expert network focused on U.S. government contracting, with company-reported access to 17,000+ federal subject matter experts. Offers consultations, written responses, project engagements, and private knowledge networks; also serves development organizations.",
   "services": [
     "Expert Calls",
@@ -30,7 +30,7 @@
     "Healthcare",
     "Defense"
   ],
-  "pricingModel": "Prepaid credits or subscription plus usage",
+  "pricingModel": "Credit-based or subscription",
   "pricingDetail": "The September 2026 plan documents describe Guided plans with prepaid credits and unlimited seats, and a per-seat Pro subscription with usage billed in U.S. dollars. Guided plan prices are quoted individually. Scoped engagements charge an expert fee and a separate platform fee. Older GovTribe marketing describes credit access without seat fees; confirm the applicable plan.",
   "keyDifferentiators": [
     "Focus on federal contracting, capture, and proposal expertise",
@@ -185,8 +185,8 @@
     "2026-11-11 — https://www.onfrontiers.com/ — Company-reported federal expert scale, engagement formats, and New York address; does not independently verify the expert count.",
     "2026-11-11 — https://www.onfrontiers.com/about — Current government-contracting focus and stated contractor, consultancy, and development customers.",
     "2026-11-11 — https://www.linkedin.com/company/onfrontiers — Company lists 11–50 employees and New York headquarters; specialties and posts include defense and healthcare. Employee range is company-stated, not verified headcount.",
-    "2026-11-11 — https://jobs.techstars.com/companies/onfrontiers-2 — Lists founding in 2014 and knowledge-network SaaS. Its 51–200 employee range conflicts with the company’s LinkedIn range; the old 170+ claim was removed.",
-    "2026-11-11 — https://www.alexiskold.net/2016/09/29/meet-15-startups-from-techstars-nyc-summer-2016-program/ — Contemporary cohort announcement lists OnFrontiers in Techstars NYC Summer 2016.",
+    "2026-11-11 — https://jobs.techstars.com/companies/onfrontiers-2 — Undated job-board profile lists founding in 2014 and knowledge-network SaaS; the founding year was not independently confirmed. Its 51–200 employee range conflicts with the company’s LinkedIn range.",
+    "2026-11-11 — https://www.alexiskold.net/2016/09/29/meet-15-startups-from-techstars-nyc-summer-2016-program/ — Contemporary personal-blog cohort announcement lists OnFrontiers in Techstars NYC Summer 2016; no Techstars-hosted cohort announcement was verified.",
     "2026-11-11 — https://www.prnewswire.com/news-releases/chemonics-expands-innovative-partnership-with-onfrontiers-301403588.html — Chemonics’ October 19, 2021 release describes the expanded partnership and names Anne Kroijer and Brian Caouette as founders. It does not substantiate the claimed ChemCapital investment, federal-market entry date, or Kenya office; those assertions were removed.",
     "2026-11-11 — https://www.onfrontiers.com/blog/chemonics-international-is-expanding-their-innovative-partnership-with-onfrontiers — Company account of the Chemonics collaboration and founders. Its December 11, 2025 webpage date is not used to redate the 2021 partnership.",
     "2026-11-11 — https://fellows.echoinggreen.org/fellow/brian-caouette/ — Confirms Caouette’s 2010 fellowship, Harvard MPA/ID, and Farm Builders background. Unsupported founder roles and the Kyle Teague co-founder claim were removed.",
@@ -205,7 +205,6 @@
     "2026-11-11 — https://jobs.techstars.com/companies/onfrontiers-2/jobs/96732820-software-engineer-full-stack-ai-first — October 12, 2026 company job posting describes LLM matching, solicitation intelligence, vector search, and expertise-graph development; not proof of feature release or performance.",
     "2026-11-11 — https://www.onfrontiers.com/blog/monetize-gov-expertise — Company explicitly describes AI-powered expert matching. This is company-stated capability evidence, not independent validation.",
     "2026-11-11 — https://www.onfrontiers.com/blog/how-chemonics-uses-knowledge-networks-to-find-local-expertise-while-abroad — Company case study describes knowledge-network sourcing and machine-learning assistance. Its Chemonics contract-value and ranking statements were not retained as current facts.",
-    "2026-11-11 — https://www.linkedin.com/posts/timur-lesov-5a3205_kenya-activity-7084653040682557440-8vhr — Reproduces an older company announcement of Harness availability in Kenya. It does not establish an office, exact launch date, current product availability, or the claimed analytics/geography/language-matching features; those claims were removed.",
     "2026-11-11 — https://www.onfrontiers.com/blog — Reviewed the company blog for developments. No dependable source was established for the old $7.6 million/12-investor total, revenue range, 17% staff contraction, competitor-scale comparisons, or technology-maturity ranking; those claims were removed."
   ],
   "whyChoose": [
@@ -220,7 +219,7 @@
     "State/local-only GovTribe pursuits"
   ],
   "confidence": {
-    "founded": "verified",
+    "founded": "partially-unverifiable",
     "headquarters": "verified",
     "employeeCount": "positioning",
     "expertCount": "positioning",
@@ -245,14 +244,14 @@
     "comparison.complianceTools": "positioning",
     "compliance": "partially-unverifiable",
     "overview": "positioning",
-    "history": "verified",
+    "history": "partially-unverifiable",
     "servicesDetailed": "positioning",
     "aiPlatform": "positioning",
     "complianceExtended": "positioning",
     "clientFit": "inference",
     "strengths": "positioning",
     "caveats": "partially-unverifiable",
-    "notableFacts": "verified",
+    "notableFacts": "partially-unverifiable",
     "whyChoose": "inference",
     "whenNotIdeal": "inference"
   },
