@@ -1,6 +1,6 @@
 # Handoff
 
-Last verified against the repository: June 16, 2026
+Last verified against the repository: November 11, 2026
 
 ## Project Snapshot
 
@@ -17,11 +17,11 @@ There is no admin panel, no API layer, and no runtime editing workflow in the cu
 
 ### Build toolchain
 
-- Astro 6 (`output: 'static'`), which requires Node >=22.12.0 — CI runs on Node 22.
+- Astro 7 (`output: 'static'`), which requires Node >=22.23.4 — CI runs on Node 22.
 - Tailwind CSS v3 via PostCSS (`postcss.config.mjs`); no `@astrojs/tailwind` integration. The `@tailwind` directives live in `src/styles/global.css`.
 - `z` (Zod) is imported from `zod` in `src/content.config.ts`.
-- `public/_headers` carries Cloudflare Pages security headers (CSP, HSTS, etc.) and asset caching.
-- `npm audit` is clean (0 vulnerabilities); CI fails on any new high-severity advisory.
+- `public/_headers` carries Cloudflare Pages security headers (CSP, HSTS, etc.) and asset caching. The CSP allow-lists the Cloudflare Web Analytics beacon; keep that entry.
+- `npm audit` was clean (0 vulnerabilities) as of November 11, 2026; CI fails on any new high-severity advisory, so expect to patch dependencies every few months.
 
 ## The Files That Matter Most
 

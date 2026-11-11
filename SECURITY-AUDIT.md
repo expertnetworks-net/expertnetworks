@@ -92,3 +92,34 @@ npm run verify          # build + link check + type check
 npm audit               # dependency advisories (expect: 0)
 curl -sI https://expertnetworks.net/   # live headers
 ```
+
+---
+
+## Addendum — re-check on 2026-11-11
+
+Five months after the June run, the same checks were repeated.
+
+| Check | Result |
+|---|---|
+| Live site | ✅ HTTP/200 on all key routes; security headers still served |
+| `npm run verify` | ✅ 58 pages, 0 broken across 8,937 refs, 0 errors / 0 warnings / 0 hints |
+| Content integrity | ✅ 33 networks / 63 news: slugs, `relatedNetworks`, compare refs, logos and dates all valid |
+| `npm audit` (before) | ❌ 15 advisories (1 critical, 12 high, 2 moderate) from dependency drift |
+| `npm audit` (after) | ✅ 0 vulnerabilities |
+
+Changes made:
+
+1. **Astro 6.4.7 → 7.4.10.** The Astro 6 line has no patched release for the
+   open Astro and `sharp` advisories, so the fix required the major bump.
+   Astro 7 raises the Node floor to >=22.23.4. No source changes were needed;
+   rendered pages were compared against the live site in a headless browser
+   (same heights, text and link counts, no console errors).
+2. Patch bumps: `zod` 4.6.7, `vite` (transitive), `svgo` (transitive),
+   `@astrojs/check`, `@astrojs/sitemap`, `autoprefixer`, `postcss`.
+3. **CSP fix.** The June policy blocked the Cloudflare Web Analytics beacon
+   (`static.cloudflareinsights.com`), which Cloudflare injects at the edge, so
+   analytics were dropped from June to November. `script-src` and
+   `connect-src` now allow the beacon and its reporting endpoint.
+
+As before, none of the advisories were exploitable on the deployed static
+site; they affected build and dev tooling.

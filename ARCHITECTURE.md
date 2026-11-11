@@ -1,6 +1,6 @@
 # Architecture
 
-Last verified against the codebase: June 16, 2026
+Last verified against the codebase: November 11, 2026
 
 ## System Summary
 

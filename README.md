@@ -25,7 +25,7 @@ The goal is not to act as a broker or recommend a single vendor. The goal is to 
 
 ## What The Site Currently Includes
 
-As verified in the current codebase on June 16, 2026, the site includes:
+As verified in the current codebase on November 11, 2026, the site includes:
 
 - 33 published provider profiles in `src/content/networks/`
 - 63 published news signals in `src/content/news/`
@@ -63,7 +63,7 @@ This repository is intentionally transparent about its limitations. Public-sourc
 
 ## Tech Stack
 
-- Astro 6
+- Astro 7
 - Tailwind CSS 3, processed via PostCSS (`postcss.config.mjs`); the `@tailwind` directives live in `src/styles/global.css`
 - Astro Content Collections with Zod validation in `src/content.config.ts` (`z` imported from `zod`)
 - `@astrojs/sitemap` for sitemap generation
@@ -129,7 +129,7 @@ This file defines:
 
 ## Local Development
 
-Recommended local baseline: Node 22 (>=22.12.0), to match the GitHub Actions workflow and the Astro 6 engine requirement.
+Recommended local baseline: Node 22 (>=22.23.4), to match the GitHub Actions workflow and the Astro 7 engine requirement.
 
 Install and run:
 
@@ -256,7 +256,7 @@ The current repository state is a static-only public site.
 - Query-string-specific compare selections still finalize client-side after load because the site is static and query params are not available at build time.
 - The repo acts as the CMS.
 - The compare, directory, news, and profile experiences all run on top of build-time JSON content plus page-local JavaScript.
-- The docs and config in this repo were audited against the actual codebase on June 16, 2026.
+- The docs and config in this repo were audited against the actual codebase on November 11, 2026.
 
 ## License And Attribution
 
