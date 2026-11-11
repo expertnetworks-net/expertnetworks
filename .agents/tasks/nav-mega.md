@@ -10,18 +10,22 @@ Replace the header dropdowns with premium mega-menus at the level of Stripe, Lin
 - Base `integration/design`. Current implementation: `src/components/Header.astro`, `src/components/ui/navigation.ts` (groups), `src/components/ui/Menu.astro`, `menu.ts`, `NavigationSheet.astro` (mobile), `header.ts`, `search-palette.ts`, `src/styles/fx.css`. Read `docs/DESIGN.md` (refusals list, motion registers, Effects API) first.
 - Another task (i18n-core) is translating header labels in parallel. Keep the export shape of `navigation.ts` (extend it with new optional fields; do not rename existing keys) and keep every string in `navigation.ts`, not inline in markup, so the i18n merge stays mechanical.
 
-# Design
-1. **Morphing panel.** One shared dropdown surface that animates its width, height and x-position between triggers (Stripe-style), with the content cross-fading/sliding 8 px in the direction of travel. Open 160-200 ms, cubic-bezier(.2,.7,0,1); close faster. A caret/arrow tracks the active trigger. Hover intent delay 80 ms open / 150 ms close; never flickers between adjacent triggers.
-2. **Surface.** Match the header tone: on dark headers a dark glass panel (rgba(18,19,24,.78), `backdrop-filter: blur(24px) saturate(180%)`, 1 px inner highlight border rgba(255,255,255,.08), layered shadow); on light headers a light glass equivalent. No muddy mid-grey gradients.
-3. **Networks menu (3 columns).**
-   - Primary: Directory, Compare, Best expert networks, each with a custom line icon (1.5 px stroke, duotone accent), a sharp one-line description that says something specific, and a live number from collections (e.g. "33 profiles", "30 dimensions", "Updated Nov 2026").
-   - "Profiles": 6 most-viewed-or-largest providers (pick by a documented data rule, e.g. the compare default slugs) with their logo from `public/logos/`, name and HQ city; "All 33 networks ->".
-   - Featured card: an editorial image (use existing `public/images/editorial/*` or generate a new one with Images 2.6 in the art direction in DESIGN.md) with title "Alternatives" and compact chips GLG / AlphaSights / Third Bridge linking to the alternatives pages.
-4. **AI menu (2 columns).** Left: AI in expert networks, MCP integrations, Transcript libraries, AI calls and data, each with icon + specific description. Right: a live mini evidence ladder built from the `ai` collection (Documented / Reported / Claimed / Announced / No public evidence counts as small bars that grow in on open) and the latest AI-tagged news item with its date.
-5. **Guides menu.** "Start here" (What is an expert network, Pricing) and "By buyer" (Private equity, Hedge funds, Consulting) with persona icons; a featured guide card with image.
-6. **About menu.** Methodology/verification, Sources, About, Privacy; a small trust strip with numbers from data (profiles verified, sources cited, last review date).
-7. **Item interactions.** A single sliding highlight that moves between items under the pointer (not a grey slab per item), icon micro-motion on hover (2-3 px shift or stroke draw), arrow nudge on CTAs, `fx-spotlight` on the featured card. Keyboard: arrow keys move within the panel, Esc closes and returns focus, Tab order logical, `aria-expanded`, `aria-controls`, roving focus. Touch/mobile keeps `NavigationSheet` but restyle it with the same icons, numbers and featured cards in an accordion.
-8. **Icons.** A coherent custom set (16-24 px, 1.5 px stroke, rounded joins) in `src/components/nav/icons/` as inline SVG components. You may draft them with Images 2.6 SVG export, but the final SVGs must be clean, hand-tidied paths with `currentColor`.
+# Reference (owner, 17:24): "I want something like this, but more top, better, smoother, better images"
+Open and study these frames from the owner's screen recording of glg.com's header: `/Users/daniel/Expertnetworks.net/.agents/refs/nav-ref-howwehelp.jpg` and `nav-ref-about.jpg`. The pattern to adopt (do NOT copy GLG's images, wording, logo or exact styling; we are an independent reviewer of GLG):
+- The menu opens as a **full-width panel** directly under the header bar (edge to edge, content in the site container), and the **page behind dims** (dark scrim ~45% + slight blur) until the menu closes.
+- Each panel starts with a **large display title with an arrow-box link** to the section index (e.g. "Networks ->" linking to /networks/), then a thin rule.
+- Left: **columns of grouped links** with group headings that carry a small accent square arrow; secondary links in a quieter size under each heading.
+- Right: a row of **2-4 large image cards** (approx. 4:5, rounded 6-8 px, dark imagery, title top-left in white, small arrow chip top-right). Cards are the main visual hook.
+
+# Design (ours, better than the reference)
+1. **Motion.** The panel opens with a height reveal (clip-path inset from top, 220-260 ms, cubic-bezier(.2,.7,0,1)) while the scrim fades in; switching between triggers keeps the panel open and **morphs its height** smoothly while the old content fades out 6 px up and the new content fades/staggers in (title, columns, then cards 40 ms apart). Cards: subtle hover zoom on the image (scale 1.04 over 400 ms), lift + shadow, arrow nudge. Active trigger gets a pill highlight that slides between triggers. Hover-intent 80 ms open / 150 ms close; Esc closes; never flickers.
+2. **Imagery.** Generate a coherent set of card images with Images 2.6 (Sunburst quality) in the art direction in DESIGN.md ("precision instruments for research": graphite, glass, machined metal, paper, one accent blue, studio light; no people, no logos, no fake readable text). 10-12 cards across menus, e.g. Networks: "Directory" (index-card cabinet), "Compare" (two dossiers under a lens), "Best expert networks" (calibrated scale), "Alternatives" (branching rail switches); AI: "AI hub" (glass chip over transcript sheets), "MCP" (machined connector ports), "Transcript libraries" (archive drawers with light), "AI calls & data" (waveform engraved on metal); Guides: "What is an expert network", "Pricing" (precision balance), "By buyer"; About: "Methodology" (calipers on a document), "Sources" (stacked citations). Save raw output in `.raw/<task-id>/`, ship optimised WebP/AVIF (<= 60 KB per card at 2x, lazy-decoded, preloaded on first header hover), with alt text that says the image is illustrative.
+3. **Data inside the panel (our edge over the reference).** Group headings show live numbers from collections where meaningful ("Directory · 33 profiles", "Compare · 30 dimensions", "Updated Nov 2026"). The AI panel includes a compact live evidence ladder (Documented / Reported / Claimed / Announced / No public evidence counts from the `ai` collection, bars grow in on open) as one of its cards. Networks panel lists 6 provider names with logos from `public/logos/` in a quiet column.
+4. **Surfaces.** Panel is solid paper-white (#fbfbfd) with a hairline bottom border and soft shadow on light pages; on dark-header pages (hero) the panel is still light for legibility (the reference does this too) and the header bar flips to light while open with a smooth colour transition. No grey translucent glass.
+5. **Typography.** Display title in the site's display face at ~44-56 px, tight tracking; group headings 15 px semibold; links 14 px; descriptions specific (no "Explore X", "Browse Y", "Understand Z"), max 60 chars.
+6. **Keyboard and a11y.** Triggers are buttons with `aria-expanded`/`aria-controls`; arrow keys move between triggers and within the panel; focus returns to the trigger on Esc; scrim click closes; `inert` on the page behind while open is NOT used (keep it simple: focus stays in panel via roving order). Reduced motion: instant open/close, no zoom.
+7. **Mobile (<1024).** Full-screen sheet with the same groups as accordions and a horizontal scroller of the same image cards per section.
+8. **Icons.** Small custom arrow chip and group icons as clean inline SVG (`currentColor`, 1.5 px stroke).
 
 # Hard rules
 - Numbers come from collections at build time; no hard-coded counts.
@@ -43,9 +47,9 @@ Replace the header dropdowns with premium mega-menus at the level of Stripe, Lin
 - docs/ARCHITECTURE.md
 
 # Acceptance criteria
-- [ ] Morphing shared panel with caret, hover intent, keyboard support and reduced-motion behaviour
-- [ ] Networks (3 col with logos + featured), AI (live evidence ladder + latest AI news), Guides, About menus as specified
+- [ ] Full-width panel with page scrim, display title + arrow link, grouped columns, image cards; smooth open, height morph between triggers, staggered content
+- [ ] 10-12 generated card images in the documented art direction (prompts in DESIGN.md), optimised; AI panel has the live evidence ladder card; numbers from data
 - [ ] Custom icon set; specific descriptions <= 60 chars; numbers from data
-- [ ] Dark and light header variants both look finished (state pages checked)
+- [ ] Header flips to light while a panel is open on dark-hero pages; checked on /, /networks/, /ai/, a profile
 - [ ] Mobile sheet restyled with the same content
 - [ ] `npm run verify` passes
