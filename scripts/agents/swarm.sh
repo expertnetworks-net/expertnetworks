@@ -13,7 +13,11 @@ WT_DIR="${SWARM_WT_DIR:-$HOME/.cache/expertnetworks/worktrees}" # outside the re
 RUNS="$ROOT/.agents/runs"
 SCHEMA="$ROOT/.agents/schemas/result.schema.json"
 MODEL_ARGS=""; [ -n "${CODEX_MODEL:-}" ] && MODEL_ARGS="-m $CODEX_MODEL"
-EFFORT_ARGS=""; [ -n "${CODEX_EFFORT:-}" ] && EFFORT_ARGS="-c model_reasoning_effort=\"$CODEX_EFFORT\""
+RETRIES="${SWARM_RETRIES:-1}"                                   # automatic re-runs when a worker ends with no report
+effort_for() {  # CODEX_EFFORT overrides; otherwise spend reasoning where it pays
+  [ -n "${CODEX_EFFORT:-}" ] && { echo "$CODEX_EFFORT"; return; }
+  case "$1" in monitor) echo low;; verifier|tester|designer) echo medium;; *) echo high;; esac
+}
 
 die()  { echo "swarm: $*" >&2; exit 1; }
 ts()   { date +%H:%M:%S; }
@@ -81,13 +85,21 @@ cmd_run() {
   { cat .agents/roles/_common.md; echo; cat ".agents/roles/$role.md"; echo; echo "# Task spec (task_id=$id, role=$role)"; echo; cat "$tf";
     echo; echo "Working directory: $wt (branch agent/$id). Final message: JSON matching the result schema."; } > "$run/prompt.md"
 
-  echo "[$(ts)] start  $id ($role) -> $wt"
-  # shellcheck disable=SC2086
-  with_timeout codex exec -C "$wt" -s "$sandbox" $MODEL_ARGS $EFFORT_ARGS \
-    -c sandbox_workspace_write.network_access=true \
-    --output-schema "$SCHEMA" -o "$run/result.json" --json - < "$run/prompt.md" \
-    > "$run/events.jsonl" 2> "$run/stderr.log"
-  local rc=$?
+  local effort attempt=0 rc=0; effort="$(effort_for "$role")"
+  echo "[$(ts)] start  $id ($role, effort=$effort) -> $wt"
+  while :; do
+    # shellcheck disable=SC2086
+    with_timeout codex exec -C "$wt" -s "$sandbox" $MODEL_ARGS -c model_reasoning_effort="$effort" \
+      -c sandbox_workspace_write.network_access=true \
+      --output-schema "$SCHEMA" -o "$run/result.json" --json - < "$run/prompt.md" \
+      > "$run/events.jsonl" 2> "$run/stderr.log"
+    rc=$?
+    [ -n "$(jfield "$run/result.json" status)" ] && break          # got a report: never retry on a real answer
+    attempt=$((attempt+1)); [ "$attempt" -gt "$RETRIES" ] && break
+    echo "[$(ts)] retry  $id (no report, exit=$rc, attempt $attempt/$RETRIES)"; cp "$run/events.jsonl" "$run/events.attempt$attempt.jsonl" 2>/dev/null
+    (cd "$wt" && git checkout -q -- . && git clean -qfd -e node_modules)     # a half-finished edit must not leak into the retry
+    sleep $((attempt*20))
+  done
 
   local status msg; status="$(jfield "$run/result.json" status)"; msg="$(jfield "$run/result.json" commit_message)"
   (cd "$wt" && git status --porcelain) > "$run/changes.txt"
@@ -99,6 +111,7 @@ cmd_run() {
       && echo "[$(ts)] commit $id: $msg" || echo "[$(ts)] COMMIT FAILED $id (see git output above)"
   fi
   [ $rc -eq 142 ] && echo "[$(ts)] TIMEOUT $id after ${TIMEOUT}s"
+  node "$ROOT/scripts/agents/metrics.mjs" "$id" 2>/dev/null | sed -n '2p;/never opened/,$p' | sed "s/^/         /"
   echo "[$(ts)] end    $id status=${status:-none} codex_exit=$rc  report=.agents/runs/$id/result.json"
 }
 
@@ -188,10 +201,12 @@ cmd_clean() {  # remove worktrees; delete agent branches only if merged
   git worktree prune
 }
 
+cmd_metrics() { node "$ROOT/scripts/agents/metrics.mjs" "$@"; }
+
 cmd_help() { sed -n '/^## Commands/,/^## /p' docs/AGENT-WORKFLOW.md | sed '$d'; }
 
 case "${1:-help}" in
-  new|run|fanout|review|gate|integrate|status|clean|help) c="$1"; shift; "cmd_$c" "$@";;
+  new|run|fanout|review|gate|integrate|status|metrics|clean|help) c="$1"; shift; "cmd_$c" "$@";;
   claude-review) shift; cmd_claude_review "$@";;
   *) die "unknown command '$1' (try: help)";;
 esac

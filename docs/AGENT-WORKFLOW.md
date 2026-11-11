@@ -57,6 +57,7 @@ All roles get network access in the sandbox (`sandbox_workspace_write.network_ac
 | `swarm.sh claude-review <id> [base]` | Cross-vendor review by Claude Code (`claude -p`, read-only tools). Ends with `VERDICT: MERGE` or `VERDICT: BLOCK`. Output: `review-claude.md`. |
 | `swarm.sh gate <id> [--quick]` | Run the merge gate inside the task's worktree. |
 | `swarm.sh integrate <id>...` | Merge agent branches into `integration/<date>` and run the gate. |
+| `swarm.sh metrics [id...]` | Time, tokens, pages opened, confirmed checks, and citations the worker never opened, per task. Writes `sources.json` in each run dir. |
 | `swarm.sh status` | One line per task: role, report status, commits ahead, summary. |
 | `swarm.sh clean <id>\|--all` | Remove worktrees; delete agent branches that are merged. |
 | `gate.sh [--quick]` | Build, link check, astro check, slug check, npm audit. `--quick` skips the audit. |
@@ -72,7 +73,8 @@ All roles get network access in the sandbox (`sandbox_workspace_write.network_ac
 | `SWARM_SKIP_DEPS` | `0` | `1` skips the `depends_on` check. |
 | `SWARM_WT_DIR` | `~/.cache/expertnetworks/worktrees` | Worktree location. Outside the repo so `astro check` and Astro do not scan it. |
 | `CODEX_MODEL` | Codex default (`~/.codex/config.toml`) | Model for workers. |
-| `CODEX_EFFORT` | Codex default | `model_reasoning_effort` for workers. Use `low` for monitor, `high` for builder and reviewer. |
+| `CODEX_EFFORT` | by role | `model_reasoning_effort`. Default: monitor `low`; verifier, tester, designer `medium`; builder, reviewer `high`. Set it to override. |
+| `SWARM_RETRIES` | `1` | Automatic re-runs when a worker ends with no report (crash, timeout). A worker that reports `failed` or `blocked` is not retried. The worktree is reset before a retry. |
 | `INTEGRATION_BRANCH` | `integration/<YYYYMMDD>` | Target of `integrate`. |
 
 Run logs are in `.agents/runs/<id>/` (git-ignored): `prompt.md`, `events.jsonl`, `stderr.log`, `result.json`, `changes.txt`, `review.md`.
@@ -142,4 +144,19 @@ Found while testing the swarm on 2026-11-11. Each one is fixed in `swarm.sh` or 
 | `claude -p --permission-mode plan` returns only a plan stub. | Normal mode; the read-only tool allowlist denies everything else. |
 | Rewriting `swarm.sh` while a `fanout` is running makes bash execute the new file from an old byte offset. | Do not edit `swarm.sh` while a fanout runs. |
 | The Claude Code login on the Mac expires (warning seen: ends by 2026-11-14). | For unattended runs use `claude setup-token` (subscription token, no API cost). |
+
+## 13. Measurement and evidence
+
+`scripts/agents/metrics.mjs` reads the Codex event log of each run. It needs no network and no model.
+
+| Column | Meaning | Use |
+|---|---|---|
+| `SEC`, `UNCACHED`, `OUT` | Wall time, uncached input tokens, output tokens | Cost per task. Compare protocols and effort levels with these, not with impressions. |
+| `PAGES` | Distinct pages the worker opened | Research depth. |
+| `CONFIRMED` | Checks passed / checks reported | For a verifier, a low ratio means the profile needed work, not that the worker failed. |
+| `CITED` / `SNIPPET` / `UNSEEN` | URLs cited in the report and in added lines; of those, seen only as a search snippet; never seen at all | `UNSEEN` > 0 blocks a merge until a human or a reviewer opens the page. `SNIPPET` is weak evidence: spot-check. |
+
+`sources.json` in each run dir is the evidence ledger: every page opened and every query. Run dirs are local and git-ignored; the durable record is `sourceNotes` in the content file.
+
+Baseline, first verifier wave (2026-11-11, effort `high`): about 7.5 minutes, ~200k uncached input tokens, 35–40 pages opened per profile. Re-measure after any protocol change.
 
