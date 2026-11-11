@@ -81,7 +81,7 @@
   "comparison": {
     "expertCalls": true,
     "contentLibrary": "Expert Insights (Tegus Library)",
-    "aiMatching": "Not publicly confirmed",
+    "aiMatching": false,
     "complianceTools": true
   },
   "lastUpdated": "2026-11-11",
@@ -361,8 +361,7 @@
     "2026-11-11 — https://cases.justia.com/federal/district-courts/new-york/nysdce/1:2025cv00479/635192/31/0.pdf?ts=1755780860 — Read the underlying six-page court order: denial concerns two state-law claims at pleading stage, with allegations assumed true for that motion.",
     "2026-11-11 — https://dockets.justia.com/docket/new-york/nysdce/1:2025cv00479/635192 — Public docket lists January 16, 2025 filing; listing is incomplete for current disposition. Corporate-parent field removed because the profiled group identity is not resolved by a simple Inc. parent label.",
     "2026-11-11 — https://getlatka.com/companies/alphasense — Data page shows a May 2026 third-party 3,000 employee estimate, not the original verified 2,800. Removed employee count rather than treating an indirect estimate as verified. Early seed/Series A details, November 2024 layoffs and personal founder/Helsinki details lacked adequate primary or reputable corroboration and were removed.",
-    "2026-11-11 — https://www.alpha-sense.com/platform/ — Read official product overview as additional context for platform-led classification; no market leadership or performance comparison inferred.",
-    "2026-11-11 — https://www.alpha-sense.com/press/alphasense-announces-ai-workflow-enhancements-on-mobile-named-to-the-prestigious-forbes-2025-cloud-100/ — Page opened but article body was not available in the extracted response; no claim relies on it. The dated award claim instead uses the October 7, 2025 release."
+    "2026-11-11 — https://www.alpha-sense.com/platform/ — Read official product overview as additional context for platform-led classification; no market leadership or performance comparison inferred."
   ],
   "whyChoose": [
     "Unified AI platform",
