@@ -64,8 +64,7 @@
   "compliance": {
     "mnpiPolicy": "Strong compliance positioning with structured, auditable, and transparent interaction model",
     "expertVetting": "Conflict-management and confidential-information controls with annual expert compliance training",
-    "auditTrail": true,
-    "regulatoryHistory": "The SEC's 2012 complaint against CR Intrinsic Investors, Mathew Martoma, and Dr. Sidney Gilman refers to an unnamed expert network firm. The complaint does not identify that firm as GLG."
+    "auditTrail": true
   },
   "featured": true,
   "priority": 1,
@@ -85,7 +84,7 @@
   "lastUpdated": "2026-11-11",
   "overview": "GLG is one of the foundational companies in the expert-network / insight-network category. It connects clients with professionals who provide first-hand industry knowledge through calls, surveys, events, qualitative sessions, transcript content, and broader managed research formats. GLG's current positioning is no longer just 'find an expert for a call' — it is closer to a broader insight workflow spanning sourcing, live interaction, content reuse, and AI-assisted synthesis.",
   "history": {
-    "narrative": "GLG was founded in 1998 by Mark Gerson and Thomas Lehrman. According to GLG's official history, it began as a publishing company focused on sector-specific reports for investors and evolved into a business model centered on access to professionals with direct domain experience. GLG expanded internationally early, opening its first office outside the U.S. in London, and later built additional practice areas and increasingly sophisticated compliance systems as the expert-network industry matured. GLG's own language and former IPO filings both support the claim that it pioneered the category.",
+    "narrative": "GLG was founded in 1998 by Mark Gerson and Thomas Lehrman. According to GLG's official history, it began as a publishing company focused on sector-specific reports for investors and evolved into a business model centered on access to professionals with direct domain experience. GLG expanded internationally early, opening its first office outside the U.S. in London, and later built additional practice areas. GLG's own language and former IPO filings both support the claim that it pioneered the category.",
     "timeline": [
       {
         "year": "1998",
@@ -98,10 +97,6 @@
       {
         "year": "2003",
         "event": "Opens London office and broadens practice areas internationally"
-      },
-      {
-        "year": "Mid-2000s",
-        "event": "Builds major compliance systems as the category professionalizes"
       },
       {
         "year": "2023",
@@ -193,8 +188,7 @@
       "Conflict-management controls",
       "Confidential-information safeguards",
       "Proprietary compliance systems and technologies"
-    ],
-    "regulatoryContext": "Paragraph 30 of the SEC's 2012 CR Intrinsic/Martoma/Gilman complaint alleges that Martoma and Gilman hid their consultation topics from an unnamed expert network firm. The complaint does not identify the firm as GLG, so this allegation is not attributed to GLG here."
+    ]
   },
   "clientFit": {
     "narrative": "GLG is especially well suited for users who need both custom primary research and reusable content infrastructure. Its multi-format product stack and large network make it a strong choice across buy-side, consulting, legal, and enterprise use cases.",
@@ -237,7 +231,6 @@
   "sourceNotes": [
     "Official GLG website (glginsights.com) used as primary source for product, history, and compliance claims",
     "LinkedIn used for company-size band and headquarters confirmation",
-    "2026-11-11 SEC complaint check: paragraph 30 contains the concealment allegation, but the complaint does not name the expert network firm or identify it as GLG. It is not evidence attributing that allegation to GLG: https://www.sec.gov/files/litigation/complaints/2012/comp-pr2012-237.pdf.",
     "Unsupported operational specifics removed or softened from previous version",
     "FactSet partnership and Library stats sourced from GLG press releases and public announcements",
     "Employee count changed from '2,500+' to LinkedIn band '1,001–5,000' due to insufficient primary-source documentation for the previous figure",
@@ -246,8 +239,7 @@
     "London's 2003 opening verified against GLG's official history: https://glginsights.com/gerson-lehrman-group. Removed the unsupported timeline claim that compliance strengthened the brand during industry scrutiny.",
     "2026-11-11 compliance page check confirms annual training, conflict screening, and client oversight tools. The page does not establish a specific cooling-off period; that field is omitted: https://glg.com/compliance.",
     "Commercial arrangements and the June 30, 2021 subscription-client count verified against the October 18, 2021 S-1; these are historical disclosures, not confirmation of current purchasing terms or client totals: https://www.sec.gov/Archives/edgar/data/1661123/000119312521301055/d161028ds1.htm.",
-    "2026-11-11 office page check confirms the listed New York, London, Dubai, Austin, Gurugram, and Mumbai offices: https://glg.com/about/contact-locations. The Library page confirms Bloomberg and FactSet distribution: https://glg.com/how-we-help/expert-content/library.",
-    "History is partially unverifiable: the mid-2000s compliance-systems milestone remains unsourced. The verified label has been removed; other history claims retain their prior sourcing.",
+    "2026-11-11 office page check confirms the listed New York, London, Dubai, Austin, Gurugram, and Mumbai offices: https://glg.com/about/contact-locations.",
     "Removed the unsubstantiated claim that no individual clients are publicly named, along with unsupported judgments about relative pricing, pricing opacity, and suitability for small one-off projects."
   ],
   "whyChoose": [
