@@ -64,7 +64,8 @@
   "compliance": {
     "mnpiPolicy": "Strong compliance positioning with structured, auditable, and transparent interaction model",
     "expertVetting": "Conflict-management and confidential-information controls with annual expert compliance training",
-    "auditTrail": true
+    "auditTrail": true,
+    "coolingOffPeriod": "Not disclosed"
   },
   "featured": true,
   "priority": 1,

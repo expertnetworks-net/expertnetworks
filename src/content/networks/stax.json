@@ -225,5 +225,18 @@
     "whenNotIdeal": "partially-unverifiable"
   },
   "parentCompany": "Grant Thornton Advisors LLC",
-  "employeeCountSource": "Company acquisition closing announcement, September 22, 2025; current homepage separately states 250+ global professionals."
+  "employeeCountSource": "Company acquisition closing announcement, September 22, 2025; current homepage separately states 250+ global professionals.",
+  "comparison": {
+    "expertCalls": null,
+    "surveys": null,
+    "contentLibrary": null,
+    "complianceTools": null
+  },
+  "pricingDetail": "Not disclosed",
+  "compliance": {
+    "mnpiPolicy": "Not disclosed",
+    "expertVetting": "Not disclosed",
+    "auditTrail": null,
+    "coolingOffPeriod": "Not disclosed"
+  }
 }

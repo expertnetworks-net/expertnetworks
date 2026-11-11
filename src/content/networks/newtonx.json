@@ -54,7 +54,8 @@
     "mnpiPolicy": "AI-powered compliance monitoring scans expert interactions for restricted information; SOC 2 certified",
     "expertVetting": "Two-step identity and subject matter verification on 100% of respondents",
     "auditTrail": true,
-    "regulatoryHistory": "Clean regulatory record. SOC 2, ESOMAR, Insights Association, MRS, and BBB Data Privacy Framework certified."
+    "regulatoryHistory": "Clean regulatory record. SOC 2, ESOMAR, Insights Association, MRS, and BBB Data Privacy Framework certified.",
+    "coolingOffPeriod": "Not disclosed"
   },
   "featured": false,
   "priority": 9,
