@@ -87,7 +87,24 @@ Showcase techniques (all compositor-only, no library):
 - **Cursor light** on dark hero surfaces: one radial highlight following the pointer through CSS variables updated in `requestAnimationFrame`; off on touch devices.
 - **Page-load sequence**: headline words rise in order (60 ms stagger), then the scene. Total under 900 ms; content is readable at 0 ms for assistive tech (`prefers-reduced-motion` and no-JS show the final state).
 
-Signature moments allowed on Workbench pages: profile header to profile header morph (view transitions); fact values count up once on first view; the timeline spine draws as it scrolls into view; section-nav indicator slides; chips and cards respond to hover and press. Nothing else moves.
+Workbench pages (owner's direction, 2026-11-11: effects everywhere) use the shared effects system in `src/styles/fx.css` and `src/scripts/fx.ts`, with one hard rule: an effect never delays, hides, or moves content while it is being read. Allowed on every page:
+
+| Effect | Where | How |
+|---|---|---|
+| Page transitions | every navigation | cross-document view transitions: content cross-fade with 8 px rise; header, nav, profile logo and name morph |
+| Scroll progress | top of long pages | 2 px accent bar, `scaleX` on a `scroll()` timeline |
+| Header on scroll | site header | shrinks 72 → 56 px and gains blur after 40 px, on a `scroll()` timeline |
+| Spotlight cards | cards, fact cells, table rows | radial highlight and a brighter 1 px border that follow the pointer (CSS variables set in `requestAnimationFrame`) |
+| Tilt | provider cards, logo tiles | up to 4° 3D tilt toward the pointer, spring back 300 ms; never on text-heavy cards |
+| Magnetic buttons | primary buttons | content shifts up to 4 px toward the pointer |
+| Reveal on view | lists, grids, sections | rise 12 px + fade, 40 ms stagger, `view()` timeline; final state is the default style |
+| Counting numbers | facts, stats, ladders | `@property` integers, once per element |
+| Drawn lines | timelines, connectors, section dividers | `stroke-dashoffset` on `view()` |
+| Animated underline | text links | underline grows from the left, 180 ms |
+| Chip and tab motion | chips, segmented controls, nav indicator | shared indicator slides with `transform` |
+| Shimmer | loading states only | one pass, 1.2 s |
+| Gradient border | focused inputs, the active compare column | conic gradient rotating once on focus |
+
 
 Performance rules for every effect: 60 fps on a mid-range phone; only `transform`/`opacity`/`clip-path`/`stroke-dashoffset`; `will-change` set only while animating; no layout or paint work in scroll handlers (no scroll listeners at all where a scroll timeline works); videos and heavy scenes lazy-loaded; Largest Contentful Paint element is never animated in; total blocking time unaffected. `prefers-reduced-motion: reduce` disables scenes and shows final states.
 
