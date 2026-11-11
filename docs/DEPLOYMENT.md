@@ -50,6 +50,7 @@ Workflow: `.github/workflows/verify.yml`. It runs on each push and each pull req
 |---|---|
 | Install | `npm ci` |
 | Slug check | `node .github/scripts/check-slugs.mjs` |
+| Content integrity | `node .github/scripts/check-content-integrity.mjs` |
 | Build | `npm run build` |
 | Link check | `npm run verify:links` |
 | Type check | `npm run check` |
@@ -60,6 +61,8 @@ Workflow: `.github/workflows/verify.yml`. It runs on each push and each pull req
 - A new run on the same branch cancels the run that is in progress.
 - The workflow token has read-only access to repository contents.
 - The slug check fails on broken content references before the build runs.
+- Content integrity runs after the slug check in CI and `scripts/agents/gate.sh`. It fails on missing unguarded provider-page values, empty Services sections, invalid or future `lastUpdated` dates, and missing matrix values for providers in compare defaults or presets. Explicit `false` capabilities are valid negative values, although the renderer displays them as dashes.
+- It also checks minimum capabilities for the `library`, `aiMatching`, and `fastCalls` presets, and direct badge implications: AI Matching requires `comparison.aiMatching`; Strong Compliance and Compliance Tools require `comparison.complianceTools`; Research Platform requires `comparison.contentLibrary`; Marketplace requires Marketplace delivery. Buyer fit, geography, market positioning and AI research rankings remain editorial judgments. The check does not verify public sources or rewrite content.
 
 ## 5. Deploy procedure
 
