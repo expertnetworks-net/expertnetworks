@@ -29,7 +29,7 @@
   "priority": 33,
   "published": true,
   "deliveryModel": "Concierge",
-  "complianceBadge": "Standard Compliance",
+  "complianceBadge": "Limited Public Detail",
   "aiBadge": "Limited AI Detail",
   "lastUpdated": "2026-11-11",
   "overview": "Mosaic Research Management is a New York-based expert network and primary research firm founded in 2010. It provides custom recruiting for institutional investors and management consultancies. Its FAQ describes telephone consultations with experts across industries and geographies.\n\nMosaic says its process covers sourcing, phone and email vetting, scheduling, and expert payment. Its advertised engagement types include deep-dive research projects, named targeted recruits, and semi-exclusive panels for monitoring investments.",
@@ -57,7 +57,7 @@
   "servicesDetailed": [
     {
       "name": "Expert Consultations",
-      "description": "Mosaic describes telephone engagements between experts and institutional investors or management consultancies. Its FAQ says calls normally last 45–60 minutes."
+      "description": "Mosaic describes telephone engagements between experts and institutional investors or management consultancies. Its Advisors page and FAQ introduction describe 30–60-minute engagements; the FAQ’s time-commitment answer gives 45–60 minutes for normal calls."
     },
     {
       "name": "Custom Expert Recruiting",
@@ -89,7 +89,8 @@
   "caveats": [
     "Expert-pool size and employee count were not verified in this review.",
     "The reviewed pages do not substantiate AI matching, automated MNPI screening, or a client-facing audit trail.",
-    "The FAQ describes expert compensation, but does not establish buyer pricing."
+    "The FAQ describes expert compensation, but does not establish buyer pricing.",
+    "Beyond the August 2026 policy dates, no material developments from 2025-11-11 through 2026-11-11 were found in the sources reviewed."
   ],
   "notableFacts": [
     "AlphaSense acquired Stream by Mosaic in 2021.",
@@ -98,12 +99,11 @@
   "sourceNotes": [
     "https://www.mosaicrm.com/ — Read 2026-11-11. Official identity, New York location, recruiting workflow and service descriptions; delivery model is editorial inference from the staff-led workflow.",
     "https://mosaicrm.com/about — Read 2026-11-11. Official June 2010 founding date and New York office. Removed the unsupported 2021 founding and subsequent growth timeline.",
-    "https://mosaicrm.com/expert-faq — Read 2026-11-11. Company-stated client types, cross-industry/geography coverage, consultation format and expert compensation; does not substantiate buyer per-call pricing.",
+    "https://mosaicrm.com/expert-faq — Read 2026-11-11. Company-stated client types, cross-industry/geography coverage, consultation format and expert compensation; does not substantiate buyer per-call pricing. The introduction gives 30–60-minute engagements, while the time-commitment answer gives 45–60 minutes for normal calls.",
     "https://www.mosaicrm.com/advisors — Read 2026-11-11. Company-stated custom recruiting, named targeted recruits and semi-exclusive panels.",
-    "https://www.mosaicrm.com/terms — Read 2026-11-11. Terms dated August 2026; confidentiality and compliance-screening obligations. Removed unsupported automated screening, AI vetting and clean-regulatory-record claims.",
+    "https://www.mosaicrm.com/terms — Read 2026-11-11. Terms dated August 2026; section 4 confirms confidentiality, compliance screening and declining questions that would breach legal, contractual or ethical obligations. Limited Public Detail is an editorial inference from the limited compliance detail in the reviewed sources. Removed unsupported automated screening, AI vetting and clean-regulatory-record claims.",
     "https://mosaicrm.com/privacy — Read 2026-11-11. Policy dated August 2026 describes consultation records, screener responses and opt-in SMS scheduling. Record collection does not establish a client-facing audit trail.",
-    "https://www.prnewswire.com/news-releases/alphasense-acquires-stream-by-mosaic-delivering-market-intelligence-from-an-extensive-library-of-investor-led-expert-interviews-301407437.html — Read 2026-11-11. AlphaSense release dated October 25, 2021 confirms Stream acquisition, its 2020 creation, and Mosaic’s 2010 founding. Historical context, not a recent development.",
-    "Review dated 2026-11-11: no supporting source found for 40+ employees, 20K+ experts, VC/startup specialization, startup-signal AI matching, ecosystem mapping, real-time expertise scoring or peer-size rankings; removed. Searches covering 2025-11-11 through 2026-11-11 found no source-backed material funding, M&A, leadership, office or AI launch announcement; the August 2026 policy dates do not establish a product launch."
+    "https://www.prnewswire.com/news-releases/alphasense-acquires-stream-by-mosaic-delivering-market-intelligence-from-an-extensive-library-of-investor-led-expert-interviews-301407437.html — Read 2026-11-11. AlphaSense release dated October 25, 2021 confirms Stream acquisition, its 2020 creation, and Mosaic’s 2010 founding. Historical context, not a recent development."
   ],
   "whyChoose": [
     "Custom expert recruiting",
