@@ -58,7 +58,7 @@
     "Corporate strategy and market intelligence teams"
   ],
   "compliance": {
-    "mnpiPolicy": "Guidepoint says advisors must affirm before each project that they will not disclose confidential or material non-public information; dedicated compliance staff review projects.",
+    "mnpiPolicy": "Guidepoint says advisors must affirm before each project that they will not disclose confidential or material non-public information; project managers screen requests and involve Legal and Compliance as needed.",
     "expertVetting": "Guidepoint describes third-party background checks for new advisors, annual checks on a rolling sample of active experts, annual compliance tutorials, and client-specific screening.",
     "coolingOffPeriod": "Advisor terms prohibit consulting about a current employer; former finance or accounting employees must wait four months before consulting about that employer.",
     "auditTrail": true
@@ -89,7 +89,7 @@
       },
       {
         "year": "2007",
-        "event": "Launches Tracker, its first alternative data product, according to the company timeline"
+        "event": "Launches Tracker, according to the company timeline"
       },
       {
         "year": "2009",
@@ -265,7 +265,7 @@
   "sourceNotes": [
     "Read 2026-11-11 — https://www.guidepoint.com/ — Company-stated 2M+ experts, 2,000+ professionals, 20 offices, 5,000+ organizations, 130,000+ transcripts, 80,000+ covered companies, and 7,000 monthly transcript additions; New York headquarters. Removed unsupported employee-estimate reconciliation and revenue estimates.",
     "Read 2026-11-11 — https://www.guidepoint.com/company/ — Founding year and city, Albert Sebag as founder and CEO, Kaushik Deka as Chief Technology & AI Officer, Catherine Smith as Chief Legal Officer, and company-stated scale. Its timeline groups the mobile app under 2025; the dedicated February 11, 2026 launch announcement is used for that event.",
-    "Read 2026-11-11 — https://www.guidepoint.com/services/compliance/ — Company-described three-stage controls, employer opt-outs, annual tutorials, new-advisor background checks, sample-based annual re-checks, and audit trails. Removed unsupported case narratives and blanket assertions about charging history; no primary case document naming Guidepoint was read.",
+    "Read 2026-11-11 — https://www.guidepoint.com/services/compliance/ — Company-described three-stage controls, employer opt-outs, annual tutorials, new-advisor background checks, sample-based annual re-checks, and audit trails. Project managers screen requests and involve Legal and Compliance as needed; this does not establish dedicated compliance staff review of every project. Removed unsupported case narratives and blanket assertions about charging history; no primary case document naming Guidepoint was read.",
     "Read 2026-11-11 — https://www.guidepoint.com/resources/press-releases/ — Reviewed recent announcement index for the November 2025–November 2026 development pass; individual release datelines are used where index dates differ.",
     "Read 2026-11-11 — https://www.guidepoint.com/platform/guidepoint360/ — Platform combines expert access, transcripts, AskGP, project management, and mobile access. Product descriptions are company-stated; no independent performance testing was performed.",
     "Read 2026-11-11 — https://www.guidepoint.com/services/1-to-1-calls/ — Expert calls, project teams, AI-assisted sourcing, knowledge-graph matching, screening, and client approval. Removed unsupported claims of a dedicated compliance officer on every engagement.",
@@ -286,7 +286,7 @@
     "Read 2026-11-11 — https://www.prnewswire.com/news-releases/guidepoint-presenta-guidepoint360-que-fusiona-ia-y-conocimiento-experto-en-una-sola-plataforma-302577005.html — Company-issued October 8, 2025 release confirms Guidepoint360 and AskGP launch date and source-cited synthesis. Its 1.75M advisor and 60,000-transcript figures are historical, not current scale.",
     "Read 2026-11-11 — https://www.guidepoint.com/resources/blog/guidepoint-acquires-innosquared-a-european-expert-network-firm/ — February 12, 2015 announcement says Innosquared acquisition closed February 11, confirms 2009 Vista Research purchase from Standard & Poor's, and reports over 50,000 EMEA experts at that time.",
     "Read 2026-11-11 — https://www.integrity-research.com/guidepoint-releases-new-alternative-data-product/ — July 24, 2018 report identifies Qsight launch and says Quanton Data was absorbed two years earlier. Corrected Qsight launch from 2024 to 2018; historical rankings were not carried forward.",
-    "Read 2026-11-11 — https://www.guidepoint.co.kr/about-us/?lang=en — Regional company history supports London (2009), Shanghai (2012), Insights (2018), one million advisors (2021), Mumbai (2022), and Qsight relaunch (2018). Its lower undated scale figures were not used as current counts.",
+    "Read 2026-11-11 — https://www.guidepoint.co.kr/about-us/?lang=en — Regional company history supports Tracker (2007), London (2009), Shanghai (2012), Insights (2018), one million advisors (2021), Mumbai (2022), and Qsight relaunch (2018). Its lower undated scale figures were not used as current counts.",
     "Read 2026-11-11 — https://www.guidepoint.com/services/compliance/compliance-faqs/ — Advisors must decline employer-related consultations; FAQ permits ending an uncomfortable consultation and invoicing Guidepoint when confidential information is solicited.",
     "Read 2026-11-11 — https://www.guidepoint.com/guidepoint-global-advisors-terms-conditions/ — Terms specify a four-month employer-related restriction for former finance/accounting staff, MNPI/conflict restrictions, annual tutorial completion, and eligibility to request full-project payment after early termination for compliance. Replaced vague standard cooling-off and unconditional full-payment claims.",
     "Read 2026-11-11 — https://www.guidepoint.com/clients/consulting/ — Company positions expert calls, library content, and AI tools for consulting workflows. Its 5,000+ monthly transcript-addition figure differs from the homepage's 7,000; no growth rate is presented as independently verified.",
@@ -322,11 +322,11 @@
     "description": "positioning",
     "pricingModel": "partially-unverifiable",
     "pricingDetail": "partially-unverifiable",
-    "services": "verified",
+    "services": "positioning",
     "aiCapabilities": "positioning",
     "compliance": "positioning",
     "overview": "positioning",
-    "history": "verified",
+    "history": "positioning",
     "servicesDetailed": "positioning",
     "aiPlatform": "positioning",
     "complianceExtended": "positioning",
