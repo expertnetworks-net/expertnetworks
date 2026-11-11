@@ -68,7 +68,7 @@
   "lastUpdated": "2026-11-11",
   "overview": "INEX ONE is an expert network marketplace founded in 2018 and headquartered in Stockholm. It enables consulting firms, private equity teams, asset managers, and corporations to centralize expert calls, survey projects, and research records across multiple providers.\n\nThe company reports access to 30+ expert networks and 20+ survey firms. Clients compare expert profiles, schedule calls, track spending, and manage billing in one platform. Its AI tools support transcription, summaries, and analysis of private transcript libraries.\n\nAs of this review, Inex One reports 8,000+ users across 800+ companies. On October 19, 2026, it announced a self-serve plan for buyers with occasional expert interview needs.",
   "history": {
-    "narrative": "INEX ONE was founded in 2018 by Max Friberg, Filip Gruvstad, Josefine Vinberg, and Mehdi Rejraji. Its 2021 funding announcement describes Friberg and Gruvstad as former McKinsey consultants and Vinberg and Rejraji as having technology backgrounds. The company announced a $3 million round on August 30, 2021. Investors included former senior partners from consulting and private equity firms, alongside existing investor Curitas Ventures. This does not establish that the consulting firms themselves invested.\n\nInex One says Friberg previously co-founded Previro in 2016, sold it to Workvi in early 2018, and that Workvi sold the business to Knowledge Gate in late 2019. The platform is provided by AB Leverache, a Swedish company identified in its privacy policy.",
+    "narrative": "INEX ONE was founded in 2018 by Max Friberg, Filip Gruvstad, Josefine Vinberg, and Mehdi Rejraji. Its 2021 funding announcement describes Friberg and Gruvstad as former McKinsey consultants and Vinberg and Rejraji as having technology backgrounds. The company announced a $3 million round on August 30, 2021. The announcement lists former senior partners from consulting firms, private equity firms Advent International, Accent, and Triton Partners, and existing investor Curitas Ventures among the investors. This does not establish that the consulting firms themselves invested.\n\nInex One says Friberg previously co-founded Previro in 2016, sold it to Workvi in early 2018, and that Workvi sold the business to Knowledge Gate in late 2019. The platform is provided by AB Leverache, a Swedish company identified in its privacy policy.",
     "timeline": [
       {
         "year": "2018",
@@ -179,14 +179,14 @@
     "Current About page lists offices in Stockholm, Raleigh, Paris, and Singapore.",
     "Company identifies Richard Thornton as a board member and Brad Brown and Ajay Gupta as board observers.",
     "In its seller-written G2 overview, Inex One reports serving 7 of the top-10 strategy consulting firms, 4 of the top-10 private equity firms, and 8 of the top-10 market research firms; the ranking methodology is not supplied.",
-    "Company LinkedIn updates reviewed in November 2026 announce Microsoft Teams notifications and Gourav Nayak joining as Head of Insights; exact announcement dates were not visible."
+    "Company LinkedIn updates read on 2026-11-11 announce Microsoft Teams notifications and welcome Gourav Nayak as Head of Insights; they display relative ages of 1 month and 3 months respectively, without exact announcement dates."
   ],
   "sourceNotes": [
     "2026-11-11 — https://inex.one/ — Company-stated marketplace reach and workflow; 170+ connected networks replaced with 30+ expert networks and 20+ survey firms.",
-    "2026-11-11 — https://inex.one/about-us — Founding year, 8,000+ users and 800+ companies (company-stated), current board roles and four listed offices. New York omitted because this current office list conflicts with the AI info page and seller G2 overview.",
-    "2026-11-11 — https://www.linkedin.com/company/inex-one — Company-stated 11–50 employee range; recent Teams notification and Head of Insights announcements, with relative dates only.",
+    "2026-11-11 — https://inex.one/about-us — Founding year, 8,000+ users and 800+ companies (company-stated), current board roles and four listed offices. New York omitted because this current office list conflicts with the AI info page and seller G2 overview. For current roles, this profile follows the About page: Brown and Gupta are board observers and Lundgren is a board member; the 2021 funding announcement instead describes Brown and Gupta as joining the board and Lundgren as Chairman.",
+    "2026-11-11 — https://www.linkedin.com/company/inex-one — Public company profile was readable through the web research tool in this review; company-stated 11–50 employee range retained. Teams notifications and Gourav Nayak’s welcome as Head of Insights appeared with relative ages of 1mo and 3mo respectively; exact announcement dates were not shown.",
     "2026-11-11 — https://inex.one/pricing — Listed platform fees and plan entitlements; company-stated Q4 2025 NPS of 90. No industry NPS comparison retained.",
-    "2026-11-11 — https://inex.one/newsroom/inex-one-funding — August 30, 2021 $3 million announcement, founder backgrounds and investor affiliations. Removed assertion that consulting firms themselves invested.",
+    "2026-11-11 — https://inex.one/newsroom/inex-one-funding — August 30, 2021 $3 million announcement and founder backgrounds. Lists former consulting senior partners separately from private equity firms Advent International, Accent, and Triton Partners among investors, alongside Curitas Ventures. Does not establish investment by the consulting firms themselves. Historical board titles differ from the current About page; current roles follow the latter.",
     "2026-11-11 — https://inex.one/expert-network-directory/previro — Company account of Friberg’s previous company and its 2018/2019 sales.",
     "2026-11-11 — https://inex.one/privacy-policy — AB Leverache identified as Swedish platform provider.",
     "2026-11-11 — https://inex.one/newsroom/inex-one-one-of-the-fastest-growing-european-companies-in-the-ft1000-report — Company reports #134 and >1,100% growth in the 2025 ranking; dated to its 2020–2023 measurement period. Independent FT table unavailable.",
@@ -241,5 +241,5 @@
     "caveats": "positioning",
     "comparison": "positioning"
   },
-  "employeeCountSource": "Company LinkedIn profile, checked 2026-11-11 (self-reported range)"
+  "employeeCountSource": "Company LinkedIn public profile, read 2026-11-11 (self-reported company-size range)"
 }
