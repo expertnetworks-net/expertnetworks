@@ -7,16 +7,17 @@ ROOT="$(git rev-parse --show-toplevel)" || exit 1
 cd "$ROOT"
 PROD_BRANCH="main"                                              # Cloudflare Pages production branch. See docs/DEPLOYMENT.md
 BASE="${SWARM_BASE:-origin/$PROD_BRANCH}"                       # where agent branches start
-MAX_PAR="${SWARM_MAX_PAR:-3}"                                   # parallel workers (16 GB MacBook Air: keep <= 3)
+MAX_PAR="${SWARM_MAX_PAR:-5}"                                   # parallel workers; builds are the RAM cost, model calls are remote
 TIMEOUT="${SWARM_TIMEOUT:-1800}"                                # seconds per worker
 WT_DIR="${SWARM_WT_DIR:-$HOME/.cache/expertnetworks/worktrees}" # outside the repo so astro check ignores it
 RUNS="$ROOT/.agents/runs"
 SCHEMA="$ROOT/.agents/schemas/result.schema.json"
-MODEL_ARGS=""; [ -n "${CODEX_MODEL:-}" ] && MODEL_ARGS="-m $CODEX_MODEL"
+MODEL_ARGS="-m ${CODEX_MODEL:-gpt-6.1-sol}"
+[ "${CODEX_FAST:-1}" = 1 ] && MODEL_ARGS="$MODEL_ARGS -c service_tier=\"priority\""   # fast tier: ~2x speed, more usage
 RETRIES="${SWARM_RETRIES:-1}"                                   # automatic re-runs when a worker ends with no report
 effort_for() {  # CODEX_EFFORT overrides; otherwise spend reasoning where it pays
   [ -n "${CODEX_EFFORT:-}" ] && { echo "$CODEX_EFFORT"; return; }
-  case "$1" in monitor) echo low;; verifier|tester|designer) echo medium;; *) echo high;; esac
+  case "$1" in monitor) echo medium;; tester) echo high;; verifier|designer|reviewer) echo xhigh;; *) echo max;; esac
 }
 
 die()  { echo "swarm: $*" >&2; exit 1; }
