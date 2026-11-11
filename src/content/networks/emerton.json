@@ -82,10 +82,6 @@
       {
         "year": "2026-09",
         "event": "Emerton Data publishes an article introducing GLIDE, its open-source Python package for evaluating generative and agentic AI systems."
-      },
-      {
-        "year": "2026",
-        "event": "In recent LinkedIn updates reviewed in November, Emerton Data reports Romain Aeberhardt joining as a partner in its Paris office."
       }
     ]
   },
@@ -148,8 +144,7 @@
     "Names Aimé Lachapelle, Pascal Simon, and Sébastien Plessis as co-founders",
     "Company lists Montreal alongside Paris, London, Munich, New York, and Hong Kong; office opening dates were not established",
     "Management Consulted lists Emerton Data eighth in its 2027 enterprise AI transformation consulting ranking, updated October 1, 2026",
-    "Introduced GLIDE in a September 2026 article",
-    "Company's recent LinkedIn updates report Romain Aeberhardt joining as a partner in Paris"
+    "Introduced GLIDE in a September 2026 article"
   ],
   "sourceNotes": [
     "https://www.emerton-data.com/ — read 2026-11-11. Identifies the AI and tech unit of Emerton Group, lists six offices including Montreal, and describes worldwide consulting, capabilities, and target industries. These are company-stated; no expert database or standalone expert-call service is established here.",
@@ -157,7 +152,7 @@
     "https://www.emerton-data.com/cgu-legals — read 2026-11-11. Names Emerton Data and its Paris registered office. Does not substantiate the previous AMF/EU MAR, expert-vetting, cooling-off, or audit-trail claims. Removed those claims and the unsupported clean regulatory record assertion.",
     "https://www.consultancy.eu/news/2031/emerton-launches-new-unit-dedicated-to-advanced-data-analytics — read 2026-11-11. October 29, 2018 report documents Emerton Data's launch and appointment of Aimé Lachapelle; corrects the previous 2015 founding year and speculative creation timeline.",
     "https://www.pappers.fr/entreprise/emerton-data-842074189 — read 2026-11-11. Reports 10–19 employees for the French legal entity in 2022 and creation in 2018. The displayed headcount is dated, not a current global measure; no annual accounts are available on this page.",
-    "https://www.linkedin.com/showcase/emertondata/ — read 2026-11-11. Company-stated founding year 2018 and employee range 51–200; the latter differs in date/scope from the historical French-entity count above, so the conservative, explicitly dated figure is displayed. Recent updates announce Romain Aeberhardt as a Paris partner; no absolute appointment date is supplied. Project-based delivery does not establish a pricing model.",
+    "https://www.linkedin.com/showcase/emertondata/ — read 2026-11-11. Public company summary was readable without signing in, alongside sign-in prompts. States founding year 2018 and employee range 51–200; the latter differs in date/scope from the historical French-entity count above, so the conservative, explicitly dated figure is displayed. Project-based delivery does not establish a pricing model.",
     "https://www.emerton.co/about — read 2026-11-11. Company-stated group founding pedigree, original sector practices, independent partnership model, and corporate/private equity clients. Does not establish self-funding or the previous $20.2M 2025 revenue claim; both removed. Group biographies give older experience figures than the Data biographies used here.",
     "https://www.emerton.co/ — read 2026-11-11. Identifies Emerton Data as the group's dedicated AI and data science entity. Dates the AI consulting ranking announcement August 21, 2026, while the Data announcement says August 25; only the month is used in the timeline.",
     "https://www.emerton-data.com/our-people/aime-l — read 2026-11-11. Company biography identifies Aimé Lachapelle as Managing Partner and co-founder, with a Ph.D. and more than 15 years in data and AI.",
@@ -171,7 +166,7 @@
     "https://www.emerton-data.com/industries/private-equity — read 2026-11-11. Company-described investment due diligence, portfolio value creation, and Celerity for RFI/ESG questionnaire automation. No Celerity launch date is provided; it is recorded as a current offering, not a dated launch.",
     "https://www.emerton-data.com/insights — read 2026-11-11. Reviewed recent announcements for the November 2025–November 2026 period; the index includes September 2026 GLIDE research and August 2026 AI consulting ranking news.",
     "https://www.emerton-data.com/insights/agentic-systems-stop-guessing-start-measuring — read 2026-11-11. September 2026 article introduces GLIDE and links to its public repository; the article date is not treated as the package's first release date.",
-    "https://github.com/EmertonData/glide — read 2026-11-11. Public repository identifies Emerton Data as developer and documents a Python AI evaluation library using human and proxy annotations under an Apache 2.0 license.",
+    "https://github.com/EmertonData/glide — read 2026-11-11. Public repository identifies Emerton Data as developer and documents a Python AI evaluation library using human and proxy annotations under an Apache 2.0 license. Supports the editorial AI Research badge classification, labeled as inference; it does not establish AI expert matching.",
     "https://www.emerton-data.com/insights/emerton-data-ranked-within-global-top-10-enterprise-ai-transformation-consulting-firms-2027-by-management-consulted — read 2026-11-11. Company announcement dated August 25, 2026; the group homepage uses August 21, so only the month is used in the timeline.",
     "https://managementconsulted.com/top-ai-consulting-firms/ — read 2026-11-11. Ranking publisher's page, updated October 1, 2026, lists Emerton Data eighth in its 2027 edition. This is an attributed publisher ranking, not an objective market leadership claim."
   ],
@@ -200,6 +195,7 @@
     "keyDifferentiators": "positioning",
     "bestFor": "inference",
     "regionStrength": "positioning",
+    "aiBadge": "inference",
     "compliance": "partially-unverifiable",
     "comparison": "partially-unverifiable",
     "overview": "positioning",
