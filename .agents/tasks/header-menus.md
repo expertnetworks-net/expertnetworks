@@ -10,7 +10,7 @@ The site header follows `docs/DESIGN.md` section 5 (menus) and section 4 (header
 # Context
 Read `docs/DESIGN.md` sections 4 and 5. Current header: `src/components/Header.astro`. A `Menu` primitive may already exist in `src/components/ui/` from the profile work; reuse or extend it there so the profile switcher and the header share one implementation.
 
-Menus (4–6 items each, each with a one-line description; destinations must exist in `src/pages/`):
+Menus (4–6 items each, each with a one-line description). Destinations: pages that exist in `src/pages/`, plus these pages that other workers are building in parallel and that will ship together with this header: `/ai/`, `/guides/mcp/`, `/guides/transcript-libraries/`, `/guides/ai-calls-and-data/`. Link to them; the link check runs after integration.
 - **Networks**: Directory, Compare, Best expert networks, Alternatives pages.
 - **AI**: AI in expert networks (`/ai/`), and the AI guides if they exist.
 - **Guides**: What is an expert network, Pricing, For hedge funds, For private equity, For consulting.
