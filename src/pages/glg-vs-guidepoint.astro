@@ -6,13 +6,6 @@ import { getCollection } from 'astro:content';
 const allNetworks = await getCollection('networks');
 const a = allNetworks.find(n => n.data.slug === 'glg')!;
 const b = allNetworks.find(n => n.data.slug === 'guidepoint')!;
-
-const verdict = [
-  a.data.description,
-  a.data.pricingDetail || 'Not disclosed',
-  b.data.description,
-  b.data.pricingDetail || 'Not disclosed',
-];
 ---
 
 <BaseLayout
@@ -55,5 +48,5 @@ const verdict = [
     </div>
   </section>
 
-  <VsComparison a={a} b={b} verdict={verdict} />
+  <VsComparison a={a} b={b} />
 </BaseLayout>

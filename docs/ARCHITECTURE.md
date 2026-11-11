@@ -95,7 +95,7 @@ Notes:
 
 - Most editorial pages read the `networks` collection for provider data.
 - Editorial pages also contain text that is written in the `.astro` file. A provider update does not change that text.
-- Five head-to-head pages use `src/components/VsComparison.astro`. `/glg-vs-alphasights` has its own layout.
+- Head-to-head pages use `src/components/VsComparison.astro`. Their bottom-line summaries label each provider and its pricing, using escaped profile text.
 
 To list all routes after a build:
 
@@ -148,7 +148,7 @@ The same function runs at build time and in the browser. Thus the two outputs ca
 
 Unknown values (missing, `null`, blank text, or empty lists) render as muted “Not disclosed”. Booleans distinguish `true` (Yes), `false` (No), and unknown. The directory preserves these states in its dataset and only includes supported capabilities in filters and totals. See [CONTENT-GUIDE.md](CONTENT-GUIDE.md#unknown-values) for the content rule.
 
-Provider type, pricing, AI capability lists, scale, and caveats come from the collection. Granular compare-only AI assessments remain in `enriched`; `null` explicitly means no supported assessment. `.github/scripts/check-content-integrity.mjs` imports the shared renderer and checks cells for every default, preset, and manually selectable provider; it also checks capability implications for badges and presets.
+Provider type, pricing, AI capability lists, scale, and caveats come from the collection. Granular compare-only AI assessments remain in `enriched`; `null` explicitly means no supported assessment. Matrix lists show every item; caveats render as full sentences in a list. `.github/scripts/check-content-integrity.mjs` imports the shared renderer and checks cells for every default, preset, and manually selectable provider; it also checks capability implications for badges and presets, unconfirmed negative booleans, and AI assessments for research and agent presets.
 
 ### 6.2 Behavior
 
@@ -171,7 +171,7 @@ The script ignores slugs that are not published providers.
 ### 6.3 Parts of the page
 
 - Provider chips, with add and remove controls. The add control opens a modal dialog with a focus trap.
-- Goal buttons. Each button selects a preset. The list of goals is `compareGoals` in `src/lib/compare-v2.ts`.
+- Goal buttons. Each button selects a preset. The list of goals is `compareGoals` in `src/lib/compare-v2.ts`. The homepage also shows preset cards using labels and descriptions from `presetMeta` in `compare.json`.
 - Sections: critical differences, AI workflow, commercial, compliance, full evidence matrix, methodology.
 - A section navigation rail for wide screens.
 
@@ -181,7 +181,6 @@ These items exist, but the page does not use them now. Do not describe them as f
 
 | Item | Status |
 |---|---|
-| `presetMeta` in `compare.json` | No code reads these keys. |
 | `diffMode` ("Differences only") in `compare-v2.ts` and `compare-page.ts` | The renderer supports it. No control changes it. Its value is always `false`. |
 | `highConfidenceOnly` in `compare-v2.ts` | The renderer supports it. The controller always sends `false`. |
 | `critical` in the rows of `compare.json` | No code reads this field. |

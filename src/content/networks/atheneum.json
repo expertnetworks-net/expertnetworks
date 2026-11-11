@@ -47,7 +47,7 @@
   "compliance": {
     "mnpiPolicy": "Atheneum’s April 2026 expert terms prohibit engagements involving material non-public information, confidentiality breaches, or conflicts of interest, and require experts to report compliance concerns.",
     "expertVetting": "Atheneum says experts are pre-screened and subject to identity verification and client feedback. Its expert terms permit identity and background checks and require accurate credentials and necessary employer approvals.",
-    "auditTrail": false,
+    "auditTrail": null,
     "coolingOffPeriod": "Not disclosed"
   },
   "featured": false,
@@ -62,7 +62,7 @@
     "contentLibrary": "Not publicly verified",
     "aiMatching": "Company-stated machine learning (2021)",
     "surveys": true,
-    "complianceTools": false
+    "complianceTools": null
   },
   "lastUpdated": "2026-11-11",
   "overview": "Atheneum is a global insights platform founded in 2010 in Berlin, Germany. Company sources identify Mathias Wengeler and Ammad Ahmad as co-founders; its 2021 funding announcement also names Marta Margolis in the founding management team. The company operates as a Research-as-a-Service (RaaS) provider, connecting investment funds, strategy consulting firms, and corporations with industry experts. Its current website reports nine offices worldwide and 60+ languages spoken.\n\nAtheneum offers expert calls, surveys, expert-backed research, and placements, supported by its client-facing Atheneum Insights Platform and Atheneum Hub app for experts. A December 2020 announcement describes cooperation with Nikkei Inc.’s NIKKEI SEEKS platform to improve Japanese expert sourcing; the 500,000+ figure in that announcement refers to Atheneum’s international network, not a Japanese expert pool. In August 2021, Atheneum announced $150 million in growth funding led by Guidepost Growth Equity and reported more than 500 enterprise customers at that time.\n\nRecent developments include expert terms updated in April 2026 that permit AI-enabled recording, transcription, summaries, and analysis, while prohibiting experts from using AI to generate answers. As checked on November 11, 2026, Atheneum’s leadership page lists Dan McCarthy as CEO and David Koscinski as CTO.",
@@ -200,7 +200,7 @@
     "2026-11-11 — https://www.atheneum.ai/digital-products — Insights Platform and Hub features support the Research Platform category (company positioning). Current pages do not substantiate ATLAS, automated compliance screening, or AI matching performance; AI and compliance badges use limited-detail labels.",
     "2026-11-11 — https://www.atheneum.ai/privacy-policy — Published privacy governance, headquarters, DPO, Privacy Chief, retention, transfer safeguards, and breach procedures. Policies are not proof of blanket GDPR/PIPL compliance or a clean record.",
     "2026-11-11 — https://www.atheneum.ai/compliance — Links to public expert agreements, including the English April 2026 terms.",
-    "2026-11-11 — https://static1.squarespace.com/static/6754e676044e270129a1918e/t/6a5104a93f408e20c96feb67/1783694506138/20260326_Atheneum+Expert+Terms+2026_English_ok.pdf — Expert terms footer says Updated: April 2026. Sections 2–5, 9, 10 and 13 describe MNPI restrictions, checks, retained participation records, AI processing and confidentiality. Retained records do not verify a client audit trail or compliance tools; auditTrail and complianceTools are false for lack of public verification.",
+    "2026-11-11 — https://static1.squarespace.com/static/6754e676044e270129a1918e/t/6a5104a93f408e20c96feb67/1783694506138/20260326_Atheneum+Expert+Terms+2026_English_ok.pdf — Expert terms footer says Updated: April 2026. Sections 2–5, 9, 10 and 13 describe MNPI restrictions, checks, retained participation records, AI processing and confidentiality. Retained records do not verify a client audit trail or compliance tools; auditTrail and complianceTools are null for lack of public verification.",
     "2026-11-11 — https://www.atheneum-partners.cn/our-story/ — Company describes founders’ consulting background and names Mathias, Ammad, and Marta; founder lists vary across company sources.",
     "2026-11-11 — https://www.atheneum-partners.cn/2019/03/14/atheneum-extends-global-footprint-to-korea/ — Contemporary announcement names Mathias Wengeler and Ammad Ahmad as founders and says Marta Margolis joined the leadership team in 2012. Michael Brehm’s asserted co-founder role was not established.",
     "2026-11-11 — https://www.atheneum.ai/updates/atheneum-raises-10-million-in-new-funding — September 2018 €10M Crosslantic-led investment. Removed 2012/2015 financing and valuation details that lacked corroborating primary or reputable reporting in this pass.",

@@ -41,6 +41,16 @@ export function checkContentIntegrity(providers, compare, now = new Date()) {
       report(data, 'lastUpdated', `future date (${data.lastUpdated})`);
     }
 
+    for (const group of ['comparison', 'compliance']) {
+      for (const [key, value] of Object.entries(data[group] ?? {})) {
+        const field = `${group}.${key}`;
+        const confidence = data.confidence?.[field] ?? data.confidence?.[group];
+        if (value === false && confidence === 'partially-unverifiable') {
+          report(data, field, 'unconfirmed negative must be null, not false');
+        }
+      }
+    }
+
     // Only direct, machine-readable implications. AI Research/AI-Native and
     // market-position badges do not imply a particular sourcing capability.
     if (data.aiBadge === 'AI Matching' && !supported(data.comparison?.aiMatching)) {
@@ -91,6 +101,13 @@ export function checkContentIntegrity(providers, compare, now = new Date()) {
       if (data && !supported(data.comparison?.[field])) {
         report(data, `comparison.${field}`, `does not meet compare.presets.${preset} minimum capability`);
       }
+    }
+  }
+  for (const [preset, fields] of Object.entries({ agentic: ['agents'], aiResearch: ['libraryQA', 'synthesis', 'agents'] })) {
+    for (const slug of compare.presets[preset] ?? []) {
+      const assessments = compare.enriched[slug]?.ai;
+      const hasAssessment = fields.some((field) => ['Publicly documented', 'Publicly indicated'].includes(assessments?.[field]?.[0]));
+      if (!hasAssessment) problems.push(`${slug}: compare.presets.${preset}: no supported AI assessment in the matrix`);
     }
   }
   return problems;

@@ -81,7 +81,7 @@
   "comparison": {
     "expertCalls": true,
     "contentLibrary": "Expert Insights (Tegus Library)",
-    "aiMatching": false,
+    "aiMatching": null,
     "complianceTools": true,
     "surveys": null
   },

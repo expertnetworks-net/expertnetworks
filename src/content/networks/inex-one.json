@@ -61,7 +61,7 @@
   "comparison": {
     "expertCalls": true,
     "contentLibrary": "Private client transcript library",
-    "aiMatching": false,
+    "aiMatching": null,
     "surveys": true,
     "complianceTools": true
   },

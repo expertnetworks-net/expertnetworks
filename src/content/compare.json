@@ -9,7 +9,7 @@
     "library": ["alphasense-tegus", "third-bridge", "glg", "guidepoint", "dialectica"],
     "aiMatching": ["alphasights", "guidepoint", "newtonx"],
     "aiResearch": ["alphasense-tegus", "third-bridge", "glg", "dialectica", "guidepoint", "alphasights"],
-    "agentic": ["alphasense-tegus", "dialectica", "third-bridge", "glg", "alphasights", "guidepoint"],
+    "agentic": ["alphasense-tegus", "dialectica", "glg", "guidepoint"],
     "fastCalls": ["alphasights", "glg", "dialectica", "guidepoint", "atheneum", "prosapient"],
     "healthcare": ["guidepoint", "glg", "alphasights", "atheneum", "newtonx", "dialectica"],
     "europeMarkets": ["dialectica", "atheneum", "alphasights", "glg", "guidepoint", "third-bridge"],
@@ -17,20 +17,20 @@
     "naPlatform": ["alphasense-tegus", "third-bridge", "glg", "guidepoint", "newtonx", "alphasights"]
   },
   "presetMeta": {
-    "leaders": { "label": "Provider overview", "description": "Starting selection for comparison; confirm fit using the profile evidence." },
-    "consulting": { "label": "Consulting Fit", "description": "Starting selection for comparison; confirm fit using the profile evidence." },
-    "pe": { "label": "PE / Hedge Funds", "description": "Starting selection for comparison; confirm fit using the profile evidence." },
-    "enterprise": { "label": "Enterprise", "description": "Starting selection for comparison; confirm fit using the profile evidence." },
-    "asia": { "label": "APAC Specialists", "description": "Starting selection for comparison; confirm fit using the profile evidence." },
-    "library": { "label": "Transcript research", "description": "Starting selection for comparison; confirm fit using the profile evidence." },
-    "aiMatching": { "label": "AI Matching", "description": "Starting selection for comparison; confirm fit using the profile evidence." },
-    "aiResearch": { "label": "AI Research", "description": "Starting selection for comparison; confirm fit using the profile evidence." },
-    "agentic": { "label": "Agentic Workflows", "description": "Starting selection for comparison; confirm fit using the profile evidence." },
-    "fastCalls": { "label": "Fast Expert Calls", "description": "Starting selection for comparison; confirm fit using the profile evidence." },
-    "healthcare": { "label": "Healthcare Focus", "description": "Starting selection for comparison; confirm fit using the profile evidence." },
-    "europeMarkets": { "label": "Europe / Emerging Markets", "description": "Starting selection for comparison; confirm fit using the profile evidence." },
-    "publicMarkets": { "label": "Hedge Funds / Public Markets", "description": "Starting selection for comparison; confirm fit using the profile evidence." },
-    "naPlatform": { "label": "North America Platform-Led", "description": "Starting selection for comparison; confirm fit using the profile evidence." }
+    "leaders": { "label": "Provider overview", "description": "Compare services, scale disclosures, pricing models, and compliance evidence across an introductory provider selection." },
+    "consulting": { "label": "Consulting Fit", "description": "Review expert calls, surveys, and research delivery against a consulting project brief." },
+    "pe": { "label": "PE / Hedge Funds", "description": "Compare expert access and research options for deal screening and due diligence." },
+    "enterprise": { "label": "Enterprise", "description": "Review delivery models, commercial terms, and controls for enterprise procurement." },
+    "asia": { "label": "APAC Specialists", "description": "Compare geographic coverage and delivery options for research in Asia-Pacific markets." },
+    "library": { "label": "Transcript research", "description": "Compare disclosed transcript libraries, content access, and tools for interrogating existing research." },
+    "aiMatching": { "label": "AI Matching", "description": "Compare profile-supported AI sourcing capabilities and expert-matching disclosures." },
+    "aiResearch": { "label": "AI Research", "description": "Compare AI search, source-cited synthesis, and research workflow tools described in provider profiles." },
+    "agentic": { "label": "Agentic Workflows", "description": "Review documented or company-indicated agents and workflow automation; confirm account availability." },
+    "fastCalls": { "label": "Fast Expert Calls", "description": "Compare expert-call offerings, sourcing methods, and delivery models for a time-sensitive brief." },
+    "healthcare": { "label": "Healthcare Focus", "description": "Review sector coverage and research formats against a healthcare research brief." },
+    "europeMarkets": { "label": "Europe / Emerging Markets", "description": "Compare regional coverage and service models for European and emerging-market research." },
+    "publicMarkets": { "label": "Hedge Funds / Public Markets", "description": "Compare expert calls and content workflows for public-market research." },
+    "naPlatform": { "label": "North America Platform-Led", "description": "Review research platforms and delivery options for a North American research brief." }
   },
   "comparisonNote": "Some providers on this page are direct expert-network peers, while others are hybrid or platform-led research products. Not every provider is a one-for-one substitute on every dimension. Pricing, scale, AI maturity, and compliance workflows vary by contract, region, and client type. Public product visibility also does not always equal production maturity.",
   "substituteTypes": {
@@ -112,7 +112,7 @@
       "rows": [
         { "id": "bestFor", "label": "Best For", "key": "bestFor", "type": "list", "importance": "major", "critical": true, "confidenceView": "mixed" },
         { "id": "keyDifferentiators", "label": "Key Differentiators", "key": "keyDifferentiators", "type": "list", "importance": "moderate", "critical": true, "confidenceView": "mixed" },
-        { "id": "weakness", "label": "Caveats / Tradeoffs", "key": "caveats", "type": "list", "importance": "major", "critical": true, "confidenceView": "mixed" },
+        { "id": "weakness", "label": "Caveats / Tradeoffs", "key": "caveats", "type": "text-list", "importance": "major", "critical": true, "confidenceView": "mixed" },
         { "id": "category", "label": "Category", "key": "categoryBadge", "type": "chip", "importance": "minor", "critical": false, "confidenceView": "high" }
       ]
     }
@@ -121,10 +121,26 @@
     "glg": {
       "ai": {
         "matchingAI": null,
-        "libraryQA": null,
-        "synthesis": null,
-        "agents": null,
-        "interviewing": null,
+        "libraryQA": [
+          "Publicly documented",
+          "Company-Stated",
+          "Ask AI and transcript interrogation in myGLG. https://glg.com/how-we-help/myglg"
+        ],
+        "synthesis": [
+          "Publicly documented",
+          "Company-Stated",
+          "Cross-transcript synthesis with expert-quote traceability. https://glg.com/how-we-help/myglg"
+        ],
+        "agents": [
+          "Publicly indicated",
+          "Company-Stated",
+          "AI-Moderated Calls use a conversational agent. https://glg.com/how-we-help/expert-calls-meetings/ai-moderated-calls"
+        ],
+        "interviewing": [
+          "Publicly documented",
+          "Company-Stated",
+          "AI-Moderated Calls conduct structured expert interviews. https://glg.com/how-we-help/expert-calls-meetings/ai-moderated-calls"
+        ],
         "complianceAI": null
       }
     },
@@ -161,29 +177,69 @@
     "alphasense-tegus": {
       "ai": {
         "matchingAI": null,
-        "libraryQA": null,
-        "synthesis": null,
-        "agents": null,
-        "interviewing": null,
+        "libraryQA": [
+          "Publicly documented",
+          "Company-Stated",
+          "Generative Search across research content. https://www.alpha-sense.com/platform/"
+        ],
+        "synthesis": [
+          "Publicly documented",
+          "Company-Stated",
+          "Generative Search and Deep Research produce source-backed research outputs. https://www.alpha-sense.com/platform/"
+        ],
+        "agents": [
+          "Publicly documented",
+          "Company-Stated",
+          "Deep Research and Workflow Agents automate research. https://www.alpha-sense.com/platform/"
+        ],
+        "interviewing": [
+          "Publicly documented",
+          "Company-Stated",
+          "AI-led expert calls alongside human-led calls. https://www.alpha-sense.com/platform/expert-insights/expert-call-services/"
+        ],
         "complianceAI": null
       }
     },
     "guidepoint": {
       "ai": {
         "matchingAI": null,
-        "libraryQA": null,
-        "synthesis": null,
-        "agents": null,
-        "interviewing": null,
+        "libraryQA": [
+          "Publicly documented",
+          "Company-Stated",
+          "AskGP searches eligible library and client-call transcripts. https://www.guidepoint.com/platform/guidepoint360/askgp/"
+        ],
+        "synthesis": [
+          "Publicly documented",
+          "Company-Stated",
+          "AskGP synthesizes expert transcripts with source-passage links. https://www.guidepoint.com/platform/guidepoint360/askgp/"
+        ],
+        "agents": [
+          "Publicly documented",
+          "Company-Stated",
+          "MCP expert discovery and scheduling in client AI workflows. https://www.guidepoint.com/mcp/"
+        ],
+        "interviewing": ["Publicly documented", "Company-Stated", "AI Moderation conducts expert interviews without live client attendance. https://www.guidepoint.com/pressreleases/guidepoint-unveils-ai-moderation-accelerate-expert-insights-at-enterprise-scale/"],
         "complianceAI": null
       }
     },
     "dialectica": {
       "ai": {
         "matchingAI": null,
-        "libraryQA": null,
-        "synthesis": null,
-        "agents": null,
+        "libraryQA": [
+          "Publicly documented",
+          "Company-Stated",
+          "Origin MCP searches expert calls and project transcripts. https://www.dialectica.io/solutions/origin/mcp/documentation"
+        ],
+        "synthesis": [
+          "Publicly documented",
+          "Company-Stated",
+          "Origin MCP returns cited research across expert calls and company profiles. https://www.dialectica.io/solutions/origin/mcp"
+        ],
+        "agents": [
+          "Publicly indicated",
+          "Company-Stated",
+          "Company describes proprietary AI agents; workflow availability needs confirmation. https://www.dialectica.io/"
+        ],
         "interviewing": null,
         "complianceAI": null
       }
@@ -263,7 +319,11 @@
         "matchingAI": null,
         "libraryQA": null,
         "synthesis": null,
-        "agents": null,
+        "agents": [
+          "Publicly indicated",
+          "Company-Stated",
+          "Company describes workflow automation, document generation and data extraction. https://www.lynk.global/solutions-categories/automate"
+        ],
         "interviewing": null,
         "complianceAI": null
       }
@@ -301,8 +361,16 @@
     "techspert": {
       "ai": {
         "matchingAI": null,
-        "libraryQA": null,
-        "synthesis": null,
+        "libraryQA": [
+          "Publicly indicated",
+          "Company-Stated",
+          "ECHO Ask supports transcript querying. https://techspert.com/blog/ai-assistant"
+        ],
+        "synthesis": [
+          "Publicly documented",
+          "Company-Stated",
+          "Data Capture provides summarized Q&A grids linked to transcript evidence. https://techspert.com/primary-research-platform"
+        ],
         "agents": null,
         "interviewing": null,
         "complianceAI": null
@@ -328,8 +396,16 @@
         "matchingAI": null,
         "libraryQA": null,
         "synthesis": null,
-        "agents": null,
-        "interviewing": null,
+        "agents": [
+          "Publicly documented",
+          "Company-Stated",
+          "AI scheduling assistant automates call booking. https://www.prosapient.com/technology"
+        ],
+        "interviewing": [
+          "Publicly documented",
+          "Company-Stated",
+          "AIMI uses AI agents for moderated expert interviews. https://www.prosapient.com/technology/aimi"
+        ],
         "complianceAI": null
       }
     }

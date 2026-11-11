@@ -28,11 +28,10 @@ interface NetworkData {
 interface Props {
   a: { data: NetworkData };
   b: { data: NetworkData };
-  verdict: string[];
   backLink?: { href: string; label: string };
 }
 
-const { a, b, verdict } = Astro.props;
+const { a, b } = Astro.props;
 
 const comparisons = [
   { label: 'Founded', va: String(a.data.founded || 'Not disclosed'), vb: String(b.data.founded || 'Not disclosed') },
@@ -272,9 +271,13 @@ const diffCount = comparisons.filter(row => row.va !== row.vb).length;
 <section class="py-14 px-4 md:px-6">
   <div class="max-w-4xl mx-auto">
     <h2 class="text-2xl md:text-[28px] font-bold tracking-tight text-primary mb-5">The Bottom Line</h2>
-    <div class="vs-prose">
-      {verdict.map((p) => <p set:html={p} />)}
-    </div>
+    {sides.map(({ n, name }) => (
+      <div class="vs-prose mb-6">
+        <h3 class="vs-card-title">{name}</h3>
+        <p>{n.description || 'Not disclosed'}</p>
+        <p><strong>Pricing: </strong><span class:list={{ 'text-secondary': !n.pricingDetail || n.pricingDetail === 'Not disclosed' }}>{n.pricingDetail || 'Not disclosed'}</span></p>
+      </div>
+    ))}
   </div>
 </section>
 

@@ -243,11 +243,14 @@ function renderCellValue(dataset: CompareDataset, slug: string, row: any, showNo
       : badgeColors;
     return `<span class="inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold ${palette[value] || 'bg-slate-100 text-slate-700'}">${escapeHtml(value)}</span>`;
   }
+  if (type === 'text-list') {
+    if (!Array.isArray(value) || !value.length) return EMPTY_CELL;
+    return `<ul class="list-disc pl-4 space-y-2 text-[12px] leading-relaxed text-secondary">${value.map((item: string) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`;
+  }
   if (type === 'list') {
     if (!Array.isArray(value) || value.length === 0) return EMPTY_CELL;
-    const items = value.slice(0, 3).map((item: string) => `<span class="inline-flex rounded-full bg-[#f5f5f7] px-2 py-1 text-[11px] font-medium text-[#515154]">${escapeHtml(item)}</span>`).join('');
-    const extra = value.length > 3 ? `<span class="text-[11px] text-secondary">+${value.length - 3}</span>` : '';
-    return `<div class="flex flex-wrap gap-1.5">${items}${extra}</div>`;
+    const items = value.map((item: string) => `<span class="inline-flex rounded-full bg-[#f5f5f7] px-2 py-1 text-[11px] font-medium text-[#515154]">${escapeHtml(item)}</span>`).join('');
+    return `<div class="flex flex-wrap gap-1.5">${items}</div>`;
   }
   if (type === 'best-fit') return value ? `<span class="text-[13px] text-primary">${escapeHtml(value)}</span>` : EMPTY_CELL;
   if (value != null && value !== '') return `<span class="text-[13px] text-primary">${escapeHtml(value)}</span>`;

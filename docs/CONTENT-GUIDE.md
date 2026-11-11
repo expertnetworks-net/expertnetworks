@@ -227,7 +227,7 @@ The design of the compare page is in [`ARCHITECTURE.md`](ARCHITECTURE.md), secti
 | `substituteTypes` | Yes | Map from provider type to its relation label, for example `Direct peer`. |
 | `comparisonNote` | Yes | Note below the goal buttons. |
 | `contextualDisclaimers` | Yes | Disclaimer text for `pricing`, `scale`, `ai`, and `compliance`. |
-| `presetMeta` | No | Labels and descriptions for presets. No code reads this key. |
+| `presetMeta` | Yes | Labels and descriptions for the preset cards on the homepage (`src/pages/index.astro`). |
 
 Row fields in `sections[].rows[]`:
 
@@ -250,7 +250,7 @@ Fields of `enriched.<slug>`:
 | `officialAIProducts` | Legacy data; the matrix uses the profile’s `aiCapabilities` list. |
 | `weakness` | Legacy data; the matrix uses the profile’s `caveats` list. |
 | `scaleEvidence`, `employeeEvidence` | Evidence label, for example `Company-Stated`, `Inferred`, `Estimated`. |
-| `ai` | Six capabilities: `matchingAI`, `libraryQA`, `synthesis`, `agents`, `interviewing`, `complianceAI`. Each value is an array (status, evidence label, optional note), or `null` for unknown. Expert matching reads `comparison.aiMatching` from the profile instead. |
+| `ai` | Six capabilities: `matchingAI`, `libraryQA`, `synthesis`, `agents`, `interviewing`, `complianceAI`. Each value is an array (status, evidence label, optional note), or `null` for unknown. Keep supported assessments aligned with the profile’s AI fields; do not blank them just because another capability is unconfirmed. Include the primary source URL in the assessment note. Expert matching reads `comparison.aiMatching` from the profile instead. |
 
 The `ai` status values in use are `Publicly documented`, `Publicly indicated`, `Limited public evidence`, and `Not publicly clear`.
 
