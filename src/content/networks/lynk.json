@@ -136,7 +136,7 @@
     "Network scale and AI capabilities are company-stated",
     "The 200+ employee figure dates to January 2021; current staffing was not verified",
     "Current pricing and subscription terms require confirmation with Lynk",
-    "Current headquarters and office footprint were not established from the sources reviewed"
+    "Current headquarters was not established from the sources reviewed; the contact page lists team locations without identifying a headquarters"
   ],
   "notableFacts": [
     "Peggy Choi described her Silver Lake and TPG background in a GPCA interview",
@@ -144,22 +144,22 @@
     "The 2021 UBS collaboration included access to UBS research analysts through Lynk"
   ],
   "sourceNotes": [
-    "2026-11-11 — https://www.lynk.global/ — Current positioning, Client Solutions support, unbundled/full-project services and company-reported 800,000+ network.",
-    "2026-11-11 — https://www.lynk.global/why-lynk — Company-stated AI matching, custom interviews and surveys; current self-service-only and Asia-only positioning not supported.",
-    "2026-11-11 — https://www.lynk.global/proprietary-expert-network — Company-reported survey panel, global coverage, independent consultants and consulting teams.",
-    "2026-11-11 — https://www.lynk.global/solutions-categories/insights — Advertised research and consulting use cases.",
-    "2026-11-11 — https://www.lynk.global/solutions-categories/automate — Advertised AI automation services; page is undated, so no launch date inferred.",
-    "2026-11-11 — https://www.lynk.global/trust-compliance — Company-described MNPI restrictions, screening, training, interaction records and configurable rules. Removed unsupported SFC/MAS alignment, cross-border automation, universal cooling-off periods and clean-record assertions.",
-    "2026-11-11 — https://www.globalprivatecapital.org/startup-spotlight-lynk/ — Founding year, founders and Choi career background in a founder interview; historical Hong Kong base and office list do not establish current headquarters. Removed unverified incorporation and alumni-recruitment details.",
-    "2026-11-11 — https://globalventuring.com/blog/2021/01/28/corporates-connect-to-lynk/ — Historical seed and Series A funding; 2019 amount undisclosed rather than the previously claimed $1 million.",
-    "2026-11-11 — https://www.prnewswire.com/news-releases/global-knowledge-as-a-service-platform-lynk-announces-successful-funding-round-300962155.html — November 2019 company funding announcement; first-SaaS superlative removed rather than presented as established fact.",
-    "2026-11-11 — https://www.webwire.com/ViewPressRel.asp?aId=269521 — January 2021 company funding release, historical 200+ employees and sector coverage. Removed unsupported current Industrials coverage and current office counts.",
-    "2026-11-11 — https://www.ent-fund.org/en/news/details/212 — September 2021 company announcement reporting $35 million raised to date and UBS analyst collaboration.",
-    "2026-11-11 — https://techcrunch.com/2021/09/01/knowledge-as-a-service-platform-lynk-lands-funding-from-ubs-investment-bank/ — Reports $5 million UBS investment in September 2021.",
-    "2026-11-11 — https://businessday.ng/technology/article/eden-life-acquires-kenyan-lynk-in-push-for-east-african-market/ — Eden acquisition concerns a Kenyan informal-work marketplace, not this expert network; removed the misattributed acquisition. Also removed uncorroborated late-payment, layoff and executive-departure allegations and unsupported competitor rankings.",
-    "2026-11-11 — https://www.lynk.global/contact-us — Contact route for customized solutions; no current rate card verified.",
-    "2026-11-11 — https://www.lynk.global/terms-conditions-for-knowledge-workers — Terms page explicitly dated November 2020; not evidence of a recent product launch.",
-    "2026-11-11 — https://www.prnewswire.com/news/lynk/ — Reviewed release listing while checking recent developments; listing mixes unrelated Lynk businesses. No attributable dated material announcement from 2025-11-11 through 2026-11-11 was found in the searches and official pages reviewed; current undated AI offerings are included without a launch-date claim."
+    "2026-11-11 — https://www.lynk.global/ — description, expertCount, expertCountLabel, overview, services, keyDifferentiators, strengths, whyChoose: positioning — Current positioning, Client Solutions support, unbundled/full-project services and company-reported 800,000+ network.",
+    "2026-11-11 — https://www.lynk.global/why-lynk — aiCapabilities, aiPlatform, aiBadge: positioning; categoryBadge, deliveryModel, bestFor: inference — Company-stated AI matching, custom interviews and surveys; current self-service-only and Asia-only positioning not supported.",
+    "2026-11-11 — https://www.lynk.global/proprietary-expert-network — regionStrength, servicesDetailed, keyDifferentiators: positioning — Company-reported survey panel, global coverage, independent consultants and consulting teams.",
+    "2026-11-11 — https://www.lynk.global/solutions-categories/insights — services, servicesDetailed: positioning; clientFit: inference — Advertised research and consulting use cases.",
+    "2026-11-11 — https://www.lynk.global/solutions-categories/automate — aiCapabilities, aiPlatform, servicesDetailed: positioning — Advertised AI automation services; page is undated, so no launch date inferred.",
+    "2026-11-11 — https://www.lynk.global/trust-compliance — compliance, complianceExtended, complianceBadge: positioning — Company-described MNPI restrictions, screening, training, interaction records and configurable rules. Removed unsupported SFC/MAS alignment, cross-border automation, universal cooling-off periods and clean-record assertions.",
+    "2026-11-11 — https://www.globalprivatecapital.org/startup-spotlight-lynk/ — founded, history, notableFacts: verified; caveats (headquarters): partially-unverifiable — Founding year, founders and Choi career background in a founder interview; historical Hong Kong base and office list do not establish current headquarters. Removed unverified incorporation and alumni-recruitment details.",
+    "2026-11-11 — https://globalventuring.com/blog/2021/01/28/corporates-connect-to-lynk/ — history (seed and Series A): verified — Historical seed and Series A funding; 2019 amount undisclosed rather than the previously claimed $1 million.",
+    "2026-11-11 — https://www.prnewswire.com/news-releases/global-knowledge-as-a-service-platform-lynk-announces-successful-funding-round-300962155.html — history (2019 funding): verified — November 2019 company funding announcement; first-SaaS superlative removed rather than presented as established fact.",
+    "2026-11-11 — https://www.webwire.com/ViewPressRel.asp?aId=269521 — history (January 2021 funding): verified; employeeCount, employeeCountSource, industries: positioning; caveats (staffing): partially-unverifiable — January 2021 company funding release, historical 200+ employees and sector coverage. Removed unsupported current Industrials coverage and current office counts.",
+    "2026-11-11 — https://www.ent-fund.org/en/news/details/212 — history, notableFacts (September 2021 funding and UBS collaboration): verified — September 2021 company announcement reporting $35 million raised to date and UBS analyst collaboration.",
+    "2026-11-11 — https://techcrunch.com/2021/09/01/knowledge-as-a-service-platform-lynk-lands-funding-from-ubs-investment-bank/ — history (UBS investment): verified — Historical investment report.",
+    "2026-11-11 — https://businessday.ng/technology/article/eden-life-acquires-kenyan-lynk-in-push-for-east-african-market/ — acquisition identity check: verified; removed allegations: partially-unverifiable — Eden acquisition concerns a Kenyan informal-work marketplace, not this expert network; removed the misattributed acquisition. Also removed uncorroborated late-payment, layoff and executive-departure allegations and unsupported competitor rankings.",
+    "2026-11-11 — https://www.lynk.global/contact-us — pricingModel, whenNotIdeal: inference; pricingDetail, caveats (pricing and headquarters): partially-unverifiable — Contact route; team locations listed without identifying a headquarters. Customized solutions are described on the homepage; no current rate card verified.",
+    "2026-11-11 — https://www.lynk.global/terms-conditions-for-knowledge-workers — development chronology: partially-unverifiable — Terms page explicitly dated November 2020; not evidence of a recent product launch.",
+    "2026-11-11 — https://www.prnewswire.com/news/lynk/ — last-12-month developments: partially-unverifiable — Reviewed release listing while checking recent developments; listing mixes unrelated Lynk businesses. No attributable dated material announcement from 2025-11-11 through 2026-11-11 was found in the searches and official pages reviewed; current undated AI offerings are included without a launch-date claim."
   ],
   "whyChoose": [
     "Expert interviews and surveys",
