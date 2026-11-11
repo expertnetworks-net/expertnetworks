@@ -3,6 +3,7 @@ dist/
 .astro/
 .playwright-cli/
 .env
+.claude/settings.local.json
 .DS_Store
 drafts/
 *.log

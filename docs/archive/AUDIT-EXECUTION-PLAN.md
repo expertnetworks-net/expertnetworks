@@ -1,5 +1,8 @@
 # ExpertNetworks.net — Audit Execution Plan
 
+> Archived on 2026-11-11. Historical file. Not maintained. Commit `e026392` applied the corrections in this plan.
+> Do not use this file as a source of current facts. Current docs: [`../../CLAUDE.md`](../../CLAUDE.md).
+
 **Generated:** 2026-03-11
 **Audit scope:** Full-site product audit across 58 pages
 **Ship-readiness score:** 7.5 / 10 → target 9.0+ for CPO review
