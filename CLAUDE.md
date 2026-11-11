@@ -2,12 +2,12 @@
 
 Repository guidance for AI-assisted edits.
 
-Last verified against the codebase: June 16, 2026
+Last verified against the codebase: November 11, 2026
 
 ## Repo Truths
 
 - This is a static Astro site for [https://expertnetworks.net](https://expertnetworks.net).
-- Built on Astro 6 with Tailwind CSS v3 processed through PostCSS (`postcss.config.mjs`). There is no `@astrojs/tailwind` integration; `@tailwind` directives live in `src/styles/global.css`.
+- Built on Astro 7 with Tailwind CSS v3 processed through PostCSS (`postcss.config.mjs`). There is no `@astrojs/tailwind` integration; `@tailwind` directives live in `src/styles/global.css`.
 - `z` (Zod) is imported from `zod` in `src/content.config.ts`, not from `astro:content`.
 - The repo itself is the CMS.
 - Content lives in JSON under `src/content/`.
@@ -102,7 +102,7 @@ npm run verify
 npm audit --audit-level=high
 ```
 
-Use `npm run verify` as the default pre-merge check. Requires Node >=22.12.0 (Astro 6 engine requirement); CI runs on Node 22.
+Use `npm run verify` as the default pre-merge check. Requires Node >=22.23.4 (Astro 7 engine requirement); CI runs on Node 22.
 
 ## CI
 
@@ -114,7 +114,7 @@ Use `npm run verify` as the default pre-merge check. Requires Node >=22.12.0 (As
 - GitHub default branch is `main`.
 - Cloudflare Pages preview branch is `main`.
 - Cloudflare Pages production branch is currently `claude/expert-network-sources-6oGs1` and should still be verified directly before assuming a push will update the live site.
-- Cloudflare Pages must build on Node >=22.12.0 (set `NODE_VERSION=22` in the Pages environment if needed).
+- Cloudflare Pages must build on Node >=22.23.4 (set `NODE_VERSION=22` in the Pages environment if needed).
 - `public/_headers` is applied by Cloudflare Pages for security headers and asset caching.
 - The site is static and should stay static unless there is an explicit architecture change.
 

@@ -1,6 +1,6 @@
 # Troubleshooting
 
-Last verified against the repository: June 16, 2026
+Last verified against the repository: November 11, 2026
 
 This guide only covers the current static-site architecture.
 
@@ -10,7 +10,7 @@ The repo no longer includes an admin panel, API routes, or environment-variable-
 
 ### `npm install` fails or produces incompatible dependency errors
 
-Recommended baseline is Node 22 (>=22.12.0) to match `.github/workflows/verify.yml` and the Astro 6 engine requirement. Node 20 will no longer build the project.
+Recommended baseline is Node 22 (>=22.23.4) to match `.github/workflows/verify.yml` and the Astro 7 engine requirement. Node 20 will no longer build the project.
 
 Check:
 
@@ -272,7 +272,7 @@ Last verified on June 16, 2026:
 
 Check:
 
-- Node version differences between local and CI/Pages. Astro 6 requires Node >=22.12.0; set `NODE_VERSION=22` in the Cloudflare Pages environment if the build fails on an older default.
+- Node version differences between local and CI/Pages. Astro 7 requires Node >=22.23.4; set `NODE_VERSION=22` in the Cloudflare Pages environment if the build fails on an older default.
 - missing files under `public/` (including `_headers`, which Cloudflare applies for security headers and caching)
 - content schema issues that only show up on a clean install
 - whether `npm run verify` passes from a clean checkout
