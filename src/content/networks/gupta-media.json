@@ -1,38 +1,35 @@
 {
-  "name": "Gupta Media Expert Network",
+  "name": "Gupta Media",
   "shortName": "GM",
   "slug": "gupta-media",
-  "website": "https://guptamedia.com",
+  "website": "https://www.guptamedia.com/",
   "gradientFrom": "#854d0e",
   "gradientTo": "#facc15",
-  "type": "Expert Network",
-  "founded": 2004,
+  "type": "Marketing Agency",
   "headquarters": "Boston, MA",
-  "employeeCount": "50+",
-  "expertCount": "20K+",
-  "description": "Media and entertainment-focused expert network providing specialized insights into digital marketing, brand strategy, and media industry trends for investors and corporate clients.",
+  "employeeCount": "51–200 (company-stated, November 2026)",
+  "employeeCountSource": "Company LinkedIn profile, accessed 2026-11-11; company-size range rather than an audited headcount.",
+  "expertCount": "Not disclosed",
+  "description": "Boston-based Gupta Media describes itself as a strategic consultancy and performance marketing agency offering creative strategy, digital media, and analytics. An expert-network offering could not be verified in the public sources reviewed.",
   "services": [
-    "Expert Calls",
-    "Media Research",
-    "Brand Analytics"
+    "Digital Media",
+    "Creative Strategy",
+    "Marketing Analytics"
   ],
-  "aiCapabilities": [
-    "Media sentiment analysis",
-    "Audience analytics modeling",
-    "Brand performance tracking"
-  ],
+  "aiCapabilities": [],
   "industries": [
     "Media",
     "Entertainment",
     "Digital Marketing",
     "Advertising",
-    "Consumer Brands"
+    "Consumer Brands",
+    "Sports",
+    "Technology"
   ],
-  "pricingModel": "Per-project",
+  "pricingModel": "Not disclosed",
   "keyDifferentiators": [
-    "Deep media and entertainment focus",
-    "Brand analytics capabilities",
-    "Two decades of industry expertise"
+    "Company-described combination of creative strategy, media, and analytics",
+    "Company-developed Report(SE) reporting and Tally ticketing analytics tools"
   ],
   "bestFor": [
     "Media",
@@ -40,126 +37,114 @@
     "Digital Marketing"
   ],
   "compliance": {
-    "mnpiPolicy": "Standard MNPI protocols with entertainment industry-specific safeguards",
-    "expertVetting": "Industry credential verification with media sector specialization",
-    "auditTrail": true,
-    "regulatoryHistory": "Clean regulatory record"
+    "mnpiPolicy": "Not disclosed",
+    "expertVetting": "Not disclosed",
+    "auditTrail": null
   },
   "featured": false,
   "priority": 27,
   "published": true,
-  "categoryBadge": "Boutique Specialist",
-  "deliveryModel": "Concierge",
-  "regionStrength": "North America",
-  "complianceBadge": "Limited Public Detail",
-  "aiBadge": "Limited AI Detail",
-  "lastUpdated": "2026-03-07",
-  "overview": "Gupta Media Expert Network is a Boston-based specialist network focused exclusively on media, entertainment, and digital marketing. Founded in 2004, the company combines expert consultations with brand analytics capabilities, serving investors and corporate clients who need deep understanding of media industry dynamics, advertising effectiveness, and consumer brand performance.\n\nWith over 20 years of media industry expertise, Gupta Media has built a curated network of 20,000+ professionals across traditional media, digital platforms, advertising agencies, and consumer brands.",
+  "comparison": {
+    "expertCalls": null,
+    "contentLibrary": null,
+    "aiMatching": null,
+    "surveys": null,
+    "complianceTools": null
+  },
+  "lastUpdated": "2026-11-11",
+  "overview": "Gupta Media is based in Boston and describes its business as a strategic consultancy combining creative strategy, digital media, advanced analytics, and performance marketing. Its public technology materials describe marketing reporting and ticketing analytics tools. The expert-call service and expert database previously described in this profile were not substantiated by the sources reviewed.",
   "history": {
-    "narrative": "Gupta Media was founded in 2004 in Boston, establishing itself as one of the earliest media-focused expert networks.",
+    "narrative": "Company sources disagree on the founding year, so no founding year is displayed. Recent announcements concern its marketing agency business.",
     "timeline": [
       {
-        "year": "2004",
-        "event": "Founded in Boston with focus on media and entertainment expertise"
+        "year": "2025-12-03",
+        "event": "Reported inclusion in the Boston Globe's 2025 Top Places to Work list."
       },
       {
-        "year": "2005-2015",
-        "event": "Built media-focused expert network and brand analytics capabilities"
+        "year": "2026-10-09",
+        "event": "Reported ranking 54th overall on ADWEEK's 2026 Fastest Growing Agencies list."
       },
       {
-        "year": "2016-2025",
-        "event": "Expanded digital marketing and streaming media coverage"
+        "year": "2026-10-16",
+        "event": "Announced its appointment as the USGA's paid media agency of record, covering strategy, planning, buying, reporting, and audience measurement. MediaPost also reported the appointment."
       }
     ]
   },
   "servicesDetailed": [
     {
-      "name": "Media Expert Consultations",
-      "description": "Expert calls with media executives, entertainment industry leaders, advertising specialists, and digital marketing professionals."
+      "name": "Digital Media and Creative Strategy",
+      "description": "The company describes creative campaigns and media planning; its USGA announcement also specifies paid media strategy, planning, buying, and reporting."
     },
     {
-      "name": "Brand Analytics",
-      "description": "Data-driven brand performance tracking, audience analytics, and media sentiment analysis."
+      "name": "Marketing Analytics",
+      "description": "Gupta Media says Report(SE) provides marketing performance reporting and that its analytics team builds custom dashboards combining media metrics with business results."
     },
     {
-      "name": "Media Industry Research",
-      "description": "Specialized research into media trends, streaming economics, advertising effectiveness, and consumer brand dynamics."
+      "name": "Ticketing Analytics",
+      "description": "The company describes Tally as a tool for ticket-sales reporting and predictive modeling for festivals and live events."
     }
   ],
-  "aiPlatform": {
-    "narrative": "Gupta Media combines expert consultations with brand analytics tools for media sentiment analysis, audience modeling, and brand performance tracking.",
-    "features": [
-      "Media sentiment analysis",
-      "Audience analytics modeling",
-      "Brand performance tracking",
-      "Expert matching for media sector"
-    ]
-  },
-  "complianceExtended": {
-    "narrative": "Standard compliance with entertainment industry considerations for content and IP sensitivity.",
-    "highlights": [
-      "Standard MNPI protocols",
-      "Entertainment industry IP safeguards",
-      "Media sector credential verification"
-    ],
-    "regulatoryContext": "Media consultations involve different sensitivity patterns than financial services. Clean regulatory record."
-  },
   "clientFit": {
-    "narrative": "Ideal for media, entertainment, and advertising industry stakeholders.",
+    "narrative": "Editorial assessment based on the company's published services: relevant to buyers seeking marketing execution and analytics. Expert-network research services remain unverified.",
     "segments": [
-      "Media/entertainment investors",
-      "Consumer brands seeking marketing expertise",
-      "Advertising agencies needing trend intelligence",
-      "PE firms in media sector due diligence"
+      "Brands seeking digital marketing support",
+      "Music and entertainment marketers",
+      "Sports and live-event organizations"
     ]
   },
   "strengths": [
-    "20+ year track record in media and entertainment",
-    "Brand analytics differentiates from pure call networks",
-    "Sector depth underserved by generalist networks"
+    "Company-described creative strategy, media, and analytics services",
+    "Company-described marketing reporting and ticketing analytics tools"
   ],
   "caveats": [
-    "Very narrow sector focus",
-    "Smaller expert database",
-    "Limited public information about scale"
+    "Expert calls and a 20,000-professional network could not be verified in the public materials reviewed.",
+    "Expert-network pricing, vetting, MNPI policies, and audit-trail capabilities were not established by the reviewed sources.",
+    "Company sources give inconsistent founding years."
   ],
   "notableFacts": [
-    "One of the oldest media-focused expert networks (2004)",
-    "Combines expert calls with brand analytics",
-    "20+ years of media specialization"
+    "Appointed the USGA's paid media agency of record in October 2026, as reported by MediaPost."
   ],
   "sourceNotes": [
-    "Gupta Media website",
-    "Expert network industry directories"
+    "https://www.guptamedia.com/about-us — Accessed 2026-11-11. Describes an advertising agency and consultancy offering creative strategy, digital media, analytics, and performance marketing, with technology, consumer-brand, music, festival, and sports clients; does not establish the previous expert-network identity.",
+    "https://www.linkedin.com/company/gupta-media — Accessed 2026-11-11. Company profile lists Boston headquarters, a 51–200 employee range, and a 2001 founding year. Headcount is company-stated, not independently verified.",
+    "https://www.guptamedia.com/technology — Accessed 2026-11-11. Describes Report(SE), custom reporting, Tally, and a CPM Tracker. These marketing tools do not substantiate the removed expert-matching, AI sentiment-analysis, expert-database, pricing, or compliance claims.",
+    "https://www.guptamedia.com/insights/gogi-gupta-named-to-boston-magazines-2026-most-influential-bostonians-list — Accessed 2026-11-11. April 28, 2026 article says founded in 2003, conflicting with company LinkedIn's 2001 and 2026 anniversary messaging; removed unsupported 2004 and left founding year unset.",
+    "https://www.guptamedia.com/insights/gupta-media-2025-top-places-to-work-boston-globe — Accessed 2026-11-11. December 3, 2025 announcement reports Boston Globe workplace recognition and a forthcoming 25th anniversary in 2026. Recognition retained as company-reported.",
+    "https://www.guptamedia.com/insights/what-does-it-take-to-keep-growing-after-25-years-gupta-media-named-to-adweeks-fastest-growing-agencies-list — Accessed 2026-11-11. October 9, 2026 announcement reports 54th overall on ADWEEK's 2026 Fastest Growing Agencies list. Ranking is company-stated; linked ADWEEK pages could not be read.",
+    "https://www.guptamedia.com/insights/usga-selects-gupta-media-paid-media-agency-record — Accessed 2026-11-11. October 16, 2026 announcement details the USGA appointment, paid media scope, audience strategy, first-party data integration, and Tally ticketing analytics.",
+    "https://www.mediapost.com/publications/article/418779/usga-selects-gupta-media-as-its-paid-media-aor.html — Accessed 2026-11-11. Independently reports the USGA appointment and ticket-sales remit. No reviewed public source substantiated the former clean-regulatory-record assertion; removed it rather than equating missing evidence with a clean record."
   ],
   "whyChoose": [
-    "Media industry depth",
-    "Brand analytics",
-    "20+ year track record",
-    "Digital marketing expertise"
+    "Digital marketing expertise",
+    "Company-described marketing analytics",
+    "Sports and entertainment marketing"
   ],
   "whenNotIdeal": [
-    "Non-media research",
-    "Need broad coverage",
-    "Want large expert pools",
-    "Require institutional compliance"
+    "Expert interviews for investment research (offering unverified)",
+    "Access to a vetted expert database (offering unverified)"
   ],
   "confidence": {
-    "founded": "partially-unverifiable",
+    "name": "verified",
+    "type": "verified",
     "headquarters": "verified",
-    "expertCount": "positioning",
-    "employeeCount": "partially-unverifiable",
-    "pricingModel": "verified",
+    "employeeCount": "positioning",
+    "expertCount": "partially-unverifiable",
+    "description": "partially-unverifiable",
     "services": "positioning",
-    "compliance": "positioning",
-    "overview": "positioning",
-    "history": "inference",
+    "industries": "positioning",
+    "pricingModel": "partially-unverifiable",
+    "keyDifferentiators": "positioning",
+    "bestFor": "inference",
+    "compliance": "partially-unverifiable",
+    "comparison": "partially-unverifiable",
+    "overview": "partially-unverifiable",
+    "history": "partially-unverifiable",
     "servicesDetailed": "positioning",
-    "aiPlatform": "positioning",
-    "complianceExtended": "positioning",
     "clientFit": "inference",
     "strengths": "positioning",
-    "caveats": "inference",
-    "notableFacts": "positioning"
+    "caveats": "partially-unverifiable",
+    "notableFacts": "verified",
+    "whyChoose": "inference",
+    "whenNotIdeal": "inference"
   }
 }
