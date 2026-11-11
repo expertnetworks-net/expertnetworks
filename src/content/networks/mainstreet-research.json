@@ -1,169 +1,134 @@
 {
-  "name": "Mainstreet Research",
-  "shortName": "MR",
+  "name": "Main Street Research",
+  "shortName": "MSR",
   "slug": "mainstreet-research",
-  "website": "https://mainstreetresearch.com",
+  "website": "https://ms-research.com/",
   "gradientFrom": "#4a044e",
   "gradientTo": "#d946ef",
-  "type": "Expert Network",
-  "founded": 2016,
-  "headquarters": "New York, NY",
-  "employeeCount": "100+",
-  "expertCount": "50K+",
-  "description": "Primary research-focused expert network serving hedge funds, asset managers, and sell-side analysts with channel checks, expert consultations, and proprietary research insights.",
+  "type": "Wealth Management",
+  "founded": 1993,
+  "headquarters": "Lakeville, Connecticut (March 2026 Form ADV brochure)",
+  "employeeCount": "Not disclosed",
+  "expertCount": "Not disclosed",
+  "description": "Main Street Research describes itself as a wealth management firm providing financial planning and investment management to individuals, families, foundations, and institutions.",
   "services": [
-    "Expert Calls",
-    "Primary Research",
-    "Channel Checks",
-    "Proprietary Research"
+    "Wealth Planning",
+    "Investment Management",
+    "Institutional Wealth Management"
   ],
-  "aiCapabilities": [
-    "AI-driven channel check aggregation",
-    "Predictive trend modeling",
-    "Automated research synthesis"
-  ],
+  "aiCapabilities": [],
   "industries": [
-    "Financial Services",
-    "Consumer",
-    "Technology",
-    "Retail",
-    "Industrials"
+    "Financial Services"
   ],
-  "pricingModel": "Per-call",
-  "keyDifferentiators": [
-    "Primary research specialization for investors",
-    "Channel check expertise with proprietary methodology",
-    "Deep hedge fund and sell-side relationships"
-  ],
+  "pricingModel": "Asset-based / Performance-based",
+  "pricingDetail": "The firm publishes asset-based fees and an alternative combining management and performance fees. These are wealth management fees; the reviewed sources do not substantiate per-call expert-network pricing.",
+  "keyDifferentiators": [],
   "bestFor": [
-    "Equity Research",
-    "Hedge Funds",
-    "Sell-Side Research"
+    "Individuals and Families",
+    "Foundations and Institutions"
   ],
   "compliance": {
-    "mnpiPolicy": "Strict MNPI policies with Reg FD compliance monitoring for public company research",
-    "expertVetting": "Comprehensive screening with public company affiliation checks and cooling-off periods",
-    "auditTrail": true,
-    "regulatoryHistory": "Clean regulatory record"
+    "mnpiPolicy": "The March 31, 2026 Form ADV brochure says the firm's employee Code of Ethics prohibits the use of material non-public information.",
+    "expertVetting": "Not disclosed",
+    "coolingOffPeriod": "Not disclosed",
+    "auditTrail": null
   },
   "featured": false,
   "priority": 30,
-  "published": true,
-  "categoryBadge": "Boutique Specialist",
-  "deliveryModel": "Concierge",
-  "regionStrength": "North America",
-  "complianceBadge": "Standard Compliance",
-  "lastUpdated": "2026-03-07",
-  "overview": "Mainstreet Research is a New York-based expert network focused on primary research for the investment community. Founded in 2016, the company serves hedge funds, asset managers, and sell-side analysts with expert consultations, channel checks, and proprietary research insights.\n\nThe company differentiates through its channel check expertise — systematic programs that collect data points from industry participants to identify trends in company performance, market dynamics, and competitive positioning. This primary research approach appeals to investors who need actionable, investable insights rather than general industry education.",
+  "published": false,
+  "comparison": {
+    "expertCalls": null,
+    "contentLibrary": null,
+    "aiMatching": null,
+    "surveys": null,
+    "complianceTools": null
+  },
+  "lastUpdated": "2026-11-11",
+  "overview": "The website previously linked from this record redirects to Main Street Research, whose public materials describe wealth management. The reviewed sources do not establish the previously claimed expert-network business. This record is unpublished pending editorial review of its inclusion.\n\nThe firm says it was founded in 1993. Its March 2026 brochure lists Lakeville, Connecticut as headquarters, with offices in Sausalito, New York, and Greenwich. A team biography still describes Sausalito as headquarters, so the location above is explicitly tied to the brochure date.",
   "history": {
-    "narrative": "Mainstreet Research was founded in 2016 in New York City to serve the investment community's need for primary research with a compliance-first approach.",
+    "narrative": "Main Street Research dates its founding to 1993. Recent disclosures and an appointment announcement concern its wealth management business.",
     "timeline": [
       {
-        "year": "2016",
-        "event": "Founded in New York City with primary research focus for investors"
+        "year": "1993",
+        "event": "The firm's history dates its founding as an investment adviser to this year."
       },
       {
-        "year": "2017-2021",
-        "event": "Built channel check methodology and hedge fund client base"
+        "year": "2026-03-31",
+        "event": "The firm's Form ADV brochure reports approximately $2.68 billion managed on a discretionary basis as of December 31, 2025."
       },
       {
-        "year": "2022-2025",
-        "event": "Expanded to 50K+ experts; deepened consumer, tech, and retail coverage"
+        "year": "2026-04-02",
+        "event": "The firm announced Benjamin Armellini's appointment as Chief Executive Officer."
       }
     ]
   },
   "servicesDetailed": [
     {
-      "name": "Expert Consultations",
-      "description": "One-on-one consultations with industry experts designed to inform investment decisions, with strict Reg FD and MNPI compliance."
+      "name": "Wealth Planning",
+      "description": "The firm describes financial planning for clients' assets, spending, retirement, and estate circumstances."
     },
     {
-      "name": "Channel Checks",
-      "description": "Systematic data collection from industry participants — distributors, retailers, suppliers — to identify trends in company performance and competitive dynamics."
+      "name": "Investment Management",
+      "description": "The firm describes managing portfolios of individual securities according to clients' objectives and risk tolerance."
     },
     {
-      "name": "Proprietary Research",
-      "description": "Synthesized research output combining expert insights with data analysis for actionable investment intelligence."
+      "name": "Institutional Wealth Management",
+      "description": "The firm markets investment and governance support to foundations, nonprofits, endowments, and retirement plans."
     }
   ],
-  "aiPlatform": {
-    "narrative": "Mainstreet uses AI for channel check data aggregation, trend identification, and research synthesis across expert interactions.",
-    "features": [
-      "AI-driven channel check aggregation",
-      "Predictive trend modeling from primary data",
-      "Automated research synthesis",
-      "Reg FD compliance monitoring"
-    ]
-  },
-  "complianceExtended": {
-    "narrative": "Mainstreet maintains strict compliance protocols designed for the buy-side investment community, including Reg FD monitoring and comprehensive public company affiliation screening.",
-    "highlights": [
-      "Strict MNPI policies for investment research",
-      "Reg FD compliance monitoring",
-      "Public company affiliation screening",
-      "Cooling-off period enforcement",
-      "Complete audit trail"
-    ],
-    "regulatoryContext": "Primary research for investors operates in one of the most regulated corners of the expert network industry. Clean regulatory record."
-  },
   "clientFit": {
-    "narrative": "Purpose-built for the investment community — hedge funds, asset managers, and sell-side analysts who need primary research to inform trading and investment decisions.",
+    "narrative": "The firm's stated clients include individuals and families, corporate executives, foundations, nonprofits, and endowments.",
     "segments": [
-      "Hedge funds conducting primary research on public equities",
-      "Sell-side analysts seeking proprietary data points",
-      "Asset managers needing channel check intelligence",
-      "Long-only funds conducting deep industry research"
+      "Individuals and families seeking wealth management",
+      "Corporate executives",
+      "Foundations, nonprofits, and endowments"
     ]
   },
-  "strengths": [
-    "Channel check expertise with systematic data collection methodology",
-    "Investment community focus with strict Reg FD compliance",
-    "Primary research delivers actionable, investable insights",
-    "Deep relationships with hedge funds and sell-side analysts"
-  ],
+  "strengths": [],
   "caveats": [
-    "Narrow focus on investment research limits broader applicability",
-    "Less suitable for consulting or corporate strategy research",
-    "Limited public information about funding and scale",
-    "Smaller expert database than generalist networks"
+    "Editorial assessment: the reviewed materials describe wealth management and do not substantiate an expert-network offering.",
+    "Expert counts, expert-call pricing, channel checks, AI research tools, and expert-network compliance controls were not established by the reviewed sources."
   ],
-  "notableFacts": [
-    "Primary research specialist for the investment community",
-    "Channel check methodology systematically collects industry data points",
-    "Reg FD compliance monitoring for public company research"
-  ],
+  "notableFacts": [],
   "sourceNotes": [
-    "Mainstreet Research website",
-    "Expert network industry directories"
+    "Checked 2026-11-11: https://www.mainstreetresearch.com/ redirects to https://ms-research.com/. The destination identifies Main Street Research as a wealth management firm. The earlier expert-network identity was not substantiated; published is false pending editorial review, and unsupported capability badges and comparative claims were removed.",
+    "Checked 2026-11-11: https://ms-research.com/who-we-are/ — company-stated founding in 1993; replaces the unsupported 2016 founding and invented expert-network expansion timeline.",
+    "Checked 2026-11-11: https://ms-research.com/wp-content/uploads/2026/MSR_ADV2A_2026.pdf — March 31, 2026 company brochure, cover and Items 4 and 11: Lakeville headquarters, branch locations, dated assets under management, and employee MNPI policy. The unsupported staff and expert counts, Reg FD monitoring, expert screening, cooling-off periods, engagement audit trail, and blanket clean-regulatory-record claim were removed or marked unknown. Financial figures are company-reported, not independently audited here.",
+    "Checked 2026-11-11: https://ms-research.com/relationship-fees/ — company-published asset-based and performance-based wealth management fee structures; replaces unsupported per-call pricing. Specific minimums are omitted because this page and the March 2026 brochure differ.",
+    "Checked 2026-11-11: https://www.linkedin.com/posts/main-street-research_were-proud-to-announce-that-benjamin-armellini-activity-7445549402498240514-Oy7Q — company announcement appointing Benjamin Armellini CEO; the page's datePublished metadata is April 2, 2026.",
+    "Checked 2026-11-11: https://ms-research.com/team/benjamin-armellini/ — company biography continues to identify Armellini as Partner and Chief Executive Officer.",
+    "Checked 2026-11-11: https://ms-research.com/wealth-planning/ — company-stated financial planning services.",
+    "Checked 2026-11-11: https://ms-research.com/investment-management/ — company-stated portfolio management approach using individual securities.",
+    "Checked 2026-11-11: https://ms-research.com/who-we-serve/ — company-stated client groups and institutional services; replaces unsupported hedge-fund and sell-side client relationships and suitability comparisons.",
+    "Checked 2026-11-11: https://ms-research.com/team/natalie-mcmahon/ — biography calls Sausalito headquarters, conflicting with the March 2026 brochure's explicit Lakeville headquarters. The profile uses the dated brochure rather than presenting an undisputed current location.",
+    "Checked 2026-11-11: https://ms-research.com/insights/ — reviewed the firm's dated updates within November 11, 2025–November 11, 2026 alongside its disclosures and leadership announcement. Reviewed sources did not establish funding, M&A, new-office, or expert-network AI product announcements in this period; this is a search limitation, not proof of absence.",
+    "Checked 2026-11-11: https://ms-research.com/in-the-news/ — reviewed recent coverage linked by the firm; references to AI investment themes were not treated as evidence of an AI research product."
   ],
-  "whyChoose": [
-    "Channel check expertise",
-    "Investment research focus",
-    "Reg FD compliance",
-    "Hedge fund relationships"
-  ],
-  "whenNotIdeal": [
-    "Non-investment research",
-    "Need broad consulting support",
-    "Want self-service platform",
-    "Need Asia/Europe coverage"
-  ],
+  "whyChoose": [],
+  "whenNotIdeal": [],
   "confidence": {
-    "founded": "partially-unverifiable",
-    "headquarters": "verified",
-    "expertCount": "positioning",
+    "name": "verified",
+    "website": "verified",
+    "type": "positioning",
+    "founded": "positioning",
+    "headquarters": "partially-unverifiable",
     "employeeCount": "partially-unverifiable",
-    "pricingModel": "verified",
+    "expertCount": "partially-unverifiable",
+    "description": "positioning",
+    "pricingModel": "positioning",
+    "pricingDetail": "positioning",
     "services": "positioning",
+    "industries": "inference",
+    "bestFor": "positioning",
     "compliance": "positioning",
-    "overview": "positioning",
-    "history": "inference",
+    "compliance.expertVetting": "partially-unverifiable",
+    "compliance.coolingOffPeriod": "partially-unverifiable",
+    "compliance.auditTrail": "partially-unverifiable",
+    "comparison": "partially-unverifiable",
+    "overview": "partially-unverifiable",
+    "history": "positioning",
     "servicesDetailed": "positioning",
-    "aiPlatform": "positioning",
-    "complianceExtended": "positioning",
-    "clientFit": "inference",
-    "strengths": "positioning",
-    "caveats": "inference",
-    "notableFacts": "positioning"
+    "clientFit": "positioning",
+    "caveats": "inference"
   }
 }
