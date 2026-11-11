@@ -13,6 +13,7 @@ step() {
 }
 step "build + links + astro check" npm run verify --silent
 step "slug check" node .github/scripts/check-slugs.mjs
+step "anonymity (identity + private terms)" scripts/agents/identity-check.sh range "$(git merge-base HEAD origin/main 2>/dev/null || echo HEAD~1)..HEAD"
 [ "${1:-}" = "--quick" ] || step "npm audit (high)" npm audit --audit-level=high
 
 printf '\n== GATE %s\n' "$([ $fail -eq 0 ] && echo PASSED || echo FAILED)"

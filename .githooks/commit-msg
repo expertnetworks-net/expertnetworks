@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+DENY="${EXPERTNETWORKS_PRIVATE_TERMS:-$HOME/.config/expertnetworks/private-terms}"
+[ -s "$DENY" ] || exit 0
+if grep -iqFf <(grep -v '^[[:space:]]*$' "$DENY") "$1"; then echo "commit-msg: private term in commit message" >&2; exit 1; fi

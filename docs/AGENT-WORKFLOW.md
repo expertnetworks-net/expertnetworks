@@ -7,7 +7,7 @@ Rules that bind every agent are in `AGENTS.md`. Deploy rules are in `DEPLOYMENT.
 
 | Layer | Who | Does | Does not |
 |---|---|---|---|
-| Owner | Daniel | Sets goals. Approves each deploy. | — |
+| Owner | Repository owner (`expertnetworks-net`) | Sets goals. Approves each deploy. | — |
 | Orchestrator | Claude (Opus / Fable) in chat or Claude Code | Plans, writes task specs, dispatches, reads reports, reviews, integrates. | Large edits that a worker can do. Deploy without approval. |
 | Workers | Codex CLI (`codex exec`), one process per task | Build, review, test, verify facts, monitor, design. | Commit, push, merge, deploy, edit outside Scope. |
 | Gate | `scripts/agents/gate.sh` + CI | Decides if a branch can merge. | — |
@@ -97,3 +97,31 @@ Run logs are in `.agents/runs/<id>/` (git-ignored): `prompt.md`, `events.jsonl`,
 | `out_of_scope` not empty | Do not merge. Revert the extra files in the worktree or widen the spec on purpose. |
 | Gate fails after `integrate` | `git merge --abort` is not possible after the merge commit; `git reset --hard <previous sha>` on the integration branch, then integrate the branches one by one. |
 | Worktree locked | `git worktree prune`, then `swarm.sh clean <id>`. |
+
+## 9. Operating surfaces (Mac and phone)
+
+All options below cost nothing beyond the owner's Claude and ChatGPT subscriptions.
+
+| Where the owner is | Orchestrator | Workers | How |
+|---|---|---|---|
+| At the Mac | Claude (desktop app or Claude Code in `~/Expertnetworks.net`) | `swarm.sh` → local `codex exec` | Default. Full control, worktrees, gate. |
+| Phone, Mac awake | Claude app, this chat linked to the Mac (desktop app must be open) | Same local swarm | Claude drives the Mac through the device bridge. |
+| Phone, Mac awake | ChatGPT app → Codex (paired to Codex on the Mac by QR) | Local Codex sessions | Approve commands, read diffs, start tasks. |
+| Phone, Mac asleep | ChatGPT app → Codex Cloud | Codex Cloud tasks on GitHub | Each task opens a PR. Then `@codex review` or Claude review, then gate in CI. |
+| Anywhere, on a PR | — | `@codex review` (Codex GitHub integration) | Free review pass on every PR. Optional: Claude Code Action with `CLAUDE_CODE_OAUTH_TOKEN` (subscription, not API key). |
+
+## 10. Review rule: cross-vendor
+
+A model misses more defects in its own output than in another model's (see `ROADMAP.md` 2.1).
+
+- Code written by a Codex worker is reviewed by Claude (the orchestrator) **and** by `swarm.sh review`.
+- Code written by Claude is reviewed by `codex exec review`.
+- Content (provider facts, news) is checked by a `verifier` worker that did not write it.
+
+## 11. Build budget
+
+Cloudflare Pages Free allows 500 builds per month. Every pushed branch triggers a preview build.
+
+- Do not push `agent/*` branches. They stay local; `integrate` combines them.
+- Push `integration/*` branches only when a preview URL is needed.
+- Codex Cloud PR branches count too: batch small changes into one task.
