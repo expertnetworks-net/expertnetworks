@@ -47,7 +47,7 @@
     "mnpiPolicy": "The company says experts acknowledge rules prohibiting material non-public and confidential employer information before every consultation.",
     "expertVetting": "The company describes checks of professional background, recent experience, employment restrictions, and conflicts for each engagement.",
     "coolingOffPeriod": "The company says it applies client-specified cooling-off periods; a standard duration is not disclosed on its compliance page.",
-    "auditTrail": true,
+    "auditTrail": null,
     "regulatoryHistory": "Not disclosed"
   },
   "featured": false,
@@ -142,18 +142,18 @@
     "A January 12, 2026 company release announced expanded expert engagement capabilities."
   ],
   "sourceNotes": [
-    "2026-11-11 — https://www.astuteconnect.com/ — Read current services, industry coverage, and commercial terms. The site reports 400,000+ experts, 500+ clients, and access across 100+ countries for the combined Astute Connect and Astute Analytica ecosystem; these are company-stated figures. Removed the unsupported 75K expert count.",
-    "2026-11-11 — https://www.astuteconnect.com/about — Read affiliation, boutique positioning, buyer segments, and research partnership. The official description supports affiliation with Astute Analytica, not the former joint-division claim involving Report Ocean. India/South Asia superiority, comparative price advantages, funding status, and brand-recognition claims were not established and were removed.",
-    "2026-11-11 — https://in.linkedin.com/company/astute-connect — Company-managed page lists Noida, Uttar Pradesh headquarters and a 51–200 employee size band. Replaced New Delhi and unsupported 200+ staffing; the band is not a verified headcount.",
-    "2026-11-11 — https://www.einpresswire.com/article/655024993/introducing-astute-connect-your-gateway-to-premier-expert-networks — Read Astute Analytica’s September 11, 2023 launch announcement. Corrected the launch year from 2020 to 2023; founded refers to the service launch, not legal incorporation. Removed the unsupported 2021–2023 growth timeline.",
-    "2026-11-11 — https://www.globenewswire.com/news-release/2024/09/18/2948110/0/en/astute-connect-vision-shaping-the-new-era-of-expert-networks.html — Read company claims about AI requirement analysis, expert matching, and scheduling. Retained them with September 2024 attribution; removed unsupported integration with a parent-company analytics platform and automated worldwide sourcing.",
-    "2026-11-11 — https://www.globenewswire.com/news-release/2025/08/01/3125716/0/en/astute-connect-the-expert-network-industry-to-reach-us-5-5-billion-by-2030.html — Read the August 2025 report announcement estimating the 2024 market at over $2.52 billion. Replaced the unsourced 2024 publication entry with this dated 2025 announcement and attributed its estimate.",
-    "2026-11-11 — https://www.globenewswire.com/news-release/2026/01/12/3217285/0/en/Astute-Connect-Expands-Global-Expert-Network-Capabilities-to-Support-Consulting-and-Investment-Research-Demand.html — Read the expert engagement expansion announcement within the last 12 months. Its over-4-million expert claim conflicts with the current 400,000+ ecosystem figure; used the lower current figure with explicit scope and attribution.",
-    "2026-11-11 — https://www.astuteconnect.com/how-it-works — Read project-led sourcing, screening, scheduling, agreed scope and pricing, and deliverables. Replaced unsupported per-call and cost-advantage assertions with the company’s scoped-project terms.",
-    "2026-11-11 — https://www.astuteconnect.com/compliance — Read company-stated MNPI, employment, conflict, NDA, client-specific cooling-off, and record-retention policies. Corrected auditTrail=false to company-stated record availability. Removed unsupported clean-record and comparative compliance-maturity claims; no regulatory-history conclusion is drawn.",
-    "2026-11-11 — https://www.astuteconnect.com/transcripts-library — Read transcript, summary, cross-call synthesis, and client-specific searchable archive descriptions. The FAQ describes transcripts and summaries as add-ons; deliverables are not a shared cross-client research library.",
-    "2026-11-11 — https://www.astuteconnect.com/blog/how-ai-is-transforming-expert-matching — Read the June 2026 industry commentary. It does not establish a new provider-specific AI launch, so it was not used to imply one.",
-    "2026-11-11 — https://inex.one/expert-network-directory/astute-connect — Read as a third-party cross-check only. Its launch-year and headquarters descriptions have primary-source support elsewhere; its staffing estimate and Report Ocean relationship were not used as sole-source facts."
+    "https://www.astuteconnect.com/ — Read 2026-11-11. Checks: name=verified; website=verified; type=verified; description=positioning; expertCount=positioning; expertCountLabel=positioning; services=positioning; industries=positioning; regionStrength=positioning; notableFacts=positioning; whyChoose=positioning; caveats=partially-unverifiable; whenNotIdeal=inference. Company-stated 400,000+ experts, 500+ clients, and access across 100+ countries cover the combined Astute Connect and Astute Analytica ecosystem. The short count label describes that scope; a standalone provider count is not established. Services, sector coverage, and no-retainer, no-platform-fee, no-minimum terms are company descriptions.",
+    "https://www.astuteconnect.com/about — Read 2026-11-11. Checks: overview=positioning; categoryBadge=positioning; keyDifferentiators=positioning; bestFor=positioning; clientFit=positioning; strengths=positioning; whyChoose=positioning. Company-described research partnership with Astute Analytica, boutique senior-team model, and consulting, investment, and corporate buyer segments. These support positioning, without establishing superiority, funding status, or comparative price advantages.",
+    "https://in.linkedin.com/company/astute-connect — Read 2026-11-11. Checks: headquarters=positioning; employeeCount=positioning; employeeCountSource=positioning; overview=positioning. Company-managed page lists Noida, Uttar Pradesh, India as headquarters and a 51–200 employee size band; the band is not an independently verified headcount.",
+    "https://www.einpresswire.com/article/655024993/introducing-astute-connect-your-gateway-to-premier-expert-networks — Read 2026-11-11. Checks: founded=verified; description=positioning; overview=positioning; history=positioning; notableFacts=positioning. Astute Analytica’s September 11, 2023 announcement introduced Astute Connect. The year records the service launch, not legal incorporation.",
+    "https://www.globenewswire.com/news-release/2024/09/18/2948110/0/en/astute-connect-vision-shaping-the-new-era-of-expert-networks.html — Read 2026-11-11. Checks: aiCapabilities=positioning; aiPlatform=positioning; history=positioning; caveats=partially-unverifiable; whenNotIdeal=inference. September 18, 2024 company claims describe AI requirement analysis, expert matching, and automated scheduling. They remain dated company claims; this release supplies no independent technical validation.",
+    "https://www.globenewswire.com/news-release/2025/08/01/3125716/0/en/astute-connect-the-expert-network-industry-to-reach-us-5-5-billion-by-2030.html — Read 2026-11-11. Checks: history=positioning; notableFacts=positioning. August 1, 2025 company announcement of The Expert Network Market Sizing 2025 estimated the 2024 market at over $2.52 billion. The profile attributes this estimate to the company.",
+    "https://www.globenewswire.com/news-release/2026/01/12/3217285/0/en/Astute-Connect-Expands-Global-Expert-Network-Capabilities-to-Support-Consulting-and-Investment-Research-Demand.html — Read 2026-11-11. Checks: overview=positioning; history=positioning; notableFacts=positioning; expertCount=positioning; caveats=partially-unverifiable. January 12, 2026 announcement reports expanded expert engagement capabilities within the last 12 months. Its over-4-million expert claim conflicts with the current 400,000+ ecosystem figure; the profile uses the lower website figure with explicit scope and attribution.",
+    "https://www.astuteconnect.com/how-it-works — Read 2026-11-11. Checks: deliveryModel=inference; overview=positioning; pricingModel=positioning; pricingDetail=positioning; servicesDetailed=positioning; keyDifferentiators=positioning; strengths=positioning; whenNotIdeal=inference. Concierge is an editorial classification inferred from team-managed scoping, sourcing, screening, scheduling, and deliverables. Scope and pricing are agreed before sourcing; no standard rates or comparative cost advantage are established here.",
+    "https://www.astuteconnect.com/compliance — Read 2026-11-11. Checks: compliance=positioning; compliance.mnpiPolicy=positioning; compliance.expertVetting=positioning; compliance.coolingOffPeriod=positioning; compliance.auditTrail=partially-unverifiable; compliance.regulatoryHistory=partially-unverifiable; complianceExtended=positioning; caveats=partially-unverifiable. Company policy describes MNPI briefings, employment and conflict checks, NDAs, client-specific cooling-off rules, and retained engagement records. Record availability is preserved as a company claim in complianceExtended; auditTrail is null because this policy alone does not establish an operational audit trail. No standard cooling-off duration or regulatory history is established by this page; regulatoryHistory remains Not disclosed, without a clean-record or enforcement conclusion.",
+    "https://www.astuteconnect.com/transcripts-library — Read 2026-11-11. Checks: services=positioning; servicesDetailed=positioning; strengths=positioning; whyChoose=positioning. Company-described transcripts, summaries, cross-call synthesis, and searchable archive across a client’s engagements. The FAQ calls transcripts and summaries scoped add-ons; deliverables are exclusive to the commissioning client.",
+    "https://www.astuteconnect.com/blog/how-ai-is-transforming-expert-matching — Read 2026-11-11. Checks: aiPlatform=positioning; caveats=partially-unverifiable. June 2026 industry commentary discusses AI matching practices without establishing a new Astute Connect product launch. It does not replace the dated September 2024 implementation claims.",
+    "https://inex.one/expert-network-directory/astute-connect — Read 2026-11-11. Checks: founded=verified; headquarters=positioning; services=positioning. Third-party cross-check for the 2023 launch, Noida location, calls, recruitment, and surveys; primary sources anchor the retained facts. Its staffing estimate and Report Ocean relationship are not used as sole-source claims."
   ],
   "whyChoose": [
     "Research partnership with Astute Analytica (company-stated)",
@@ -170,7 +170,9 @@
     "founded": "verified",
     "headquarters": "positioning",
     "employeeCount": "positioning",
+    "employeeCountSource": "positioning",
     "expertCount": "positioning",
+    "expertCountLabel": "positioning",
     "description": "positioning",
     "pricingModel": "positioning",
     "pricingDetail": "positioning",
@@ -180,6 +182,7 @@
     "keyDifferentiators": "positioning",
     "bestFor": "positioning",
     "compliance": "positioning",
+    "compliance.auditTrail": "partially-unverifiable",
     "compliance.regulatoryHistory": "partially-unverifiable",
     "categoryBadge": "positioning",
     "deliveryModel": "inference",
@@ -197,5 +200,5 @@
     "whenNotIdeal": "inference"
   },
   "employeeCountSource": "Company LinkedIn page, reviewed 2026-11-11; a size band, not an independently verified headcount",
-  "expertCountLabel": "Experts across Astute Connect and Astute Analytica; not a standalone provider count"
+  "expertCountLabel": "ecosystem experts"
 }
