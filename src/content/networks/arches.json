@@ -10,7 +10,7 @@
   "headquarters": "Tokyo, Japan",
   "employeeCount": "350+ (including part-time; company-stated)",
   "expertCount": "200,000+ (company-stated)",
-  "description": "Asia-focused expert network founded by former Accenture Strategy and YCP Solidiance consultants. Offers expert calls, custom research, talent matching, and an Expert Transcript Library available through Bloomberg Terminal.",
+  "description": "Asia-focused expert network that says its founders previously worked at Accenture Strategy and YCP Solidiance. Offers expert calls, custom research, talent matching, and an Expert Transcript Library available through Bloomberg Terminal.",
   "services": [
     "Expert Calls",
     "Expert Transcript Library",
@@ -48,7 +48,7 @@
   "categoryBadge": "Asia Specialist",
   "deliveryModel": "Concierge",
   "regionStrength": "Asia-Pacific",
-  "complianceBadge": "Standard Compliance",
+  "complianceBadge": "Limited Public Detail",
   "aiBadge": "AI Research",
   "lastUpdated": "2026-11-11",
   "overview": "Arches is an Asia-focused expert network founded in 2019, headquartered in Tokyo. Its services connect investors, consulting firms, and corporations with specialists for calls and research. Arches reports 200,000+ experts worldwide and says it serves 600+ businesses across 300+ industries. These scale figures are company-stated.\n\nThe Expert Transcript Library provides searchable interviews and AI summaries. In a December 17, 2025 announcement, Arches described access to its Japan-market transcripts through Bloomberg Terminal. Its current library page describes Japan as its deepest coverage, with expansion into Korea and Taiwan.\n\nIn its January 8, 2026 company history, Arches reported $6 million raised and reiterated a goal of an IPO by 2028. This is a company-stated ambition, not a confirmed listing schedule.",
@@ -99,8 +99,8 @@
       "description": "Executive search and recruitment for funds, consulting firms, investment banks, and leadership roles at portfolio companies."
     },
     {
-      "name": "Expert Surveys & On-site Consultations",
-      "description": "Arches’ terms describe questionnaires, site visits, group discussions, seminars, and in-person interviews among supported engagement formats."
+      "name": "Expert Surveys",
+      "description": "Arches’ published expert terms list web surveying among the services it provides to clients."
     }
   ],
   "aiPlatform": {
@@ -151,23 +151,23 @@
   "sourceNotes": [
     "2026-11-11 — https://arches-global.com/about-arches/ — Lists May 2019 establishment, Tokyo headquarters, founders, shareholders, 350+ employees including part-time, and current offices. Supersedes Singapore headquarters and 250+/eight-office claims. Founder biographies are company-stated; the 2017 NeedsArch origin was removed because no accessible primary page established it.",
     "2026-11-11 — https://www.linkedin.com/company/arches-expert-network-service — Company-stated 200,000+ experts, 600+ businesses, 300+ industries, and $6M backing. Its headquarters label differs from the official company page; Tokyo follows the explicit headquarters designation on the official site.",
-    "2026-11-11 — https://arches-global.com/services/expert-calls/ — Company-stated global custom recruitment, call formats, screening, AI transcripts, vetting, and tailored quotes. Removed unverified per-call-only pricing, cost comparisons, and slower/human-only matching claims.",
+    "2026-11-11 — https://arches-global.com/services/expert-calls/ — Company-stated global custom recruitment (the basis for the custom expert recruitment chip), call formats, screening, AI transcripts, vetting, and tailored quotes. Removed unverified per-call-only pricing, cost comparisons, and slower/human-only matching claims.",
     "2026-11-11 — https://arches-global.com/services/custom-research-consulting/ — Research scope and scope-based fees. Removed the unsupported ex-Big 4 delivery-team claim.",
     "2026-11-11 — https://arches-global.com/services/expert-transcript-library/ — Company-stated library size, monthly additions, Japanese earnings-call coverage, AI summaries, subscriptions, and expansion into Korea and Taiwan. Replaces planned-only summaries and Japan-only coverage.",
     "2026-11-11 — https://arches-global.com/prime-talent-partners/ — Executive recruitment and target client types.",
-    "2026-11-11 — https://arches-global.com/compliance/ — Expert terms covering MNPI, confidentiality, conflicts, background checks, surveys, and in-person formats. Removed clean-record, proven audit-trail, global-standard equivalence, jurisdiction-specific adaptation, and client-approval-only transcription claims; these were not established by the terms.",
+    "2026-11-11 — https://arches-global.com/compliance/ — Expert terms covering MNPI, confidentiality, conflicts, background checks, and web surveying. The Limited Public Detail badge reflects that contractual provisions do not establish operational effectiveness; unsupported on-site formats were removed. Removed clean-record, proven audit-trail, global-standard equivalence, jurisdiction-specific adaptation, and client-approval-only transcription claims; these were not established by the terms.",
     "2026-11-11 — https://arches-global.com/news/en-release0002/ — December 16, 2021 announcement of $1.6M raised and named investors.",
-    "2026-11-11 — https://arches-global.com/insights/news/en-release0014/ — June 14, 2024 announcement of 410M yen raised, 640M yen cumulative, and named investors. Yen amounts replace inconsistent dollar conversions.",
+    "2026-11-11 — https://arches-global.com/news/en-release0014/ — June 14, 2024 announcement of 410M yen raised, 640M yen cumulative, and named investors. Yen amounts replace inconsistent dollar conversions.",
     "2026-11-11 — https://arches-global.com/insights/news/arches-growth-what-weve-built-since-day-1/ — January 8, 2026 retrospective reports 2025 expansion, $6M cumulative funding, and a 2028 IPO ambition. Retrospective and current headcounts differ; current company profile used.",
-    "2026-11-11 — https://arches-global.com/insights/news/arches-japan-market-insights-now-available-on-the-bloomberg-terminal/ — December 17, 2025 announcement describes Bloomberg DS and Document Search & Analysis access. Announcement date is retained without asserting a June launch date.",
-    "2026-11-11 — https://arches-global.com/insights/news/ — News index reports July 20, 2026 milestone of 200,000+ experts. The milestone detail page could not be fetched; the accessible index and current call page support the count.",
+    "2026-11-11 — https://arches-global.com/news/arches-japan-market-insights-now-available-on-the-bloomberg-terminal/ — December 17, 2025 announcement describes Bloomberg DS and Document Search & Analysis access. Announcement date is retained without asserting a June launch date.",
+    "2026-11-11 — https://arches-global.com/news/arches-reaches-200000-experts/ — Opened the full July 20, 2026 milestone announcement confirming the company-stated 200,000+ expert count and date. Replaces reliance on the news index; the /insights/ detail link could not be fetched.",
     "2026-11-11 — https://arches-global.com/news/en-release0013/ — August 25, 2023 Awake alliance announcement; omitted unverified first/largest claims.",
-    "2026-11-11 — https://arches-global.com/insights/news/en-release0004/ — March 27, 2023 Green Growth alliance announcement. Removed unsupported competitor rankings and claims about unique headhunter partnerships; buyer-fit classifications are editorial inference from reviewed service pages."
+    "2026-11-11 — https://arches-global.com/news/en-release0004/ — March 27, 2023 Green Growth alliance announcement. Removed unsupported competitor rankings and claims about unique headhunter partnerships; buyer-fit classifications are editorial inference from reviewed service pages."
   ],
   "whyChoose": [
     "Asia-Pacific research",
     "Bloomberg integration",
-    "Local recruiting in Asia"
+    "Custom expert recruitment"
   ],
   "whenNotIdeal": [
     "Need public fixed call prices",
@@ -175,10 +175,10 @@
   ],
   "confidence": {
     "founded": "verified",
-    "headquarters": "verified",
+    "headquarters": "partially-unverifiable",
     "employeeCount": "positioning",
     "expertCount": "positioning",
-    "description": "verified",
+    "description": "positioning",
     "pricingModel": "positioning",
     "pricingDetail": "positioning",
     "services": "verified",
